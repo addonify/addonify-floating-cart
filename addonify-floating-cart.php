@@ -1,19 +1,13 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              https://addonify.com/
  * @since             1.0.0
  * @package           Addonify_Floating_Cart
  *
  * @wordpress-plugin
- * Plugin Name:       Addonify Floating Cart
+ * Plugin Name:       Addonify Foating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
  * Description:       
  * Version:           1.0.0
@@ -35,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ADDONIFY_FLOATING_CART_VERSION', '1.0.0' );
+define( 'ADDONIFY_FLOATING_CART_VERSION', '0.0.0' );
 
 /**
  * The code that runs during plugin activation.

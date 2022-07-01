@@ -102,7 +102,7 @@ class Addonify_Floating_Cart_Public {
 
 	public function footer_content(){
 		?>
-			<button id="adfy__woofc-trigger" class="adfy__show-woofc" data_display="visible" data_animation="fadeIn" data_style="rounded" data_label="false" data_icon="true">
+			<button id="adfy__woofc-trigger" class="adfy__show-woofc" data_display="visible" data_animation="shake" data_style="rounded" data_label="false" data_icon="true">
 				<span class="icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17">
 						<g></g>
@@ -115,6 +115,15 @@ class Addonify_Floating_Cart_Public {
 			<aside id="adfy__floating-cart" data_type="drawer" data_position="right">
 				<div class="adfy_woofc-inner">
 					<p>I am a drawer.</p>
+					<div class="adfy__woofc-header">
+
+					</div>
+					<div class="adfy__woofc-content">
+					
+					</div>
+					<div class="adfy__woofc-colophon">
+					
+					</div>
 				</div>
 			</aside>
 			<aside id="adfy__woofc-overlay" class="adfy__hide-woofc"></aside>

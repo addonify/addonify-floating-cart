@@ -2,30 +2,31 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    let body = document.querySelector('body');
+    let body = document.body;
     let triggerFloatingCartEle = document.querySelectorAll('.adfy__show-woofc');
     let closeFloatingCartEle = document.querySelectorAll('.adfy__hide-woofc');
-    let cartVisbilityBodyCass = 'adfy__woofc-visible';
+    let floatingCartVisbilityBodyCass = 'adfy__woofc-visible';
+    let floatingCartDisplayBehaviour;
 
     let addonifyFloatingCart = {
 
         init: function () {
 
-            this.triggerClickHandler();
+            this.showFloatingCartHandler();
             this.hideFloatingCartHandler();
         },
 
-        triggerClickHandler: () => {
+        showFloatingCartHandler: () => {
 
             if (triggerFloatingCartEle.length > 0) {
 
-                triggerFloatingCartEle.forEach(function (triggerFloatingCart) {
+                triggerFloatingCartEle.forEach(function (showWooFCEle) {
 
-                    triggerFloatingCart.addEventListener('click', function (e) {
+                    showWooFCEle.addEventListener('click', function (e) {
 
                         e.preventDefault();
-                        body.classList.add(cartVisbilityBodyCass);
-                        console.log("👉 Show trigger is clicked & adfy__woofc-is-visible class is added to body.");
+                        body.classList.add(floatingCartVisbilityBodyCass);
+                        console.log('📌 Show trigger is clicked. => ' + `"${floatingCartVisbilityBodyCass}"` + ' class is added to the body.');
                     });
                 });
             }
@@ -35,13 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (closeFloatingCartEle.length > 0) {
 
-                closeFloatingCartEle.forEach(function (triggerHideFoatingCart) {
+                closeFloatingCartEle.forEach(function (hideWooFCEle) {
 
-                    triggerHideFoatingCart.addEventListener('click', function (e) {
+                    hideWooFCEle.addEventListener('click', function (e) {
 
                         e.preventDefault();
-                        body.classList.remove(cartVisbilityBodyCass);
-                        console.log("👉 Hide trigger is clicked & adfy__woofc-is-visible class is removed from body.");
+                        body.classList.remove(floatingCartVisbilityBodyCass);
+                        console.log('📌 Hide trigger is clicked. => ' + `"${floatingCartVisbilityBodyCass}"` + ' class is removed from the body.');
                     });
                 });
             }

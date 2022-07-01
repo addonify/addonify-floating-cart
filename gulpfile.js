@@ -27,15 +27,14 @@ const scriptPath = {
 
     scriptSource: [
 
-        './public/assets/src/js/libraries/*.js',
         './public/assets/src/js/vendor/*.js',
-        './public/assets/src/js/custom/*.js',
+        './public/assets/src/js/scripts/*.js',
         '!./public/assets/src/js/conditional/*.js',
     ],
 
     scriptDist: "./public/assets/build/js/",
 }
-const outputJavaScriptFileName = "addonify-floating-cart.js";
+const outputJavaScriptFileName = "public.js";
 
 var conditionalScriptPath = {
     conditionalScriptSource: [
@@ -56,7 +55,7 @@ const sassPath = {
     ],
     sassDist: "./public/assets/build/css/",
 }
-const compiledSassCssFileName = "addonify-floating-cart.css";
+const compiledSassCssFileName = "public.css";
 
 var conditionalSassPath = {
     conditionalSassSource: [

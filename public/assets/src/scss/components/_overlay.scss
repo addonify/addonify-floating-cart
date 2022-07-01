@@ -1,0 +1,25 @@
+/* -------------------------------------------------------------------------- 
+	#. Floating Cart Mask
+  -------------------------------------------------------------------------- */
+
+#adfy__woofc-overlay {
+
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    @include visibility_hidden();
+    @include transation_delay();
+}
+
+.adfy__woofc-visible #adfy__woofc-overlay {
+
+    @include visibility_visible();
+    z-index: var(--adfy_woofc_overlaymask_zindex);
+}

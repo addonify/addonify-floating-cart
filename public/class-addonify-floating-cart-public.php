@@ -61,20 +61,9 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Addonify_Floating_Cart_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Addonify_Floating_Cart_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		wp_enqueue_style( 'notfy-css', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
+		
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -84,17 +73,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Addonify_Floating_Cart_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Addonify_Floating_Cart_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		wp_enqueue_script( 'notfy-js', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array( null ), $this->version, false );
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery' ), $this->version, false );
 

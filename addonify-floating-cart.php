@@ -30,6 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'ADDONIFY_FLOATING_CART_VERSION', '0.0.0' );
+define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path(__FILE__));
 
 /**
  * The code that runs during plugin activation.

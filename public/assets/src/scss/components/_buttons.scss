@@ -116,3 +116,29 @@
         display: none;
     }
 }
+
+/* -------------------------------------------------------------------------- 
+	#. General button
+  -------------------------------------------------------------------------- */
+
+.adfy__woofc-button {
+
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    fill: white;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 3px;
+    background-color: #4823ff;
+}
+
+.adfy__woofc-button.continue-shopping {
+
+    fill: #878787;
+    color: #878787;
+    background-color: #CFCFCF;
+}

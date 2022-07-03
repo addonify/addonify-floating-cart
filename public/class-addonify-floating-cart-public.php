@@ -93,7 +93,7 @@ class Addonify_Floating_Cart_Public {
 			</button>
 			<aside id="adfy__floating-cart" data_type="drawer" data_position="right">
 				<div class="adfy_woofc-inner">
-					<div class="adfy__woofc-header">
+					<header class="adfy__woofc-header">
 						<h3 class="adfy__woofc-title">
 							Cart
 							<span class="adfy__woofc-badge">3 Items</span>
@@ -103,148 +103,184 @@ class Addonify_Floating_Cart_Public {
 								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
 							</button>
 						</div>
-					</div>
+					</header>
 					<div class="adfy__woofc-shipping-bar">
 						<span class="adfy__woofc-shipping-text">
-							🔥 Spend <span class="amount">£100</span> more to get a free shipping.
+							🔥 Spend <span class="amount">£100</span> more to qualify for a free shipping.
 						</span>
 						<div class="progress-bars">
 							<div class="total-bar shipping-bar"></div>
 							<div class="progress-bar shipping-bar" data_percentage="70" style="width: 70%"></div>
 						</div>
 					</div>
-					<div class="adfy__woofc-content" id="adfy_woofc_scrollbar">
-						<div class="adfy__woofc-item">
-							<figure class="thumb" data_style="round">
-								<a href="#" class="adfy__woofc-link">
-									<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/1.jpg'; ?>" alt="....">
-								</a>
-								<button class="adfy__woofc-remove-cart-item">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-								</button>
-							</figure>
-							<div class="adfy__woofc-item-content">
-								<div class="adfy__woofc-item-title">
-									<h3 class="woocommerce-loop-product__title">
-										<a href="#" class="adfy__woofc-link">
-											Apple Smart Watch 6th Gen OLED Display
-										</a>
-									</h3>
+					<main class="adfy__woofc-content">
+						<div class="adfy__woofc-content-entry" id="adfy__woofc-scrollbar">
+							<div class="adfy__woofc-item">
+								<figure class="thumb" data_style="round">
+									<a href="#" class="adfy__woofc-link">
+										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/1.jpg'; ?>" alt="....">
+									</a>
+									<button class="adfy__woofc-remove-cart-item">
+										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									</button>
+								</figure>
+								<div class="adfy__woofc-item-content">
+									<div class="adfy__woofc-item-title">
+										<h3 class="woocommerce-loop-product__title">
+											<a href="#" class="adfy__woofc-link">
+												Apple Smart Watch 6th Gen OLED Display
+											</a>
+										</h3>
+									</div>
+									<div class="adfy__woofc-item-price"> 
+										<span class="quantity">
+											1 × 
+											<span class="woocommerce-Price-amount amount">
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>1,569.00
+											</bdi>
+											</span>
+										</span>
+									</div>
+									<div class="adfy__woofc-quantity">
+										<form class="adfy__woofc-quantity-form" methord="post">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											</button>
+											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											</button>
+										</form>
+									</div>
 								</div>
-								<div class="adfy__woofc-item-price"> 
-									<span class="quantity">
-										1 × 
+							</div><!-- // adfy__woofc-item -->
+							<div class="adfy__woofc-item">
+								<figure class="thumb" data_style="round">
+									<a href="#" class="adfy__woofc-link">
+										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/2.jpg'; ?>" alt="....">
+									</a>
+									<button class="adfy__woofc-remove-cart-item">
+										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									</button>
+								</figure>
+								<div class="adfy__woofc-item-content">
+									<div class="adfy__woofc-item-title">
+										<h3 class="woocommerce-loop-product__title">
+											<a href="#" class="adfy__woofc-link">
+												Cozy Cester Soft Chair, Green Color
+											</a>
+										</h3>
+									</div>
+									<div class="adfy__woofc-item-price"> 
+										<span class="quantity">
+											1 × 
+											<span class="woocommerce-Price-amount amount">
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>599.00
+											</bdi>
+											</span>
+										</span>
+									</div>
+									<div class="adfy__woofc-quantity">
+										<form class="adfy__woofc-quantity-form" methord="post">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											</button>
+											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div><!-- // adfy__woofc-item -->
+							<div class="adfy__woofc-item">
+								<figure class="thumb" data_style="round">
+									<a href="#" class="adfy__woofc-link">
+										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/3.jpg'; ?>" alt="....">
+									</a>
+									<button class="adfy__woofc-remove-cart-item">
+										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									</button>
+								</figure>
+								<div class="adfy__woofc-item-content">
+									<div class="adfy__woofc-item-title">
+										<h3 class="woocommerce-loop-product__title">
+											<a href="#" class="adfy__woofc-link">
+												Beats by Dr. Dre | 12 Months Warrenty | Red Color
+											</a>
+										</h3>
+									</div>
+									<div class="adfy__woofc-item-price"> 
+										<span class="quantity">
+											1 × 
+											<span class="woocommerce-Price-amount amount">
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>988.00
+											</bdi>
+											</span>
+										</span>
+									</div>
+									<div class="adfy__woofc-quantity">
+										<form class="adfy__woofc-quantity-form" methord="post">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											</button>
+											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
+											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div><!-- // adfy__woofc-item -->
+						</div><!-- // adfy__woofc-content-entry -->
+					</main>
+					<footer class="adfy__woofc-colophon">
+						<div class="adfy_woofc-cart-summary">
+							<ul>
+								<li class="sub-total">
+									<span class="label">Sub total:</span>
+									<span class="value">
 										<span class="woocommerce-Price-amount amount">
-										<bdi>
-											<span class="woocommerce-Price-currencySymbol">£</span>1,569.00
-										</bdi>
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>1,000.00
+											</bdi>
 										</span>
 									</span>
-								</div>
-								<div class="adfy__woofc-quantity">
-									<form class="adfy__woofc-quantity-form" methord="post">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-										</button>
-										<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
-										</button>
-									</form>
-								</div>
-							</div>
-						</div><!-- // adfy__woofc-item -->
-						<div class="adfy__woofc-item">
-							<figure class="thumb" data_style="round">
-								<a href="#" class="adfy__woofc-link">
-									<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/2.jpg'; ?>" alt="....">
-								</a>
-								<button class="adfy__woofc-remove-cart-item">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-								</button>
-							</figure>
-							<div class="adfy__woofc-item-content">
-								<div class="adfy__woofc-item-title">
-									<h3 class="woocommerce-loop-product__title">
-										<a href="#" class="adfy__woofc-link">
-											Cozy Cester Soft Chair, Green Color
-										</a>
-									</h3>
-								</div>
-								<div class="adfy__woofc-item-price"> 
-									<span class="quantity">
-										1 × 
+								</li>
+								<li class="discount">
+									<span class="label">Discount:</span>
+									<span class="value">
 										<span class="woocommerce-Price-amount amount">
-										<bdi>
-											<span class="woocommerce-Price-currencySymbol">£</span>599.00
-										</bdi>
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>50.00
+											</bdi>
 										</span>
 									</span>
-								</div>
-								<div class="adfy__woofc-quantity">
-									<form class="adfy__woofc-quantity-form" methord="post">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-										</button>
-										<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
-										</button>
-									</form>
-								</div>
-							</div>
-						</div><!-- // adfy__woofc-item -->
-						<div class="adfy__woofc-item">
-							<figure class="thumb" data_style="round">
-								<a href="#" class="adfy__woofc-link">
-									<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/3.jpg'; ?>" alt="....">
-								</a>
-								<button class="adfy__woofc-remove-cart-item">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-								</button>
-							</figure>
-							<div class="adfy__woofc-item-content">
-								<div class="adfy__woofc-item-title">
-									<h3 class="woocommerce-loop-product__title">
-										<a href="#" class="adfy__woofc-link">
-											Beats by Dr. Dre | 12 Months Warrenty | Red Color
-										</a>
-									</h3>
-								</div>
-								<div class="adfy__woofc-item-price"> 
-									<span class="quantity">
-										1 × 
+								</li>
+								<li class="total">
+									<span class="label">Total:</span>
+									<span class="value">
 										<span class="woocommerce-Price-amount amount">
-										<bdi>
-											<span class="woocommerce-Price-currencySymbol">£</span>988.00
-										</bdi>
+											<bdi>
+												<span class="woocommerce-Price-currencySymbol">£</span>950.00
+											</bdi>
 										</span>
 									</span>
-								</div>
-								<div class="adfy__woofc-quantity">
-									<form class="adfy__woofc-quantity-form" methord="post">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-										</button>
-										<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-										<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-											<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
-										</button>
-									</form>
-								</div>
-							</div>
-						</div><!-- // adfy__woofc-item -->
-					</div>
-					<div class="adfy__woofc-colophon">
+								</li>
+							</ul>
+						</div>
 						<div class="adfy__woofc-actions">
 							<button class="adfy__woofc-button adfy__hide-woofc continue-shopping">
 								Continue shopping
 							</button>
 							<a href="#" class="adfy__woofc-button proceed-to-checkout">
-								Proceed to checkout
+								Checkout
 							</a>
 						</div>
-					</div>
+					</footer>
 				</div>
 			</aside>
 			<aside id="adfy__woofc-overlay" class="adfy__hide-woofc"></aside>

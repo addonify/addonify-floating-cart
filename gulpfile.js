@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const zip = require('gulp-zip');
 const cssnano = require('cssnano');
 const shell = require('gulp-shell');
@@ -116,6 +117,9 @@ const sourceFilesDirsToCompress = {
 
 gulp.task('scriptsTask', function () {
     return gulp.src(scriptPath.scriptSource)
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(concat(outputJavaScriptFileName))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
@@ -124,6 +128,9 @@ gulp.task('scriptsTask', function () {
 
 gulp.task('conditionalScriptsTask', function () {
     return gulp.src(conditionalScriptPath.conditionalScriptSource)
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
         .pipe(gulp.dest(conditionalScriptPath.conditionalScriptBuildPath));

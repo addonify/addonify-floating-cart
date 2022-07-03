@@ -22,25 +22,23 @@
             * Listen to WooCommerce product added to cart event.
             */
 
-            var toastClassName = 'adfy__woofc-toast-notification';
+            var notyf = new Notyf({
+                duration: 5000,
+                className: 'adfy__woofc-toast-notification',
+                dismissible: true,
+                ripple: true,
+                position: {
 
-            //var notyf = new $.notyf({
-            //    duration: 5000,
-            //    className: toastClassName,
-            //    dismissible: true,
-            //    ripple: true,
-            //    position: {
+                    x: 'right', // left | center | right
+                    y: 'top', // top | center | bottom
+                },
+            });
 
-            //        x: 'right', // left | center | right
-            //        y: 'top', // top | center | bottom
-            //    },
-            //});
+            $(document).on('added_to_cart', function (event) {
 
-            //$(document).on('added_to_cart', function (event) {
-
-            //    // Invoke the notify toast.
-            //    notyf.success(`<strong>${event.originalEvent.detail.product_name}</strong> has been added to your cart.`);
-            //});
+                // Invoke the Notyf toast.
+                notyf.success('Product has been added to cart.');
+            });
         }
     }
 

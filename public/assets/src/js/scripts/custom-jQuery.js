@@ -7,6 +7,7 @@
         init: function () {
 
             this.notifyFloatingCartEventHandler();
+            this.quantityFormInputHandler();
         },
 
         /**
@@ -24,7 +25,6 @@
 
             var notyf = new Notyf({
                 duration: 5000,
-                className: 'adfy__woofc-toast-notification',
                 dismissible: true,
                 ripple: true,
                 position: {
@@ -36,9 +36,17 @@
 
             $(document).on('added_to_cart', function (event) {
 
-                // Invoke the Notyf toast.
+                // Invoke the Notyf toast. Append the product name here.
                 notyf.success('Product has been added to cart.');
             });
+        },
+
+        quantityFormInputHandler: () => {
+
+            var increaseQuantity = $('#adfy__floating-cart .adfy__woofc-inc-quantity');
+            var decreaseQuantity = $('#adfy__floating-cart .adfy__woofc-dec-quantity');
+            var steps = $('#adfy__floating-cart .adfy__woofc-quantity-input-field').attr('step');
+            var value = $('#adfy__floating-cart .adfy__woofc-quantity-input-field').attr('value');
         }
     }
 

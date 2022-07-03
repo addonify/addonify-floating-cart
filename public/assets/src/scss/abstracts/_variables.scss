@@ -9,6 +9,11 @@
   --adfy_woofc_primary_color: #215bff;
   --adfy_woofc_secondary_color: #6221ff;
 
+  --adfy_woofc_badge_color: #409EFF;
+  --adfy_woofc_badge_background_color: #DFEEFF;
+
+  --adfy_woofc_border_color: #EEEEEE;
+
   // z-index
   --adfy_woofc_trigger_button_zindex: 10000000;
   --adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   

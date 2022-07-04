@@ -90,9 +90,9 @@
     transition: none;
 }
 
-@mixin scale () {
+@mixin scale ($value) {
 
-    transform: scale(1.1);
+    transform: scale($value);
     @include transation_delay();
 }
 

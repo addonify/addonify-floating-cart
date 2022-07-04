@@ -9,5 +9,69 @@
 
 .adfy__woofc-visible {
 
-  overflow: hidden;
+    overflow: hidden;
+}
+
+.adfy__woofc-link.has-underline {
+
+    position: relative;
+    text-decoration: none;
+    color: var(--adfy_woofc_primary_color);
+    @include transation_delay();
+
+    &::after,
+    &::before {
+
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: currentColor;
+    }
+
+    &::before {
+
+        content: "";
+        z-index: 1;
+        background-color: currentColor;
+        transform-origin: right center;
+        transform: scaleX(0);
+        will-change: scale;
+        transition: transform .26s cubic-bezier(0.25, 0.8, 0.25, 1);
+        -webkit-backface-visibility: hidden;
+    }
+
+    &::after {
+
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        opacity: 0.6;
+        background-color: currentColor;
+    }
+
+    &:hover {
+
+        color: var(--adfy_woofc_secondary_color);
+        text-decoration: none;
+
+        &::before {
+
+            content: "";
+            transform: scale(1);
+            transform-origin: left center;
+            background-color: var(--adfy_woofc_secondary_color);
+        }
+    }
+
+    &:focus {
+
+        outline: none;
+        text-decoration: none;
+    }
 }

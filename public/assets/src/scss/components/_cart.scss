@@ -179,8 +179,13 @@
 
                     @include grid();
                     grid-template-columns: 100px auto;
-                    column-gap: 20px;
+                    column-gap: 30px;
                     row-gap: 20px;
+                    
+                    @include breakpoint(mobile) {
+
+                        column-gap: 25px;
+                    }
 
                     .thumb {
 
@@ -370,6 +375,35 @@
             margin-top: 0;
             padding-top: 20px;
 
+            .adfy__woofc-coupon {
+
+                @include flex();
+                justify-content: center;
+                margin-bottom: 20px;
+
+                .coupon-text {
+
+                    @include flex();
+                    gap: 5px;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    font-weight: normal;
+
+                    .icon {
+
+                        fill: #444444;
+                        line-height: 1;
+
+                        svg {
+
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+
             .adfy_woofc-cart-summary {
 
                 display: block;
@@ -419,7 +453,6 @@
 
                     li.total {
 
-                        .label,
                         .value {
 
                             font-weight: bold;
@@ -450,11 +483,11 @@
                     }
                 }
 
-                .proceed-to-checkout {
+                .continue-shopping {
 
-                    background: #0072ff; 
-                    background: -webkit-linear-gradient(to left, #0072ff, #00a1ff);
-                    background: linear-gradient(to left, #0072ff, #00a1ff);
+                    fill: #878787;
+                    color: #878787;
+                    background: #CFCFCF;
                 }
             }
         }

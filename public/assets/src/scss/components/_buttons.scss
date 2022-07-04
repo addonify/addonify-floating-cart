@@ -133,7 +133,27 @@
     color: white;
     padding: 15px 25px;
     border-radius: 3px;
-    background-color: #4823ff;
+    text-decoration: none;
+    background: #0072FF; 
+    background: -webkit-linear-gradient(to left, #0072FF, #00a1ff);
+    background: linear-gradient(to left, #0072FF, #00a1ff);
+    @include transation_delay();
+
+    &:hover {
+
+        fill: white;
+        color: white;
+        text-decoration: none;
+        background: #00A1FF; 
+        background: -webkit-linear-gradient(to left, #00A1FF, #0072FF);
+        background: linear-gradient(to left, #00A1FF, #0072FF);
+    }
+
+    &:focus {
+
+        outline: 0;
+        text-decoration: none;
+    }
 }
 
 .adfy__woofc-button.continue-shopping {

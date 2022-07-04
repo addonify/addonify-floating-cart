@@ -47,7 +47,12 @@
             var decreaseQuantity = $('#adfy__floating-cart .adfy__woofc-dec-quantity');
             var steps = $('#adfy__floating-cart .adfy__woofc-quantity-input-field').attr('step');
             var value = $('#adfy__floating-cart .adfy__woofc-quantity-input-field').attr('value');
-        }
+        },
+
+        handleFloatingCartCoupon: () => {
+
+            // Logic related to discount.
+        },
     }
 
     $(document).ready(function () {

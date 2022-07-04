@@ -2,11 +2,32 @@
 	#. Slide to left
   -------------------------------------------------------------------------- */
 
-@keyframes adfyWooFCSlideToLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
+@keyframes adfyFloatingCartSlideToLeft {
+
+    from {
+        right: -100vw;
+        opacity: 0;
+    }
+
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+/* -------------------------------------------------------------------------- 
+	#. Slide to right
+  -------------------------------------------------------------------------- */
+
+@keyframes adfyFloatingCartSlideToRight {
+
+    from {
+        right: 0;
+        opacity: 1;
+    }
+
+    to {
+        right: -100vw;
+        opacity: 0;
+    }
 }

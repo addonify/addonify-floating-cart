@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             this.showFloatingCartHandler();
             this.hideFloatingCartHandler();
+            this.handlePerfectScrollBar();
         },
 
         showFloatingCartHandler: () => {
@@ -46,7 +47,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 });
             }
-        }
+        },
+
+        handlePerfectScrollBar: () => {
+
+            let scrollableContainer = document.getElementById('adfy__woofc-scrollbar');
+
+            if (scrollableContainer) {
+
+                new PerfectScrollbar(scrollableContainer, {
+
+                    wheelPropagation: true,
+                    minScrollbarLength: 20
+                });
+            }
+        },
     }
 
     addonifyFloatingCart.init();

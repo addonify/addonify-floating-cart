@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let triggerFloatingCartEle = document.querySelectorAll('.adfy__show-woofc');
     let closeFloatingCartEle = document.querySelectorAll('.adfy__hide-woofc');
     let floatingCartVisbilityBodyCass = 'adfy__woofc-visible';
-    let floatingCartDisplayBehaviour;
 
     let addonifyFloatingCart = {
 

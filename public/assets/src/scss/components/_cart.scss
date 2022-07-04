@@ -2,20 +2,6 @@
 	#. Floating Cart
   -------------------------------------------------------------------------- */
 
-// Chrome, Safari, Edge & Opera
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-// Firefox
-input[type=number] {
-    
-  -moz-appearance: textfield;
-}
-
 #adfy__floating-cart {
 
     display: block;
@@ -23,6 +9,7 @@ input[type=number] {
     color: #444444;
     background: white;
     background-color: white;
+    transition: all 0.8s ease-in-out;
 
     .adfy_woofc-inner {
 
@@ -303,6 +290,20 @@ input[type=number] {
                                 border: 1px solid var(--adfy_woofc_border_color);
                                 border-radius: 25px;
 
+                                // Chrome, Safari, Edge & Opera
+                                input::-webkit-outer-spin-button,
+                                input::-webkit-inner-spin-button {
+
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                // Firefox
+                                input[type=number] {
+                                    
+                                    -moz-appearance: textfield;
+                                }
+
                                 .adfy__woofc-quantity-input-field {
 
                                     display: inline-flex;
@@ -502,18 +503,20 @@ input[type=number] {
 .adfy__woofc-visible #adfy__floating-cart {
 
     z-index: var(--adfy_woo_floating_cart_zindex);
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.2);
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="left"] {
 
     right: auto;
     left: 0;
+    animation: adfyFloatingCartSlideToRight 0.8s ease;
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
 
     left: auto;
     right: 0;
+    animation: adfyFloatingCartSlideToLeft 0.8s ease;
 }
 

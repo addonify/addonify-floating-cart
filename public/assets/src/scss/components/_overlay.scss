@@ -15,7 +15,7 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.8);
     @include visibility_hidden();
-    @include transation_delay();
+    transition: all 1s ease;
 }
 
 .adfy__woofc-visible #adfy__woofc-overlay {

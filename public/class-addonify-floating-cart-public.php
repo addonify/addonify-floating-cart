@@ -103,7 +103,7 @@ class Addonify_Floating_Cart_Public {
 							<span class="adfy__woofc-badge">3 Items</span>
 						</h3>
 						<div class="adfy__close-button">
-							<button class="adfy__hide-woofc">
+							<button class="adfy__woofc-fake-button adfy__hide-woofc">
 								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
 							</button>
 						</div>
@@ -124,8 +124,8 @@ class Addonify_Floating_Cart_Public {
 									<a href="#" class="adfy__woofc-link">
 										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/1.jpg'; ?>" alt="....">
 									</a>
-									<button class="adfy__woofc-remove-cart-item">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									<button class="adfy__woofc-fake-button adfy__woofc-remove-cart-item">
+										<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
 									</button>
 								</figure>
 								<div class="adfy__woofc-item-content">
@@ -148,12 +148,12 @@ class Addonify_Floating_Cart_Public {
 									</div>
 									<div class="adfy__woofc-quantity">
 										<form class="adfy__woofc-quantity-form" methord="post">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
 											</button>
 											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
 											</button>
 										</form>
 									</div>
@@ -164,8 +164,8 @@ class Addonify_Floating_Cart_Public {
 									<a href="#" class="adfy__woofc-link">
 										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/2.jpg'; ?>" alt="....">
 									</a>
-									<button class="adfy__woofc-remove-cart-item">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									<button class="adfy__woofc-fake-button adfy__woofc-remove-cart-item">
+										<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
 									</button>
 								</figure>
 								<div class="adfy__woofc-item-content">
@@ -188,12 +188,12 @@ class Addonify_Floating_Cart_Public {
 									</div>
 									<div class="adfy__woofc-quantity">
 										<form class="adfy__woofc-quantity-form" methord="post">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
 											</button>
 											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
 											</button>
 										</form>
 									</div>
@@ -204,8 +204,8 @@ class Addonify_Floating_Cart_Public {
 									<a href="#" class="adfy__woofc-link">
 										<img src="<?php echo plugin_dir_url( __FILE__ ). 'images/3.jpg'; ?>" alt="....">
 									</a>
-									<button class="adfy__woofc-remove-cart-item">
-										<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+									<button class="adfy__woofc-fake-button adfy__woofc-remove-cart-item">
+										<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
 									</button>
 								</figure>
 								<div class="adfy__woofc-item-content">
@@ -228,12 +228,12 @@ class Addonify_Floating_Cart_Public {
 									</div>
 									<div class="adfy__woofc-quantity">
 										<form class="adfy__woofc-quantity-form" methord="post">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-inc-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
 											</button>
 											<input type="number" value="1" step="1" class="adfy__woofc-quantity-input-field">
-											<button class="adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+											<button class="adfy__woofc-fake-button adfy__woofc-quantity-input-button adfy__woofc-dec-quantity">
+												<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
 											</button>
 										</form>
 									</div>
@@ -299,10 +299,7 @@ class Addonify_Floating_Cart_Public {
 				<div id="adfy__woofc-coupon-container" data_display="hidden">
 					<div class="coupon-container-header">
 						<button class="adfy__woofc-fake-button" id="adfy__woofc-hide-coupon-container">
-							<svg viewBox="0 0 64 64" xml:space="preserve">
-							<g>
-							<path d="M10.7,44.3c-0.5,0-1-0.2-1.3-0.6l-6.9-8.2c-1.7-2-1.7-5,0-7l6.9-8.2c0.6-0.7,1.7-0.8,2.5-0.2c0.7,0.6,0.8,1.7,0.2,2.5l-6.5,7.7H61c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8H5.6l6.5,7.7c0.6,0.7,0.5,1.8-0.2,2.5C11.5,44.2,11.1,44.3,10.7,44.3z"/>
-							</g>
+							<svg viewBox="0 0 64 64"><g><path d="M10.7,44.3c-0.5,0-1-0.2-1.3-0.6l-6.9-8.2c-1.7-2-1.7-5,0-7l6.9-8.2c0.6-0.7,1.7-0.8,2.5-0.2c0.7,0.6,0.8,1.7,0.2,2.5l-6.5,7.7H61c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8H5.6l6.5,7.7c0.6,0.7,0.5,1.8-0.2,2.5C11.5,44.2,11.1,44.3,10.7,44.3z"/></g>
 							</svg>
 							Go back
 						</button>

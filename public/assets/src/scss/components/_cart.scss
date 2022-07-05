@@ -9,7 +9,7 @@
     color: #444444;
     background: white;
     background-color: white;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.6s ease-in-out;
 
     .adfy_woofc-inner {
 
@@ -191,6 +191,8 @@
 
                         position: relative;
                         width: 100%;
+                        margin: 0;
+                        padding: 0;
                         max-width: 100%;
 
                         .adfy__woofc-link {
@@ -224,6 +226,7 @@
                             width: 26px;
                             color: #878787;
                             border-radius: 100%;
+                            text-decoration: none;
                             background-color: #E9E9E9;
                             @include breakpoint(mobile) {
 
@@ -355,12 +358,23 @@
                                     fill: #444444;
                                     color: #444444;
                                     border-radius: 30px;
+                                    text-decoration: none;
                                     background-color: transparent;
 
                                     svg {
 
                                         height: 14px;
                                         height: 14px;
+                                    }
+
+                                    &:hover {
+
+                                        text-decoration: none;
+                                    }
+
+                                    &:focus {
+
+                                        outline: none;
                                     }
                                 }
                             }
@@ -479,7 +493,7 @@
 
                     @include breakpoint(mobile) {
 
-                        padding: 10px;
+                        padding: 15px 10px;
                     }
                 }
 
@@ -543,13 +557,13 @@
 
     right: auto;
     left: 0;
-    animation: adfyFloatingCartSlideToRight 0.8s ease;
+    animation: adfyFloatingCartSlideToRight 0.6s ease;
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
 
     left: auto;
     right: 0;
-    animation: adfyFloatingCartSlideToLeft 0.8s ease;
+    animation: adfyFloatingCartSlideToLeft 0.6s ease;
 }
 

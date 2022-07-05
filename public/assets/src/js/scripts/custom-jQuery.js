@@ -2,6 +2,9 @@
 
     'use strict';
 
+    var addonifyFloatingCartEle = $('#adfy__floating-cart');
+    var addonifyFloatingCartCouponContainer = $('#adfy__woofc-coupon-container');
+
     var addonifyFloatingCart = {
 
         init: function () {
@@ -56,16 +59,24 @@
 
         handleFloatingCartCoupon: () => {
 
-            // Handle the click event.
             var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
+            var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
 
+            // Handle the show click event.
             $(showCouponFormEle).on('click', function (e) {
 
                 e.preventDefault();
-                console.log('📌 Coupon trigger is clicked. Open the coupon form.');
+                // Change attribute value.
+                addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
             });
 
-            // Handle the coupon form submit event.
+            // Handle the hide event.
+            $(hideCouponFormEle).on('click', (e) => {
+
+                e.preventDefault();
+                // Change attribute value.
+                addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
+            })
         },
     }
 

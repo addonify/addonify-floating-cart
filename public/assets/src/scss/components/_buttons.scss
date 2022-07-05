@@ -1,3 +1,97 @@
+
+/* -------------------------------------------------------------------------- 
+	#. General button
+  -------------------------------------------------------------------------- */
+
+.adfy__woofc-button {
+
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    fill: white;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 3px;
+    text-decoration: none;
+    background: #0072FF; 
+    background: -webkit-linear-gradient(to left, #0072FF, #00a1ff);
+    background: linear-gradient(to left, #0072FF, #00a1ff);
+    @include transation_delay();
+
+    &:hover {
+
+        fill: white;
+        color: white;
+        text-decoration: none;
+        background: #00A1FF; 
+        background: -webkit-linear-gradient(to left, #00A1FF, #0072FF);
+        background: linear-gradient(to left, #00A1FF, #0072FF);
+    }
+
+    &:focus {
+
+        outline: 0;
+        text-decoration: none;
+    }
+}
+
+.adfy__woofc-button.continue-shopping {
+
+    fill: #878787;
+    color: #878787;
+    background-color: #CFCFCF;
+}
+
+
+/* -------------------------------------------------------------------------- 
+	#. Fake button
+  -------------------------------------------------------------------------- */
+
+.adfy__woofc-fake-button {
+
+    display: inline-flex;
+    fill: currentColor;
+    color: currentColor;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    border: none;
+    background: transparent;
+    background-color: transparent;
+    text-decoration: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    @include transation_delay();
+
+    &:hover {
+
+        fill: currentColor;
+        color: currentColor;
+        background: transparent;
+        background-color: transparent;
+        text-decoration: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    &:focus {
+
+        outline: 0;
+        text-decoration: none;
+        box-shadow: none;
+        border: none;
+    }
+}
+
 /* -------------------------------------------------------------------------- 
 	#. Floating Cart Button
   -------------------------------------------------------------------------- */
@@ -64,10 +158,6 @@
     }
 }
 
-/* -------------------------------------------------------------------------- 
-	#. Design
-  -------------------------------------------------------------------------- */
-
 #adfy__woofc-trigger[data_style="round"] {
 
     border-radius: 100%;
@@ -91,11 +181,6 @@
     }
 }
 
-
-/* -------------------------------------------------------------------------- 
-	#. Label
-  -------------------------------------------------------------------------- */
-
 #adfy__woofc-trigger[data_label="false"] {
 
     .label {
@@ -104,61 +189,10 @@
     }
 }
 
-
-/* -------------------------------------------------------------------------- 
-	#. Icon
-  -------------------------------------------------------------------------- */
-
 #adfy__woofc-trigger[data_icon="false"] {
 
     .icon {
 
         display: none;
     }
-}
-
-/* -------------------------------------------------------------------------- 
-	#. General button
-  -------------------------------------------------------------------------- */
-
-.adfy__woofc-button {
-
-    display: inline-flex;
-    gap: 5px;
-    align-items: center;
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 1;
-    fill: white;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 3px;
-    text-decoration: none;
-    background: #0072FF; 
-    background: -webkit-linear-gradient(to left, #0072FF, #00a1ff);
-    background: linear-gradient(to left, #0072FF, #00a1ff);
-    @include transation_delay();
-
-    &:hover {
-
-        fill: white;
-        color: white;
-        text-decoration: none;
-        background: #00A1FF; 
-        background: -webkit-linear-gradient(to left, #00A1FF, #0072FF);
-        background: linear-gradient(to left, #00A1FF, #0072FF);
-    }
-
-    &:focus {
-
-        outline: 0;
-        text-decoration: none;
-    }
-}
-
-.adfy__woofc-button.continue-shopping {
-
-    fill: #878787;
-    color: #878787;
-    background-color: #CFCFCF;
 }

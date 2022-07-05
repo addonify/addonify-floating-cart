@@ -18,4 +18,5 @@
   --adfy_woofc_trigger_button_zindex: 10000000;
   --adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   
   --adfy_woo_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
+  --adfy_woo_floating_cart_inner_mask_zindex: calc( var(--adfy_woo_floating_cart_zindex) + 10 );
 }

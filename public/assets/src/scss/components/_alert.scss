@@ -1,0 +1,54 @@
+/* -------------------------------------------------------------------------- 
+	#. Alerts
+  -------------------------------------------------------------------------- */
+
+.adfy__woofc-alert {
+
+    display: block;
+    color: #444444;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #EEEEEE;
+
+    .adfy__woofc-alert-text {
+
+        @include flex();
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.4;
+
+        svg {
+
+            color: #444444;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+.adfy__woofc-alert.success {
+
+    color: #67C23A;
+    background-color: #F0F9EB;
+
+    svg {
+
+        color: #67C23A;
+    }
+}
+
+.adfy__woofc-alert.error {
+
+    color: #F56C6C;
+    background-color: #ffe6e6;
+
+    svg {
+
+        color: #F56C6C;
+    }
+}

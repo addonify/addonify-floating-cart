@@ -1,0 +1,109 @@
+/* -------------------------------------------------------------------------- 
+	#. Coupon container inside Floating Cart
+  -------------------------------------------------------------------------- */
+
+#adfy__woofc-coupon-container {
+
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: calc(var(--adfy_woo_floating_cart_zindex) - 1);
+    background-color: white;
+    @include visibility_hidden();
+    @include transation_delay();
+
+    .coupon-container-header {
+
+        @include flex();
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--adfy_woofc_border_color);
+        @include breakpoint(medium) {
+
+            justify-content: flex-end;
+        }
+
+        #adfy__woofc-hide-coupon-container {
+
+            display: inline-flex;
+            font-size: 14px;
+            line-height: 1;
+            font-weight: normal;
+            gap: 10px;
+            align-items: center;
+            fill: #444444;
+            color: #444444;
+
+            svg {
+
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    #adfy__woofc-coupon-form {
+
+        @include flex();
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+
+        .adfy__woofc-coupon-inputs {
+
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px dashed var(--adfy_woofc_border_color);
+
+            label {
+
+                display: block;
+                font-weight: normal;
+                font-size: 14px;
+                margin: 0 0 8px 0;
+            }
+
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+                color: #9E9E9E;
+                opacity: 1; /* Firefox */
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+                color: #9E9E9E;
+            }
+
+            ::-ms-input-placeholder { /* Microsoft Edge */
+
+                color: #9E9E9E;
+            }
+
+            .adfy__woofc-button {
+
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
+#adfy__woofc-coupon-container[data_display="visible"] {
+
+    @include visibility_visible();
+    z-index: calc( var(--adfy_woo_floating_cart_zindex) + 10);
+
+    #adfy__woofc-coupon-form {
+
+        animation: adfyFloatingCartFadeDown 0.5s ease-in;
+    }
+}

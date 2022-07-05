@@ -30,8 +30,10 @@
 @use './abstracts/variables' as *;
 @use './abstracts/mixins' as *;
 
+@import './components/alert';
 @import './components/buttons';
 @import './components/cart';
+@import './components/coupon';
 @import './components/overlay';	
 
 @import './utilities/classes';		

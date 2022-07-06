@@ -61,6 +61,7 @@
 
             var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
             var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
+            var couponFormSubmitButtonEle = $('#adfy__woofc-apply-coupon-button');
 
             // Handle the show click event.
             $(showCouponFormEle).on('click', function (e) {
@@ -71,11 +72,18 @@
             });
 
             // Handle the hide event.
-            $(hideCouponFormEle).on('click', (e) => {
+            $(hideCouponFormEle).on('click', function (e) {
 
                 e.preventDefault();
                 // Change attribute value.
                 addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
+            })
+
+            // Handle the form submit event.
+            $(couponFormSubmitButtonEle).on('click', function (e) {
+
+                e.preventDefault();
+                console.log('📌 Coupon form submit button is clicked.');
             })
         },
     }

@@ -2,14 +2,21 @@
 	#. Floating Cart
   -------------------------------------------------------------------------- */
 
+#adfy__floating-cart * {
+
+    box-sizing: border-box;
+    @include better_font_rendering();
+}
+
 #adfy__floating-cart {
 
     display: block;
     position: fixed;
     color: #444444;
     background: white;
+    box-sizing: border-box;
     background-color: white;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.6s ease-in-out;
 
     .adfy_woofc-inner {
 
@@ -155,24 +162,23 @@
             flex: 1 1 auto;
             @include flex();
             flex-direction: column;
+            overflow: hidden;
 
             .adfy__woofc-content-entry {
                 
-                @include flex();
-                flex-direction: column;
-                gap: 35px;
+                @include grid();
+                grid-template-columns: repeat(1, 1fr);
+                row-gap: 30px;
                 position: absolute;
                 left: 0;
                 right: 0;
                 top: 0;
                 bottom: 0;
-                z-index: 1;
+                z-index: 5;
                 padding: 10px 0;
-                overflow-x: hidden;
-                overflow-y: auto;
                 @include breakpoint(mobile) {
 
-                    gap: 20px;
+                    row-gap: 20px;
                 }
 
                 .adfy__woofc-item {
@@ -180,8 +186,6 @@
                     @include grid();
                     grid-template-columns: 100px auto;
                     column-gap: 30px;
-                    row-gap: 20px;
-                    
                     @include breakpoint(mobile) {
 
                         column-gap: 25px;
@@ -191,6 +195,10 @@
 
                         position: relative;
                         width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                        box-shadow: none;
                         max-width: 100%;
 
                         .adfy__woofc-link {
@@ -224,6 +232,7 @@
                             width: 26px;
                             color: #878787;
                             border-radius: 100%;
+                            text-decoration: none;
                             background-color: #E9E9E9;
                             @include breakpoint(mobile) {
 
@@ -299,8 +308,8 @@
                                 input::-webkit-outer-spin-button,
                                 input::-webkit-inner-spin-button {
 
-                                    -webkit-appearance: none;
                                     margin: 0;
+                                    -webkit-appearance: none;
                                 }
 
                                 // Firefox
@@ -355,12 +364,23 @@
                                     fill: #444444;
                                     color: #444444;
                                     border-radius: 30px;
+                                    text-decoration: none;
                                     background-color: transparent;
 
                                     svg {
 
                                         height: 14px;
                                         height: 14px;
+                                    }
+
+                                    &:hover {
+
+                                        text-decoration: none;
+                                    }
+
+                                    &:focus {
+
+                                        outline: none;
                                     }
                                 }
                             }
@@ -404,7 +424,7 @@
                 }
             }
 
-            .adfy_woofc-cart-summary {
+            .adfy__woofc-cart-summary {
 
                 display: block;
                 margin-bottom: 20px;
@@ -447,7 +467,7 @@
 
                         .value {
 
-                            color: red;
+                            font-weight: bold;
                         }
                     }
 
@@ -479,7 +499,7 @@
 
                     @include breakpoint(mobile) {
 
-                        padding: 10px;
+                        padding: 15px 10px;
                     }
                 }
 
@@ -543,13 +563,13 @@
 
     right: auto;
     left: 0;
-    animation: adfyFloatingCartSlideToRight 0.8s ease;
+    animation: adfyFloatingCartSlideToRight 0.6s ease;
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
 
     left: auto;
     right: 0;
-    animation: adfyFloatingCartSlideToLeft 0.8s ease;
+    animation: adfyFloatingCartSlideToLeft 0.6s ease;
 }
 

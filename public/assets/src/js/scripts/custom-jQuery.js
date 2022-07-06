@@ -22,6 +22,8 @@
 
         notifyFloatingCartEventHandler: () => {
 
+            var notfyHtmlContent = "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>Show Cart</button>";
+
             // Configure Notyf.
             var notyf = new Notyf({
                 duration: 5000,
@@ -38,7 +40,17 @@
             $(document).on('added_to_cart', function (event) {
 
                 // Invoke the Notyf toast. Append the product name here.
-                notyf.success('Product has been added to cart.');
+                var notification = notyf.success({
+
+                    className: 'adfy__woofc-notfy-success',
+                    //background: '#111111',
+                    message: "Product has been added to cart. " + notfyHtmlContent,
+                });
+                notification.on('click', function ({ target, event }) {
+                    // target: the notification being clicked
+                    // event: the mouseevent
+                    $('body').addClass('adfy__woofc-visible');
+                });
             });
         },
 

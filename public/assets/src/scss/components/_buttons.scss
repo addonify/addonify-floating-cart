@@ -92,6 +92,41 @@
     }
 }
 
+
+/* -------------------------------------------------------------------------- 
+	#. Notfy button
+  -------------------------------------------------------------------------- */
+
+.notyf {
+
+    .notyf__toast {
+
+        .notyf__wrapper {
+
+            .notyf__message {
+
+                line-height: 1.6;
+
+                .adfy__woofc-notfy-button {
+
+                    display: inline-flex;
+                    align-items: center;
+                    font-size: 13px;
+                    padding: 5px 10px 6px 10px;
+                    border-radius: 30px;
+                    color: white;
+                    background-color: rgba(0, 0, 0, 0.2);
+
+                    &:hover {
+
+                        background-color: rgba(0, 0, 0, 0.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
 /* -------------------------------------------------------------------------- 
 	#. Floating Cart Button
   -------------------------------------------------------------------------- */

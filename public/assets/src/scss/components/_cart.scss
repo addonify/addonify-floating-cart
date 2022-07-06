@@ -2,12 +2,19 @@
 	#. Floating Cart
   -------------------------------------------------------------------------- */
 
+#adfy__floating-cart * {
+
+    box-sizing: border-box;
+    @include better_font_rendering();
+}
+
 #adfy__floating-cart {
 
     display: block;
     position: fixed;
     color: #444444;
     background: white;
+    box-sizing: border-box;
     background-color: white;
     transition: all 0.6s ease-in-out;
 
@@ -155,24 +162,23 @@
             flex: 1 1 auto;
             @include flex();
             flex-direction: column;
+            overflow: hidden;
 
             .adfy__woofc-content-entry {
                 
-                @include flex();
-                flex-direction: column;
-                gap: 35px;
+                @include grid();
+                grid-template-columns: repeat(1, 1fr);
+                row-gap: 30px;
                 position: absolute;
                 left: 0;
                 right: 0;
                 top: 0;
                 bottom: 0;
-                z-index: 1;
+                z-index: 5;
                 padding: 10px 0;
-                overflow-x: hidden;
-                overflow-y: auto;
                 @include breakpoint(mobile) {
 
-                    gap: 20px;
+                    row-gap: 20px;
                 }
 
                 .adfy__woofc-item {
@@ -180,8 +186,6 @@
                     @include grid();
                     grid-template-columns: 100px auto;
                     column-gap: 30px;
-                    row-gap: 20px;
-                    
                     @include breakpoint(mobile) {
 
                         column-gap: 25px;
@@ -193,6 +197,8 @@
                         width: 100%;
                         margin: 0;
                         padding: 0;
+                        border: none;
+                        box-shadow: none;
                         max-width: 100%;
 
                         .adfy__woofc-link {
@@ -302,8 +308,8 @@
                                 input::-webkit-outer-spin-button,
                                 input::-webkit-inner-spin-button {
 
-                                    -webkit-appearance: none;
                                     margin: 0;
+                                    -webkit-appearance: none;
                                 }
 
                                 // Firefox
@@ -418,7 +424,7 @@
                 }
             }
 
-            .adfy_woofc-cart-summary {
+            .adfy__woofc-cart-summary {
 
                 display: block;
                 margin-bottom: 20px;
@@ -461,7 +467,7 @@
 
                         .value {
 
-                            color: red;
+                            font-weight: bold;
                         }
                     }
 

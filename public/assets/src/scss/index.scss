@@ -19,12 +19,19 @@
     1. Variables
     2. Mixins
     3. Components
-        3.1 Buttons
+        3.1 Alerts
+        3.2 Buttons
+        3.3 Cart
+        3.4 Coupon
+        3.5 Cart Overlay
 
-    4. Layouts
-    5. Utilities
-    6. Conditional
-
+    4. Utilities
+        4.1 Classes
+        4.2 Keyframes
+    
+    5. Conditional
+        5.1 Notfy
+        5.2 PerfectScrollbar  
   -------------------------------------------------------------------------- */
 
 @use './abstracts/variables' as *;
@@ -37,5 +44,4 @@
 @import './components/overlay';	
 
 @import './utilities/classes';		
-
 @import './utilities/keyframe';				

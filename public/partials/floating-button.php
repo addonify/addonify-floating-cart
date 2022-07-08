@@ -8,5 +8,5 @@
         </svg>
     </span>
     <span class="label"></span>
-    <span class="badge">3</span>
+    <span class="badge"><?=WC()->cart->get_cart_contents_count()?></span>
 </button>

@@ -3,7 +3,7 @@
 <header class="adfy__woofc-header">
     <h3 class="adfy__woofc-title">
         Cart
-        <span class="adfy__woofc-badge">3 Items</span>
+        <span class="adfy__woofc-badge"><?=WC()->cart->get_cart_contents_count()?> Items</span>
     </h3>
     <div class="adfy__close-button">
         <button class="adfy__woofc-fake-button adfy__hide-woofc">

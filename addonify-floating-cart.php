@@ -58,6 +58,7 @@ register_deactivation_hook( __FILE__, 'deactivate_addonify_floating_cart' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-addonify-floating-cart.php';
+require plugin_dir_path( __FILE__ ) . 'includes/template-functions.php';
 
 /**
  * Begins execution of the plugin.
@@ -75,3 +76,8 @@ function run_addonify_floating_cart() {
 
 }
 run_addonify_floating_cart();
+
+add_filter('woocommerce_cart_contents_count', function($count){
+	return count(WC()->cart->get_cart());
+});
+

@@ -1,18 +1,21 @@
 <?php
 ?>
+<!-- main floating cart section-->
 <aside id="adfy__floating-cart" data_type="drawer" data_position="right">
-    <div class="adfy_woofc-inner">
-        
-        <div class="adfy__woofc-shipping-bar">
-            <span class="adfy__woofc-shipping-text">
-                🔥 Spend <span class="amount">£100</span> more to qualify for a free shipping.
-            </span>
-            <div class="progress-bars">
-                <div class="total-bar shipping-bar"></div>
-                <div class="progress-bar shipping-bar" data_percentage="70" style="width: 70%"></div>
-            </div>
-        </div>        
-    </div><!-- // adfy_woofc-inner -->
-    
+    <?php
+        ?>
+        <div class="adfy_woofc-inner">
+        <?php
+        addonify_get_template( 'cart-sections/header.php' ); 
+        addonify_get_template( 'cart-sections/shipping-bar.php' );
+        addonify_get_template( 'cart-sections/body.php' );
+        addonify_get_template( 'cart-sections/footer.php' );
+        ?>
+        </div>
+        <?php
+        addonify_get_template( 'cart-sections/coupon.php' );
+    ?>
 </aside>
+
+<!-- for overlay -->
 <aside id="adfy__woofc-overlay" class="adfy__hide-woofc"></aside>

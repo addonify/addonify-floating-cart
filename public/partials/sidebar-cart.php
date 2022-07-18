@@ -6,14 +6,14 @@
         ?>
         <div class="adfy_woofc-inner">
         <?php
-        addonify_get_template( 'cart-sections/header.php' ); 
-        addonify_get_template( 'cart-sections/shipping-bar.php' );
-        addonify_get_template( 'cart-sections/body.php' );
-        addonify_get_template( 'cart-sections/footer.php' );
+        addonify_floating_cart_get_template( 'cart-sections/header.php' ); 
+        addonify_floating_cart_get_template( 'cart-sections/shipping-bar.php' );
+        addonify_floating_cart_get_template( 'cart-sections/body.php' );
+        addonify_floating_cart_get_template( 'cart-sections/footer.php' );
         ?>
         </div>
         <?php
-        addonify_get_template( 'cart-sections/coupon.php' );
+        addonify_floating_cart_get_template( 'cart-sections/coupon.php' );
     ?>
 </aside>
 

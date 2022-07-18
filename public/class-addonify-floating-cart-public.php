@@ -20,7 +20,8 @@
  * @subpackage Addonify_Floating_Cart/public
  * @author     Addonify <addonify@gmail.com>
  */
-class Addonify_Floating_Cart_Public {
+class Addonify_Floating_Cart_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,25 +48,54 @@ class Addonify_Floating_Cart_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		add_filter('woocommerce_add_to_cart_fragments', ['Addonify_Floating_Cart_Public','addonify_add_to_cart_fragment']);
+
+
 	}
+
+
+	public static function addonify_add_to_cart_fragment($fragments)
+	{
+
+		ob_start();
+			?>
+			<div class="adfy_woofc-inner">
+			<?php
+		addonify_floating_cart_get_template('cart-sections/header.php');
+		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+		addonify_floating_cart_get_template('cart-sections/body.php');
+		addonify_floating_cart_get_template('cart-sections/footer.php');
+			?>
+			</div>
+			<?php
+		$fragments['.adfy_woofc-inner'] = ob_get_clean();
+
+		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
+
+		return $fragments;
+
+	}
+
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
+		wp_enqueue_style('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all');
 
-		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
-		
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
+		wp_enqueue_style('notyf', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all');
+
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/build/css/public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -73,71 +103,104 @@ class Addonify_Floating_Cart_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true );
+		wp_enqueue_script('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true);
 
-		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
+		wp_enqueue_script('notyf', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true);
 
-		wp_enqueue_script( $this->plugin_name .'-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array('jquery'), $this->version, true);
 
+		wp_enqueue_script($this->plugin_name . '-custom-jquery', plugin_dir_url(__FILE__) . 'assets/src/js/scripts/custom-jQuery.js', array('jquery'), $this->version, true);
+
+		wp_localize_script($this->plugin_name . '-custom-jquery', 'addonifyFloatingCartJSObject', array(
+			'ajax_url' => admin_url('admin-ajax.php'),
+			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
+			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
+			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce')
+		));
 	}
 
-	public function footer_content(){
+	public function footer_content()
+	{
 
 		// echo plugin_dir_path( __FILE__ );
-		
-		do_action( 'addonify_floating_cart_floating_button' );
 
-		do_action( 'addonify_floating_cart_add' );
+		do_action('addonify_floating_cart_floating_button');
+
+		do_action('addonify_floating_cart_add');
+
 	}
-	
+
+	public function remove_from_cart()
+	{
+		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			// Get order review fragment
+			ob_start();
+			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
+					WC()->cart->remove_cart_item($cart_item_key);
+				}
+			}
+
+			WC()->cart->calculate_totals();
+			WC()->cart->maybe_set_cart_cookies();
+
+			$mini_cart = ob_get_clean();
+
+			// Fragments returned
+			$data = array(
+				'fragments' => apply_filters('woocommerce_add_to_cart_fragments', array()),
+				'cart_hash' => apply_filters('woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5(json_encode(WC()->cart->get_cart_for_session())) : '', WC()->cart->get_cart_for_session())
+			);
+
+			wp_send_json($data);
+		} else {
+			wp_die( __("Invalid request"), "Request Verfication" );
+		}
+		die();
+	}
+
+	public function update_cart_item(){
+		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+                $product = wc_get_product($cart_item['product_id']);
+				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
+					if(esc_html($_POST['type']) === 'sub'){
+						$nQuantity = $cart_item['quantity'] - 1 ;
+						if($nQuantity === 0){
+							break;
+						}
+					} else {
+						$nQuantity = $cart_item['quantity'] + 1 ;
+					}
+					if($product->get_stock_quantity() ){
+						if($product->get_stock_quantity() >= $nQuantity){
+							WC()->cart->set_quantity($cart_item_key, $nQuantity);
+						}
+					} else {
+						WC()->cart->set_quantity($cart_item_key, $nQuantity );
+					}
+				}
+			}
+
+			WC()->cart->calculate_totals();
+			WC()->cart->maybe_set_cart_cookies();			
+			// Fragments returned
+			$data = array(
+				'fragments' => apply_filters('woocommerce_add_to_cart_fragments', array()),
+				'cart_hash' => apply_filters('woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5(json_encode(WC()->cart->get_cart_for_session())) : '', WC()->cart->get_cart_for_session())
+			);
+
+			wp_send_json($data);
+		} else {
+			wp_die( __("Invalid request"), "Request Verfication" );
+		}
+		die();
+	}
+
+
 }
-
-
-function addonify_locate_template( $template_name, $template_path = '', $default_path = '' ) {
-
-	// Set template location for theme 
-	if ( empty( $template_path )) :
-		$template_path = 'addonify/';
-	endif;
-
-	// Set default plugin templates path.
-	if ( ! $default_path ) :
-		$default_path = plugin_dir_path( __FILE__ ) . 'partials/'; // Path to the template folder
-	endif;
-
-	// Search template file in theme folder.
-	$template = locate_template( array(
-		$template_path . $template_name,
-		$template_name
-	) );
-
-	// Get plugins template file.
-	if ( ! $template ) :
-		$template = $default_path . $template_name;
-	endif;
-
-	return apply_filters( 'addonify_locate_template', $template, $template_name, $template_path, $default_path );
-
-}
-
-function addonify_get_template( $template_name, $args = array(), $tempate_path = '', $default_path = '' ) {
-
-	if ( is_array( $args ) && isset( $args ) ) :
-		extract( $args );
-	endif;
-
-	$template_file = addonify_locate_template( $template_name, $tempate_path, $default_path );
-
-	if ( ! file_exists( $template_file ) ) :
-		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $template_file ), '1.0.0' );
-		return;
-	endif;
-
-	include $template_file;
-
-}
-
 
 

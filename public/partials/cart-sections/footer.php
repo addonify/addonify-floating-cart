@@ -18,7 +18,7 @@
                 <span class="value">
                     <span class="woocommerce-Price-amount amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>1,000.00
+                            <?php echo WC()->cart->get_cart_subtotal(); ?>
                         </bdi>
                     </span>
                 </span>
@@ -28,7 +28,7 @@
                 <span class="value">
                     <span class="woocommerce-Price-amount amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>50.00
+                        <?php echo WC()->cart->get_cart_discount_total(); ?>
                         </bdi>
                     </span>
                 </span>
@@ -38,7 +38,7 @@
                 <span class="value">
                     <span class="woocommerce-Price-amount amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>950.00
+                        <?php echo WC()->cart->get_cart_total(); ?>
                         </bdi>
                     </span>
                 </span>

@@ -67,10 +67,7 @@ class Addonify_Floating_Cart_Public
 			?>
 			<div class="adfy_woofc-inner">
 			<?php
-		addonify_floating_cart_get_template('cart-sections/header.php');
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
-		addonify_floating_cart_get_template('cart-sections/body.php');
-		addonify_floating_cart_get_template('cart-sections/footer.php');
+				do_action( 'addonify_floating_cart_add_cart_sidebar_components');
 			?>
 			</div>
 			<?php
@@ -126,8 +123,6 @@ class Addonify_Floating_Cart_Public
 	{
 
 		// echo plugin_dir_path( __FILE__ );
-
-		do_action('addonify_floating_cart_floating_button');
 
 		do_action('addonify_floating_cart_add');
 

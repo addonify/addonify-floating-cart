@@ -81,3 +81,8 @@ add_filter('woocommerce_cart_contents_count', function($count){
 	return count(WC()->cart->get_cart());
 });
 
+add_action( 'wp_body_open', function() {
+	// $cart = WC()->cart->get_cart();
+	
+	// var_dump( get_defined_vars() );
+} );

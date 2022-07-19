@@ -8,5 +8,5 @@
         </svg>
     </span>
     <span class="label"></span>
-    <span class="badge"><?=WC()->cart->get_cart_contents_count()?></span>
+    <span class="badge"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
 </button>

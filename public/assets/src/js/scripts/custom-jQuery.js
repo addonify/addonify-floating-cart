@@ -225,7 +225,6 @@
                 cursor: 'none'
             }
         });
-        debugger;
         $.ajax({
             type: 'POST',
             dataType: 'json',

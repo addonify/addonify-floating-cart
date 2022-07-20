@@ -107,7 +107,7 @@
         $(document.body).trigger('wc_fragment_refresh');
 
     });
-
+    // remove product from cart
     $(document).on('click', '.adfy__woofc-item .thumb .product-remove a.remove', function (e) {
         e.preventDefault();
 
@@ -156,67 +156,30 @@
         });
     });
 
-    let add_item = 0;
-    let subtract_item = 0;
-
+    // increase product quantity
     $(document).on('click', '.adfy__woofc-item .adfy__woofc-inc-quantity', function (e) {
         e.preventDefault();
-
-        var product_id = $(this).attr("data-product_id"),
-            cart_item_key = $(this).attr("data-cart_item_key"),
-            product_container = $(this).parents('.adfy__woofc-item');
-
-        let this_product = $(this);
-
-        // Add loader
-        product_container.block({
-            message: null,
-            overlayCSS: {
-                cursor: 'none'
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: addonifyFloatingCartJSObject.ajax_url,
-            data: {
-                action: addonifyFloatingCartJSObject.ajax_update_cart_item_action,
-                product_id: product_id,
-                cart_item_key: cart_item_key,
-                nonce: addonifyFloatingCartJSObject.nonce,
-                type: 'add'
-            },
-            success: function (response) {
-                console.log(response.item_quantity);
-                if (!response || response.error)
-                    return;
-
-                var fragments = response.fragments;
-
-                // Replace fragments
-                if (fragments) {
-                    $.each(fragments, function (key, value) {
-                        $(key).replaceWith(value);
-                    });
-                }
-
-                // Update cart
-                $(document.body).trigger('wc_update_cart');
-            }, 
-            error: function(a){
-                console.log("Error processing request");
-            }
-        });
+        AddonifyUpdateCartAjax(this, 'add');
     });
 
+    //decrease product quantity
     $(document).on('click', '.adfy__woofc-item .adfy__woofc-dec-quantity', function (e) {
         e.preventDefault();
+        AddonifyUpdateCartAjax(this, 'sub');
+    });
 
-        var product_id = $(this).attr("data-product_id"),
-            cart_item_key = $(this).attr("data-cart_item_key"),
-            product_container = $(this).parents('.adfy__woofc-item');
+    //manual update product quantity
+    $(document).on('change', '.adfy__woofc-item .adfy__woofc-quantity-input-field', function (e) {
+        e.preventDefault();
+        AddonifyUpdateCartAjax(this, 'update', $(this).val());
+    });
 
-        let this_product = $(this);
+    // product quantity update function
+    function AddonifyUpdateCartAjax(curr_el, type, quantity = 1){
+
+        var product_id = $(curr_el).attr("data-product_id"),
+            cart_item_key = $(curr_el).attr("data-cart_item_key"),
+            product_container = $(curr_el).parents('.adfy__woofc-item');
 
         // Add loader
         product_container.block({
@@ -234,7 +197,8 @@
                 product_id: product_id,
                 cart_item_key: cart_item_key,
                 nonce: addonifyFloatingCartJSObject.nonce,
-                type: 'sub'
+                type: type,
+                quantity: quantity
             },
             success: function (response) {
                 if (!response || response.error)
@@ -256,6 +220,6 @@
                 console.log("Error processing request");
             }
         });
-    });
+    }
 
 })(jQuery);

@@ -59,27 +59,6 @@ class Addonify_Floating_Cart_Public
 
 	}
 
-
-	public static function addonify_add_to_cart_fragment($fragments)
-	{
-
-		ob_start();
-			?>
-			<div class="adfy_woofc-inner">
-			<?php
-				do_action( 'addonify_floating_cart_add_cart_sidebar_components');
-			?>
-			</div>
-			<?php
-		$fragments['.adfy_woofc-inner'] = ob_get_clean();
-
-		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
-
-		return $fragments;
-
-	}
-
-
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
@@ -107,7 +86,7 @@ class Addonify_Floating_Cart_Public
 
 		wp_enqueue_script('notyf', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true);
 
-		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array('jquery'), $this->version, true);
+		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array(), $this->version, true);
 
 		wp_enqueue_script($this->plugin_name . '-custom-jquery', plugin_dir_url(__FILE__) . 'assets/src/js/scripts/custom-jQuery.js', array('jquery'), $this->version, true);
 
@@ -127,6 +106,27 @@ class Addonify_Floating_Cart_Public
 		do_action('addonify_floating_cart_add');
 
 	}
+
+
+	public static function addonify_add_to_cart_fragment($fragments)
+	{
+
+		ob_start();
+			?>
+			<div class="adfy_woofc-inner">
+			<?php
+				do_action( 'addonify_floating_cart_add_cart_sidebar_components');
+			?>
+			</div>
+			<?php
+		$fragments['.adfy_woofc-inner'] = ob_get_clean();
+
+		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
+
+		return $fragments;
+
+	}
+
 
 	public function remove_from_cart()
 	{
@@ -162,13 +162,16 @@ class Addonify_Floating_Cart_Public
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $product = wc_get_product($cart_item['product_id']);
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
-					if(esc_html($_POST['type']) === 'sub'){
+					if(esc_html($_POST['type']) === 'update'){
+						$nQuantity = (int)esc_html($_POST['quantity']);
+					}
+					elseif(esc_html($_POST['type']) === 'sub'){
 						$nQuantity = $cart_item['quantity'] - 1 ;
-						if($nQuantity === 0){
-							break;
-						}
 					} else {
 						$nQuantity = $cart_item['quantity'] + 1 ;
+					}
+					if($nQuantity <= 0){
+						break;
 					}
 					if($product->get_stock_quantity() ){
 						if($product->get_stock_quantity() >= $nQuantity){
@@ -181,7 +184,7 @@ class Addonify_Floating_Cart_Public
 			}
 
 			WC()->cart->calculate_totals();
-			WC()->cart->maybe_set_cart_cookies();			
+			WC()->cart->maybe_set_cart_cookies();		
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('woocommerce_add_to_cart_fragments', array()),
@@ -190,11 +193,10 @@ class Addonify_Floating_Cart_Public
 
 			wp_send_json($data);
 		} else {
-			wp_die( __("Invalid request"), "Request Verfication" );
+			wp_die( __("Invalid request"), "Request Verification" );
 		}
 		die();
 	}
-
 
 }
 

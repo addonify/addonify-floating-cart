@@ -1,12 +1,16 @@
 <figure class="thumb" data_style="round">
     <?php
         $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $product->is_visible() ? $product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
-        $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $product->get_image(), $cart_item, $cart_item_key );
+        if(!empty($variation) ){
+            $image = $variation->get_image();
+        } else {
+            $image =  $product->get_image();
+        }
 
         if ( ! $product_permalink ) {
-            echo $product->get_image();
+            echo $image;
         } else {
-            printf( '<a href="%s" class="adfy__woofc-link">%s</a>', esc_url( $product_permalink ), $product->get_image() ); 
+            printf( '<a href="%s" class="adfy__woofc-link">%s</a>', esc_url( $product_permalink ), $image ); 
         }
     ?>
     <button class="adfy__woofc-fake-button adfy__woofc-remove-cart-item product-remove">

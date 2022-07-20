@@ -49,7 +49,7 @@
         <button class="adfy__woofc-button adfy__hide-woofc continue-shopping">
             Continue shopping
         </button>
-        <a href="#" class="adfy__woofc-button proceed-to-checkout">
+        <a href="<?php echo wc_get_checkout_url() ?>" class="adfy__woofc-button proceed-to-checkout">
             Checkout
         </a>
     </div>

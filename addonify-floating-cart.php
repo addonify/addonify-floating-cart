@@ -71,10 +71,22 @@ require plugin_dir_path( __FILE__ ) . 'includes/template-functions.php';
  */
 function run_addonify_floating_cart() {
 
+	if(!is_woocommerce_active()){
+		return;
+	}
+
 	$plugin = new Addonify_Floating_Cart();
 	$plugin->run();
 
 }
+
+if(!function_exists('is_woocommerce_active')){
+	function is_woocommerce_active(){
+		return class_exists('woocommerce');
+	}
+}
+
+
 run_addonify_floating_cart();
 
 add_filter('woocommerce_cart_contents_count', function($count){
@@ -83,5 +95,10 @@ add_filter('woocommerce_cart_contents_count', function($count){
 
 add_action( 'wp_body_open', function() {
 	// $cart = WC()->cart->get_cart();
-	// var_dump( $cart );
+	// var_dump( $cart );	
+
+	// $request = new WP_REST_Request( 'GET', '/wp/v2/posts' );
+	// $request->set_param( 'per_page', 2 );
+	// $response = rest_do_request( $request );
+	// var_dump($response);
 } );

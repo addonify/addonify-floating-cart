@@ -86,11 +86,11 @@ class Addonify_Floating_Cart_Public
 
 		wp_enqueue_script('notyf', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true);
 
-		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array(), $this->version, true);
+		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array('jquery'), $this->version, true);
 
-		wp_enqueue_script($this->plugin_name . '-custom-jquery', plugin_dir_url(__FILE__) . 'assets/src/js/scripts/custom-jQuery.js', array('jquery'), $this->version, true);
+		// wp_enqueue_script($this->plugin_name . '-custom-jquery', plugin_dir_url(__FILE__) . 'assets/src/js/scripts/custom-jQuery.js', array('jquery'), $this->version, true);
 
-		wp_localize_script($this->plugin_name . '-custom-jquery', 'addonifyFloatingCartJSObject', array(
+		wp_localize_script($this->plugin_name . '-public', 'addonifyFloatingCartJSObject', array(
 			'ajax_url' => admin_url('admin-ajax.php'),
 			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',

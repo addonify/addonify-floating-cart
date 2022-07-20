@@ -12,7 +12,21 @@
             this.notifyFloatingCartEventHandler();
             this.quantityFormInputHandler();
             this.handleFloatingCartCoupon();
+            this.showFloatingCartHandler();
+            this.hideFloatingCartHandler();
         },
+        showFloatingCartHandler: () => {
+            $(document).on('click','.adfy__show-woofc', function(){
+                document.body.classList.add('adfy__woofc-visible');
+            })
+        },
+
+        hideFloatingCartHandler: () => {
+            $(document).on('click','.adfy__hide-woofc', function(){
+                document.body.classList.remove('adfy__woofc-visible');
+            })
+        },
+
 
         /**
         *
@@ -70,26 +84,33 @@
         },
 
         handleFloatingCartCoupon: () => {
-
-            var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
-            var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
+        
+            $(document).on('click','#adfy__woofc-coupon-trigger', function(){
+                addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
+            })
+            $(document).on('click','#adfy__woofc-hide-coupon-container', function(){
+                addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
+            })
+            // var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
+            // console.log(showCouponFormEle);
+            // var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
             var couponFormSubmitButtonEle = $('#adfy__woofc-apply-coupon-button');
 
             // Handle the show click event.
-            $(showCouponFormEle).on('click', function (e) {
+            // $(showCouponFormEle).on('click', function (e) {
 
-                e.preventDefault();
+            //     e.preventDefault();
                 // Change attribute value.
-                addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
-            });
+            //     addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
+            // });
 
             // Handle the hide event.
-            $(hideCouponFormEle).on('click', function (e) {
+            // $(hideCouponFormEle).on('click', function (e) {
 
-                e.preventDefault();
+            //     e.preventDefault();
                 // Change attribute value.
-                addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
-            })
+            //     addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
+            // })
 
             // Handle the form submit event.
             $(couponFormSubmitButtonEle).on('click', function (e) {
@@ -107,6 +128,8 @@
         $(document.body).trigger('wc_fragment_refresh');
 
     });
+
+
     // remove product from cart
     $(document).on('click', '.adfy__woofc-item .thumb .product-remove a.remove', function (e) {
         e.preventDefault();

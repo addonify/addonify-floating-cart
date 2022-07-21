@@ -94,5 +94,5 @@ add_filter('woocommerce_cart_contents_count', function($count){
 });
 
 add_action( 'wp_body_open', function() {
-	var_dump(!addonify_is_woocommerce_active());
+	// var_dump(WC()->cart->get_cart());
 } );

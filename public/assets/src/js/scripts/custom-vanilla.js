@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         init: function () {
 
-            this.showFloatingCartHandler();
-            this.hideFloatingCartHandler();
+            // this.showFloatingCartHandler();
+            // this.hideFloatingCartHandler();
             this.handlePerfectScrollBar();
         },
 

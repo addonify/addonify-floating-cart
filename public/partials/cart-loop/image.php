@@ -1,6 +1,6 @@
 <figure class="thumb" data_style="round">
     <?php
-        $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $product->is_visible() ? $product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
+        $product_permalink = $product->is_visible() ? $product->get_permalink(  ) : '';
         if(!empty($variation) ){
             $image = $variation->get_image();
         } else {

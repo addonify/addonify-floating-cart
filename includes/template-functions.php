@@ -81,7 +81,3 @@ function addonify_floating_cart_get_template( $template_name, $args = array(), $
 	include $template_file;
 
 }
-
-// add_action('wp_body_open', function(){
-// 	var_dump(wp_kses_allowed_html( 'post' ));
-// });

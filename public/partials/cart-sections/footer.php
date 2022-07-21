@@ -16,7 +16,7 @@
             <li class="sub-total">
                 <span class="label">Sub total:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount subtotal-amount">
                         <bdi>
                             <?php echo WC()->cart->get_cart_subtotal(); ?>
                         </bdi>
@@ -26,7 +26,7 @@
             <li class="discount">
                 <span class="label">Discount:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount discount-amount">
                         <bdi>
                         <?php echo WC()->cart->get_cart_discount_total(); ?>
                         </bdi>
@@ -36,7 +36,7 @@
             <li class="total">
                 <span class="label">Total:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount total-amount">
                         <bdi>
                         <?php echo WC()->cart->get_cart_total(); ?>
                         </bdi>

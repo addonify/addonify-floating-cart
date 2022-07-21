@@ -16,13 +16,13 @@
             this.hideFloatingCartHandler();
         },
         showFloatingCartHandler: () => {
-            $(document).on('click','.adfy__show-woofc', function(){
+            $(document).on('click', '.adfy__show-woofc', function () {
                 document.body.classList.add('adfy__woofc-visible');
             })
         },
 
         hideFloatingCartHandler: () => {
-            $(document).on('click','.adfy__hide-woofc', function(){
+            $(document).on('click', '.adfy__hide-woofc', function () {
                 document.body.classList.remove('adfy__woofc-visible');
             })
         },
@@ -84,33 +84,17 @@
         },
 
         handleFloatingCartCoupon: () => {
-        
-            $(document).on('click','#adfy__woofc-coupon-trigger', function(){
+
+            $(document).on('click', '#adfy__woofc-coupon-trigger', function () {
                 addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
             })
-            $(document).on('click','#adfy__woofc-hide-coupon-container', function(){
+            $(document).on('click', '#adfy__woofc-hide-coupon-container', function () {
                 addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
             })
             // var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
-            // console.log(showCouponFormEle);
             // var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
             var couponFormSubmitButtonEle = $('#adfy__woofc-apply-coupon-button');
 
-            // Handle the show click event.
-            // $(showCouponFormEle).on('click', function (e) {
-
-            //     e.preventDefault();
-                // Change attribute value.
-            //     addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
-            // });
-
-            // Handle the hide event.
-            // $(hideCouponFormEle).on('click', function (e) {
-
-            //     e.preventDefault();
-                // Change attribute value.
-            //     addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
-            // })
 
             // Handle the form submit event.
             $(couponFormSubmitButtonEle).on('click', function (e) {
@@ -125,10 +109,59 @@
 
         addonifyFloatingCart.init();
 
-        $(document.body).trigger('wc_fragment_refresh');
+        // $(document.body).trigger('wc_fragment_refresh');
 
     });
 
+    // $(document).on('click', '.ajax_add_to_cart', function (e) {
+    //     e.preventDefault();
+
+    //     var product_id = $(this).attr("data-product_id"),
+    //         cart_item_key = $(this).attr("data-cart_item_key"),
+    //         product_container = $(this).parents('li.product');
+
+    //     let this_product = $(this);
+
+    //     // Add loader
+    //     product_container.block({
+    //         message: null,
+    //         overlayCSS: {
+    //             cursor: 'none'
+    //         }
+    //     });
+    //     $.ajax({
+    //         type: 'POST',
+    //         dataType: 'json',
+    //         url: addonifyFloatingCartJSObject.ajax_url,
+    //         data: {
+    //             action: addonifyFloatingCartJSObject.ajax_add_to_cart_action,
+    //             product_id: product_id,
+    //             cart_item_key: cart_item_key,
+    //             nonce: addonifyFloatingCartJSObject.nonce
+    //         },
+    //         success: function (response) {
+    //             if (!response || response.error)
+    //                 return;
+
+    //             var fragments = response.fragments;
+
+    //             // Replace fragments
+    //             if (fragments) {
+    //                 $.each(fragments, function (key, value) {
+    //                     $(key).replaceWith(value);
+    //                 });
+    //             }
+    //             console.log(response.nProduct);
+    //             $('#adfy__woofc-scrollbar').append(response.nProduct);
+    //             // Update cart
+    //             $(document.body).trigger('wc_update_cart');
+    //             product_container.unblock();
+    //         },
+    //         error: function (a) {
+    //             console.log("Error processing request");
+    //         }
+    //     });
+    // });
 
     // remove product from cart
     $(document).on('click', '.adfy__woofc-item .thumb .product-remove a.remove', function (e) {
@@ -169,11 +202,12 @@
                         $(key).replaceWith(value);
                     });
                 }
+                this_product.closest('div.adfy__woofc-item').remove();
 
                 // Update cart
                 $(document.body).trigger('wc_update_cart');
-            }, 
-            error: function(a){
+            },
+            error: function (a) {
                 console.log("Error processing request");
             }
         });
@@ -198,8 +232,15 @@
     });
 
     // product quantity update function
-    function AddonifyUpdateCartAjax(curr_el, type, quantity = 1){
-
+    function AddonifyUpdateCartAjax(curr_el, type, quantity = 1) {
+        let product_quantity
+        if(type === 'add'){
+            product_quantity = $(curr_el).next();
+        } else if(type === 'sub'){
+            product_quantity = $(curr_el).prev();
+        } else {
+            product_quantity = $(curr_el);
+        }
         var product_id = $(curr_el).attr("data-product_id"),
             cart_item_key = $(curr_el).attr("data-cart_item_key"),
             product_container = $(curr_el).parents('.adfy__woofc-item');
@@ -235,11 +276,26 @@
                         $(key).replaceWith(value);
                     });
                 }
+                let nQuantity = response.nQuantity;
+                if(nQuantity === 'OoS'){
+                    alert('Out of stock range');
+                    product_quantity.val(nQuantity);
+                } else if(nQuantity !== 'nil'){
+                    if(type === 'add'){
+                        product_quantity.val(nQuantity);
+                    } else if(type === 'sub'){
+                        product_quantity.val(nQuantity);
+                    } else {
+                        product_quantity.val(nQuantity);
+                    }
+                }
+
+                product_container.unblock();
 
                 // Update cart
                 $(document.body).trigger('wc_update_cart');
-            }, 
-            error: function(a){
+            },
+            error: function (a) {
                 console.log("Error processing request");
             }
         });

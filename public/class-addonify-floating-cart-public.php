@@ -54,6 +54,8 @@ class Addonify_Floating_Cart_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		$this->load_dependencies();
+
 		add_filter('woocommerce_add_to_cart_fragments', [$this,'addonify_floating_cart_add_to_cart_fragment']);
 
 		add_filter('addonify_floating_cart/add_to_cart_ajax', [ $this, 'addonify_floating_cart_add_to_cart_ajax']);
@@ -103,6 +105,12 @@ class Addonify_Floating_Cart_Public
 	public function footer_content()
 	{
 		do_action('addonify_floating_cart_add');
+
+	}
+
+	public function load_dependencies(){
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
 	}
 

@@ -156,7 +156,7 @@ class Addonify_Floating_Cart {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_callback' );
 	}
 
 	/**
@@ -167,6 +167,11 @@ class Addonify_Floating_Cart {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
+
+		if(!$this->is_woocommerce_active()){
+			add_action( 'admin_notices', [$this, 'admin_woocommerce_not_active_notice']);
+			return;
+		}
 
 		$plugin_public = new Addonify_Floating_Cart_Public( $this->get_plugin_name(), $this->get_version() );
 
@@ -223,6 +228,25 @@ class Addonify_Floating_Cart {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	public function admin_woocommerce_not_active_notice(){
+		global $pagenow;
+		if ( $pagenow == 'index.php' ) {
+			ob_start();
+			?>
+				<div class="notice notice-error is-dismissible">
+					<p>
+					<?php _e( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' );?>
+					</p>
+				</div>
+			<?php 
+			echo ob_get_clean();
+		}
+	}
+
+	public function is_woocommerce_active(){
+		return in_array('woocommerce/woocommerce.php',get_option('active_plugins'));
 	}
 
 }

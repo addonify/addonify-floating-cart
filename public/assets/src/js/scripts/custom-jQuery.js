@@ -109,59 +109,8 @@
 
         addonifyFloatingCart.init();
 
-        // $(document.body).trigger('wc_fragment_refresh');
-
     });
 
-    // $(document).on('click', '.ajax_add_to_cart', function (e) {
-    //     e.preventDefault();
-
-    //     var product_id = $(this).attr("data-product_id"),
-    //         cart_item_key = $(this).attr("data-cart_item_key"),
-    //         product_container = $(this).parents('li.product');
-
-    //     let this_product = $(this);
-
-    //     // Add loader
-    //     product_container.block({
-    //         message: null,
-    //         overlayCSS: {
-    //             cursor: 'none'
-    //         }
-    //     });
-    //     $.ajax({
-    //         type: 'POST',
-    //         dataType: 'json',
-    //         url: addonifyFloatingCartJSObject.ajax_url,
-    //         data: {
-    //             action: addonifyFloatingCartJSObject.ajax_add_to_cart_action,
-    //             product_id: product_id,
-    //             cart_item_key: cart_item_key,
-    //             nonce: addonifyFloatingCartJSObject.nonce
-    //         },
-    //         success: function (response) {
-    //             if (!response || response.error)
-    //                 return;
-
-    //             var fragments = response.fragments;
-
-    //             // Replace fragments
-    //             if (fragments) {
-    //                 $.each(fragments, function (key, value) {
-    //                     $(key).replaceWith(value);
-    //                 });
-    //             }
-    //             console.log(response.nProduct);
-    //             $('#adfy__woofc-scrollbar').append(response.nProduct);
-    //             // Update cart
-    //             $(document.body).trigger('wc_update_cart');
-    //             product_container.unblock();
-    //         },
-    //         error: function (a) {
-    //             console.log("Error processing request");
-    //         }
-    //     });
-    // });
 
     // remove product from cart
     $(document).on('click', '.adfy__woofc-item .thumb .product-remove a.remove', function (e) {
@@ -289,6 +238,8 @@
                         product_quantity.val(nQuantity);
                     }
                 }
+
+                product_container.find($('.adfy__woofc-item-price-multiplier-quantity')).html(nQuantity);
 
                 product_container.unblock();
 

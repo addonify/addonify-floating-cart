@@ -41,6 +41,15 @@ class Addonify_Floating_Cart_Admin {
 	private $version;
 
 	/**
+	 * Default settings_page_slug
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $settings_page_slug = 'addonify_floating_cart';
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -99,5 +108,62 @@ class Addonify_Floating_Cart_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/addonify-floating-cart-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+	public function is_woocommerce_active(){
+		return in_array('woocommerce/woocommerce.php',get_option('active_plugins'));
+	}
+
+	public function add_menu_callback(){
+
+		// do not show menu if woocommerce is not active
+		if ( ! $this->is_woocommerce_active() )  return; 
+
+		global $admin_page_hooks;
+		
+		$parent_menu_slug = array_search( 'addonify', (array)$admin_page_hooks, true );
+
+		if ( ! $parent_menu_slug ) {
+
+			add_menu_page( 
+				'Addonify Settings', 
+				'Addonify', 
+				'manage_options', 
+				$this->settings_page_slug, 
+				array( $this, 'get_settings_screen_contents' ), 
+				'dashicons-superhero', 
+				70 
+			);
+
+			add_submenu_page(  
+				$this->settings_page_slug, 
+				'Addonify Floating Cart Settings', 
+				'Floating Cart', 
+				'manage_options', 
+				$this->settings_page_slug, 
+				array( $this, 'get_settings_screen_contents' ), 
+				0 
+			);
+		} else {
+
+			add_submenu_page(  
+				$parent_menu_slug, 
+				'Addonify Floating Cart Settings', 
+				'Floating Cart', 
+				'manage_options', 
+				$this->settings_page_slug, 
+				array( $this, 'get_settings_screen_contents' ), 
+				0 
+			);
+		}
+	}
+
+	// callback function
+	// get contents for settings page screen
+	public function get_settings_screen_contents() {
+		?>
+		<div id="___adfy-floating-cart-app___"></div>
+		<?php
+	}
+
 
 }

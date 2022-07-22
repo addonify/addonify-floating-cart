@@ -7,7 +7,7 @@
  * @package           Addonify_Floating_Cart
  *
  * @wordpress-plugin
- * Plugin Name:       Addonify Foating Cart For WooCommerce
+ * Plugin Name:       Addonify Floating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
  * Description:       
  * Version:           1.0.0
@@ -71,21 +71,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/template-functions.php';
  */
 function run_addonify_floating_cart() {
 
-	// if(!addonify_is_woocommerce_active()){
-	// 	return;
-	// }
-
 	$plugin = new Addonify_Floating_Cart();
 	$plugin->run();
 
 }
-
-if(!function_exists('addonify_is_woocommerce_active')){
-	function addonify_is_woocommerce_active(){
-		return class_exists('woocommerce');
-	}
-}
-
 
 run_addonify_floating_cart();
 

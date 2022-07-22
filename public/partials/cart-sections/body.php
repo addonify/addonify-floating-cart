@@ -48,7 +48,12 @@
                 
                 <?php 
                 }
+            } else {
+                ?>
+                <hr>
+                <h3 class="text-center">No products in cart.</h3>
+                <?php
             }
-            ?>
+        ?>
     </div><!-- // adfy__woofc-content-entry -->
 </main>

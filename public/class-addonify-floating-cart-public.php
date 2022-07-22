@@ -54,9 +54,9 @@ class Addonify_Floating_Cart_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		add_filter('woocommerce_add_to_cart_fragments', ['Addonify_Floating_Cart_Public','addonify_add_to_cart_fragment']);
+		add_filter('woocommerce_add_to_cart_fragments', [$this,'addonify_floating_cart_add_to_cart_fragment']);
 
-		add_filter('addonify_floating_cart/add_to_cart_ajax', [ $this, 'addonify_add_to_cart_ajax']);
+		add_filter('addonify_floating_cart/add_to_cart_ajax', [ $this, 'addonify_floating_cart_add_to_cart_ajax']);
 
 	}
 
@@ -102,25 +102,63 @@ class Addonify_Floating_Cart_Public
 
 	public function footer_content()
 	{
-
-		// echo plugin_dir_path( __FILE__ );
-
 		do_action('addonify_floating_cart_add');
 
 	}
 
-	public static function addonify_add_to_cart_fragment($fragments){
-
+	public static function addonify_floating_cart_add_to_cart_fragment($fragments){
+		ob_start();
+		?>
+			<span class="adfy__woofc-badge">
+				<?php 
+				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
+					esc_html(WC()->cart->get_cart_contents_count())); 
+				?>          
+			</span>
+		<?php
+		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 		ob_start();
 			addonify_floating_cart_get_template( 'cart-sections/body.php' );
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
+		ob_start();
+			addonify_floating_cart_get_template( 'cart-sections/shipping-bar.php' );
+		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
+		ob_start();
+		?>
+			<span class="woocommerce-Price-amount subtotal-amount">
+				<bdi>
+					<?php echo WC()->cart->get_cart_subtotal(); ?>
+				</bdi>
+			</span>
+		<?php 	 
+		$fragments['.subtotal-amount'] = ob_get_clean();
+
+		ob_start();
+		?>
+			<span class="woocommerce-Price-amount discount-amount">
+				<bdi>
+					<?php echo WC()->cart->get_cart_discount_total(); ?>
+				</bdi>
+			</span>
+		<?php 	 
+		$fragments['.discount-amount'] = ob_get_clean();
+
+		ob_start();
+		?>
+			<span class="woocommerce-Price-amount total-amount">
+				<bdi>
+					<?php echo WC()->cart->get_cart_total(); ?>
+				</bdi>
+			</span>
+		<?php 	 
+		$fragments['.total-amount'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
 
 		return $fragments;
 	}
 
-	public static function addonify_add_to_cart_ajax()
+	public static function addonify_floating_cart_add_to_cart_ajax()
 	{
 
 		ob_start();
@@ -240,68 +278,6 @@ class Addonify_Floating_Cart_Public
 			wp_send_json($data);
 		} else {
 			wp_die( __("Invalid request"), "Request Verification" );
-		}
-		die();
-	}
-
-	public function add_to_cart(){
-		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
-			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-				if ($cart_item['product_id'] == $_POST['product_id']) {
-					WC()->cart->add_to_cart($cart_item_key);
-					$product = wc_get_product($cart_item['product_id']);
-					ob_start();
-					?>
-					<div class="adfy__woofc-item">
-						<?php 
-							addonify_floating_cart_get_template( 'cart-loop/image.php', array(
-								'product' => $product,
-								'cart_item_key' => $cart_item_key,
-								'cart_item' => $cart_item,
-								'variation' => $variation,
-							) );
-						?>
-						<div class="adfy__woofc-item-content">
-							<?php 
-								addonify_floating_cart_get_template( 'cart-loop/title.php', array(
-									'product' => $product,
-									'cart_item' => $cart_item,
-								) );
-							?>
-							<?php 
-								addonify_floating_cart_get_template( 'cart-loop/quantity-price.php', array(
-									'product' => $product,
-									'cart_item' => $cart_item,
-									'variation' => $variation,
-								) );
-							?>
-							<?php 
-								addonify_floating_cart_get_template( 'cart-loop/quantity-field.php', array(
-									'product' => $product,
-									'cart_item_key' => $cart_item_key,
-									'cart_item' => $cart_item,
-								) );
-							?>
-						</div>
-					</div><!-- // adfy__woofc-item -->
-					<?php 
-					$nProduct = ob_get_clean();
-					break;
-				}
-			}
-
-			WC()->cart->calculate_totals();
-			WC()->cart->maybe_set_cart_cookies();
-
-			// Fragments returned
-			$data = array(
-				'nProduct' => $nProduct,
-				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
-			);
-
-			wp_send_json($data);
-		} else {
-			wp_die( __("Invalid request"), "Request Verfication" );
 		}
 		die();
 	}

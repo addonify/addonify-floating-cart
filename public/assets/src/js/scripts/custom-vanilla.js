@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // this.showFloatingCartHandler();
             // this.hideFloatingCartHandler();
-            this.handlePerfectScrollBar();
+            // this.handlePerfectScrollBar();
         },
 
         handlePerfectScrollBar: () => {
@@ -31,6 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     }
 
-    addonifyFloatingCart.init();
+    // addonifyFloatingCart.init();
 });
 

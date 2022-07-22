@@ -163,6 +163,7 @@
             @include flex();
             flex-direction: column;
             overflow: hidden;
+            overflow-y: scroll;
 
             .adfy__woofc-content-entry {
                 

@@ -16,9 +16,9 @@
             <li class="sub-total">
                 <span class="label">Sub total:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount subtotal-amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>1,000.00
+                            <?php echo WC()->cart->get_cart_subtotal(); ?>
                         </bdi>
                     </span>
                 </span>
@@ -26,9 +26,9 @@
             <li class="discount">
                 <span class="label">Discount:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount discount-amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>50.00
+                        <?php echo WC()->cart->get_cart_discount_total(); ?>
                         </bdi>
                     </span>
                 </span>
@@ -36,9 +36,9 @@
             <li class="total">
                 <span class="label">Total:</span>
                 <span class="value">
-                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-amount total-amount">
                         <bdi>
-                            <span class="woocommerce-Price-currencySymbol">£</span>950.00
+                        <?php echo WC()->cart->get_cart_total(); ?>
                         </bdi>
                     </span>
                 </span>
@@ -49,7 +49,7 @@
         <button class="adfy__woofc-button adfy__hide-woofc continue-shopping">
             Continue shopping
         </button>
-        <a href="#" class="adfy__woofc-button proceed-to-checkout">
+        <a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
             Checkout
         </a>
     </div>

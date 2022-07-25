@@ -250,6 +250,7 @@ class Addonify_Floating_Cart_Public
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $product = wc_get_product($cart_item['product_id']);
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
+					$quantity = $cart_item['quantity'];
 					if(esc_html($_POST['type']) === 'update'){
 						$nQuantity = (int)esc_html($_POST['quantity']);
 					}
@@ -259,6 +260,7 @@ class Addonify_Floating_Cart_Public
 						$nQuantity = $cart_item['quantity'] + 1 ;
 					}
 					if($nQuantity <= 0){
+						unset($nQuantity);
 						break;
 					}
 					if($product->get_stock_quantity() ){
@@ -270,7 +272,6 @@ class Addonify_Floating_Cart_Public
 					} else {
 						WC()->cart->set_quantity($cart_item_key, $nQuantity );
 					}
-					$quantity = $cart_item['quantity'];
 					break;
 				}
 			}

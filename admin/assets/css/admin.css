@@ -1,0 +1,708 @@
+/*================================================================
+[Define variables]
+==================================================================*/
+/*==================================================================*/
+:root {
+  /* -------------------------------------------------------------------------- 
+   Colors variables
+  -------------------------------------------------------------------------- */
+  --addonify_primary_color: #0286e7;
+  --addonify_seconary_color: #00b32a;
+  --addonify_base_text_color: #585858;
+  --addonify_base_link_color: #0366E0;
+  --addonify_base_link_hover_color: var(--addonify_seconary_color);
+  --addonify_border_color: #d5d5d5;
+  --addonify_button_text_color: white;
+  --addonify_button_background_color: #0286e7;
+  --addonify_button_hover_text_color: white;
+  --addonify_button_hover_background_color: #00b32a;
+  --addonify_button_border_color: transparent;
+  --addonify_button_hover_border_color: transparent;
+  --addonify_button_border_width: 0;
+  --addonify_button_border_style: solid;
+  --addonify_text_button_color: var(--addonify_primary_color);
+  --addonify_text_button_hover_color: var(--addonify_seconary_color);
+  --addonify_text_button_underline_color: var(--addonify_primary_color);
+  --addonify_text_button_hover_underline_color: var(--addonify_seconary_color);
+  --addonify_text_button_underline_height: 3px;
+  --addonify_button_is_link_style_text_color: #ef2c2c;
+  --addonify_button_is_link_style_hover_text_color: #1e73be;
+  --addonify_button_is_link_style_underline_color: #ef2c2c;
+  --addonify_button_is_link_style_hover_underline_color: #1e73be;
+  /* -------------------------------------------------------------------------- 
+   Typography variables
+  -------------------------------------------------------------------------- */
+  --addonify_system_font_family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, Inter, Roboto, Segoe ui, System ui, sans-serif;
+  --addonify_monospace_font_family: monospace;
+  --addonify_button_font_size: 15px;
+  --addonify_button_font_weight: normal;
+  --addonify_button_line_height: 1;
+  /* -------------------------------------------------------------------------- 
+   Border radius
+  -------------------------------------------------------------------------- */
+  --addonify_buttons_border_radius: 4px;
+}
+
+/* -------------------------------------------------------------------------- 
+	Mixin: Better Font Randering
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Flex
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Grid
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Transitions
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Visibility
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Animations
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: WooCommerce product columns.
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Screen reader text
+  -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- 
+	Mixin: Clearfix
+  -------------------------------------------------------------------------- */
+/**
+=======================================================
+
+= Project : Addonify Floating Cart
+=
+= Since : -
+=
+= Author: Addonify
+=
+= Author url : https://addonify.com/
+=
+
+======================================================================================
+*/
+/* -------------------------------------------------------------------------- 
+	Forms
+  -------------------------------------------------------------------------- */
+[class*=page_addonify_floating_cart] input[type=date],
+[class*=page_addonify_floating_cart] input[type=datetime-local],
+[class*=page_addonify_floating_cart] input[type=datetime],
+[class*=page_addonify_floating_cart] input[type=email],
+[class*=page_addonify_floating_cart] input[type=month],
+[class*=page_addonify_floating_cart] input[type=number],
+[class*=page_addonify_floating_cart] input[type=password],
+[class*=page_addonify_floating_cart] input[type=search],
+[class*=page_addonify_floating_cart] input[type=tel],
+[class*=page_addonify_floating_cart] input[type=text],
+[class*=page_addonify_floating_cart] input[type=time],
+[class*=page_addonify_floating_cart] input[type=url],
+[class*=page_addonify_floating_cart] input[type=week] {
+  padding: 0;
+  margin: 0;
+  line-height: var(--el-input-inner-height);
+  --el-input-inner-height: calc(var(--el-input-height, 32px) - 2px);
+  min-height: auto;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  background-color: transparent;
+  color: var(--el-input-text-color, var(--el-text-color-regular));
+}
+[class*=page_addonify_floating_cart] input[type=date]:focus,
+[class*=page_addonify_floating_cart] input[type=datetime-local]:focus,
+[class*=page_addonify_floating_cart] input[type=datetime]:focus,
+[class*=page_addonify_floating_cart] input[type=email]:focus,
+[class*=page_addonify_floating_cart] input[type=month]:focus,
+[class*=page_addonify_floating_cart] input[type=number]:focus,
+[class*=page_addonify_floating_cart] input[type=password]:focus,
+[class*=page_addonify_floating_cart] input[type=search]:focus,
+[class*=page_addonify_floating_cart] input[type=tel]:focus,
+[class*=page_addonify_floating_cart] input[type=text]:focus,
+[class*=page_addonify_floating_cart] input[type=time]:focus,
+[class*=page_addonify_floating_cart] input[type=url]:focus,
+[class*=page_addonify_floating_cart] input[type=week]:focus {
+  outline: none;
+  box-shadow: none;
+}
+[class*=page_addonify_floating_cart] input.readonly,
+[class*=page_addonify_floating_cart] input[readonly],
+[class*=page_addonify_floating_cart] textarea.readonly,
+[class*=page_addonify_floating_cart] textarea[readonly] {
+  -el-input-inner-height: calc(var(--el-input-height, 40px) - 2px);
+  background-color: transparent;
+}
+
+/* -------------------------------------------------------------------------- 
+	Button
+  -------------------------------------------------------------------------- */
+.adfy-button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: var(--addonify_system_font_family);
+  font-size: var(--addonify_button_font_size);
+  font-weight: normal;
+  fill: var(--addonify_button_text_color);
+  color: var(--addonify_button_text_color);
+  line-height: var(--addonify_button_line_height);
+  padding: 15px 20px;
+  border-width: var(--addonify_button_border_width);
+  border-style: var(--addonify_button_border_style);
+  border-color: var(--addonify_button_border_color);
+  background-color: var(--addonify_button_background_color);
+  border-radius: var(--addonify_buttons_border_radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.adfy-button .icon {
+  margin-right: 5px;
+}
+.adfy-button:hover {
+  fill: var(--addonify_button_hover_text_color);
+  color: var(--addonify_button_hover_text_color);
+  border-color: var(--addonify_button_hover_border_color);
+  background-color: var(--addonify_button_hover_background_color);
+  text-decoration: none;
+}
+
+.adfy-button:disabled {
+  cursor: not-allowed;
+  color: #ABABAB;
+  fill: #ABABAB;
+  background-color: #C5C5C5;
+}
+
+.adfy-button .loading-icon {
+  display: none;
+}
+
+.adfy-button .loading-icon svg {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  color: white;
+  -webkit-animation: spinner 1s linear infinite;
+          animation: spinner 1s linear infinite;
+}
+
+.adfy-button[loading=true] {
+  display: inline-flex;
+  gap: 10px;
+  cursor: not-allowed;
+}
+
+.adfy-button[loading=true] .loading-icon {
+  display: inline-flex;
+}
+
+.adfy-button.fake-button {
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  fill: var(--addonify_base_text_color);
+  color: var(--addonify_base_text_color);
+  border: none;
+  background-color: transparent;
+}
+.adfy-button.fake-button:hover {
+  fill: var(--addonify_secondary_color);
+  color: var(--addonify_secondary_color);
+  border: none;
+  text-decoration: none;
+  background-color: transparent;
+}
+.adfy-button.fake-button:focus {
+  text-decoration: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.adfy-button.fake-button.has-underline {
+  position: relative;
+}
+
+.adfy-button.fake-button.has-underline::after,
+.adfy-button.fake-button.has-underline::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: currentColor;
+}
+
+.adfy-button.fake-button.has-underline::before {
+  content: "";
+  z-index: 1;
+  background-color: currentColor;
+  transform-origin: right center;
+  transform: scaleX(0);
+  will-change: scale;
+  transition: transform 0.26s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-backface-visibility: hidden;
+}
+
+.adfy-button.fake-button.has-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  opacity: 0.5;
+  background-color: currentColor;
+}
+
+.adfy-button.fake-button.has-underline:hover {
+  fill: var(--addonify_primary_color);
+  color: var(--addonify_primary_color);
+}
+
+.adfy-button.fake-button.has-underline:hover::before {
+  transform: scale(1);
+  transform-origin: left center;
+  background-color: var(--addonify_primary_color);
+}
+
+#___adfy-floating-cart-app___ {
+  display: block;
+  position: relative;
+  margin: 0 0 0 -20px;
+  padding: 0;
+  font-weight: var(--addonify_system_font_family);
+  font-weight: normal;
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+#___adfy-floating-cart-app___ * {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+#___adfy-floating-cart-app___ .adfy-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+}
+#___adfy-floating-cart-app___ .main-content {
+  display: grid;
+  grid-template-columns: 180px auto;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 120px 0 0 0;
+}
+#___adfy-floating-cart-app___ .main-content .end {
+  padding-left: 60px;
+  border-left: 1px solid var(--addonify_border_color);
+}
+
+.adfy-navigation .navigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  list-style: none;
+}
+.adfy-navigation .navigation li {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.adfy-navigation .navigation li a {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 15px 10px 15px;
+  font-family: var(--addonify_system_font_family);
+  fill: var(--addonify_base_text_color);
+  color: var(--addonify_base_text_color);
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 1;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  text-decoration: none;
+  background-color: transparent;
+}
+.adfy-navigation .navigation li a .icon svg {
+  width: 16px;
+  height: 16px;
+}
+.adfy-navigation .navigation li a:hover {
+  fill: var(--addonify_base_text_color);
+  color: var(--addonify_base_text_color);
+  background-color: white;
+  text-decoration: none;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.adfy-navigation .navigation li a:focus {
+  outline: 0;
+}
+.adfy-navigation .navigation li .router-link-active {
+  fill: var(--addonify_primary_color);
+  color: var(--addonify_primary_color);
+  background-color: white;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.adfy-options {
+  display: block;
+  position: relative;
+  margin: 0 0 30px 0;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+  background-color: white;
+}
+
+.option-box-title {
+  display: block;
+  padding: 0;
+  margin: 0 0 15px 5px;
+  font-family: var(--addonify_system_font_family);
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #787878;
+}
+
+.option-box {
+  display: grid;
+  grid-template-columns: auto 300px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  align-items: center;
+}
+.option-box .right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 0;
+  border: none;
+}
+.option-box .option-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-family: var(--addonify_system_font_family);
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #444444;
+}
+.option-box .option-description {
+  display: block;
+  margin: 10px 0 0 0;
+  font-family: Helvetica, "Helvetica neue", Arial, System ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: normal;
+  color: #7a7a7a;
+}
+
+.option-box.fullwidth {
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: stretch;
+  -moz-column-gap: 0;
+       column-gap: 0;
+  row-gap: 15px;
+}
+.option-box.fullwidth .left {
+  display: block;
+  width: 100%;
+}
+.option-box.fullwidth .left .label {
+  border-bottom: 1px solid #ededed;
+  padding-bottom: 20px;
+}
+.option-box.fullwidth .right {
+  display: block;
+  width: 100%;
+  justify-content: flex-start;
+}
+.option-box.fullwidth .right .input-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  row-gap: 30px;
+}
+.option-box.fullwidth .right .input-group .input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+[class*=page_addonify_floating_cart] #wpbody-content {
+  padding-bottom: 30px;
+}
+
+[class*=page_addonify_floating_cart] #wpfooter {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- 
+	Header
+  -------------------------------------------------------------------------- */
+.adfy-header {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  left: 160px;
+  right: 0;
+  top: 30px;
+  padding: 10px 30px 10px 30px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: white;
+}
+.adfy-header .adfy-row {
+  display: grid;
+  grid-template-columns: 160px auto;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.adfy-header .start .branding .adfy-link {
+  display: inline-flex;
+}
+.adfy-header .start .branding .adfy-link img {
+  display: inline-flex;
+  max-width: 100%;
+}
+.adfy-header .end {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.adfy-header .end .buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.adfy-colopon {
+  display: block;
+  margin: 100px 30px 0 30px;
+}
+.adfy-colopon .adfy-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.adfy-colopon .adfy-row .left .text {
+  display: inline-block;
+  align-items: center;
+  gap: 10px;
+}
+.adfy-colopon .adfy-row .left .text .version {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+  padding: 6px 10px 4px 10px;
+  color: #888888;
+  border-radius: 20px;
+  background-color: #DDDDDD;
+}
+.adfy-colopon .adfy-row .right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.adfy-colopon .adfy-row .right .text {
+  display: inline-block;
+  align-items: center;
+}
+.adfy-colopon .adfy-row .right .text .adfy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  color: #888888;
+  font-family: var(--addonify_system_font_family);
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  transition: all 0.5s ease;
+}
+.adfy-colopon .adfy-row .right .text .adfy-link:hover {
+  fill: var(--addonify_base_link_hover_color);
+  color: var(--addonify_base_link_hover_color);
+  text-decoration: none;
+}
+.adfy-colopon .adfy-row .right .text .adfy-link:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.adfy-colopon .adfy-row .right .text .adfy-link .icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+.adfy-colopon .adfy-row .right .text .adfy-link .icon .dashicons {
+  font-size: 14px;
+  width: 16px;
+  height: 14px;
+}
+.adfy-colopon .adfy-row .text {
+  margin: 0;
+  color: #888888;
+  font-family: var(--addonify_system_font_family);
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#___adfy-floating-cart-app___ .error-404 {
+  display: block;
+  margin: 200px auto 0 auto;
+  text-align: center;
+  min-height: 80vh;
+}
+#___adfy-floating-cart-app___ .error-404 h3 {
+  text-transform: uppercase;
+  font-size: 112px;
+  font-weight: bold;
+  margin: 0 0 60px 0;
+}
+#___adfy-floating-cart-app___ .error-404 p {
+  font-size: 13px;
+  color: #8b8b8b;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: normal;
+  margin: 0 0 30px 0;
+}
+#___adfy-floating-cart-app___ .error-404 .adfy-button {
+  padding: 20px 60px;
+  border-radius: 30px;
+}
+
+.adfy-loading {
+  display: block;
+  position: relative;
+  margin: 50px 0;
+}
+.adfy-loading .pulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 30px;
+  height: 30px;
+}
+.adfy-loading .pulse:before {
+  content: "";
+  position: relative;
+  display: block;
+  width: 300%;
+  height: 300%;
+  box-sizing: border-box;
+  margin-left: -100%;
+  margin-top: -100%;
+  border-radius: 100%;
+  background-color: #C5C5C5;
+  -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.adfy-loading .pulse:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: white;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.01);
+  -webkit-animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+          animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+}
+
+@-webkit-keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes pulse-dot {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

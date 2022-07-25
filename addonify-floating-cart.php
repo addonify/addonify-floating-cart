@@ -31,6 +31,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'ADDONIFY_FLOATING_CART_VERSION', '0.0.0' );
 define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path(__FILE__));
+define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
 
 /**
  * The code that runs during plugin activation.

@@ -82,8 +82,7 @@ class Addonify_Floating_Cart_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/addonify-floating-cart-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -93,20 +92,49 @@ class Addonify_Floating_Cart_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Addonify_Floating_Cart_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Addonify_Floating_Cart_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		wp_register_script( 
+			"{$this->plugin_name}-manifest", 
+			plugin_dir_url( __FILE__ ) . 'assets/js/manifest.js', 
+			null, 
+			$this->version, 
+			true 
+		);
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/addonify-floating-cart-admin.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( 
+			"{$this->plugin_name}-vendor", 
+			plugin_dir_url( __FILE__ ) . 'assets/js/vendor.js', 
+			array(  "{$this->plugin_name}-manifest" ), 
+			$this->version, 
+			true 
+		);
 
+		wp_register_script( 
+			"{$this->plugin_name}-main", 
+			plugin_dir_url( __FILE__ ) . 'assets/js/main.js', 
+			array( 'lodash', "{$this->plugin_name}-vendor", 'wp-i18n', 'wp-api-fetch' ), 
+			$this->version, 
+			true 
+		);
+
+		if( 
+			isset( $_GET['page'] ) && 
+			$_GET['page'] == $this->settings_page_slug 
+		) {
+			wp_enqueue_script( "{$this->plugin_name}-manifest" );
+
+			wp_enqueue_script( "{$this->plugin_name}-vendor" );
+
+			wp_enqueue_script( "{$this->plugin_name}-main" );
+
+			wp_localize_script( "{$this->plugin_name}-main", 'ADDONIFY_WOOFC_LOCOLIZER', array(
+				'admin_url'  						=> esc_url( admin_url( '/' ) ),
+				'ajax_url'   						=> esc_url( admin_url( 'admin-ajax.php' ) ),
+				'rest_namespace' 					=> 'addonify_floating_cart_options_api',
+				'version_number' 					=> $this->version,
+			));
+		}
+
+		wp_set_script_translations( "{$this->plugin_name}-main", $this->plugin_name );
 	}
 
 	public function is_woocommerce_active(){

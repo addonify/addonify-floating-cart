@@ -207,7 +207,7 @@
                                 position: relative;
                                 display: block;
                                 max-width: 100%;
-                                border-radius: 2px;
+                                border-radius: 5px;
                                 border: 1px solid var(--adfy_woofc_border_color);
                                 background-color: var(--adfy_woofc_border_color);
                             }
@@ -514,11 +514,11 @@
                     }
                 }
 
-                .continue-shopping {
+                .close {
 
-                    fill: #878787;
-                    color: #878787;
-                    background: #CFCFCF;
+                    fill: #9D9D9D;
+                    color: #9D9D9D;
+                    background: #D5D5D5;
                 }
             }
         }

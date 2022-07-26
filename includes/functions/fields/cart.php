@@ -32,7 +32,7 @@ if(!function_exists('addonify_floating_cart_cart_options_add_to_settings_field')
     function addonify_floating_cart_cart_options_add_to_settings_field($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_cart_options_settings());
     }
-    apply_filters( 'addonify_floating_cart', 'addonify_floating_cart_cart_options_add_to_settings_field' );
+    apply_filters( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_options_add_to_settings_field' );
 }
 
 

@@ -2,6 +2,8 @@
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php';
 
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toggle-button.php';
+
 /**
  * Define default values for the settings fields.
  * 
@@ -35,13 +37,13 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_toggle_button_padding' => '0',
                 'cart_modal_toggle_button_side_offset' => '',
                 'cart_modal_toggle_button_vertical_offset' => '',
-                //toast notification options
-                'display_toast_notification' => true,
+                // toast notification options
+                'display_toast_notification' => true, //
                 'toast_notification_display_position' => 'tr',
-                'open_cart_modal_on_notification_button_click' => 'true',
-                'add_to_cart_notification_text' => 'Product has been added to cart.',
-                'close_notification_after_time' => '3',
-                'display_close_notification_button' => true,
+                'open_cart_modal_on_notification_button_click' => true, //
+                'add_to_cart_notification_text' => 'Product has been added to cart.',  //
+                'close_notification_after_time' => '3', //
+                'display_close_notification_button' => true, //
                 'toast_notification_background_color' => '#67C23A',
                 'toast_notification_text_color' => '#FFFFFF',
                 'toast_notification_button_background_color' => 'rgba(0, 0, 0, 0.2)',
@@ -52,12 +54,12 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'toast_notification_top_bottom_offset' => '',
                 // cart modal options
                 'cart_modal_display_layout' => '',
-                'cart_title' => 'Cart',
-                'display_cart_items_number' => '',
-                'close_cart_modal_on_overlay_click' => '',
-                'display_continue_shopping_button' => true,
-                'continue_shopping_button_label' => 'Continue Shopping',
-                'checkout_button_label' => 'Checkout',
+                'cart_title' => 'Cart', //
+                'display_cart_items_number' => true, //
+                'close_cart_modal_on_overlay_click' => true, //
+                'display_continue_shopping_button' => true, //
+                'continue_shopping_button_label' => 'Continue Shopping', //
+                'checkout_button_label' => 'Checkout', //
                 'cart_modal_background_color' => '#FFFFFF',
                 'cart_modal_overlay_color' => '',
                 'cart_modal_title_color' => '#000',
@@ -182,6 +184,11 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                             'title' => __('General Cart Settings', 'addonify-floating-cart'),
                             'descripion' => '',
                             'fields' => addonify_floating_cart_cart_options_settings()
+                        ),
+                        'button' => array(
+                            'title' => __('', 'addonify-floating-cart'),
+                            'description' => '',
+                            'fields' => addonify_add_floating_cart_toggle_cart_button_settings()
                         ),
                     ),
                 ),

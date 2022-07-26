@@ -9,13 +9,17 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'type'            => 'switch',
                 'badge'           => 'Required',
                 'badgeType'       => '',
+                'dependent'       => array(),
+                'value'           => addonify_floating_cart_get_setting_field_value('enable_floating_cart')
             ),
             'open_cart_modal_immediately_after_add_to_cart' => array(
                 'label'			  => __( 'Open Floating Cart After Adding Item to Cart', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to enable the opening floating cart when an item is added to cart.',
+                'description'     => 'Enable this to enable immediately opening floating cart when an item is added to cart.',
                 'type'            => 'switch',
                 'badge'           => 'Optional',
                 'badgeType'       => '',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_immediately_after_add_to_cart' )
             ),
             'open_cart_modal_after_click_on_view_cart' => array(
                 'label'			  => __( 'Open Floating Cart On click on View Cart', 'addonify-floating-cart' ),
@@ -23,6 +27,8 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'type'            => 'switch',
                 'badge'           => 'Optional',
                 'badgeType'       => '',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
             ),
         );
     }

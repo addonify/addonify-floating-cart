@@ -113,7 +113,7 @@
 
 
     // remove product from cart
-    $(document).on('click', '.adfy__woofc-item .thumb .product-remove a.remove', function (e) {
+    $(document).on('click', '.adfy__woofc-item .thumb .product-remove', function (e) {
         e.preventDefault();
 
         var product_id = $(this).attr("data-product_id"),

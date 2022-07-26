@@ -78,6 +78,7 @@ class Addonify_Floating_Cart {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->rest_api();
 
 	}
 
@@ -105,6 +106,8 @@ class Addonify_Floating_Cart {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-addonify-floating-cart-loader.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-addonify-floating-cart-rest-api.php';
+
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
@@ -121,6 +124,8 @@ class Addonify_Floating_Cart {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-addonify-floating-cart-public.php';
+
+
 
 		$this->loader = new Addonify_Floating_Cart_Loader();
 
@@ -229,6 +234,19 @@ class Addonify_Floating_Cart {
 	public function get_version() {
 		return $this->version;
 	}
+
+
+	/**
+	 * Register rest api endpoints for admin settings page.
+	 *
+	 * @since    1.0.7
+	 * @access   private
+	 */
+	private function rest_api() {
+
+		$plugin_rest = new Addonify_Floating_Cart_Rest_Api();
+	}
+
 
 	public function admin_woocommerce_not_active_notice(){
 		global $pagenow;

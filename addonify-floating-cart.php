@@ -59,6 +59,7 @@ register_deactivation_hook( __FILE__, 'deactivate_addonify_floating_cart' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-addonify-floating-cart.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-addonify-floating-cart-rest-api.php';
 require plugin_dir_path( __FILE__ ) . 'includes/template-functions.php';
 
 /**

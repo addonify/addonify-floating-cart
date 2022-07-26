@@ -4,6 +4,10 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toggle-button.php';
 
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toast-notification.php';
+
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-display.php';
+
 /**
  * Define default values for the settings fields.
  * 
@@ -98,6 +102,19 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
     }
 }
 
+/**
+ * Define settings fields.
+ * 
+ * @since 1.0.0
+ * @return array
+ */
+if ( ! function_exists( 'addonify_floating_cart_settings_fields' ) ) {
+
+    function addonify_floating_cart_settings_fields() {
+
+        return apply_filters( 'addonify_floating_cart/settings_fields', array() );
+    }
+}
 
 /**
  * Retrieve the value of a settings field.
@@ -182,13 +199,23 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                     'sections' => array(
                         'general' => array(
                             'title' => __('General Cart Settings', 'addonify-floating-cart'),
-                            'descripion' => '',
+                            'description' => '',
                             'fields' => addonify_floating_cart_cart_options_settings()
                         ),
                         'button' => array(
-                            'title' => __('', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Settings', 'addonify-floating-cart'),
                             'description' => '',
-                            'fields' => addonify_add_floating_cart_toggle_cart_button_settings()
+                            'fields' => addonify_floating_cart_toggle_cart_button_settings()
+                        ),
+                        'toast-notification' => array(
+                            'title' => __('Toast Notification Settings', 'addonify-floating-cart'),
+                            'description' => '',
+                            'fields' => addonify_floating_cart_toast_notification_settings()
+                        ),
+                        'cart' => array(
+                            'title' => __('Cart UI Settings', 'addonify-floating-cart'),
+                            'description' => '',
+                            'fields' => addonify_floating_cart_cart_display_settings()
                         ),
                     ),
                 ),

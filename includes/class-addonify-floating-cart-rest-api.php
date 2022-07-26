@@ -2,7 +2,7 @@
 
 class Addonify_Floating_Cart_Rest_Api{
 
-    protected $namespace = "addonify_floating_cart_options_api/";
+    protected $namespace = "addonify_floating_cart_options_api";
 
     function __construct(){
         add_action( 'rest_api_init', [$this, 'register_rest_apis'] );
@@ -12,7 +12,7 @@ class Addonify_Floating_Cart_Rest_Api{
 
         register_rest_route( 
             $this->namespace, 
-            'get_options', 
+            '/get_options', 
             array(
                 'methods' => 'GET',
                 'callback' => [$this, 'rest_handler_get_settings_fields'],
@@ -20,7 +20,7 @@ class Addonify_Floating_Cart_Rest_Api{
             )
         );
 
-        register_rest_route( $this->namespace, 'update_options', 
+        register_rest_route( $this->namespace, '/update_options', 
             array(
                 'methods' => \WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'rest_handler_update_options'],

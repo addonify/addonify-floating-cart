@@ -167,8 +167,7 @@
 
             .adfy__woofc-content-entry {
                 
-                @include flex();
-                gap: 30px;
+                display: block;
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -176,19 +175,17 @@
                 bottom: 0;
                 z-index: 5;
                 padding: 10px 0;
-                @include breakpoint(mobile) {
-
-                    gap: 20px;
-                }
 
                 .adfy__woofc-item {
 
                     @include grid();
                     grid-template-columns: 100px auto;
                     column-gap: 30px;
+                    margin-bottom: 30px;
                     @include breakpoint(mobile) {
 
                         column-gap: 25px;
+                        margin-bottom: 20px;
                     }
 
                     .thumb {

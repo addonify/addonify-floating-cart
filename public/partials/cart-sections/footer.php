@@ -4,9 +4,7 @@
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">
-                <svg viewBox="0 0 17 17"><g></g>
-                    <path d="M2 0v16.902l2.028-2.481 1.503 1.88 1.501-1.875 1.499 1.875 1.5-1.875 1.5 1.875 1.499-1.875 1.97 2.46v-16.886h-13zM14 14.036l-0.97-1.211-1.499 1.875-1.5-1.875-1.5 1.875-1.499-1.875-1.501 1.875-1.495-1.87-1.036 1.268v-13.098h11v13.036zM10.997 4h-6v-1h6v1zM8.997 8h-4v-1h4v1zM11.978 6h-7v-1h7v1zM5 10h7v1h-7v-1z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.137,24a2.8,2.8,0,0,1-1.987-.835L12,17.051,5.85,23.169a2.8,2.8,0,0,1-3.095.609A2.8,2.8,0,0,1,1,21.154V5A5,5,0,0,1,6,0H18a5,5,0,0,1,5,5V21.154a2.8,2.8,0,0,1-1.751,2.624A2.867,2.867,0,0,1,20.137,24ZM6,2A3,3,0,0,0,3,5V21.154a.843.843,0,0,0,1.437.6h0L11.3,14.933a1,1,0,0,1,1.41,0l6.855,6.819a.843.843,0,0,0,1.437-.6V5a3,3,0,0,0-3-3Z"/></svg>
             </span>
             Have a coupon? <a href="#" id="adfy__woofc-coupon-trigger" class="adfy__woofc-link has-underline">Click here to apply</a>
         </p>
@@ -46,8 +44,8 @@
         </ul>
     </div>
     <div class="adfy__woofc-actions">
-        <button class="adfy__woofc-button adfy__hide-woofc continue-shopping">
-            Continue shopping
+        <button class="adfy__woofc-button adfy__hide-woofc close">
+            Close
         </button>
         <a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
             Checkout

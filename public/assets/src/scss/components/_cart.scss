@@ -162,14 +162,14 @@
             flex: 1 1 auto;
             @include flex();
             flex-direction: column;
-            overflow: hidden;
-            overflow-y: scroll;
+            overflow-y: auto;
+            overflow-x: hidden;
 
             .adfy__woofc-content-entry {
                 
-                @include grid();
-                grid-template-columns: repeat(1, 1fr);
-                row-gap: 30px;
+                @include flex();
+                flex-direction: column;
+                gap: 30px;
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -179,7 +179,7 @@
                 padding: 10px 0;
                 @include breakpoint(mobile) {
 
-                    row-gap: 20px;
+                    gap: 20px;
                 }
 
                 .adfy__woofc-item {
@@ -283,9 +283,14 @@
                                 display: inline-flex;
                                 gap: 2px;
                                 align-items: center;
+                                width: auto;
                                 color: #444444;
                                 font-size: 14px;
                                 font-weight: bold;
+                                height: auto;
+                                border: none;
+                                padding: 0;
+                                margin: 0;
                             }
                         }
 
@@ -328,6 +333,7 @@
                                     width: 30px;
                                     max-width: 50px;
                                     height: 30px;
+                                    min-height: 1px;
                                     padding: 0;
                                     margin: 0;
                                     border: none;

@@ -7,9 +7,9 @@
  * @package           Addonify_Floating_Cart
  *
  * @wordpress-plugin
- * Plugin Name:       Addonify Floating Cart For WooCommerce
+ * Plugin Name:       Addonify - Floating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
- * Description:       
+ * Description:       Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
  * Version:           1.0.0
  * Author:            Addonify
  * Author URI:        https://addonify.com/

@@ -2,27 +2,31 @@
 
     'use strict';
 
-    var addonifyFloatingCartEle = $('#adfy__floating-cart');
     var addonifyFloatingCartCouponContainer = $('#adfy__woofc-coupon-container');
 
     var addonifyFloatingCart = {
 
         init: function () {
 
-            this.notifyFloatingCartEventHandler();
-            this.quantityFormInputHandler();
-            this.handleFloatingCartCoupon();
             this.showFloatingCartHandler();
             this.hideFloatingCartHandler();
+            this.quantityFormInputHandler();
+            this.handleFloatingCartCoupon();
+            this.notifyFloatingCartEventHandler();
         },
+
         showFloatingCartHandler: () => {
+
             $(document).on('click', '.adfy__show-woofc', function () {
+
                 document.body.classList.add('adfy__woofc-visible');
             })
         },
 
         hideFloatingCartHandler: () => {
+
             $(document).on('click', '.adfy__hide-woofc', function () {
+
                 document.body.classList.remove('adfy__woofc-visible');
             })
         },
@@ -86,16 +90,17 @@
         handleFloatingCartCoupon: () => {
 
             $(document).on('click', '#adfy__woofc-coupon-trigger', function () {
+
                 addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
             })
             $(document).on('click', '#adfy__woofc-hide-coupon-container', function () {
+
                 addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
-            })
+            });
+
             // var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
             // var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
             var couponFormSubmitButtonEle = $('#adfy__woofc-apply-coupon-button');
-
-
             // Handle the form submit event.
             $(couponFormSubmitButtonEle).on('click', function (e) {
 
@@ -183,9 +188,9 @@
     // product quantity update function
     function AddonifyUpdateCartAjax(curr_el, type, quantity = 1) {
         let product_quantity
-        if(type === 'add'){
+        if (type === 'add') {
             product_quantity = $(curr_el).next();
-        } else if(type === 'sub'){
+        } else if (type === 'sub') {
             product_quantity = $(curr_el).prev();
         } else {
             product_quantity = $(curr_el);
@@ -226,13 +231,13 @@
                     });
                 }
                 let nQuantity = response.nQuantity;
-                if(nQuantity === 'OoS'){
+                if (nQuantity === 'OoS') {
                     alert('Out of stock range');
                     product_quantity.val(nQuantity);
-                } else if(nQuantity !== 'nil'){
-                    if(type === 'add'){
+                } else if (nQuantity !== 'nil') {
+                    if (type === 'add') {
                         product_quantity.val(nQuantity);
-                    } else if(type === 'sub'){
+                    } else if (type === 'sub') {
                         product_quantity.val(nQuantity);
                     } else {
                         product_quantity.val(nQuantity);

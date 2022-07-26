@@ -162,14 +162,12 @@
             flex: 1 1 auto;
             @include flex();
             flex-direction: column;
-            overflow: hidden;
-            overflow-y: scroll;
+            overflow-y: auto;
+            overflow-x: hidden;
 
             .adfy__woofc-content-entry {
                 
-                @include grid();
-                grid-template-columns: repeat(1, 1fr);
-                row-gap: 30px;
+                display: block;
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -177,19 +175,17 @@
                 bottom: 0;
                 z-index: 5;
                 padding: 10px 0;
-                @include breakpoint(mobile) {
-
-                    row-gap: 20px;
-                }
 
                 .adfy__woofc-item {
 
                     @include grid();
                     grid-template-columns: 100px auto;
                     column-gap: 30px;
+                    margin-bottom: 30px;
                     @include breakpoint(mobile) {
 
                         column-gap: 25px;
+                        margin-bottom: 20px;
                     }
 
                     .thumb {
@@ -211,7 +207,7 @@
                                 position: relative;
                                 display: block;
                                 max-width: 100%;
-                                border-radius: 2px;
+                                border-radius: 5px;
                                 border: 1px solid var(--adfy_woofc_border_color);
                                 background-color: var(--adfy_woofc_border_color);
                             }
@@ -283,9 +279,14 @@
                                 display: inline-flex;
                                 gap: 2px;
                                 align-items: center;
+                                width: auto;
                                 color: #444444;
                                 font-size: 14px;
                                 font-weight: bold;
+                                height: auto;
+                                border: none;
+                                padding: 0;
+                                margin: 0;
                             }
                         }
 
@@ -303,7 +304,7 @@
                                 width: 95px;
                                 padding: 2px 10px;
                                 border: 1px solid var(--adfy_woofc_border_color);
-                                border-radius: 25px;
+                                border-radius: 4px;
 
                                 // Chrome, Safari, Edge & Opera
                                 input::-webkit-outer-spin-button,
@@ -328,6 +329,7 @@
                                     width: 30px;
                                     max-width: 50px;
                                     height: 30px;
+                                    min-height: 1px;
                                     padding: 0;
                                     margin: 0;
                                     border: none;
@@ -491,24 +493,32 @@
                 .adfy__woofc-button {
 
                     display: inline-flex;
+                    color: white;
                     align-items: center;
                     justify-content: center;
                     padding: 20px 15px;
                     height: auto;
                     border-radius: 4px;
                     width: 100%;
+                    background-color: var(--adfy_woofc_primary_color);
 
                     @include breakpoint(mobile) {
 
                         padding: 15px 10px;
                     }
+
+                    &:hover {
+
+                        color: white;
+                        background-color: var(--adfy_woofc_secondary_color);
+                    }
                 }
 
-                .continue-shopping {
+                .close {
 
-                    fill: #878787;
-                    color: #878787;
-                    background: #CFCFCF;
+                    fill: #9D9D9D;
+                    color: #9D9D9D;
+                    background: #D5D5D5;
                 }
             }
         }

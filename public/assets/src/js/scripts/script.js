@@ -106,6 +106,19 @@
 
                 e.preventDefault();
                 console.log('📌 Coupon form submit button is clicked.');
+                let data = $(this).serialize();
+                $.ajax({
+                    'url' : addonifyFloatingCartJSObject.ajax_url,
+                    'method' : 'post',
+                    'data' : {
+                        action: addonifyFloatingCartJSObject.ajax_apply_coupon,
+                        nonce: addonifyFloatingCartJSObject.nonce,
+                        form_data: data
+                    },
+                    'succcess' : function(data){
+                        console.log(data);
+                    }
+                });
             })
         },
     }
@@ -158,6 +171,12 @@
                 }
                 this_product.closest('div.adfy__woofc-item').remove();
 
+                if(response.cart_items == 0){
+                    $('.adfy__woofc-content-entry').html(
+                        '<p class="text-center">No items to display</p>'
+                    );
+                }
+
                 // Update cart
                 $(document.body).trigger('wc_update_cart');
             },
@@ -183,6 +202,10 @@
     $(document).on('change', '.adfy__woofc-item .adfy__woofc-quantity-input-field', function (e) {
         e.preventDefault();
         AddonifyUpdateCartAjax(this, 'update', $(this).val());
+    });
+
+    $(document).on('submit','#adfy__woofc-coupon-form', function(e){
+        e.preventDefault();
     });
 
     // product quantity update function

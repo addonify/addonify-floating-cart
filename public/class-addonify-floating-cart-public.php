@@ -98,6 +98,7 @@ class Addonify_Floating_Cart_Public
 			'ajax_add_to_cart_action' => 'addonify_floating_cart_add_to_cart',
 			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
+			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
 			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce')
 		));
 	}
@@ -236,6 +237,7 @@ class Addonify_Floating_Cart_Public
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
+				'cart_items' => WC()->cart->get_cart_contents_count(),
 			);
 
 			wp_send_json($data);
@@ -291,6 +293,24 @@ class Addonify_Floating_Cart_Public
 		die();
 	}
 
+	public function apply_coupon($request){
+		die('asdj');
+		$code = $_POST['form_data']['adfy__woofc-coupon-input-field'];
+		if(!empty($code)){
+			$coupon_apply = WC()->cart->apply_coupon($code);
+			WC()->cart->calculate_totals();
+			WC()->cart->maybe_set_cart_cookies();
+			echo json_encode($coupon_apply);
+			// if($coupon_apply){
+			// 	return rest_ensure_response("Coupon applied");
+			// } else {
+			// 	return rest_ensure_response("Invalid coupon");
+			// }			
+		} else {
+			return WP_Error('addonify_floating_cart_missing_field','Please input a coupon to apply.');
+		}
+		die;
+	}
 }
 
 

@@ -11,26 +11,32 @@
     </div>
     <div class="adfy__woofc-cart-summary">
         <ul>
-            <li class="sub-total">
-                <span class="label">Sub total:</span>
-                <span class="value">
-                    <span class="woocommerce-Price-amount subtotal-amount">
-                        <bdi>
-                            <?php echo WC()->cart->get_cart_subtotal(); ?>
-                        </bdi>
+            <?php
+            if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
+                ?>
+                <li class="sub-total">
+                    <span class="label">Sub total:</span>
+                    <span class="value">
+                        <span class="woocommerce-Price-amount subtotal-amount">
+                            <bdi>
+                                <?php echo WC()->cart->get_cart_subtotal(); ?>
+                            </bdi>
+                        </span>
                     </span>
-                </span>
-            </li>
-            <li class="discount">
-                <span class="label">Discount:</span>
-                <span class="value">
-                    <span class="woocommerce-Price-amount discount-amount">
-                        <bdi>
-                        <?php echo WC()->cart->get_cart_discount_total(); ?>
-                        </bdi>
+                </li>
+                <li class="discount">
+                    <span class="label">Discount:</span>
+                    <span class="value">
+                        <span class="woocommerce-Price-amount discount-amount">
+                            <bdi>
+                            <?php echo WC()->cart->get_cart_discount_total(); ?>
+                            </bdi>
+                        </span>
                     </span>
-                </span>
-            </li>
+                </li>
+                <?php
+            }
+            ?>
             <li class="total">
                 <span class="label">Total:</span>
                 <span class="value">

@@ -193,6 +193,9 @@ class Addonify_Floating_Cart {
 		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
 		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
 
+		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
+		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
+
 	}
 
 	/**
@@ -246,7 +249,6 @@ class Addonify_Floating_Cart {
 
 		$plugin_rest = new Addonify_Floating_Cart_Rest_Api();
 	}
-
 
 	public function admin_woocommerce_not_active_notice(){
 		global $pagenow;

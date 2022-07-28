@@ -35,4 +35,9 @@
             </button>
         </div>
     </form>
+    <?php 
+        ob_start();
+        addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+        echo ob_get_clean();
+    ?>
 </div>

@@ -91,14 +91,13 @@ class Addonify_Floating_Cart_Public
 
 		wp_enqueue_script($this->plugin_name . '-public', plugin_dir_url(__FILE__) . 'assets/build/js/public.min.js', array('jquery'), $this->version, true);
 
-		// wp_enqueue_script($this->plugin_name . '-custom-jquery', plugin_dir_url(__FILE__) . 'assets/src/js/scripts/custom-jQuery.js', array('jquery'), $this->version, true);
-
 		wp_localize_script($this->plugin_name . '-public', 'addonifyFloatingCartJSObject', array(
 			'ajax_url' => admin_url('admin-ajax.php'),
 			'ajax_add_to_cart_action' => 'addonify_floating_cart_add_to_cart',
 			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
 			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
+			'ajax_remove_coupon' => 'addonify_floating_cart_remove_coupon',
 			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce')
 		));
 	}
@@ -114,7 +113,12 @@ class Addonify_Floating_Cart_Public
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
 	}
-
+	/**
+	 * Function for adding items in cart through woocommerce fragments
+	 * 
+	 * @param mixed $fragments
+	 * @return array $fragments
+	 */
 	public static function addonify_floating_cart_add_to_cart_fragment($fragments){
 		ob_start();
 		?>
@@ -167,6 +171,11 @@ class Addonify_Floating_Cart_Public
 		return $fragments;
 	}
 
+	/**
+	 * Function updating cart fragments through ajax call
+	 * returns array of cart fragments
+	 * @return array 
+	 */
 	public static function addonify_floating_cart_add_to_cart_ajax()
 	{
 
@@ -221,6 +230,11 @@ class Addonify_Floating_Cart_Public
 
 	}
 
+	/**
+	 * function for ajax call to remove item from cart
+	 * prints array of cart fragments
+	 * @since    1.0.0
+	 */
 	public function remove_from_cart()
 	{
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
@@ -247,6 +261,12 @@ class Addonify_Floating_Cart_Public
 		die();
 	}
 
+	/**
+	 * function for ajax call to update item in cart
+	 * prints array of cart fragments
+	 * @since    1.0.0
+	 * 
+	 */
 	public function update_cart_item(){
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
@@ -293,23 +313,83 @@ class Addonify_Floating_Cart_Public
 		die();
 	}
 
-	public function apply_coupon($request){
-		die('asdj');
-		$code = $_POST['form_data']['adfy__woofc-coupon-input-field'];
-		if(!empty($code)){
-			$coupon_apply = WC()->cart->apply_coupon($code);
-			WC()->cart->calculate_totals();
-			WC()->cart->maybe_set_cart_cookies();
-			echo json_encode($coupon_apply);
-			// if($coupon_apply){
-			// 	return rest_ensure_response("Coupon applied");
-			// } else {
-			// 	return rest_ensure_response("Invalid coupon");
-			// }			
+	/**
+	 * function for ajax call to apply coupon in cart
+	 * prints array of coupon div and if the coupon was applied status
+	 * @since    1.0.0
+	 */
+	public function apply_coupon(){
+		$coupon_apply = false;
+		if(!empty($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			$code = esc_html($_POST['form_data']);
+			if(!empty($code)){
+				if(in_array($code, WC()->cart->get_applied_coupons())){
+					$status = "Coupon already applied.";
+				} else {
+					$coupon_apply = WC()->cart->apply_coupon($code);
+					WC()->cart->check_cart_coupons();
+					WC()->cart->calculate_totals();
+					WC()->cart->maybe_set_cart_cookies();
+					$status = $coupon_apply ? "Coupon applied" : "Invalid Coupon Code.";
+				}
+				ob_start();
+				addonify_floating_cart_get_template('cart-sections/footer.php');
+				$cart_summary = ob_get_clean();
+
+				ob_start();
+				addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+				$coupons = ob_get_clean();
+			} else {
+				$status = 'Please input a coupon to apply.';
+			}
 		} else {
-			return WP_Error('addonify_floating_cart_missing_field','Please input a coupon to apply.');
+			$status = 'Source verification error.';
 		}
-		die;
+		echo json_encode(array(
+			'couponApplied' => $coupon_apply,
+			'status' => $status,
+			'html' => array(
+				'.adfy__woofc-colophon' => $cart_summary,
+				'#adfy__woofc-coupons-available' => $coupons
+			)
+		));die;
+	}
+
+	/**
+	 * function for ajax call to remove coupon in cart
+	 * prints array of coupon div and if the coupon was removed status
+	 * @since    1.0.0
+	 */
+	public function remove_coupon(){
+		$coupon_remove = false;
+		if(!empty($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			$code = esc_html($_POST['form_data']);
+			if(!empty($code)){
+				$coupon_remove = WC()->cart->remove_coupon($code);
+				if($coupon_remove){
+					ob_start();
+					addonify_floating_cart_get_template('cart-sections/footer.php');
+					$cart_summary = ob_get_clean();
+
+					ob_start();
+					addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+					$coupons = ob_get_clean();
+				}
+				$status = $coupon_remove ? "Coupon removed" : "Invalid Coupon Code.";
+			} else {
+				$status = 'Please input a coupon to apply.';
+			}
+		} else {
+			$status = 'Source verification error.';
+		}
+		echo json_encode(array(
+			'couponRemoved' => $coupon_remove,
+			'status' => $status,
+			'html' => array(
+				'.adfy__woofc-colophon' => $cart_summary,
+				'#adfy__woofc-coupons-available' => $coupons
+			)
+		));die;
 	}
 }
 

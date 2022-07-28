@@ -51,8 +51,8 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position')
             ),
             'cart_items_number_badge_position' => array(
-                'label'			  => __( 'Item\'s number Batch position', 'addonify-floating-cart' ),
-                'description'     => 'Item\'s number Batch position on the cart-toggle button.',
+                'label'			  => __( 'Item &apos; s number Batch position', 'addonify-floating-cart' ),
+                'description'     => 'Item &apos; s number Batch position on the cart-toggle button.',
                 'type'            => 'select',
                 'choices' => array(
                     'top-right'     => __( 'Top Right', 'addonify-floating-cart' ),

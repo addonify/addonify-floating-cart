@@ -196,6 +196,9 @@ class Addonify_Floating_Cart {
 		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
 		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
 
+		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_remove_coupon', $plugin_public, 'remove_coupon');
+		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_coupon', $plugin_public, 'remove_coupon');
+
 	}
 
 	/**

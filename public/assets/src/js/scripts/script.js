@@ -104,21 +104,8 @@
             // Handle the form submit event.
             $(couponFormSubmitButtonEle).on('click', function (e) {
 
-                e.preventDefault();
+                // e.preventDefault();
                 console.log('📌 Coupon form submit button is clicked.');
-                let data = $(this).serialize();
-                $.ajax({
-                    'url' : addonifyFloatingCartJSObject.ajax_url,
-                    'method' : 'post',
-                    'data' : {
-                        action: addonifyFloatingCartJSObject.ajax_apply_coupon,
-                        nonce: addonifyFloatingCartJSObject.nonce,
-                        form_data: data
-                    },
-                    'succcess' : function(data){
-                        console.log(data);
-                    }
-                });
             })
         },
     }
@@ -126,7 +113,7 @@
     $(document).ready(function () {
 
         addonifyFloatingCart.init();
-
+        $('.adfy__woofc-alert').hide();
     });
 
 
@@ -204,8 +191,65 @@
         AddonifyUpdateCartAjax(this, 'update', $(this).val());
     });
 
+    // apply coupon on cart items
     $(document).on('submit','#adfy__woofc-coupon-form', function(e){
         e.preventDefault();
+        let couponField = $(this).find('input[name=adfy__woofc-coupon-input-field]');
+        let data = couponField.val();
+        $.ajax({
+            'url' : addonifyFloatingCartJSObject.ajax_url,
+            'method' : 'post',
+            'data' : {
+                action: addonifyFloatingCartJSObject.ajax_apply_coupon,
+                nonce: addonifyFloatingCartJSObject.nonce,
+                form_data: data
+            },
+            'success' : function(data){
+                let result = JSON.parse(data);
+                if(result.couponApplied == true){
+                    couponField.val('');
+                    $.each(result.html, function(i, val){
+                        $(i).replaceWith(val);
+                    })
+                    show_coupon_alert_success(result.status);
+                } else {
+                    show_coupon_alert_error(result.status);
+                }
+            },
+            'error' : function(e){
+                alert('Error processing request');
+            }
+        });
+    });
+
+    // remove applied coupon from cart
+    $(document).on('click', '.removeCoupon', function(){
+        let coupon_div = $(this).closest('li');
+        let coupon = $(this).attr('data-coupon');
+        $.ajax({
+            'url' : addonifyFloatingCartJSObject.ajax_url,
+            'method' : 'post',
+            'data' : {
+                action: addonifyFloatingCartJSObject.ajax_remove_coupon,
+                nonce: addonifyFloatingCartJSObject.nonce,
+                form_data: coupon
+            },
+            'success' : function(data){
+                let result = JSON.parse(data);
+                if(result.couponRemoved == true){
+                    $.each(result.html, function(i, val){
+                        $(i).replaceWith(val);
+                    })
+                    show_coupon_alert_success(result.status);
+                } else {
+                    show_coupon_alert_error(result.status);
+                }
+                coupon_div.remove();
+            },
+            'error' : function(e){
+                alert('Error processing request');
+            }
+        });
     });
 
     // product quantity update function
@@ -278,6 +322,41 @@
                 console.log("Error processing request");
             }
         });
+    }
+    
+    //show coupon apply success alert message
+    function show_coupon_alert_success(msg = false){
+        if(msg !== false){
+            $('.adfy__woofc-alert.success').html(
+                `<p class="adfy__woofc-alert-text">
+                    <svg fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                    `+msg+`
+                </p>`
+            );
+        }
+        $('.adfy__woofc-alert.success').fadeIn();
+        setTimeout(function(){
+            $('.adfy__woofc-alert.success').fadeOut();
+        }, 3000);
+    }
+    //show coupon apply failure alert message
+    function show_coupon_alert_error(msg = false){
+        if(msg !== false){
+            $('.adfy__woofc-alert.error').html(
+                `<p class="adfy__woofc-alert-text">
+                    <svg fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                    `+msg+`
+                </p>`
+            );
+        }
+        $('.adfy__woofc-alert.error').fadeIn();
+        setTimeout(function(){
+            $('.adfy__woofc-alert.error').fadeOut();
+        }, 3000);
     }
 
 })(jQuery);

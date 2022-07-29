@@ -1,6 +1,7 @@
 <?php
 ?>
 <footer class="adfy__woofc-colophon">
+    <?php if ( wc_coupons_enabled() ) { ?>
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">
@@ -9,8 +10,9 @@
             Have a coupon? <a href="#" id="adfy__woofc-coupon-trigger" class="adfy__woofc-link has-underline">Click here to apply</a>
         </p>
     </div>
+    <?php } ?>
     <div class="adfy__woofc-cart-summary">
-        <ul>
+        <ul> 
             <?php
             if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
                 ?>

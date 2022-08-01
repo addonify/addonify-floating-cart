@@ -22,7 +22,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
         return apply_filters(
             'addonify_floating_cart/settings_fields_defaults',
             array(
-                // main cart settings options
+                // Main cart settings options
                 'enable_floating_cart' => true, 
                 'open_cart_modal_immediately_after_add_to_cart' => false,
                 'open_cart_modal_after_click_on_view_cart' => true,
@@ -43,13 +43,13 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_toggle_button_padding' => '0',
                 'cart_modal_toggle_button_side_offset' => '',
                 'cart_modal_toggle_button_vertical_offset' => '',
-                // toast notification options
+                // Toast notification options
                 'display_toast_notification' => true, 
                 'toast_notification_display_position' => 'top-right',
-                'open_cart_modal_on_notification_button_click' => true, 
+                'open_cart_modal_on_notification_button_click' => false, 
                 'add_to_cart_notification_text' => 'Product has been added to cart.',  
-                'close_notification_after_time' => '3', 
-                'display_close_notification_button' => true, 
+                'close_notification_after_time' => 5, 
+                'display_close_notification_button' => false, 
                 'toast_notification_background_color' => '#67C23A',
                 'toast_notification_text_color' => '#FFFFFF',
                 'toast_notification_button_background_color' => 'rgba(0, 0, 0, 0.2)',
@@ -58,47 +58,47 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'toast_notification_button_on_hover_label_color' => 'white',
                 'toast_notification_side_offset' => '',
                 'toast_notification_top_bottom_offset' => '',
-                // cart modal options
+                // Cart modal options
                 'cart_modal_display_layout' => '',
                 'cart_title' => 'Cart', 
                 'display_cart_items_number' => true, 
                 'close_cart_modal_on_overlay_click' => true, 
                 'display_continue_shopping_button' => true, 
-                'continue_shopping_button_label' => 'Continue Shopping', 
+                'continue_shopping_button_label' => '', 
                 'checkout_button_label' => 'Checkout', 
-                'cart_modal_background_color' => '#FFFFFF',//
-                'cart_modal_overlay_color' => '',//
-                'cart_modal_title_color' => '#000',//
-                'cart_modal_badge_background_color' => '',//
-                'cart_modal_badge_text_color' => '',//
-                'cart_modal_close_icon_color' => '',//
-                'cart_modal_product_title_color' => '',//
-                'cart_modal_product_title_on_hover_color' => '',//
-                'cart_modal_product_quantity_price_color' => '#000',//
-                'cart_modal_product_remove_button_background_color' => '',//
-                'cart_modal_product_remove_button_icon_color' => '',//
-                'cart_modal_product_remove_button_on_hover_background_color' => '',//
-                'cart_modal_product_remove_button_on_hover_icon_color' => '',//
-                'cart_modal_content_text_color' => '',//
-                'cart_modal_content_link_color' => '',//
-                'cart_modal_content_link_on_hover_color' => '',//
-                'cart_modal_border_color' => '',//
-                'cart_modal_input_field_background_color' => '',//
-                'cart_modal_input_field_text_color' => '',//
-                'cart_modal_input_field_border_color' => '',///
-                'cart_modal_primary_button_background_color' => '',//
-                'cart_modal_primary_button_label_color' => '',//
-                'cart_modal_primary_button_border_color' => '',//
-                'cart_modal_primary_button_on_hover_background_color' => '',//
-                'cart_modal_primary_button_on_hover_label_color' => '',//
-                'cart_modal_primary_button_on_hover_border_color' => '',//
-                'cart_modal_secondary_button_background_color' => '',//
-                'cart_modal_secondary_button_label_color' => '',//
-                'cart_modal_secondary_button_border_color' => '',//
-                'cart_modal_secondary_button_on_hover_background_color' => '',//
-                'cart_modal_secondary_button_on_hover_label_color' => '',//
-                'cart_modal_secondary_button_on_hover_border_color' => '',//
-                'cart_modal_width' => '',//
+                'cart_modal_background_color' => '',
+                'cart_modal_overlay_color' => '',
+                'cart_modal_title_color' => '',
+                'cart_modal_badge_background_color' => '',
+                'cart_modal_badge_text_color' => '',
+                'cart_modal_close_icon_color' => '',
+                'cart_modal_product_title_color' => '',
+                'cart_modal_product_title_on_hover_color' => '',
+                'cart_modal_product_quantity_price_color' => '',
+                'cart_modal_product_remove_button_background_color' => '',
+                'cart_modal_product_remove_button_icon_color' => '',
+                'cart_modal_product_remove_button_on_hover_background_color' => '',
+                'cart_modal_product_remove_button_on_hover_icon_color' => '',
+                'cart_modal_content_text_color' => '',
+                'cart_modal_content_link_color' => '',
+                'cart_modal_content_link_on_hover_color' => '',
+                'cart_modal_border_color' => '',
+                'cart_modal_input_field_background_color' => '',
+                'cart_modal_input_field_text_color' => '',
+                'cart_modal_input_field_border_color' => '',
+                'cart_modal_primary_button_background_color' => '',
+                'cart_modal_primary_button_label_color' => '',
+                'cart_modal_primary_button_border_color' => '',
+                'cart_modal_primary_button_on_hover_background_color' => '',
+                'cart_modal_primary_button_on_hover_label_color' => '',
+                'cart_modal_primary_button_on_hover_border_color' => '',
+                'cart_modal_secondary_button_background_color' => '',
+                'cart_modal_secondary_button_label_color' => '',
+                'cart_modal_secondary_button_border_color' => '',
+                'cart_modal_secondary_button_on_hover_background_color' => '',
+                'cart_modal_secondary_button_on_hover_label_color' => '',
+                'cart_modal_secondary_button_on_hover_border_color' => '',
+                'cart_modal_width' => '',
                 // cart coupon options
                 'display_cart_coupon_section' => true,
                 'display_available_coupons' => false,
@@ -206,27 +206,27 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                 'settings' => array(
                     'sections' => array(
                         'general' => array(
-                            'title' => __('General Cart Settings', 'addonify-floating-cart'),
+                            'title' => __('General', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_cart_options_settings()
                         ),
                         'button' => array(
-                            'title' => __('Toggle Button Settings', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_toggle_cart_button_settings()
                         ),
                         'toast-notification' => array(
-                            'title' => __('Toast Notification Settings', 'addonify-floating-cart'),
+                            'title' => __('Toast Notification Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_toast_notification_settings()
                         ),
                         'cart' => array(
-                            'title' => __('Cart UI Settings', 'addonify-floating-cart'),
+                            'title' => __('Cart Drawer/Modal Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_cart_display_settings()
                         ),
                         'coupon' => array(
-                            'title' => __('Coupon Settings', 'addonify-floating-cart'),
+                            'title' => __('Coupon Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_coupon_settings()
                         ),
@@ -235,18 +235,21 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                 'styles' => array(
                     'sections' => array(
                         'button' => array(
-                            'title' => __('Toggle Button Designs', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toggle_cart_button_designs()
                         ),
                         'toast-notification' => array(
-                            'title' => __('Toast Notification Designs', 'addonify-floating-cart'),
+                            'title' => __('Toast Notification Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toast_notification_designs()
                         ),
                         'cart' => array(
-                            'title' => __('Cart UI Designs', 'addonify-floating-cart'),
+                            'title' => __('Cart Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_display_designs()
                         ),
                     ),

@@ -11,7 +11,7 @@
         </div>
         <?php
             if ( wc_coupons_enabled() ) {
-                addonify_floating_cart_get_template( 'cart-sections/coupon.php' );
+                do_action('addonify_floating_cart_get_cart_coupon');
             }
         ?>
 </aside>

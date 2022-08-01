@@ -104,8 +104,11 @@ class Addonify_Floating_Cart_Public
 
 	public function footer_content()
 	{
-		do_action('addonify_floating_cart_add');
-
+		if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+			return;
+		} else{
+			do_action('addonify_floating_cart_add');
+		}
 	}
 
 	public function load_dependencies(){
@@ -131,40 +134,16 @@ class Addonify_Floating_Cart_Public
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 		ob_start();
-			addonify_floating_cart_get_template( 'cart-sections/body.php' );
+		do_action('addonify_floating_cart_get_cart_body', array());
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
 		ob_start();
-			addonify_floating_cart_get_template( 'cart-sections/shipping-bar.php' );
+		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
-		ob_start();
-		?>
-			<span class="woocommerce-Price-amount subtotal-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_subtotal(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.subtotal-amount'] = ob_get_clean();
 
 		ob_start();
-		?>
-			<span class="woocommerce-Price-amount discount-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_discount_total(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.discount-amount'] = ob_get_clean();
+		do_action('addonify_floating_cart_get_cart_footer',array());
+		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
-		ob_start();
-		?>
-			<span class="woocommerce-Price-amount total-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_total(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.total-amount'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
 
@@ -191,7 +170,7 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 
 		ob_start();
-			addonify_floating_cart_get_template( 'cart-sections/shipping-bar.php' );
+		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
@@ -199,7 +178,7 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		do_action('addonify_floating_cart_get_cart_coupons_available', array());
 		$fragments['#adfy__woofc-coupons-available'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
@@ -397,6 +376,10 @@ class Addonify_Floating_Cart_Public
 		));die;
 	}
 
+	/**
+	 * Function to check if all the applied coupons are valid
+	 * Rejects coupons that are no longer valid in cart
+	 */
 	public function check_coupons(){
 		WC()->cart->check_cart_coupons();
 	}

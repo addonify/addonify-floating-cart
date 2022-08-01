@@ -4,8 +4,8 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
     function addonify_floating_cart_cart_options_settings(){
         return array(
             'enable_floating_cart' => array(
-                'label'			  => __( 'Enable Floating Cart', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to enable the floating cart in frontend.',
+                'label'			  => __( 'Enable floating cart', 'addonify-floating-cart' ),
+                'description'     => __( 'Once enabled, floating cart will be displayed on the front-end.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
                 'badge'           => 'Required',
                 'badgeType'       => '',
@@ -13,20 +13,16 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'value'           => addonify_floating_cart_get_setting_field_value('enable_floating_cart')
             ),
             'open_cart_modal_immediately_after_add_to_cart' => array(
-                'label'			  => __( 'Open Floating Cart After Adding Item to Cart', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to enable immediately opening floating cart when an item is added to cart.',
+                'label'			  => __( 'Open floating cart after adding item to cart', 'addonify-floating-cart' ),
+                'description'     => __( 'Enable this option to immediately toggle floating cart when an item is added to cart.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_immediately_after_add_to_cart' )
             ),
             'open_cart_modal_after_click_on_view_cart' => array(
-                'label'			  => __( 'Open Floating Cart On click on View Cart', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to enable opening the floating cart when view cart button is clicked.',
+                'label'			  => __( 'Open floating cart on click on view cart', 'addonify-floating-cart' ),
+                'description'     => __( 'Enable this to enable opening the floating cart when view cart button is clicked.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
             ),

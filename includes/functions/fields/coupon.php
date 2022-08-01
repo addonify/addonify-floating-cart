@@ -4,38 +4,31 @@ if(!function_exists('addonify_floating_cart_coupon_settings')){
     function addonify_floating_cart_coupon_settings(){
         return array(
             'display_cart_coupon_section' => array(
-                'label'			  => __( 'Display Cart Coupon Section', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to display coupon section.',
+                'label'			  => __( 'Display cart coupon section', 'addonify-floating-cart' ),
+                'description'     => __( 'Enable this to display coupon section.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_cart_coupon_section')
             ),
             'display_available_coupons' => array(
-                'label'			  => __( 'Display Available Coupons', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to display available coupons.',
+                'label'			  => __( 'Display available coupons', 'addonify-floating-cart' ),
+                'description'     => __( 'Enable this to display available coupons.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
                 'dependent'       => array('display_cart_coupon_section'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_available_coupons')
             ),
             'display_applied_coupons' => array(
-                'label'			  => __( 'Display Applied Coupons', 'addonify-floating-cart' ),
-                'description'     => 'Enable this to display applied coupons.',
+                'label'			  => __( 'Display applied coupons', 'addonify-floating-cart' ),
+                'description'     => __( 'Enable this to display applied coupons.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
                 'dependent'       => array('display_cart_coupon_section'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_applied_coupons')
             ),
             'cart_apply_coupon_button_label' => array(
-                'label'			  => __( 'Cart Apply Button Label', 'addonify-floating-cart' ),
-                'description'     => 'Label to display on Cart Apply Button.',
+                'label'			  => __( 'Cart apply button label', 'addonify-floating-cart' ),
+                'description'     => __( 'Label to display on Cart Apply Button.', 'addonify-floating-cart' ),
                 'type'            => 'text',
-                'badge'           => 'Optional',
-                'badgeType'       => '',
+                'placeholder'     => __( 'Apply coupon', 'addonify-floating-cart' ),
                 'dependent'       => array('display_cart_coupon_section'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_apply_coupon_button_label')
             ),

@@ -2,6 +2,8 @@
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php';
 
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/coupon.php';
+
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toggle-button.php';
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toast-notification.php';
@@ -96,6 +98,13 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_secondary_button_on_hover_label_color' => '',//
                 'cart_modal_secondary_button_on_hover_border_color' => '',//
                 'cart_modal_width' => '',//
+                // cart coupon options
+                'display_cart_coupon_section' => true,
+                'display_available_coupons' => false,
+                'display_applied_coupons' => true,
+                'cart_apply_coupon_button_label' => 'Apply Coupon',
+                'cart_apply_coupon_button_background_color' => '',
+                'cart_apply_coupon_button_background_color_on_hover' => '',
             )
         );
     }
@@ -215,6 +224,11 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                             'description' => '',
                             'fields' => addonify_floating_cart_cart_display_settings()
                         ),
+                        'coupon' => array(
+                            'title' => __('Coupon Settings', 'addonify-floating-cart'),
+                            'description' => '',
+                            'fields' => addonify_floating_cart_coupon_settings()
+                        ),
                     ),
                 ),
                 'styles' => array(
@@ -240,3 +254,108 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
         );
     }
 }
+
+
+/**
+ * Update plugin's setting options' values.
+ * 
+ * Checks the type of each setting options, sanitizes the value and updates the option's value.
+ * 
+ * @since 1.0.0
+ * @param array $settings array of options values.
+ * @return boolean true on successful update else false.
+ */
+if ( ! function_exists( 'addonify_floating_cart_update_settings' ) ) {
+
+    function addonify_floating_cart_update_settings( $settings = '' ) {
+
+        if ( 
+            is_array( $settings ) &&
+            count( $settings ) > 0
+        ) {
+            $setting_fields = addonify_floating_cart_settings_fields();
+
+            foreach ( $settings as $id => $value ) {
+
+                $sanitized_value = null;
+
+                $setting_type = $setting_fields[$id]['type'];
+
+                switch ( $setting_type ) {
+                    case 'text':
+                        $sanitized_value = sanitize_text_field( $value );
+                        break;
+                    case 'textarea':
+                        $sanitized_value = sanitize_textarea_field( $value );
+                        break;
+                    case 'switch':
+                        $sanitized_value = ( $value == true ) ? '1' : '0';
+                        break;
+                    case 'number':
+                        $sanitized_value = (int) $value;
+                        break;
+                    case 'color':
+                        $sanitized_value = sanitize_text_field( $value );
+                        break;
+                    case 'select':
+                        $setting_choices = $setting_fields[$id]['choices'];
+                        $sanitized_value = ( array_key_exists( $value, $setting_choices ) ) ? sanitize_text_field( $value ) : $setting_choices[0];
+                        break;
+                    case 'checkbox':
+                        $sanitize_args = array(
+                            'choices' => $settings_fields[$key]['choices'],
+                            'values' => $value
+                        );
+                        $sanitized_value = addonify_floating_cart_sanitize_multi_choices( $sanitize_args );
+                        $sanitized_value = json_encode( $value );                     
+                        break;
+                    default:
+                        $sanitized_value = sanitize_text_field( $value );
+                }
+
+                if ( ! update_option( ADDONIFY_FLOATING_CART_DB_INITIALS . $id, $sanitized_value ) ) {
+                    return false;
+                }
+            }
+
+            return true;
+        }        
+    }
+}
+
+
+/**
+ * Sanitize multiple choices values.
+ * 
+ * @since 1.0.0
+ * @param array $args
+ * @return array $sanitized_values
+ */
+if ( ! function_exists( 'addonify_floating_cart_sanitize_multi_choices' ) ) {
+
+    function addonify_floating_cart_sanitize_multi_choices( $args ) {
+
+        if ( 
+            is_array( $args['choices'] ) && 
+            count( $args['choices'] ) && 
+            is_array( $args['values'] ) && 
+            count( $args['values'] ) 
+        ) {
+
+            $sanitized_values = array();
+
+            foreach ( $args['values'] as $value ) {
+                
+                if ( array_key_exists( $value, $args['choices'] ) ) {
+
+                    $sanitized_values[] = $value;
+                }
+            }
+
+            return $sanitized_values;
+        }
+
+        return array();
+    }
+}
+

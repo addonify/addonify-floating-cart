@@ -49,9 +49,7 @@
                 <?php 
                 }
             } else {
-                ?>
-                <h3 class="text-center">No products in cart.</h3>
-                <?php
+                echo esc_html( apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'addonify-floating-cart' ) ) );
             }
         ?>
     </div><!-- // adfy__woofc-content-entry -->

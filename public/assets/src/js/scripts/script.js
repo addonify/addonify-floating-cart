@@ -160,7 +160,7 @@
 
                 if(response.cart_items == 0){
                     $('.adfy__woofc-content-entry').html(
-                        '<p class="text-center">No items to display</p>'
+                        response.no_data_html
                     );
                 }
 
@@ -236,6 +236,7 @@
             },
             'success' : function(data){
                 let result = JSON.parse(data);
+                console.log(result);
                 if(result.couponRemoved == true){
                     $.each(result.html, function(i, val){
                         $(i).replaceWith(val);

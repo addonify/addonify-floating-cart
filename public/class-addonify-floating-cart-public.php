@@ -195,34 +195,12 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
-		?>
-			<span class="woocommerce-Price-amount subtotal-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_subtotal(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.subtotal-amount'] = ob_get_clean();
+		do_action('addonify_floating_cart_get_cart_footer',array());
+		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		?>
-			<span class="woocommerce-Price-amount discount-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_discount_total(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.discount-amount'] = ob_get_clean();
-
-		ob_start();
-		?>
-			<span class="woocommerce-Price-amount total-amount">
-				<bdi>
-					<?php echo WC()->cart->get_cart_total(); ?>
-				</bdi>
-			</span>
-		<?php 	 
-		$fragments['.total-amount'] = ob_get_clean();
+		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		$fragments['#adfy__woofc-coupons-available'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
 
@@ -247,12 +225,18 @@ class Addonify_Floating_Cart_Public
 
 			WC()->cart->calculate_totals();
 			WC()->cart->maybe_set_cart_cookies();
+			$this->check_coupons();
+
+			$contents_count = WC()->cart->get_cart_contents_count();
 
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
-				'cart_items' => WC()->cart->get_cart_contents_count(),
+				'cart_items' => $contents_count,
 			);
+			if($contents_count === 0){
+				$data['no_data_html'] = esc_html( apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'addonify-floating-cart' ) ) );
+			}
 
 			wp_send_json($data);
 		} else {
@@ -297,6 +281,7 @@ class Addonify_Floating_Cart_Public
 					break;
 				}
 			}
+			$this->check_coupons();
 
 			WC()->cart->calculate_totals();
 			WC()->cart->maybe_set_cart_cookies();		
@@ -326,31 +311,44 @@ class Addonify_Floating_Cart_Public
 				if(in_array($code, WC()->cart->get_applied_coupons())){
 					$status = "Coupon already applied.";
 				} else {
-					$coupon_apply = WC()->cart->apply_coupon($code);
-					WC()->cart->check_cart_coupons();
-					WC()->cart->calculate_totals();
-					WC()->cart->maybe_set_cart_cookies();
-					$status = $coupon_apply ? "Coupon applied" : "Invalid Coupon Code.";
+					$coupon = new WC_Coupon($code);
+					$discounts = new WC_Discounts( WC()->cart);
+					$coupon_status = $discounts->is_coupon_valid($coupon);
+					if(is_bool($coupon_status)){
+						$coupon_apply = WC()->cart->apply_coupon($code);
+						WC()->cart->calculate_totals();
+						WC()->cart->maybe_set_cart_cookies();
+						$status = $coupon_apply ? "Coupon applied" : "Invalid Coupon Code...";
+					} else {
+						$status = $coupon_status->get_error_message();
+					}
 				}
-				ob_start();
-				addonify_floating_cart_get_template('cart-sections/footer.php');
-				$cart_summary = ob_get_clean();
 
-				ob_start();
-				addonify_floating_cart_get_template('cart-sections/coupons-available.php');
-				$coupons = ob_get_clean();
 			} else {
 				$status = 'Please input a coupon to apply.';
 			}
 		} else {
 			$status = 'Source verification error.';
 		}
+		$this->check_coupons();
+		ob_start();
+			do_action('addonify_floating_cart_get_cart_footer');
+		$cart_summary = ob_get_clean();
+
+		ob_start();
+		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		$coupons = ob_get_clean();
+
+		ob_start();
+		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+		$shippping_bar = ob_get_clean();
 		echo json_encode(array(
 			'couponApplied' => $coupon_apply,
 			'status' => $status,
 			'html' => array(
 				'.adfy__woofc-colophon' => $cart_summary,
-				'#adfy__woofc-coupons-available' => $coupons
+				'#adfy__woofc-coupons-available' => $coupons,
+				'.adfy__woofc-shipping-bar' => $shippping_bar
 			)
 		));die;
 	}
@@ -366,15 +364,8 @@ class Addonify_Floating_Cart_Public
 			$code = esc_html($_POST['form_data']);
 			if(!empty($code)){
 				$coupon_remove = WC()->cart->remove_coupon($code);
-				if($coupon_remove){
-					ob_start();
-					addonify_floating_cart_get_template('cart-sections/footer.php');
-					$cart_summary = ob_get_clean();
-
-					ob_start();
-					addonify_floating_cart_get_template('cart-sections/coupons-available.php');
-					$coupons = ob_get_clean();
-				}
+				WC()->cart->calculate_totals();
+				WC()->cart->maybe_set_cart_cookies();
 				$status = $coupon_remove ? "Coupon removed" : "Invalid Coupon Code.";
 			} else {
 				$status = 'Please input a coupon to apply.';
@@ -382,14 +373,32 @@ class Addonify_Floating_Cart_Public
 		} else {
 			$status = 'Source verification error.';
 		}
+		$this->check_coupons();
+		ob_start();
+		addonify_floating_cart_get_template('cart-sections/footer.php');
+		$cart_summary = ob_get_clean();
+
+		ob_start();
+		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		$coupons = ob_get_clean();
+
+		ob_start();
+		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+		$shippping_bar = ob_get_clean();
+
 		echo json_encode(array(
 			'couponRemoved' => $coupon_remove,
 			'status' => $status,
 			'html' => array(
 				'.adfy__woofc-colophon' => $cart_summary,
-				'#adfy__woofc-coupons-available' => $coupons
+				'#adfy__woofc-coupons-available' => $coupons,
+				'.adfy__woofc-shipping-bar' => $shippping_bar
 			)
 		));die;
+	}
+
+	public function check_coupons(){
+		WC()->cart->check_cart_coupons();
 	}
 }
 

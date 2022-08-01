@@ -29,6 +29,8 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'label'			  => __( 'Close toast notification after "x" seconds', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
+                'min'             => 1,
+                'max'             => 120,
                 'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('close_notification_after_time')
             ),

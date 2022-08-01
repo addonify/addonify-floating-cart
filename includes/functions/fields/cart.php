@@ -8,7 +8,7 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'description'     => __( 'Once enabled, floating cart will be displayed on the front-end.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
                 'badge'           => 'Required',
-                'badgeType'       => 'success',
+                'badgeType'       => '',
                 'dependent'       => array(),
                 'value'           => addonify_floating_cart_get_setting_field_value('enable_floating_cart')
             ),

@@ -4,8 +4,7 @@ if(!function_exists('addonify_floating_cart_cart_display_settings')){
     function addonify_floating_cart_cart_display_settings(){
         return array(
             'cart_modal_display_layout' => array(
-                'label'			  => __( '', 'addonify-floating-cart' ),
-                'description'     => 'Choose from different types of layouts.',
+                'label'			  => __( 'Floating cart layout', 'addonify-floating-cart' ),
                 'type'            => 'select',
                 'choices' => array(
                     'layout-1'     => __( 'Layout 1', 'addonify-floating-cart' ),
@@ -16,56 +15,41 @@ if(!function_exists('addonify_floating_cart_cart_display_settings')){
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_display_layout')
             ),
             'cart_title' => array(
-                'label'			  => __( 'Cart Title', 'addonify-floating-cart' ),
-                'description'     => 'Title of floating cart displayed at top.',
+                'label'			  => __( 'Cart title', 'addonify-floating-cart' ),
+                'description'     => 'Displayed inside cart header.',
                 'type'            => 'text',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_title')
             ),
             'display_cart_items_number' => array(
-                'label'			  => __( 'Display Cart Items Count', 'addonify-floating-cart' ),
-                'description'     => 'Cart Items Count displayed at top.',
+                'label'			  => __( 'Display cart items count', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_cart_items_number')
             ),
             'close_cart_modal_on_overlay_click' => array(
                 'label'			  => __( 'Close cart on overlay click', 'addonify-floating-cart' ),
-                'description'     => 'Close cart on overlay click.',
                 'type'            => 'switch',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('close_cart_modal_on_overlay_click')
             ),
             'display_continue_shopping_button' => array(
-                'label'			  => __( 'Display Continue Shopping Button', 'addonify-floating-cart' ),
-                'description'     => 'Check if continue shopping button should be displayed.',
+                'label'			  => __( 'Display continue shopping button', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')
             ),
             'continue_shopping_button_label' => array(
-                'label'			  => __( 'Continue Shopping Button Label', 'addonify-floating-cart' ),
-                'description'     => 'Label for Continue Shopping button.',
+                'label'			  => __( 'Continue shopping button label', 'addonify-floating-cart' ),
                 'type'            => 'text',
-                'badge'           => 'Required',
-                'badgeType'       => '',
+                'placeholder'     => 'Continue shopping',
                 'dependent'       => array('display_continue_shopping_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')
             ),
             'checkout_button_label' => array(
-                'label'			  => __( 'Checkout Button Label', 'addonify-floating-cart' ),
-                'description'     => 'Label of checkout button.',
+                'label'			  => __( 'Checkout button label', 'addonify-floating-cart' ),
                 'type'            => 'text',
-                'badge'           => 'Required',
-                'badgeType'       => '',
+                'placeholder'     => 'Checkout',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('checkout_button_label')
             ),

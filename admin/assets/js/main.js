@@ -630,9 +630,10 @@ __webpack_require__.r(__webpack_exports__);
       set: function set(newValue) {
         emit("update:modelValue", newValue);
       }
-    });
-    var min = props.min,
-        max = props.max;
+    }); //const { min, max } = props;
+
+    var min = parseInt(props.min);
+    var max = parseInt(props.max);
     var __returned__ = {
       props: props,
       emit: emit,
@@ -694,8 +695,8 @@ __webpack_require__.r(__webpack_exports__);
         emit("update:modelValue", newValue);
       }
     });
-    var min = props.min,
-        max = props.max;
+    var min = parseInt(props.min);
+    var max = parseInt(props.max);
     var __returned__ = {
       props: props,
       emit: emit,
@@ -2695,7 +2696,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "option-box-title"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.section.title), 513
   /* TEXT, NEED_PATCH */
-  )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.props.sectionkey == 'general' ? true : $setup.store.options.enable_product_comparison]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.props.sectionkey == 'general' ? true : $setup.store.options.enable_floating_cart]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),

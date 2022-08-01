@@ -47,7 +47,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_toast_notification' => true,
                 'toast_notification_display_position' => 'top-right',
                 'open_cart_modal_on_notification_button_click' => false,
-                'add_to_cart_notification_text' => 'Product has been added to cart.',
+                'added_to_cart_notification_text' => 'Product has been added to cart.',
                 'close_notification_after_time' => 5,
                 'display_close_notification_button' => false,
                 'toast_notification_background_color' => '',
@@ -64,7 +64,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_cart_items_number' => true,
                 'close_cart_modal_on_overlay_click' => true,
                 'display_continue_shopping_button' => true,
-                'continue_shopping_button_label' => '',
+                'continue_shopping_button_label' => 'Close',
                 'checkout_button_label' => 'Checkout',
                 'cart_modal_background_color' => '',
                 'cart_modal_overlay_color' => '',
@@ -234,6 +234,11 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                 ),
                 'styles' => array(
                     'sections' => array(
+                        'general' => array(
+                            'title' => __('General Cart', 'addonify-floating-cart'),
+                            'description' => '',
+                            'fields' => addonify_floating_cart_cart_styles_settings_fields()
+                        ),
                         'button' => array(
                             'title' => __('Toggle Button Colors', 'addonify-floating-cart'),
                             'description' => '',

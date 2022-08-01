@@ -1307,7 +1307,7 @@ __webpack_require__.r(__webpack_exports__);
     //console.log(props.currentPage);
 
     var store = (0,_stores_options__WEBPACK_IMPORTED_MODULE_0__.useOptionsStore)();
-    var enablePluginKey = "enable_product_comparison";
+    var enablePluginKey = "enable_floating_cart";
     var enablePluginStyleKey = "load_styles_from_plugin";
 
     function optionDependencyHandler(args) {

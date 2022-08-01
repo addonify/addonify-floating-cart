@@ -13,8 +13,7 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'value'           => addonify_floating_cart_get_setting_field_value('enable_floating_cart')
             ),
             'open_cart_modal_immediately_after_add_to_cart' => array(
-                'label'			  => __( 'Open floating cart after adding item to cart', 'addonify-floating-cart' ),
-                'description'     => __( 'Enable this option to immediately toggle floating cart when an item is added to cart.', 'addonify-floating-cart' ),
+                'label'			  => __( 'Open floating cart once product is added to cart', 'addonify-floating-cart' ),
                 'type'            => 'switch',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_immediately_after_add_to_cart' )

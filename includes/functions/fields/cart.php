@@ -47,7 +47,7 @@ if ( ! function_exists( 'addonify_floating_cart_cart_styles_settings_fields' ) )
                 'className'         => '',
                 'label'             => __( 'Enable Styles from Plugin', 'addonify-floating-cart' ),
                 'description'       => __( 'Enable to apply styles and colors from the plugin.', 'addonify-floating-cart' ),
-                'value'             => addonify_floating_cart_get_option( 'load_styles_from_plugin' )
+                'value'             => addonify_floating_cart_get_setting_field_value( 'load_styles_from_plugin' )
             )
         );
     }

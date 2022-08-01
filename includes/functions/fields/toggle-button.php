@@ -76,7 +76,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
             'toggle_button_badge_label_color' => array(
                 'label'			  => __( 'Button badge label color', 'addonify-floating-cart' ),
                 'description'     => 'Change this to change toggle-button badge label color.',
-                'type'            => '',
+                'type'            => 'color',
                 'dependent'       => array('display_cart_items_number_badge'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_badge_label_color')
             ),

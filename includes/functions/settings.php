@@ -45,10 +45,10 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 // toast notification options
                 'display_toast_notification' => true, 
                 'toast_notification_display_position' => 'top-right',
-                'open_cart_modal_on_notification_button_click' => true, 
+                'open_cart_modal_on_notification_button_click' => false, 
                 'add_to_cart_notification_text' => 'Product has been added to cart.',  
-                'close_notification_after_time' => '3', 
-                'display_close_notification_button' => true, 
+                'close_notification_after_time' => 5, 
+                'display_close_notification_button' => false, 
                 'toast_notification_background_color' => '#67C23A',
                 'toast_notification_text_color' => '#FFFFFF',
                 'toast_notification_button_background_color' => 'rgba(0, 0, 0, 0.2)',
@@ -205,27 +205,27 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                 'settings' => array(
                     'sections' => array(
                         'general' => array(
-                            'title' => __('General Cart Settings', 'addonify-floating-cart'),
+                            'title' => __('General', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_cart_options_settings()
                         ),
                         'button' => array(
-                            'title' => __('Toggle Button Settings', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_toggle_cart_button_settings()
                         ),
                         'toast-notification' => array(
-                            'title' => __('Toast Notification Settings', 'addonify-floating-cart'),
+                            'title' => __('Toast Notification Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_toast_notification_settings()
                         ),
                         'cart' => array(
-                            'title' => __('Cart UI Settings', 'addonify-floating-cart'),
+                            'title' => __('Cart Drawer/Modal Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_cart_display_settings()
                         ),
                         'coupon' => array(
-                            'title' => __('Coupon Settings', 'addonify-floating-cart'),
+                            'title' => __('Coupon Options', 'addonify-floating-cart'),
                             'description' => '',
                             'fields' => addonify_floating_cart_coupon_settings()
                         ),
@@ -234,18 +234,21 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                 'styles' => array(
                     'sections' => array(
                         'button' => array(
-                            'title' => __('Toggle Button Designs', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toggle_cart_button_designs()
                         ),
                         'toast-notification' => array(
-                            'title' => __('Toast Notification Designs', 'addonify-floating-cart'),
+                            'title' => __('Toast Notification Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toast_notification_designs()
                         ),
                         'cart' => array(
-                            'title' => __('Cart UI Designs', 'addonify-floating-cart'),
+                            'title' => __('Cart Colors', 'addonify-floating-cart'),
                             'description' => '',
+                            'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_display_designs()
                         ),
                     ),

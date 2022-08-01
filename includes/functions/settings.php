@@ -26,6 +26,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'enable_floating_cart' => true, 
                 'open_cart_modal_immediately_after_add_to_cart' => false,
                 'open_cart_modal_after_click_on_view_cart' => true,
+                'display_floating_cart_in_checkout_and_cart_page' => false, 
                 // Floating Cart Toggle Button Options
                 'display_cart_modal_toggle_button' => true, 
                 'cart_modal_toggle_button_display_position' => 'bottom-right', 
@@ -103,8 +104,8 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_available_coupons' => false,
                 'display_applied_coupons' => true,
                 'cart_apply_coupon_button_label' => 'Apply Coupon',
-                'cart_apply_coupon_button_background_color' => '',
-                'cart_apply_coupon_button_background_color_on_hover' => '',
+                'cart_apply_coupon_button_background_color' => '#215bff',
+                'cart_apply_coupon_button_background_color_on_hover' => '#6221ff',
             )
         );
     }

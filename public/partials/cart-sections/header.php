@@ -2,7 +2,7 @@
 ?>
 <header class="adfy__woofc-header">
     <h3 class="adfy__woofc-title">
-        Cart
+        <?php esc_html_e('Cart'); ?>
         <span class="adfy__woofc-badge">
             <?php 
             printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),

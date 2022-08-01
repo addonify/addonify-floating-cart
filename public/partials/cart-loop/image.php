@@ -1,12 +1,5 @@
 <figure class="thumb" data_style="round">
     <?php
-        $product_permalink = $product->is_visible() ? $product->get_permalink(  ) : '';
-        if(!empty($variation) ){
-            $image = $variation->get_image();
-        } else {
-            $image =  $product->get_image();
-        }
-
         if ( ! $product_permalink ) {
             echo $image;
         } else {

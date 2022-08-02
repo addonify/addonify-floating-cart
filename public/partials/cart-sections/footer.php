@@ -55,13 +55,6 @@
         </ul>
     </div>
     <div class="adfy__woofc-actions">
-        <?php if(addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')){ ?>
-            <button class="adfy__woofc-button adfy__hide-woofc close">
-                <?php esc_html_e(addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')); ?>
-            </button>
-        <?php } ?>
-        <a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
-            <?php esc_html_e(addonify_floating_cart_get_setting_field_value('checkout_button_label')); ?>
-        </a>
+        <?php do_action('addonify_floatting_cart_get_cart_footer_button', array()); ?>
     </div>
 </footer>

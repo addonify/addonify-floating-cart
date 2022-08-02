@@ -27,7 +27,10 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'open_cart_modal_immediately_after_add_to_cart' => false, 
                 'open_cart_modal_after_click_on_view_cart' => true,
                 'display_floating_cart_in_checkout_and_cart_page' => false, //done
-                'load_styles_from_plugin' => true,
+                'customer_shopping_meter_threshold' => 0,
+                'customer_shopping_meter_pre_threshold_label' => '',
+                'customer_shopping_meter_post_threshold_label' => '',
+                'load_styles_from_plugin' => true, //done
                 // Floating Cart Toggle Button Options
                 'display_cart_modal_toggle_button' => true, //done
                 'cart_modal_toggle_button_display_position' => 'bottom-right',//done

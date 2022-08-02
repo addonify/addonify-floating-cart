@@ -1,6 +1,7 @@
 <?php
+    $toggle_button_position = addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position');
 ?>
-<button id="adfy__woofc-trigger" class="adfy__show-woofc" data_display="visible" data_animation="shake" data_style="rounded" data_label="false" data_icon="true">
+<button id="adfy__woofc-trigger" class="adfy__show-woofc <?php echo $toggle_button_position; ?>" data_display="visible" data_animation="shake" data_style="rounded" data_label="false" data_icon="true">
     <span class="icon">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17">
             <g></g>
@@ -8,5 +9,12 @@
         </svg>
     </span>
     <span class="label"></span>
-    <span class="badge"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
+    <?php 
+    if(addonify_floating_cart_get_setting_field_value('display_cart_items_number_badge')){ 
+        $badge_position = addonify_floating_cart_get_setting_field_value('cart_items_number_badge_position');
+        ?>
+        <span class="badge <?php echo $badge_position; ?>"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
+    <?php
+    }
+    ?>
 </button>

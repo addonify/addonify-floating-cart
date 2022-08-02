@@ -2,8 +2,9 @@
 
 if ( ! function_exists( 'addonify_floating_cart_floating_button_template' ) ) {
     function addonify_floating_cart_floating_button_template() {
-
-        addonify_floating_cart_get_template( 'floating-button.php' );
+		if(addonify_floating_cart_get_setting_field_value('display_cart_modal_toggle_button')){
+			addonify_floating_cart_get_template( 'floating-button.php' );
+		}
     }
 } 
 

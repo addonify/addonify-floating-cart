@@ -3,6 +3,12 @@
     'use strict';
 
     var addonifyFloatingCartCouponContainer = $('#adfy__woofc-coupon-container');
+    var addonifyFloatingCartNotifyShow = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow == 1 ? true : false;
+    var addonifyFloatingCartNotifyDuration = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDuration;
+    var addonifyFloatingCartNotifyDismissible = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDismissible == 1 ? true : false;
+    var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1 ? true : false;
+    var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
+    var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
     var addonifyFloatingCart = {
 
@@ -40,35 +46,36 @@
 
         notifyFloatingCartEventHandler: () => {
 
-            var notfyHtmlContent = "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>Show Cart</button>";
+            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>Show Cart</button>" : "";
 
             // Configure Notyf.
             var notyf = new Notyf({
-                duration: 5000,
-                dismissible: true,
+                duration: addonifyFloatingCartNotifyDuration,
+                dismissible: addonifyFloatingCartNotifyDismissible,
                 ripple: true,
                 position: {
 
-                    x: 'right', // left | center | right
-                    y: 'top', // top | center | bottom
+                    x: addonifyFloatingCartNotifyPosition[1], // left | center | right
+                    y: addonifyFloatingCartNotifyPosition[0], // top | center | bottom
                 },
             });
 
             // Listen to WooCommerce product added to cart event.
             $(document).on('added_to_cart', function (event) {
+                if (addonifyFloatingCartNotifyShow) {
+                    // Invoke the Notyf toast. Append the product name here.
+                    var notification = notyf.success({
 
-                // Invoke the Notyf toast. Append the product name here.
-                var notification = notyf.success({
-
-                    className: 'adfy__woofc-notfy-success',
-                    //background: '#111111',
-                    message: "Product has been added to cart. " + notfyHtmlContent,
-                });
-                notification.on('click', function ({ target, event }) {
-                    // target: the notification being clicked
-                    // event: the mouseevent
-                    $('body').addClass('adfy__woofc-visible');
-                });
+                        className: 'adfy__woofc-notfy-success',
+                        //background: '#111111',
+                        message: addonifyFloatingCartNotifyMessage + " " + notfyHtmlContent,
+                    });
+                    notification.on('click', function ({ target, event }) {
+                        // target: the notification being clicked
+                        // event: the mouseevent
+                        $('body').addClass('adfy__woofc-visible');
+                    });
+                }
             });
         },
 
@@ -158,7 +165,7 @@
                 }
                 this_product.closest('div.adfy__woofc-item').remove();
 
-                if(response.cart_items == 0){
+                if (response.cart_items == 0) {
                     $('.adfy__woofc-content-entry').html(
                         response.no_data_html
                     );
@@ -192,23 +199,23 @@
     });
 
     // apply coupon on cart items
-    $(document).on('submit','#adfy__woofc-coupon-form', function(e){
+    $(document).on('submit', '#adfy__woofc-coupon-form', function (e) {
         e.preventDefault();
         let couponField = $(this).find('input[name=adfy__woofc-coupon-input-field]');
         let data = couponField.val();
         $.ajax({
-            'url' : addonifyFloatingCartJSObject.ajax_url,
-            'method' : 'post',
-            'data' : {
+            'url': addonifyFloatingCartJSObject.ajax_url,
+            'method': 'post',
+            'data': {
                 action: addonifyFloatingCartJSObject.ajax_apply_coupon,
                 nonce: addonifyFloatingCartJSObject.nonce,
                 form_data: data
             },
-            'success' : function(data){
+            'success': function (data) {
                 let result = JSON.parse(data);
-                if(result.couponApplied == true){
+                if (result.couponApplied == true) {
                     couponField.val('');
-                    $.each(result.html, function(i, val){
+                    $.each(result.html, function (i, val) {
                         $(i).replaceWith(val);
                     })
                     show_coupon_alert_success(result.status);
@@ -216,29 +223,29 @@
                     show_coupon_alert_error(result.status);
                 }
             },
-            'error' : function(e){
+            'error': function (e) {
                 alert('Error processing request');
             }
         });
     });
 
     // remove applied coupon from cart
-    $(document).on('click', '.removeCoupon', function(){
+    $(document).on('click', '.removeCoupon', function () {
         let coupon_div = $(this).closest('li');
         let coupon = $(this).attr('data-coupon');
         $.ajax({
-            'url' : addonifyFloatingCartJSObject.ajax_url,
-            'method' : 'post',
-            'data' : {
+            'url': addonifyFloatingCartJSObject.ajax_url,
+            'method': 'post',
+            'data': {
                 action: addonifyFloatingCartJSObject.ajax_remove_coupon,
                 nonce: addonifyFloatingCartJSObject.nonce,
                 form_data: coupon
             },
-            'success' : function(data){
+            'success': function (data) {
                 let result = JSON.parse(data);
                 console.log(result);
-                if(result.couponRemoved == true){
-                    $.each(result.html, function(i, val){
+                if (result.couponRemoved == true) {
+                    $.each(result.html, function (i, val) {
                         $(i).replaceWith(val);
                     })
                     show_coupon_alert_success(result.status);
@@ -247,7 +254,7 @@
                 }
                 coupon_div.remove();
             },
-            'error' : function(e){
+            'error': function (e) {
                 alert('Error processing request');
             }
         });
@@ -324,38 +331,38 @@
             }
         });
     }
-    
+
     //show coupon apply success alert message
-    function show_coupon_alert_success(msg = false){
-        if(msg !== false){
+    function show_coupon_alert_success(msg = false) {
+        if (msg !== false) {
             $('.adfy__woofc-alert.success').html(
                 `<p class="adfy__woofc-alert-text">
                     <svg fill="currentColor" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                     </svg>
-                    `+msg+`
+                    `+ msg + `
                 </p>`
             );
         }
         $('.adfy__woofc-alert.success').fadeIn();
-        setTimeout(function(){
+        setTimeout(function () {
             $('.adfy__woofc-alert.success').fadeOut();
         }, 3000);
     }
     //show coupon apply failure alert message
-    function show_coupon_alert_error(msg = false){
-        if(msg !== false){
+    function show_coupon_alert_error(msg = false) {
+        if (msg !== false) {
             $('.adfy__woofc-alert.error').html(
                 `<p class="adfy__woofc-alert-text">
                     <svg fill="currentColor" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                     </svg>
-                    `+msg+`
+                    `+ msg + `
                 </p>`
             );
         }
         $('.adfy__woofc-alert.error').fadeIn();
-        setTimeout(function(){
+        setTimeout(function () {
             $('.adfy__woofc-alert.error').fadeOut();
         }, 3000);
     }

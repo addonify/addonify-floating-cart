@@ -1,7 +1,7 @@
 <?php
 ?>
 <footer class="adfy__woofc-colophon">
-    <?php if ( wc_coupons_enabled() && WC()->cart->get_cart_contents_count() > 0 ) { ?>
+    <?php if ( wc_coupons_enabled() && WC()->cart->get_cart_contents_count() > 0 && addonify_floating_cart_get_setting_field_value('display_cart_coupon_section') ) { ?>
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">
@@ -14,7 +14,7 @@
         </p>
     </div>
     <?php } ?>
-    <div class="adfy__woofc-cart-summary">
+    <div class="adfy__woofc-cart-summary <?php echo (WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()) ? 'discount' : ''; ?>">
         <ul> 
             <?php
             if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
@@ -55,11 +55,13 @@
         </ul>
     </div>
     <div class="adfy__woofc-actions">
-        <button class="adfy__woofc-button adfy__hide-woofc close">
-        <?php esc_html_e('Close'); ?>
-        </button>
+        <?php if(addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')){ ?>
+            <button class="adfy__woofc-button adfy__hide-woofc close">
+                <?php esc_html_e(addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')); ?>
+            </button>
+        <?php } ?>
         <a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
-        <?php esc_html_e('Checkout'); ?>
+            <?php esc_html_e(addonify_floating_cart_get_setting_field_value('checkout_button_label')); ?>
         </a>
     </div>
 </footer>

@@ -98,7 +98,22 @@ class Addonify_Floating_Cart_Public
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
 			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
 			'ajax_remove_coupon' => 'addonify_floating_cart_remove_coupon',
-			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce')
+			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce'),
+			'addonifyFloatingCartNotifyShow' => addonify_floating_cart_get_setting_field_value('display_toast_notification'),
+			'addonifyFloatingCartNotifyDuration' => (int)addonify_floating_cart_get_setting_field_value('close_notification_after_time') * 1000,
+			'addonifyFloatingCartNotifyDismissible' => addonify_floating_cart_get_setting_field_value('display_close_notification_button'),
+			'addonifyFloatingCartNotifyShowHtmlContent' => addonify_floating_cart_get_setting_field_value('display_show_cart_button'),
+			'addonifyFloatingCartNotifyMessage' => addonify_floating_cart_get_setting_field_value('added_to_cart_notification_text'),
+			'toast_notification_display_position' => addonify_floating_cart_get_setting_field_value('toast_notification_display_position'),
+			'open_cart_modal_on_notification_button_click' => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click'),
+			'toast_notification_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_background_color'),
+			'toast_notification_text_color' => addonify_floating_cart_get_setting_field_value('toast_notification_text_color'),
+			'toast_notification_button_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_background_color'),
+			'toast_notification_button_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_label_color'),
+			'toast_notification_button_on_hover_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_background_color'),
+			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color'),
+			'toast_notification_side_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_side_offset'),
+			'toast_notification_top_bottom_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_top_bottom_offset'),
 		));
 	}
 

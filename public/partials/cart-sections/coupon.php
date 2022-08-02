@@ -1,4 +1,5 @@
 <?php 
+if(addonify_floating_cart_get_setting_field_value('display_cart_coupon_section') ){
 ?>
 <div id="adfy__woofc-coupon-container" data_display="hidden">
     <div class="coupon-container-header">
@@ -19,11 +20,15 @@
             </label>
             <input type="text" value="" name="adfy__woofc-coupon-input-field" placeholder="BLACKFRIDAY">
             <button type="submit" class="adfy__woofc-button" id="adfy__woofc-apply-coupon-button">
-                <?php esc_html_e('Apply Coupon'); ?>
+                <?php esc_html_e(addonify_floating_cart_get_setting_field_value('cart_apply_coupon_button_label')); ?>
             </button>
         </div>
     </form>
     <?php 
-    do_action('addonify_floating_cart_get_cart_coupons_available', array());
+    if(addonify_floating_cart_get_setting_field_value('display_applied_coupons') ){
+        do_action('addonify_floating_cart_get_cart_coupons_available', array());
+    }
     ?>
 </div>
+<?php
+}

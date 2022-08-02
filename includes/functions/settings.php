@@ -27,6 +27,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'open_cart_modal_immediately_after_add_to_cart' => false,
                 'open_cart_modal_after_click_on_view_cart' => true,
                 'display_floating_cart_in_checkout_and_cart_page' => false,
+                'load_styles_from_plugin' => true,
                 // Floating Cart Toggle Button Options
                 'display_cart_modal_toggle_button' => true,
                 'cart_modal_toggle_button_display_position' => 'bottom-right',
@@ -312,7 +313,7 @@ if ( ! function_exists( 'addonify_floating_cart_update_settings' ) ) {
                         break;
                     case 'checkbox':
                         $sanitize_args = array(
-                            'choices' => $settings_fields[$key]['choices'],
+                            'choices' => $setting_fields[$id]['choices'],
                             'values' => $value
                         );
                         $sanitized_value = addonify_floating_cart_sanitize_multi_choices( $sanitize_args );

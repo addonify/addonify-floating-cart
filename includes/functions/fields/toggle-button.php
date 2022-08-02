@@ -26,7 +26,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings_add')){
     function addonify_floating_cart_toggle_cart_button_settings_add($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_toggle_cart_button_settings());
     }
-    apply_filters(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_settings_add' );
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_settings_add' );
 }
 
 
@@ -144,5 +144,5 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs_add')){
     function addonify_floating_cart_toggle_cart_button_designs_add($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_toggle_cart_button_designs());
     }
-    apply_filters(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_designs_add' );
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_designs_add' );
 }

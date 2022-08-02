@@ -36,6 +36,12 @@ if(!function_exists('addonify_floating_cart_coupon_settings')){
     }
 }
 
+if(!function_exists('addonify_floating_cart_coupon_settings_add')){
+    function addonify_floating_cart_coupon_settings_add($setting_fields){
+        return array_merge($setting_fields, addonify_floating_cart_coupon_settings());
+    }
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_coupon_settings_add' );
+}
 
 if(!function_exists('addonify_floating_cart_coupon_designs')){
     function addonify_floating_cart_coupon_designs(){
@@ -56,4 +62,11 @@ if(!function_exists('addonify_floating_cart_coupon_designs')){
             ),
         );
     }
+}
+
+if(!function_exists('addonify_floating_cart_coupon_designs_add')){
+    function addonify_floating_cart_coupon_designs_add($setting_fields){
+        return array_merge($setting_fields, addonify_floating_cart_coupon_designs());
+    }
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_coupon_designs_add' );
 }

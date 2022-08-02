@@ -56,7 +56,7 @@ class Addonify_Floating_Cart_Rest_Api{
             return $return_data;
         }
 
-        if ( addonify_quick_view_update_settings_fields_values( $params['settings_values'] ) === true ) {
+        if ( addonify_floating_cart_update_settings( $params['settings_values'] ) === true ) {
 
             $return_data['success'] = true;
             $return_data['message'] = __( 'Settings saved successfully', 'addonify-floating-cart' );

@@ -33,7 +33,32 @@ if(!function_exists('addonify_floating_cart_cart_options_add_to_settings_field')
     function addonify_floating_cart_cart_options_add_to_settings_field($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_cart_options_settings());
     }
-    apply_filters( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_options_add_to_settings_field' );
+    add_filter( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_options_add_to_settings_field' );
 }
 
 
+if ( ! function_exists( 'addonify_floating_cart_cart_styles_settings_fields' ) ) {
+
+    function addonify_floating_cart_cart_styles_settings_fields() {
+
+        return array(
+            'load_styles_from_plugin' => array(
+                'type'              => 'switch',
+                'className'         => '',
+                'label'             => __( 'Enable Styles from Plugin', 'addonify-floating-cart' ),
+                'description'       => __( 'Enable to apply styles and colors from the plugin.', 'addonify-floating-cart' ),
+                'value'             => addonify_floating_cart_get_setting_field_value( 'load_styles_from_plugin' )
+            )
+        );
+    }
+}
+
+if ( ! function_exists( 'addonify_floating_cart_general_styles_add_to_settings_fields' ) ) {
+
+    function addonify_floating_cart_general_styles_add_to_settings_fields( $settings_fields ) {
+
+        return array_merge( $settings_fields, addonify_floating_cart_cart_styles_settings_fields() );
+    }
+    
+    add_filter( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_general_styles_add_to_settings_fields' );
+}

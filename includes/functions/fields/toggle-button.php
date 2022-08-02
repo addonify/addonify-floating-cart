@@ -26,7 +26,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings_add')){
     function addonify_floating_cart_toggle_cart_button_settings_add($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_toggle_cart_button_settings());
     }
-    apply_filters(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_settings_add' );
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_settings_add' );
 }
 
 
@@ -76,7 +76,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
             'toggle_button_badge_label_color' => array(
                 'label'			  => __( 'Button badge label color', 'addonify-floating-cart' ),
                 'description'     => 'Change this to change toggle-button badge label color.',
-                'type'            => '',
+                'type'            => 'color',
                 'dependent'       => array('display_cart_items_number_badge'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_badge_label_color')
             ),
@@ -144,5 +144,5 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs_add')){
     function addonify_floating_cart_toggle_cart_button_designs_add($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_toggle_cart_button_designs());
     }
-    apply_filters(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_designs_add' );
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toggle_cart_button_designs_add' );
 }

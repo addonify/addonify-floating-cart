@@ -17,13 +17,13 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click')
             ),
-            'add_to_cart_notification_text' => array(
+            'added_to_cart_notification_text' => array(
                 'label'			  => __( 'Added to cart text', 'addonify-floating-cart' ),
                 'description'     => __( 'Text shown after item is added to cart.', 'addonify-floating-cart' ),
                 'type'            => 'text',
                 'placeholder'     => __( 'Added to cart', 'addonify-floating-cart' ),
                 'dependent'       => array('display_toast_notification'),
-                'value'           => addonify_floating_cart_get_setting_field_value('add_to_cart_notification_text')
+                'value'           => addonify_floating_cart_get_setting_field_value('added_to_cart_notification_text')
             ),
             'close_notification_after_time' => array(
                 'label'			  => __( 'Close toast notification after "x" seconds', 'addonify-floating-cart' ),
@@ -50,7 +50,7 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings_add_to_s
         return array_merge($settings, addonify_floating_cart_toast_notification_settings());
     }
 
-    apply_filters( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toast_notification_settings_add_to_settings');
+    add_filter( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toast_notification_settings_add_to_settings');
 
 }
 
@@ -136,5 +136,5 @@ if(!function_exists('addonify_floating_cart_toast_notification_designs_add')){
     function addonify_floating_cart_toast_notification_designs_add($setting_fields){
         return array_merge($setting_fields, addonify_floating_cart_toast_notification_designs());
     }
-    apply_filters(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toast_notification_designs_add' );
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_toast_notification_designs_add' );
 }

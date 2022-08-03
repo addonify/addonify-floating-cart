@@ -2,13 +2,15 @@
 ?>
 <header class="adfy__woofc-header">
     <h3 class="adfy__woofc-title">
-        <?php esc_html_e('Cart'); ?>
+        <?php esc_html_e(addonify_floating_cart_get_setting_field_value('cart_title')); ?>
+        <?php if(addonify_floating_cart_get_setting_field_value('display_cart_items_number')){ ?>
         <span class="adfy__woofc-badge">
             <?php 
             printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
                 esc_html(WC()->cart->get_cart_contents_count())); 
             ?>          
         </span>
+        <?php } ?>
     </h3>
     <div class="adfy__close-button">
         <button class="adfy__woofc-fake-button adfy__hide-woofc">

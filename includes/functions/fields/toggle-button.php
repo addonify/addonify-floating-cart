@@ -3,6 +3,32 @@
 if(!function_exists('addonify_floating_cart_toggle_cart_button_settings')){
     function addonify_floating_cart_toggle_cart_button_settings(){
         return array(
+            'cart_modal_toggle_button_display_position' => array(
+                'label'			  => __( 'Button Display Position', 'addonify-floating-cart' ),
+                'description'     => __( 'Display Position of toggle acrt button on screen.', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    'top-right'         => __( 'Top Right', 'addonify-floating-cart' ),
+                    'bottom-right'      => __( 'Bottom Right', 'addonify-floating-cart' ),
+                    'top-left'          => __( 'Top Left', 'addonify-floating-cart' ),
+                    'bottom-left'       => __( 'Bottom Left', 'addonify-floating-cart' ),
+                ),
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position')
+            ),
+            'cart_items_number_badge_position' => array(
+                'label'			  => __( 'Item &apos; s number Batch position', 'addonify-floating-cart' ),
+                'description'     => __( 'Item &apos; s number Batch position on the cart-toggle button.', 'addonify-foating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    'top-right'       => __( 'Top Right', 'addonify-floating-cart' ),
+                    'bottom-right'    => __( 'Bottom Right', 'addonify-floating-cart' ),
+                    'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
+                    'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
+                ),
+                'dependent'       => array('display_cart_items_number_badge'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_items_number_badge_position')
+            ),
             'display_cart_modal_toggle_button' => array(
                 'label'			  => __( 'Display toggle cart button', 'addonify-floating-cart' ),
                 'description'     => __( 'Enable this option to display the floating cart toggle button.', 'addonify-floating-cart' ),
@@ -33,32 +59,6 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings_add')){
 if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
     function addonify_floating_cart_toggle_cart_button_designs(){
         return array(
-            'cart_modal_toggle_button_display_position' => array(
-                'label'			  => __( 'Button Display Position', 'addonify-floating-cart' ),
-                'description'     => __( 'Display Position of toggle acrt button on screen.', 'addonify-floating-cart' ),
-                'type'            => 'select',
-                'choices' => array(
-                    'top-right'         => __( 'Top Right', 'addonify-floating-cart' ),
-                    'bottom-right'      => __( 'Bottom Right', 'addonify-floating-cart' ),
-                    'top-left'          => __( 'Top Left', 'addonify-floating-cart' ),
-                    'bottom-left'       => __( 'Bottom Left', 'addonify-floating-cart' ),
-                ),
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position')
-            ),
-            'cart_items_number_badge_position' => array(
-                'label'			  => __( 'Item &apos; s number Batch position', 'addonify-floating-cart' ),
-                'description'     => __( 'Item &apos; s number Batch position on the cart-toggle button.', 'addonify-foating-cart' ),
-                'type'            => 'select',
-                'choices' => array(
-                    'top-right'       => __( 'Top Right', 'addonify-floating-cart' ),
-                    'bottom-right'    => __( 'Bottom Right', 'addonify-floating-cart' ),
-                    'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
-                    'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
-                ),
-                'dependent'       => array('display_cart_items_number_badge'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_items_number_badge_position')
-            ),
             'toggle_button_badge_background_color' => array(
                 'label'			  => __( 'Button background color', 'addonify-floating-cart' ),
                 'description'     => 'Change this to change toggle-button background color.',

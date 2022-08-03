@@ -10,6 +10,19 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_toast_notification')
             ),
+            'toast_notification_display_position' => array(
+                'label'			  => __( 'Notification Display Position', 'addonify-floating-cart' ),
+                'description'     => '.',
+                'type'            => 'select',
+                'choices' => array(
+                    'top-right'       => __( 'Top Right', 'addonify-floating-cart' ),
+                    'bottom-right'    => __( 'Bottom Right', 'addonify-floating-cart' ),
+                    'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
+                    'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
+                ),
+                'dependent'       => array('display_toast_notification'),
+                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_display_position')
+            ),
             'open_cart_modal_on_notification_button_click' => array(
                 'label'			  => __( 'Open floating cart notification button', 'addonify-floating-cart' ),
                 'description'     => __( 'Enables opening floating cart by clicking on notification button.', 'addonify-floating-cart' ),
@@ -40,6 +53,12 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_close_notification_button')
             ),
+            'display_show_cart_button' => array(
+                'label'			  => __( 'Display show cart button in toast notification', 'addonify-floating-cart' ),
+                'type'            => 'switch',
+                'dependent'       => array('display_toast_notification'),
+                'value'           => addonify_floating_cart_get_setting_field_value('display_show_cart_button')
+            ),
         );
     }
 }
@@ -58,19 +77,6 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings_add_to_s
 if(!function_exists('addonify_floating_cart_toast_notification_designs')){
     function addonify_floating_cart_toast_notification_designs(){
         return array(
-            'toast_notification_display_position' => array(
-                'label'			  => __( 'Notification Display Position', 'addonify-floating-cart' ),
-                'description'     => '.',
-                'type'            => 'select',
-                'choices' => array(
-                    'top-right'       => __( 'Top Right', 'addonify-floating-cart' ),
-                    'bottom-right'    => __( 'Bottom Right', 'addonify-floating-cart' ),
-                    'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
-                    'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
-                ),
-                'dependent'       => array('display_toast_notification'),
-                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_display_position')
-            ),
             'toast_notification_background_color' => array(
                 'label'			  => __( 'Notification Background Color', 'addonify-floating-cart' ),
                 'description'     => 'For Changing the notification background color.',

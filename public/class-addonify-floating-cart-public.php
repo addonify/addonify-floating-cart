@@ -69,7 +69,11 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_styles()
 	{
-
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
+		}
 		wp_enqueue_style('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all');
 
 		wp_enqueue_style('notyf', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all');
@@ -84,7 +88,11 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_scripts()
 	{
-
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
+		}
 		wp_enqueue_script('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true);
 
 		wp_enqueue_script('notyf', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true);
@@ -98,17 +106,33 @@ class Addonify_Floating_Cart_Public
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
 			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
 			'ajax_remove_coupon' => 'addonify_floating_cart_remove_coupon',
-			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce')
+			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce'),
+			'addonifyFloatingCartNotifyShow' => addonify_floating_cart_get_setting_field_value('display_toast_notification'),
+			'addonifyFloatingCartNotifyDuration' => (int)addonify_floating_cart_get_setting_field_value('close_notification_after_time') * 1000,
+			'addonifyFloatingCartNotifyDismissible' => addonify_floating_cart_get_setting_field_value('display_close_notification_button'),
+			'addonifyFloatingCartNotifyShowHtmlContent' => addonify_floating_cart_get_setting_field_value('display_show_cart_button'),
+			'addonifyFloatingCartNotifyMessage' => addonify_floating_cart_get_setting_field_value('added_to_cart_notification_text'),
+			'toast_notification_display_position' => addonify_floating_cart_get_setting_field_value('toast_notification_display_position'),
+			'open_cart_modal_on_notification_button_click' => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click'),
+			'toast_notification_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_background_color'),
+			'toast_notification_text_color' => addonify_floating_cart_get_setting_field_value('toast_notification_text_color'),
+			'toast_notification_button_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_background_color'),
+			'toast_notification_button_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_label_color'),
+			'toast_notification_button_on_hover_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_background_color'),
+			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color'),
+			'toast_notification_side_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_side_offset'),
+			'toast_notification_top_bottom_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_top_bottom_offset'),
 		));
 	}
 
 	public function footer_content()
 	{
-		if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-			return;
-		} else{
-			do_action('addonify_floating_cart_add');
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
 		}
+		do_action('addonify_floating_cart_add');
 	}
 
 	public function load_dependencies(){
@@ -116,6 +140,7 @@ class Addonify_Floating_Cart_Public
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
 	}
+
 	/**
 	 * Function for adding items in cart through woocommerce fragments
 	 * 
@@ -134,14 +159,14 @@ class Addonify_Floating_Cart_Public
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_body', array());
+		do_action('addonify_floating_cart/get_cart_body', array());
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_footer',array());
+		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 
@@ -170,16 +195,16 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_footer',array());
+		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_coupons_available', array());
-		$fragments['#adfy__woofc-applied-coupons'] = ob_get_clean();
+		do_action('addonify_floating_cart/cart_coupons_available_template', array());
+		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
 
@@ -311,22 +336,22 @@ class Addonify_Floating_Cart_Public
 		}
 		$this->check_coupons();
 		ob_start();
-			do_action('addonify_floating_cart_get_cart_footer');
+			do_action('addonify_floating_cart/get_cart_footer');
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+			do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+			do_action('addonify_floating_cart/get_cart_shipping_bar');
 		$shippping_bar = ob_get_clean();
 		echo json_encode(array(
 			'couponApplied' => $coupon_apply,
 			'status' => $status,
 			'html' => array(
 				'.adfy__woofc-colophon' => $cart_summary,
-				'#adfy__woofc-applied-coupons' => $coupons,
+				'.adfy__woofc-coupons' => $coupons,
 				'.adfy__woofc-shipping-bar' => $shippping_bar
 			)
 		));die;
@@ -354,15 +379,15 @@ class Addonify_Floating_Cart_Public
 		}
 		$this->check_coupons();
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/footer.php');
+		do_action('addonify_floating_cart/get_cart_footer');
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+		do_action('addonify_floating_cart/get_cart_shipping_bar');
 		$shippping_bar = ob_get_clean();
 
 		echo json_encode(array(

@@ -15,7 +15,7 @@
                 ?>
                 <div class="adfy__woofc-item">
                     <?php 
-                        do_action( 'addonify_floating_cart_get_cart_body_image', array(
+                        do_action( 'addonify_floating_cart/get_cart_body_image', array(
                             'product' => $product,
                             'cart_item_key' => $cart_item_key,
                             'cart_item' => $cart_item,
@@ -24,16 +24,16 @@
                     ?>
                     <div class="adfy__woofc-item-content">
                         <?php 
-                        do_action( 'addonify_floating_cart_get_cart_body_title', array(
+                        do_action( 'addonify_floating_cart/get_cart_body_title', array(
                             'product' => $product,
                             'cart_item' => $cart_item,
                         ));
-                        do_action('addonify_floating_cart_get_cart_body_quantity_price', array(
+                        do_action('addonify_floating_cart/get_cart_body_quantity_price', array(
                             'product' => $product,
                             'cart_item' => $cart_item,
                             'variation' => $variation,
                         ));
-                        do_action( 'addonify_floating_cart_get_cart_body_quantity_field', array(
+                        do_action( 'addonify_floating_cart/get_cart_body_quantity_field', array(
                             'product' => $product,
                             'cart_item_key' => $cart_item_key,
                             'cart_item' => $cart_item,

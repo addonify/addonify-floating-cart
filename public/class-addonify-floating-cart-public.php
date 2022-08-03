@@ -135,7 +135,7 @@ class Addonify_Floating_Cart_Public
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
 	}
-	
+
 	/**
 	 * Function for adding items in cart through woocommerce fragments
 	 * 
@@ -199,7 +199,7 @@ class Addonify_Floating_Cart_Public
 
 		ob_start();
 		do_action('addonify_floating_cart_get_cart_coupons_available', array());
-		$fragments['#adfy__woofc-applied-coupons'] = ob_get_clean();
+		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
 
@@ -346,7 +346,7 @@ class Addonify_Floating_Cart_Public
 			'status' => $status,
 			'html' => array(
 				'.adfy__woofc-colophon' => $cart_summary,
-				'#adfy__woofc-applied-coupons' => $coupons,
+				'.adfy__woofc-coupons' => $coupons,
 				'.adfy__woofc-shipping-bar' => $shippping_bar
 			)
 		));die;

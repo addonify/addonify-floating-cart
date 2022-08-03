@@ -1,7 +1,7 @@
 <?php
 ?>
 <footer class="adfy__woofc-colophon">
-    <?php if ( wc_coupons_enabled() && WC()->cart->get_cart_contents_count() > 0 && addonify_floating_cart_get_setting_field_value('display_cart_coupon_section') ) { ?>
+    <?php if ( (wc_coupons_enabled()) && (WC()->cart->get_cart_contents_count() > 0) && (addonify_floating_cart_get_setting_field_value('display_cart_coupon_section')) ) { ?>
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">

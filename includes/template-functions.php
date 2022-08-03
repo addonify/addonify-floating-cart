@@ -116,7 +116,21 @@ if(!function_exists('addonify_floating_cart_get_cart_coupons_available')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_shipping_bar')){
 	function addonify_floating_cart_get_cart_shipping_bar($args = array()){
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php', $args);
+		$free_shipping_eligibility_amount = (int)addonify_floating_cart_get_setting_field_value('customer_shopping_meter_threshold');
+		if($free_shipping_eligibility_amount){
+			if(WC()->cart->get_cart_contents_count() > 0){
+				$args_['total'] = WC()->cart->get_cart_contents_total();
+				if($args_['total'] >= $free_shipping_eligibility_amount){
+					$args_['per'] = 100;
+				} else {
+					$args_['per'] =  100 - (($free_shipping_eligibility_amount - $args_['total'])/$free_shipping_eligibility_amount * 100);
+				}
+			} else {
+				$args_['total'] = 0;
+				$args_['per'] = 0;
+			}
+			addonify_floating_cart_get_template('cart-sections/shipping-bar.php', $args_);
+		}
 	}
 	add_action('addonify_floating_cart_get_cart_shipping_bar','addonify_floating_cart_get_cart_shipping_bar',10,1);
 }

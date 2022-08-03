@@ -25,17 +25,17 @@ if( ! function_exists('addonify_floating_cart_add_cart_parts')){
     }
 }
 
-add_action( 'addonify_floating_cart_add_cart_parts', 'addonify_floating_cart_add_cart_parts', 10, 2 );
+add_action( 'addonify_floating_cart/add_cart_parts', 'addonify_floating_cart_add_cart_parts', 10, 2 );
 
 
-add_action( 'addonify_floating_cart_add_cart_sidebar_components', 'addonify_floating_cart_add_cart_sidebar_components' );
+add_action( 'addonify_floating_cart/add_cart_sidebar_components', 'addonify_floating_cart_add_cart_sidebar_components' );
 
 if( ! function_exists('addonify_floating_cart_add_cart_sidebar_components')){
 	function addonify_floating_cart_add_cart_sidebar_components() {
-		do_action('addonify_floating_cart_get_cart_header', array());
-		do_action('addonify_floating_cart_get_cart_body', array());
-		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
-		do_action('addonify_floating_cart_get_cart_footer', array());
+		do_action('addonify_floating_cart/get_cart_header', array());
+		do_action('addonify_floating_cart/get_cart_body', array());
+		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_footer', array());
 	}
 }
 
@@ -94,51 +94,54 @@ if(!function_exists('addonify_floating_cart_get_cart_header')){
 	function addonify_floating_cart_get_cart_header($args = array()){
 		addonify_floating_cart_get_template('cart-sections/header.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_header','addonify_floating_cart_get_cart_header',10,1);
+	add_action('addonify_floating_cart/get_cart_header','addonify_floating_cart_get_cart_header',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_body')){
 	function addonify_floating_cart_get_cart_body($args = array()){
 		addonify_floating_cart_get_template('cart-sections/body.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_body','addonify_floating_cart_get_cart_body',10,1);
+	add_action('addonify_floating_cart/get_cart_body','addonify_floating_cart_get_cart_body',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_coupon')){
 	function addonify_floating_cart_get_cart_coupon($args = array()){
 		addonify_floating_cart_get_template('cart-sections/coupon.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_coupon','addonify_floating_cart_get_cart_coupon',10,1);
+	add_action('addonify_floating_cart/get_cart_coupon','addonify_floating_cart_get_cart_coupon',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_coupons_available')){
 	function addonify_floating_cart_get_cart_coupons_available($args = array()){
 		addonify_floating_cart_get_template('cart-sections/coupons-available.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_coupons_available','addonify_floating_cart_get_cart_coupons_available',10,1);
+	add_action('addonify_floating_cart/get_cart_coupons_available','addonify_floating_cart_get_cart_coupons_available',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_shipping_bar')){
 	function addonify_floating_cart_get_cart_shipping_bar($args = array()){
 		$free_shipping_eligibility_amount = (int)addonify_floating_cart_get_setting_field_value('customer_shopping_meter_threshold');
-		if($free_shipping_eligibility_amount){
-			if(WC()->cart->get_cart_contents_count() > 0){
-				$args_['total'] = WC()->cart->get_cart_contents_total();
-				if($args_['total'] >= $free_shipping_eligibility_amount){
-					$args_['per'] = 100;
-				} else {
-					$args_['per'] =  100 - (($free_shipping_eligibility_amount - $args_['total'])/$free_shipping_eligibility_amount * 100);
-				}
-			} else {
-				$args_['total'] = 0;
-				$args_['per'] = 0;
-			}
-			addonify_floating_cart_get_template('cart-sections/shipping-bar.php', $args_);
+		$args_['pre_threshold_label'] = esc_html(addonify_floating_cart_get_setting_field_value('customer_shopping_meter_pre_threshold_label'));
+		$args_['post_threshold_label'] = esc_html(addonify_floating_cart_get_setting_field_value('customer_shopping_meter_post_threshold_label'));
+		if($free_shipping_eligibility_amount == 0 && empty($args_['pre_threshold_label'] ) && empty($args_['post_threshold_label'] )){
+			return;
 		}
+		if(WC()->cart->get_cart_contents_count() > 0){
+			$args_['total'] = WC()->cart->get_cart_contents_total();
+			if($args_['total'] >= $free_shipping_eligibility_amount){
+				$args_['per'] = 100;
+			} else {
+				$args_['per'] =  100 - (($free_shipping_eligibility_amount - $args_['total'])/$free_shipping_eligibility_amount * 100);
+			}
+		} else {
+			$args_['total'] = 0;
+			$args_['per'] = 0;
+		}
+		addonify_floating_cart_get_template('cart-sections/shipping-bar.php', $args_);
 	}
-	add_action('addonify_floating_cart_get_cart_shipping_bar','addonify_floating_cart_get_cart_shipping_bar',10,1);
+	add_action('addonify_floating_cart/get_cart_shipping_bar','addonify_floating_cart_get_cart_shipping_bar',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_footer')){
 	function addonify_floating_cart_get_cart_footer($args = array()){
 		addonify_floating_cart_get_template('cart-sections/footer.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_footer','addonify_floating_cart_get_cart_footer',10,1);
+	add_action('addonify_floating_cart/get_cart_footer','addonify_floating_cart_get_cart_footer',10,1);
 }
 if(!function_exists('addonify_floatting_cart_get_cart_footer_button')){
 	function addonify_floatting_cart_get_cart_footer_button($args = array()){
@@ -154,7 +157,7 @@ if(!function_exists('addonify_floatting_cart_get_cart_footer_button')){
 		<?php
 		echo ob_get_clean();
 	}
-	add_action('addonify_floatting_cart_get_cart_footer_button','addonify_floatting_cart_get_cart_footer_button',10,1);
+	add_action('addonify_floatting_cart/get_cart_footer_button','addonify_floatting_cart_get_cart_footer_button',10,1);
 }
 
 
@@ -176,7 +179,7 @@ if(!function_exists('addonify_floating_cart_get_cart_body_image')){
 		$args_['cart_item_key'] = $args['cart_item_key'];
 		addonify_floating_cart_get_template('cart-loop/image.php', $args_);
 	}
-	add_action('addonify_floating_cart_get_cart_body_image','addonify_floating_cart_get_cart_body_image',10,1);
+	add_action('addonify_floating_cart/get_cart_body_image','addonify_floating_cart_get_cart_body_image',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_quantity_field')){
 	function addonify_floating_cart_get_cart_body_quantity_field($args = array()){
@@ -191,7 +194,7 @@ if(!function_exists('addonify_floating_cart_get_cart_body_quantity_field')){
 		
 		addonify_floating_cart_get_template('cart-loop/quantity-field.php', $args_);
 	}
-	add_action('addonify_floating_cart_get_cart_body_quantity_field','addonify_floating_cart_get_cart_body_quantity_field',10,1);
+	add_action('addonify_floating_cart/get_cart_body_quantity_field','addonify_floating_cart_get_cart_body_quantity_field',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_quantity_price')){
 	function addonify_floating_cart_get_cart_body_quantity_price($args = array()){
@@ -203,13 +206,13 @@ if(!function_exists('addonify_floating_cart_get_cart_body_quantity_price')){
 		$args_['quantity'] = $args['cart_item']['quantity'];
 		addonify_floating_cart_get_template('cart-loop/quantity-price.php', $args_);
 	}
-	add_action('addonify_floating_cart_get_cart_body_quantity_price','addonify_floating_cart_get_cart_body_quantity_price',10,1);
+	add_action('addonify_floating_cart/get_cart_body_quantity_price','addonify_floating_cart_get_cart_body_quantity_price',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_rating')){
 	function addonify_floating_cart_get_cart_body_rating($args = array()){
 		addonify_floating_cart_get_template('cart-loop/rating.php', $args);
 	}
-	add_action('addonify_floating_cart_get_cart_body_rating','addonify_floating_cart_get_cart_body_rating',10,1);
+	add_action('addonify_floating_cart/get_cart_body_rating','addonify_floating_cart_get_cart_body_rating',10,1);
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_title')){
 	function addonify_floating_cart_get_cart_body_title($args = array()){
@@ -226,5 +229,5 @@ if(!function_exists('addonify_floating_cart_get_cart_body_title')){
 		$args_['product_permalink'] = $args['product']->get_permalink();
 		addonify_floating_cart_get_template('cart-loop/title.php', $args_);
 	}
-	add_action('addonify_floating_cart_get_cart_body_title','addonify_floating_cart_get_cart_body_title',10,1);
+	add_action('addonify_floating_cart/get_cart_body_title','addonify_floating_cart_get_cart_body_title',10,1);
 }

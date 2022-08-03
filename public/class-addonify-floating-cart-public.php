@@ -69,8 +69,10 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_styles()
 	{
-		if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-			return;
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
 		}
 		wp_enqueue_style('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all');
 
@@ -86,8 +88,10 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_scripts()
 	{
-		if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-			return;
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
 		}
 		wp_enqueue_script('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true);
 
@@ -123,11 +127,12 @@ class Addonify_Floating_Cart_Public
 
 	public function footer_content()
 	{
-		if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-			return;
-		} else{
-			do_action('addonify_floating_cart_add');
+		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
+			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
+				return;
+			}
 		}
+		do_action('addonify_floating_cart_add');
 	}
 
 	public function load_dependencies(){
@@ -154,14 +159,14 @@ class Addonify_Floating_Cart_Public
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_body', array());
+		do_action('addonify_floating_cart/get_cart_body', array());
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_footer',array());
+		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 
@@ -190,15 +195,15 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
 		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_footer',array());
+		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart_get_cart_coupons_available', array());
+		do_action('addonify_floating_cart/get_cart_coupons_available', array());
 		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
@@ -331,15 +336,15 @@ class Addonify_Floating_Cart_Public
 		}
 		$this->check_coupons();
 		ob_start();
-			do_action('addonify_floating_cart_get_cart_footer');
+			do_action('addonify_floating_cart/get_cart_footer');
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+			do_action('addonify_floating_cart/get_cart_coupons_available');
 		$coupons = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+			do_action('addonify_floating_cart/get_cart_shipping_bar');
 		$shippping_bar = ob_get_clean();
 		echo json_encode(array(
 			'couponApplied' => $coupon_apply,
@@ -374,15 +379,15 @@ class Addonify_Floating_Cart_Public
 		}
 		$this->check_coupons();
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/footer.php');
+		do_action('addonify_floating_cart/get_cart_footer');
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php');
+		do_action('addonify_floating_cart/get_cart_coupons_available');
 		$coupons = ob_get_clean();
 
 		ob_start();
-		addonify_floating_cart_get_template('cart-sections/shipping-bar.php');
+		do_action('addonify_floating_cart/get_cart_shipping_bar');
 		$shippping_bar = ob_get_clean();
 
 		echo json_encode(array(

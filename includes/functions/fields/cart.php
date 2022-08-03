@@ -25,6 +25,41 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
             ),
+            'display_floating_cart_in_checkout_and_cart_page' => array(
+                'label'			  => __( 'Dispay floating cart in checkout and cart page', 'addonify-floating-cart' ),
+                'description'     => '',
+                'type'            => 'switch',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
+            ),
+            'customer_shopping_meter_threshold' => array(
+                'label'			  => __( 'Customer shopping meter threshold', 'addonify-floating-cart' ),
+                'description'     => __( 'Cart total after which certain discount/freebies are applied.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'badge'           => 'Required',
+                'badgeType'       => '',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
+            ),
+            'customer_shopping_meter_pre_threshold_label' => array(
+                'label'			  => __( 'Label for Cart items does not meet threshold', 'addonify-floating-cart' ),
+                'description'     => '',
+                'type'            => 'text',
+                'badge'           => 'Required',
+                'badgeType'       => '',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
+            ),
+            'customer_shopping_meter_post_threshold_label' => array(
+                'label'			  => __( 'Label for Cart items meets threshold', 'addonify-floating-cart' ),
+                'description'     => __( '', 'addonify-floating-cart' ),
+                'type'            => 'text',
+                'badge'           => 'Required',
+                'badgeType'       => '',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
+            ),
         );
     }
 }

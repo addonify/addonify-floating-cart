@@ -6,12 +6,12 @@
     ?>
         <div class="adfy_woofc-inner">
         <?php
-            do_action( 'addonify_floating_cart_add_cart_sidebar_components');
+            do_action( 'addonify_floating_cart/add_cart_sidebar_components');
         ?>
         </div>
         <?php
             if ( wc_coupons_enabled() ) {
-                do_action('addonify_floating_cart_get_cart_coupon');
+                do_action('addonify_floating_cart/get_cart_coupon');
             }
         ?>
 </aside>

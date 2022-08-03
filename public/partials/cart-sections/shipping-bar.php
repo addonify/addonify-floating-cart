@@ -4,11 +4,11 @@
             <?php 
             if($per < 100){
                 ?>
-                🔥 <?php echo addonify_floating_cart_get_setting_field_value('customer_shopping_meter_pre_threshold_label'); ?>
+                🔥 <?php echo $pre_threshold_label; ?>
                 <?php 
             } else {
                 ?>
-                🔥 <?php echo addonify_floating_cart_get_setting_field_value('customer_shopping_meter_post_threshold_label'); ?>
+                🔥 <?php echo $post_threshold_label; ?>
             <?php 
             }
             ?>

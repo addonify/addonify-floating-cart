@@ -33,8 +33,8 @@ add_action( 'addonify_floating_cart/add_cart_sidebar_components', 'addonify_floa
 if( ! function_exists('addonify_floating_cart_add_cart_sidebar_components')){
 	function addonify_floating_cart_add_cart_sidebar_components() {
 		do_action('addonify_floating_cart/get_cart_header', array());
-		do_action('addonify_floating_cart/get_cart_body', array());
 		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
+		do_action('addonify_floating_cart/get_cart_body', array());
 		do_action('addonify_floating_cart/get_cart_footer', array());
 	}
 }
@@ -110,7 +110,8 @@ if(!function_exists('addonify_floating_cart_get_cart_coupon')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_coupons_available')){
 	function addonify_floating_cart_get_cart_coupons_available($args = array()){
-		addonify_floating_cart_get_template('cart-sections/coupons-available.php', apply_filters("addonify_floating_cart/cart_coupons_available_template_args",$args));
+		addonify_floating_cart_get_template('cart-sections/coupons-available.php', 
+			apply_filters("addonify_floating_cart/cart_coupons_available_template_args",$args));
 	}
 	add_action('addonify_floating_cart/cart_coupons_available_template','addonify_floating_cart_get_cart_coupons_available',10,1);
 }

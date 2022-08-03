@@ -230,7 +230,7 @@
     });
 
     // remove applied coupon from cart
-    $(document).on('click', '.removeCoupon', function () {
+    $(document).on('click', '.adfy__woofc-remove-applied-coupon-button', function () {
         let coupon_div = $(this).closest('li');
         let coupon = $(this).attr('data-coupon');
         $.ajax({

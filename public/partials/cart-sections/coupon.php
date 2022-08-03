@@ -26,7 +26,7 @@ if(addonify_floating_cart_get_setting_field_value('display_cart_coupon_section')
     </form>
     <?php 
     if(addonify_floating_cart_get_setting_field_value('display_applied_coupons') ){
-        do_action('addonify_floating_cart_get_cart_coupons_available', array());
+        do_action('addonify_floating_cart/cart_coupons_available_template', array());
     }
     ?>
 </div>

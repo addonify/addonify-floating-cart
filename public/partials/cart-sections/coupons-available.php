@@ -1,4 +1,5 @@
-<div class="adfy__woofc-coupons">        <?php
+<div class="adfy__woofc-coupons">        
+    <?php
         $applied_coupons = WC()->cart->get_applied_coupons();
         if(!empty($applied_coupons)){
             ?>

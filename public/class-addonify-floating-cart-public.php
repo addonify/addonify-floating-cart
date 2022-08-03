@@ -203,7 +203,7 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart/get_cart_coupons_available', array());
+		do_action('addonify_floating_cart/cart_coupons_available_template', array());
 		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
@@ -340,7 +340,7 @@ class Addonify_Floating_Cart_Public
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-			do_action('addonify_floating_cart/get_cart_coupons_available');
+			do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
 		ob_start();
@@ -383,7 +383,7 @@ class Addonify_Floating_Cart_Public
 		$cart_summary = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart/get_cart_coupons_available');
+		do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
 		ob_start();

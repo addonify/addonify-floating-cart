@@ -10,6 +10,9 @@
     var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
     var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
+    var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
+    var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
+
     var addonifyFloatingCart = {
 
         init: function () {
@@ -366,5 +369,15 @@
             $('.adfy__woofc-alert.error').fadeOut();
         }, 3000);
     }
-
+    $( document.body ).on( 'added_to_cart', function(){
+        if(addonifyFloatingCartOpenCartOnAdd == true){
+            document.body.classList.add('adfy__woofc-visible');
+        }
+    });
+    $(document).on('click','.added_to_cart.wc-forward', function(e){
+        if(addonifyFloatingCartOpenCartOnClickOnViewCart == true){
+            e.preventDefault();
+            document.body.classList.add('adfy__woofc-visible');
+        }
+    });
 })(jQuery);

@@ -60,6 +60,8 @@ class Addonify_Floating_Cart_Public
 
 		add_filter('addonify_floating_cart/add_to_cart_ajax', [ $this, 'addonify_floating_cart_add_to_cart_ajax']);
 
+		add_filter('woocommerce_coupon_message', [$this, 'addonify_floating_cart_empty_woocommerce_coupon_msg']);
+
 	}
 
 	/**
@@ -122,6 +124,8 @@ class Addonify_Floating_Cart_Public
 			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color'),
 			'toast_notification_side_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_side_offset'),
 			'toast_notification_top_bottom_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_top_bottom_offset'),
+			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_after_click_on_view_cart'),
+			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_immediately_after_add_to_cart'),
 		));
 	}
 
@@ -407,6 +411,10 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function check_coupons(){
 		WC()->cart->check_cart_coupons();
+	}
+
+	public function addonify_floating_cart_empty_woocommerce_coupon_msg($msg){
+		return;
 	}
 }
 

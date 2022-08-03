@@ -55,6 +55,6 @@
         </ul>
     </div>
     <div class="adfy__woofc-actions">
-        <?php do_action('addonify_floatting_cart_get_cart_footer_button', array()); ?>
+        <?php do_action('addonify_floatting_cart/get_cart_footer_button', array()); ?>
     </div>
 </footer>

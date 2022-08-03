@@ -62,6 +62,8 @@ class Addonify_Floating_Cart_Public
 
 		add_filter('woocommerce_coupon_message', [$this, 'addonify_floating_cart_empty_woocommerce_coupon_msg']);
 
+		add_filter('woocommerce_coupon_error', [$this, 'addonify_floating_cart_empty_woocommerce_coupon_msg']);
+
 	}
 
 	/**
@@ -414,7 +416,11 @@ class Addonify_Floating_Cart_Public
 	}
 
 	public function addonify_floating_cart_empty_woocommerce_coupon_msg($msg){
-		return;
+		if(wp_doing_ajax()){
+			return;
+		} else {
+			return $msg;
+		}
 	}
 }
 

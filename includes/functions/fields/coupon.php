@@ -3,13 +3,6 @@
 if(!function_exists('addonify_floating_cart_coupon_settings')){
     function addonify_floating_cart_coupon_settings(){
         return array(
-            'display_cart_coupon_section' => array(
-                'label'			  => __( 'Display cart coupon section', 'addonify-floating-cart' ),
-                'description'     => __( 'Enable this to display coupon section.', 'addonify-floating-cart' ),
-                'type'            => 'switch',
-                'dependent'       => array('enable_floating_cart'),
-                'value'           => addonify_floating_cart_get_setting_field_value('display_cart_coupon_section')
-            ),
             // 'display_available_coupons' => array(
             //     'label'			  => __( 'Display available coupons', 'addonify-floating-cart' ),
             //     'description'     => __( 'Enable this to display available coupons.', 'addonify-floating-cart' ),

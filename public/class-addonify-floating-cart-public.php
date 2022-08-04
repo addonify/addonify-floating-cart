@@ -106,6 +106,7 @@ class Addonify_Floating_Cart_Public
 		wp_localize_script($this->plugin_name . '-public', 'addonifyFloatingCartJSObject', array(
 			'ajax_url' => admin_url('admin-ajax.php'),
 			'ajax_add_to_cart_action' => 'addonify_floating_cart_add_to_cart',
+			'ajax_restore_in_cart_action' => 'addonify_floating_cart_restore_in_cart',
 			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
 			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
@@ -128,6 +129,7 @@ class Addonify_Floating_Cart_Public
 			'toast_notification_top_bottom_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_top_bottom_offset'),
 			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_after_click_on_view_cart'),
 			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_immediately_after_add_to_cart'),
+			'show_cart_button_label' => addonify_floating_cart_get_setting_field_value('show_cart_button_label'),
 		));
 	}
 
@@ -226,10 +228,13 @@ class Addonify_Floating_Cart_Public
 	public function remove_from_cart()
 	{
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
-			// Get order review fragment
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
+					$product = wc_get_product($cart_item['product_id']);
+					$product_name = $product->get_title();
+					$restore_cart_item_key = $cart_item_key;
 					WC()->cart->remove_cart_item($cart_item_key);
+					break;
 				}
 			}
 
@@ -243,6 +248,8 @@ class Addonify_Floating_Cart_Public
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
 				'cart_items' => $contents_count,
+				'product_name' => $product_name,
+				'restore_cart_item_key' => $restore_cart_item_key,
 			);
 			if($contents_count === 0){
 				$data['no_data_html'] = esc_html( apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'addonify-floating-cart' ) ) );
@@ -250,7 +257,43 @@ class Addonify_Floating_Cart_Public
 
 			wp_send_json($data);
 		} else {
-			wp_die( __("Invalid request"), "Request Verfication" );
+			wp_die( __("Invalid request"), "Request Verification" );
+		}
+		die();
+	}
+
+	/**
+	 * restore removed cart item through ajax
+	 * @since    1.0.0
+	 */
+	public function restore_in_cart(){
+		$error = true;
+		$msg = '';
+		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			$item_key = $_POST['cart_item_key'];
+			if(!empty($item_key)){
+				$restored = WC()->cart->restore_cart_item($item_key);
+				WC()->cart->calculate_totals();
+				WC()->cart->maybe_set_cart_cookies();
+				$error = !$restored;
+				$msg = $restored ? "Restored successfully." : "Could not be restored.";
+			} else {
+				$msg = "Key Missing";
+			}
+			$fragments = apply_filters('addonify_floating_cart/add_to_cart_ajax', array());
+			$item_html = $this->get_item_from_key($item_key);
+			// ob_start();
+			// do_action('addonify_floating_cart/get_cart_body', array());
+			// $fragments['.adfy__woofc-content'] = ob_get_clean();
+			$data = array(
+				'item_html' => $item_html,
+				'fragments' => $fragments,
+				'error' => $error,
+				'messsage' => $msg,
+			);
+			wp_send_json($data);
+		} else {
+			wp_die( __("Invalid request"), "Request Verification" );
 		}
 		die();
 	}
@@ -421,6 +464,56 @@ class Addonify_Floating_Cart_Public
 		} else {
 			return $msg;
 		}
+	}
+	/**
+	 * to get html of an item provided a key
+	 * @param string $key
+	 * @return string $html
+	 */
+	public function get_item_from_key($key){
+		ob_start();
+		foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+			if ($cart_item_key == $key) {
+                if(isset($cart_item['variation_id']) && $cart_item['variation_id']){
+                    $variation = new WC_Product_Variation($cart_item['variation_id']);
+                } else {
+                    $variation = NULL;
+                }      
+				$product = wc_get_product($cart_item['product_id']);
+                ?>
+                <div class="adfy__woofc-item">
+                    <?php 
+                        do_action( 'addonify_floating_cart/get_cart_body_image', array(
+                            'product' => $product,
+                            'cart_item_key' => $cart_item_key,
+                            'cart_item' => $cart_item,
+                            'variation' => $variation,
+                        ));
+                    ?>
+                    <div class="adfy__woofc-item-content">
+                        <?php 
+                        do_action( 'addonify_floating_cart/get_cart_body_title', array(
+                            'product' => $product,
+                            'cart_item' => $cart_item,
+                        ));
+                        do_action('addonify_floating_cart/get_cart_body_quantity_price', array(
+                            'product' => $product,
+                            'cart_item' => $cart_item,
+                            'variation' => $variation,
+                        ));
+                        do_action( 'addonify_floating_cart/get_cart_body_quantity_field', array(
+                            'product' => $product,
+                            'cart_item_key' => $cart_item_key,
+                            'cart_item' => $cart_item,
+                        ));
+                        ?>
+                    </div>
+                </div><!-- // adfy__woofc-item -->
+                <?php 
+				break;
+			}
+		}
+		return ob_get_clean();
 	}
 }
 

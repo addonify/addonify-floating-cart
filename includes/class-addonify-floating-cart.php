@@ -190,6 +190,9 @@ class Addonify_Floating_Cart {
 		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_remove_from_cart', $plugin_public, 'remove_from_cart');
 		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_from_cart', $plugin_public, 'remove_from_cart');
 
+		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_restore_in_cart', $plugin_public, 'restore_in_cart');
+		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_restore_in_cart', $plugin_public, 'restore_in_cart');
+
 		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
 		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
 

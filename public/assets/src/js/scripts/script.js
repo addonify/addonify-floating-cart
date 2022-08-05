@@ -8,10 +8,13 @@
     var addonifyFloatingCartNotifyDismissible = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDismissible == 1 ? true : false;
     var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1 ? true : false;
     var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
+    var addonifyFloatingCartNotifyShowCartButtonLabel = addonifyFloatingCartJSObject.show_cart_button_label;
     var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
+
+    var timeout;
 
     var addonifyFloatingCart = {
 
@@ -49,7 +52,7 @@
 
         notifyFloatingCartEventHandler: () => {
 
-            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>Show Cart</button>" : "";
+            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>"+addonifyFloatingCartNotifyShowCartButtonLabel+"</button>" : "";
 
             // Configure Notyf.
             var notyf = new Notyf({
@@ -76,7 +79,9 @@
                     notification.on('click', function ({ target, event }) {
                         // target: the notification being clicked
                         // event: the mouseevent
-                        $('body').addClass('adfy__woofc-visible');
+                        if(addonifyFloatingCartNotifyShowHtmlContent){
+                            $('body').addClass('adfy__woofc-visible');
+                        }
                     });
                 }
             });
@@ -168,6 +173,10 @@
                 }
                 this_product.closest('div.adfy__woofc-item').remove();
 
+                $('#adfy__woofc-cart-errors').html(
+                    '<a class="adfy__woofc-restore-item" id="adfy__woofc_restore_item" data-item_key="'+response.restore_cart_item_key+'"> '+response.product_name+' has been removed. Restore?</a>'
+                );
+
                 if (response.cart_items == 0) {
                     $('.adfy__woofc-content-entry').html(
                         response.no_data_html
@@ -179,6 +188,38 @@
             },
             error: function (a) {
                 console.log("Error processing request");
+            }
+        });
+    });
+
+    $(document).on('click', '#adfy__woofc_restore_item', function (e) {
+        e.preventDefault();
+        let item_key = $(this).attr('data-item_key');
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: addonifyFloatingCartJSObject.ajax_url,
+            data: {
+                action: addonifyFloatingCartJSObject.ajax_restore_in_cart_action,
+                cart_item_key: item_key,
+                nonce: addonifyFloatingCartJSObject.nonce
+            },
+            success: function (response) {
+                if (!response)
+                    return;
+                clearTimeout(timeout);
+                var fragments = response.fragments;
+                if(response.error){
+                    console.log(response.messsage);
+                }
+                $('#adfy__woofc-cart-errors').html('');
+                $('#adfy__woofc-scrollbar').append(response.item_html);
+                // Replace fragments
+                if (fragments) {
+                    $.each(fragments, function (key, value) {
+                        $(key).replaceWith(value);
+                    });
+                }
             }
         });
     });

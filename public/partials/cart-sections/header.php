@@ -2,7 +2,7 @@
 ?>
 <header class="adfy__woofc-header">
     <h3 class="adfy__woofc-title">
-        <?php esc_html_e(addonify_floating_cart_get_setting_field_value('cart_title')); ?>
+        <?php echo esc_html(addonify_floating_cart_get_setting_field_value('cart_title')); ?>
         <?php if(addonify_floating_cart_get_setting_field_value('display_cart_items_number')){ ?>
         <span class="adfy__woofc-badge">
             <?php 

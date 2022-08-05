@@ -1,5 +1,6 @@
 <?php
 ?>
+<div id="adfy__woofc-cart-errors"></div>
 <main class="adfy__woofc-content">
     <div class="adfy__woofc-content-entry" id="adfy__woofc-scrollbar">
         <?php 
@@ -10,7 +11,7 @@
                     $variation = new WC_Product_Variation($cart_item['variation_id']);
                 } else {
                     $variation = NULL;
-                }                
+                }
                 $product = wc_get_product($cart_item['product_id']);
                 ?>
                 <div class="adfy__woofc-item">

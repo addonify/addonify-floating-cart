@@ -1,7 +1,7 @@
 <?php
 ?>
 <footer class="adfy__woofc-colophon">
-    <?php if ( (wc_coupons_enabled()) && (WC()->cart->get_cart_contents_count() > 0) && (addonify_floating_cart_get_setting_field_value('display_cart_coupon_section')) ) { ?>
+    <?php if ( (wc_coupons_enabled()) && (WC()->cart->get_cart_contents_count() > 0) ) { ?>
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">
@@ -9,7 +9,7 @@
             </span>
             <?php esc_html_e('Have a coupon?'); ?> 
             <a href="#" id="adfy__woofc-coupon-trigger" class="adfy__woofc-link has-underline">
-                <?php esc_html_e('Click here to apply'); ?> 
+                <?php esc_html_e('Click here to apply','addonify-floating-cart'); ?> 
             </a>
         </p>
     </div>
@@ -20,7 +20,7 @@
             if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
                 ?>
                 <li class="sub-total">
-                    <span class="label"><?php esc_html_e('Sub total:'); ?></span>
+                    <span class="label"><?php esc_html_e('Sub total:','addonify-floating-cart'); ?></span>
                     <span class="value">
                         <span class="woocommerce-Price-amount subtotal-amount">
                             <bdi>
@@ -30,7 +30,7 @@
                     </span>
                 </li>
                 <li class="discount">
-                    <span class="label"><?php esc_html_e('Discount:'); ?></span>
+                    <span class="label"><?php esc_html_e('Discount:','addonify-floating-cart'); ?></span>
                     <span class="value">
                         <span class="woocommerce-Price-amount discount-amount">
                             <bdi>
@@ -43,7 +43,7 @@
             }
             ?>
             <li class="total">
-                <span class="label"><?php esc_html_e('Total:'); ?></span>
+                <span class="label"><?php esc_html_e('Total:','addonify-floating-cart'); ?></span>
                 <span class="value">
                     <span class="woocommerce-Price-amount total-amount">
                         <bdi>

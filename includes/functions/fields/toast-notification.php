@@ -20,14 +20,14 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                     'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
                     'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
                 ),
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_display_position')
             ),
             'open_cart_modal_on_notification_button_click' => array(
                 'label'			  => __( 'Open floating cart notification button', 'addonify-floating-cart' ),
                 'description'     => __( 'Enables opening floating cart by clicking on notification button.', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click')
             ),
             'added_to_cart_notification_text' => array(
@@ -35,7 +35,7 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'description'     => __( 'Text shown after item is added to cart.', 'addonify-floating-cart' ),
                 'type'            => 'text',
                 'placeholder'     => __( 'Added to cart', 'addonify-floating-cart' ),
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('added_to_cart_notification_text')
             ),
             'close_notification_after_time' => array(
@@ -44,20 +44,26 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'typeStyle'       => 'toggle',
                 'min'             => 1,
                 'max'             => 120,
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('close_notification_after_time')
             ),
             'display_close_notification_button' => array(
                 'label'			  => __( 'Display toast notification close button', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_close_notification_button')
             ),
             'display_show_cart_button' => array(
                 'label'			  => __( 'Display show cart button in toast notification', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'dependent'       => array('display_toast_notification'),
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('display_show_cart_button')
+            ),
+            'show_cart_button_label' => array(
+                'label'			  => __( 'Label for Show cart button in notification ', 'addonify-floating-cart' ),
+                'type'            => 'text',
+                'dependent'       => array('display_toast_notification','enable_floating_cart','display_show_cart_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('show_cart_button_label')
             ),
         );
     }

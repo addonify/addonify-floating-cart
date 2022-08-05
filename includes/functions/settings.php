@@ -27,6 +27,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'open_cart_modal_immediately_after_add_to_cart' => false, 
                 'open_cart_modal_after_click_on_view_cart' => true,
                 'display_floating_cart_in_checkout_and_cart_page' => false, //done
+                'enable_shopping_meter' => true,
                 'customer_shopping_meter_threshold' => 0, //done
                 'customer_shopping_meter_pre_threshold_label' => '',
                 'customer_shopping_meter_post_threshold_label' => '',
@@ -55,6 +56,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'close_notification_after_time' => 5,
                 'display_close_notification_button' => false,
                 'display_show_cart_button' => false,
+                'show_cart_button_label' => 'Show Cart',
                 'toast_notification_background_color' => '',
                 'toast_notification_text_color' => '',
                 'toast_notification_button_background_color' => '',
@@ -71,6 +73,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_continue_shopping_button' => true,//done
                 'continue_shopping_button_label' => 'Close',//done
                 'checkout_button_label' => 'Checkout',//done
+                'display_product_removed_from_cart' => true, //done
                 'cart_modal_background_color' => '',
                 'cart_modal_overlay_color' => '',
                 'cart_modal_title_color' => '',
@@ -105,7 +108,6 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_secondary_button_on_hover_border_color' => '',
                 'cart_modal_width' => '',
                 // cart coupon options
-                'display_cart_coupon_section' => true,//done
                 // 'display_available_coupons' => false, //will be added in next version
                 'display_applied_coupons' => true,//done
                 'cart_apply_coupon_button_label' => 'Apply Coupon',//done

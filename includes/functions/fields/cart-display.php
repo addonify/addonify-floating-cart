@@ -53,6 +53,12 @@ if(!function_exists('addonify_floating_cart_cart_display_settings')){
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('checkout_button_label')
             ),
+            'display_product_removed_from_cart' => array(
+                'label'			  => __( 'Display product removed from cart.', 'addonify-floating-cart' ),
+                'type'            => 'switch',
+                'dependent'       => array('enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value('display_product_removed_from_cart')
+            ),
         );
     }
 }

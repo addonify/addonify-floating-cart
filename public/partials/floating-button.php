@@ -1,5 +1,5 @@
 <?php
-    $toggle_button_position = addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position');
+    $toggle_button_position = esc_html(addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_display_position'));
 ?>
 <button id="adfy__woofc-trigger" class="adfy__show-woofc <?php echo $toggle_button_position; ?>" data_display="visible" data_animation="shake" data_style="rounded" data_label="false" data_icon="true">
     <span class="icon">
@@ -11,7 +11,7 @@
     <span class="label"></span>
     <?php 
     if(addonify_floating_cart_get_setting_field_value('display_cart_items_number_badge')){ 
-        $badge_position = addonify_floating_cart_get_setting_field_value('cart_items_number_badge_position');
+        $badge_position = esc_html(addonify_floating_cart_get_setting_field_value('cart_items_number_badge_position'));
         ?>
         <span class="badge <?php echo $badge_position; ?>"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
     <?php

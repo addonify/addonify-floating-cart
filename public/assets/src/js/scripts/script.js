@@ -9,12 +9,14 @@
     var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1 ? true : false;
     var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
     var addonifyFloatingCartNotifyShowCartButtonLabel = addonifyFloatingCartJSObject.show_cart_button_label;
+    var addonifyFloatingCartNotifyShowProductName = addonifyFloatingCartJSObject.display_product_name_in_notification;
     var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
     var timeout;
+    var product_name;
 
     var addonifyFloatingCart = {
 
@@ -67,14 +69,15 @@
             });
 
             // Listen to WooCommerce product added to cart event.
-            $(document).on('added_to_cart', function (event) {
+            $(document).on('added_to_cart', function (event, data) {
                 if (addonifyFloatingCartNotifyShow) {
+                    product_name = addonifyFloatingCartNotifyShowProductName ? (data.product.charAt(0).toUpperCase() + data.product.slice(1)) : '';
                     // Invoke the Notyf toast. Append the product name here.
                     var notification = notyf.success({
 
                         className: 'adfy__woofc-notfy-success',
                         //background: '#111111',
-                        message: addonifyFloatingCartNotifyMessage + " " + notfyHtmlContent,
+                        message: product_name + " " +addonifyFloatingCartNotifyMessage + " " + notfyHtmlContent,
                     });
                     notification.on('click', function ({ target, event }) {
                         // target: the notification being clicked
@@ -410,7 +413,8 @@
             $('.adfy__woofc-alert.error').fadeOut();
         }, 3000);
     }
-    $( document.body ).on( 'added_to_cart', function(){
+    $( document.body ).on( 'added_to_cart', function(e, data){
+        // console.log(data.product);
         if(addonifyFloatingCartOpenCartOnAdd == true){
             document.body.classList.add('adfy__woofc-visible');
         }

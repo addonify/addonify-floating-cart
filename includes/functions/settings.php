@@ -56,6 +56,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'close_notification_after_time' => 5,
                 'display_close_notification_button' => false,
                 'display_show_cart_button' => false,
+                'display_product_name_in_notification' => false,
                 'show_cart_button_label' => 'Show Cart',
                 'toast_notification_background_color' => '',
                 'toast_notification_text_color' => '',

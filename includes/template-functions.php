@@ -173,7 +173,7 @@ if(!function_exists('addonify_floating_cart_get_cart_body_image')){
 	function addonify_floating_cart_get_cart_body_image($args = array()){
 		$args_['product'] = $args['product'];
         $args_['product_permalink'] = $args['product']->is_visible() ? $args['product']->get_permalink(  ) : '';
-        if(!empty($variation) ){
+        if(!empty($args['variation']) ){
             $args_['image'] = $args['variation']->get_image();
         } else {
             $args_['image'] =  $args['product']->get_image();

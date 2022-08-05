@@ -73,7 +73,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_continue_shopping_button' => true,//done
                 'continue_shopping_button_label' => 'Close',//done
                 'checkout_button_label' => 'Checkout',//done
-                'display_product_removed_from_cart' => true,
+                'display_product_removed_from_cart' => true, //done
                 'cart_modal_background_color' => '',
                 'cart_modal_overlay_color' => '',
                 'cart_modal_title_color' => '',

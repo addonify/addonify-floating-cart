@@ -44,6 +44,7 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'description'     => __( 'Cart total after which certain discount/freebies are applied.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
+                'controlPosition' => 'right', // right or remove this prop.
                 'min'             => 0,
                 'dependent'       => array('enable_floating_cart','enable_shopping_meter'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'customer_shopping_meter_threshold' )

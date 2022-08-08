@@ -47,10 +47,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".unsupported-control-text {\n  font-si
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -600,8 +600,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input/index.mjs");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input/index.mjs");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input-number/index.mjs");
 /* harmony import */ var element_plus_es_components_input_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! element-plus/es/components/input/style/css */ "./node_modules/element-plus/es/components/input/style/css.mjs");
+/* harmony import */ var element_plus_es_components_input_number_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! element-plus/es/components/input-number/style/css */ "./node_modules/element-plus/es/components/input-number/style/css.mjs");
+
+
 
 
 
@@ -613,72 +617,11 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     modelValue: [String, Number],
     // loose strict checking.
+    type: String,
     min: Number,
-    max: Number
-  },
-  emits: ["update:modelValue"],
-  setup: function setup(__props, _ref) {
-    var expose = _ref.expose,
-        emit = _ref.emit;
-    expose();
-    var props = __props; // Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
-
-    var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
-      get: function get() {
-        return parseInt(props.modelValue);
-      },
-      set: function set(newValue) {
-        emit("update:modelValue", newValue);
-      }
-    }); //const { min, max } = props;
-
-    var min = parseInt(props.min);
-    var max = parseInt(props.max);
-    var __returned__ = {
-      props: props,
-      emit: emit,
-      value: value,
-      min: min,
-      max: max,
-      computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed,
-      ElInput: element_plus__WEBPACK_IMPORTED_MODULE_2__.ElInput
-    };
-    Object.defineProperty(__returned__, '__isScriptSetup', {
-      enumerable: false,
-      value: true
-    });
-    return __returned__;
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input-number/index.mjs");
-/* harmony import */ var element_plus_es_components_input_number_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! element-plus/es/components/input-number/style/css */ "./node_modules/element-plus/es/components/input-number/style/css.mjs");
-
-
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  __name: 'NumberToggleButton',
-  props: {
-    modelValue: [String, Number],
-    // loose strict checking.
-    min: Number,
-    max: Number
+    max: Number,
+    step: Number,
+    controlPosition: String
   },
   emits: ["update:modelValue"],
   setup: function setup(__props, _ref) {
@@ -695,16 +638,13 @@ __webpack_require__.r(__webpack_exports__);
         emit("update:modelValue", newValue);
       }
     });
-    var min = parseInt(props.min);
-    var max = parseInt(props.max);
     var __returned__ = {
       props: props,
       emit: emit,
       value: value,
-      min: min,
-      max: max,
       computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed,
-      ElInputNumber: element_plus__WEBPACK_IMPORTED_MODULE_2__.ElInputNumber
+      ElInput: element_plus__WEBPACK_IMPORTED_MODULE_3__.ElInput,
+      ElInputNumber: element_plus__WEBPACK_IMPORTED_MODULE_4__.ElInputNumber
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -1223,8 +1163,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inputs_Radio_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../inputs/Radio.vue */ "./admin/src/components/inputs/Radio.vue");
 /* harmony import */ var _inputs_ColorPicker_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../inputs/ColorPicker.vue */ "./admin/src/components/inputs/ColorPicker.vue");
 /* harmony import */ var _inputs_InvalidControl_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../inputs/InvalidControl.vue */ "./admin/src/components/inputs/InvalidControl.vue");
-/* harmony import */ var _inputs_NumberToggleButton_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../inputs/NumberToggleButton.vue */ "./admin/src/components/inputs/NumberToggleButton.vue");
-
 
 
 
@@ -1258,8 +1196,7 @@ __webpack_require__.r(__webpack_exports__);
       CheckboxButton: _inputs_CheckboxButton_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
       Radio: _inputs_Radio_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
       ColorPicker: _inputs_ColorPicker_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
-      InvalidControl: _inputs_InvalidControl_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
-      NumberToggleButton: _inputs_NumberToggleButton_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+      InvalidControl: _inputs_InvalidControl_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -1824,45 +1761,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
-    type: "number",
-    modelValue: $setup.value,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.value = $event;
-    }),
-    min: $setup.min ? $setup.min : 0,
-    max: $setup.max
-  }, null, 8
-  /* PROPS */
-  , ["modelValue", "min", "max"]);
-}
-
-/***/ }),
-
-/***/ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75 ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInputNumber"], {
+  return $setup.props.type == 'toggle' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInputNumber"], {
+    key: 0,
     modelValue: $setup.value,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.value = $event;
     }),
     size: "large",
-    min: $setup.min ? $setup.min : 0,
-    max: $setup.max ? $setup.max : 365
+    min: $setup.props.min,
+    max: $setup.props.max,
+    step: $setup.props.step,
+    controlsPosition: $setup.props.controlPosition
   }, null, 8
   /* PROPS */
-  , ["modelValue", "min", "max"]);
+  , ["modelValue", "min", "max", "step", "controlsPosition"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
+    key: 1,
+    modelValue: $setup.value,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.value = $event;
+    }),
+    type: "number",
+    size: "large",
+    min: $setup.props.min,
+    max: $setup.props.max
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "min", "max"]));
 }
 
 /***/ }),
@@ -2534,28 +2458,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     choices: $setup.props.field.choices
   }, null, 8
   /* PROPS */
-  , ["modelValue", "choices"])) : $setup.props.field.type == 'number' && $setup.props.field.typeStyle == 'toggle' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["NumberToggleButton"], {
+  , ["modelValue", "choices"])) : $setup.props.field.type == 'number' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Number"], {
     key: 6,
     modelValue: $setup.props.reactiveState[$setup.props.fieldKey],
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.props.reactiveState[$setup.props.fieldKey] = $event;
     }),
-    placeholder: $setup.props.field.placeholder
+    placeholder: $setup.props.field.placeholder,
+    type: $setup.props.field.typeStyle,
+    min: $setup.props.field.min,
+    controlPosition: $setup.props.field.controlPosition
   }, null, 8
   /* PROPS */
-  , ["modelValue", "placeholder"])) : $setup.props.field.type == 'number' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Number"], {
+  , ["modelValue", "placeholder", "type", "min", "controlPosition"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
     key: 7,
     modelValue: $setup.props.reactiveState[$setup.props.fieldKey],
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $setup.props.reactiveState[$setup.props.fieldKey] = $event;
-    }),
-    placeholder: $setup.props.field.placeholder
-  }, null, 8
-  /* PROPS */
-  , ["modelValue", "placeholder"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
-    key: 8,
-    modelValue: $setup.props.reactiveState[$setup.props.fieldKey],
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.props.reactiveState[$setup.props.fieldKey] = $event;
     }),
     choices: $setup.props.field.choices,
@@ -2563,9 +2481,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["modelValue", "choices", "renderChoices"])) : $setup.props.field.type == 'color' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ColorPicker"], {
-    key: 9,
+    key: 8,
     colorVal: $setup.props.reactiveState[$setup.props.fieldKey],
-    "onUpdate:colorVal": _cache[9] || (_cache[9] = function ($event) {
+    "onUpdate:colorVal": _cache[8] || (_cache[8] = function ($event) {
       return $setup.props.reactiveState[$setup.props.fieldKey] = $event;
     }),
     isAlphaPicker: $setup.props.field.isAlphaPicker,
@@ -2573,7 +2491,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["colorVal", "isAlphaPicker", "label"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["InvalidControl"], {
-    key: 10
+    key: 9
   }));
 }
 
@@ -3041,10 +2959,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3053,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_style_index_0_id_30f8af75_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Number_vue_vue_type_style_index_0_id_3be04da2_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss");
 
             
 
@@ -3062,11 +2980,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_style_index_0_id_30f8af75_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Number_vue_vue_type_style_index_0_id_3be04da2_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_style_index_0_id_30f8af75_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Number_vue_vue_type_style_index_0_id_3be04da2_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -3342,34 +3260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Number_vue_vue_type_template_id_3be04da2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Number.vue?vue&type=template&id=3be04da2 */ "./admin/src/components/inputs/Number.vue?vue&type=template&id=3be04da2");
 /* harmony import */ var _Number_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Number.vue?vue&type=script&setup=true&lang=js */ "./admin/src/components/inputs/Number.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var _home_anujsubedi_Local_Sites_xenial_app_public_wp_content_plugins_addonify_floating_cart_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-
-
-
-
-;
-const __exports__ = /*#__PURE__*/(0,_home_anujsubedi_Local_Sites_xenial_app_public_wp_content_plugins_addonify_floating_cart_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Number_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Number_vue_vue_type_template_id_3be04da2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"admin/src/components/inputs/Number.vue"]])
-/* hot reload */
-if (false) {}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
-
-/***/ }),
-
-/***/ "./admin/src/components/inputs/NumberToggleButton.vue":
-/*!************************************************************!*\
-  !*** ./admin/src/components/inputs/NumberToggleButton.vue ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _NumberToggleButton_vue_vue_type_template_id_30f8af75__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NumberToggleButton.vue?vue&type=template&id=30f8af75 */ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75");
-/* harmony import */ var _NumberToggleButton_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NumberToggleButton.vue?vue&type=script&setup=true&lang=js */ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var _NumberToggleButton_vue_vue_type_style_index_0_id_30f8af75_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss */ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss");
+/* harmony import */ var _Number_vue_vue_type_style_index_0_id_3be04da2_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss */ "./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss");
 /* harmony import */ var _home_anujsubedi_Local_Sites_xenial_app_public_wp_content_plugins_addonify_floating_cart_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
@@ -3378,7 +3269,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_anujsubedi_Local_Sites_xenial_app_public_wp_content_plugins_addonify_floating_cart_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_NumberToggleButton_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_NumberToggleButton_vue_vue_type_template_id_30f8af75__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"admin/src/components/inputs/NumberToggleButton.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_anujsubedi_Local_Sites_xenial_app_public_wp_content_plugins_addonify_floating_cart_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Number_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Number_vue_vue_type_template_id_3be04da2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"admin/src/components/inputs/Number.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -4024,21 +3915,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js":
-/*!***********************************************************************************************!*\
-  !*** ./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js ***!
-  \***********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
-/* harmony export */ });
-/* harmony import */ var _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NumberToggleButton.vue?vue&type=script&setup=true&lang=js */ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=script&setup=true&lang=js");
- 
-
-/***/ }),
-
 /***/ "./admin/src/components/inputs/Radio.vue?vue&type=script&setup=true&lang=js":
 /*!**********************************************************************************!*\
   !*** ./admin/src/components/inputs/Radio.vue?vue&type=script&setup=true&lang=js ***!
@@ -4414,21 +4290,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75":
-/*!******************************************************************************************!*\
-  !*** ./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75 ***!
-  \******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_template_id_30f8af75__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_template_id_30f8af75__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NumberToggleButton.vue?vue&type=template&id=30f8af75 */ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=template&id=30f8af75");
-
-
-/***/ }),
-
 /***/ "./admin/src/components/inputs/Radio.vue?vue&type=template&id=73500785":
 /*!*****************************************************************************!*\
   !*** ./admin/src/components/inputs/Radio.vue?vue&type=template&id=73500785 ***!
@@ -4753,14 +4614,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss":
-/*!*********************************************************************************************************!*\
-  !*** ./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss ***!
-  \*********************************************************************************************************/
+/***/ "./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss":
+/*!*********************************************************************************************!*\
+  !*** ./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss ***!
+  \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NumberToggleButton_vue_vue_type_style_index_0_id_30f8af75_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss */ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/NumberToggleButton.vue?vue&type=style&index=0&id=30f8af75&lang=scss");
+/* harmony import */ var _node_modules_unplugin_dist_webpack_loaders_transform_js_ruleSet_1_rules_26_use_0_node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Number_vue_vue_type_style_index_0_id_3be04da2_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss */ "./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[26].use[0]!./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./admin/src/components/inputs/Number.vue?vue&type=style&index=0&id=3be04da2&lang=scss");
 
 
 /***/ }),

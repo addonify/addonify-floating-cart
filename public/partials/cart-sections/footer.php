@@ -34,7 +34,7 @@
                     <span class="value">
                         <span class="woocommerce-Price-amount discount-amount">
                             <bdi>
-                            <?php echo WC()->cart->get_cart_discount_total(); ?>
+                            <?php echo get_woocommerce_currency_symbol() . WC()->cart->get_cart_discount_total(); ?>
                             </bdi>
                         </span>
                     </span>

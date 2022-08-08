@@ -73,10 +73,8 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_styles()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		wp_enqueue_style('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all');
 
@@ -92,10 +90,8 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_scripts()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		wp_enqueue_script('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true);
 
@@ -130,15 +126,14 @@ class Addonify_Floating_Cart_Public
 			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_after_click_on_view_cart'),
 			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_immediately_after_add_to_cart'),
 			'show_cart_button_label' => addonify_floating_cart_get_setting_field_value('show_cart_button_label'),
+			'display_product_name_in_notification' => addonify_floating_cart_get_setting_field_value('display_product_name_in_notification'),
 		));
 	}
 
 	public function footer_content()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		do_action('addonify_floating_cart_add');
 	}
@@ -176,6 +171,9 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
+
+		$product = wc_get_product( absint($_POST['product_id']) );
+		$fragments['product'] = $product->get_title();
 
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
@@ -290,6 +288,7 @@ class Addonify_Floating_Cart_Public
 				'fragments' => $fragments,
 				'error' => $error,
 				'messsage' => $msg,
+				'no_of_items_in_cart' => WC()->cart->get_cart_contents_count(),
 			);
 			wp_send_json($data);
 		} else {

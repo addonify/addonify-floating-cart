@@ -26,7 +26,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'enable_floating_cart' => true, //done
                 'open_cart_modal_immediately_after_add_to_cart' => false, 
                 'open_cart_modal_after_click_on_view_cart' => true,
-                'display_floating_cart_in_checkout_and_cart_page' => false, //done
+                // 'display_floating_cart_in_checkout_and_cart_page' => false, //done
                 'enable_shopping_meter' => true,
                 'customer_shopping_meter_threshold' => 500, //done
                 'customer_shopping_meter_pre_threshold_label' => '',
@@ -56,6 +56,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'close_notification_after_time' => 5,
                 'display_close_notification_button' => false,
                 'display_show_cart_button' => false,
+                'display_product_name_in_notification' => false,
                 'show_cart_button_label' => 'Show Cart',
                 'toast_notification_background_color' => '',
                 'toast_notification_text_color' => '',

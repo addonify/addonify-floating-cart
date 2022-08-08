@@ -30,6 +30,12 @@ if(!function_exists('addonify_floating_cart_toast_notification_settings')){
                 'dependent'       => array('display_toast_notification','enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click')
             ),
+            'display_product_name_in_notification' => array(
+                'label'			  => __( 'Display Product name in Notification', 'addonify-floating-cart' ),
+                'type'            => 'switch',
+                'dependent'       => array('display_toast_notification','enable_floating_cart'),
+                'value'           => addonify_floating_cart_get_setting_field_value('display_product_name_in_notification')
+            ),
             'added_to_cart_notification_text' => array(
                 'label'			  => __( 'Added to cart text', 'addonify-floating-cart' ),
                 'description'     => __( 'Text shown after item is added to cart.', 'addonify-floating-cart' ),

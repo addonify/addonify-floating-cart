@@ -438,10 +438,10 @@
                     flex-direction: column;
                     align-items: center;
                     list-style: none;
-                    padding: 10px 15px;
+                    padding: 0;
                     margin: 0;
                     gap: 10px;
-                    border: 1px solid var(--adfy_woofc_border_color);
+                    border: none;
                     border-radius: 5px;
 
                     li {
@@ -480,6 +480,15 @@
 
                             font-weight: bold;
                         }
+                    }
+                }
+
+                &.discount {
+
+                    ul {
+
+                        padding: 10px 15px;
+                        border: 1px solid var(--adfy_woofc_border_color);
                     }
                 }
             }

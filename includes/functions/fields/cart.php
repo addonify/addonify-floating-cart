@@ -36,8 +36,6 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'label'			  => __( 'Enable shopping meter threshold', 'addonify-floating-cart' ),
                 'description'     => __( '', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'enable_shopping_meter' )
             ),
@@ -46,9 +44,8 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'description'     => __( 'Cart total after which certain discount/freebies are applied.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
-                'badge'           => 'Required',
-                'badgeType'       => '',
-                // 'max'             => 1000,
+                'controlPosition' => 'right', // right or remove this prop.
+                'min'             => 0,
                 'dependent'       => array('enable_floating_cart','enable_shopping_meter'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'customer_shopping_meter_threshold' )
             ),
@@ -56,8 +53,6 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'label'			  => __( 'Label for Cart items does not meet threshold', 'addonify-floating-cart' ),
                 'description'     => '',
                 'type'            => 'text',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart','enable_shopping_meter'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'customer_shopping_meter_pre_threshold_label' )
             ),
@@ -65,8 +60,6 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'label'			  => __( 'Label for Cart items meets threshold', 'addonify-floating-cart' ),
                 'description'     => __( '', 'addonify-floating-cart' ),
                 'type'            => 'text',
-                'badge'           => 'Required',
-                'badgeType'       => '',
                 'dependent'       => array('enable_floating_cart','enable_shopping_meter'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'customer_shopping_meter_post_threshold_label' )
             ),
@@ -104,6 +97,6 @@ if ( ! function_exists( 'addonify_floating_cart_general_styles_add_to_settings_f
 
         return array_merge( $settings_fields, addonify_floating_cart_cart_styles_settings_fields() );
     }
-    
+
     add_filter( 'addonify_floating_cart/settings_fields', 'addonify_floating_cart_general_styles_add_to_settings_fields' );
 }

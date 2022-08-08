@@ -126,7 +126,6 @@ class Addonify_Floating_Cart_Public
 			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_after_click_on_view_cart'),
 			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_immediately_after_add_to_cart'),
 			'show_cart_button_label' => addonify_floating_cart_get_setting_field_value('show_cart_button_label'),
-			'display_product_name_in_notification' => addonify_floating_cart_get_setting_field_value('display_product_name_in_notification'),
 		));
 	}
 

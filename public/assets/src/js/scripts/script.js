@@ -84,13 +84,13 @@
             // Listen to WooCommerce product added to cart event.
             $(document).on('added_to_cart', function (event, data) {
                 if (addonifyFloatingCartNotifyShow) {
-                    product_name = addonifyFloatingCartNotifyShowProductName ? (data.product.charAt(0).toUpperCase() + data.product.slice(1)) : '';
+                    product_name = data.product.charAt(0).toUpperCase() + data.product.slice(1);
                     // Invoke the Notyf toast. Append the product name here.
                     var notification = notyf.success({
 
                         className: 'adfy__woofc-notfy-success',
                         //background: '#111111',
-                        message: product_name + " " +addonifyFloatingCartNotifyMessage + " " + notfyHtmlContent,
+                        message: addonifyFloatingCartNotifyMessage.replace('{product_name}',product_name) + " " + notfyHtmlContent,
                     });
                     notification.on('click', function ({ target, event }) {
                         // target: the notification being clicked
@@ -109,7 +109,7 @@
             $(document).on('click', '.adfy__woofc-item .adfy__woofc-inc-quantity', function (e) {
                 e.preventDefault();
                 let input_field = $(this).next();
-                if(parseInt(input_field.val()) < parseInt(input_field.attr('max'))){
+                if(parseInt(input_field.val()) < parseInt(input_field.attr('max')) || input_field.attr('max') == ''){
                     AddonifyUpdateCartAjax(this, 'add');
                 }
             });
@@ -413,6 +413,12 @@
                             return;
                         clearTimeout(timeout);
                         var fragments = response.fragments;
+                        // Replace fragments
+                        if (fragments) {
+                            $.each(fragments, function (key, value) {
+                                $(key).replaceWith(value);
+                            });
+                        }
                         $('#adfy__woofc-cart-errors').html('');
                         if(response.error){
                             console.log(response.messsage);

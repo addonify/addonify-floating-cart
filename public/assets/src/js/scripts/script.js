@@ -108,18 +108,32 @@
             // increase product quantity
             $(document).on('click', '.adfy__woofc-item .adfy__woofc-inc-quantity', function (e) {
                 e.preventDefault();
-                AddonifyUpdateCartAjax(this, 'add');
+                let input_field = $(this).next();
+                if(parseInt(input_field.val()) < parseInt(input_field.attr('max'))){
+                    AddonifyUpdateCartAjax(this, 'add');
+                }
             });
 
             //decrease product quantity
             $(document).on('click', '.adfy__woofc-item .adfy__woofc-dec-quantity', function (e) {
                 e.preventDefault();
+                let input_field = $(this).prev();
+                if(parseInt(input_field.val()) <= parseInt(input_field.attr('min'))){
+                    return;
+                }
                 AddonifyUpdateCartAjax(this, 'sub');
             });
 
             //manual update product quantity
             $(document).on('change', '.adfy__woofc-item .adfy__woofc-quantity-input-field', function (e) {
                 e.preventDefault();
+                // let input_field = $(this);
+                // if(parseInt(input_field.val()) <= parseInt(input_field.attr('min'))){
+                //     input_field.val(input_field.attr('min'));
+                // }
+                // if(parseInt(input_field.val()) >= parseInt(input_field.attr('max'))){
+                //     input_field.val(input_field.attr('max'));
+                // }
                 AddonifyUpdateCartAjax(this, 'update', $(this).val());
             });
 
@@ -401,18 +415,13 @@
                         var fragments = response.fragments;
                         if(response.error){
                             console.log(response.messsage);
-                        }
-                        $('#adfy__woofc-cart-errors').html('');
-                        if(response.no_of_items_in_cart == 1){
-                            $('#adfy__woofc-scrollbar').html(response.item_html);
                         } else {
-                            $('#adfy__woofc-scrollbar').append(response.item_html);
-                        }
-                        // Replace fragments
-                        if (fragments) {
-                            $.each(fragments, function (key, value) {
-                                $(key).replaceWith(value);
-                            });
+                            $('#adfy__woofc-cart-errors').html('');
+                            if(response.no_of_items_in_cart == 1){
+                                $('#adfy__woofc-scrollbar').html(response.item_html);
+                            } else {
+                                $('#adfy__woofc-scrollbar').append(response.item_html);
+                            }
                         }
                     }
                 });

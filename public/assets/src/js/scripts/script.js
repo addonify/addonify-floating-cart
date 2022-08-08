@@ -413,10 +413,10 @@
                             return;
                         clearTimeout(timeout);
                         var fragments = response.fragments;
+                        $('#adfy__woofc-cart-errors').html('');
                         if(response.error){
                             console.log(response.messsage);
                         } else {
-                            $('#adfy__woofc-cart-errors').html('');
                             if(response.no_of_items_in_cart == 1){
                                 $('#adfy__woofc-scrollbar').html(response.item_html);
                             } else {

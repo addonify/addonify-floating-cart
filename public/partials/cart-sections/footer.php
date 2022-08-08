@@ -13,7 +13,9 @@
             </a>
         </p>
     </div>
-    <?php } ?>
+    <?php } 
+    if(WC()->cart->get_cart_contents_count() > 0){
+    ?>
     <div class="adfy__woofc-cart-summary <?php echo (WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()) ? 'discount' : ''; ?>">
         <ul> 
             <?php
@@ -57,4 +59,5 @@
     <div class="adfy__woofc-actions">
         <?php do_action('addonify_floatting_cart/get_cart_footer_button', array()); ?>
     </div>
+    <?php } ?>
 </footer>

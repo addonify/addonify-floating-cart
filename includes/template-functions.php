@@ -148,15 +148,15 @@ if(!function_exists('addonify_floating_cart_get_cart_footer')){
 if(!function_exists('addonify_floatting_cart_get_cart_footer_button')){
 	function addonify_floatting_cart_get_cart_footer_button($args = array()){
 		ob_start();
-        if(addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')){ ?>
-            <button class="adfy__woofc-button adfy__hide-woofc close">
-                <?php echo esc_html(addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')); ?>
-            </button>
-        <?php } ?>
-        <a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
-            <?php echo esc_html(addonify_floating_cart_get_setting_field_value('checkout_button_label')); ?>
-        </a>
-		<?php
+			if(addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')){ ?>
+				<button class="adfy__woofc-button adfy__hide-woofc close">
+					<?php echo esc_html(addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')); ?>
+				</button>
+			<?php } ?>
+			<a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
+				<?php echo esc_html(addonify_floating_cart_get_setting_field_value('checkout_button_label')); ?>
+			</a>
+			<?php
 		echo ob_get_clean();
 	}
 	add_action('addonify_floatting_cart/get_cart_footer_button','addonify_floatting_cart_get_cart_footer_button',10,1);
@@ -185,11 +185,11 @@ if(!function_exists('addonify_floating_cart_get_cart_body_image')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_quantity_field')){
 	function addonify_floating_cart_get_cart_body_quantity_field($args = array()){
-		$args_['step'] = apply_filters( 'woocommerce_quantity_input_step', $args['product']->get_min_purchase_quantity(), $args['product'] );
+		$max = ($args['product']->get_max_purchase_quantity() < 0) ? '' : $args['product']->get_max_purchase_quantity();
+		$args_['step'] = apply_filters( 'woocommerce_quantity_input_step', 1, $args['product'] );
 		$args_['min'] = apply_filters( 'woocommerce_quantity_input_min', $args['product']->get_min_purchase_quantity(), $args['product'] );
-		$args_['max'] = apply_filters( 'woocommerce_quantity_input_max', $args['product']->get_max_purchase_quantity(), $args['product'] );
+		$args_['max'] = apply_filters( 'woocommerce_quantity_input_max', $max , $args['product'] );
 		$args_['item_quantity'] = $args['cart_item']['quantity'];
-		 
 		$args_['data_attributes'] = " data-product_id='" . esc_attr( $args['product']->get_id() )."' 
             data-product_sku='".esc_attr( $args['product']->get_sku() )."'
             data-cart_item_key='".esc_attr( $args['cart_item_key'] )."' ";

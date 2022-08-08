@@ -171,9 +171,10 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		do_action('addonify_floating_cart/get_cart_footer',array());
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
-
-		$product = wc_get_product( absint($_POST['product_id']) );
-		$fragments['product'] = $product->get_title();
+		if(array_key_exists('product_id', $_POST)){
+			$product = wc_get_product( absint($_POST['product_id']) );
+			$fragments['product'] = $product->get_title();
+		}
 
 
 		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';

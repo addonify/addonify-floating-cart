@@ -144,6 +144,8 @@
             product_container = $(this).parents('.adfy__woofc-item');
 
         let this_product = $(this);
+        $('.post-'+product_id).children('a.added_to_cart').remove();
+        $('.post-'+product_id).children('a.added').removeClass('added');
 
         // Add loader
         product_container.block({
@@ -215,7 +217,6 @@
                 if(response.error){
                     console.log(response.messsage);
                 }
-                console.log(response.no_of_items_in_cart);
                 $('#adfy__woofc-cart-errors').html('');
                 if(response.no_of_items_in_cart == 1){
                     $('#adfy__woofc-scrollbar').html(response.item_html);

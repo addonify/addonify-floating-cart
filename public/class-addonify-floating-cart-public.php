@@ -226,6 +226,7 @@ class Addonify_Floating_Cart_Public
 	public function remove_from_cart()
 	{
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			$product_name = '';
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
 					$product = wc_get_product($cart_item['product_id']);
@@ -269,14 +270,18 @@ class Addonify_Floating_Cart_Public
 		$msg = '';
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$item_key = $_POST['cart_item_key'];
-			if(!empty($item_key)){
-				$restored = WC()->cart->restore_cart_item($item_key);
-				WC()->cart->calculate_totals();
-				WC()->cart->maybe_set_cart_cookies();
-				$error = !$restored;
-				$msg = $restored ? "Restored successfully." : "Could not be restored.";
+			if(!array_key_exists($item_key, WC()->cart->get_cart())){
+				if(!empty($item_key)){
+					$restored = WC()->cart->restore_cart_item($item_key);
+					WC()->cart->calculate_totals();
+					WC()->cart->maybe_set_cart_cookies();
+					$error = !$restored;
+					$msg = $restored ? "Restored successfully." : "Could not be restored.";
+				} else {
+					$msg = "Key Missing";
+				}
 			} else {
-				$msg = "Key Missing";
+				$msg = "Already exists in cart";
 			}
 			$fragments = apply_filters('addonify_floating_cart/add_to_cart_ajax', array());
 			$item_html = $this->get_item_from_key($item_key);
@@ -305,6 +310,7 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function update_cart_item(){
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
+			$error = false;
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $product = wc_get_product($cart_item['product_id']);
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
@@ -318,6 +324,7 @@ class Addonify_Floating_Cart_Public
 						$nQuantity = $cart_item['quantity'] + 1 ;
 					}
 					if($nQuantity <= 0){
+						$error = "Quantity must be more than zero.";
 						unset($nQuantity);
 						break;
 					}
@@ -325,7 +332,8 @@ class Addonify_Floating_Cart_Public
 						if($product->get_stock_quantity() >= $nQuantity){
 							WC()->cart->set_quantity($cart_item_key, $nQuantity);
 						} else {
-							$nQuantity = 'OoS';
+							$error = "Not available in the given quantity.";
+							unset($nQuantity);
 						}
 					} else {
 						WC()->cart->set_quantity($cart_item_key, $nQuantity );
@@ -341,6 +349,7 @@ class Addonify_Floating_Cart_Public
 			$data = array(
 				'nQuantity' => $nQuantity ?? $quantity,
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
+				'error_msg' => $error,
 			);
 
 			wp_send_json($data);

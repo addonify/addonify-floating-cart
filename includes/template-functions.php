@@ -185,9 +185,9 @@ if(!function_exists('addonify_floating_cart_get_cart_body_image')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_body_quantity_field')){
 	function addonify_floating_cart_get_cart_body_quantity_field($args = array()){
-		$args_['step'] = apply_filters( 'woocommerce_quantity_input_step', 1, $args['product'] );
-		$args_['min'] = apply_filters( 'woocommerce_quantity_input_min', 0, $args['product'] );
-		$args_['max'] = apply_filters( 'woocommerce_quantity_input_max', -1, $args['product'] );
+		$args_['step'] = apply_filters( 'woocommerce_quantity_input_step', $args['product']->get_min_purchase_quantity(), $args['product'] );
+		$args_['min'] = apply_filters( 'woocommerce_quantity_input_min', $args['product']->get_min_purchase_quantity(), $args['product'] );
+		$args_['max'] = apply_filters( 'woocommerce_quantity_input_max', $args['product']->get_max_purchase_quantity(), $args['product'] );
 		$args_['item_quantity'] = $args['cart_item']['quantity'];
 		 
 		$args_['data_attributes'] = " data-product_id='" . esc_attr( $args['product']->get_id() )."' 

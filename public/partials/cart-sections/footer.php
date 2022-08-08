@@ -20,7 +20,7 @@
             if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
                 ?>
                 <li class="sub-total">
-                    <span class="label"><?php esc_html_e('Sub total:','addonify-floating-cart'); ?></span>
+                    <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-sub-total-label', __('Sub total:','addonify-floating-cart'))); ?></span>
                     <span class="value">
                         <span class="woocommerce-Price-amount subtotal-amount">
                             <bdi>
@@ -30,7 +30,7 @@
                     </span>
                 </li>
                 <li class="discount">
-                    <span class="label"><?php esc_html_e('Discount:','addonify-floating-cart'); ?></span>
+                    <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-discount-label', __('Discount:','addonify-floating-cart'))); ?></span>
                     <span class="value">
                         <span class="woocommerce-Price-amount discount-amount">
                             <bdi>
@@ -43,7 +43,7 @@
             }
             ?>
             <li class="total">
-                <span class="label"><?php esc_html_e('Total:','addonify-floating-cart'); ?></span>
+                <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-total-label', __('Total:','addonify-floating-cart'))); ?></span>
                 <span class="value">
                     <span class="woocommerce-Price-amount total-amount">
                         <bdi>

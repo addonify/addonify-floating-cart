@@ -73,10 +73,8 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_styles()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		wp_enqueue_style('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all');
 
@@ -92,10 +90,8 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function enqueue_scripts()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		wp_enqueue_script('perfect-scrollbar', plugin_dir_url(__FILE__) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true);
 
@@ -136,10 +132,8 @@ class Addonify_Floating_Cart_Public
 
 	public function footer_content()
 	{
-		if(!(bool)addonify_floating_cart_get_setting_field_value('display_floating_cart_in_checkout_and_cart_page')){
-			if(is_page('cart') || is_cart() || is_page('checkout') || is_checkout()){
-				return;
-			}
+		if( is_cart() || is_checkout()){
+			return;
 		}
 		do_action('addonify_floating_cart_add');
 	}
@@ -294,6 +288,7 @@ class Addonify_Floating_Cart_Public
 				'fragments' => $fragments,
 				'error' => $error,
 				'messsage' => $msg,
+				'no_of_items_in_cart' => WC()->cart->get_cart_contents_count(),
 			);
 			wp_send_json($data);
 		} else {

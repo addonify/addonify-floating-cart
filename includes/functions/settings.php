@@ -26,7 +26,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'enable_floating_cart' => true, //done
                 'open_cart_modal_immediately_after_add_to_cart' => false, 
                 'open_cart_modal_after_click_on_view_cart' => true,
-                'display_floating_cart_in_checkout_and_cart_page' => false, //done
+                // 'display_floating_cart_in_checkout_and_cart_page' => false, //done
                 'enable_shopping_meter' => true,
                 'customer_shopping_meter_threshold' => 0, //done
                 'customer_shopping_meter_pre_threshold_label' => '',

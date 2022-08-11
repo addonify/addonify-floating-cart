@@ -3,13 +3,12 @@
     'use strict';
 
     var addonifyFloatingCartCouponContainer = $('#adfy__woofc-coupon-container');
-    var addonifyFloatingCartNotifyShow = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow == 1 ? true : false;
+    var addonifyFloatingCartNotifyShow = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow == 1;
     var addonifyFloatingCartNotifyDuration = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDuration;
-    var addonifyFloatingCartNotifyDismissible = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDismissible == 1 ? true : false;
-    var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1 ? true : false;
+    var addonifyFloatingCartNotifyDismissible = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDismissible == 1;
+    var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1;
     var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
     var addonifyFloatingCartNotifyShowCartButtonLabel = addonifyFloatingCartJSObject.show_cart_button_label;
-    var addonifyFloatingCartNotifyShowProductName = addonifyFloatingCartJSObject.display_product_name_in_notification;
     var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
@@ -262,7 +261,7 @@
                     }
                 });
             });
-        
+
             // remove applied coupon from cart
             $(document).on('click', '.adfy__woofc-remove-applied-coupon-button', function () {
                 let coupon_div = $(this).closest('li');
@@ -292,7 +291,7 @@
                     }
                 });
             });
-        
+
             //show coupon apply success alert message
             function show_coupon_alert_success(msg = false) {
                 if (msg !== false) {
@@ -438,10 +437,10 @@
     $(document).ready(function () {
 
         addonifyFloatingCart.init();
-        $('.adfy__woofc-alert').hide();  
+        $('.adfy__woofc-alert').hide();
         $( document.body ).on( 'removed_from_cart', function(e, data){
         });
-    
+
     });
 
 })(jQuery);

@@ -10,6 +10,8 @@
  * @subpackage Addonify_Floating_Cart/public
  */
 
+use JetBrains\PhpStorm\NoReturn;
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -145,7 +147,7 @@ class Addonify_Floating_Cart_Public
 
 	/**
 	 * Function for adding items in cart through woocommerce fragments
-	 * 
+	 *
 	 * @param mixed $fragments
 	 * @return array $fragments
 	 */
@@ -153,10 +155,10 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
-				<?php 
+				<?php
 				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count())); 
-				?>          
+					esc_html(WC()->cart->get_cart_contents_count()));
+				?>
 			</span>
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
@@ -184,7 +186,7 @@ class Addonify_Floating_Cart_Public
 	/**
 	 * Function updating cart fragments through ajax call
 	 * returns array of cart fragments
-	 * @return array 
+	 * @return array
 	 */
 	public static function addonify_floating_cart_add_to_cart_ajax()
 	{
@@ -192,10 +194,10 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
-				<?php 
+				<?php
 				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count())); 
-				?>          
+					esc_html(WC()->cart->get_cart_contents_count()));
+				?>
 			</span>
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
@@ -227,6 +229,7 @@ class Addonify_Floating_Cart_Public
 	{
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$product_name = '';
+            $restore_cart_item_key = false;
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
 					$product = wc_get_product($cart_item['product_id']);
@@ -241,13 +244,13 @@ class Addonify_Floating_Cart_Public
 			WC()->cart->maybe_set_cart_cookies();
 			$this->check_coupons();
 
-			$contents_count = WC()->cart->get_cart_contents_count();
+			$contents_count = esc_html(WC()->cart->get_cart_contents_count());
 
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
 				'cart_items' => $contents_count,
-				'product_name' => $product_name,
+				'product_name' => esc_html($product_name),
 				'restore_cart_item_key' => $restore_cart_item_key,
 			);
 			if($contents_count === 0){
@@ -267,7 +270,6 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function restore_in_cart(){
 		$error = true;
-		$msg = '';
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$item_key = $_POST['cart_item_key'];
 			if(!array_key_exists($item_key, WC()->cart->get_cart())){
@@ -276,9 +278,9 @@ class Addonify_Floating_Cart_Public
 					WC()->cart->calculate_totals();
 					WC()->cart->maybe_set_cart_cookies();
 					$error = !$restored;
-					$msg = $restored ? "Restored successfully." : "Could not be restored.";
+					$msg = $restored ? esc_html(apply_filters('addonify-floating-cart-restored-success-message',__("Restored successfully.","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-restore-fail-message',__("Could not be restored.","addonify-floating-cart")));
 				} else {
-					$msg = "Key Missing";
+					$msg = esc_html(apply_filters('addonify-floating-cart-restore-key-missing-message',__("Key Missing","addonify-floating-cart")));
 				}
 			} else {
 				$msg = "Already exists in cart";
@@ -292,7 +294,7 @@ class Addonify_Floating_Cart_Public
 				'item_html' => $item_html,
 				'fragments' => $fragments,
 				'error' => $error,
-				'messsage' => $msg,
+				'message' => $msg,
 				'no_of_items_in_cart' => WC()->cart->get_cart_contents_count(),
 			);
 			wp_send_json($data);
@@ -306,7 +308,7 @@ class Addonify_Floating_Cart_Public
 	 * function for ajax call to update item in cart
 	 * prints array of cart fragments
 	 * @since    1.0.0
-	 * 
+	 *
 	 */
 	public function update_cart_item(){
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
@@ -324,7 +326,7 @@ class Addonify_Floating_Cart_Public
 						$nQuantity = $cart_item['quantity'] + 1 ;
 					}
 					if($nQuantity <= 0){
-						$error = "Quantity must be more than zero.";
+						$error = esc_html(apply_filters('addonify-floating-cart-quantity-must-be-greater-than-zero-message',__("Quantity must be more than zero.","addonify-floating-cart")));
 						unset($nQuantity);
 						break;
 					}
@@ -332,7 +334,7 @@ class Addonify_Floating_Cart_Public
 						if($product->get_stock_quantity() >= $nQuantity){
 							WC()->cart->set_quantity($cart_item_key, $nQuantity);
 						} else {
-							$error = "Not available in the given quantity.";
+							$error = esc_html(apply_filters('addonify-floating-cart-quantity-not-available-message',__("Not available in the given quantity.","addonify-floating-cart")));
 							unset($nQuantity);
 						}
 					} else {
@@ -344,7 +346,7 @@ class Addonify_Floating_Cart_Public
 			$this->check_coupons();
 
 			WC()->cart->calculate_totals();
-			WC()->cart->maybe_set_cart_cookies();		
+			WC()->cart->maybe_set_cart_cookies();
 			// Fragments returned
 			$data = array(
 				'nQuantity' => $nQuantity ?? $quantity,
@@ -379,17 +381,17 @@ class Addonify_Floating_Cart_Public
 						$coupon_apply = WC()->cart->apply_coupon($code);
 						WC()->cart->calculate_totals();
 						WC()->cart->maybe_set_cart_cookies();
-						$status = $coupon_apply ? "Coupon applied" : "Invalid Coupon Code...";
+						$status = $coupon_apply ? esc_html(apply_filters('addonify-floating-cart-coupon-applied-message',__("Coupon applied","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-invalid-coupon-message',__("Invalid Coupon Code...","addonify-floating-cart")));
 					} else {
-						$status = $coupon_status->get_error_message();
+						$status = esc_html($coupon_status->get_error_message());
 					}
 				}
 
 			} else {
-				$status = 'Please input a coupon to apply.';
+				$status = esc_html(apply_filters('addonify-floating-cart-input-coupon-to-apply-message',__('Please input a coupon to apply.',"addonify-floating-cart")));
 			}
 		} else {
-			$status = 'Source verification error.';
+			$status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
 		ob_start();
@@ -427,12 +429,12 @@ class Addonify_Floating_Cart_Public
 				$coupon_remove = WC()->cart->remove_coupon($code);
 				WC()->cart->calculate_totals();
 				WC()->cart->maybe_set_cart_cookies();
-				$status = $coupon_remove ? "Coupon removed" : "Invalid Coupon Code.";
+				$status = $coupon_remove ? esc_html(apply_filters('addonify-floating-cart-coupon-removed-message',__("Coupon removed","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-source-invalid-coupon-error-message',__("Invalid Coupon Code.","addonify-floating-cart")));
 			} else {
-				$status = 'Please input a coupon to apply.';
+				$status = esc_html(apply_filters('addonify-floating-cart-no-coupon-message',__('Please input a coupon to apply.',"addonify-floating-cart")));
 			}
 		} else {
-			$status = 'Source verification error.';
+            $status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
 		ob_start();
@@ -486,11 +488,11 @@ class Addonify_Floating_Cart_Public
                     $variation = new WC_Product_Variation($cart_item['variation_id']);
                 } else {
                     $variation = NULL;
-                }      
+                }
 				$product = wc_get_product($cart_item['product_id']);
                 ?>
                 <div class="adfy__woofc-item">
-                    <?php 
+                    <?php
                         do_action( 'addonify_floating_cart/get_cart_body_image', array(
                             'product' => $product,
                             'cart_item_key' => $cart_item_key,
@@ -499,7 +501,7 @@ class Addonify_Floating_Cart_Public
                         ));
                     ?>
                     <div class="adfy__woofc-item-content">
-                        <?php 
+                        <?php
                         do_action( 'addonify_floating_cart/get_cart_body_title', array(
                             'product' => $product,
                             'cart_item' => $cart_item,
@@ -517,7 +519,7 @@ class Addonify_Floating_Cart_Public
                         ?>
                     </div>
                 </div><!-- // adfy__woofc-item -->
-                <?php 
+                <?php
 				break;
 			}
 		}

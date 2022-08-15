@@ -9,6 +9,13 @@
 	--adfy_woofc_base_text_color: #444444;
 	--adfy_woofc_border_color: #EEEEEE;
 	--adfy_woofc_cart_overlay_background_color: rgba(0, 0, 0, 0.5);
+	--adfy_woofc_cart_input_border_color: var(--adfy_woofc_border_color);
+	--adfy_woofc_cart_input_placeholder_color: #9E9E9E;
+	--adfy_woofc_cart_input_text_color: #444444;
+	--adfy_woofc_cart_input_background_color: #FFFFFF;
+
+	--adfy_woofc_shopping_meter_initial_background_color: #EEEEEE;
+	--adfy_woofc_shopping_meter_progress_background_color: #0072FF;
 
 	--adfy_woofc_toggle_button_text_color: #555555;
 	--adfy_woofc_toggle_button_text_color_hover: #898989;
@@ -20,6 +27,10 @@
 	--adfy_woofc_toggle_button_badge_text_color_hover: #FFFFFF;
 	--adfy_woofc_toggle_button_badge_background_color: #215BFF; 
 	--adfy_woofc_toggle_button_badge_background_color_hover: #215BFF;
+	--adfy_woofc_toggle_button_size: 60px;
+	--adfy_woofc_toggle_button_cart_icon_font_size: 20px;
+	--adfy_woofc_toggle_button_horizental_offset: 100px;
+	--adfy_woofc_toggle_button_vertical_offset: 100px;
 
 	--adfy_woofc_toast_text_color: #FFFFFF;
 	--adfy_woofc_toast_background_color: #3DC763; 

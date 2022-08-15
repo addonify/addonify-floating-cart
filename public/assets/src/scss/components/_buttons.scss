@@ -135,8 +135,10 @@
 						display: inline-flex;
 						align-items: center;
 						font-size: 13px;
+                        text-transform: inherit;
+                        letter-spacing: inherit;
 						padding: 5px 10px 6px 10px;
-						border-radius: 30px;
+						border-radius: 3px;
 						color: var(--adfy_woofc_toast_button_text_color);
 						background-color: var(--adfy_woofc_toast_button_background_color);
 
@@ -167,11 +169,11 @@
     @include flex();
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: var(--adfy_woofc_toggle_button_size);
+    height: var(--adfy_woofc_toggle_button_size);
     left: auto;
-    right: 100px;
-    bottom: 100px;
+    right: var(--adfy_woofc_toggle_button_horizental_offset);
+    bottom: var(--adfy_woofc_toggle_button_vertical_offset);
     border-width: 1px;
 	border-style: solid;
 	border-color: var(--adfy_woofc_toggle_button_border_color);
@@ -190,8 +192,8 @@
 
         svg {
 
-            height: 20px;
-            width: 20px;
+            height: var(--adfy_woofc_toggle_button_cart_icon_font_size);
+            width: var(--adfy_woofc_toggle_button_cart_icon_font_size);
         }
     }
 

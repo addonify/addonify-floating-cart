@@ -133,7 +133,7 @@
                     height: 8px;
                     width: 100%;
                     border-radius: 10px;
-                    background-color: #EEEEEE;
+                    background-color: var(--adfy_woofc_shopping_meter_initial_background_color);
                     @include breakpoint(mobile) {
 
                         height: 5px;
@@ -147,9 +147,7 @@
                     top: 0;
                     right: auto;
                     z-index: 2;
-                    background: #0072FF; 
-                    background: -webkit-linear-gradient(to left, #0072FF, #00A1FF);
-                    background: linear-gradient(to left, #0072FF, #00A1FF);
+                    background-color: var(--adfy_woofc_shopping_meter_progress_background_color); 
                     transition: all 1s cubic-bezier(0.4, 0, 1, 1);
                 }
             }
@@ -313,7 +311,7 @@
                                 padding: 0;
                                 width: 95px;
                                 padding: 2px 10px;
-                                border: 1px solid var(--adfy_woofc_border_color);
+                                border: 1px solid var(--adfy_woofc_cart_input_border_color);
                                 border-radius: 4px;
 
                                 // Chrome, Safari, Edge & Opera

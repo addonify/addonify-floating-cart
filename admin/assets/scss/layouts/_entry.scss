@@ -66,12 +66,17 @@
 
 				.el-collapse-item__arrow {
 
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
 					fill: #444444;
 					color: #444444;
-					font-size: 13px;
-					width: 13px;
-					height: 13px;
+					font-size: 10px;
+					width: 30px;
+					height: 30px;
 					margin: 0 0 0 auto;
+                    border-radius: 100%;
+                    background-color: #F3F3F3;
 				}
             }
 
@@ -117,12 +122,13 @@
 
 					color: white;
 					background-color: var(--addonify_primary_color);
-					border-color: transparent;
+					border-color: var(--addonify_primary_color);
 
 					.el-collapse-item__arrow {
 
 						fill: white;
 						color: white;
+                        background-color: rgba(255, 255, 255, 0.1);
 					}
 				}
 			}

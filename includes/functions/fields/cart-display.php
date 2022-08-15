@@ -236,6 +236,27 @@ if(!function_exists('addonify_floating_cart_cart_products_display_designs')){
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_on_hover_color')
             ),
+            'cart_modal_product_title_font_size' => array(
+                'label'			  => __( 'Product title font size in px', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'min'             => 13,
+                'max'             => 22,
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_font_size')
+            ),
+            'cart_modal_product_title_font_weight' => array(
+                'label'			  => __( 'Product title font weight', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    '400'             => __( 'Normal', 'addonify-floating-cart' ),
+                    '500'             => __( 'Medium', 'addonify-floating-cart' ),
+                    '600'             => __( 'Semi bold', 'addonify-floating-cart' ),
+                    '700'             => __( 'Bold', 'addonify-floating-cart' ),
+                ),
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_font_weight')
+            ),
             'cart_modal_product_quantity_price_color' => array(
                 'label'			  => __( 'Product quantity & price color', 'addonify-floating-cart' ),
                 'type'            => 'color',

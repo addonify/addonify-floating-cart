@@ -255,9 +255,9 @@
                             .woocommerce-loop-product__title {
 
                                 display: block;
-                                font-size: 15px;
+                                font-size: var(--adfy_woofc_cart_product_title_font_size);
                                 line-height: 1.3;
-                                font-weight: normal;
+                                font-weight: var(--adfy_woofc_cart_product_title_font_weight);
                                 color: var(--adfy_woofc_cart_product_title_text_color);
                                 padding: 0;
                                 margin: 0 0 10px 0;

@@ -89,6 +89,8 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_close_icon_on_hover_color'  => '',
                 'cart_modal_product_title_color' => '',
                 'cart_modal_product_title_on_hover_color' => '',
+                'cart_modal_product_title_font_size' => 15, // New
+                'cart_modal_product_title_font_weight'  => '400', // New
                 'cart_modal_product_quantity_price_color' => '',
                 'cart_modal_product_remove_button_background_color' => '',
                 'cart_modal_product_remove_button_icon_color' => '',

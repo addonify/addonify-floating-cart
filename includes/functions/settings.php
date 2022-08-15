@@ -105,7 +105,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_secondary_button_on_hover_background_color' => '',
                 'cart_modal_secondary_button_on_hover_label_color' => '',
                 'cart_modal_secondary_button_on_hover_border_color' => '',
-                'cart_modal_width' => '',
+                'cart_modal_width' => 500,
                 // cart coupon options
                 // 'display_available_coupons' => false, //will be added in next version
                 'display_applied_coupons' => true,//done
@@ -246,43 +246,43 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                             'fields' => addonify_floating_cart_cart_styles_settings_fields()
                         ),
                         'button' => array(
-                            'title' => __('Toggle Button Colors', 'addonify-floating-cart'),
+                            'title' => __('Toggle Button Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toggle_cart_button_designs()
                         ),
                         'toast-notification' => array(
-                            'title' => __('Toast Notification Colors', 'addonify-floating-cart'),
+                            'title' => __('Toast Notification Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_toast_notification_designs()
                         ),
                         'cart' => array(
-                            'title' => __('Cart Colors', 'addonify-floating-cart'),
+                            'title' => __('Cart Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_display_designs()
                         ),
                         'cart-misc' => array(
-                            'title' => __('Cart Miscellaneous', 'addonify-floating-cart'),
+                            'title' => __('Cart Miscellaneous Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_misc_display_designs()
                         ),
                         'cart-products' => array(
-                            'title' => __('Cart Products', 'addonify-floating-cart'),
+                            'title' => __('Cart Products Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_products_display_designs()
                         ),
                         'cart-primary-button' => array(
-                            'title' => __('Cart Primary Button', 'addonify-floating-cart'),
+                            'title' => __('Cart Primary Button Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_primary_button_display_designs()
                         ),
                         'cart-secondary-button' => array(
-                            'title' => __('Cart Secondary Button', 'addonify-floating-cart'),
+                            'title' => __('Cart Secondary Button Design', 'addonify-floating-cart'),
                             'description' => '',
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_secondary_button_display_designs()

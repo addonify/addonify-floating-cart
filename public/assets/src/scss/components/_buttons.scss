@@ -147,12 +147,14 @@
     left: auto;
     right: 100px;
     bottom: 100px;
-    border: none;
+    border-width: 1px;
+	border-style: solid;
+	border-color: var(--adfy_woofc_toggle_button_border_color);
     z-index: var(--adfy_woofc_trigger_button_zindex);
-    fill: #555555;
-    color: #555555;
+    fill: var(--adfy_woofc_toggle_button_text_color);
+    color: var(--adfy_woofc_toggle_button_text_color);
     cursor: pointer;
-    background-color: white;
+    background-color: var(--adfy_woofc_toggle_button_background_color);
     border-radius: 0;
     line-height: 1;
     font-weight: normal;
@@ -163,8 +165,8 @@
 
         svg {
 
-        height: 20px;
-        width: 20px;
+            height: 20px;
+            width: 20px;
         }
     }
 
@@ -181,18 +183,25 @@
         font-size: 13px;
         font-weight: normal;
         line-height: 1;
-        color: white;
+        color: var(--adfy_woofc_toggle_button_badge_text_color);
         border-radius: 3px;
-        background-color: var(--adfy_woofc_primary_color);
+        background-color: var(--adfy_woofc_toggle_button_badge_color);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
 
-        fill: #898989;
-        color: #898989;
-        background-color: #DDD;
+        fill: var(--adfy_woofc_toggle_button_text_color_hover);
+        color: var(--adfy_woofc_toggle_button_text_color_hover);
+		border-color: var(--adfy_woofc_toggle_button_border_color_hover);
+        background-color: var(--adfy_woofc_toggle_button_background_color_hover);
         box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
+
+		.badge {
+
+			color: var(--adfy_woofc_toggle_button_badge_text_color_hover);
+			background-color: var(--adfy_woofc_toggle_button_badge_background_color_hover);
+		}
     }
 
     &:focus {

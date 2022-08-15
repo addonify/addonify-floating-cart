@@ -75,9 +75,13 @@ if(!function_exists('addonify_floating_cart_cart_display_designs')){
         return array(
             //cart general
             'cart_modal_width' => array(
-                'label'			  => __( 'Cart width', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart width.',
+                'label'			  => __( 'Cart width in px', 'addonify-floating-cart' ),
+                'description'     => 'Set the width of floating cart in px.',
                 'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 400,
+                'max'             => 800,
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_width')
             ),
@@ -126,63 +130,54 @@ if(!function_exists('addonify_floating_cart_cart_misc_display_designs')){
             //misc
             'cart_modal_badge_background_color' => array(
                 'label'			  => __( 'Cart Badge Background Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart badge background color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_background_color')
             ),
             'cart_modal_badge_text_color' => array(
                 'label'			  => __( 'Cart Badge Text Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart badge text color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_text_color')
             ),
             'cart_modal_close_icon_color' => array(
                 'label'			  => __( 'Cart Close Icon Color', 'addonify-floating-cart' ),
-                'description'     => 'To change cart-close icon color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_close_icon_color')
             ),
             'cart_modal_content_text_color' => array(
                 'label'			  => __( 'Cart Content Text Color', 'addonify-floating-cart' ),
-                'description'     => 'To change the text color of cart content.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_text_color')
             ),
             'cart_modal_content_link_color' => array(
                 'label'			  => __( 'Cart Content Link Color', 'addonify-floating-cart' ),
-                'description'     => 'To change the link color of cart content.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_color')
             ),
             'cart_modal_content_link_on_hover_color' => array(
                 'label'			  => __( 'Content Link Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change content link on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_on_hover_color')
             ),
             'cart_modal_input_field_background_color' => array(
                 'label'			  => __( 'Input Field Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field backgroound color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_background_color')
             ),
             'cart_modal_input_field_text_color' => array(
                 'label'			  => __( 'Input Field Text Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field text color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_text_color')
             ),
             'cart_modal_input_field_border_color' => array(
                 'label'			  => __( 'Input Field Border Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field border color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_border_color')
@@ -204,49 +199,42 @@ if(!function_exists('addonify_floating_cart_cart_products_display_designs')){
             //products
             'cart_modal_product_title_color' => array(
                 'label'			  => __( 'Cart Product Title Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product title color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_color')
             ),
             'cart_modal_product_title_on_hover_color' => array(
                 'label'			  => __( 'Product Title Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product title color while hovering in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_on_hover_color')
             ),
             'cart_modal_product_quantity_price_color' => array(
                 'label'			  => __( 'Product Quantity Price Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product quantity price text color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_quantity_price_color')
             ),
             'cart_modal_product_remove_button_background_color' => array(
                 'label'			  => __( 'Product Remove Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button background color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_background_color')
             ),
             'cart_modal_product_remove_button_icon_color' => array(
                 'label'			  => __( 'Product Remove Button Icon Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button icon color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_icon_color')
             ),
             'cart_modal_product_remove_button_on_hover_background_color' => array(
                 'label'			  => __( 'Product Remove Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button background color on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_on_hover_background_color')
             ),
             'cart_modal_product_remove_button_on_hover_icon_color' => array(
                 'label'			  => __( 'Product Remove Button Icon Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button icon color on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_on_hover_icon_color')
@@ -268,42 +256,36 @@ if(!function_exists('addonify_floating_cart_cart_primary_button_display_designs'
             //primary button color
             'cart_modal_primary_button_background_color' => array(
                 'label'			  => __( 'Primary Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key background color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_background_color')
             ),
             'cart_modal_primary_button_label_color' => array(
                 'label'			  => __( 'Primary Button Label Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key label color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_label_color')
             ),
             'cart_modal_primary_button_border_color' => array(
                 'label'			  => __( 'Primary Button Border Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key border color in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_border_color')
             ),
             'cart_modal_primary_button_on_hover_background_color' => array(
                 'label'			  => __( 'Primary Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key background color on hover in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_background_color')
             ),
             'cart_modal_primary_button_on_hover_label_color' => array(
                 'label'			  => __( 'Primary Button Label Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key label color on hover in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_label_color')
             ),
             'cart_modal_primary_button_on_hover_border_color' => array(
                 'label'			  => __( 'Primary Button Border Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key border color on hover in cart.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_border_color')
@@ -325,42 +307,36 @@ if(!function_exists('addonify_floating_cart_cart_secondary_button_display_design
             //secondary button color
             'cart_modal_secondary_button_background_color' => array(
                 'label'			  => __( 'Secondary Button Background Color', 'addonify-floating-cart' ),
-                'description'     => '.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_background_color')
             ),
             'cart_modal_secondary_button_label_color' => array(
                 'label'			  => __( 'Secondary Button Label Color', 'addonify-floating-cart' ),
-                'description'     => '.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_label_color')
             ),
             'cart_modal_secondary_button_border_color' => array(
                 'label'			  => __( 'Secondary Button Border Color', 'addonify-floating-cart' ),
-                'description'     => '.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_border_color')
             ),
             'cart_modal_secondary_button_on_hover_background_color' => array(
                 'label'			  => __( 'Secondary Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => '.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_background_color')
             ),
             'cart_modal_secondary_button_on_hover_label_color' => array(
                 'label'			  => __( 'Secondary Button Label Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change secondary button label color on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_label_color')
             ),
             'cart_modal_secondary_button_on_hover_border_color' => array(
                 'label'			  => __( 'Secondary Button Border Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change secondary button border color on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_border_color')

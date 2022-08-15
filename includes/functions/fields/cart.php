@@ -25,13 +25,6 @@ if(!function_exists('addonify_floating_cart_cart_options_settings')){
                 'dependent'       => array('enable_floating_cart'),
                 'value'           => addonify_floating_cart_get_setting_field_value( 'open_cart_modal_after_click_on_view_cart' )
             ),
-            // 'display_floating_cart_in_checkout_and_cart_page' => array(
-            //     'label'			  => __( 'Dispay floating cart in checkout and cart page', 'addonify-floating-cart' ),
-            //     'description'     => '',
-            //     'type'            => 'switch',
-            //     'dependent'       => array('enable_floating_cart'),
-            //     'value'           => addonify_floating_cart_get_setting_field_value( 'display_floating_cart_in_checkout_and_cart_page' )
-            // ),
             'enable_shopping_meter' => array(
                 'label'			  => __( 'Enable shopping meter threshold', 'addonify-floating-cart' ),
                 'description'     => __( '', 'addonify-floating-cart' ),

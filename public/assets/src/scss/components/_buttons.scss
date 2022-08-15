@@ -104,31 +104,58 @@
 
 .notyf {
 
+	color: var(--adfy_woofc_toast_text_color);
+
     .notyf__toast {
 
-        .notyf__wrapper {
+		&[class*="adfy__woofc-notfy"] {
 
-            .notyf__message {
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
-                line-height: 1.6;
+			.notyf__wrapper {
 
-                .adfy__woofc-notfy-button {
+				.notyf__icon {
 
-                    display: inline-flex;
-                    align-items: center;
-                    font-size: 13px;
-                    padding: 5px 10px 6px 10px;
-                    border-radius: 30px;
-                    color: white;
-                    background-color: rgba(0, 0, 0, 0.2);
+					.notyf__icon--error,
+					.notyf__icon--success {
 
-                    &:hover {
+						background: var(--adfy_woofc_toast_text_color);
+					}
+				}
 
-                        background-color: rgba(0, 0, 0, 0.5);
-                    }
-                }
-            }
-        }
+				.notyf__message {
+
+					font-size: 15px;
+					font-weight: normal;
+					line-height: 1.4;
+					color: var(--adfy_woofc_toast_text_color);
+
+					.adfy__woofc-notfy-button {
+
+						display: inline-flex;
+						align-items: center;
+						font-size: 13px;
+                        text-transform: inherit;
+                        letter-spacing: inherit;
+						padding: 5px 10px 6px 10px;
+						border-radius: 3px;
+						color: var(--adfy_woofc_toast_button_text_color);
+						background-color: var(--adfy_woofc_toast_button_background_color);
+
+						&:hover {
+
+							color: var(--adfy_woofc_toast_button_text_color_hover);
+							background-color: var(--adfy_woofc_toast_button_background_color_hover);
+						}
+					}
+				}
+			}
+		}
+
+		.notyf__ripple {
+
+			background: var(--adfy_woofc_toast_background_color) !important;
+		}
     }
 }
 
@@ -142,17 +169,19 @@
     @include flex();
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: var(--adfy_woofc_toggle_button_size);
+    height: var(--adfy_woofc_toggle_button_size);
     left: auto;
-    right: 100px;
-    bottom: 100px;
-    border: none;
+    right: var(--adfy_woofc_toggle_button_horizental_offset);
+    bottom: var(--adfy_woofc_toggle_button_vertical_offset);
+    border-width: 1px;
+	border-style: solid;
+	border-color: var(--adfy_woofc_toggle_button_border_color);
     z-index: var(--adfy_woofc_trigger_button_zindex);
-    fill: #555555;
-    color: #555555;
+    fill: var(--adfy_woofc_toggle_button_text_color);
+    color: var(--adfy_woofc_toggle_button_text_color);
     cursor: pointer;
-    background-color: white;
+    background-color: var(--adfy_woofc_toggle_button_background_color);
     border-radius: 0;
     line-height: 1;
     font-weight: normal;
@@ -163,8 +192,8 @@
 
         svg {
 
-        height: 20px;
-        width: 20px;
+            height: var(--adfy_woofc_toggle_button_cart_icon_font_size);
+            width: var(--adfy_woofc_toggle_button_cart_icon_font_size);
         }
     }
 
@@ -181,18 +210,25 @@
         font-size: 13px;
         font-weight: normal;
         line-height: 1;
-        color: white;
+        color: var(--adfy_woofc_toggle_button_badge_text_color);
         border-radius: 3px;
-        background-color: var(--adfy_woofc_primary_color);
+        background-color: var(--adfy_woofc_toggle_button_badge_background_color);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
     }
 
     &:hover {
 
-        fill: #898989;
-        color: #898989;
-        background-color: #DDD;
+        fill: var(--adfy_woofc_toggle_button_text_color_hover);
+        color: var(--adfy_woofc_toggle_button_text_color_hover);
+		border-color: var(--adfy_woofc_toggle_button_border_color_hover);
+        background-color: var(--adfy_woofc_toggle_button_background_color_hover);
         box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
+
+		.badge {
+
+			color: var(--adfy_woofc_toggle_button_badge_text_color_hover);
+			background-color: var(--adfy_woofc_toggle_button_badge_background_color_hover);
+		}
     }
 
     &:focus {

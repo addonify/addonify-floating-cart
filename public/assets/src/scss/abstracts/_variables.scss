@@ -4,19 +4,72 @@
 
 :root { 
 
-  // Color
+	--adfy_woofc_primary_color: #215BFF;
+	--adfy_woofc_secondary_color: #6221FF;
+	--adfy_woofc_base_text_color: #444444;
+	--adfy_woofc_border_color: #EEEEEE;
+	--adfy_woofc_cart_overlay_background_color: rgba(0, 0, 0, 0.5);
+	--adfy_woofc_cart_input_border_color: var(--adfy_woofc_border_color);
+	--adfy_woofc_cart_input_placeholder_color: #9E9E9E;
+	--adfy_woofc_cart_input_text_color: #444444;
+	--adfy_woofc_cart_input_background_color: #FFFFFF;
 
-  --adfy_woofc_primary_color: #215bff;
-  --adfy_woofc_secondary_color: #6221ff;
+	--adfy_woofc_shopping_meter_initial_background_color: #EEEEEE;
+	--adfy_woofc_shopping_meter_progress_background_color: #0072FF;
 
-  --adfy_woofc_badge_color: #409EFF;
-  --adfy_woofc_badge_background_color: #DFEEFF;
+	--adfy_woofc_toggle_button_text_color: #555555;
+	--adfy_woofc_toggle_button_text_color_hover: #898989;
+	--adfy_woofc_toggle_button_background_color: #FFFFFF;
+	--adfy_woofc_toggle_button_background_color_hover: #DDDDDD;
+	--adfy_woofc_toggle_button_border_color: rgba(255, 255, 255, 0);
+	--adfy_woofc_toggle_button_border_color_hover: rgba(255, 255, 255, 0);
+	--adfy_woofc_toggle_button_badge_text_color: #FFFFFF;
+	--adfy_woofc_toggle_button_badge_text_color_hover: #FFFFFF;
+	--adfy_woofc_toggle_button_badge_background_color: #215BFF; 
+	--adfy_woofc_toggle_button_badge_background_color_hover: #215BFF;
+	--adfy_woofc_toggle_button_size: 60px;
+	--adfy_woofc_toggle_button_cart_icon_font_size: 20px;
+	--adfy_woofc_toggle_button_horizental_offset: 100px;
+	--adfy_woofc_toggle_button_vertical_offset: 100px;
 
-  --adfy_woofc_border_color: #EEEEEE;
+	--adfy_woofc_toast_text_color: #FFFFFF;
+	--adfy_woofc_toast_background_color: #3DC763; 
+	--adfy_woofc_toast_button_text_color: #FFFFFF;
+	--adfy_woofc_toast_button_text_color_hover: #FFFFFF;
+	--adfy_woofc_toast_button_background_color: rgba(0, 0, 0, 0.2);
+	--adfy_woofc_toast_button_background_color_hover: rgba(0, 0, 0, 0.4);
 
-  // z-index
-  --adfy_woofc_trigger_button_zindex: 10000000;
-  --adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   
-  --adfy_woo_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
-  --adfy_woo_floating_cart_inner_mask_zindex: calc( var(--adfy_woo_floating_cart_zindex) + 10 );
+	--adfy_woofc_cart_background_color: #FFFFFF;
+	--adfy_woofc_cart_title_text_color: var(--adfy_woofc_base_text_color);
+	--adfy_woofc_cart_title_count_badge_text_color: #409EFF;
+	--adfy_woofc_cart_title_count_badge_background_color: #DFEEFF;
+	
+	--adfy_woofc_cart_close_button_text_color: #C7C7C7;
+	--adfy_woofc_cart_close_button_text_color_hover: #888888;
+	--adfy_woofc_cart_content_text_color: white; 				// ToDo
+	--adfy_woofc_cart_content_link_color: white; 				// ToDo
+	--adfy_woofc_cart_content_link_color_hover: white; 		// ToDo
+	--adfy_woofc_cart_field_background_color: white; 			// ToDo
+	--adfy_woofc_cart_field_text_color: white; 				// ToDo
+	--adfy_woofc_cart_field_border_color: white; 				// ToDo
+
+	--adfy_woofc_cart_product_title_text_color: #444444;
+	--adfy_woofc_cart_product_title_text_color_hover: #215BFF;
+	--adfy_woofc_cart_product_price_quantity_text_color: #444444;
+	--adfy_woofc_cart_product_quantity_text_color: #444444;
+	--adfy_woofc_cart_product_quantity_input_button_text_color: #444444;
+	--adfy_woofc_cart_product_remove_button_text_color: #878787;
+	--adfy_woofc_cart_product_remove_button_text_color_hover: #FFFFFF;
+	--adfy_woofc_cart_product_remove_button_background_color: #E9E9E9;
+	--adfy_woofc_cart_product_remove_button_background_color_hover: #6221FF;
+
+
+/* -------------------------------------------------------------------------- 
+	#. z-index
+  -------------------------------------------------------------------------- */
+
+	--adfy_woofc_trigger_button_zindex: 10000000;
+	--adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   
+	--adfy_woo_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
+	--adfy_woo_floating_cart_inner_mask_zindex: calc( var(--adfy_woo_floating_cart_zindex) + 10 );
 }

@@ -83,61 +83,62 @@ if(!function_exists('addonify_floating_cart_toast_notification_designs')){
     function addonify_floating_cart_toast_notification_designs(){
         return array(
             'toast_notification_background_color' => array(
-                'label'			  => __( 'Notification Background Color', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_background_color')
             ),
             'toast_notification_text_color' => array(
-                'label'			  => __( 'Notification Text Color', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification text color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_text_color')
             ),
             'toast_notification_button_background_color' => array(
-                'label'			  => __( 'Notification Button Background Color', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification button background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_background_color')
             ),
             'toast_notification_button_label_color' => array(
-                'label'			  => __( 'Notification Button Label Color', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification button label color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_label_color')
             ),
             'toast_notification_button_on_hover_label_color' => array(
-                'label'			  => __( 'Notification Button Color on Hover', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification button color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color')
             ),
             'toast_notification_button_on_hover_background_color' => array(
-                'label'			  => __( 'Notification Button Background Color on Hover', 'addonify-floating-cart' ),
+                'label'			  => __( 'Notification button background color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_background_color')
             ),
-            'toast_notification_side_offset' => array(
-                'label'			  => __( 'Notification Side Offset', 'addonify-floating-cart' ),
+            'toast_notification_horizontal_offset' => array(
+                'label'			  => __( 'Notification toast horizontal offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Horizontal offset from left or right side of the screen.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
                 'dependent'       => array('display_toast_notification'),
-                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_side_offset')
+                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_horizontal_offset')
             ),
-            'toast_notification_top_bottom_offset' => array(
-                'label'			  => __( 'Notification Top-Bottom Offset', 'addonify-floating-cart' ),
-                'description'     => 'For changing notification top-bottom offset.',
+            'toast_notification_vertical_offset' => array(
+                'label'			  => __( 'Notification vertical offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Vertical offset from top or bottom of the screen.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
                 'dependent'       => array('display_toast_notification'),
-                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_top_bottom_offset')
+                'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_vertical_offset')
             ),
         );
     }

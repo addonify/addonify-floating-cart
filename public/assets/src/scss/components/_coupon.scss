@@ -83,7 +83,7 @@
 
             input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 
-                color: #9E9E9E;
+                color: var(--adfy_woofc_cart_input_placeholder_color);
                 opacity: 1; /* Firefox */
                 font-size: 13px;
                 font-weight: normal;
@@ -92,7 +92,7 @@
 
             input:-ms-input-placeholder { /* Internet Explorer 10-11 */
 
-                color: #9E9E9E;
+                color: var(--adfy_woofc_cart_input_placeholder_color);
                 font-size: 13px;
                 font-weight: normal;
                 letter-spacing: 0.50px;
@@ -100,7 +100,7 @@
 
             input::-ms-input-placeholder { /* Microsoft Edge */
 
-                color: #9E9E9E;
+                color: var(--adfy_woofc_cart_input_placeholder_color);
                 font-size: 13px;
                 font-weight: normal;
                 letter-spacing: 0.50px;
@@ -115,13 +115,13 @@
                 font-size: 15px;
                 font-weight: normal;
                 line-height: 21px;
-                color: #444444;
+                color: var(--adfy_woofc_cart_input_text_color);
                 padding: 14px 15px;
                 height: 48px;
                 border-width: 1px;
                 border-style: solid;
                 border-color: var(--adfy_woofc_border_color);
-                background: white;
+                background: var(--adfy_woofc_cart_input_background_color);
                 box-shadow: none;
                 box-sizing: border-box;
                 border-radius: 3px;

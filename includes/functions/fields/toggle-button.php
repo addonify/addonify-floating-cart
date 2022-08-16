@@ -108,45 +108,50 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_on_hover_border_color')
             ),
             'cart_modal_toggle_button_width' => array(
-                'label'			  => __( 'Button size in px', 'addonify-floating-cart' ),
-                'description'     => __( 'Input value will be applied as height & width.', 'addonify-floating-cart' ),
+                'label'			  => __( 'Button size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 40 & max 200 px', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => 40,
                 'max'             => 200,
+                'step'            => 5,
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_width')
             ),
             'cart_modal_toggle_button_icon_font_size' => array(
-                'label'			  => __( 'Button cart icon font size in px', 'addonify-floating-cart' ),
+                'label'			  => __( 'Button cart icon font size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 14 & max 80 px', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => 14,
                 'max'             => 80,
+                'step'            => 2,
                 'dependent'       => array('cart_modal_toggle_button_icon_font_size'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_width')
             ),
             'cart_modal_toggle_button_horizontal_offset' => array(
-                'label'			  => __( 'Button horizontal offset in px', 'addonify-floating-cart' ),
-                'description'     => __( 'Horizontal offset from left or right side of the screen.', 'addonify-floating-cart' ),
+                'label'			  => __( 'Button horizontal offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Horizontal offset from left or right side of the screen. Value applied in px.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
+                'step'            => 10,
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_horizontal_offset')
             ),
             'cart_modal_toggle_button_vertical_offset' => array(
-                'label'			  => __( 'Button vertical offset in px', 'addonify-floating-cart' ),
-                'description'     => __( 'Vertical offset from top or bottom of the screen.', 'addonify-floating-cart' ),
+                'label'			  => __( 'Button vertical offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Vertical offset from top or bottom of the screen. Value applied in px.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
+                'step'            => 10,
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_vertical_offset')
             ),

@@ -55,6 +55,9 @@ const props = defineProps({
 		:placeholder="props.field.placeholder"
 		:type="props.field.typeStyle"
 		:min="props.field.min"
+		:max="props.field.max"
+		:step="props.field.step"
+		:precision="props.field.precision"
 		:controlPosition="props.field.controlPosition"
 	/>
 	<Radio

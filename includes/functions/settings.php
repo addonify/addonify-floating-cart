@@ -31,6 +31,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'customer_shopping_meter_pre_threshold_label' => '',
                 'customer_shopping_meter_post_threshold_label' => '',
                 'load_styles_from_plugin' => true, //done
+                
                 // Floating Cart Toggle Button Options
                 'display_cart_modal_toggle_button' => true, //done
                 'cart_modal_toggle_button_display_position' => 'bottom-right',//done
@@ -123,6 +124,11 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_shopping_meter_initial_background_color'  => '',
                 'cart_shopping_meter_progress_background_color'  => '',
 
+                'cart_modal_buttons_font_size' => 14,
+                'cart_modal_buttons_font_weight' => '400', 
+                'cart_modal_buttons_letter_spacing' => 0.25,
+                'cart_modal_buttons_text_transform' => 'default',
+                'cart_modal_buttons_border_radius' => 3,
                 'cart_modal_primary_button_label_color' => '',
                 'cart_modal_primary_button_background_color' => '',
                 'cart_modal_primary_button_border_color' => '',

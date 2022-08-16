@@ -25,6 +25,7 @@ button.adfy__woofc-button {
     text-decoration: none;
     background: transparent;
     appearance: button;
+    text-transform: var(--adfy_woofc_base_button_text_transform);
     background-color: var(--adfy_woofc_primary_button_background_color); 
     @include transation_delay();
 

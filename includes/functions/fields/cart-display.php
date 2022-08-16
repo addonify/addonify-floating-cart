@@ -168,7 +168,8 @@ if(!function_exists('addonify_floating_cart_cart_buttons_display_designs')){
         return array(
             // Button design options
             'cart_modal_buttons_font_size' => array(
-                'label'			  => __( 'Buttons font size in px', 'addonify-floating-cart' ),
+                'label'			  => __( 'Buttons font size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 13 & max 20 px.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'controlPosition' => 'right',
@@ -186,6 +187,39 @@ if(!function_exists('addonify_floating_cart_cart_buttons_display_designs')){
                     '700'             => __( 'Bold', 'addonify-floating-cart' ),
                 ),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_font_weight')
+            ),
+            'cart_modal_buttons_letter_spacing' => array(
+                'label'			  => __( 'Buttons letter spacing', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 0 & max 5 px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 0,
+                'max'             => 5,
+                'step'            => 0.10,
+                'precision'       => 2,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_letter_spacing')
+            ),
+            'cart_modal_buttons_border_radius' => array(
+                'label'			  => __( 'Buttons border radius', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 0 & max 60 px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 0,
+                'max'             => 60,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_border_radius')
+            ),
+            'cart_modal_buttons_text_transform' => array(
+                'label'			  => __( 'Buttons text transform', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    'none'               => __( 'None', 'addonify-floating-cart' ),
+                    'capatilize'         => __( 'Capatilize', 'addonify-floating-cart' ),
+                    'uppercase'          => __( 'Uppercase', 'addonify-floating-cart' ),
+                    'lowercase'          => __( 'Lowercase', 'addonify-floating-cart' ),
+                ),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_text_transform')
             ),
             'cart_modal_primary_button_background_color' => array(
                 'label'			  => __( 'Primary button background color', 'addonify-floating-cart' ),
@@ -331,6 +365,7 @@ if(!function_exists('addonify_floating_cart_cart_products_display_designs')){
             ),
             'cart_modal_product_title_font_size' => array(
                 'label'			  => __( 'Product title font size in px', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 13 & max 22 px', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
                 'min'             => 13,
@@ -382,53 +417,3 @@ if(!function_exists('addonify_floating_cart_cart_products_display_designs_add'))
     }
     add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_products_display_designs_add' );
 }
-
-//if(!function_exists('addonify_floating_cart_cart_secondary_button_display_designs')){
-//    function addonify_floating_cart_cart_secondary_button_display_designs(){
-//        return array(
-//            //secondary button color
-//            'cart_modal_secondary_button_background_color' => array(
-//                'label'			  => __( 'Secondary Button Background Color', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_background_color')
-//            ),
-//            'cart_modal_secondary_button_label_color' => array(
-//                'label'			  => __( 'Secondary Button Label Color', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_label_color')
-//            ),
-//            'cart_modal_secondary_button_border_color' => array(
-//                'label'			  => __( 'Secondary Button Border Color', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_border_color')
-//            ),
-//            'cart_modal_secondary_button_on_hover_background_color' => array(
-//                'label'			  => __( 'Secondary Button Background Color on Hover', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_background_color')
-//            ),
-//            'cart_modal_secondary_button_on_hover_label_color' => array(
-//                'label'			  => __( 'Secondary Button Label Color on Hover', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_label_color')
-//            ),
-//            'cart_modal_secondary_button_on_hover_border_color' => array(
-//                'label'			  => __( 'Secondary Button Border Color on Hover', 'addonify-floating-cart' ),
-//                'type'            => 'color',
-//                'dependent'       => array('display_cart_modal_toggle_button'),
-//                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_border_color')
-//            ),
-//        );
-//    }
-//}
-//if(!function_exists('addonify_floating_cart_cart_secondary_button_display_designs_add')){
-//    function addonify_floating_cart_cart_secondary_button_display_designs_add($setting_fields){
-//        return array_merge($setting_fields, addonify_floating_cart_cart_secondary_button_display_designs());
-//    }
-//    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_secondary_button_display_designs_add' );
-//}

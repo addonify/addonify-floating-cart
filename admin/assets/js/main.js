@@ -622,6 +622,7 @@ __webpack_require__.r(__webpack_exports__);
     min: Number,
     max: Number,
     step: Number,
+    precision: Number,
     controlPosition: String
   },
   emits: ["update:modelValue"],
@@ -1802,10 +1803,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     min: $setup.props.min,
     max: $setup.props.max,
     step: $setup.props.step,
+    precision: $setup.props.precision,
     controlsPosition: $setup.props.controlPosition
   }, null, 8
   /* PROPS */
-  , ["modelValue", "min", "max", "step", "controlsPosition"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
+  , ["modelValue", "min", "max", "step", "precision", "controlsPosition"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
     key: 1,
     modelValue: $setup.value,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -1814,10 +1816,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "number",
     size: "large",
     min: $setup.props.min,
-    max: $setup.props.max
+    max: $setup.props.max,
+    precision: $setup.props.precision
   }, null, 8
   /* PROPS */
-  , ["modelValue", "min", "max"]));
+  , ["modelValue", "min", "max", "precision"]));
 }
 
 /***/ }),
@@ -2486,10 +2489,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: $setup.props.field.placeholder,
     type: $setup.props.field.typeStyle,
     min: $setup.props.field.min,
+    max: $setup.props.field.max,
+    step: $setup.props.field.step,
+    precision: $setup.props.field.precision,
     controlPosition: $setup.props.field.controlPosition
   }, null, 8
   /* PROPS */
-  , ["modelValue", "placeholder", "type", "min", "controlPosition"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
+  , ["modelValue", "placeholder", "type", "min", "max", "step", "precision", "controlPosition"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
     key: 7,
     modelValue: $setup.props.reactiveState[$setup.props.fieldKey],
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {

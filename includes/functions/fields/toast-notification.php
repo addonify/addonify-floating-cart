@@ -85,37 +85,31 @@ if(!function_exists('addonify_floating_cart_toast_notification_designs')){
             'toast_notification_background_color' => array(
                 'label'			  => __( 'Notification background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_background_color')
             ),
             'toast_notification_text_color' => array(
                 'label'			  => __( 'Notification text color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_text_color')
             ),
             'toast_notification_button_background_color' => array(
                 'label'			  => __( 'Notification button background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_background_color')
             ),
             'toast_notification_button_label_color' => array(
                 'label'			  => __( 'Notification button label color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_label_color')
             ),
             'toast_notification_button_on_hover_label_color' => array(
                 'label'			  => __( 'Notification button color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color')
             ),
             'toast_notification_button_on_hover_background_color' => array(
                 'label'			  => __( 'Notification button background color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_close_notification_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_background_color')
             ),
             'toast_notification_horizontal_offset' => array(
@@ -126,7 +120,6 @@ if(!function_exists('addonify_floating_cart_toast_notification_designs')){
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
-                'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_horizontal_offset')
             ),
             'toast_notification_vertical_offset' => array(
@@ -137,7 +130,6 @@ if(!function_exists('addonify_floating_cart_toast_notification_designs')){
                 'controlPosition' => 'right', // right or remove this prop.  
                 'min'             => -500,
                 'max'             => 500,
-                'dependent'       => array('display_toast_notification'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_vertical_offset')
             ),
         );

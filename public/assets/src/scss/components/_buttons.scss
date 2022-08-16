@@ -3,36 +3,40 @@
 	#. General button
   -------------------------------------------------------------------------- */
 
-.adfy__woofc-button {
+.adfy__woofc-button,
+a.adfy__woofc-button,
+button.adfy__woofc-button {
 
     display: inline-flex;
     gap: 5px;
     align-items: center;
-    font-size: 15px;
-    letter-spacing: 0;
-    font-weight: normal;
+    font-size: var(--adfy_woofc_base_button_font_size);
+    letter-spacing: var(--adfy_woofc_base_button_letter_spacing);
+    font-weight: var(--adfy_woofc_base_button_font_weight);
     line-height: 1;
-    fill: white;
-    color: white;
-    border: none;
+    fill: var(--adfy_woofc_primary_button_label_color);
+    color: var(--adfy_woofc_primary_button_label_color);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--adfy_woofc_primary_button_border_color);
     padding: 15px 25px;
-    border-radius: 3px;
+    border-radius: var(--adfy_woofc_base_button_border_radius);
     box-shadow: none;
     text-decoration: none;
     background: transparent;
     appearance: button;
-    background-color: var(--adfy_woofc_primary_color); 
+    background-color: var(--adfy_woofc_primary_button_background_color); 
     @include transation_delay();
 
     &:hover {
 
-        fill: white;
-        color: white;
-        border: none;
+        fill: var(--adfy_woofc_primary_button_label_color_hover);
+        color: var(--adfy_woofc_primary_button_label_color_hover);
+        border-color: var(--adfy_woofc_primary_button_border_color_hover);
         box-shadow: none;
         text-decoration: none;
         background: transparent; 
-        background-color: var(--adfy_woofc_secondary_color);
+        background-color: var(--adfy_woofc_primary_button_background_color_hover);
     }
 
     &:focus {
@@ -43,11 +47,23 @@
     }
 }
 
+.adfy__woofc-button.close,
+.adfy__woofc-button.secondary,
+a.adfy__woofc-button.secondary,
 .adfy__woofc-button.continue-shopping {
 
-    fill: #878787;
-    color: #878787;
-    background-color: #CFCFCF;
+    fill: var(--adfy_woofc_secondary_button_label_color);
+    color: var(--adfy_woofc_secondary_button_label_color);
+    border-color: var(--adfy_woofc_secondary_button_border_color);
+    background-color: var(--adfy_woofc_secondary_button_background_color);
+
+    &:hover {
+
+        fill: var(--adfy_woofc_secondary_button_label_color_hover);
+        color: var(--adfy_woofc_secondary_button_label_color_hover);
+        border-color: var(--adfy_woofc_secondary_button_border_color_hover);
+        background-color: var(--adfy_woofc_secondary_button_background_color_hover);
+    }
 }
 
 

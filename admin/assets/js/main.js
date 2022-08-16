@@ -332,6 +332,7 @@ var useOptionsStore = (0,pinia__WEBPACK_IMPORTED_MODULE_1__.defineStore)({
         _this2.isSaving = false; // Saving is compconsted here.
 
         _this2.message = res.message; // Set the message to be displayed to the user.
+        //console.log(res);
 
         if (res.success === true) {
           element_plus__WEBPACK_IMPORTED_MODULE_2__.ElMessage.success({
@@ -343,7 +344,7 @@ var useOptionsStore = (0,pinia__WEBPACK_IMPORTED_MODULE_1__.defineStore)({
           element_plus__WEBPACK_IMPORTED_MODULE_2__.ElMessage.error({
             message: _this2.message,
             offset: 50,
-            duration: 3000
+            duration: 5000
           });
         }
 

@@ -15,8 +15,11 @@
 .adfy__woofc-link.has-underline {
 
     position: relative;
+    border: none;
     text-decoration: none;
-    color: var(--adfy_woofc_primary_color);
+    color: var(--adfy_woofc_base_link_color);
+    background: transparent;
+    background-color: transparent;
     @include transation_delay();
 
     &::after,
@@ -57,7 +60,7 @@
 
     &:hover {
 
-        color: var(--adfy_woofc_secondary_color);
+        color: var(--adfy_woofc_base_link_color_hover);
         text-decoration: none;
 
         &::before {
@@ -65,7 +68,7 @@
             content: "";
             transform: scale(1);
             transform-origin: left center;
-            background-color: var(--adfy_woofc_secondary_color);
+            background-color: var(--adfy_woofc_base_link_color_hover);
         }
     }
 

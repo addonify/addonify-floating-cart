@@ -13,6 +13,7 @@
     display: block;
     position: fixed;
     color: var(--adfy_woofc_base_text_color);
+    font-size: var(--adfy_woofc_base_text_font_size);
     background-color: var(--adfy_woofc_cart_background_color);
     box-sizing: border-box;
     transition: all 0.6s ease-in-out;
@@ -423,7 +424,7 @@
 
                     .icon {
 
-                        fill: #444444;
+                        fill: var(--adfy_woofc_base_text_color);
                         line-height: 1;
 
                         svg {
@@ -462,8 +463,8 @@
                         .label,
                         .value {
 
-                            color: #444444;
-                            font-size: 15px;
+                            color: var(--adfy_woofc_base_text_color);
+                            font-size: var(--adfy_woofc_base_text_font_size);
                             font-weight: normal;
                         }
                     }
@@ -510,14 +511,17 @@
                 .adfy__woofc-button {
 
                     display: inline-flex;
-                    color: white;
                     align-items: center;
                     justify-content: center;
                     padding: 20px 15px;
                     height: auto;
-                    border-radius: 4px;
                     width: 100%;
-                    background-color: var(--adfy_woofc_primary_color);
+                    color: var(--adfy_woofc_primary_button_label_color);
+                    border-width: 1px;
+                    border-style: solid;
+                    background: transparent; 
+                    border-color: var(--adfy_woofc_primary_button_border_color);
+                    background-color: var(--adfy_woofc_primary_button_background_color); 
 
                     @include breakpoint(mobile) {
 
@@ -526,16 +530,28 @@
 
                     &:hover {
 
-                        color: white;
-                        background-color: var(--adfy_woofc_secondary_color);
+                        color: var(--adfy_woofc_primary_button_label_color_hover);
+                        border-color: var(--adfy_woofc_primary_button_border_color_hover);
+                        text-decoration: none;
+                        background: transparent; 
+                        background-color: var(--adfy_woofc_primary_button_background_color_hover);
                     }
                 }
 
                 .close {
 
-                    fill: #9D9D9D;
-                    color: #9D9D9D;
-                    background: #D5D5D5;
+                    fill: var(--adfy_woofc_secondary_button_label_color);
+                    color: var(--adfy_woofc_secondary_button_label_color);
+                    border-color: var(--adfy_woofc_secondary_button_border_color);
+                    background-color: var(--adfy_woofc_secondary_button_background_color);
+
+                    &:hover {
+
+                        fill: var(--adfy_woofc_secondary_button_label_color_hover);
+                        color: var(--adfy_woofc_secondary_button_label_color_hover);
+                        border-color: var(--adfy_woofc_secondary_button_border_color_hover);
+                        background-color: var(--adfy_woofc_secondary_button_background_color_hover);
+                    }
                 }
             }
         }

@@ -48,6 +48,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_toggle_button_icon_font_size' => 20,
                 'cart_modal_toggle_button_horizontal_offset' => 100,
                 'cart_modal_toggle_button_vertical_offset' => 100,
+
                 // Toast notification options
                 'display_toast_notification' => true,
                 'toast_notification_display_position' => 'top-right',
@@ -65,8 +66,8 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'toast_notification_button_on_hover_label_color' => 'white',
                 'toast_notification_horizontal_offset' => '',
                 'toast_notification_vertical_offset' => '',
+
                 // Cart modal options
-                // 'cart_modal_display_layout' => '', // next version
                 'cart_title' => 'Cart', //done
                 'display_cart_items_number' => true,//done
                 'close_cart_modal_on_overlay_click' => true,//done
@@ -76,6 +77,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'display_product_removed_from_cart' => true, //done
 
                 'cart_modal_width' => 500, //done
+                'cart_modal_base_font_size' => 15,
                 'cart_modal_background_color' => '',
                 'cart_modal_base_text_color' => '',
                 'cart_modal_overlay_color' => '',
@@ -96,15 +98,10 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_product_remove_button_icon_color' => '',
                 'cart_modal_product_remove_button_on_hover_background_color' => '',
                 'cart_modal_product_remove_button_on_hover_icon_color' => '',
-                
-                // Misc design options
-                'cart_modal_input_field_placeholder_color' => '',
-                'cart_modal_input_field_text_color' => '',
-                'cart_modal_input_field_border_color' => '',
-                'cart_modal_input_field_background_color' => '',
-                'cart_shopping_meter_initial_background_color'  => '',
-                'cart_shopping_meter_progress_background_color'  => '',
 
+                // Buttons style
+                'cart_modal_buttons_font_size' => 14,
+                'cart_modal_buttons_font_weight' => '400',
                 'cart_modal_primary_button_background_color' => '',
                 'cart_modal_primary_button_label_color' => '',
                 'cart_modal_primary_button_border_color' => '',
@@ -118,10 +115,36 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_secondary_button_on_hover_label_color' => '',
                 'cart_modal_secondary_button_on_hover_border_color' => '',
                 
+                // Misc design options
+                'cart_modal_input_field_placeholder_color' => '',
+                'cart_modal_input_field_text_color' => '',
+                'cart_modal_input_field_border_color' => '',
+                'cart_modal_input_field_background_color' => '',
+                'cart_shopping_meter_initial_background_color'  => '',
+                'cart_shopping_meter_progress_background_color'  => '',
+
+                'cart_modal_primary_button_label_color' => '',
+                'cart_modal_primary_button_background_color' => '',
+                'cart_modal_primary_button_border_color' => '',
+                'cart_modal_primary_button_on_hover_label_color' => '',
+                'cart_modal_primary_button_on_hover_background_color' => '',
+                'cart_modal_primary_button_on_hover_border_color' => '',
+                'cart_modal_secondary_button_label_color' => '',
+                'cart_modal_secondary_button_background_color' => '',
+                'cart_modal_secondary_button_border_color' => '',
+                'cart_modal_secondary_button_on_hover_label_color' => '',
+                'cart_modal_secondary_button_on_hover_background_color' => '',
+                'cart_modal_secondary_button_on_hover_border_color' => '',
+                //'cart_modal_secondary_button_background_color' => '',
+                //'cart_modal_secondary_button_label_color' => '',
+                //'cart_modal_secondary_button_border_color' => '',
+                //'cart_modal_secondary_button_on_hover_background_color' => '',
+                //'cart_modal_secondary_button_on_hover_label_color' => '',
+                //'cart_modal_secondary_button_on_hover_border_color' => '',
+                
                 // cart coupon options
-                // 'display_available_coupons' => false, //will be added in next version
-                'display_applied_coupons' => true,//done
-                'cart_apply_coupon_button_label' => 'Apply Coupon',//done
+                'display_applied_coupons' => true,
+                'cart_apply_coupon_button_label' => 'Apply Coupon',
                 'cart_apply_coupon_button_background_color' => '',
                 'cart_apply_coupon_button_background_color_on_hover' => '',
             )
@@ -275,6 +298,12 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_display_designs()
                         ),
+                        'cart-buttons' => array(
+                            'title' => __('Buttons in Cart Design Options', 'addonify-floating-cart'),
+                            'description' => '',
+                            'type' => 'color-options-group',
+                            'fields' => addonify_floating_cart_cart_buttons_display_designs()
+                        ),
                         'cart-misc' => array(
                             'title' => __('Miscellaneous Cart Elements Design Options', 'addonify-floating-cart'),
                             'description' => '',
@@ -287,18 +316,13 @@ if(!function_exists('addonify_floating_cart_get_setting_fields')){
                             'type' => 'color-options-group',
                             'fields' => addonify_floating_cart_cart_products_display_designs()
                         ),
-                        'cart-primary-button' => array(
-                            'title' => __('Primary Button in Cart Design Options', 'addonify-floating-cart'),
-                            'description' => '',
-                            'type' => 'color-options-group',
-                            'fields' => addonify_floating_cart_cart_primary_button_display_designs()
-                        ),
-                        'cart-secondary-button' => array(
-                            'title' => __('Secondary Button in Cart Design Options', 'addonify-floating-cart'),
-                            'description' => '',
-                            'type' => 'color-options-group',
-                            'fields' => addonify_floating_cart_cart_secondary_button_display_designs()
-                        ),
+                        
+                        //'cart-secondary-button' => array(
+                        //    'title' => __('Secondary Button in Cart Design Options', 'addonify-floating-cart'),
+                        //    'description' => '',
+                        //    'type' => 'color-options-group',
+                        //    'fields' => addonify_floating_cart_cart_secondary_button_display_designs()
+                        //),
                     ),
                 ),
             ),

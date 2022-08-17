@@ -22,7 +22,7 @@ export const useOptionsStore = defineStore({
     getters: {
 
         // ⚡️ Check if we need to save the options.
-        needSave: (state) => {
+        checkNeedSave: (state) => {
 
             return !isEqual(state.options, oldOptions) ? true : false;
         },
@@ -78,6 +78,7 @@ export const useOptionsStore = defineStore({
 
                 this.isSaving = false; // Saving is compconsted here.
                 this.message = res.message; // Set the message to be displayed to the user.
+                //console.log(res);
 
                 if (res.success === true) {
                     ElMessage.success(({
@@ -85,12 +86,12 @@ export const useOptionsStore = defineStore({
                         offset: 50,
                         duration: 3000,
                     }));
-                } else {
 
+                } else {
                     ElMessage.error(({
                         message: this.message,
                         offset: 50,
-                        duration: 3000,
+                        duration: 5000,
                     }));
                 }
 

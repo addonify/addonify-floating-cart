@@ -305,6 +305,79 @@
   padding-left: 60px;
   border-left: 1px solid var(--addonify_border_color);
 }
+#___adfy-floating-cart-app___ .el-collapse {
+  border: none;
+  margin: 0 0 15px 0;
+  background: transparent;
+  background-color: transparent;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__header {
+  position: relative;
+  height: auto;
+  font-family: var(--addonify_system_font_family);
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #444444;
+  padding: 20px 15px;
+  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+  background-color: white;
+  transition: all 0.5s ease;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__header .el-collapse-item__arrow {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  fill: #444444;
+  color: #444444;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
+  margin: 0 0 0 auto;
+  border-radius: 100%;
+  background-color: #F3F3F3;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__wrap {
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__wrap .el-collapse-item__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  line-height: inherit;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__wrap .el-collapse-item__content .adfy-options {
+  margin: 0;
+  padding: 0 0 15px 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #EEE;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item .el-collapse-item__wrap .el-collapse-item__content .adfy-options:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item.is-active .el-collapse-item__header {
+  color: white;
+  background-color: var(--addonify_primary_color);
+  border-color: var(--addonify_primary_color);
+}
+#___adfy-floating-cart-app___ .el-collapse .el-collapse-item.is-active .el-collapse-item__header .el-collapse-item__arrow {
+  fill: white;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 .adfy-navigation .navigation {
   display: flex;
@@ -417,6 +490,13 @@
   line-height: 1.3;
   font-weight: normal;
   color: #7a7a7a;
+}
+.option-box.slider-control .right .input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
 }
 
 .option-box.fullwidth {
@@ -609,6 +689,16 @@
   border-radius: 30px;
 }
 
+/* -------------------------------------------------------------------------- 
+	#. Element message
+  -------------------------------------------------------------------------- */
+[class*=page_addonify_floating_cart] .el-message {
+  z-index: 10000000000 !important;
+}
+
+/* -------------------------------------------------------------------------- 
+	#. Loading
+  -------------------------------------------------------------------------- */
 .adfy-loading {
   display: block;
   position: relative;

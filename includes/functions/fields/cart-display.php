@@ -75,39 +75,83 @@ if(!function_exists('addonify_floating_cart_cart_display_designs')){
         return array(
             //cart general
             'cart_modal_width' => array(
-                'label'			  => __( 'Cart width', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart width.',
+                'label'			  => __( 'Cart width in px', 'addonify-floating-cart' ),
+                'description'     => 'Set the width of floating cart in px.',
                 'type'            => 'number',
-                'dependent'       => array('display_cart_modal_toggle_button'),
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 400,
+                'max'             => 800,
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_width')
             ),
+            'cart_modal_base_font_size' => array(
+                'label'			  => __( 'Text font size inside cart in px', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 12,
+                'max'             => 22,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_base_font_size')
+            ),
             'cart_modal_background_color' => array(
-                'label'			  => __( 'Cart Background Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart background color.',
+                'label'			  => __( 'Cart background color', 'addonify-floating-cart' ),
+                'description'     => __( 'Main cart container background color.', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_background_color')
             ),
-            'cart_modal_border_color' => array(
-                'label'			  => __( 'Cart Border Color', 'addonify-floating-cart' ),
-                'description'     => 'To change cart border color.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_border_color')
-            ),
             'cart_modal_overlay_color' => array(
-                'label'			  => __( 'Cart Overlay Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart overlay color.',
+                'label'			  => __( 'Cart overlay background color', 'addonify-floating-cart' ),
+                'description'     => __('Overlay mask background color.', 'addonify-floating-cart'),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_overlay_color')
             ),
-            'cart_modal_title_color' => array(
-                'label'			  => __( 'Cart Title Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart title section color.',
+            'cart_modal_border_color' => array(
+                'label'			  => __( 'General border color inside cart', 'addonify-floating-cart' ),
+                'description'     => __( 'General border color for all borders.', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_border_color')
+            ),
+            'cart_modal_base_text_color' => array(
+                'label'			  => __( 'General text color inside cart', 'addonify-floating-cart' ),
+                'description'     => __( 'General text color for texts inside cart.', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_base_text_color')
+            ),
+            'cart_modal_content_link_color' => array(
+                'label'			  => __( 'General link color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_color')
+            ),
+            'cart_modal_content_link_on_hover_color' => array(
+                'label'			  => __( 'General link color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_on_hover_color')
+            ),
+            'cart_modal_title_color' => array(
+                'label'			  => __( 'Cart title color', 'addonify-floating-cart' ),
+                'description'     => __( 'Main cart title inside cart.', 'addonify-floating-cart' ),
+                'type'            => 'color',
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_title_color')
+            ),
+            'cart_modal_badge_text_color' => array(
+                'label'			  => __( 'Item count badge inside cart label color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_text_color')
+            ),
+            'cart_modal_badge_background_color' => array(
+                'label'			  => __( 'Item count badge inside cart background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_background_color')
+            ),
+            'cart_modal_close_icon_color' => array(
+                'label'			  => __( 'Close cart icon color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_close_icon_color')
+            ),
+            'cart_modal_close_icon_on_hover_color' => array(
+                'label'			  => __( 'Close cart icon color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_close_icon_on_hover_color')
             ),
         );
     }
@@ -119,73 +163,178 @@ if(!function_exists('addonify_floating_cart_cart_display_designs_add')){
     add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_display_designs_add' );
 }
 
+if(!function_exists('addonify_floating_cart_cart_buttons_display_designs')){
+    function addonify_floating_cart_cart_buttons_display_designs(){
+        return array(
+            // Button design options
+            'cart_modal_buttons_font_size' => array(
+                'label'			  => __( 'Buttons font size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 13 & max 20 px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 13,
+                'max'             => 20,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_font_size')
+            ),
+            'cart_modal_buttons_font_weight' => array(
+                'label'			  => __( 'Buttons font weight', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    '400'             => __( 'Normal', 'addonify-floating-cart' ),
+                    '500'             => __( 'Medium', 'addonify-floating-cart' ),
+                    '600'             => __( 'Semi bold', 'addonify-floating-cart' ),
+                    '700'             => __( 'Bold', 'addonify-floating-cart' ),
+                ),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_font_weight')
+            ),
+            'cart_modal_buttons_letter_spacing' => array(
+                'label'			  => __( 'Buttons letter spacing', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 0 & max 3 px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'min'             => 0,
+                'max'             => 3,
+                'step'            => 0.1,
+                'precision'       => 2,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_letter_spacing')
+            ),
+            'cart_modal_buttons_border_radius' => array(
+                'label'			  => __( 'Buttons border radius', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 0 & max 60 px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right',
+                'min'             => 0,
+                'max'             => 60,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_border_radius')
+            ),
+            'cart_modal_buttons_text_transform' => array(
+                'label'			  => __( 'Buttons text transform', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    'none'               => __( 'None', 'addonify-floating-cart' ),
+                    'capatilize'         => __( 'Capatilize', 'addonify-floating-cart' ),
+                    'uppercase'          => __( 'Uppercase', 'addonify-floating-cart' ),
+                    'lowercase'          => __( 'Lowercase', 'addonify-floating-cart' ),
+                ),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_text_transform')
+            ),
+            'cart_modal_primary_button_background_color' => array(
+                'label'			  => __( 'Primary button background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_background_color')
+            ),
+            'cart_modal_primary_button_label_color' => array(
+                'label'			  => __( 'Primary button label color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_label_color')
+            ),
+            'cart_modal_primary_button_border_color' => array(
+                'label'			  => __( 'Primary button border color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_border_color')
+            ),
+            'cart_modal_primary_button_on_hover_background_color' => array(
+                'label'			  => __( 'Primary button background color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_background_color')
+            ),
+            'cart_modal_primary_button_on_hover_label_color' => array(
+                'label'			  => __( 'Primary button label color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_label_color')
+            ),
+            'cart_modal_primary_button_on_hover_border_color' => array(
+                'label'			  => __( 'Primary button border color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_border_color')
+            ),
+            'cart_modal_secondary_button_background_color' => array(
+                'label'			  => __( 'Secondary button background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_background_color')
+            ),
+            'cart_modal_secondary_button_label_color' => array(
+                'label'			  => __( 'Secondary button label color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_label_color')
+            ),
+            'cart_modal_secondary_button_border_color' => array(
+                'label'			  => __( 'Secondary button border color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_border_color')
+            ),
+            'cart_modal_secondary_button_on_hover_background_color' => array(
+                'label'			  => __( 'Secondary button background color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_background_color')
+            ),
+            'cart_modal_secondary_button_on_hover_label_color' => array(
+                'label'			  => __( 'Secondary button label color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_label_color')
+            ),
+            'cart_modal_secondary_button_on_hover_border_color' => array(
+                'label'			  => __( 'Secondary button border color on hover', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_border_color')
+            ),
+        );
+    }
+}
+if(!function_exists('addonify_floating_cart_cart_buttons_display_designs_add')){
+    function addonify_floating_cart_cart_buttons_display_designs_add($setting_fields){
+        return array_merge($setting_fields, addonify_floating_cart_cart_buttons_display_designs());
+    }
+    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_buttons_display_designs_add' );
+}
 
 if(!function_exists('addonify_floating_cart_cart_misc_display_designs')){
     function addonify_floating_cart_cart_misc_display_designs(){
         return array(
-            //misc
-            'cart_modal_badge_background_color' => array(
-                'label'			  => __( 'Cart Badge Background Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart badge background color.',
+            
+
+            // Misc options
+            'cart_modal_input_field_placeholder_color' => array(
+                'label'			  => __( 'Input field placeholder color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_background_color')
-            ),
-            'cart_modal_badge_text_color' => array(
-                'label'			  => __( 'Cart Badge Text Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change cart badge text color.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_badge_text_color')
-            ),
-            'cart_modal_close_icon_color' => array(
-                'label'			  => __( 'Cart Close Icon Color', 'addonify-floating-cart' ),
-                'description'     => 'To change cart-close icon color.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_close_icon_color')
-            ),
-            'cart_modal_content_text_color' => array(
-                'label'			  => __( 'Cart Content Text Color', 'addonify-floating-cart' ),
-                'description'     => 'To change the text color of cart content.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_text_color')
-            ),
-            'cart_modal_content_link_color' => array(
-                'label'			  => __( 'Cart Content Link Color', 'addonify-floating-cart' ),
-                'description'     => 'To change the link color of cart content.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_color')
-            ),
-            'cart_modal_content_link_on_hover_color' => array(
-                'label'			  => __( 'Content Link Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change content link on hover.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_content_link_on_hover_color')
-            ),
-            'cart_modal_input_field_background_color' => array(
-                'label'			  => __( 'Input Field Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field backgroound color in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_background_color')
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_placeholder_color')
             ),
             'cart_modal_input_field_text_color' => array(
-                'label'			  => __( 'Input Field Text Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field text color in cart.',
+                'label'			  => __( 'Input field text color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_text_color')
             ),
             'cart_modal_input_field_border_color' => array(
-                'label'			  => __( 'Input Field Border Color', 'addonify-floating-cart' ),
-                'description'     => 'To change inout field border color in cart.',
+                'label'			  => __( 'Input field border color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_border_color')
+            ),
+            'cart_modal_input_field_background_color' => array(
+                'label'			  => __( 'Input field background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_input_field_background_color')
+            ),
+            'cart_shopping_meter_initial_background_color' => array(
+                'label'			  => __( 'Shopping meter initial background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_shopping_meter_initial_background_color')
+            ),
+            'cart_shopping_meter_progress_background_color' => array(
+                'label'			  => __( 'Shopping meter progress background color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_shopping_meter_progress_background_color')
             ),
         );
     }
@@ -201,54 +350,61 @@ if(!function_exists('addonify_floating_cart_cart_misc_display_designs_add')){
 if(!function_exists('addonify_floating_cart_cart_products_display_designs')){
     function addonify_floating_cart_cart_products_display_designs(){
         return array(
-            //products
+            
+            // Products
             'cart_modal_product_title_color' => array(
-                'label'			  => __( 'Cart Product Title Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product title color in cart.',
+                'label'			  => __( 'Product title color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_color')
             ),
             'cart_modal_product_title_on_hover_color' => array(
-                'label'			  => __( 'Product Title Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product title color while hovering in cart.',
+                'label'			  => __( 'Product title color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_on_hover_color')
             ),
+            'cart_modal_product_title_font_size' => array(
+                'label'			  => __( 'Product title font size in px', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 13 & max 22 px', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'min'             => 13,
+                'max'             => 22,
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_font_size')
+            ),
+            'cart_modal_product_title_font_weight' => array(
+                'label'			  => __( 'Product title font weight', 'addonify-floating-cart' ),
+                'type'            => 'select',
+                'choices' => array(
+                    '400'             => __( 'Normal', 'addonify-floating-cart' ),
+                    '500'             => __( 'Medium', 'addonify-floating-cart' ),
+                    '600'             => __( 'Semi bold', 'addonify-floating-cart' ),
+                    '700'             => __( 'Bold', 'addonify-floating-cart' ),
+                ),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_title_font_weight')
+            ),
             'cart_modal_product_quantity_price_color' => array(
-                'label'			  => __( 'Product Quantity Price Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product quantity price text color.',
+                'label'			  => __( 'Product quantity & price color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_quantity_price_color')
             ),
             'cart_modal_product_remove_button_background_color' => array(
-                'label'			  => __( 'Product Remove Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button background color.',
+                'label'			  => __( 'Remove product button background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_background_color')
             ),
             'cart_modal_product_remove_button_icon_color' => array(
-                'label'			  => __( 'Product Remove Button Icon Color', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button icon color.',
+                'label'			  => __( 'Remove product button icon color', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_icon_color')
             ),
             'cart_modal_product_remove_button_on_hover_background_color' => array(
-                'label'			  => __( 'Product Remove Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button background color on hover.',
+                'label'			  => __( 'Remove product button background color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_on_hover_background_color')
             ),
             'cart_modal_product_remove_button_on_hover_icon_color' => array(
-                'label'			  => __( 'Product Remove Button Icon Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change product-remove button icon color on hover.',
+                'label'			  => __( 'Remove product button icon color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_product_remove_button_on_hover_icon_color')
             ),
         );
@@ -259,118 +415,4 @@ if(!function_exists('addonify_floating_cart_cart_products_display_designs_add'))
         return array_merge($setting_fields, addonify_floating_cart_cart_products_display_designs());
     }
     add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_products_display_designs_add' );
-}
-
-
-if(!function_exists('addonify_floating_cart_cart_primary_button_display_designs')){
-    function addonify_floating_cart_cart_primary_button_display_designs(){
-        return array(
-            //primary button color
-            'cart_modal_primary_button_background_color' => array(
-                'label'			  => __( 'Primary Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key background color in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_background_color')
-            ),
-            'cart_modal_primary_button_label_color' => array(
-                'label'			  => __( 'Primary Button Label Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key label color in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_label_color')
-            ),
-            'cart_modal_primary_button_border_color' => array(
-                'label'			  => __( 'Primary Button Border Color', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key border color in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_border_color')
-            ),
-            'cart_modal_primary_button_on_hover_background_color' => array(
-                'label'			  => __( 'Primary Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key background color on hover in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_background_color')
-            ),
-            'cart_modal_primary_button_on_hover_label_color' => array(
-                'label'			  => __( 'Primary Button Label Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key label color on hover in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_label_color')
-            ),
-            'cart_modal_primary_button_on_hover_border_color' => array(
-                'label'			  => __( 'Primary Button Border Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change primary key border color on hover in cart.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_primary_button_on_hover_border_color')
-            ),
-        );
-    }
-}
-if(!function_exists('addonify_floating_cart_cart_primary_button_display_designs_add')){
-    function addonify_floating_cart_cart_primary_button_display_designs_add($setting_fields){
-        return array_merge($setting_fields, addonify_floating_cart_cart_primary_button_display_designs());
-    }
-    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_primary_button_display_designs_add' );
-}
-
-
-if(!function_exists('addonify_floating_cart_cart_secondary_button_display_designs')){
-    function addonify_floating_cart_cart_secondary_button_display_designs(){
-        return array(
-            //secondary button color
-            'cart_modal_secondary_button_background_color' => array(
-                'label'			  => __( 'Secondary Button Background Color', 'addonify-floating-cart' ),
-                'description'     => '.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_background_color')
-            ),
-            'cart_modal_secondary_button_label_color' => array(
-                'label'			  => __( 'Secondary Button Label Color', 'addonify-floating-cart' ),
-                'description'     => '.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_label_color')
-            ),
-            'cart_modal_secondary_button_border_color' => array(
-                'label'			  => __( 'Secondary Button Border Color', 'addonify-floating-cart' ),
-                'description'     => '.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_border_color')
-            ),
-            'cart_modal_secondary_button_on_hover_background_color' => array(
-                'label'			  => __( 'Secondary Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => '.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_background_color')
-            ),
-            'cart_modal_secondary_button_on_hover_label_color' => array(
-                'label'			  => __( 'Secondary Button Label Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change secondary button label color on hover.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_label_color')
-            ),
-            'cart_modal_secondary_button_on_hover_border_color' => array(
-                'label'			  => __( 'Secondary Button Border Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'To change secondary button border color on hover.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_secondary_button_on_hover_border_color')
-            ),
-        );
-    }
-}
-if(!function_exists('addonify_floating_cart_cart_secondary_button_display_designs_add')){
-    function addonify_floating_cart_cart_secondary_button_display_designs_add($setting_fields){
-        return array_merge($setting_fields, addonify_floating_cart_cart_secondary_button_display_designs());
-    }
-    add_filter(  'addonify_floating_cart/settings_fields', 'addonify_floating_cart_cart_secondary_button_display_designs_add' );
 }

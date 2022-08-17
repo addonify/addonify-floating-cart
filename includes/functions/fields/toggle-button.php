@@ -60,79 +60,98 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_designs')){
     function addonify_floating_cart_toggle_cart_button_designs(){
         return array(
             'toggle_button_badge_background_color' => array(
-                'label'			  => __( 'Button background color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button background color.',
+                'label'			  => __( 'Item count badge background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_items_number_badge'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_badge_background_color')
             ),
-            'toggle_button_label_color' => array(
-                'label'			  => __( 'Button label color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button label color.',
-                'type'            => 'color',
-                'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_label_color')
-            ),
             'toggle_button_badge_label_color' => array(
-                'label'			  => __( 'Button badge label color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button badge label color.',
+                'label'			  => __( 'Item count badge label color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_items_number_badge'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_badge_label_color')
             ),
+             'toggle_button_label_color' => array(
+                'label'			  => __( 'Button label/icon color', 'addonify-floating-cart' ),
+                'type'            => 'color',
+                'dependent'       => array('display_cart_modal_toggle_button'),
+                'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_label_color')
+            ),
             'toggle_button_background_color' => array(
-                'label'			  => __( 'Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button background color.',
+                'label'			  => __( 'Button background color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_background_color')
             ),
             'toggle_button_border_color' => array(
-                'label'			  => __( 'Button Border Color', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button border color.',
+                'label'			  => __( 'Button border color', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_border_color')
             ),
             'toggle_button_on_hover_label_color' => array(
-                'label'			  => __( 'Button Label Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button label color on hover.',
+                'label'			  => __( 'Button label color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_on_hover_label_color')
             ),
             'toggle_button_on_hover_background_color' => array(
-                'label'			  => __( 'Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button background color on hover.',
+                'label'			  => __( 'Button background color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_on_hover_background_color')
             ),
             'toggle_button_on_hover_border_color' => array(
-                'label'			  => __( 'Button Border Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button border color on hover.',
+                'label'			  => __( 'Button border color on hover', 'addonify-floating-cart' ),
                 'type'            => 'color',
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toggle_button_on_hover_border_color')
             ),
-            'cart_modal_toggle_button_padding' => array(
-                'label'			  => __( 'Button Padding', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button padding.',
+            'cart_modal_toggle_button_width' => array(
+                'label'			  => __( 'Button size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 40 & max 200 px', 'addonify-floating-cart' ),
                 'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right', // right or remove this prop.  
+                'min'             => 40,
+                'max'             => 200,
+                'step'            => 5,
                 'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_padding')
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_width')
             ),
-            'cart_modal_toggle_button_side_offset' => array(
-                'label'			  => __( 'Button Side Offset', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button side offset.',
+            'cart_modal_toggle_button_icon_font_size' => array(
+                'label'			  => __( 'Button cart icon font size', 'addonify-floating-cart' ),
+                'description'     => __( 'Min 14 & max 80 px', 'addonify-floating-cart' ),
                 'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right', // right or remove this prop.  
+                'min'             => 14,
+                'max'             => 80,
+                'step'            => 2,
+                'dependent'       => array('cart_modal_toggle_button_icon_font_size'),
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_width')
+            ),
+            'cart_modal_toggle_button_horizontal_offset' => array(
+                'label'			  => __( 'Button horizontal offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Horizontal offset from left or right side of the screen. Value applied in px.', 'addonify-floating-cart' ),
+                'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right', // right or remove this prop.  
+                'min'             => -500,
+                'max'             => 500,
+                'step'            => 10,
                 'dependent'       => array('display_cart_modal_toggle_button'),
-                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_side_offset')
+                'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_horizontal_offset')
             ),
             'cart_modal_toggle_button_vertical_offset' => array(
-                'label'			  => __( 'Button Vertical Offset', 'addonify-floating-cart' ),
-                'description'     => 'Change this to change toggle-button vertical offset.',
+                'label'			  => __( 'Button vertical offset', 'addonify-floating-cart' ),
+                'description'     => __( 'Vertical offset from top or bottom of the screen. Value applied in px.', 'addonify-floating-cart' ),
                 'type'            => 'number',
+                'typeStyle'       => 'toggle',
+                'controlPosition' => 'right', // right or remove this prop.  
+                'min'             => -500,
+                'max'             => 500,
+                'step'            => 10,
                 'dependent'       => array('display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_toggle_button_vertical_offset')
             ),

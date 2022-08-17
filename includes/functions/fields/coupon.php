@@ -41,14 +41,12 @@ if(!function_exists('addonify_floating_cart_coupon_designs')){
         return array(
             'cart_apply_coupon_button_background_color' => array(
                 'label'			  => __( 'Apply Coupon Button Background Color', 'addonify-floating-cart' ),
-                'description'     => 'For Changing the Apply Coupon Button background color.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_coupon_section'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_background_color')
             ),
             'cart_apply_coupon_button_background_color_on_hover' => array(
                 'label'			  => __( 'Apply Coupon Button Background Color on Hover', 'addonify-floating-cart' ),
-                'description'     => 'For Changing the Apply Coupon Button background color on hover.',
                 'type'            => 'color',
                 'dependent'       => array('display_cart_coupon_section'),
                 'value'           => addonify_floating_cart_get_setting_field_value('toast_notification_background_color')

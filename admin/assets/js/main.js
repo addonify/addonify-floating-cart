@@ -646,7 +646,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
 
-    var appendToolTipText = function appendToolTipText(val) {
+    var sliderToolTip = function sliderToolTip(val) {
       return val + " " + props.toolTipText;
     };
 
@@ -654,7 +654,7 @@ __webpack_require__.r(__webpack_exports__);
       props: props,
       emit: emit,
       value: value,
-      appendToolTipText: appendToolTipText,
+      sliderToolTip: sliderToolTip,
       computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed,
       ElInput: element_plus__WEBPACK_IMPORTED_MODULE_4__.ElInput,
       ElInputNumber: element_plus__WEBPACK_IMPORTED_MODULE_5__.ElInputNumber,
@@ -1828,7 +1828,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     min: $setup.props.min,
     max: $setup.props.max,
     step: $setup.props.step,
-    "format-tooltip": $setup.props.toolTipText ? $setup.appendToolTipText : null
+    "format-tooltip": $setup.props.toolTipText ? $setup.sliderToolTip : null
   }, null, 8
   /* PROPS */
   , ["modelValue", "min", "max", "step", "format-tooltip"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {

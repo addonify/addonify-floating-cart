@@ -23,7 +23,7 @@ const value = computed({
 	},
 });
 
-const appendToolTipText = (val) => {
+const sliderToolTip = (val) => {
 	return val + " " + props.toolTipText;
 };
 </script>
@@ -44,7 +44,7 @@ const appendToolTipText = (val) => {
 		:min="props.min"
 		:max="props.max"
 		:step="props.step"
-		:format-tooltip="props.toolTipText ? appendToolTipText : null"
+		:format-tooltip="props.toolTipText ? sliderToolTip : null"
 	/>
 	<el-input
 		v-else

@@ -313,6 +313,7 @@ class Addonify_Floating_Cart_Public
 	public function update_cart_item(){
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$error = false;
+            $quantity = false;
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $product = wc_get_product($cart_item['product_id']);
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
@@ -349,7 +350,7 @@ class Addonify_Floating_Cart_Public
 			WC()->cart->maybe_set_cart_cookies();
 			// Fragments returned
 			$data = array(
-				'nQuantity' => $nQuantity ?? $quantity,
+				'nQuantity' => isset($nQuantity) ? $nQuantity : $quantity,
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
 				'error_msg' => $error,
 			);
@@ -470,7 +471,7 @@ class Addonify_Floating_Cart_Public
 
 	public function addonify_floating_cart_empty_woocommerce_coupon_msg($msg){
 		if(wp_doing_ajax()){
-			return;
+			return NULL;
 		} else {
 			return $msg;
 		}

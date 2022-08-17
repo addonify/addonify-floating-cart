@@ -43,7 +43,7 @@ function addonify_floating_cart_locate_template( $template_name, $template_path 
 
 	// Set template location for theme
 	if ( empty( $template_path )) :
-		$template_path = 'addonify/';
+		$template_path = 'addonify/floating-cart/';
 	endif;
 
 	// Set default plugin templates path.

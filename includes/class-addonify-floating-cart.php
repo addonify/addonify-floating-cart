@@ -266,7 +266,7 @@ class Addonify_Floating_Cart {
 					<?php _e( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' );?>
 					</p>
 				</div>
-			<?php 
+			<?php
 			echo ob_get_clean();
 		}
 	}

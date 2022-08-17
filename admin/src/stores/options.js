@@ -22,7 +22,7 @@ export const useOptionsStore = defineStore({
     getters: {
 
         // ⚡️ Check if we need to save the options.
-        needSave: (state) => {
+        checkNeedSave: (state) => {
 
             return !isEqual(state.options, oldOptions) ? true : false;
         },

@@ -59,6 +59,7 @@ const props = defineProps({
 		:step="props.field.step"
 		:precision="props.field.precision"
 		:controlPosition="props.field.controlPosition"
+		:toolTipText="props.field.toolTipText"
 	/>
 	<Radio
 		v-else-if="props.field.type == 'radio'"

@@ -491,6 +491,13 @@
   font-weight: normal;
   color: #7a7a7a;
 }
+.option-box.slider-control .right .input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
 
 .option-box.fullwidth {
   grid-template-columns: repeat(1, 1fr);

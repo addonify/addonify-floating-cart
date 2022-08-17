@@ -15,7 +15,10 @@ const props = defineProps({
 				class="adfy-options"
 				v-for="(field, key) in props.section.fields"
 			>
-				<div class="adfy-option-columns option-box">
+				<div
+					class="adfy-option-columns option-box"
+					:class="field.className"
+				>
 					<div class="adfy-col left">
 						<div class="label">
 							<p v-if="field.label" class="option-label">

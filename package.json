@@ -15,7 +15,7 @@
         "zip": "mix --production && gulp zip"
     },
     "dependencies": {
-        "element-plus": "^2.2.2",
+        "element-plus": "^2.2.13",
         "pinia": "^2.0.14",
         "postcss-preset-env": "^7.6.0",
         "vue": "^3.2.36",

@@ -207,7 +207,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
 /* harmony import */ var _views_Settings_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/Settings.vue */ "./admin/src/views/Settings.vue");
 /* harmony import */ var _views_Styles_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/Styles.vue */ "./admin/src/views/Styles.vue");
 /* harmony import */ var _views_Products_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/Products.vue */ "./admin/src/views/Products.vue");
@@ -284,7 +284,7 @@ var useOptionsStore = (0,pinia__WEBPACK_IMPORTED_MODULE_1__.defineStore)({
   },
   getters: {
     // ⚡️ Check if we need to save the options.
-    needSave: function needSave(state) {
+    checkNeedSave: function checkNeedSave(state) {
       return !isEqual(state.options, oldOptions) ? true : false;
     }
   },
@@ -601,10 +601,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input/index.mjs");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input-number/index.mjs");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input/index.mjs");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/input-number/index.mjs");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/slider/index.mjs");
 /* harmony import */ var element_plus_es_components_input_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! element-plus/es/components/input/style/css */ "./node_modules/element-plus/es/components/input/style/css.mjs");
 /* harmony import */ var element_plus_es_components_input_number_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! element-plus/es/components/input-number/style/css */ "./node_modules/element-plus/es/components/input-number/style/css.mjs");
+/* harmony import */ var element_plus_es_components_slider_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-plus/es/components/slider/style/css */ "./node_modules/element-plus/es/components/slider/style/css.mjs");
+
+
 
 
 
@@ -623,7 +627,8 @@ __webpack_require__.r(__webpack_exports__);
     max: Number,
     step: Number,
     precision: Number,
-    controlPosition: String
+    controlPosition: String,
+    toolTipText: String
   },
   emits: ["update:modelValue"],
   setup: function setup(__props, _ref) {
@@ -640,13 +645,20 @@ __webpack_require__.r(__webpack_exports__);
         emit("update:modelValue", newValue);
       }
     });
+
+    var appendToolTipText = function appendToolTipText(val) {
+      return val + " " + props.toolTipText;
+    };
+
     var __returned__ = {
       props: props,
       emit: emit,
       value: value,
+      appendToolTipText: appendToolTipText,
       computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed,
-      ElInput: element_plus__WEBPACK_IMPORTED_MODULE_3__.ElInput,
-      ElInputNumber: element_plus__WEBPACK_IMPORTED_MODULE_4__.ElInputNumber
+      ElInput: element_plus__WEBPACK_IMPORTED_MODULE_4__.ElInput,
+      ElInputNumber: element_plus__WEBPACK_IMPORTED_MODULE_5__.ElInputNumber,
+      ElSlider: element_plus__WEBPACK_IMPORTED_MODULE_6__.ElSlider
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -1807,10 +1819,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     controlsPosition: $setup.props.controlPosition
   }, null, 8
   /* PROPS */
-  , ["modelValue", "min", "max", "step", "precision", "controlsPosition"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
+  , ["modelValue", "min", "max", "step", "precision", "controlsPosition"])) : $setup.props.type == 'slider' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElSlider"], {
     key: 1,
     modelValue: $setup.value,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.value = $event;
+    }),
+    min: $setup.props.min,
+    max: $setup.props.max,
+    step: $setup.props.step,
+    "format-tooltip": $setup.props.toolTipText ? $setup.appendToolTipText : null
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "min", "max", "step", "format-tooltip"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ElInput"], {
+    key: 2,
+    modelValue: $setup.value,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.value = $event;
     }),
     type: "number",
@@ -2206,7 +2230,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.store.handleUpdateOptions();
     }),
     "class": "adfy-button",
-    disabled: !$setup.store.needSave,
+    disabled: !$setup.store.checkNeedSave,
     loading: $setup.store.isSaving
   }, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.__("Save Options", "addonify-floating-cart")), 1
   /* TEXT */
@@ -2492,10 +2516,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     max: $setup.props.field.max,
     step: $setup.props.field.step,
     precision: $setup.props.field.precision,
-    controlPosition: $setup.props.field.controlPosition
+    controlPosition: $setup.props.field.controlPosition,
+    toolTipText: $setup.props.field.toolTipText
   }, null, 8
   /* PROPS */
-  , ["modelValue", "placeholder", "type", "min", "max", "step", "precision", "controlPosition"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
+  , ["modelValue", "placeholder", "type", "min", "max", "step", "precision", "controlPosition", "toolTipText"])) : $setup.props.field.type == 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Radio"], {
     key: 7,
     modelValue: $setup.props.reactiveState[$setup.props.fieldKey],
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
@@ -2659,26 +2684,23 @@ var _hoisted_1 = {
   "class": "adfy-options"
 };
 var _hoisted_2 = {
-  "class": "adfy-option-columns option-box"
-};
-var _hoisted_3 = {
   "class": "adfy-col left"
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   "class": "label"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   key: 0,
   "class": "option-label"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   key: 1,
   "class": "option-description"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "adfy-col right"
 };
-var _hoisted_8 = {
+var _hoisted_7 = {
   "class": "input"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -2689,17 +2711,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.section.fields, function (field, key) {
-            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [field.label ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(field.label), 1
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+              "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["adfy-option-columns option-box", field.className])
+            }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [field.label ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(field.label), 1
             /* TEXT */
-            )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), field.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(field.description), 1
+            )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), field.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(field.description), 1
             /* TEXT */
-            )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputControl"], {
+            )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputControl"], {
               field: field,
               fieldKey: key,
               reactiveState: $setup.props.reactiveState
             }, null, 8
             /* PROPS */
-            , ["field", "fieldKey", "reactiveState"])])])])]);
+            , ["field", "fieldKey", "reactiveState"])])])], 2
+            /* CLASS */
+            )]);
           }), 256
           /* UNKEYED_FRAGMENT */
           ))];

@@ -79,7 +79,7 @@ const store = useOptionsStore();
                         type="submit"
                         @click="store.handleUpdateOptions()"
                         class="adfy-button"
-                        :disabled="!store.needSave"
+                        :disabled="!store.checkNeedSave"
                         :loading="store.isSaving"
                     >
                         <span class="loading-icon">

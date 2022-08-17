@@ -373,7 +373,7 @@ if ( ! function_exists( 'addonify_floating_cart_update_settings' ) ) {
                         $sanitized_value = ( $value == true ) ? '1' : '0';
                         break;
                     case 'number':
-                        $sanitized_value = (int) $value;
+                        $sanitized_value = is_numeric( $value ) ? $value : 0;
                         break;
                     case 'color':
                         $sanitized_value = sanitize_text_field( $value );

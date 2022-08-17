@@ -193,13 +193,10 @@ if(!function_exists('addonify_floating_cart_cart_buttons_display_designs')){
                 'description'     => __( 'Min 0 & max 3 px.', 'addonify-floating-cart' ),
                 'type'            => 'number',
                 'typeStyle'       => 'toggle',
-                'controlPosition' => 'right',
                 'min'             => 0,
                 'max'             => 3,
                 'step'            => 0.1,
                 'precision'       => 2,
-                //'toolTipText'     => 'px',
-                //'className'       => 'slider-control',
                 'value'           => addonify_floating_cart_get_setting_field_value('cart_modal_buttons_letter_spacing')
             ),
             'cart_modal_buttons_border_radius' => array(

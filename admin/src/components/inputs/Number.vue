@@ -16,14 +16,14 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 const value = computed({
 	get() {
-		return parseInt(props.modelValue);
+		return parseFloat(props.modelValue);
 	},
 	set(newValue) {
 		emit("update:modelValue", newValue);
 	},
 });
 
-const appendToolTipText = (val) => {
+const sliderToolTip = (val) => {
 	return val + " " + props.toolTipText;
 };
 </script>
@@ -44,7 +44,7 @@ const appendToolTipText = (val) => {
 		:min="props.min"
 		:max="props.max"
 		:step="props.step"
-		:format-tooltip="props.toolTipText ? appendToolTipText : null"
+		:format-tooltip="props.toolTipText ? sliderToolTip : null"
 	/>
 	<el-input
 		v-else

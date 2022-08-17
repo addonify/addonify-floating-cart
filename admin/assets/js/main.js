@@ -639,7 +639,7 @@ __webpack_require__.r(__webpack_exports__);
 
     var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
       get: function get() {
-        return parseInt(props.modelValue);
+        return parseFloat(props.modelValue);
       },
       set: function set(newValue) {
         emit("update:modelValue", newValue);

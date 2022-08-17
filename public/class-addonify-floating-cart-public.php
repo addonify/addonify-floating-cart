@@ -565,10 +565,10 @@ class Addonify_Floating_Cart_Public
 			'--adfy_woofc_toggle_button_border_color_hover' => addonify_floating_cart_get_option('toggle_button_on_hover_border_color'),
 			'--adfy_woofc_toggle_button_badge_text_color' => addonify_floating_cart_get_option('toggle_button_badge_label_color'),
 			'--adfy_woofc_toggle_button_badge_background_color' => addonify_floating_cart_get_option('toggle_button_badge_background_color'),
-			'--adfy_woofc_toggle_button_badge_width' => addonify_floating_cart_get_option('toggle_button_badge_width'),
-			'--adfy_woofc_toggle_button_badge_font_size' => addonify_floating_cart_get_option('toggle_button_badge_font_size') . 'px',
+			'--adfy_woofc_toggle_button_badge_width' => addonify_floating_cart_get_option('toggle_button_badge_width'), // New
+			'--adfy_woofc_toggle_button_badge_font_size' => addonify_floating_cart_get_option('toggle_button_badge_font_size') . 'px', // New
 			'--adfy_woofc_toggle_button_size' => addonify_floating_cart_get_option('cart_modal_toggle_button_width') . 'px',
-			'--adfy_woofc_toggle_button_border_radius' => addonify_floating_cart_get_option('cart_modal_toggle_button_border_radius') . 'px',
+			'--adfy_woofc_toggle_button_border_radius' => addonify_floating_cart_get_option('cart_modal_toggle_button_border_radius') . 'px', // New
 			'--adfy_woofc_toggle_button_cart_icon_font_size' => addonify_floating_cart_get_option('cart_modal_toggle_button_icon_font_size') . 'px',
 			'--adfy_woofc_toggle_button_horizental_offset' => addonify_floating_cart_get_option('cart_modal_toggle_button_horizontal_offset') . 'px',
 			'--adfy_woofc_toggle_button_vertical_offset' => addonify_floating_cart_get_option('cart_modal_toggle_button_vertical_offset') . 'px',
@@ -613,10 +613,10 @@ class Addonify_Floating_Cart_Public
 			// Cart & cart title
 			
 			'--adfy_woofc_cart_title_text_color' => addonify_floating_cart_get_option('cart_modal_title_color'),
-			'--adfy_woofc_cart_title_font_size' => addonify_floating_cart_get_option('cart_title_font_size') . 'px',
-			'--adfy_woofc_cart_title_font_weight' => addonify_floating_cart_get_option('cart_title_font_weight'),
-			'--adfy_woofc_cart_title_letter_spacing' => addonify_floating_cart_get_option('cart_title_letter_spacing'),
-			'--adfy_woofc_cart_title_text_transform' => addonify_floating_cart_get_option('cart_title_text_transform'),
+			'--adfy_woofc_cart_title_font_size' => addonify_floating_cart_get_option('cart_title_font_size') . 'px', // New
+			'--adfy_woofc_cart_title_font_weight' => addonify_floating_cart_get_option('cart_title_font_weight'), // New
+			'--adfy_woofc_cart_title_letter_spacing' => addonify_floating_cart_get_option('cart_title_letter_spacing'), // New
+			'--adfy_woofc_cart_title_text_transform' => addonify_floating_cart_get_option('cart_title_text_transform'), // New
 			'--adfy_woofc_cart_title_count_badge_text_color' => addonify_floating_cart_get_option('cart_modal_badge_text_color'),
 			'--adfy_woofc_cart_title_count_badge_background_color' => addonify_floating_cart_get_option('cart_modal_badge_background_color'),
 

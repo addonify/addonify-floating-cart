@@ -79,12 +79,12 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
 
                 'cart_modal_width' => 500, //done
                 'cart_modal_base_font_size' => 15,
-                'cart_modal_background_color' => '',
-                'cart_modal_base_text_color' => '',
-                'cart_modal_overlay_color' => '',
-                'cart_modal_content_link_color' => '',
-                'cart_modal_content_link_on_hover_color' => '',
-                'cart_modal_border_color' => '',
+                'cart_modal_background_color' => '', // Left
+                'cart_modal_base_text_color' => '', // Left
+                'cart_modal_overlay_color' => '', // Left
+                'cart_modal_content_link_color' => '', // Left
+                'cart_modal_content_link_on_hover_color' => '', // Left
+                'cart_modal_border_color' => '', // Left
                 'cart_modal_title_color' => '',
                 'cart_modal_badge_background_color' => '',
                 'cart_modal_badge_text_color' => '',
@@ -127,7 +127,7 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 'cart_modal_buttons_font_size' => 14,
                 'cart_modal_buttons_font_weight' => '400', 
                 'cart_modal_buttons_letter_spacing' => 0.25,
-                'cart_modal_buttons_text_transform' => 'default',
+                'cart_modal_buttons_text_transform' => 'none',
                 'cart_modal_buttons_border_radius' => 3,
                 'cart_modal_primary_button_label_color' => '',
                 'cart_modal_primary_button_background_color' => '',
@@ -151,8 +151,8 @@ if ( ! function_exists( 'addonify_floating_cart_settings_fields_defaults' ) ) {
                 // cart coupon options
                 'display_applied_coupons' => true,
                 'cart_apply_coupon_button_label' => 'Apply Coupon',
-                'cart_apply_coupon_button_background_color' => '',
-                'cart_apply_coupon_button_background_color_on_hover' => '',
+                'cart_apply_coupon_button_background_color' => '', // Left
+                'cart_apply_coupon_button_background_color_on_hover' => '', // Left
             )
         );
     }

@@ -2,8 +2,8 @@
 ?>
 <header class="adfy__woofc-header">
     <h3 class="adfy__woofc-title">
-        <?php echo esc_html(addonify_floating_cart_get_setting_field_value('cart_title')); ?>
-        <?php if(addonify_floating_cart_get_setting_field_value('display_cart_items_number')){ ?>
+        <?php echo esc_html(addonify_floating_cart_get_option('cart_title')); ?>
+        <?php if(addonify_floating_cart_get_option('display_cart_items_number')){ ?>
         <span class="adfy__woofc-badge">
             <?php 
             printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),

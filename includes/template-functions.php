@@ -2,7 +2,7 @@
 
 if ( ! function_exists( 'addonify_floating_cart_floating_button_template' ) ) {
     function addonify_floating_cart_floating_button_template() {
-		if(addonify_floating_cart_get_setting_field_value('display_cart_modal_toggle_button')){
+		if(addonify_floating_cart_get_option('display_cart_modal_toggle_button')){
 			addonify_floating_cart_get_template( 'floating-button.php' );
 		}
     }
@@ -117,10 +117,10 @@ if(!function_exists('addonify_floating_cart_get_cart_coupons_available')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_shipping_bar')){
 	function addonify_floating_cart_get_cart_shipping_bar($args = array()){
-		$shopping_meter = (bool)addonify_floating_cart_get_setting_field_value('enable_shopping_meter');
-		$free_shipping_eligibility_amount = (int)addonify_floating_cart_get_setting_field_value('customer_shopping_meter_threshold');
-		$args_['pre_threshold_label'] = esc_html(addonify_floating_cart_get_setting_field_value('customer_shopping_meter_pre_threshold_label'));
-		$args_['post_threshold_label'] = esc_html(addonify_floating_cart_get_setting_field_value('customer_shopping_meter_post_threshold_label'));
+		$shopping_meter = (bool)addonify_floating_cart_get_option('enable_shopping_meter');
+		$free_shipping_eligibility_amount = (int)addonify_floating_cart_get_option('customer_shopping_meter_threshold');
+		$args_['pre_threshold_label'] = esc_html(addonify_floating_cart_get_option('customer_shopping_meter_pre_threshold_label'));
+		$args_['post_threshold_label'] = esc_html(addonify_floating_cart_get_option('customer_shopping_meter_post_threshold_label'));
 		if(!$shopping_meter || ($free_shipping_eligibility_amount == 0 && empty($args_['pre_threshold_label'] ) && empty($args_['post_threshold_label'] ))){
 			return;
 		}
@@ -148,13 +148,13 @@ if(!function_exists('addonify_floating_cart_get_cart_footer')){
 if(!function_exists('addonify_floatting_cart_get_cart_footer_button')){
 	function addonify_floatting_cart_get_cart_footer_button($args = array()){
 		ob_start();
-			if(addonify_floating_cart_get_setting_field_value('display_continue_shopping_button')){ ?>
+			if(addonify_floating_cart_get_option('display_continue_shopping_button')){ ?>
 				<button class="adfy__woofc-button adfy__hide-woofc close">
-					<?php echo esc_html(addonify_floating_cart_get_setting_field_value('continue_shopping_button_label')); ?>
+					<?php echo esc_html(addonify_floating_cart_get_option('continue_shopping_button_label')); ?>
 				</button>
 			<?php } ?>
 			<a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
-				<?php echo esc_html(addonify_floating_cart_get_setting_field_value('checkout_button_label')); ?>
+				<?php echo esc_html(addonify_floating_cart_get_option('checkout_button_label')); ?>
 			</a>
 			<?php
 		echo ob_get_clean();

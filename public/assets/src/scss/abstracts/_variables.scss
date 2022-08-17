@@ -18,6 +18,8 @@
 	--adfy_woofc_cart_input_placeholder_color: #9E9E9E;
 	--adfy_woofc_cart_input_text_color: #444444;
 	--adfy_woofc_cart_input_background_color: #FFFFFF;
+
+	--adfy_woofc_cart_width: 500px; // New
 	
 
 	// Toggle button
@@ -31,7 +33,10 @@
 	--adfy_woofc_toggle_button_badge_text_color_hover: #FFFFFF;
 	--adfy_woofc_toggle_button_badge_background_color: #1B81FF; 
 	--adfy_woofc_toggle_button_badge_background_color_hover: #1B81FF;
+	--adfy_woofc_toggle_button_badge_width: 23px; // New
+	--adfy_woofc_toggle_button_badge_font_size: 13px; // New
 	--adfy_woofc_toggle_button_size: 60px;
+	--adfy_woofc_toggle_button_border_radius: 5px;
 	--adfy_woofc_toggle_button_cart_icon_font_size: 20px;
 	--adfy_woofc_toggle_button_horizental_offset: 100px;
 	--adfy_woofc_toggle_button_vertical_offset: 100px;
@@ -72,6 +77,11 @@
 	// Cart & cart title
 	
 	--adfy_woofc_cart_title_text_color: var(--adfy_woofc_base_text_color);
+	--adfy_woofc_cart_title_font_size: var(--adfy_woofc_base_text_font_size); // New 
+	--adfy_woofc_cart_title_font_weight: var(--adfy_woofc_base_text_font_weight); // New
+	--adfy_woofc_cart_title_letter_spacing: 0; // New
+	--adfy_woofc_cart_title_text_transform: none; // New
+
 	--adfy_woofc_cart_title_count_badge_text_color: #409EFF;
 	--adfy_woofc_cart_title_count_badge_background_color: #DFEEFF;
 

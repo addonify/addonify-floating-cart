@@ -13,7 +13,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings')){
                     'top-left'          => __( 'Top Left', 'addonify-floating-cart' ),
                     'bottom-left'       => __( 'Bottom Left', 'addonify-floating-cart' ),
                 ),
-                'dependent'       => array('display_cart_modal_toggle_button'),
+                'dependent'       => array('enable_floating_cart', 'display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_option('cart_modal_toggle_button_display_position')
             ),
             'cart_items_number_badge_position' => array(
@@ -26,7 +26,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings')){
                     'top-left'        => __( 'Top Left', 'addonify-floating-cart' ),
                     'bottom-left'     => __( 'Bottom Left', 'addonify-floating-cart' ),
                 ),
-                'dependent'       => array('display_cart_items_number_badge'),
+                'dependent'       => array('enable_floating_cart', 'display_cart_items_number_badge'),
                 'value'           => addonify_floating_cart_get_option('cart_items_number_badge_position')
             ),
             'display_cart_modal_toggle_button' => array(
@@ -40,7 +40,7 @@ if(!function_exists('addonify_floating_cart_toggle_cart_button_settings')){
                 'label'			  => __( 'Number of items badge', 'addonify-floating-cart' ),
                 'description'     => __( 'Display number of items on cart badge in toggle button', 'addonify-floating-cart' ),
                 'type'            => 'switch',
-                'dependent'       => array('display_cart_modal_toggle_button'),
+                'dependent'       => array('enable_floating_cart', 'display_cart_modal_toggle_button'),
                 'value'           => addonify_floating_cart_get_option('display_cart_items_number_badge')
             ),
 

@@ -34,6 +34,11 @@ const enablePluginStyles = () => {
 			:reactiveState="props.reactiveState"
 			:currentPage="props.currentPage"
 		>
+			<SectionTitle
+				:section="section"
+				:sectionkey="sectionKey"
+				:currentPage="props.currentPage"
+			/>
 		</OptionBox>
 		<Accordion
 			v-else

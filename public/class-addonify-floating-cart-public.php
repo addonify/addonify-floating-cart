@@ -551,7 +551,7 @@ class Addonify_Floating_Cart_Public
 	public function dynamic_css() {
 
 		$css_values = array( 
-			'--adfy_woofc_cart_width' => addonify_floating_cart_get_option('cart_modal_width'), // New
+			'--adfy_woofc_cart_width' => addonify_floating_cart_get_option('cart_modal_width') . 'px', // New
 			'--adfy_woofc_base_text_color' => addonify_floating_cart_get_option('cart_modal_base_text_color'), 
 			'--adfy_woofc_base_link_color' =>  addonify_floating_cart_get_option('cart_modal_content_link_color'),	
 			'--adfy_woofc_base_link_color_hover' => addonify_floating_cart_get_option('cart_modal_content_link_on_hover_color'),

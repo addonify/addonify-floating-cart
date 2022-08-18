@@ -45,7 +45,7 @@
         #adfy__woofc-hide-coupon-container {
 
             display: inline-flex;
-            font-size: 14px;
+            font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
             line-height: 1;
             font-weight: normal;
             gap: 10px;

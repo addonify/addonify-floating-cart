@@ -5,7 +5,9 @@
 
 .adfy__woofc-button,
 a.adfy__woofc-button,
-button.adfy__woofc-button {
+button.adfy__woofc-button,
+input.adfy__woofc-button[type="submit"],
+button.adfy__woofc-button[type="submit"] {
 
     display: inline-flex;
     gap: 5px;
@@ -220,8 +222,6 @@ a.adfy__woofc-button.secondary,
         align-items: center;
         justify-content: center;
         position: absolute;
-        left: -15px;
-        top: -10px;
         height: 23px;
         width: 23px;
         font-size: 13px;
@@ -252,6 +252,30 @@ a.adfy__woofc-button.secondary,
 
         outline: none;
     }
+
+    &.top-right {
+
+        bottom: auto;
+        left: auto;
+        right: var(--adfy_woofc_toggle_button_horizental_offset);
+        top: var(--adfy_woofc_toggle_button_vertical_offset);
+    }
+
+    &.top-left {
+
+        bottom: auto;
+        right: auto;
+        top: var(--adfy_woofc_toggle_button_vertical_offset);
+        left: var(--adfy_woofc_toggle_button_horizental_offset);
+    }
+
+    &.bottom-left {
+
+        top: auto;
+        right: auto;
+        bottom: var(--adfy_woofc_toggle_button_vertical_offset);
+        left: var(--adfy_woofc_toggle_button_horizental_offset);
+    }
 }
 
 #adfy__woofc-trigger[data_style="round"] {
@@ -263,6 +287,38 @@ a.adfy__woofc-button.secondary,
         top: -5px;
         left: -10px;
         border-radius: 100%;
+
+        &.top-left {
+
+            bottom: auto;
+            right: auto;
+            top: -10px;
+            left: 0;
+        }
+
+        &.top-right {
+
+            left: auto;
+            bottom: auto;
+            right: -10px;
+            top: 0;
+        }
+
+        &.bottom-left {
+
+            right: auto;
+            top: auto;
+            left: -10px;
+            bottom: 0;
+        }
+
+        &.bottom-right {
+
+            left: auto;
+            top: auto;
+            right: -10px;
+            bottom: 0;
+        }
     }
 }
 
@@ -274,6 +330,38 @@ a.adfy__woofc-button.secondary,
 
         top: -5px;
         left: -10px;
+
+        &.top-left {
+
+            bottom: auto;
+            right: auto;
+            top: -5px;
+            left: -10px;
+        }
+
+        &.top-right {
+
+            left: auto;
+            bottom: auto;
+            right: -10px;
+            top: -5px;
+        }
+
+        &.bottom-left {
+
+            right: auto;
+            top: auto;
+            left: -10px;
+            bottom: -5px;
+        }
+
+        &.bottom-right {
+
+            left: auto;
+            top: auto;
+            right: -10px;
+            bottom: -5px;
+        }
     }
 }
 

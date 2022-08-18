@@ -43,7 +43,7 @@ if(!function_exists('addonify_floating_cart_cart_display_settings')){
                 'label'			  => __( 'Continue shopping button label', 'addonify-floating-cart' ),
                 'type'            => 'text',
                 'placeholder'     => 'Continue shopping',
-                'dependent'       => array('display_continue_shopping_button'),
+                'dependent'       => array('enable_floating_cart', 'display_continue_shopping_button'),
                 'value'           => addonify_floating_cart_get_option('continue_shopping_button_label')
             ),
             'checkout_button_label' => array(

@@ -1372,9 +1372,21 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var store = (0,_stores_options__WEBPACK_IMPORTED_MODULE_0__.useOptionsStore)();
+
+    var titleVisibility = function titleVisibility(page) {
+      if (page === "design") {
+        return props.sectionkey.includes("general") ? true : store.options.load_styles_from_plugin;
+      } else if (page === "settings") {
+        return props.sectionkey.includes("general") ? true : store.options.enable_floating_cart;
+      } else {
+        return false;
+      }
+    };
+
     var __returned__ = {
       props: props,
       store: store,
+      titleVisibility: titleVisibility,
       useOptionsStore: _stores_options__WEBPACK_IMPORTED_MODULE_0__.useOptionsStore
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -2420,8 +2432,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       sectionKey: sectionKey,
       reactiveState: $setup.props.reactiveState,
       currentPage: $setup.props.currentPage
-    }, null, 8
-    /* PROPS */
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SectionTitle"], {
+          section: section,
+          sectionkey: sectionKey,
+          currentPage: $setup.props.currentPage
+        }, null, 8
+        /* PROPS */
+        , ["section", "sectionkey", "currentPage"])];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
     , ["section", "sectionKey", "reactiveState", "currentPage"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Accordion"], {
       key: 1,
       section: section,
@@ -2663,7 +2688,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "option-box-title"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.section.title), 513
   /* TEXT, NEED_PATCH */
-  )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.props.sectionkey == 'general' ? true : $setup.store.options.enable_floating_cart]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.titleVisibility($setup.props.currentPage)]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -2860,7 +2885,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                 return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SectionTitle"], {
                   section: section,
-                  sectionkey: sectionKey
+                  sectionkey: sectionKey,
+                  currentPage: "settings"
                 }, null, 8
                 /* PROPS */
                 , ["section", "sectionkey"])];

@@ -58,7 +58,7 @@
                     align-items: center;
                     color: var(--adfy_woofc_cart_title_count_badge_text_color);
                     padding: 7px 10px 8px 10px;
-                    font-size: 11px;
+                    font-size: calc( var(--adfy_woofc_base_text_font_size) - 20% );
                     line-height: 1;
                     font-weight: normal;
                     border-radius: 15px;
@@ -112,7 +112,7 @@
 
             .adfy__woofc-shipping-text {
 
-                font-size: 15px;
+                font-size: var(--adfy_woofc_base_text_font_size);
                 padding: 0;
                 margin: 0 0 10px 0;
                 font-weight: normal;
@@ -290,7 +290,7 @@
                                 align-items: center;
                                 width: auto;
                                 color: var(--adfy_woofc_cart_product_price_quantity_text_color);
-                                font-size: 14px;
+                                font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
                                 font-weight: bold;
                                 height: auto;
                                 border: none;
@@ -312,7 +312,7 @@
                                 padding: 0;
                                 width: 95px;
                                 padding: 2px 10px;
-                                border: 1px solid var(--adfy_woofc_cart_input_border_color);
+                                border: 1px solid var(--adfy_woofc_border_color);
                                 border-radius: 4px;
 
                                 // Chrome, Safari, Edge & Opera

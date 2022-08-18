@@ -16,7 +16,7 @@
         ?>
 </aside>
 <?php
-if(addonify_floating_cart_get_setting_field_value('close_cart_modal_on_overlay_click')){ 
+if(addonify_floating_cart_get_option('close_cart_modal_on_overlay_click')){ 
     $hide_sidebar_class = "adfy__hide-woofc";
 } else {
     $hide_sidebar_class = "";

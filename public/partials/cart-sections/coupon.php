@@ -18,12 +18,12 @@
             </label>
             <input type="text" value="" name="adfy__woofc-coupon-input-field" placeholder="<?php echo esc_attr( apply_filters( 'addonify-floating-cart-coupon-placeholder', __('BLACKFRIDAY', 'addonify-floating-cart'))); ?>">
             <button type="submit" class="adfy__woofc-button" id="adfy__woofc-apply-coupon-button">
-                <?php echo esc_html(addonify_floating_cart_get_setting_field_value('cart_apply_coupon_button_label')); ?>
+                <?php echo esc_html(addonify_floating_cart_get_option('cart_apply_coupon_button_label')); ?>
             </button>
         </div>
     </form>
     <?php 
-    if(addonify_floating_cart_get_setting_field_value('display_applied_coupons') ){
+    if(addonify_floating_cart_get_option('display_applied_coupons') ){
         do_action('addonify_floating_cart/cart_coupons_available_template', array());
     }
     ?>

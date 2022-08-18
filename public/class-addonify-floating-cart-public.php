@@ -10,6 +10,8 @@
  * @subpackage Addonify_Floating_Cart/public
  */
 
+use JetBrains\PhpStorm\NoReturn;
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -81,6 +83,21 @@ class Addonify_Floating_Cart_Public
 		wp_enqueue_style('notyf', plugin_dir_url(__FILE__) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all');
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/build/css/public.css', array(), $this->version, 'all');
+
+		if ( (int) addonify_floating_cart_get_option( 'load_styles_from_plugin' ) === 1 ) {
+
+			$inline_css = $this->dynamic_css();
+
+			$custom_css = addonify_floating_cart_get_option( 'custom_css' );
+
+			if ( $custom_css ) {
+				$inline_css .= $custom_css;
+			}
+			
+			$inline_css = $this->minify_css( $inline_css );
+
+			wp_add_inline_style( $this->plugin_name, $inline_css );
+		}
 	}
 
 	/**
@@ -108,24 +125,24 @@ class Addonify_Floating_Cart_Public
 			'ajax_apply_coupon' => 'addonify_floating_cart_apply_coupon',
 			'ajax_remove_coupon' => 'addonify_floating_cart_remove_coupon',
 			'nonce' => wp_create_nonce('addonify-floating-cart-ajax-nonce'),
-			'addonifyFloatingCartNotifyShow' => addonify_floating_cart_get_setting_field_value('display_toast_notification'),
-			'addonifyFloatingCartNotifyDuration' => (int)addonify_floating_cart_get_setting_field_value('close_notification_after_time') * 1000,
-			'addonifyFloatingCartNotifyDismissible' => addonify_floating_cart_get_setting_field_value('display_close_notification_button'),
-			'addonifyFloatingCartNotifyShowHtmlContent' => addonify_floating_cart_get_setting_field_value('display_show_cart_button'),
-			'addonifyFloatingCartNotifyMessage' => addonify_floating_cart_get_setting_field_value('added_to_cart_notification_text'),
-			'toast_notification_display_position' => addonify_floating_cart_get_setting_field_value('toast_notification_display_position'),
-			'open_cart_modal_on_notification_button_click' => addonify_floating_cart_get_setting_field_value('open_cart_modal_on_notification_button_click'),
-			'toast_notification_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_background_color'),
-			'toast_notification_text_color' => addonify_floating_cart_get_setting_field_value('toast_notification_text_color'),
-			'toast_notification_button_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_background_color'),
-			'toast_notification_button_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_label_color'),
-			'toast_notification_button_on_hover_background_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_background_color'),
-			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_setting_field_value('toast_notification_button_on_hover_label_color'),
-			'toast_notification_horizontal_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_horizontal_offset'),
-			'toast_notification_vertical_offset' => addonify_floating_cart_get_setting_field_value('toast_notification_vertical_offset'),
-			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_after_click_on_view_cart'),
-			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_setting_field_value('open_cart_modal_immediately_after_add_to_cart'),
-			'show_cart_button_label' => addonify_floating_cart_get_setting_field_value('show_cart_button_label'),
+			'addonifyFloatingCartNotifyShow' => addonify_floating_cart_get_option('display_toast_notification'),
+			'addonifyFloatingCartNotifyDuration' => (int)addonify_floating_cart_get_option('close_notification_after_time') * 1000,
+			'addonifyFloatingCartNotifyDismissible' => addonify_floating_cart_get_option('display_close_notification_button'),
+			'addonifyFloatingCartNotifyShowHtmlContent' => addonify_floating_cart_get_option('display_show_cart_button'),
+			'addonifyFloatingCartNotifyMessage' => addonify_floating_cart_get_option('added_to_cart_notification_text'),
+			'toast_notification_display_position' => addonify_floating_cart_get_option('toast_notification_display_position'),
+			'open_cart_modal_on_notification_button_click' => addonify_floating_cart_get_option('open_cart_modal_on_notification_button_click'),
+			'toast_notification_background_color' => addonify_floating_cart_get_option('toast_notification_background_color'),
+			'toast_notification_text_color' => addonify_floating_cart_get_option('toast_notification_text_color'),
+			'toast_notification_button_background_color' => addonify_floating_cart_get_option('toast_notification_button_background_color'),
+			'toast_notification_button_label_color' => addonify_floating_cart_get_option('toast_notification_button_label_color'),
+			'toast_notification_button_on_hover_background_color' => addonify_floating_cart_get_option('toast_notification_button_on_hover_background_color'),
+			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_option('toast_notification_button_on_hover_label_color'),
+			'toast_notification_horizontal_offset' => addonify_floating_cart_get_option('toast_notification_horizontal_offset'),
+			'toast_notification_vertical_offset' => addonify_floating_cart_get_option('toast_notification_vertical_offset'),
+			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option('open_cart_modal_after_click_on_view_cart'),
+			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option('open_cart_modal_immediately_after_add_to_cart'),
+			'show_cart_button_label' => addonify_floating_cart_get_option('show_cart_button_label'),
 		));
 	}
 
@@ -145,7 +162,7 @@ class Addonify_Floating_Cart_Public
 
 	/**
 	 * Function for adding items in cart through woocommerce fragments
-	 * 
+	 *
 	 * @param mixed $fragments
 	 * @return array $fragments
 	 */
@@ -153,10 +170,10 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
-				<?php 
+				<?php
 				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count())); 
-				?>          
+					esc_html(WC()->cart->get_cart_contents_count()));
+				?>
 			</span>
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
@@ -184,7 +201,7 @@ class Addonify_Floating_Cart_Public
 	/**
 	 * Function updating cart fragments through ajax call
 	 * returns array of cart fragments
-	 * @return array 
+	 * @return array
 	 */
 	public static function addonify_floating_cart_add_to_cart_ajax()
 	{
@@ -192,10 +209,10 @@ class Addonify_Floating_Cart_Public
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
-				<?php 
+				<?php
 				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count())); 
-				?>          
+					esc_html(WC()->cart->get_cart_contents_count()));
+				?>
 			</span>
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
@@ -227,6 +244,7 @@ class Addonify_Floating_Cart_Public
 	{
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$product_name = '';
+            $restore_cart_item_key = false;
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
 					$product = wc_get_product($cart_item['product_id']);
@@ -241,13 +259,13 @@ class Addonify_Floating_Cart_Public
 			WC()->cart->maybe_set_cart_cookies();
 			$this->check_coupons();
 
-			$contents_count = WC()->cart->get_cart_contents_count();
+			$contents_count = esc_html(WC()->cart->get_cart_contents_count());
 
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
 				'cart_items' => $contents_count,
-				'product_name' => $product_name,
+				'product_name' => esc_html($product_name),
 				'restore_cart_item_key' => $restore_cart_item_key,
 			);
 			if($contents_count === 0){
@@ -267,7 +285,6 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function restore_in_cart(){
 		$error = true;
-		$msg = '';
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$item_key = $_POST['cart_item_key'];
 			if(!array_key_exists($item_key, WC()->cart->get_cart())){
@@ -276,9 +293,9 @@ class Addonify_Floating_Cart_Public
 					WC()->cart->calculate_totals();
 					WC()->cart->maybe_set_cart_cookies();
 					$error = !$restored;
-					$msg = $restored ? "Restored successfully." : "Could not be restored.";
+					$msg = $restored ? esc_html(apply_filters('addonify-floating-cart-restored-success-message',__("Restored successfully.","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-restore-fail-message',__("Could not be restored.","addonify-floating-cart")));
 				} else {
-					$msg = "Key Missing";
+					$msg = esc_html(apply_filters('addonify-floating-cart-restore-key-missing-message',__("Key Missing","addonify-floating-cart")));
 				}
 			} else {
 				$msg = "Already exists in cart";
@@ -292,7 +309,7 @@ class Addonify_Floating_Cart_Public
 				'item_html' => $item_html,
 				'fragments' => $fragments,
 				'error' => $error,
-				'messsage' => $msg,
+				'message' => $msg,
 				'no_of_items_in_cart' => WC()->cart->get_cart_contents_count(),
 			);
 			wp_send_json($data);
@@ -306,11 +323,12 @@ class Addonify_Floating_Cart_Public
 	 * function for ajax call to update item in cart
 	 * prints array of cart fragments
 	 * @since    1.0.0
-	 * 
+	 *
 	 */
 	public function update_cart_item(){
 		if(isset($_POST['nonce']) && wp_verify_nonce( $_POST['nonce'], 'addonify-floating-cart-ajax-nonce' )){
 			$error = false;
+            $quantity = false;
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $product = wc_get_product($cart_item['product_id']);
 				if ($cart_item['product_id'] == $_POST['product_id'] && $cart_item_key == $_POST['cart_item_key']) {
@@ -324,7 +342,7 @@ class Addonify_Floating_Cart_Public
 						$nQuantity = $cart_item['quantity'] + 1 ;
 					}
 					if($nQuantity <= 0){
-						$error = "Quantity must be more than zero.";
+						$error = esc_html(apply_filters('addonify-floating-cart-quantity-must-be-greater-than-zero-message',__("Quantity must be more than zero.","addonify-floating-cart")));
 						unset($nQuantity);
 						break;
 					}
@@ -332,7 +350,7 @@ class Addonify_Floating_Cart_Public
 						if($product->get_stock_quantity() >= $nQuantity){
 							WC()->cart->set_quantity($cart_item_key, $nQuantity);
 						} else {
-							$error = "Not available in the given quantity.";
+							$error = esc_html(apply_filters('addonify-floating-cart-quantity-not-available-message',__("Not available in the given quantity.","addonify-floating-cart")));
 							unset($nQuantity);
 						}
 					} else {
@@ -344,10 +362,10 @@ class Addonify_Floating_Cart_Public
 			$this->check_coupons();
 
 			WC()->cart->calculate_totals();
-			WC()->cart->maybe_set_cart_cookies();		
+			WC()->cart->maybe_set_cart_cookies();
 			// Fragments returned
 			$data = array(
-				'nQuantity' => $nQuantity ?? $quantity,
+				'nQuantity' => isset($nQuantity) ? $nQuantity : $quantity,
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
 				'error_msg' => $error,
 			);
@@ -379,17 +397,17 @@ class Addonify_Floating_Cart_Public
 						$coupon_apply = WC()->cart->apply_coupon($code);
 						WC()->cart->calculate_totals();
 						WC()->cart->maybe_set_cart_cookies();
-						$status = $coupon_apply ? "Coupon applied" : "Invalid Coupon Code...";
+						$status = $coupon_apply ? esc_html(apply_filters('addonify-floating-cart-coupon-applied-message',__("Coupon applied","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-invalid-coupon-message',__("Invalid Coupon Code...","addonify-floating-cart")));
 					} else {
-						$status = $coupon_status->get_error_message();
+						$status = esc_html($coupon_status->get_error_message());
 					}
 				}
 
 			} else {
-				$status = 'Please input a coupon to apply.';
+				$status = esc_html(apply_filters('addonify-floating-cart-input-coupon-to-apply-message',__('Please input a coupon to apply.',"addonify-floating-cart")));
 			}
 		} else {
-			$status = 'Source verification error.';
+			$status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
 		ob_start();
@@ -427,12 +445,12 @@ class Addonify_Floating_Cart_Public
 				$coupon_remove = WC()->cart->remove_coupon($code);
 				WC()->cart->calculate_totals();
 				WC()->cart->maybe_set_cart_cookies();
-				$status = $coupon_remove ? "Coupon removed" : "Invalid Coupon Code.";
+				$status = $coupon_remove ? esc_html(apply_filters('addonify-floating-cart-coupon-removed-message',__("Coupon removed","addonify-floating-cart"))) : esc_html(apply_filters('addonify-floating-cart-source-invalid-coupon-error-message',__("Invalid Coupon Code.","addonify-floating-cart")));
 			} else {
-				$status = 'Please input a coupon to apply.';
+				$status = esc_html(apply_filters('addonify-floating-cart-no-coupon-message',__('Please input a coupon to apply.',"addonify-floating-cart")));
 			}
 		} else {
-			$status = 'Source verification error.';
+            $status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
 		ob_start();
@@ -468,7 +486,7 @@ class Addonify_Floating_Cart_Public
 
 	public function addonify_floating_cart_empty_woocommerce_coupon_msg($msg){
 		if(wp_doing_ajax()){
-			return;
+			return NULL;
 		} else {
 			return $msg;
 		}
@@ -486,11 +504,11 @@ class Addonify_Floating_Cart_Public
                     $variation = new WC_Product_Variation($cart_item['variation_id']);
                 } else {
                     $variation = NULL;
-                }      
+                }
 				$product = wc_get_product($cart_item['product_id']);
                 ?>
                 <div class="adfy__woofc-item">
-                    <?php 
+                    <?php
                         do_action( 'addonify_floating_cart/get_cart_body_image', array(
                             'product' => $product,
                             'cart_item_key' => $cart_item_key,
@@ -499,7 +517,7 @@ class Addonify_Floating_Cart_Public
                         ));
                     ?>
                     <div class="adfy__woofc-item-content">
-                        <?php 
+                        <?php
                         do_action( 'addonify_floating_cart/get_cart_body_title', array(
                             'product' => $product,
                             'cart_item' => $cart_item,
@@ -517,11 +535,146 @@ class Addonify_Floating_Cart_Public
                         ?>
                     </div>
                 </div><!-- // adfy__woofc-item -->
-                <?php 
+                <?php
 				break;
 			}
 		}
 		return ob_get_clean();
+	}
+
+
+
+
+	/**
+	 * Print dynamic CSS generated from settings page.
+	 */
+	public function dynamic_css() {
+
+		$css_values = array( 
+			'--adfy_woofc_cart_width' => addonify_floating_cart_get_option('cart_modal_width'), // New
+			'--adfy_woofc_base_text_color' => addonify_floating_cart_get_option('cart_modal_base_text_color'), 
+			'--adfy_woofc_base_link_color' =>  addonify_floating_cart_get_option('cart_modal_content_link_color'),	
+			'--adfy_woofc_base_link_color_hover' => addonify_floating_cart_get_option('cart_modal_content_link_on_hover_color'),
+			'--adfy_woofc_base_text_font_size' => addonify_floating_cart_get_option('cart_modal_base_font_size') . 'px',
+			'--adfy_woofc_border_color' => addonify_floating_cart_get_option('cart_modal_border_color'),
+			'--adfy_woofc_cart_background_color' => addonify_floating_cart_get_option('cart_modal_background_color'),
+			'--adfy_woofc_cart_overlay_background_color' => addonify_floating_cart_get_option('cart_modal_overlay_color'), 
+
+			'--adfy_woofc_toggle_button_text_color' => addonify_floating_cart_get_option('toggle_button_label_color'),
+			'--adfy_woofc_toggle_button_text_color_hover' => addonify_floating_cart_get_option('toggle_button_on_hover_label_color'),
+			'--adfy_woofc_toggle_button_background_color' => addonify_floating_cart_get_option('toggle_button_background_color'),
+			'--adfy_woofc_toggle_button_background_color_hover' =>addonify_floating_cart_get_option('toggle_button_on_hover_background_color'), 
+			'--adfy_woofc_toggle_button_border_color' => addonify_floating_cart_get_option('toggle_button_border_color'),
+			'--adfy_woofc_toggle_button_border_color_hover' => addonify_floating_cart_get_option('toggle_button_on_hover_border_color'),
+			'--adfy_woofc_toggle_button_badge_text_color' => addonify_floating_cart_get_option('toggle_button_badge_label_color'),
+			'--adfy_woofc_toggle_button_badge_background_color' => addonify_floating_cart_get_option('toggle_button_badge_background_color'),
+			'--adfy_woofc_toggle_button_badge_width' => addonify_floating_cart_get_option('toggle_button_badge_width'), // New
+			'--adfy_woofc_toggle_button_badge_font_size' => addonify_floating_cart_get_option('toggle_button_badge_font_size') . 'px', // New
+			'--adfy_woofc_toggle_button_size' => addonify_floating_cart_get_option('cart_modal_toggle_button_width') . 'px',
+			'--adfy_woofc_toggle_button_border_radius' => addonify_floating_cart_get_option('cart_modal_toggle_button_border_radius') . 'px', // New
+			'--adfy_woofc_toggle_button_cart_icon_font_size' => addonify_floating_cart_get_option('cart_modal_toggle_button_icon_font_size') . 'px',
+			'--adfy_woofc_toggle_button_horizental_offset' => addonify_floating_cart_get_option('cart_modal_toggle_button_horizontal_offset') . 'px',
+			'--adfy_woofc_toggle_button_vertical_offset' => addonify_floating_cart_get_option('cart_modal_toggle_button_vertical_offset') . 'px',
+
+			// General Buttons styles
+			'--adfy_woofc_base_button_font_size' => addonify_floating_cart_get_option('cart_modal_buttons_font_size') . 'px',
+			'--adfy_woofc_base_button_font_weight' => addonify_floating_cart_get_option('cart_modal_buttons_font_weight'),
+			'--adfy_woofc_base_button_letter_spacing' => addonify_floating_cart_get_option('cart_modal_buttons_letter_spacing'),
+			'--adfy_woofc_base_button_border_radius' => addonify_floating_cart_get_option('cart_modal_buttons_border_radius') . 'px',
+			'--adfy_woofc_base_button_text_transform' => addonify_floating_cart_get_option('cart_modal_buttons_text_transform'),
+			'--adfy_woofc_primary_button_label_color' => addonify_floating_cart_get_option('cart_modal_primary_button_label_color'),
+			'--adfy_woofc_primary_button_label_color_hover' => addonify_floating_cart_get_option('cart_modal_primary_button_on_hover_label_color'),
+			'--adfy_woofc_primary_button_background_color' => addonify_floating_cart_get_option('cart_modal_primary_button_background_color'),
+			'--adfy_woofc_primary_button_background_color_hover' => addonify_floating_cart_get_option('cart_modal_primary_button_on_hover_background_color'),
+			'--adfy_woofc_primary_button_border_color' => addonify_floating_cart_get_option('cart_modal_primary_button_border_color'),
+			'--adfy_woofc_primary_button_border_color_hover' => addonify_floating_cart_get_option('cart_modal_primary_button_on_hover_border_color'),
+
+			'--adfy_woofc_secondary_button_label_color' => addonify_floating_cart_get_option('cart_modal_secondary_button_label_color'),
+			'--adfy_woofc_secondary_button_label_color_hover' => addonify_floating_cart_get_option('cart_modal_secondary_button_on_hover_label_color'),
+			'--adfy_woofc_secondary_button_background_color' => addonify_floating_cart_get_option('cart_modal_secondary_button_background_color'),
+			'--adfy_woofc_secondary_button_background_color_hover' => addonify_floating_cart_get_option('cart_modal_secondary_button_on_hover_background_color'),
+			'--adfy_woofc_secondary_button_border_color' => addonify_floating_cart_get_option('cart_modal_secondary_button_border_color'),
+			'--adfy_woofc_secondary_button_border_color_hover' => addonify_floating_cart_get_option('cart_modal_secondary_button_on_hover_border_color'),
+			
+			// Miscellaneous
+			'--adfy_woofc_cart_input_placeholder_color' => addonify_floating_cart_get_option('cart_modal_input_field_placeholder_color'),
+			'adfy_woofc_cart_input_border_color' => addonify_floating_cart_get_option('cart_modal_input_field_text_color'),
+			'--adfy_woofc_cart_input_border_color' => addonify_floating_cart_get_option('cart_modal_input_field_border_color'),
+			'--adfy_woofc_cart_input_background_color' => addonify_floating_cart_get_option('cart_modal_input_field_background_color'),
+			// Shopping meter
+			'--adfy_woofc_shopping_meter_initial_background_color' => addonify_floating_cart_get_option('cart_shopping_meter_initial_background_color'),
+			'--adfy_woofc_shopping_meter_progress_background_color' => addonify_floating_cart_get_option('cart_shopping_meter_progress_background_color'),
+
+			// Toast notification
+			'--adfy_woofc_toast_text_color' => addonify_floating_cart_get_option('toast_notification_text_color'),
+			'--adfy_woofc_toast_background_color' => addonify_floating_cart_get_option('toast_notification_background_color'),
+			'--adfy_woofc_toast_button_text_color' => addonify_floating_cart_get_option('toast_notification_button_label_color'),
+			'--adfy_woofc_toast_button_text_color_hover' => addonify_floating_cart_get_option('toast_notification_button_on_hover_label_color'),
+			'--adfy_woofc_toast_button_background_color' => addonify_floating_cart_get_option('toast_notification_button_background_color'),
+			'--adfy_woofc_toast_button_background_color_hover' => addonify_floating_cart_get_option('toast_notification_button_on_hover_background_color'),
+
+			// Cart & cart title
+			
+			'--adfy_woofc_cart_title_text_color' => addonify_floating_cart_get_option('cart_modal_title_color'),
+			'--adfy_woofc_cart_title_font_size' => addonify_floating_cart_get_option('cart_title_font_size') . 'px', // New
+			'--adfy_woofc_cart_title_font_weight' => addonify_floating_cart_get_option('cart_title_font_weight'), // New
+			'--adfy_woofc_cart_title_letter_spacing' => addonify_floating_cart_get_option('cart_title_letter_spacing'), // New
+			'--adfy_woofc_cart_title_text_transform' => addonify_floating_cart_get_option('cart_title_text_transform'), // New
+			'--adfy_woofc_cart_title_count_badge_text_color' => addonify_floating_cart_get_option('cart_modal_badge_text_color'),
+			'--adfy_woofc_cart_title_count_badge_background_color' => addonify_floating_cart_get_option('cart_modal_badge_background_color'),
+
+			'--adfy_woofc_cart_close_button_text_color' => addonify_floating_cart_get_option('cart_modal_close_icon_color'),
+			'--adfy_woofc_cart_close_button_text_color_hover' => addonify_floating_cart_get_option('cart_modal_close_icon_on_hover_color'),
+
+			'--adfy_woofc_cart_field_placeholder_color' => addonify_floating_cart_get_option('cart_modal_input_field_placeholder_color'), // TO DO
+			'--adfy_woofc_cart_field_background_color' => addonify_floating_cart_get_option('cart_modal_input_field_background_color'),		
+			'--adfy_woofc_cart_field_text_color' => addonify_floating_cart_get_option('cart_modal_input_field_text_color'),				
+			'--adfy_woofc_cart_field_border_color' =>  addonify_floating_cart_get_option('cart_modal_input_field_border_color'),
+
+			// Product titles
+			'--adfy_woofc_cart_product_title_text_color' => addonify_floating_cart_get_option('cart_modal_product_title_color'), 
+			'--adfy_woofc_cart_product_title_text_color_hover' => addonify_floating_cart_get_option('cart_modal_product_title_on_hover_color'),
+			'--adfy_woofc_cart_product_price_quantity_text_color' => addonify_floating_cart_get_option('cart_modal_product_quantity_price_color'), 
+			'--adfy_woofc_cart_product_quantity_text_color' => addonify_floating_cart_get_option('cart_modal_base_text_color'),
+			'--adfy_woofc_cart_product_quantity_input_button_text_color' => addonify_floating_cart_get_option('cart_modal_base_text_color'),
+			'--adfy_woofc_cart_product_remove_button_text_color' => addonify_floating_cart_get_option('cart_modal_product_remove_button_icon_color'),
+			'--adfy_woofc_cart_product_remove_button_text_color_hover' => addonify_floating_cart_get_option('cart_modal_product_remove_button_on_hover_icon_color'),
+			'--adfy_woofc_cart_product_remove_button_background_color' => addonify_floating_cart_get_option('cart_modal_product_remove_button_background_color'),
+			'--adfy_woofc_cart_product_remove_button_background_color_hover' => addonify_floating_cart_get_option('cart_modal_product_remove_button_on_hover_background_color'),
+			'--adfy_woofc_cart_product_title_font_size' => addonify_floating_cart_get_option('cart_modal_product_title_font_size') . 'px',
+			'--adfy_woofc_cart_product_title_font_weight' => addonify_floating_cart_get_option('cart_modal_product_title_font_weight'),
+		);
+
+		$css = ':root {';
+
+		foreach ( $css_values as $key => $value ) {
+
+			if ( $value ) {
+				$css .= $key . ': ' . $value . ';';
+			}
+		}
+
+		$css .= '}';
+
+		return $css;
+	}
+
+	/**
+	 * Minify the dynamic css.
+	 * 
+	 * @param string $css css to minify.
+	 * @return string minified css.
+	 */
+	public function minify_css( $css ) {
+
+		$css = preg_replace( '/\s+/', ' ', $css );
+		$css = preg_replace( '/\/\*[^\!](.*?)\*\//', '', $css );
+		$css = preg_replace( '/(,|:|;|\{|}) /', '$1', $css );
+		$css = preg_replace( '/ (,|;|\{|})/', '$1', $css );
+		$css = preg_replace( '/(:| )0\.([0-9]+)(%|em|ex|px|in|cm|mm|pt|pc)/i', '${1}.${2}${3}', $css );
+		$css = preg_replace( '/(:| )(\.?)0(%|em|ex|px|in|cm|mm|pt|pc)/i', '${1}0', $css );
+
+		return trim( $css );
 	}
 }
 

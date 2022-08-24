@@ -128,10 +128,13 @@ if(!function_exists('addonify_floating_cart_get_cart_shipping_bar')){
 			$args_['total'] = WC()->cart->get_cart_contents_total();
 			if($args_['total'] >= $free_shipping_eligibility_amount){
 				$args_['per'] = 100;
+				$args_['left'] = 0;
 			} else {
 				$args_['per'] =  100 - (($free_shipping_eligibility_amount - $args_['total'])/$free_shipping_eligibility_amount * 100);
+				$args_['left'] = $free_shipping_eligibility_amount - $args_['total'];
 			}
 		} else {
+			$args_['left'] = 0;
 			$args_['total'] = 0;
 			$args_['per'] = 0;
 		}

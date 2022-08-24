@@ -17,4 +17,4 @@
         <div class="progress-bar shipping-bar" data_percentage="<?php echo $per; ?>" style="width: <?php echo $per; ?>%"></div>
     </div>
 </div>
-<div id="adfy__woofc-cart-errors"></div>
+

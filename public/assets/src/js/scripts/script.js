@@ -6,16 +6,19 @@
     var addonifyFloatingCartNotifyShow = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow == 1;
     var addonifyFloatingCartNotifyDuration = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDuration;
     var addonifyFloatingCartNotifyDismissible = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDismissible == 1;
-    var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShowHtmlContent == 1;
+    var addonifyFloatingCartNotifyShowHtmlContent = addonifyFloatingCartJSObject.displayToastNotificationButton == 1;
     var addonifyFloatingCartNotifyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
-    var addonifyFloatingCartNotifyShowCartButtonLabel = addonifyFloatingCartJSObject.show_cart_button_label;
     var addonifyFloatingCartNotifyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
-    var timeout;
     var product_name;
+
+    var subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
+    var discountEle = $('.adfy__woofc-cart-summary ul li.discount');
+    var footerEle = $('.adfy__woofc-colophon');
+    var shoppingMeterEle = $('.adfy__woofc-shipping-bar');
 
     var addonifyFloatingCart = {
 
@@ -42,11 +45,26 @@
                     document.body.classList.add('adfy__woofc-visible');
                 }
             });
-            $( document.body ).on( 'added_to_cart', function(e, data){
+
+            $( document.body ).on( 'added_to_cart', function(e, fragments, cart_hash, button) {
 
                 if(addonifyFloatingCartOpenCartOnAdd == true){
                     document.body.classList.add('adfy__woofc-visible');
                 }
+
+                if ( footerEle.hasClass('adfy__woofc-hidden') ) {
+                    footerEle.removeClass('adfy__woofc-hidden');
+                }
+
+                if ( shoppingMeterEle.hasClass('adfy__woofc-hidden') ) {
+                    shoppingMeterEle.removeClass('adfy__woofc-hidden');
+                }                
+            });
+
+            $(document.body).on('wc_cart_emptied', function(event){
+
+                footerEle.addClass('adfy__woofc-hidden');
+                shoppingMeterEle.addClass('adfy__woofc-hidden');
             });
         },
 
@@ -66,7 +84,7 @@
 
         notifyFloatingCartEventHandler: () => {
 
-            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? "<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>"+addonifyFloatingCartNotifyShowCartButtonLabel+"</button>" : "";
+            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? addonifyFloatingCartJSObject.toastNotificationButton : "";
 
             // Configure Notyf.
             var notyf = new Notyf({
@@ -221,16 +239,6 @@
                 addonifyFloatingCartCouponContainer.attr('data_display', 'hidden');
             });
 
-            // var showCouponFormEle = $('#adfy__woofc-coupon-trigger');
-            // var hideCouponFormEle = $('#adfy__woofc-hide-coupon-container');
-            var couponFormSubmitButtonEle = $('#adfy__woofc-apply-coupon-button');
-            // Handle the form submit event.
-            $(couponFormSubmitButtonEle).on('click', function (e) {
-
-                // e.preventDefault();
-                console.log('📌 Coupon form submit button is clicked.');
-            })
-
             // apply coupon on cart items
             $(document).on('submit', '#adfy__woofc-coupon-form', function (e) {
                 e.preventDefault();
@@ -252,6 +260,13 @@
                                 $(i).replaceWith(val);
                             })
                             show_coupon_alert_success(result.status);
+
+                            $(document.body).trigger( 'applied_coupon', [ data ] );
+
+                            if(result.appliedCoupons > 0 && subtotalEle.hasClass('adfy__woofc-hidden') && discountEle.hasClass('adfy__woofc-hidden')) {
+                                subtotalEle.removeClass('adfy__woofc-hidden');
+                                discountEle.removeClass('adfy__woofc-hidden')
+                            }
                         } else {
                             show_coupon_alert_error(result.status);
                         }
@@ -279,8 +294,13 @@
                         if (result.couponRemoved == true) {
                             $.each(result.html, function (i, val) {
                                 $(i).replaceWith(val);
-                            })
+                            });
+                            $( document.body ).trigger( 'removed_coupon', [ coupon ] );
                             show_coupon_alert_success(result.status);
+                            if(result.appliedCoupons === 0 && ! subtotalEle.hasClass('adfy__woofc-hidden') && ! discountEle.hasClass('adfy__woofc-hidden')) {
+                                subtotalEle.addClass('adfy__woofc-hidden');
+                                discountEle.addClass('adfy__woofc-hidden')
+                            }
                         } else {
                             show_coupon_alert_error(result.status);
                         }
@@ -373,13 +393,13 @@
                                 $(key).replaceWith(value);
                             });
                         }
-                        this_product.closest('div.adfy__woofc-item').remove();
 
-                        $('#adfy__woofc-cart-errors').html(
-                            '<a class="adfy__woofc-restore-item" id="adfy__woofc_restore_item" data-item_key="'+response.restore_cart_item_key+'"> '+response.product_name+' has been removed. Restore?</a>'
-                        );
+                        $('#adfy__woofc-cart-errors').html(response.undo_product_link);
 
-                        if (response.cart_items == 0) {
+                        if (response.cart_items === 0) {
+
+                            $(document.body).trigger('wc_cart_emptied');
+
                             $('.adfy__woofc-content-entry').html(
                                 response.no_data_html
                             );
@@ -410,23 +430,28 @@
                     success: function (response) {
                         if (!response)
                             return;
-                        clearTimeout(timeout);
-                        var fragments = response.fragments;
+                        
                         // Replace fragments
-                        if (fragments) {
-                            $.each(fragments, function (key, value) {
+                        if (response.fragments) {
+                            $.each(response.fragments, function (key, value) {
                                 $(key).replaceWith(value);
                             });
                         }
+
+                        // $(document.body).trigger('added_to_cart', [response.fragments]);
+
+                        if ( footerEle.hasClass('adfy__woofc-hidden') ) {
+                            footerEle.removeClass('adfy__woofc-hidden');
+                        }
+
+                        if ( shoppingMeterEle.hasClass('adfy__woofc-hidden') ) {
+                            shoppingMeterEle.removeClass('adfy__woofc-hidden');
+                        }
+
                         $('#adfy__woofc-cart-errors').html('');
+
                         if(response.error){
                             console.log(response.messsage);
-                        } else {
-                            if(response.no_of_items_in_cart == 1){
-                                $('#adfy__woofc-scrollbar').html(response.item_html);
-                            } else {
-                                $('#adfy__woofc-scrollbar').append(response.item_html);
-                            }
                         }
                     }
                 });
@@ -438,9 +463,6 @@
 
         addonifyFloatingCart.init();
         $('.adfy__woofc-alert').hide();
-        $( document.body ).on( 'removed_from_cart', function(e, data){
-        });
-
     });
 
 })(jQuery);

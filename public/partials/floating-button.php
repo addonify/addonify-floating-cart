@@ -13,7 +13,7 @@
     if(addonify_floating_cart_get_option('display_cart_items_number_badge')){ 
         $badge_position = esc_html(addonify_floating_cart_get_option('cart_items_number_badge_position'));
         ?>
-        <span class="badge <?php echo $badge_position; ?>"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
+        <span class="badge <?php echo $badge_position; ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span></span>
     <?php
     }
     ?>

@@ -13,9 +13,3 @@ Here is a short description of the plugin.  This should be no more than 150 char
 == Description ==
 
 == Changelog ==
-
-
-== Needed ==
-
-- Border radius option for cart modal toggle button
-- Width and font size option for badge in cart modal toggle button

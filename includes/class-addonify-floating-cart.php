@@ -125,7 +125,7 @@ class Addonify_Floating_Cart {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-addonify-floating-cart-public.php';
 
-
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
 		$this->loader = new Addonify_Floating_Cart_Loader();
 
@@ -173,35 +173,9 @@ class Addonify_Floating_Cart {
 	 */
 	private function define_public_hooks() {
 
-		if(!$this->is_woocommerce_active()){
-			add_action( 'admin_notices', [$this, 'admin_woocommerce_not_active_notice']);
-			return;
-		}
-
 		$plugin_public = new Addonify_Floating_Cart_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'wp_footer', $plugin_public, 'footer_content' );
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', $plugin_public, 'add_to_cart');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', $plugin_public, 'add_to_cart');
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_remove_from_cart', $plugin_public, 'remove_from_cart');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_from_cart', $plugin_public, 'remove_from_cart');
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_restore_in_cart', $plugin_public, 'restore_in_cart');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_restore_in_cart', $plugin_public, 'restore_in_cart');
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_update_cart_item', $plugin_public, 'update_cart_item');
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_apply_coupon', $plugin_public, 'apply_coupon');
-
-		$this->loader->add_action( 'wp_ajax_addonify_floating_cart_remove_coupon', $plugin_public, 'remove_coupon');
-		$this->loader->add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_coupon', $plugin_public, 'remove_coupon');
-
+		$this->loader->add_action( 'plugins_loaded', $plugin_public, 'init' );
 	}
 
 	/**

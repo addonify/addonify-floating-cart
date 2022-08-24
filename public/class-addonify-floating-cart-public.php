@@ -10,8 +10,6 @@
  * @subpackage Addonify_Floating_Cart/public
  */
 
-use JetBrains\PhpStorm\NoReturn;
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -56,7 +54,47 @@ class Addonify_Floating_Cart_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		$this->load_dependencies();
+		// $this->load_dependencies();
+
+		
+
+	}
+
+
+	public function init() {
+
+		if ( 
+			! class_exists( 'WooCommerce' ) || 
+			(int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0 
+		) {
+			return;
+		}
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'wp_footer', [ $this, 'footer_content' ] );
+
+		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', [ $this, 'add_to_cart' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', [ $this, 'add_to_cart' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart_action', [ $this, 'add_to_cart_handler' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart_action', [ $this, 'add_to_cart_handler' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_remove_from_cart', [ $this, 'remove_from_cart' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_from_cart', [ $this, 'remove_from_cart' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_restore_in_cart', [ $this, 'restore_in_cart' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_restore_in_cart', [ $this, 'restore_in_cart' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_update_cart_item', [ $this, 'update_cart_item' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_update_cart_item', [ $this, 'update_cart_item' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_apply_coupon', [ $this, 'apply_coupon' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_apply_coupon', [ $this, 'apply_coupon' ]);
+
+		add_action( 'wp_ajax_addonify_floating_cart_remove_coupon', [ $this, 'remove_coupon' ]);
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_coupon', [ $this, 'remove_coupon' ]);
+
 
 		add_filter('woocommerce_add_to_cart_fragments', [$this,'addonify_floating_cart_add_to_cart_fragment']);
 
@@ -65,7 +103,6 @@ class Addonify_Floating_Cart_Public
 		add_filter('woocommerce_coupon_message', [$this, 'addonify_floating_cart_empty_woocommerce_coupon_msg']);
 
 		add_filter('woocommerce_coupon_error', [$this, 'addonify_floating_cart_empty_woocommerce_coupon_msg']);
-
 	}
 
 	/**
@@ -119,6 +156,7 @@ class Addonify_Floating_Cart_Public
 		wp_localize_script($this->plugin_name . '-public', 'addonifyFloatingCartJSObject', array(
 			'ajax_url' => admin_url('admin-ajax.php'),
 			'ajax_add_to_cart_action' => 'addonify_floating_cart_add_to_cart',
+			'add_to_cart_action' => 'addonify_floating_cart_add_to_cart_action',
 			'ajax_restore_in_cart_action' => 'addonify_floating_cart_restore_in_cart',
 			'ajax_remove_from_cart_action' => 'addonify_floating_cart_remove_from_cart',
 			'ajax_update_cart_item_action' => 'addonify_floating_cart_update_cart_item',
@@ -128,22 +166,23 @@ class Addonify_Floating_Cart_Public
 			'addonifyFloatingCartNotifyShow' => addonify_floating_cart_get_option('display_toast_notification'),
 			'addonifyFloatingCartNotifyDuration' => (int)addonify_floating_cart_get_option('close_notification_after_time') * 1000,
 			'addonifyFloatingCartNotifyDismissible' => addonify_floating_cart_get_option('display_close_notification_button'),
-			'addonifyFloatingCartNotifyShowHtmlContent' => addonify_floating_cart_get_option('display_show_cart_button'),
+			'displayToastNotificationButton' => addonify_floating_cart_get_option('display_show_cart_button'),
 			'addonifyFloatingCartNotifyMessage' => addonify_floating_cart_get_option('added_to_cart_notification_text'),
 			'toast_notification_display_position' => addonify_floating_cart_get_option('toast_notification_display_position'),
-			'open_cart_modal_on_notification_button_click' => addonify_floating_cart_get_option('open_cart_modal_on_notification_button_click'),
-			'toast_notification_background_color' => addonify_floating_cart_get_option('toast_notification_background_color'),
-			'toast_notification_text_color' => addonify_floating_cart_get_option('toast_notification_text_color'),
-			'toast_notification_button_background_color' => addonify_floating_cart_get_option('toast_notification_button_background_color'),
-			'toast_notification_button_label_color' => addonify_floating_cart_get_option('toast_notification_button_label_color'),
-			'toast_notification_button_on_hover_background_color' => addonify_floating_cart_get_option('toast_notification_button_on_hover_background_color'),
-			'toast_notification_button_on_hover_label_color' => addonify_floating_cart_get_option('toast_notification_button_on_hover_label_color'),
-			'toast_notification_horizontal_offset' => addonify_floating_cart_get_option('toast_notification_horizontal_offset'),
-			'toast_notification_vertical_offset' => addonify_floating_cart_get_option('toast_notification_vertical_offset'),
 			'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option('open_cart_modal_after_click_on_view_cart'),
 			'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option('open_cart_modal_immediately_after_add_to_cart'),
 			'show_cart_button_label' => addonify_floating_cart_get_option('show_cart_button_label'),
+			'toastNotificationButton' => $this->toast_notification_button_template()
 		));
+	}
+
+
+	public function toast_notification_button_template() {
+
+		return apply_filters(
+			'addonify_floating_cart/toast_notification_button',
+			"<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>". esc_html( addonify_floating_cart_get_option('show_cart_button_label') ) ."</button>"
+		);
 	}
 
 	public function footer_content()
@@ -160,13 +199,22 @@ class Addonify_Floating_Cart_Public
 
 	}
 
+
+	public function update_cart_fragments() {
+		
+		// add_filter('woocommerce_add_to_cart_fragments', function($fragments){
+		// 	var_dump( $fragments );
+		// 	die();
+		// });
+	}
+
 	/**
 	 * Function for adding items in cart through woocommerce fragments
 	 *
 	 * @param mixed $fragments
 	 * @return array $fragments
 	 */
-	public static function addonify_floating_cart_add_to_cart_fragment($fragments){
+	public function addonify_floating_cart_add_to_cart_fragment($fragments){
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
@@ -177,25 +225,49 @@ class Addonify_Floating_Cart_Public
 			</span>
 		<?php
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
+
 		ob_start();
 		do_action('addonify_floating_cart/get_cart_body', array());
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
-		ob_start();
-		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
-		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
-		ob_start();
-		do_action('addonify_floating_cart/get_cart_footer',array());
-		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_shipping_bar', array());
+		// $fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_footer',array());
+		// $fragments['.adfy__woofc-colophon'] = ob_get_clean();
+
 		if(array_key_exists('product_id', $_POST)){
 			$product = wc_get_product( absint($_POST['product_id']) );
 			$fragments['product'] = $product->get_title();
 		}
 
 
-		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
+		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' . WC()->cart->get_cart_contents_count().'</span>';
+
+		$fragments['.woocommerce-Price-amount.discount-amount'] = $this->discount_template();
+		
+		$fragments['.woocommerce-Price-amount.subtotal-amount'] = $this->subtotal_template();
+		
+		$fragments['.woocommerce-Price-amount.total-amount'] = $this->total_template();
+
+		$fragments['.adfy__woofc-shipping-text'] = $this->shopping_meter_text_template();
+
+		$fragments['.progress-bar.shipping-bar'] = $this->shopping_meter_bar_template();
 
 		return $fragments;
+	}
+
+	public function add_to_cart_handler() {
+
+		$response = array(
+			'success' => false,
+			'message' => 'Wow'
+		);
+
+		wp_send_json( $response );
+
+		wp_die();
 	}
 
 	/**
@@ -203,7 +275,7 @@ class Addonify_Floating_Cart_Public
 	 * returns array of cart fragments
 	 * @return array
 	 */
-	public static function addonify_floating_cart_add_to_cart_ajax()
+	public function addonify_floating_cart_add_to_cart_ajax()
 	{
 
 		ob_start();
@@ -218,18 +290,32 @@ class Addonify_Floating_Cart_Public
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 
 		ob_start();
-		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
-		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
+		do_action('addonify_floating_cart/get_cart_body', array());
+		$fragments['.adfy__woofc-content'] = ob_get_clean();
 
-		ob_start();
-		do_action('addonify_floating_cart/get_cart_footer',array());
-		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_shipping_bar', array());
+		// $fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
+
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_footer',array());
+		// $fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
 		do_action('addonify_floating_cart/cart_coupons_available_template', array());
 		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
-		$fragments['.badge'] = '<span class="badge">'.WC()->cart->get_cart_contents_count().'</span>';
+		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' . WC()->cart->get_cart_contents_count().'</span>';
+		
+		$fragments['.woocommerce-Price-amount.discount-amount'] = $this->discount_template();
+		
+		$fragments['.woocommerce-Price-amount.subtotal-amount'] = $this->subtotal_template();
+		
+		$fragments['.woocommerce-Price-amount.total-amount'] = $this->total_template();
+
+		$fragments['.adfy__woofc-shipping-text'] = $this->shopping_meter_text_template();
+
+		$fragments['.progress-bar.shipping-bar'] = $this->shopping_meter_bar_template();
 
 		return $fragments;
 
@@ -259,15 +345,13 @@ class Addonify_Floating_Cart_Public
 			WC()->cart->maybe_set_cart_cookies();
 			$this->check_coupons();
 
-			$contents_count = esc_html(WC()->cart->get_cart_contents_count());
-
 			// Fragments returned
 			$data = array(
 				'fragments' => apply_filters('addonify_floating_cart/add_to_cart_ajax', array()),
-				'cart_items' => $contents_count,
-				'product_name' => esc_html($product_name),
-				'restore_cart_item_key' => $restore_cart_item_key,
+				'cart_items' => WC()->cart->get_cart_contents_count(),
+				'undo_product_link' => $this->cart_undo_template( $product_name, $restore_cart_item_key )
 			);
+			
 			if($contents_count === 0){
 				$data['no_data_html'] = esc_html( apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'addonify-floating-cart' ) ) );
 			}
@@ -301,16 +385,14 @@ class Addonify_Floating_Cart_Public
 				$msg = "Already exists in cart";
 			}
 			$fragments = apply_filters('addonify_floating_cart/add_to_cart_ajax', array());
-			$item_html = $this->get_item_from_key($item_key);
-			// ob_start();
-			// do_action('addonify_floating_cart/get_cart_body', array());
-			// $fragments['.adfy__woofc-content'] = ob_get_clean();
+			ob_start();
+			do_action('addonify_floating_cart/get_cart_body', array());
+			$fragments['.adfy__woofc-content'] = ob_get_clean();
 			$data = array(
-				'item_html' => $item_html,
 				'fragments' => $fragments,
 				'error' => $error,
 				'message' => $msg,
-				'no_of_items_in_cart' => WC()->cart->get_cart_contents_count(),
+				'cart_items' => WC()->cart->get_cart_contents_count()
 			);
 			wp_send_json($data);
 		} else {
@@ -410,24 +492,32 @@ class Addonify_Floating_Cart_Public
 			$status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
-		ob_start();
-			do_action('addonify_floating_cart/get_cart_footer');
-		$cart_summary = ob_get_clean();
+
+		// ob_start();
+		// 	do_action('addonify_floating_cart/get_cart_footer');
+		// $cart_summary = ob_get_clean();
 
 		ob_start();
 			do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
-		ob_start();
-			do_action('addonify_floating_cart/get_cart_shipping_bar');
-		$shippping_bar = ob_get_clean();
+		// ob_start();
+		// 	do_action('addonify_floating_cart/get_cart_shipping_bar');
+		// $shippping_bar = ob_get_clean();
+
 		echo json_encode(array(
 			'couponApplied' => $coupon_apply,
 			'status' => $status,
+			'appliedCoupons' => count( WC()->cart->get_applied_coupons() ),
 			'html' => array(
-				'.adfy__woofc-colophon' => $cart_summary,
+				// '.adfy__woofc-colophon' => $cart_summary,
 				'.adfy__woofc-coupons' => $coupons,
-				'.adfy__woofc-shipping-bar' => $shippping_bar
+				// '.adfy__woofc-shipping-bar' => $shippping_bar,
+				'.woocommerce-Price-amount.discount-amount' => $this->discount_template(),
+				'.woocommerce-Price-amount.subtotal-amount' => $this->subtotal_template(),
+				'.woocommerce-Price-amount.total-amount' => $this->total_template(),
+				'.adfy__woofc-shipping-text' => $this->shopping_meter_text_template(),
+				'.progress-bar.shipping-bar' => $this->shopping_meter_bar_template()
 			)
 		));die;
 	}
@@ -453,25 +543,32 @@ class Addonify_Floating_Cart_Public
             $status = esc_html(apply_filters('addonify-floating-cart-source-verification-error-message',__('Source verification error.',"addonify-floating-cart")));
 		}
 		$this->check_coupons();
-		ob_start();
-		do_action('addonify_floating_cart/get_cart_footer');
-		$cart_summary = ob_get_clean();
+
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_footer');
+		// $cart_summary = ob_get_clean();
 
 		ob_start();
 		do_action('addonify_floating_cart/cart_coupons_available_template');
 		$coupons = ob_get_clean();
 
-		ob_start();
-		do_action('addonify_floating_cart/get_cart_shipping_bar');
-		$shippping_bar = ob_get_clean();
+		// ob_start();
+		// do_action('addonify_floating_cart/get_cart_shipping_bar');
+		// $shippping_bar = ob_get_clean();
 
 		echo json_encode(array(
 			'couponRemoved' => $coupon_remove,
 			'status' => $status,
+			'appliedCoupons' => count( WC()->cart->get_applied_coupons() ),
 			'html' => array(
-				'.adfy__woofc-colophon' => $cart_summary,
+				// '.adfy__woofc-colophon' => $cart_summary,
 				'#adfy__woofc-applied-coupons' => $coupons,
-				'.adfy__woofc-shipping-bar' => $shippping_bar
+				// '.adfy__woofc-shipping-bar' => $shippping_bar,
+				'.woocommerce-Price-amount.discount-amount' => $this->discount_template(),
+				'.woocommerce-Price-amount.subtotal-amount' => $this->subtotal_template(),
+				'.woocommerce-Price-amount.total-amount' => $this->total_template(),
+				'.adfy__woofc-shipping-text' => $this->shopping_meter_text_template(),
+				'.progress-bar.shipping-bar' => $this->shopping_meter_bar_template()
 			)
 		));die;
 	}
@@ -482,6 +579,82 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function check_coupons(){
 		WC()->cart->check_cart_coupons();
+	}
+
+
+	public function cart_undo_template( $product_name, $cart_item_key ) {
+
+		return $product_name . __( ' has been removed.', 'addonify-floating-cart' ) . '<a class="adfy__woofc-restore-item" id="adfy__woofc_restore_item" data-item_key="' . esc_attr( $cart_item_key ) . '" class="restore-item">' . __( 'Undo?', 'addonify-floating-cart' ) . '</a>';
+	}
+
+	public function discount_template() {
+		return apply_filters(
+			'addonify_floating_cart/discount_template',
+			'<span class="woocommerce-Price-amount discount-amount"><bdi>'. get_woocommerce_currency_symbol() . WC()->cart->get_cart_discount_total() . '</bdi>
+			</span>'
+		);
+	}
+
+	public function subtotal_template() {
+		return apply_filters(
+			'addonify_floating_cart/subtotal_template',
+			'<span class="woocommerce-Price-amount subtotal-amount"><bdi>'. WC()->cart->get_cart_subtotal() . '</bdi>
+			</span>'
+		);
+	}
+
+	public function total_template() {
+		return apply_filters(
+			'addonify_floating_cart/total_template',
+			'<span class="woocommerce-Price-amount total-amount"><bdi>'. WC()->cart->get_cart_total() . '</bdi>
+			</span>'
+		);
+	}
+
+
+	public function shopping_meter_text_template() {
+
+		$shopping_threshold_amount = (int)addonify_floating_cart_get_option('customer_shopping_meter_threshold');
+
+		$cart_total = WC()->cart->get_cart_contents_total();
+
+		$shopping_threshold_text = addonify_floating_cart_get_option('customer_shopping_meter_pre_threshold_label');
+
+		$final_shopping_threshold_text = addonify_floating_cart_get_option('customer_shopping_meter_post_threshold_label');
+
+		if ( $cart_total >= $shopping_threshold_amount ) {
+			$shopping_threshold_text = addonify_floating_cart_get_option('customer_shopping_meter_post_threshold_label');
+		} else {
+			
+			$left_amount = $shopping_threshold_amount - $cart_total;
+
+			$shopping_threshold_text = str_replace( "{amount}", get_woocommerce_currency_symbol() . $left_amount, $shopping_threshold_text );
+		}
+
+		return apply_filters(
+			'addonify_floating_cart/shopping_meter_text',
+			'<span class="adfy__woofc-shipping-text">' . esc_html( $shopping_threshold_text ) . '</span>'
+		);
+	}
+
+	public function shopping_meter_bar_template() {
+
+		$shopping_threshold_amount = (int)addonify_floating_cart_get_option('customer_shopping_meter_threshold');
+
+		$cart_total = WC()->cart->get_cart_contents_total();
+
+		$per = 0;
+
+		if ( $cart_total >= $shopping_threshold_amount ) {
+			$per = 100;
+		} else {
+			$per =  100 - ( ($shopping_threshold_amount - $cart_total) / $shopping_threshold_amount * 100);
+		}
+
+		return apply_filters(
+			'addonify_floating_cart/shopping_meter_bar',
+			'<div class="progress-bar shipping-bar" data_percentage="' . esc_attr( $per ) . '" style="width:' . esc_attr( $per ) . '%"></div>' 
+		);
 	}
 
 	public function addonify_floating_cart_empty_woocommerce_coupon_msg($msg){

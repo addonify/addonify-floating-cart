@@ -52,6 +52,8 @@
                     document.body.classList.add('adfy__woofc-visible');
                 }
 
+                $('#adfy__woofc-cart-errors').html('');
+
                 if ( footerEle.hasClass('adfy__woofc-hidden') ) {
                     footerEle.removeClass('adfy__woofc-hidden');
                 }
@@ -144,13 +146,6 @@
             //manual update product quantity
             $(document).on('change', '.adfy__woofc-item .adfy__woofc-quantity-input-field', function (e) {
                 e.preventDefault();
-                // let input_field = $(this);
-                // if(parseInt(input_field.val()) <= parseInt(input_field.attr('min'))){
-                //     input_field.val(input_field.attr('min'));
-                // }
-                // if(parseInt(input_field.val()) >= parseInt(input_field.attr('max'))){
-                //     input_field.val(input_field.attr('max'));
-                // }
                 AddonifyUpdateCartAjax(this, 'update', $(this).val());
             });
 

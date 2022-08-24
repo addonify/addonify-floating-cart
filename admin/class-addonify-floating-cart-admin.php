@@ -61,6 +61,23 @@ class Addonify_Floating_Cart_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		$this->admin_init();
+	}
+
+
+	public function admin_init() {
+
+		if ( ! class_exists( 'WooCommerce' ) ) {
+
+			add_action( 'admin_notices', array( $this, 'woocommerce_not_active_notice' ) ); 
+		}
+
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'admin_menu', [ $this, 'add_menu_callback' ], 20 );
+
+		// Add a custom link in plugins.php page in wp-admin.
+		add_action( 'plugin_action_links', array( $this, 'custom_plugin_link_callback' ), 10, 2 );
 	}
 
 	/**
@@ -137,14 +154,12 @@ class Addonify_Floating_Cart_Admin {
 		wp_set_script_translations( "{$this->plugin_name}-main", $this->plugin_name );
 	}
 
-	public function is_woocommerce_active(){
-		return in_array('woocommerce/woocommerce.php',get_option('active_plugins'));
-	}
-
 	public function add_menu_callback(){
 
 		// do not show menu if woocommerce is not active
-		if ( ! $this->is_woocommerce_active() )  return; 
+		if ( ! class_exists( 'WooCommerce' ) )  {
+			return;
+		} 
 
 		global $admin_page_hooks;
 		
@@ -185,6 +200,24 @@ class Addonify_Floating_Cart_Admin {
 		}
 	}
 
+	/**
+	 * Print "settings" link in plugins.php admin page
+	 *
+	 * @since    1.0.0
+	 * @param    string $links Links.
+	 * @param    string $file  PLugin file name.
+	 */
+	public function custom_plugin_link_callback( $links, $file ) {
+
+		if ( plugin_basename( dirname( __FILE__, 2 ) . '/addonify-floating-cart.php' ) === $file ) {
+
+			// add "Settings" link.
+			$links[] = '<a href="admin.php?page=' . $this->settings_page_slug . '">' . __( 'Settings', 'addonify-floating-cart' ) . '</a>';
+		}
+
+		return $links;
+	}
+
 	// callback function
 	// get contents for settings page screen
 	public function get_settings_screen_contents() {
@@ -193,5 +226,11 @@ class Addonify_Floating_Cart_Admin {
 		<?php
 	}
 
-
+	public function woocommerce_not_active_notice() {
+		?>
+		<div class="notice notice-error is-dismissible">
+			<p><?php _e( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
+		</div>
+		<?php
+	}
 }

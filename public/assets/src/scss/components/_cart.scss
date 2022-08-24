@@ -106,6 +106,10 @@
 
         .adfy__woofc-shipping-bar {
 
+            &.adfy__woofc-hidden {
+                display: none;
+            }
+
             @include flex();
             flex-direction: column;
             margin-bottom: 20px;
@@ -466,6 +470,11 @@
                             color: var(--adfy_woofc_base_text_color);
                             font-size: var(--adfy_woofc_base_text_font_size);
                             font-weight: normal;
+                        }
+
+                        &.adfy__woofc-hidden {
+
+                            display: none;
                         }
                     }
 

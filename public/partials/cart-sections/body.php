@@ -1,6 +1,6 @@
 <?php
 ?>
-<div id="adfy__woofc-cart-errors"></div>
+
 <main class="adfy__woofc-content">
     <div class="adfy__woofc-content-entry" id="adfy__woofc-scrollbar">
         <?php 
@@ -41,8 +41,7 @@
                         ));
                         ?>
                     </div>
-                </div><!-- // adfy__woofc-item -->
-                
+                </div>                
                 <?php 
                 }
             } else {

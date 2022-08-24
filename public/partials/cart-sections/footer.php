@@ -1,7 +1,7 @@
 <?php
 ?>
-<footer class="adfy__woofc-colophon">
-    <?php if ( (wc_coupons_enabled()) && (WC()->cart->get_cart_contents_count() > 0) ) { ?>
+<footer class="adfy__woofc-colophon <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden' ?>" >
+    <?php if ( wc_coupons_enabled() ) { ?>
     <div class="adfy__woofc-coupon">
         <p class="coupon-text">
             <span class="icon">
@@ -13,37 +13,29 @@
             </a>
         </p>
     </div>
-    <?php }
-    if(WC()->cart->get_cart_contents_count() > 0){
-    ?>
+    <?php } ?>
     <div class="adfy__woofc-cart-summary <?php echo (WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()) ? 'discount' : ''; ?>">
         <ul>
-            <?php
-            if(WC()->cart->get_cart_subtotal() != WC()->cart->get_cart_total()){
-                ?>
-                <li class="sub-total">
-                    <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-sub-total-label', __('Sub total:','addonify-floating-cart'))); ?></span>
-                    <span class="value">
-                        <span class="woocommerce-Price-amount subtotal-amount">
-                            <bdi>
-                                <?php echo WC()->cart->get_cart_subtotal(); ?>
-                            </bdi>
-                        </span>
+            <li class="sub-total <?php echo ( ( WC()->cart->get_cart_subtotal() !== WC()->cart->get_cart_total() ) && WC()->cart->get_cart_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
+                <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-sub-total-label', __('Sub total:','addonify-floating-cart'))); ?></span>
+                <span class="value">
+                    <span class="woocommerce-Price-amount subtotal-amount">
+                        <bdi>
+                            <?php echo WC()->cart->get_cart_subtotal(); ?>
+                        </bdi>
                     </span>
-                </li>
-                <li class="discount">
-                    <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-discount-label', __('Discount:','addonify-floating-cart'))); ?></span>
-                    <span class="value">
-                        <span class="woocommerce-Price-amount discount-amount">
-                            <bdi>
-                            <?php echo get_woocommerce_currency_symbol() . WC()->cart->get_cart_discount_total(); ?>
-                            </bdi>
-                        </span>
+                </span>
+            </li>
+            <li class="discount <?php echo ( ( WC()->cart->get_cart_subtotal() !== WC()->cart->get_cart_total() ) && WC()->cart->get_cart_discount_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
+                <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-discount-label', __('Discount:','addonify-floating-cart'))); ?></span>
+                <span class="value">
+                    <span class="woocommerce-Price-amount discount-amount">
+                        <bdi>
+                        <?php echo get_woocommerce_currency_symbol() . WC()->cart->get_cart_discount_total(); ?>
+                        </bdi>
                     </span>
-                </li>
-                <?php
-            }
-            ?>
+                </span>
+            </li>
             <li class="total">
                 <span class="label"><?php echo esc_html( apply_filters( 'addonify-floating-cart-total-label', __('Total:','addonify-floating-cart'))); ?></span>
                 <span class="value">
@@ -57,7 +49,6 @@
         </ul>
     </div>
     <div class="adfy__woofc-actions">
-        <?php do_action('addonify_floating_cart/get_cart_footer_button', array()); ?>
+        <?php do_action('addonify_floating_cart/cart_footer_button', array()); ?>
     </div>
-    <?php } ?>
 </footer>

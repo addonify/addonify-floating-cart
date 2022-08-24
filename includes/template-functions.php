@@ -144,25 +144,61 @@ if(!function_exists('addonify_floating_cart_get_cart_shipping_bar')){
 }
 if(!function_exists('addonify_floating_cart_get_cart_footer')){
 	function addonify_floating_cart_get_cart_footer($args = array()){
+		
 		addonify_floating_cart_get_template('cart-sections/footer.php', apply_filters("addonify_floating_cart/cart_footer_template_args",$args));
 	}
 	add_action('addonify_floating_cart/get_cart_footer','addonify_floating_cart_get_cart_footer',10,1);
 }
+
+
+if ( ! function_exists( 'addonify_floating_cart_footer_close_button_template' ) ) {
+
+	function addonify_floating_cart_footer_close_button_template() {
+		
+		if ( 
+			(int) addonify_floating_cart_get_option('display_continue_shopping_button') === 1 &&
+			! empty( addonify_floating_cart_get_option('continue_shopping_button_label') )
+		) {
+			?>
+			<button class="adfy__woofc-button adfy__hide-woofc close">
+				<?php echo esc_html(addonify_floating_cart_get_option('continue_shopping_button_label')); ?>
+			</button>
+			<?php
+		}
+	}
+
+	add_action( 'addonify_floating_cart/cart_footer_button', 'addonify_floating_cart_footer_close_button_template' );
+}
+
+
+if ( ! function_exists( 'addonify_floating_cart_footer_checkout_button_template' ) ) {
+
+	function addonify_floating_cart_footer_checkout_button_template() {
+		
+		if ( ! empty( addonify_floating_cart_get_option('checkout_button_label') ) ) {
+			?>
+			<a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
+				<?php echo esc_html(addonify_floating_cart_get_option('checkout_button_label')); ?>
+			</a>
+			<?php
+		}
+	}
+
+	add_action( 'addonify_floating_cart/cart_footer_button', 'addonify_floating_cart_footer_checkout_button_template' );
+}
+
+
 if(!function_exists('addonify_floating_cart_get_cart_footer_button')){
 	function addonify_floating_cart_get_cart_footer_button($args = array()){
 		ob_start();
-			if(addonify_floating_cart_get_option('display_continue_shopping_button')){ ?>
-				<button class="adfy__woofc-button adfy__hide-woofc close">
-					<?php echo esc_html(addonify_floating_cart_get_option('continue_shopping_button_label')); ?>
-				</button>
-			<?php } ?>
+		?>
 			<a href="<?php echo wc_get_checkout_url(); ?>" class="adfy__woofc-button proceed-to-checkout">
 				<?php echo esc_html(addonify_floating_cart_get_option('checkout_button_label')); ?>
 			</a>
 			<?php
 		echo ob_get_clean();
 	}
-	add_action('addonify_floating_cart/get_cart_footer_button','addonify_floating_cart_get_cart_footer_button',10,1);
+	// add_action('addonify_floating_cart/get_cart_footer_button','addonify_floating_cart_get_cart_footer_button',10,1);
 }
 
 

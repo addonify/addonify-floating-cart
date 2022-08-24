@@ -1,15 +1,15 @@
 <div class="adfy__woofc-shipping-bar">
     <?php if(WC()->cart->get_cart_contents_count() > 0){ ?>
         <span class="adfy__woofc-shipping-text">
-        <?php 
+        <?php
         if($per < 100){
             ?>
-            🔥 <?php echo $pre_threshold_label; ?>
-            <?php 
+            🔥 <?php echo str_replace('{threshold}', $left ,$pre_threshold_label); ?>
+            <?php
         } else {
             ?>
             🔥 <?php echo $post_threshold_label; ?>
-        <?php 
+        <?php
         }
         ?>
         </span>

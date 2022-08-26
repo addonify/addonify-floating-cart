@@ -1,22 +1,35 @@
 <?php
+/**
+ * 
+ */
+function addonify_floating_cart_floating_button_template() {
 
-if ( ! function_exists( 'addonify_floating_cart_floating_button_template' ) ) {
-    function addonify_floating_cart_floating_button_template() {
-		if(addonify_floating_cart_get_option('display_cart_modal_toggle_button')){
-			addonify_floating_cart_get_template( 'floating-button.php' );
-		}
-    }
+	var_dump( addonify_floating_cart_get_option( 'display_cart_modal_toggle_button' ) );
+	
+	if ( (int) addonify_floating_cart_get_option( 'display_cart_modal_toggle_button' ) === 1 ) {
+
+		$template_args = array(
+			'position' => addonify_floating_cart_get_option( 'cart_modal_toggle_button_display_position' ),
+			'display_badge' => (int) addonify_floating_cart_get_option( 'display_cart_items_number_badge' ),
+			'badge_position' => addonify_floating_cart_get_option( 'cart_items_number_badge_position' ),
+		);
+
+		addonify_floating_cart_get_template( 'floating-button.php', $template_args );
+	}
+}
+add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_floating_button_template' );
+
+/**
+ * 
+ */
+function addonify_floating_cart_add_template() {
+
+	addonify_floating_cart_get_template( 'sidebar-cart.php' );
 }
 
-if( ! function_exists('addonify_floating_cart_add_template')){
-    function addonify_floating_cart_add_template(){
-        addonify_floating_cart_get_template( 'sidebar-cart.php' );
-    }
-}
 
-add_action( 'addonify_floating_cart_add', 'addonify_floating_cart_floating_button_template' );
 
-add_action( 'addonify_floating_cart_add', 'addonify_floating_cart_add_template' );
+add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_add_template' );
 
 
 if( ! function_exists('addonify_floating_cart_add_cart_parts')){
@@ -34,6 +47,7 @@ if( ! function_exists('addonify_floating_cart_add_cart_sidebar_components')){
 	function addonify_floating_cart_add_cart_sidebar_components() {
 		do_action('addonify_floating_cart/get_cart_header', array());
 		do_action('addonify_floating_cart/get_cart_shipping_bar', array());
+		do_action( 'addonify_floating_cart/cart_notice' );
 		do_action('addonify_floating_cart/get_cart_body', array());
 		do_action('addonify_floating_cart/get_cart_footer', array());
 	}
@@ -272,3 +286,15 @@ if(!function_exists('addonify_floating_cart_get_cart_body_title')){
 	}
 	add_action('addonify_floating_cart/get_cart_body_title','addonify_floating_cart_get_cart_body_title',10,1);
 }
+
+
+
+if ( ! function_exists( 'addonify_floating_cart_notice_template' ) ) {
+
+	function addonify_floating_cart_notice_template() {
+
+		addonify_floating_cart_get_template( 'cart-sections/notice.php', array() );
+	}
+
+	add_action( 'addonify_floating_cart/cart_notice', 'addonify_floating_cart_notice_template' );
+} 

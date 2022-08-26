@@ -1,6 +1,6 @@
 <?php
-
 /**
+ * Something header
  *
  * @link              https://addonify.com/
  * @since             1.0.0
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'ADDONIFY_FLOATING_CART_VERSION', '0.0.0' );
-define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path(__FILE__));
+define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
 
 /**
@@ -80,10 +80,15 @@ function run_addonify_floating_cart() {
 
 run_addonify_floating_cart();
 
-add_filter('woocommerce_cart_contents_count', function($count){
-	return count(WC()->cart->get_cart());
-});
+add_filter(
+	'woocommerce_cart_contents_count',
+	function( $count ) {
+		return count( WC()->cart->get_cart() );
+	}
+);
 
-add_action( 'wp_body_open', function() {
-	// var_dump(WC()->cart);
-} );
+add_action(
+	'wp_body_open',
+	function() {
+	}
+);

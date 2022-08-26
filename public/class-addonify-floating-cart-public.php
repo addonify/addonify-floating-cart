@@ -187,10 +187,10 @@ class Addonify_Floating_Cart_Public
 
 	public function footer_content()
 	{
-		if( is_cart() || is_checkout()){
+		if ( is_cart() || is_checkout() ) {
 			return;
 		}
-		do_action('addonify_floating_cart_add');
+		do_action( 'addonify_floating_cart_footer_template' );
 	}
 
 	public function load_dependencies(){

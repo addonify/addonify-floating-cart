@@ -1,7 +1,7 @@
 <?php
 ?>
 <!-- main floating cart section-->
-<aside id="adfy__floating-cart" data_type="drawer" data_position="right">
+<aside id="adfy__floating-cart" data_type="drawer" data_position="left">
     <?php
     ?>
         <div class="adfy_woofc-inner">

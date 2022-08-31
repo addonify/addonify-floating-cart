@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -24,7 +23,7 @@
  * @subpackage Addonify_Floating_Cart/includes
  * @author     Addonify <addonify@gmail.com>
  */
-class Addonify_Floating_Cart_i18n {
+class Addonify_Floating_Cart_I18n {
 
 
 	/**
@@ -41,7 +40,4 @@ class Addonify_Floating_Cart_i18n {
 		);
 
 	}
-
-
-
 }

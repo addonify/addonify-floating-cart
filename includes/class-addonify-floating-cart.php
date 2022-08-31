@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -67,11 +66,15 @@ class Addonify_Floating_Cart {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'ADDONIFY_FLOATING_CART_VERSION' ) ) {
+
 			$this->version = ADDONIFY_FLOATING_CART_VERSION;
 		} else {
+
 			$this->version = '1.0.0';
 		}
+
 		$this->plugin_name = 'addonify-floating-cart';
 
 		$this->load_dependencies();
@@ -142,7 +145,7 @@ class Addonify_Floating_Cart {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Addonify_Floating_Cart_i18n();
+		$plugin_i18n = new Addonify_Floating_Cart_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -158,6 +161,8 @@ class Addonify_Floating_Cart {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Addonify_Floating_Cart_Admin( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'admin_init' );
 	}
 
 	/**
@@ -191,6 +196,7 @@ class Addonify_Floating_Cart {
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
+
 		return $this->plugin_name;
 	}
 
@@ -201,6 +207,7 @@ class Addonify_Floating_Cart {
 	 * @return    Addonify_Floating_Cart_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
+
 		return $this->loader;
 	}
 
@@ -211,6 +218,7 @@ class Addonify_Floating_Cart {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
+
 		return $this->version;
 	}
 
@@ -224,25 +232,6 @@ class Addonify_Floating_Cart {
 	private function rest_api() {
 
 		$plugin_rest = new Addonify_Floating_Cart_Rest_Api();
-	}
-
-	public function admin_woocommerce_not_active_notice(){
-		global $pagenow;
-		if ( $pagenow == 'index.php' ) {
-			ob_start();
-			?>
-				<div class="notice notice-error is-dismissible">
-					<p>
-					<?php _e( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' );?>
-					</p>
-				</div>
-			<?php
-			echo ob_get_clean();
-		}
-	}
-
-	public function is_woocommerce_active(){
-		return in_array('woocommerce/woocommerce.php',get_option('active_plugins'));
 	}
 
 }

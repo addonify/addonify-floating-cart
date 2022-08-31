@@ -60,8 +60,6 @@ class Addonify_Floating_Cart_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
-		$this->admin_init();
 	}
 
 

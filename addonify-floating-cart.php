@@ -77,18 +77,4 @@ function run_addonify_floating_cart() {
 	$plugin->run();
 
 }
-
 run_addonify_floating_cart();
-
-add_filter(
-	'woocommerce_cart_contents_count',
-	function( $count ) {
-		return count( WC()->cart->get_cart() );
-	}
-);
-
-add_action(
-	'wp_body_open',
-	function() {
-	}
-);

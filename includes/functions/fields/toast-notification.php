@@ -1,5 +1,15 @@
 <?php
 /**
+ * Define settings fields for toast notification.
+ *
+ * @link       https://addonify.com/
+ * @since      1.0.0
+ *
+ * @package    Addonify_Floating_Cart
+ * @subpackage Addonify_Floating_Cart/includes/functions/fields
+ */
+
+/**
  * Define settings for cart modal toggle button.
  *
  * @since 1.0.0
@@ -15,7 +25,7 @@ function addonify_floating_cart_toast_notification_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_toast_notification' ),
 		),
-		'toast_notification_display_position'           => array(
+		'toast_notification_display_position'          => array(
 			'label'     => __( 'Notification Position', 'addonify-floating-cart' ),
 			'type'      => 'select',
 			'choices'   => array(

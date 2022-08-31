@@ -1,5 +1,15 @@
 <?php
 /**
+ * Define settings fields for coupon.
+ *
+ * @link       https://addonify.com/
+ * @since      1.0.0
+ *
+ * @package    Addonify_Floating_Cart
+ * @subpackage Addonify_Floating_Cart/includes/functions/fields
+ */
+
+/**
  * Define settings for cart modal toggle button.
  *
  * @since 1.0.0

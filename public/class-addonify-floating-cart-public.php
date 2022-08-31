@@ -676,7 +676,7 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function cart_undo_template( $product_name, $cart_item_key ) {
 
-		return $product_name . __( ' has been removed.', 'addonify-floating-cart' ) . '<a class="adfy__woofc-restore-item" id="adfy__woofc_restore_item" data-item_key="' . esc_attr( $cart_item_key ) . '" class="restore-item">' . __( 'Undo?', 'addonify-floating-cart' ) . '</a>';
+		return $product_name . __( ' has been removed.', 'addonify-floating-cart' ) . '<a href="#" class="adfy__woofc-restore-item adfy__woofc-link has-underline adfy__woofc-prevent-default" id="adfy__woofc_restore_item" data-item_key="' . esc_attr( $cart_item_key ) . '" class="restore-item">' . __( 'Undo?', 'addonify-floating-cart' ) . '</a>';
 	}
 
 	/**

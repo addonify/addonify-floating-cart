@@ -158,6 +158,19 @@
             }
         }
 
+        #adfy__woofc-cart-errors {
+
+            @include flex();
+            gap: 5px;
+            margin-bottom: 30px;
+
+            #adfy__woofc_restore_item {
+
+                display: inline-flex;
+                cursor: pointer;
+            }
+        }
+
         .adfy__woofc-content {
 
             position: relative;

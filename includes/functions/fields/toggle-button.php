@@ -1,5 +1,15 @@
 <?php
 /**
+ * Define settings fields for floating cart toggle button.
+ *
+ * @link       https://addonify.com/
+ * @since      1.0.0
+ *
+ * @package    Addonify_Floating_Cart
+ * @subpackage Addonify_Floating_Cart/includes/functions/fields
+ */
+
+/**
  * Define settings for cart modal toggle button.
  *
  * @since 1.0.0
@@ -161,7 +171,7 @@ function addonify_floating_cart_toggle_cart_button_designs() {
 			'controlPosition' => 'right',
 			'min'             => 0,
 			'max'             => 60,
-			'value'           => addonify_floating_cart_get_option( 'cart_modal_toggle_button_border_radius' )
+			'value'           => addonify_floating_cart_get_option( 'cart_modal_toggle_button_border_radius' ),
 		),
 		'cart_modal_toggle_button_icon_font_size'    => array(
 			'label'           => __( 'Cart Toggle Button Icon Font Size', 'addonify-floating-cart' ),

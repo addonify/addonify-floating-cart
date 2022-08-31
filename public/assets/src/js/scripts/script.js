@@ -19,6 +19,7 @@
     var discountEle = $('.adfy__woofc-cart-summary ul li.discount');
     var footerEle = $('.adfy__woofc-colophon');
     var shoppingMeterEle = $('.adfy__woofc-shipping-bar');
+    var cartSummaryEle = $('.adfy__woofc-cart-summary');
 
     var addonifyFloatingCart = {
 
@@ -48,7 +49,7 @@
 
             $( document.body ).on( 'added_to_cart', function(e, fragments, cart_hash, button) {
 
-                if(addonifyFloatingCartOpenCartOnAdd == true){
+                if(addonifyFloatingCartOpenCartOnAdd === true){
                     document.body.classList.add('adfy__woofc-visible');
                 }
 
@@ -56,6 +57,17 @@
 
                 if ( footerEle.hasClass('adfy__woofc-hidden') ) {
                     footerEle.removeClass('adfy__woofc-hidden');
+                }
+
+                if ( cartSummaryEle.hasClass('discount') ) {
+                    var subtotalEle = $('.adfy__woofc-cart-summary li.sub-total');
+                    var discountEle = $('.adfy__woofc-cart-summary li.discount');
+                    if ( subtotalEle.hasClass('adfy__woofc-hidden') ) {
+                        subtotalEle.removeClass('adfy__woofc-hidden');
+                    }
+                    if ( discountEle.hasClass('adfy__woofc-hidden') ) {
+                        discountEle.removeClass('adfy__woofc-hidden');
+                    }
                 }
 
                 if ( shoppingMeterEle.hasClass('adfy__woofc-hidden') ) {
@@ -151,7 +163,7 @@
 
             // product quantity update function
             function AddonifyUpdateCartAjax(curr_el, type, quantity = 1) {
-                let product_quantity
+                var product_quantity;
                 if (type === 'add') {
                     product_quantity = $(curr_el).next();
                 } else if (type === 'sub') {
@@ -249,7 +261,8 @@
                     },
                     'success': function (data) {
                         let result = JSON.parse(data);
-                        if (result.couponApplied == true) {
+                        console.log(result);
+                        if (result.couponApplied === true) {
                             couponField.val('');
                             $.each(result.html, function (i, val) {
                                 $(i).replaceWith(val);
@@ -286,7 +299,7 @@
                     },
                     'success': function (data) {
                         let result = JSON.parse(data);
-                        if (result.couponRemoved == true) {
+                        if (result.couponRemoved === true) {
                             $.each(result.html, function (i, val) {
                                 $(i).replaceWith(val);
                             });
@@ -355,9 +368,7 @@
                     cart_item_key = $(this).attr("data-cart_item_key"),
                     product_container = $(this).parents('.adfy__woofc-item');
 
-                let this_product = $(this);
-                $('.post-'+product_id).children('a.added_to_cart').remove();
-                $('.post-'+product_id).children('a.added').removeClass('added');
+                var $thisbutton = $(this);
 
                 // Add loader
                 product_container.block({
@@ -377,8 +388,14 @@
                         nonce: addonifyFloatingCartJSObject.nonce
                     },
                     success: function (response) {
-                        if (!response || response.error)
+
+                        if ( ! response || response.success === false ) {
+                            $('#adfy__woofc-cart-errors').html(response.message);
                             return;
+                        }
+
+                        $('.post-'+product_id).find('a.wc-forward').remove();
+                        $('.post-'+product_id).find('a.add_to_cart_button').removeClass('added');
 
                         var fragments = response.fragments;
 
@@ -391,14 +408,13 @@
 
                         $('#adfy__woofc-cart-errors').html(response.undo_product_link);
 
-                        if (response.cart_items === 0) {
+                        if (response.cart_items_count === 0 ) {
 
                             $(document.body).trigger('wc_cart_emptied');
-
-                            $('.adfy__woofc-content-entry').html(
-                                response.no_data_html
-                            );
+                            $('.adfy__woofc-content-entry').html( response.empty_cart_message );
                         }
+
+                        $(document.body).trigger( 'removed_from_cart', [ response.fragments, response.cart_hash, $thisbutton ] )
 
                         // Update cart
                         $(document.body).trigger('wc_update_cart');

@@ -1,15 +1,37 @@
 <?php
+/**
+ * Define admin settings fields.
+ *
+ * @link       https://addonify.com/
+ * @since      1.0.0
+ *
+ * @package    Addonify_Floating_Cart
+ * @subpackage Addonify_Floating_Cart/includes/functions
+ */
 
+/**
+ * Load general setting fields for floating cart.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php';
-
+/**
+ * Load setting fields for coupons.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/coupon.php';
-
+/**
+ * Load setting fields for floating cart toggle button.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toggle-button.php';
-
+/**
+ * Load setting fields for toast notification.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toast-notification.php';
-
+/**
+ * Load setting fields for cart content.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-display.php';
-
+/**
+ * Load setting fields for adding Custom CSS.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/custom-css.php';
 
 /**
@@ -152,7 +174,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_applied_coupons'                      => '1',
 			'cart_apply_coupon_button_label'               => 'Apply Coupon',
 
-			'custom_css' => '',
+			'custom_css'                                   => '',
 		)
 	);
 }

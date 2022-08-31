@@ -1,5 +1,15 @@
 <?php
 /**
+ * Define general settings fields for floating cart.
+ *
+ * @link       https://addonify.com/
+ * @since      1.0.0
+ *
+ * @package    Addonify_Floating_Cart
+ * @subpackage Addonify_Floating_Cart/includes/functions/fields
+ */
+
+/**
  * Define settings for cart modal toggle button.
  *
  * @since 1.0.0
@@ -45,6 +55,7 @@ function addonify_floating_cart_cart_options_settings() {
 		'customer_shopping_meter_pre_threshold_label'   => array(
 			'label'       => __( 'Initial Shopping Meter Notice', 'addonify-floating-cart' ),
 			'description' => __( 'Notice that is displayed before a customer\'s cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount.', 'addonify-floating-cart' ),
+			'className'   => 'fullwidth',
 			'type'        => 'text',
 			'dependent'   => array( 'enable_floating_cart', 'enable_shopping_meter' ),
 			'value'       => addonify_floating_cart_get_option( 'customer_shopping_meter_pre_threshold_label' ),

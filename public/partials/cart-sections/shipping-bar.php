@@ -1,20 +1,28 @@
+<?php
+/**
+ * The Template for displaying shopping meter.
+ *
+ * This template can be overridden by copying it to yourtheme/addonify/floating-cart/shipping-bar.php.
+ *
+ * @package Addonify_Floating_Cart\Public\Partials
+ * @version 1.0.0
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 <div class="adfy__woofc-shipping-bar <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>">
-        <span class="adfy__woofc-shipping-text">
-        <?php
-        if($per < 100){
-            ?>
-            🔥 <?php echo str_replace('{threshold}', $left ,$pre_threshold_label); ?>
-            <?php
-        } else {
-            ?>
-            🔥 <?php echo $post_threshold_label; ?>
-        <?php
-        }
-        ?>
-        </span>
-    <div class="progress-bars">
-        <div class="total-bar shipping-bar"></div>
-        <div class="progress-bar shipping-bar" data_percentage="<?php echo $per; ?>" style="width: <?php echo $per; ?>%"></div>
-    </div>
+		<span class="adfy__woofc-shipping-text">
+		<?php
+		if ( $per < 100 ) {
+			echo esc_html( str_replace( '{threshold}', $left, $pre_threshold_label ) );
+		} else {
+			echo esc_html( $post_threshold_label );
+		}
+		?>
+		</span>
+	<div class="progress-bars">
+		<div class="total-bar shipping-bar"></div>
+		<div class="progress-bar shipping-bar" data_percentage="<?php echo esc_attr( $per ); ?>" style="width: <?php echo esc_attr( $per ); ?>%"></div>
+	</div>
 </div>
 

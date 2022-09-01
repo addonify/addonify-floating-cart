@@ -1,15 +1,101 @@
-=== Addonify - Floating Cart For WooCommerce ===
+=== Addonify Floating Cart ===
+
 Contributors: addonify
-Donate link: https://addonify.com/
-Tags: cart, WooCommerce
-Requires at least: 5.0.0
-Tested up to: 6.0.1
+Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart
+Requires at least: 5.6
+Requires PHP: 7
+Tested up to: 6.0.2
 Stable tag: 0.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items. 
 
 == Description ==
 
+Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items. 
+
+Addonify Floating Cart is packed with lots of features and functionalities. The necessary cart actions such as adding product into the cart, removing product from the cart with undo functionality, updating cart quantities, applying coupon discounts etc. The sidebar shopping cart can be toggled on floating cart button click, or Add to Cart button click, or toast notification button click, or View Cart button click.
+
+For vistors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
+
+👉 [Demo Site](https://demo.addonify.com/woo/01/floating-cart/)
+👉 [Documentation & Guide](https://docs.addonify.com/kb/floating-cart/)
+
+
+#### 🔥 MAIN FEATURES
+
+- Add produts in shopping cart.
+- Remove products from shopping cart.
+- Undo product removal in shopping cart.
+- Manage cart quantities in the shopping cart.
+- Display number of products in the shopping cart.
+- Apply coupons, display applied coupons, remove applied coupons,  and display coupon messages.
+- Sidebar cart display position.
+- Toast notification when product is added into the cart.
+- Floating cart button display position.
+- Responsive design.
+- Custom typography and color options.
+- Display cart subtotal amount, discount amount, and total amount.
+- Checkout link in the cart.
+- Custom CSS support.
+- User and developer documentation.
+
+
+#### 🔐 GDPR COMPLIANT
+
+Addonify Floating Cart does not collect any personal or sensitive data from website visitors thus making this plugin GDPR compliant.
+
+
+#### 💬 DISCUSSIONS & REPORTINGS
+
+We are open to any kind of discussions  that can help improve this plugin. Share your ideas, ask questions related to the plugin, report bugs or issues, and request for new features.
+
+👉 [Create New Discussion](https://github.com/addonify/addonify-floating-cart/discussions)
+👉 [Report Bug or Issue](https://github.com/addonify/addonify-floating-cart/issues)
+
+
+####  🌐 TRANSLATIONS
+
+If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [*transalte.wordpress.org*](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
+
+
+== Frequently Asked Questions ==
+
+= Do you have documentation guide? =
+
+Yes, we do have documentation guide. Please visit our [documentation site.](https://docs.addonify.com/kb/floating-cart/)
+
+= Will this plugin work without WooCommerce? =
+
+No, this plugin will not work without WooCommerce.
+
+= Does this plugin work with my theme? =
+
+Yes, Addonify Floating Cart should work with all WordPress themes. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
+
+= On which page floating cart will not be visible? =
+
+Floating cart button and sidebar shopping cart will not be visible on cart and checkout pages.
+
+ 
+== Installation ==
+
+1. Download the plugin.
+2. Unzip the downloaded zip file.
+3. Upload the plugin folder into the `wp-content/plugins/` directory of your WordPress site.
+4. Activate `Addonify Floating Cart` from Dashboard > Plugins.
+
+
+== Screenshots ==
+
+1. Addonify Floating Cart setting page on admin dashboard.
+2. Addonify Floating Cart design setting page on admin dashboard.
+
+
+
 == Changelog ==
+
+= 1.0.0 - 1 September 2022 =
+
+- New: Initial release.

@@ -10,4 +10,4 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div id="adfy__woofc-cart-errors"></div>
+<div id="adfy__woofc-cart-errors" class="hidden"></div>

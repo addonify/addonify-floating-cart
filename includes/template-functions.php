@@ -102,7 +102,12 @@ add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_fl
  */
 function addonify_floating_cart_add_template() {
 
-	addonify_floating_cart_get_template( 'sidebar-cart.php' );
+	$template_args = array(
+		'position' => addonify_floating_cart_get_option( 'cart_position' ),
+		'overlay_class' => ( (int) addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ) === 1 ) ? 'adfy__hide-woofc' : '',
+	);
+
+	addonify_floating_cart_get_template( 'sidebar-cart.php', $template_args );
 }
 add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_add_template' );
 
@@ -388,14 +393,8 @@ function addonify_floating_cart_get_product_quantity_price_template( $args = arr
 		)
 	);
 }
-add_action( 'addonify_floating_cart_product_quantity_price', 'addonify_floating_cart_get_product_quantity_price_template', 10, 1);
+add_action( 'addonify_floating_cart_product_quantity_price', 'addonify_floating_cart_get_product_quantity_price_template', 10, 1 );
 
-if(!function_exists('addonify_floating_cart_get_cart_body_rating')){
-	function addonify_floating_cart_get_cart_body_rating($args = array()){
-		addonify_floating_cart_get_template('cart-loop/rating.php',  apply_filters("addonify_floating_cart_cart_body_rating_template_args",$args));
-	}
-	add_action('addonify_floating_cart_get_cart_body_rating','addonify_floating_cart_get_cart_body_rating',10,1);
-}
 
 /**
  * Display product title in the cart.

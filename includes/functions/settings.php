@@ -54,6 +54,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'customer_shopping_meter_pre_threshold_label'  => '',
 			'customer_shopping_meter_post_threshold_label' => '',
 			'load_styles_from_plugin'                      => '1',
+
 			// Floating Cart Toggle Button Options.
 			'display_cart_modal_toggle_button'             => '1',
 			'cart_modal_toggle_button_display_position'    => 'bottom-right',
@@ -79,11 +80,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_toast_notification'                   => '1',
 			'toast_notification_display_position'          => 'top-right',
 			'open_cart_modal_on_notification_button_click' => false,
-			'added_to_cart_notification_text'              => '{product_name} has been added to cart.',
+			'added_to_cart_notification_text'              => __( '{product_name} has been added to cart.', 'addonify-floating-cart' ),
 			'close_notification_after_time'                => 5,
 			'display_close_notification_button'            => false,
 			'display_show_cart_button'                     => false,
-			'show_cart_button_label'                       => 'Show Cart',
+			'show_cart_button_label'                       => __( 'Show Cart', 'addonify-floating-cart' ),
 			'toast_notification_background_color'          => '',
 			'toast_notification_text_color'                => '',
 			'toast_notification_button_background_color'   => '',
@@ -94,7 +95,8 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'toast_notification_vertical_offset'           => '',
 
 			// Cart modal options.
-			'cart_title'                                   => 'Cart',
+			'cart_position'                                => 'right',
+			'cart_title'                                   => __( 'Cart', 'addonify-floating-cart' ),
 			'cart_title_font_size'                         => 14,
 			'cart_title_font_weight'                       => '400',
 			'cart_title_letter_spacing'                    => 0.25,
@@ -102,8 +104,8 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_cart_items_number'                    => '1',
 			'close_cart_modal_on_overlay_click'            => '1',
 			'display_continue_shopping_button'             => '1',
-			'continue_shopping_button_label'               => 'Close',
-			'checkout_button_label'                        => 'Checkout',
+			'continue_shopping_button_label'               => __( 'Close', 'addonify-floating-cart' ),
+			'checkout_button_label'                        => __( 'Checkout', 'addonify-floating-cart' ),
 
 			'cart_modal_width'                             => 500,
 			'cart_modal_base_font_size'                    => 15,
@@ -172,7 +174,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			// cart coupon options.
 			'display_applied_coupons'                      => '1',
-			'cart_apply_coupon_button_label'               => 'Apply Coupon',
+			'cart_apply_coupon_button_label'               => __( 'Apply Coupon', 'addonify-floating-cart' ),
 
 			'custom_css'                                   => '',
 		)

@@ -18,6 +18,16 @@
 function addonify_floating_cart_cart_display_settings() {
 
 	return array(
+		'cart_position'                     => array(
+			'label'     => __( 'Cart Position', 'addonify-floating-cart' ),
+			'type'      => 'select',
+			'choices'   => array(
+				'left'  => __( 'Left', 'addonify-floating-cart' ),
+				'right' => __( 'Right', 'addonify-floating-cart' ),
+			),
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'cart_position' ),
+		),
 		'cart_title'                        => array(
 			'label'     => __( 'Cart Title', 'addonify-floating-cart' ),
 			'type'      => 'text',

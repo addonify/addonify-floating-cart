@@ -62,7 +62,7 @@
                     document.body.classList.add('adfy__woofc-visible');
                 }
 
-                $('#adfy__woofc-cart-errors').html('');
+                $('#adfy__woofc-cart-errors').html('').addClass('hidden');
 
                 if (footerEle.hasClass('adfy__woofc-hidden')) {
                     footerEle.removeClass('adfy__woofc-hidden');
@@ -399,7 +399,7 @@
                     success: function (response) {
 
                         if (!response || response.success === false) {
-                            $('#adfy__woofc-cart-errors').html(response.message);
+                            $('#adfy__woofc-cart-errors').html(response.message).removeClass('hidden');
                             return;
                         }
 
@@ -415,7 +415,7 @@
                             });
                         }
 
-                        $('#adfy__woofc-cart-errors').html(response.undo_product_link);
+                        $('#adfy__woofc-cart-errors').html(response.undo_product_link).removeClass('hidden');
 
                         if (response.cart_items_count === 0) {
 
@@ -468,7 +468,7 @@
                             shoppingMeterEle.removeClass('adfy__woofc-hidden');
                         }
 
-                        $('#adfy__woofc-cart-errors').html('');
+                        $('#adfy__woofc-cart-errors').html('').addClass('hidden');
 
                         if (response.error) {
                             console.log(response.messsage);

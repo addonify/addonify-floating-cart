@@ -40,7 +40,7 @@ function addonify_floating_cart_custom_css_settings_fields() {
  */
 function addonify_floating_cart_custom_css_add_to_settings_fields( $setting_fields ) {
 
-	return array_merge( $setting_fields, addonify_compare_products_custom_css_settings_fields() );
+	return array_merge( $setting_fields, addonify_floating_cart_custom_css_settings_fields() );
 }
 
 add_filter( 'addonify_floating_cart_settings_fields', 'addonify_floating_cart_custom_css_add_to_settings_fields' );

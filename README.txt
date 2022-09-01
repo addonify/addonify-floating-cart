@@ -91,6 +91,8 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 1. Addonify Floating Cart setting page on admin dashboard.
 2. Addonify Floating Cart design setting page on admin dashboard.
+3. Floating Cart drawer on frontend.
+4. Floating Cart discount section on frontend.
 
 
 

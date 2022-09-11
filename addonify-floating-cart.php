@@ -1,6 +1,5 @@
 <?php
 /**
- * Something header
  *
  * @link              https://addonify.com/
  * @since             1.0.0

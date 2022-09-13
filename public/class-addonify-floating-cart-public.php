@@ -207,8 +207,10 @@ class Addonify_Floating_Cart_Public
 		?>
 			<span class="adfy__woofc-badge">
 				<?php
-				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count()));
+				printf( 
+					_nx( ' %1$s Item', '%1$s Items', esc_html( WC()->cart->get_cart_contents_count() ), 'number of cart items', 'addonify-floating-cart' ),
+					esc_html( WC()->cart->get_cart_contents_count() )
+				);
 				?>
 			</span>
 		<?php
@@ -218,8 +220,8 @@ class Addonify_Floating_Cart_Public
 		do_action('addonify_floating_cart_sidebar_cart_body', array());
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
 
-		if(array_key_exists('product_id', $_POST)){
-			$product = wc_get_product( absint($_POST['product_id']) );
+		if ( isset( $_POST['product_id'] ) ){
+			$product = wc_get_product( absint( $_POST['product_id'] ) );
 			$fragments['product'] = $product->get_title();
 		}
 
@@ -251,8 +253,10 @@ class Addonify_Floating_Cart_Public
 		?>
 			<span class="adfy__woofc-badge">
 				<?php
-				printf( _nx(' %1$s Item', '%1$s Items', esc_html(WC()->cart->get_cart_contents_count()), 'number of cart items', 'addonify-floating-cart'),
-					esc_html(WC()->cart->get_cart_contents_count()));
+				printf(
+					_nx(' %1$s Item', '%1$s Items', esc_html( WC()->cart->get_cart_contents_count() ), 'number of cart items', 'addonify-floating-cart'),
+					esc_html( WC()->cart->get_cart_contents_count() )
+				);
 				?>
 			</span>
 		<?php
@@ -294,7 +298,7 @@ class Addonify_Floating_Cart_Public
 			'success' => false,
 		);
 
-		$nonce = isset( $_POST['nonce'] ) ? wp_unslash( $_POST['nonce']  ) : '';
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		if ( 
 			$nonce && 
@@ -303,7 +307,7 @@ class Addonify_Floating_Cart_Public
 			$product_name = '';
             $restore_cart_item_key = false;
 			$post_product_id = isset( $_POST['product_id'] ) ? (int) wp_unslash( $_POST['product_id'] ) : '';
-			$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? wp_unslash( $_POST['cart_item_key'] ) : '';
+			$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? sanitize_text_field( wp_unslash( $_POST['cart_item_key'] ) ) : '';
 
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 				if ( 
@@ -367,14 +371,14 @@ class Addonify_Floating_Cart_Public
 			'message' => '',
 		);
 
-		$nonce = isset( $_POST['nonce'] ) ? wp_unslash( $_POST['nonce']  ) : '';
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		if ( 
 			$nonce && 
 			wp_verify_nonce( $nonce, 'addonify-floating-cart-ajax-nonce' ) 
 		) {
 			
-			$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? wp_unslash( $_POST['cart_item_key'] ) : '';
+			$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? sanitize_text_field( wp_unslash( $_POST['cart_item_key'] ) ) : '';
 
 			if ( !empty( $post_cart_item_key ) ) {
 
@@ -429,7 +433,7 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function update_cart_item() {
 
-		$nonce = isset( $_POST['nonce'] ) ? wp_unslash( $_POST['nonce']  ) : '';
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		if ( 
 			$nonce && 
@@ -444,7 +448,7 @@ class Addonify_Floating_Cart_Public
 
 				$post_product_id = isset( $_POST['product_id'] ) ? (int) wp_unslash( $_POST['product_id'] ) : '';
 
-				$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? wp_unslash( $_POST['cart_item_key'] ) : '';
+				$post_cart_item_key = isset( $_POST['cart_item_key'] ) ? sanitize_text_field( wp_unslash( $_POST['cart_item_key'] ) ) : '';
 
 				$post_quantity = isset( $_POST['quantity'] ) ? (int) wp_unslash( $_POST['quantity'] ) : 0;
 
@@ -453,7 +457,7 @@ class Addonify_Floating_Cart_Public
 					$cart_item['product_id'] === $post_product_id &&
 					$cart_item_key === $post_cart_item_key
 				) {	
-					$post_type = isset( $_POST['type'] ) ? wp_unslash( $_POST['type'] ) : '';
+					$post_type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : '';
 
 					$quantity = $cart_item['quantity'];
 
@@ -531,7 +535,7 @@ class Addonify_Floating_Cart_Public
 
 		$coupon_apply = false;
 
-		$nonce = isset( $_POST['nonce'] ) ? wp_unslash( $_POST['nonce']  ) : '';
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		$status = '';
 
@@ -539,7 +543,7 @@ class Addonify_Floating_Cart_Public
 			$nonce && 
 			wp_verify_nonce( $nonce, 'addonify-floating-cart-ajax-nonce' ) 
 		) {
-			$coupon_code = isset( $_POST['form_data'] ) ? wp_unslash( $_POST['form_data'] ) : '';
+			$coupon_code = isset( $_POST['form_data'] ) ? sanitize_text_field( wp_unslash( $_POST['form_data'] ) ) : '';
 
 			if ( ! empty( $coupon_code ) ) {
 
@@ -611,13 +615,13 @@ class Addonify_Floating_Cart_Public
 
 		$coupon_remove = false;
 
-		$nonce = isset( $_POST['nonce'] ) ? wp_unslash( $_POST['nonce']  ) : '';
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce']  ) ) : '';
 
 		if ( 
 			$nonce && 
 			wp_verify_nonce( $nonce, 'addonify-floating-cart-ajax-nonce' ) 
 		) {
-			$coupon_code = isset( $_POST['form_data'] ) ? wp_unslash( $_POST['form_data'] ) : '';
+			$coupon_code = isset( $_POST['form_data'] ) ? sanitize_text_field( wp_unslash( $_POST['form_data'] ) ) : '';
 
 			if ( ! empty( $coupon_code ) ) {
 
@@ -688,7 +692,7 @@ class Addonify_Floating_Cart_Public
 
 		return apply_filters(
 			'addonify_floating_cart_discount_template',
-			'<span class="woocommerce-Price-amount discount-amount"><bdi>'. get_woocommerce_currency_symbol() . WC()->cart->get_cart_discount_total() . '</bdi>
+			'<span class="woocommerce-Price-amount discount-amount"><bdi>'. esc_html( get_woocommerce_currency_symbol() ) . esc_html( WC()->cart->get_cart_discount_total() ) . '</bdi>
 			</span>'
 		);
 	}
@@ -702,7 +706,7 @@ class Addonify_Floating_Cart_Public
 
 		return apply_filters(
 			'addonify_floating_cart_subtotal_template',
-			'<span class="woocommerce-Price-amount subtotal-amount"><bdi>'. WC()->cart->get_cart_subtotal() . '</bdi>
+			'<span class="woocommerce-Price-amount subtotal-amount"><bdi>'. esc_html( WC()->cart->get_cart_subtotal() ) . '</bdi>
 			</span>'
 		);
 	}
@@ -716,7 +720,7 @@ class Addonify_Floating_Cart_Public
 
 		return apply_filters(
 			'addonify_floating_cart_total_template',
-			'<span class="woocommerce-Price-amount total-amount"><bdi>'. WC()->cart->get_cart_total() . '</bdi>
+			'<span class="woocommerce-Price-amount total-amount"><bdi>'. esc_html( WC()->cart->get_cart_total() ) . '</bdi>
 			</span>'
 		);
 	}
@@ -767,7 +771,7 @@ class Addonify_Floating_Cart_Public
 		if ( $cart_total >= $shopping_threshold_amount ) {
 			$per = 100;
 		} else {
-			$per =  100 - ( ($shopping_threshold_amount - $cart_total) / $shopping_threshold_amount * 100);
+			$per =  100 - ( ( $shopping_threshold_amount - $cart_total ) / $shopping_threshold_amount * 100 );
 		}
 
 		return apply_filters(
@@ -783,7 +787,7 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function woocommerce_coupon_msg( $msg ) {
 
-		if( wp_doing_ajax() ) {
+		if ( wp_doing_ajax() ) {
 
 			return null;
 		} else {

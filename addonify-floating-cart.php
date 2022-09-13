@@ -1,5 +1,6 @@
 <?php
 /**
+ * Addonify Floating Cart.
  *
  * @link              https://addonify.com/
  * @since             1.0.0
@@ -9,7 +10,7 @@
  * Plugin Name:       Addonify Floating Cart
  * Plugin URI:        https://addonify.com/addonify-floating-cart
  * Description:       Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Addonify
  * Author URI:        https://addonify.com/
  * License:           GPL-2.0+
@@ -28,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ADDONIFY_FLOATING_CART_VERSION', '1.0.0' );
+define( 'ADDONIFY_FLOATING_CART_VERSION', '1.0.1' );
 define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
 

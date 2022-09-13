@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -210,7 +209,7 @@ class Addonify_Floating_Cart_Admin {
 		if ( plugin_basename( dirname( __FILE__, 2 ) . '/addonify-floating-cart.php' ) === $file ) {
 
 			// add "Settings" link.
-			$links[] = '<a href="admin.php?page=' . $this->settings_page_slug . '">' . __( 'Settings', 'addonify-floating-cart' ) . '</a>';
+			$links[] = '<a href="admin.php?page=' . esc_attr( $this->settings_page_slug ) . '">' . __( 'Settings', 'addonify-floating-cart' ) . '</a>';
 		}
 
 		return $links;
@@ -227,7 +226,7 @@ class Addonify_Floating_Cart_Admin {
 	public function woocommerce_not_active_notice() {
 		?>
 		<div class="notice notice-error is-dismissible">
-			<p><?php _e( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
+			<p><?php echo __( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
 		</div>
 		<?php
 	}

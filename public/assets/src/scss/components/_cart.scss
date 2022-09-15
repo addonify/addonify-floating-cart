@@ -199,6 +199,7 @@
                 .adfy__woofc-item {
 
                     @include grid();
+                    position: relative;
                     grid-template-columns: 100px auto;
                     column-gap: 30px;
                     margin-bottom: 30px;
@@ -419,6 +420,21 @@
                                 }
                             }
                         }
+                    }
+
+                    .blockUI.blockOverlay {
+
+                        position: absolute !important;
+                        top: 0 !important;
+                        right: 0 !important;
+                        bottom: 0 !important;
+                        left: 0 !important;
+                        z-index: 100000 !important;
+                        opacity: 1 !important;
+                        height: 100% !important;
+                        width: 100% !important;
+                        border-radius: 3px;
+                        background-color: rgba(0, 0, 0, 0.2) !important;
                     }
                 }
             }

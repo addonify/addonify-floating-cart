@@ -12,6 +12,7 @@
 .distignore
 .gitignore
 .babelrc
+.editorconfig
 gulpfile.js
 webpack.config.js
 webpack.mix.js

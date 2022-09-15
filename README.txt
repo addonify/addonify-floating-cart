@@ -1,11 +1,11 @@
-=== Addonify Floating Cart ===
+=== Addonify Floating Cart For WooCommerce ===
 
 Contributors: addonify
-Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart
+Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
 Requires at least: 5.6
 Requires PHP: 7.0.0
 Tested up to: 6.0.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.0.2 - 15 September 2022 =
+
+- Tweak: blockUI overlay background color in cart.
+
 
 = 1.0.1 - 13 September 2022 =
 

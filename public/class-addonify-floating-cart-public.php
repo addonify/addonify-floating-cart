@@ -230,9 +230,9 @@ class Addonify_Floating_Cart_Public
 
 		$fragments['.woocommerce-Price-amount.discount-amount'] = $this->discount_template();
 		
-		$fragments['.woocommerce-Price-amount.subtotal-amount'] = $this->subtotal_template();
+		$fragments['.addonify-floating-cart-Price-amount.subtotal-amount'] = $this->subtotal_template();
 		
-		$fragments['.woocommerce-Price-amount.total-amount'] = $this->total_template();
+		$fragments['.addonify-floating-cart-Price-amount.total-amount'] = $this->total_template();
 
 		$fragments['.adfy__woofc-shipping-text'] = $this->shopping_meter_text_template();
 
@@ -275,9 +275,9 @@ class Addonify_Floating_Cart_Public
 		
 		$fragments['.woocommerce-Price-amount.discount-amount'] = wp_kses_post( $this->discount_template() );
 		
-		$fragments['.woocommerce-Price-amount.subtotal-amount'] = wp_kses_post( $this->subtotal_template() );
+		$fragments['.addonify-floating-cart-Price-amount.subtotal-amount'] = wp_kses_post( $this->subtotal_template() );
 		
-		$fragments['.woocommerce-Price-amount.total-amount'] = wp_kses_post( $this->total_template() );
+		$fragments['.addonify-floating-cart-Price-amount.total-amount'] = wp_kses_post( $this->total_template() );
 
 		$fragments['.adfy__woofc-shipping-text'] = wp_kses_post( $this->shopping_meter_text_template() );
 
@@ -594,8 +594,8 @@ class Addonify_Floating_Cart_Public
 			'html'           => array(
 				'.adfy__woofc-coupons'                      => $coupons,
 				'.woocommerce-Price-amount.discount-amount' => wp_kses_post( $this->discount_template() ),
-				'.woocommerce-Price-amount.subtotal-amount' => wp_kses_post( $this->subtotal_template() ),
-				'.woocommerce-Price-amount.total-amount'    => wp_kses_post( $this->total_template() ),
+				'.addonify-floating-cart-Price-amount.subtotal-amount' => wp_kses_post( $this->subtotal_template() ),
+				'.addonify-floating-cart-Price-amount.total-amount'    => wp_kses_post( $this->total_template() ),
 				'.adfy__woofc-shipping-text'                => wp_kses_post( $this->shopping_meter_text_template() ),
 				'.progress-bar.shipping-bar'                => wp_kses_post( $this->shopping_meter_bar_template() )
 			)
@@ -652,8 +652,8 @@ class Addonify_Floating_Cart_Public
 			'html'           => array(
 				'#adfy__woofc-applied-coupons'              => $coupons,
 				'.woocommerce-Price-amount.discount-amount' => wp_kses_post( $this->discount_template() ),
-				'.woocommerce-Price-amount.subtotal-amount' => wp_kses_post( $this->subtotal_template() ),
-				'.woocommerce-Price-amount.total-amount'    => wp_kses_post( $this->total_template() ),
+				'.addonify-floating-cart-Price-amount.subtotal-amount' => wp_kses_post( $this->subtotal_template() ),
+				'.addonify-floating-cart-Price-amount.total-amount'    => wp_kses_post( $this->total_template() ),
 				'.adfy__woofc-shipping-text'                => wp_kses_post( $this->shopping_meter_text_template() ),
 				'.progress-bar.shipping-bar'                => wp_kses_post( $this->shopping_meter_bar_template() ),
 			)
@@ -704,8 +704,7 @@ class Addonify_Floating_Cart_Public
 
 		return apply_filters(
 			'addonify_floating_cart_subtotal_template',
-			'<span class="woocommerce-Price-amount subtotal-amount"><bdi>'. WC()->cart->get_cart_subtotal() . '</bdi>
-			</span>'
+			'<span class="addonify-floating-cart-Price-amount subtotal-amount"><bdi>'. WC()->cart->get_cart_subtotal() . '</span>'
 		);
 	}
 
@@ -718,8 +717,7 @@ class Addonify_Floating_Cart_Public
 
 		return apply_filters(
 			'addonify_floating_cart_total_template',
-			'<span class="woocommerce-Price-amount total-amount"><bdi>'. WC()->cart->get_cart_total() . '</bdi>
-			</span>'
+			'<span class="addonify-floating-cart-Price-amount total-amount">'. WC()->cart->get_cart_total() . '</span>'
 		);
 	}
 

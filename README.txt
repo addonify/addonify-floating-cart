@@ -101,6 +101,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 = 1.0.2 - 15 September 2022 =
 
 - Tweak: blockUI overlay background color in cart.
+- Fix: HTML print issue in cart total.
 
 
 = 1.0.1 - 13 September 2022 =

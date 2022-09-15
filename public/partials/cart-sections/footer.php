@@ -29,10 +29,8 @@ defined( 'ABSPATH' ) || exit;
 			<li class="sub-total <?php echo ( ( WC()->cart->get_cart_subtotal() !== WC()->cart->get_cart_total() ) && WC()->cart->get_cart_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
 				<span class="label"><?php echo esc_html( apply_filters( 'addonify_floating_cart_sub_total_label', __( 'Sub total:', 'addonify-floating-cart' ) ) ); ?></span>
 				<span class="value">
-					<span class="woocommerce-Price-amount subtotal-amount">
-						<bdi>
-							<?php echo esc_html( WC()->cart->get_cart_subtotal() ); ?>
-						</bdi>
+					<span class="addonify-floating-cart-Price-amount subtotal-amount">
+						<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?>
 					</span>
 				</span>
 			</li>
@@ -49,10 +47,8 @@ defined( 'ABSPATH' ) || exit;
 			<li class="total">
 				<span class="label"><?php echo esc_html( apply_filters( 'addonify_floating_cart_total_label', __( 'Total:', 'addonify-floating-cart' ) ) ); ?></span>
 				<span class="value">
-					<span class="woocommerce-Price-amount total-amount">
-						<bdi>
-							<?php echo esc_html( WC()->cart->get_cart_total() ); ?>
-						</bdi>
+					<span class="addonify-floating-cart-Price-amount total-amount">
+						<?php echo wp_kses_post( WC()->cart->get_cart_total() ); ?>
 					</span>
 				</span>
 			</li>

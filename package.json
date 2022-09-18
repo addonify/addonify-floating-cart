@@ -12,7 +12,8 @@
         "hot": "mix watch --hot",
         "production": "mix --production",
         "public": "gulp assets",
-        "zip": "mix --production && gulp zip"
+        "zip": "mix --production && gulp zip",
+        "pot": "wp i18n make-pot ."
     },
     "dependencies": {
         "element-plus": "^2.2.13",

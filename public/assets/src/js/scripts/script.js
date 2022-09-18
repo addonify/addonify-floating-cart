@@ -148,7 +148,7 @@
             // increase product quantity
             $(document).on('click', '.adfy__woofc-item .adfy__woofc-inc-quantity', function (e) {
                 e.preventDefault();
-                let input_field = $(this).next();
+                let input_field = $(this).prev();
                 if (parseInt(input_field.val()) < parseInt(input_field.attr('max')) || input_field.attr('max') == '') {
                     AddonifyUpdateCartAjax(this, 'add');
                 }
@@ -157,7 +157,7 @@
             //decrease product quantity
             $(document).on('click', '.adfy__woofc-item .adfy__woofc-dec-quantity', function (e) {
                 e.preventDefault();
-                let input_field = $(this).prev();
+                let input_field = $(this).next();
                 if (parseInt(input_field.val()) <= parseInt(input_field.attr('min'))) {
                     return;
                 }

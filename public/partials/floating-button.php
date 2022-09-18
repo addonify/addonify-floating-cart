@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php
 	if ( 1 === $display_badge ) {
 		?>
-		<span class="badge <?php echo esc_attr( $badge_position ); ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span></span>
+		<span class="badge <?php echo esc_attr( $badge_position ); ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html( count( WC()->cart->get_cart_contents() ) ); ?></span></span>
 	<?php } ?>
 </button>
 <?php

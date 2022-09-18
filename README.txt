@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.6
 Requires PHP: 7.0.0
 Tested up to: 6.0.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,12 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.0.3 - 18 September 2022 =
+
+- Tweak: Number of unique items displayed on badges.
+- Tweak: Position of quantity increase and decrease button has changed.
+- Fix: Minor fix. 
 
 = 1.0.2 - 15 September 2022 =
 

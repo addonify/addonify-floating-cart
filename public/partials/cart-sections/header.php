@@ -16,10 +16,11 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) { ?>
 		<span class="adfy__woofc-badge">
 			<?php
+			$cart_items_count = count( WC()->cart->get_cart_contents() );
 			printf(
 				/* translators: 1: number of cart items. */
-				esc_html( _nx( '%1$s Item', '%1$s Items', esc_html( WC()->cart->get_cart_contents_count() ), 'number of cart items', 'addonify-floating-cart' ) ),
-				esc_html( WC()->cart->get_cart_contents_count() )
+				_nx( '%1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ),
+				number_format_i18n( $cart_items_count )
 			);
 			?>
 		</span>

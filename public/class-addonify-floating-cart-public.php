@@ -203,13 +203,15 @@ class Addonify_Floating_Cart_Public
 	 * @return array $fragments
 	 */
 	public function add_to_cart_fragment( $fragments ) {
+
+		$cart_items_count = count( WC()->cart->get_cart_contents() );
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
 				<?php
 				printf( 
-					_nx( ' %1$s Item', '%1$s Items', esc_html( WC()->cart->get_cart_contents_count() ), 'number of cart items', 'addonify-floating-cart' ),
-					esc_html( WC()->cart->get_cart_contents_count() )
+					_nx( ' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ),
+					number_format_i18n( $cart_items_count )
 				);
 				?>
 			</span>
@@ -226,7 +228,7 @@ class Addonify_Floating_Cart_Public
 		}
 
 
-		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' . esc_html( WC()->cart->get_cart_contents_count() ). '</span>';
+		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' . esc_html( $cart_items_count ). '</span>';
 
 		$fragments['.woocommerce-Price-amount.discount-amount'] = $this->discount_template();
 		
@@ -249,13 +251,14 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function add_to_cart_ajax( $fragments = array() ) {
 
+		$cart_items_count = count( WC()->cart->get_cart_contents() );
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
 				<?php
 				printf(
-					_nx(' %1$s Item', '%1$s Items', esc_html( WC()->cart->get_cart_contents_count() ), 'number of cart items', 'addonify-floating-cart'),
-					esc_html( WC()->cart->get_cart_contents_count() )
+					_nx(' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart'),
+					number_format_i18n( $cart_items_count )
 				);
 				?>
 			</span>
@@ -271,7 +274,7 @@ class Addonify_Floating_Cart_Public
 		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', array() );
 		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
-		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' .esc_html( WC()->cart->get_cart_contents_count() ). '</span>';
+		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' .esc_html( $cart_items_count ). '</span>';
 		
 		$fragments['.woocommerce-Price-amount.discount-amount'] = wp_kses_post( $this->discount_template() );
 		
@@ -758,7 +761,7 @@ class Addonify_Floating_Cart_Public
 	 */
 	public function shopping_meter_bar_template() {
 
-		$shopping_threshold_amount = (int)addonify_floating_cart_get_option('customer_shopping_meter_threshold');
+		$shopping_threshold_amount = (int) addonify_floating_cart_get_option('customer_shopping_meter_threshold');
 
 		$cart_total = WC()->cart->get_cart_contents_total();
 

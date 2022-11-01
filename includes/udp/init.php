@@ -81,10 +81,8 @@ register_activation_hook(
 // for theme.
 add_action(
 	'after_switch_theme',
-	function() {
+	function() use ( $root_dir ) {
 		global $this_agent_ver, $engine_url;
-
-		$root_dir = dirname( __DIR__, 1 );
 
 		// authorize this agent with engine.
 		if ( ! class_exists( 'Udp_Agent' ) ) {
@@ -118,9 +116,7 @@ add_action(
 // for plugin.
 register_deactivation_hook(
 	$root_dir . DIRECTORY_SEPARATOR . basename( $root_dir ) . '.php',
-	function () {
-
-		$root_dir = dirname( __DIR__, 1 );
+	function () use ( $root_dir ) {
 
 		$installed_agents = get_option( 'udp_installed_agents', array() );
 		if ( isset( $installed_agents[ basename( $root_dir ) ] ) ) {
@@ -137,9 +133,7 @@ register_deactivation_hook(
 // for theme.
 add_action(
 	'switch_theme',
-	function () {
-
-		$root_dir = dirname( __DIR__, 1 );
+	function ()use ( $root_dir ) {
 
 		$installed_agents = get_option( 'udp_installed_agents', array() );
 		if ( isset( $installed_agents[ basename( $root_dir ) ] ) ) {

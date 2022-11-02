@@ -352,8 +352,8 @@ class Udp_Agent {
 		// authenticate with engine.
 
 		$data['agent_data'] = serialize( $this->get_data() ); //phpcs:ignore
-		$data['site_url'] = get_bloginfo( 'url' );
-		$url              = $this->engine_url . '/wp-json/udp-engine/v1/handshake';
+		$data['site_url']   = get_bloginfo( 'url' );
+		$url                = untrailingslashit( $this->engine_url ) . '/wp-json/udp-engine/v1/handshake';
 
 		// get secret key from engine.
 		$secret_key = json_decode( $this->do_curl( $url, $data ) );

@@ -17,7 +17,7 @@ global $this_agent_ver, $engine_url;
 // Config
 // -------------------------------------------
 
-$engine_url     = 'https://udp.creamcode.org/';
+$engine_url     = 'http://localhost:10003/';
 $this_agent_ver = '1.0.0';
 
 // -------------------------------------------
@@ -78,20 +78,33 @@ register_activation_hook(
 	}
 );
 
-// for theme.
+/**
+ * Send data on theme switch.
+ *
+ * @param string $root_dir Root Directory Path.
+ */
+function send_data_on_theme_switch( $root_dir ) {
+	global $this_agent_ver, $engine_url;
+
+	// authorize this agent with engine.
+	if ( ! class_exists( 'Udp_Agent' ) ) {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/udp/class-udp-agent.php';
+	}
+	$agent = new Udp_Agent( $this_agent_ver, $root_dir, $engine_url );
+	$agent->send_data_to_engine();
+}
+
+add_action( 'cc_udp_agent_send_data', 'send_data_on_theme_switch' );
+
+/**
+ * Schedule data send on theme switch & update agent basename
+ */
 add_action(
 	'after_switch_theme',
-	function() {
-		global $this_agent_ver, $engine_url;
+	function() use ( $root_dir ) {
+		global $this_agent_ver;
 
-		$root_dir = dirname( __DIR__, 1 );
-
-		// authorize this agent with engine.
-		if ( ! class_exists( 'Udp_Agent' ) ) {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . '/udp/class-udp-agent.php';
-		}
-		$agent = new Udp_Agent( $this_agent_ver, $root_dir, $engine_url );
-		$agent->do_handshake();
+		wp_schedule_single_event( time() + 10, 'cc_udp_agent_send_data', array( $root_dir ) );
 
 		$installed_agents                          = get_option( 'udp_installed_agents', array() );
 		$installed_agents[ basename( $root_dir ) ] = $this_agent_ver;
@@ -111,6 +124,27 @@ add_action(
 	}
 );
 
+
+/**
+ * Schedule data send on plugin activation
+ */
+add_action(
+	'activate_plugin',
+	function() use ( $root_dir ) {
+		wp_schedule_single_event( time() + 10, 'cc_udp_agent_send_data', array( $root_dir ) );
+	}
+);
+
+/**
+ * Schedule data send on plugin deactivation
+ */
+add_action(
+	'deactivate_plugin',
+	function() use ( $root_dir ) {
+		wp_schedule_single_event( time() + 10, 'cc_udp_agent_send_data', array( $root_dir ) );
+	}
+);
+
 // -------------------------------------------
 // Agent De-activation
 // -------------------------------------------
@@ -118,9 +152,7 @@ add_action(
 // for plugin.
 register_deactivation_hook(
 	$root_dir . DIRECTORY_SEPARATOR . basename( $root_dir ) . '.php',
-	function () {
-
-		$root_dir = dirname( __DIR__, 1 );
+	function () use ( $root_dir ) {
 
 		$installed_agents = get_option( 'udp_installed_agents', array() );
 		if ( isset( $installed_agents[ basename( $root_dir ) ] ) ) {
@@ -137,9 +169,7 @@ register_deactivation_hook(
 // for theme.
 add_action(
 	'switch_theme',
-	function () {
-
-		$root_dir = dirname( __DIR__, 1 );
+	function () use ( $root_dir ) {
 
 		$installed_agents = get_option( 'udp_installed_agents', array() );
 		if ( isset( $installed_agents[ basename( $root_dir ) ] ) ) {

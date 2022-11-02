@@ -17,7 +17,7 @@ global $this_agent_ver, $engine_url;
 // Config
 // -------------------------------------------
 
-$engine_url     = 'http://localhost:10003/';
+$engine_url     = 'https://udp.creamcode.org/';
 $this_agent_ver = '1.0.0';
 
 // -------------------------------------------
@@ -78,23 +78,25 @@ register_activation_hook(
 	}
 );
 
-/**
- * Send data on theme switch.
- *
- * @param string $root_dir Root Directory Path.
- */
-function send_data_on_theme_switch( $root_dir ) {
-	global $this_agent_ver, $engine_url;
+if ( ! function_exists( 'cc_udp_agent_send_data_on_theme_switch' ) ) {
+	/**
+	 * Send data on theme switch.
+	 *
+	 * @param string $root_dir Root Directory Path.
+	 */
+	function cc_udp_agent_send_data_on_theme_switch( $root_dir ) {
+		global $this_agent_ver, $engine_url;
 
-	// authorize this agent with engine.
-	if ( ! class_exists( 'Udp_Agent' ) ) {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/udp/class-udp-agent.php';
+		// authorize this agent with engine.
+		if ( ! class_exists( 'Udp_Agent' ) ) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . '/udp/class-udp-agent.php';
+		}
+		$agent = new Udp_Agent( $this_agent_ver, $root_dir, $engine_url );
+		$agent->send_data_to_engine();
 	}
-	$agent = new Udp_Agent( $this_agent_ver, $root_dir, $engine_url );
-	$agent->send_data_to_engine();
 }
 
-add_action( 'cc_udp_agent_send_data', 'send_data_on_theme_switch' );
+add_action( 'cc_udp_agent_send_data', 'cc_udp_agent_send_data_on_theme_switch' );
 
 /**
  * Schedule data send on theme switch & update agent basename

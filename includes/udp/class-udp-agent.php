@@ -459,6 +459,7 @@ class Udp_Agent {
 		exit;
 
 	}
+
 	/**
 	 * Function used for debugging.
 	 * Writes in the log file.
@@ -481,26 +482,20 @@ class Udp_Agent {
 	 * @since    1.0.0
 	 * @param string $url URL.
 	 * @param array  $data_to_send Data to send.
-	 * @return array|bool $response Response from curl request.
+	 * @return mixed $response Response from curl request.
 	 */
 	private function do_curl( $url, $data_to_send ) {
-		 //phpcs:disable
-		// open connection.
-		$ch = curl_init();
+		if ( empty( $url ) ) {
+			return;
+		}
 
-		// set the url, POST data.
-		curl_setopt( $ch, CURLOPT_URL, $url );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_to_send );
+		$args = array(
+			'body' => $data_to_send,
+		);
 
-		// execute post.
-		$response = curl_exec( $ch );
+		$return_data = wp_remote_post( $url, $args );
 
-		// close connection.
-		curl_close( $ch );
-
-		return $response;
-		 //phpcs:enable
+		return wp_remote_retrieve_body( $return_data );
 	}
 
 }

@@ -414,13 +414,12 @@ class Udp_Agent {
 		return $agent_name;
 	}
 
-
 	// ------------------------------------------------
 	// Cron
 	// ------------------------------------------------
 
 	/**
-	 * Custom cron job, runs daily
+	 * Custom cron job, runs weekly.
 	 *
 	 * @since 1.0.0
 	 * @return void
@@ -431,7 +430,7 @@ class Udp_Agent {
 		add_action( $cron_hook_name, array( $this, 'send_data_to_engine' ) );
 
 		if ( ! wp_next_scheduled( $cron_hook_name ) ) {
-			wp_schedule_event( time(), 'daily', $cron_hook_name );
+			wp_schedule_event( time(), 'weekly', $cron_hook_name );
 		}
 
 	}
@@ -467,7 +466,7 @@ class Udp_Agent {
 	 * @param string $log Message to be logged.
 	 */
 	private function write_log( $log ) {
-		if ( true === WP_DEBUG ) {
+		if ( true === WP_DEBUG && true === WP_DEBUG_LOG ) {
 			if ( is_array( $log ) || is_object( $log ) ) {
 				error_log( print_r( $log, true ) ); //phpcs:ignore
 			} else {
@@ -485,6 +484,7 @@ class Udp_Agent {
 	 * @return mixed $response Response from curl request.
 	 */
 	private function do_curl( $url, $data_to_send ) {
+
 		if ( empty( $url ) ) {
 			return;
 		}
@@ -496,6 +496,7 @@ class Udp_Agent {
 		$return_data = wp_remote_post( $url, $args );
 
 		return wp_remote_retrieve_body( $return_data );
+
 	}
 
 }

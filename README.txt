@@ -102,6 +102,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Fix: Actual name not showing in coupon applied section fixed
 - Fix: Actual message not showing in coupon page fixed
+- Added: Integrated UDP
 
 = 1.0.3 - 18 September 2022 =
 

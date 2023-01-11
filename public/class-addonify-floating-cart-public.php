@@ -86,7 +86,7 @@ class Addonify_Floating_Cart_Public {
 		add_action( 'wp_ajax_addonify_floating_cart_remove_coupon', array( $this, 'remove_coupon' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_remove_coupon', array( $this, 'remove_coupon' ) );
 
-		add_filter( 'woocommerce_add_to_cart_fragments ', array( $this, 'add_to_cart_fragment' ) );
+		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
 	}
 
 	/**

@@ -19,8 +19,8 @@ defined( 'ABSPATH' ) || exit;
 			$cart_items_count = count( WC()->cart->get_cart_contents() );
 			printf(
 				/* translators: 1: number of cart items. */
-				_nx( '%1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ),
-				number_format_i18n( $cart_items_count )
+				esc_html( _nx( '%1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ) ),
+				esc_html( number_format_i18n( $cart_items_count ) )
 			);
 			?>
 		</span>

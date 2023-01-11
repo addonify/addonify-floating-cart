@@ -54,6 +54,13 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'customer_shopping_meter_pre_threshold_label'  => '',
 			'customer_shopping_meter_post_threshold_label' => '',
 			'load_styles_from_plugin'                      => '1',
+			'display_tax_amount'                           => true,
+			'enable_shipping_calculation'                  => false,
+			'sub_total_label'                              => __( 'Sub Total: ', 'addonify-floating-cart' ),
+			'discount_label'                               => __( 'Discount:', 'addonify-floating-cart' ),
+			'shipping_label'                               => __( 'Shipping:', 'addonify-floating-cart' ),
+			'tax_label'                                    => __( 'Tax:', 'addonify-floating-cart' ),
+			'total_label'                                  => __( 'Total:', 'addonify-floating-cart' ),
 
 			// Floating Cart Toggle Button Options.
 			'display_cart_modal_toggle_button'             => '1',

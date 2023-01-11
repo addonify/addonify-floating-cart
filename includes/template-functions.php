@@ -270,6 +270,57 @@ function addonify_floating_cart_get_sidebar_cart_shipping_bar_template( $args = 
 add_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', 'addonify_floating_cart_get_sidebar_cart_shipping_bar_template', 10, 1 );
 
 /**
+ * Display sidebar cart shipping section.
+ *
+ * @since 1.0.0
+ * @param mixed $args Shipping template arguments.
+ */
+function addonify_floating_cart_get_sidebar_cart_shipping_template( $args = array() ) {
+	$args['button_text'] = __( 'Update Billing Info', 'go-cart' );
+
+	$packages = WC()->cart->get_shipping_packages();
+	$packages = WC()->shipping()->calculate_shipping( $packages );
+	$first    = true;
+
+	foreach ( $packages as $i => $package ) {
+		$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+		$product_names = array();
+
+		if ( count( $packages ) > 1 ) {
+			foreach ( $package['contents'] as $item_id => $values ) {
+				$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
+			}
+			$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
+		}
+
+		$args = array(
+			'package'                  => $package,
+			'available_methods'        => $package['rates'],
+			'show_package_details'     => count( $packages ) > 1,
+			'show_shipping_calculator' => apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
+			'package_details'          => implode( ', ', $product_names ),
+			/* translators: %d: shipping package number */
+			'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'go-cart' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'go-cart' ), $i, $package ),
+			'index'                    => $i,
+			'chosen_method'            => $chosen_method,
+			'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+			'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
+		);
+
+		addonify_floating_cart_get_template(
+			'cart-sections/shipping.php',
+			apply_filters(
+				'addonify_floating_cart_sidebar_cart_shipping_template_args',
+				$args
+			)
+		);
+
+		$first = false;
+	}
+}
+add_action( 'addonify_floating_cart_sidebar_cart_shipping', 'addonify_floating_cart_get_sidebar_cart_shipping_template', 10, 1 );
+
+/**
  * Display sidebar cart footer section.
  *
  * @since 1.0.0

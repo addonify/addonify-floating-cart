@@ -16,10 +16,10 @@ $calculator_text          = '';
 ?>
 
 
-<div id="addonify_floating_cart-shipping-container-inner">
+<div id="adfy__woofc-shipping-container-inner">
 	<?php if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || (bool) addonify_floating_cart_get_option( 'enable_shipping_calculation' ) ) : ?>
 		<?php if ( $available_methods ) : ?>
-			<ul id="addonify_floating_cart-shipping-methods" class="addonify_floating_cart-shipping-methods">
+			<ul id="adfy__woofc-shipping-methods" class="adfy__woofc-shipping-methods">
 				<?php foreach ( $available_methods as $method ) : ?>
 					<li>
 						<?php
@@ -34,7 +34,7 @@ $calculator_text          = '';
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<p class="addonify_floating_cart-shipping-destination">
+			<p class="adfy__woofc-shipping-destination">
 				<?php
 				if ( $formatted_destination ) {
 					// Translators: $s shipping destination.
@@ -65,16 +65,16 @@ $calculator_text          = '';
 
 		<?php if ( $show_shipping_calculator ) : ?>
 
-			<form id="addonify_floating_cart-shipping-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+			<form id="adfy__woofc-shipping-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
-				<div class="addonify_floating_cart-shipping-address-form-toggle-button-block">
-					<?php printf( '<a href="#" class="addonify_floating_cart-shipping-address-form-toggle-button addonify_floating_cart-link has-underline">%s</a>', esc_html( ! empty( $calculator_text ) ? $calculator_text : __( 'Calculate shipping', 'addonify-floating-cart' ) ) ); ?>
+				<div class="adfy__woofc-shipping-address-form-toggle-button-block">
+					<?php printf( '<a href="#" class="adfy__woofc-shipping-address-form-toggle-button adfy__woofc-link has-underline">%s</a>', esc_html( ! empty( $calculator_text ) ? $calculator_text : __( 'Calculate shipping', 'addonify-floating-cart' ) ) ); ?>
 				</div>
 
-				<section class="addonify_floating_cart-shipping-form-elements" style="display:none;">
+				<section class="adfy__woofc-shipping-form-elements" style="display:none;">
 
 					<?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_country', true ) ) : ?>
-						<div class="addonify_floating_cart-shipping-form-item" id="addonify_floating_cart_shipping_country_field">
+						<div class="adfy__woofc-shipping-form-item" id="adfy__woofc_shipping_country_field">
 							<label for="addonify_floating_cart_shipping_country" class="screen-reader-text">
 								<?php esc_html_e( 'Country / region:', 'addonify-floating-cart' ); ?>
 							</label>
@@ -92,7 +92,7 @@ $calculator_text          = '';
 					<?php endif; ?>
 
 					<?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_state', true ) ) : ?>
-						<div class="addonify_floating_cart-shipping-form-item" id="addonify_floating_cart_shipping_state_field">
+						<div class="adfy__woofc-shipping-form-item" id="adfy__woofc_shipping_state_field">
 							<?php
 							$current_cc = WC()->customer->get_shipping_country();
 							$current_r  = WC()->customer->get_shipping_state();
@@ -127,20 +127,20 @@ $calculator_text          = '';
 					<?php endif; ?>
 
 					<?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_city', true ) ) : ?>
-						<div class="addonify_floating_cart-shipping-form-item" id="addonify_floating_cart_shipping_city_field">
+						<div class="adfy__woofc-shipping-form-item" id="adfy__woofc_shipping_city_field">
 							<label for="addonify_floating_cart_shipping_city" class="screen-reader-text"><?php esc_html_e( 'City:', 'addonify-floating-cart' ); ?></label>
 							<input type="text" class="input-text" value="<?php echo esc_attr( WC()->customer->get_shipping_city() ); ?>" placeholder="<?php esc_attr_e( 'City', 'addonify-floating-cart' ); ?>" name="addonify_floating_cart_shipping_city" id="addonify_floating_cart_shipping_city" />
 						</div>
 					<?php endif; ?>
 
 					<?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_postcode', true ) ) : ?>
-						<div class="addonify_floating_cart-shipping-form-item" id="addonify_floating_cart_shipping_postcode_field">
+						<div class="adfy__woofc-shipping-form-item" id="adfy__woofc_shipping_postcode_field">
 							<label for="addonify_floating_cart_shipping_postcode" class="screen-reader-text"><?php esc_html_e( 'Postcode / ZIP:', 'addonify-floating-cart' ); ?></label>
 							<input type="text" class="input-text" value="<?php echo esc_attr( WC()->customer->get_shipping_postcode() ); ?>" placeholder="<?php esc_attr_e( 'Postcode / ZIP', 'addonify-floating-cart' ); ?>" name="addonify_floating_cart_shipping_postcode" id="addonify_floating_cart_shipping_postcode" />
 						</div>
 					<?php endif; ?>
 
-					<div class="addonify_floating_cart-shipping-form-item">
+					<div class="adfy__woofc-shipping-form-item">
 						<button type="submit" name="addonify_floating_cart_shipping" value="1" class="button addonify_floating_cart-button">
 							<?php esc_html_e( 'Update address', 'addonify-floating-cart' ); ?>
 						</button>

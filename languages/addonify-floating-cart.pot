@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-24T07:00:23+00:00\n"
+"POT-Creation-Date: 2023-01-24T07:10:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -35,7 +35,7 @@ msgid "https://addonify.com/"
 msgstr ""
 
 #: admin/class-addonify-floating-cart-admin.php:212
-#: admin/assets/js/main.js:2965
+#: admin/assets/js/main.js:3070
 msgid "Settings"
 msgstr ""
 
@@ -966,46 +966,110 @@ msgstr ""
 msgid "Update address"
 msgstr ""
 
-#: admin/assets/js/main.js:2410
+#: admin/assets/js/main.js:496
+#: admin/src/stores/product.js:53
+msgid "Error: couldn't fetch recommended plugins list."
+msgstr ""
+
+#: admin/assets/js/main.js:544
+#: admin/src/stores/product.js:98
+msgid "Error: couldn't process the recommended plugins list."
+msgstr ""
+
+#: admin/assets/js/main.js:591
+#: admin/src/stores/product.js:135
+msgid "Error: Couldn't retrive the list of installed plugins."
+msgstr ""
+
+#: admin/assets/js/main.js:677
+#: admin/src/stores/product.js:214
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: admin/assets/js/main.js:698
+#: admin/src/stores/product.js:228
+msgid "Error: couldn't install plugin."
+msgstr ""
+
+#: admin/assets/js/main.js:755
+#: admin/src/stores/product.js:267
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: admin/assets/js/main.js:776
+#: admin/src/stores/product.js:281
+msgid "Error: Couldn't activate the plugin."
+msgstr ""
+
+#: admin/assets/js/main.js:1614
+msgid "Activate now"
+msgstr ""
+
+#: admin/assets/js/main.js:1616
+msgid "Activating..."
+msgstr ""
+
+#: admin/assets/js/main.js:1618
+msgid "Install now"
+msgstr ""
+
+#: admin/assets/js/main.js:1620
+msgid "Installing..."
+msgstr ""
+
+#: admin/assets/js/main.js:1622
+msgid "Installed"
+msgstr ""
+
+#: admin/assets/js/main.js:2495
 msgid "Input is not supported."
 msgstr ""
 
-#: admin/assets/js/main.js:2412
+#: admin/assets/js/main.js:2497
 msgid "Check docs"
 msgstr ""
 
-#: admin/assets/js/main.js:2731
+#: admin/assets/js/main.js:2666
+msgid "Select"
+msgstr ""
+
+#: admin/assets/js/main.js:2742
+#: admin/assets/js/main.js:2774
+msgid "Enter text here..."
+msgstr ""
+
+#: admin/assets/js/main.js:2830
 msgid "Version"
 msgstr ""
 
-#: admin/assets/js/main.js:2733
+#: admin/assets/js/main.js:2832
 msgid "Rate"
 msgstr ""
 
-#: admin/assets/js/main.js:2849
+#: admin/assets/js/main.js:2950
 msgid "Documentation"
 msgstr ""
 
-#: admin/assets/js/main.js:2859
+#: admin/assets/js/main.js:2960
 msgid "Save Options"
 msgstr ""
 
-#: admin/assets/js/main.js:2976
+#: admin/assets/js/main.js:3081
 msgid "Design"
 msgstr ""
 
-#: admin/assets/js/main.js:2987
+#: admin/assets/js/main.js:3092
 msgid "Products"
 msgstr ""
 
-#: admin/assets/js/main.js:3515
+#: admin/assets/js/main.js:3638
 msgid "404"
 msgstr ""
 
-#: admin/assets/js/main.js:3517
+#: admin/assets/js/main.js:3640
 msgid "Oops, page not found!"
 msgstr ""
 
-#: admin/assets/js/main.js:3524
+#: admin/assets/js/main.js:3647
 msgid "Go Back"
 msgstr ""

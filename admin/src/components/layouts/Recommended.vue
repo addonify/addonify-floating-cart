@@ -21,11 +21,11 @@ const isDisabled = ref(false);
 const isActiviting = ref(false);
 const isInstalling = ref(false);
 
-const activateText = __("Activate now", "addonify-wishlist");
-const activitingText = __("Activating...", "addonify-wishlist");
-const installText = __("Install now", "addonify-wishlist");
-const installingText = __("Installing...", "addonify-wishlist");
-const installedText = __("Installed", "addonify-wishlist");
+const activateText = __("Activate now", "addonify-floating-cart");
+const activitingText = __("Activating...", "addonify-floating-cart");
+const installText = __("Install now", "addonify-floating-cart");
+const installingText = __("Installing...", "addonify-floating-cart");
+const installedText = __("Installed", "addonify-floating-cart");
 
 const activeAddonHandler = (slug) => {
 	isLoading.value = true;

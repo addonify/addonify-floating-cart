@@ -50,7 +50,7 @@ export const useProductStore = defineStore({
                     console.error("Couldn't fetch Github repo " + res);
 
                     ElMessage.error(({
-                        message: __('Error: couldn\'t fetch recommended plugins list.', 'addonify-wishlist'),
+                        message: __('Error: couldn\'t fetch recommended plugins list.', 'addonify-floating-cart'),
                         offset: 50,
                         duration: 20000,
                     }));
@@ -86,7 +86,7 @@ export const useProductStore = defineStore({
 
                     //console.log(key);
                     // Let's add the slug to object with status null for now.
-                    // i.e: { 'addonify-wishlist': 'status' }
+                    // i.e: { 'addonify-floating-cart': 'status' }
                     this.allProductSlugStatus[key] = 'null';
                 });
 
@@ -95,7 +95,7 @@ export const useProductStore = defineStore({
                 console.error("💥 Couldn't process the list plugins list.");
 
                 ElMessage.error(({
-                    message: __('Error: couldn\'t process the recommended plugins list.', 'addonify-wishlist'),
+                    message: __('Error: couldn\'t process the recommended plugins list.', 'addonify-floating-cart'),
                     offset: 50,
                     duration: 10000,
                 }));
@@ -132,7 +132,7 @@ export const useProductStore = defineStore({
                 console.error(err);
 
                 ElMessage.error(({
-                    message: __('Error: Couldn\'t retrive the list of installed plugins.', 'addonify-wishlist'),
+                    message: __('Error: Couldn\'t retrive the list of installed plugins.', 'addonify-floating-cart'),
                     offset: 50,
                     duration: 20000,
                 }));
@@ -211,7 +211,7 @@ export const useProductStore = defineStore({
                     console.log(`=> Plugin ${slug} installed successfully.`);
 
                     ElMessage.success(({
-                        message: __('Plugin installed successfully.', 'addonify-wishlist'),
+                        message: __('Plugin installed successfully.', 'addonify-floating-cart'),
                         offset: 50,
                         duration: 5000,
                     }));
@@ -225,7 +225,7 @@ export const useProductStore = defineStore({
                 console.error(err);
 
                 ElMessage.error(({
-                    message: __('Error: couldn\'t install plugin.', 'addonify-wishlist'),
+                    message: __('Error: couldn\'t install plugin.', 'addonify-floating-cart'),
                     offset: 50,
                     duration: 20000,
                 }));
@@ -264,7 +264,7 @@ export const useProductStore = defineStore({
                     console.log(`=> Plugin ${slug} activated successfully.`);
 
                     ElMessage.success(({
-                        message: __('Plugin activated successfully.', 'addonify-wishlist'),
+                        message: __('Plugin activated successfully.', 'addonify-floating-cart'),
                         offset: 50,
                         duration: 5000,
                     }));
@@ -278,7 +278,7 @@ export const useProductStore = defineStore({
                 console.log(err);
 
                 ElMessage.error(({
-                    message: __('Error: Couldn\'t activate the plugin.', 'addonify-wishlist'),
+                    message: __('Error: Couldn\'t activate the plugin.', 'addonify-floating-cart'),
                     offset: 50,
                     duration: 20000,
                 }));

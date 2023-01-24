@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.6
 Requires PHP: 7.0.0
 Tested up to: 6.1.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,8 +95,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 4. Floating Cart discount section on frontend.
 
 
-
 == Changelog ==
+
+= 1.0.6 - 24 January 2022 =
+
+- Added: Recommended products in floating cart setting page.
 
 = 1.0.5 - 18 November 2022 =
 

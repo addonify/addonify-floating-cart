@@ -251,6 +251,7 @@
                             color: var(--adfy_woofc_cart_product_remove_button_text_color);
                             border-radius: 100%;
                             text-decoration: none;
+                            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
                             background-color: var(--adfy_woofc_cart_product_remove_button_background_color);
                             @include breakpoint(mobile) {
 
@@ -260,8 +261,8 @@
 
                             svg {
 
-                                width: 14px;
-                                height: 14px;
+                                width: 16px;
+                                height: 16px;
                             }
 
                             &:hover {
@@ -333,10 +334,10 @@
                                 justify-content: center;
                                 margin: 0;
                                 padding: 0;
-                                width: 95px;
-                                padding: 2px 10px;
+                                width: 110px;
+                                padding: 5px 10px;
                                 border: 1px solid var(--adfy_woofc_border_color);
-                                border-radius: 4px;
+                                border-radius: 30px;
 
                                 // Chrome, Safari, Edge & Opera
                                 input::-webkit-outer-spin-button,
@@ -404,8 +405,8 @@
 
                                     svg {
 
-                                        height: 14px;
-                                        height: 14px;
+                                        height: 18px;
+                                        height: 18px;
                                     }
 
                                     &:hover {
@@ -628,7 +629,7 @@
 
 #adfy__floating-cart[data_type="modal"] {
 
-    z-index: var(--adfy_woo_floating_cart_zindex);
+    z-index: var(--adfy_woofc_floating_cart_zindex);
 }
 
 #adfy__floating-cart[data_type="drawer"][data_position="left"] {
@@ -649,7 +650,7 @@
 
 .adfy__woofc-visible #adfy__floating-cart {
 
-    z-index: var(--adfy_woo_floating_cart_zindex);
+    z-index: var(--adfy_woofc_floating_cart_zindex);
     box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.2);
 }
 

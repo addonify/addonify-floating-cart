@@ -15,7 +15,7 @@
     width: 100%;
     height: 100%;
     color: var(--adfy_woofc_base_text_color);
-    z-index: calc(var(--adfy_woo_floating_cart_zindex) - 1);
+    z-index: calc(var(--adfy_woofc_floating_cart_zindex) - 1);
     background-color: var(--adfy_woofc_cart_background_color);
     @include visibility_hidden();
     @include transation_delay();
@@ -23,7 +23,7 @@
     &[data_display="visible"] {
 
         @include visibility_visible();
-        z-index: calc( var(--adfy_woo_floating_cart_zindex) + 10);
+        z-index: calc( var(--adfy_woofc_floating_cart_zindex) + 10);
 
         #adfy__woofc-coupon-form {
 
@@ -40,30 +40,6 @@
         @include breakpoint(medium) {
 
             justify-content: flex-end;
-        }
-
-        #adfy__woofc-hide-coupon-container {
-
-            display: inline-flex;
-            font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
-            line-height: 1;
-            font-weight: normal;
-            gap: 10px;
-            align-items: center;
-            fill: var(--adfy_woofc_base_text_color);
-            color: var(--adfy_woofc_base_text_color);
-
-            svg {
-
-                width: 20px;
-                height: 20px;
-            }
-
-            &:hover {
-
-                fill: var(--adfy_woofc_base_link_color_hover);
-                color: var(--adfy_woofc_base_link_color_hover);
-            }
         }
     }
 

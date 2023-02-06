@@ -247,8 +247,9 @@
 
         handleFloatingCartCoupon: () => {
 
-            $(document).on('click', '#adfy__woofc-coupon-trigger', function () {
+            $(document).on('click', '#adfy__woofc-coupon-trigger', function (e) {
 
+                e.preventDefault();
                 addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
             })
             $(document).on('click', '#adfy__woofc-hide-coupon-container', function () {
@@ -483,8 +484,9 @@
         shippingSectionHandler: () => {
 
             // show coupon container.
-            $(document).on('click', '#adfy__woofc-shipping-trigger', function () {
+            $(document).on('click', '#adfy__woofc-shipping-trigger', function (e) {
 
+                e.preventDefault();
                 $('#adfy__woofc-shipping-container').attr('data_display', 'visible');
             });
 

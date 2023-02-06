@@ -21,7 +21,6 @@
 
 	--adfy_woofc_cart_width: 500px; // New
 	
-
 	// Toggle button
 	--adfy_woofc_toggle_button_text_color: #555555;
 	--adfy_woofc_toggle_button_text_color_hover: #898989;
@@ -75,7 +74,6 @@
 	--adfy_woofc_toast_button_background_color_hover: rgba(0, 0, 0, 0.4);
 
 	// Cart & cart title
-	
 	--adfy_woofc_cart_title_text_color: var(--adfy_woofc_base_text_color);
 	--adfy_woofc_cart_title_font_size: var(--adfy_woofc_base_text_font_size); // New 
 	--adfy_woofc_cart_title_font_weight: var(--adfy_woofc_base_text_font_weight); // New
@@ -111,6 +109,6 @@
 
 	--adfy_woofc_trigger_button_zindex: 10000000;
 	--adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   
-	--adfy_woo_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
-	--adfy_woo_floating_cart_inner_mask_zindex: calc( var(--adfy_woo_floating_cart_zindex) + 10 );
+	--adfy_woofc_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
+	--adfy_woofc_floating_cart_inner_mask_zindex: calc( var(--adfy_woofc_floating_cart_zindex) + 10 );
 }

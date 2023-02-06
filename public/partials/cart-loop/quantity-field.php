@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 			data-product_sku="<?php echo esc_attr( $product_sku ); ?>"
 			data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
 		>
-			<svg fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11H7v-2h10v2z"></path></svg>
 		</button>
 		<input 
 			type="number" 
@@ -37,7 +37,7 @@ defined( 'ABSPATH' ) || exit;
 			data-product_sku="<?php echo esc_attr( $product_sku ); ?>"
 			data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
 		>
-			<svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
 		</button>
 	</form>
 </div>

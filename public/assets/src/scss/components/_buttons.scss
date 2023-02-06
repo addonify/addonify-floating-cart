@@ -281,3 +281,32 @@ a.adfy__woofc-button.secondary,
         left: var(--adfy_woofc_toggle_button_horizental_offset);
     }
 }
+
+/* -------------------------------------------------------------------------- 
+	#. Close Buttons (Coupon & shipping model close buttons)
+  -------------------------------------------------------------------------- */
+
+#adfy__woofc-hide-coupon-container,
+#adfy__woofc-hide-shipping-container {
+
+    display: inline-flex;
+    font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
+    line-height: 1;
+    font-weight: normal;
+    gap: 10px;
+    align-items: center;
+    fill: var(--adfy_woofc_base_text_color);
+    color: var(--adfy_woofc_base_text_color);
+
+    svg {
+
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+
+        fill: var(--adfy_woofc_base_link_color_hover);
+        color: var(--adfy_woofc_base_link_color_hover);
+    }
+}

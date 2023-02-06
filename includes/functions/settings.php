@@ -111,7 +111,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'sub_total_label'                              => __( 'Sub Total: ', 'addonify-floating-cart' ),
 			'discount_label'                               => __( 'Discount:', 'addonify-floating-cart' ),
 			'shipping_label'                               => __( 'Shipping:', 'addonify-floating-cart' ),
-			'open_shipping_label'                          => __( 'Change Shipping:', 'addonify-floating-cart' ),
+			'open_shipping_label'                          => __( 'Change address', 'addonify-floating-cart' ),
 			'tax_label'                                    => __( 'Tax:', 'addonify-floating-cart' ),
 			'total_label'                                  => __( 'Total:', 'addonify-floating-cart' ),
 

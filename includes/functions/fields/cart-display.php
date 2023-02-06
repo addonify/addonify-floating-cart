@@ -81,7 +81,7 @@ function addonify_floating_cart_cart_display_settings() {
 			'value'     => addonify_floating_cart_get_option( 'enable_shipping_calculation' ),
 		),
 		'sub_total_label'                   => array(
-			'label'     => __( 'SubTotal Label', 'addonify-floating-cart' ),
+			'label'     => __( 'Sub Total Label', 'addonify-floating-cart' ),
 			'type'      => 'text',
 			'dependent' => array( 'enable_floating_cart' ),
 			'value'     => addonify_floating_cart_get_option( 'sub_total_label' ),

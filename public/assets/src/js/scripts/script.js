@@ -13,6 +13,8 @@
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
+    let countriesToStates = addonifyFloatingCartJSObject.states;
+
     var product_name;
 
     var subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
@@ -272,7 +274,6 @@
                     },
                     'success': function (data) {
                         let result = JSON.parse(data);
-                        console.log(result);
                         if (result.couponApplied === true) {
                             couponField.val('');
                             $.each(result.html, function (i, val) {
@@ -512,11 +513,11 @@
                 let shipping_state = $('#addonify_floating_cart_shipping_state').val();
                 let shipping_city = $('#addonify_floating_cart_shipping_city').val();
                 let shipping_postcode = $('#addonify_floating_cart_shipping_postcode').val();
-                let nonce = $('#go-cart-shipping-nonce').val();
+                let nonce = $('#addonify-floating-cart-shipping-nonce').val();
                 $.ajax({
-                    url: addonifyFloatingCartJSObject.ajaxURL,
-                    method: 'POST',
-                    data: {
+                    'url' : addonifyFloatingCartJSObject.ajax_url,
+                    'method' : 'POST',
+                    'data' : {
                         action: addonifyFloatingCartJSObject.updateShippingInfo,
                         shipping_country: shipping_country,
                         shipping_state: shipping_state,
@@ -524,7 +525,7 @@
                         shipping_postcode: shipping_postcode,
                         nonce: nonce
                     },
-                    success: function (response) {
+                    'success' : function (response) {
                         if (!response)
                             return;
 
@@ -540,7 +541,7 @@
                         }
                     },
                     failure: function () {
-                        alert('fail')
+                        console.log('Request failed! Are we offline?')
                     }
                 })
             });
@@ -549,7 +550,7 @@
             $(document).on('change', '#addonify_floating_cart_shipping_country', function () {
                 let country = $(this).val();
                 let state_div = $('#addonify_floating_cart_shipping_state');
-                let states = coutriesToStates[country];
+                let states = countriesToStates[country];
                 if (typeof states === 'object' && Object.keys(states).length > 0) {
                     let html = '';
                     for (let index in states) {

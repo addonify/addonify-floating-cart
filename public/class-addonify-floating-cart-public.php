@@ -68,6 +68,16 @@ class Addonify_Floating_Cart_Public {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'footer_content' ) );
 
+		$this->register_ajax_actions();
+
+		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_ajax' ) );
+	}
+
+	/**
+	 * Register ajax actions.
+	 */
+	public function register_ajax_actions() {
+
 		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
 
@@ -92,7 +102,6 @@ class Addonify_Floating_Cart_Public {
 		add_action( 'wp_ajax_addonify_floating_update_shipping_method', array( $this, 'update_shipping_method' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_update_shipping_method', array( $this, 'update_shipping_method' ) );
 
-		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_ajax' ) );
 	}
 
 	/**
@@ -138,6 +147,14 @@ class Addonify_Floating_Cart_Public {
 			return;
 		}
 
+		if ( did_action( 'woocommerce_init' ) ) {
+			$states    = array();
+			$countries = WC()->countries->get_allowed_countries();
+			foreach ( $countries as $i => $country ) {
+				$states[ $i ] = WC()->countries->get_states( $i );
+			}
+		}
+
 		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true );
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
@@ -168,6 +185,7 @@ class Addonify_Floating_Cart_Public {
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
 				'toastNotificationButton'                  => $this->toast_notification_button_template(),
+				'states'                                   => $states,
 			)
 		);
 	}
@@ -722,8 +740,8 @@ class Addonify_Floating_Cart_Public {
 				$fragments = apply_filters( 'woocommerce_add_to_cart_fragments', $this->add_to_cart_ajax() );
 
 				ob_start();
-				do_action( 'addonify_floating_cart_sidebar_cart_body', array() );
-				$fragments['.addonify_floating_cart__woo-content'] = ob_get_clean();
+				do_action( 'addonify_floating_cart_sidebar_cart_shipping' );
+				$fragments['#adfy__woofc-shipping-container-inner'] = ob_get_clean();
 
 				$return_response['fragments']        = $fragments;
 				$return_response['cart_items_count'] = WC()->cart->get_cart_contents_count();

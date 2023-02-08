@@ -794,7 +794,15 @@ class Addonify_Floating_Cart_Public {
 			}
 
 			wp_send_json( $return_response );
+		} else {
+			wp_send_json(
+				array(
+					'success' => false,
+					'message' => apply_filters( 'addonify_floating_cart_invalid_nonce_message', esc_html__( 'Invalid security token.', 'addonify-floating-cart' ) ),
+				)
+			);
 		}
+		wp_die();
 	}
 
 

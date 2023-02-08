@@ -276,7 +276,6 @@ add_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', 'addonify_floati
  * @param mixed $args Shipping template arguments.
  */
 function addonify_floating_cart_get_sidebar_cart_shipping_template( $args = array() ) {
-	$args['button_text'] = __( 'Update Billing Info', 'go-cart' );
 
 	$packages = WC()->cart->get_shipping_packages();
 	$packages = WC()->shipping()->calculate_shipping( $packages );
@@ -300,7 +299,7 @@ function addonify_floating_cart_get_sidebar_cart_shipping_template( $args = arra
 			'show_shipping_calculator' => apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
 			'package_details'          => implode( ', ', $product_names ),
 			/* translators: %d: shipping package number */
-			'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'go-cart' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'go-cart' ), $i, $package ),
+			'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'addonify-floating-cart' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'addonify-floating-cart' ), $i, $package ),
 			'index'                    => $i,
 			'chosen_method'            => $chosen_method,
 			'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),

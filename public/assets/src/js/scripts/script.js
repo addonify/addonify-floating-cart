@@ -540,7 +540,7 @@
                             });
                         }
                     },
-                    failure: function () {
+                    'failure' : function () {
                         console.log('Request failed! Are we offline?')
                     }
                 })
@@ -595,14 +595,14 @@
                 $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
 
                 $.ajax({
-                    url: addonifyFloatingCartJSObject.ajaxURL,
-                    data: {
+                    'url' : addonifyFloatingCartJSObject.ajax_url,
+                    'method' : 'POST',
+                    'data' : {
                         action: addonifyFloatingCartJSObject.updateShippingMethod,
                         nonce: addonifyFloatingCartJSObject.nonce,
                         shipping_method: shipping_methods,
                     },
-                    method: 'POST',
-                    success: function (response) {
+                    'success' : function (response) {
                         if (!response || response.error) {
                             return;
                         }

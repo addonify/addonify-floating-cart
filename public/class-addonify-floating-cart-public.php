@@ -784,6 +784,7 @@ class Addonify_Floating_Cart_Public {
 			}
 
 			WC()->session->set( 'chosen_shipping_methods', $chosen_shipping_methods );
+			WC()->cart->calculate_totals();
 			// Fragments returned.
 			$return_response['fragments']        = apply_filters( 'woocommerce_add_to_cart_fragments', $this->add_to_cart_ajax() );
 			$return_response['cart_items_count'] = WC()->cart->get_cart_contents_count();

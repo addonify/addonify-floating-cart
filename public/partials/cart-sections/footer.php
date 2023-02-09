@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php } ?>
 	<div class="adfy__woofc-cart-summary <?php echo ( WC()->cart->get_applied_coupons() ) ? 'discount' : ''; ?>">
 		<ul>
-			<li class="sub-total <?php echo ( ( WC()->cart->get_cart_subtotal() !== WC()->cart->get_cart_total() ) && WC()->cart->get_cart_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
+			<li class="sub-total <?php echo ( ( WC()->cart->get_subtotal() !== WC()->cart->get_total() ) && WC()->cart->get_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
 				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'sub_total_label' ) ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount subtotal-amount">
@@ -41,7 +41,7 @@ defined( 'ABSPATH' ) || exit;
 					</span>
 				</span>
 			</li>
-			<li class="discount <?php echo ( WC()->cart->get_cart_discount_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
+			<li class="discount <?php echo ( WC()->cart->get_discount_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
 				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'discount_label' ) ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount discount-amount">
@@ -75,9 +75,17 @@ defined( 'ABSPATH' ) || exit;
 						if ( (bool) WC()->cart->show_shipping() ) {
 							WC()->cart->calculate_shipping();
 							if ( (bool) addonify_floating_cart_get_option( 'display_tax_amount' ) && get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
-								$shipping_total = ( WC()->cart->get_shipping_total() > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
+								if ( WC()->customer->get_shipping_country() !== 'default' ) {
+									$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : __( 'Free!', 'woocommerce' );
+								} else {
+									$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
+								}
 							} else {
-								$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
+								if ( WC()->customer->get_shipping_country() !== 'default' ) {
+									$shipping_total = WC()->cart->get_cart_shipping_total();
+								} else {
+									$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
+								}
 							}
 						} else {
 							$shipping_total = '-';

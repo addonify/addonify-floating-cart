@@ -295,6 +295,11 @@ function addonify_floating_cart_get_setting_fields() {
 						'description' => '',
 						'fields'      => addonify_floating_cart_cart_display_settings(),
 					),
+					'cart-label'         => array(
+						'title'       => __( 'Cart Drawer/Modal Labels', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_display_cart_label_settings(),
+					),
 					'coupon'             => array(
 						'title'       => __( 'Coupon Options', 'addonify-floating-cart' ),
 						'description' => '',

@@ -1,0 +1,56 @@
+#adfy__floating-cart {
+
+    .adfy__woofc-shipping-bar {
+
+            &.adfy__woofc-hidden {
+                display: none;
+            }
+
+            @include flex();
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            .adfy__woofc-shipping-text {
+
+                font-size: var(--adfy_woofc_base_text_font_size);
+                padding: 0;
+                margin: 0 0 10px 0;
+                font-weight: normal;
+
+                .amount {
+
+                    font-weight: bold;
+                }
+            }
+
+            .progress-bars {
+
+                position: relative;
+
+                .shipping-bar {
+
+                    position: relative;
+                    display: block;
+                    height: 8px;
+                    width: 100%;
+                    border-radius: 10px;
+                    background-color: var(--adfy_woofc_shopping_meter_initial_background_color);
+                    @include breakpoint(mobile) {
+
+                        height: 5px;
+                    }
+                }
+
+                .progress-bar {
+
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: auto;
+                    z-index: 2;
+                    background-color: var(--adfy_woofc_shopping_meter_progress_background_color); 
+                    transition: all 1s cubic-bezier(0.4, 0, 1, 1);
+                }
+            }
+    }
+}

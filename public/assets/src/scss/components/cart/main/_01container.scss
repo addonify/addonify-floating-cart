@@ -1,0 +1,98 @@
+/* -------------------------------------------------------------------------- 
+	#. Floating Cart
+  -------------------------------------------------------------------------- */
+
+#adfy__floating-cart * {
+
+    box-sizing: border-box;
+    @include better_font_rendering();
+}
+
+#adfy__floating-cart {
+
+    display: block;
+    position: fixed;
+    color: var(--adfy_woofc_base_text_color);
+    font-size: var(--adfy_woofc_base_text_font_size);
+    background-color: var(--adfy_woofc_cart_background_color);
+    box-sizing: border-box;
+    transition: all 0.5s ease-in-out;
+
+    .adfy_woofc-inner {
+
+        @include flex();
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        padding: 30px;
+
+        @include breakpoint(mobile) {
+
+            padding: 20px;
+        }
+    }
+
+}
+
+
+/* -------------------------------------------------------------------------- 
+	#. Layout
+  -------------------------------------------------------------------------- */
+
+#adfy__floating-cart[data_type="drawer"] {
+
+    top: 0;
+    bottom: 0;
+    width: var(--adfy_woofc_cart_width);
+    @include visibility_visible();
+    @include breakpoint (mobile) {
+
+        width: 93vw;
+    }
+}
+
+/* -------------------------------------------------------------------------- 
+	#. Position
+  -------------------------------------------------------------------------- */
+
+#adfy__floating-cart[data_type="modal"] {
+
+    z-index: var(--adfy_woofc_floating_cart_zindex);
+}
+
+#adfy__floating-cart[data_type="drawer"][data_position="left"] {
+
+    right: auto;
+    left: -100vw;
+}
+
+#adfy__floating-cart[data_type="drawer"][data_position="right"] {
+
+    left: auto;
+    right: -100vw;
+}
+
+/* -------------------------------------------------------------------------- 
+	#. Visiblity
+  -------------------------------------------------------------------------- */
+
+.adfy__woofc-visible #adfy__floating-cart {
+
+    z-index: var(--adfy_woofc_floating_cart_zindex);
+    box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.2);
+}
+
+.adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="left"] {
+
+    right: auto;
+    left: 0;
+    animation: adfyFloatingCartSlideToRight 0.5s ease;
+}
+
+.adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
+
+    left: auto;
+    right: 0;
+    animation: adfyFloatingCartSlideToLeft 0.5s ease;
+}

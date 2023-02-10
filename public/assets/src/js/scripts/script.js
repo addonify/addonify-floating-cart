@@ -188,12 +188,8 @@
                     product_container = $(curr_el).parents('.adfy__woofc-item');
 
                 // Add loader
-                product_container.block({
-                    message: null,
-                    overlayCSS: {
-                        cursor: 'none'
-                    }
-                });
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -242,7 +238,10 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             }
 
         },
@@ -383,12 +382,8 @@
                 var $thisbutton = $(this);
 
                 // Add loader
-                product_container.block({
-                    message: null,
-                    overlayCSS: {
-                        cursor: 'none'
-                    }
-                });
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -434,13 +429,18 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             });
 
             //restore item to cart
             $(document).on('click', '#adfy__woofc_restore_item', function (e) {
                 e.preventDefault();
                 let item_key = $(this).attr('data-item_key');
+                // Add loader
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -477,7 +477,10 @@
                             console.log(response.messsage);
                         }
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             });
         },
 

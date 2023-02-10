@@ -54,6 +54,26 @@ function addonify_floating_cart_cart_display_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_continue_shopping_button' ),
 		),
+		'display_tax_amount'                => array(
+			'label'     => __( 'Display Tax Amount', 'addonify-floating-cart' ),
+			'type'      => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'display_tax_amount' ),
+		),
+		'enable_shipping_calculation'       => array(
+			'label'     => __( 'Enable Shipping Calculation', 'addonify-floating-cart' ),
+			'type'      => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'enable_shipping_calculation' ),
+		),
+	);
+}
+
+/**
+ * Floating cart labels.
+ */
+function addonify_floating_cart_display_cart_label_settings() {
+	return array(
 		'continue_shopping_button_label'    => array(
 			'label'       => __( 'Cart Close Button Label', 'addonify-floating-cart' ),
 			'type'        => 'text',
@@ -67,18 +87,6 @@ function addonify_floating_cart_cart_display_settings() {
 			'placeholder' => __( 'Checkout', 'addonify-floating-cart' ),
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'checkout_button_label' ),
-		),
-		'display_tax_amount'                => array(
-			'label'     => __( 'Display Tax Amount', 'addonify-floating-cart' ),
-			'type'      => 'switch',
-			'dependent' => array( 'enable_floating_cart' ),
-			'value'     => addonify_floating_cart_get_option( 'display_tax_amount' ),
-		),
-		'enable_shipping_calculation'       => array(
-			'label'     => __( 'Enable Shipping Calculation', 'addonify-floating-cart' ),
-			'type'      => 'switch',
-			'dependent' => array( 'enable_floating_cart' ),
-			'value'     => addonify_floating_cart_get_option( 'enable_shipping_calculation' ),
 		),
 		'sub_total_label'                   => array(
 			'label'     => __( 'Sub Total Label', 'addonify-floating-cart' ),
@@ -101,13 +109,13 @@ function addonify_floating_cart_cart_display_settings() {
 		'open_shipping_label'               => array(
 			'label'     => __( 'Label for Opening Shipping Section', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_shipping_calculation' ),
 			'value'     => addonify_floating_cart_get_option( 'open_shipping_label' ),
 		),
 		'tax_label'                         => array(
 			'label'     => __( 'Tax Label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'display_tax_amount' ),
 			'value'     => addonify_floating_cart_get_option( 'tax_label' ),
 		),
 		'total_label'                       => array(

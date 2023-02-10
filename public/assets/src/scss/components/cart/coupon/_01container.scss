@@ -1,0 +1,29 @@
+#adfy__woofc-coupon-container {
+
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    color: var(--adfy_woofc_base_text_color);
+    z-index: calc(var(--adfy_woofc_floating_cart_zindex) - 1);
+    background-color: var(--adfy_woofc_cart_background_color);
+    @include visibility_hidden();
+    @include transation_delay();
+
+    &[data_display="visible"] {
+
+        @include visibility_visible();
+        z-index: calc( var(--adfy_woofc_floating_cart_zindex) + 10);
+
+        #adfy__woofc-coupon-form {
+
+            animation: adfyFloatingCartFadeDown 0.5s ease-in;
+        }
+    }
+}

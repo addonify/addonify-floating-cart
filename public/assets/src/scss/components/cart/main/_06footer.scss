@@ -1,0 +1,168 @@
+#adfy__floating-cart {
+
+    .adfy__woofc-colophon {
+
+        margin-top: 0;
+        padding-top: 20px;
+
+        .adfy__woofc-coupon {
+
+            @include flex();
+            justify-content: center;
+            margin-bottom: 20px;
+
+            .coupon-text {
+
+                @include flex();
+                gap: 5px;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                font-weight: normal;
+
+                .icon {
+
+                    fill: var(--adfy_woofc_base_text_color);
+                    line-height: 1;
+
+                    svg {
+
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+
+        .adfy__woofc-cart-summary {
+
+            display: block;
+            margin-bottom: 20px;
+            
+            ul {
+
+                @include flex();
+                flex-direction: column;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                gap: 10px;
+                border: none;
+                border-radius: 5px;
+
+                li {
+
+                    @include flex();
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+                    
+                    .label,
+                    .value {
+
+                        color: var(--adfy_woofc_base_text_color);
+                        font-size: var(--adfy_woofc_base_text_font_size);
+                        font-weight: normal;
+                    }
+
+                    &.adfy__woofc-hidden {
+
+                        display: none;
+                    }
+                }
+
+                li:not(:last-child) {
+
+                    border-bottom: 1px dotted var(--adfy_woofc_border_color);
+                    padding-bottom: 10px;
+                }
+
+                li.discount {
+
+                    .value {
+
+                        font-weight: bold;
+                    }
+                }
+
+                li.total {
+
+                    .value {
+
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            &.discount {
+
+                ul {
+
+                    padding: 10px 15px;
+                    border: 1px solid var(--adfy_woofc_border_color);
+                }
+            }
+        }
+
+        .adfy__woofc-actions {
+
+            @include grid();
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 20px;
+
+            &.adfy__woofc-fullwidth {
+
+                grid-template-columns: repeat(1, 1fr);
+                column-gap: 0;
+                justify-content: center;
+            }
+
+            .adfy__woofc-button {
+
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 15px;
+                height: auto;
+                width: 100%;
+                color: var(--adfy_woofc_primary_button_label_color);
+                border-width: 1px;
+                border-style: solid;
+                background: transparent; 
+                border-color: var(--adfy_woofc_primary_button_border_color);
+                background-color: var(--adfy_woofc_primary_button_background_color); 
+
+                @include breakpoint(mobile) {
+
+                    padding: 15px 10px;
+                }
+
+                &:hover {
+
+                    color: var(--adfy_woofc_primary_button_label_color_hover);
+                    border-color: var(--adfy_woofc_primary_button_border_color_hover);
+                    text-decoration: none;
+                    background: transparent; 
+                    background-color: var(--adfy_woofc_primary_button_background_color_hover);
+                }
+            }
+
+            .close {
+
+                fill: var(--adfy_woofc_secondary_button_label_color);
+                color: var(--adfy_woofc_secondary_button_label_color);
+                border-color: var(--adfy_woofc_secondary_button_border_color);
+                background-color: var(--adfy_woofc_secondary_button_background_color);
+
+                &:hover {
+
+                    fill: var(--adfy_woofc_secondary_button_label_color_hover);
+                    color: var(--adfy_woofc_secondary_button_label_color_hover);
+                    border-color: var(--adfy_woofc_secondary_button_border_color_hover);
+                    background-color: var(--adfy_woofc_secondary_button_background_color_hover);
+                }
+            }
+        }
+    }
+}

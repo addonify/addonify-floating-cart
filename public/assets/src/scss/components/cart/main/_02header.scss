@@ -1,0 +1,74 @@
+#adfy__floating-cart {
+
+    .adfy__woofc-header {
+
+        @include grid();
+        grid-template-columns: auto 30px;
+        column-gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--adfy_woofc_border_color);
+
+        .adfy__woofc-title {
+            
+            @include flex();
+            gap: 8px;
+            align-items: center;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            color: var(--adfy_woofc_cart_title_text_color);
+
+            .adfy__woofc-badge {
+
+                align-items: center;
+                color: var(--adfy_woofc_cart_title_count_badge_text_color);
+                padding: 7px 10px 8px 10px;
+                font-size: calc( var(--adfy_woofc_base_text_font_size) - 20% );
+                line-height: 1;
+                font-weight: normal;
+                border-radius: 15px;
+                background-color: var(--adfy_woofc_cart_title_count_badge_background_color);
+            }
+        }
+
+        .adfy__close-button {
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            .adfy__hide-woofc {
+                
+                display: inline-flex;
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                margin: 0;
+                line-height: 1;
+                font-weight: normal;
+                fill: var(--adfy_woofc_cart_close_button_text_color);
+                color: var(--adfy_woofc_cart_close_button_text_color);
+                border: none;
+                border-radius: 100%;
+                background-color: transparent;
+
+                svg {
+
+                    width: 22px;
+                    height: 22px;
+                }
+
+                &:hover {
+
+                    fill: var(--adfy_woofc_cart_close_button_text_color_hover);
+                    color: var(--adfy_woofc_cart_close_button_text_color_hover);
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

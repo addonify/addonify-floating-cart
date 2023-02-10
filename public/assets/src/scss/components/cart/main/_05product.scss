@@ -1,0 +1,252 @@
+#adfy__floating-cart {
+
+    .adfy__woofc-content {
+
+        position: relative;
+        flex: 1 1 auto;
+        @include flex();
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .adfy__woofc-content-entry {
+                
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 5;
+            padding: 10px 0;
+
+            .adfy__woofc-item {
+
+                @include grid();
+                position: relative;
+                grid-template-columns: 100px auto;
+                column-gap: 30px;
+                margin-bottom: 30px;
+                @include breakpoint(mobile) {
+
+                    column-gap: 25px;
+                    margin-bottom: 20px;
+                }
+
+                .thumb {
+
+                    position: relative;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    box-shadow: none;
+                    max-width: 100%;
+
+                    .adfy__woofc-link {
+
+                        display: block;
+
+                        > img {
+
+                            position: relative;
+                            display: block;
+                            max-width: 100%;
+                            border-radius: 5px;
+                            border: 1px solid var(--adfy_woofc_border_color);
+                            background-color: var(--adfy_woofc_border_color);
+                        }
+                    }
+
+                    .adfy__woofc-remove-cart-item {
+
+                        position: absolute;
+                        right: -10px;
+                        top: -10px;
+                        z-index: 1;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                        height: 26px;
+                        width: 26px;
+                        color: var(--adfy_woofc_cart_product_remove_button_text_color);
+                        border-radius: 100%;
+                        text-decoration: none;
+                        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+                        background-color: var(--adfy_woofc_cart_product_remove_button_background_color);
+                        @include breakpoint(mobile) {
+
+                            height: 24px;
+                            width: 24px;
+                        }
+
+                        svg {
+
+                            width: 16px;
+                            height: 16px;
+                        }
+
+                        &:hover {
+
+                            color: var(--adfy_woofc_cart_product_remove_button_text_color_hover);
+                            background-color: var(--adfy_woofc_cart_product_remove_button_background_color_hover);
+                        }
+                    }
+                }
+
+                .adfy__woofc-item-content {
+
+                    .adfy__woofc-item-title {
+
+                        .woocommerce-loop-product__title {
+
+                            display: block;
+                            font-size: var(--adfy_woofc_cart_product_title_font_size);
+                            line-height: 1.3;
+                            font-weight: var(--adfy_woofc_cart_product_title_font_weight);
+                            color: var(--adfy_woofc_cart_product_title_text_color);
+                            padding: 0;
+                            margin: 0 0 10px 0;
+                            @include breakpoint(mobile) {
+
+                                margin-bottom: 5px;
+                            }
+
+                            .adfy__woofc-link {
+
+                                color: var(--adfy_woofc_cart_product_title_text_color);
+
+                                &:hover {
+
+                                    color: var(--adfy_woofc_cart_product_title_text_color_hover);
+                                }
+                            }
+                        }
+                    }
+
+                    .adfy__woofc-item-price {
+
+                        margin-bottom: 10px;
+
+                        .quantity {
+
+                            display: inline-flex;
+                            gap: 2px;
+                            align-items: center;
+                            width: auto;
+                            color: var(--adfy_woofc_cart_product_price_quantity_text_color);
+                            font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
+                            font-weight: bold;
+                            height: auto;
+                            border: none;
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+
+                    .adfy__woofc-quantity {
+
+                        display: block;
+
+                        .adfy__woofc-quantity-form {
+
+                            @include flex();
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0;
+                            padding: 0;
+                            width: 110px;
+                            padding: 5px 10px;
+                            border: 1px solid var(--adfy_woofc_border_color);
+                            border-radius: 30px;
+
+                            // Chrome, Safari, Edge & Opera
+                            input::-webkit-outer-spin-button,
+                            input::-webkit-inner-spin-button {
+
+                                margin: 0;
+                                -webkit-appearance: none;
+                            }
+
+                            // Firefox
+                            input[type=number] {
+                                
+                                -moz-appearance: textfield;
+                            }
+
+                            .adfy__woofc-quantity-input-field {
+
+                                display: inline-flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-align: center;
+                                width: 30px;
+                                max-width: 50px;
+                                height: 30px;
+                                min-height: 1px;
+                                padding: 0;
+                                margin: 0;
+                                border: none;
+                                outline: none;
+                                color: var(--adfy_woofc_cart_product_quantity_text_color);
+                                font-size: 12px;
+                                font-weight: normal;
+                                will-change: width;
+                                box-shadow: none;
+                                border-radius: 3px;
+                                background: transparent;
+                                background-color: transparent;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                @include transation_delay();
+
+                                &:focus {
+
+                                    outline: 0;
+                                }
+                            }
+
+                            .adfy__woofc-quantity-input-button {
+
+                                display: inline-flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 16px;
+                                padding: 0;
+                                margin: 0;
+                                font-weight: normal;
+                                line-height: 1;
+                                height: 20px;
+                                width: 20px;
+                                fill: var(--adfy_woofc_cart_product_quantity_input_button_text_color);
+                                color: var(--adfy_woofc_cart_product_quantity_input_button_text_color);
+                                border-radius: 30px;
+                                text-decoration: none;
+                                background-color: transparent;
+
+                                svg {
+
+                                    height: 18px;
+                                    height: 18px;
+                                }
+
+                                &:hover {
+
+                                    text-decoration: none;
+                                }
+
+                                &:focus {
+
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+
+/* -------------------------------------------------------------------------- 
+	#. Shipping container inside Floating Cart
+  -------------------------------------------------------------------------- */
+
+#adfy__woofc-shipping-container {
+
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    color: var(--adfy_woofc_base_text_color);
+    z-index: calc(var(--adfy_woofc_floating_cart_zindex) - 1);
+    background-color: var(--adfy_woofc_cart_background_color);
+    @include visibility_hidden();
+    @include transation_delay();
+
+    &[data_display="visible"] {
+
+        @include visibility_visible();
+        z-index: calc( var(--adfy_woofc_floating_cart_zindex) + 10);
+
+        .adfy__woo-shipping-container-inner {
+
+            animation: adfyFloatingCartFadeDown 0.5s ease-in;
+        }
+    }
+
+    #adfy__woofc-shipping-container-inner {
+
+        display: block;
+        margin: 0;
+        padding: 0 0 60px 0;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        #adfy__woofc-shipping-methods {
+
+            @include flex();
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            position: relative;
+            margin: 0 0 30px 0;
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px dashed var(--adfy_woofc_border_color);
+
+            li {
+
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .adfy__woo-shipping-destination {
+
+            margin: 20px 0;
+        }
+    }
+}

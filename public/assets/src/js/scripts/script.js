@@ -501,10 +501,15 @@
             });
 
             // For showing shipping form for updating shipping address.
-            $(document).on('click', '#adfy__woofc-shipping-form .adfy__woofc-shipping-address-form-toggle-button', function () {
+            $(document).on('click', '#adfy__woofc-shipping-form .adfy__woofc-shipping-address-form-toggle-button', function (e) {
+                e.preventDefault();
+
                 if ($('.adfy__woofc-shipping-form-elements').css('display') === 'none') {
+
                     $('.adfy__woofc-shipping-form-elements').show();
+
                 } else {
+
                     $('.adfy__woofc-shipping-form-elements').hide();
                 }
             });
@@ -518,9 +523,9 @@
                 let shipping_postcode = $('#addonify_floating_cart_shipping_postcode').val();
                 let nonce = $('#addonify-floating-cart-shipping-nonce').val();
                 $.ajax({
-                    'url' : addonifyFloatingCartJSObject.ajax_url,
-                    'method' : 'POST',
-                    'data' : {
+                    'url': addonifyFloatingCartJSObject.ajax_url,
+                    'method': 'POST',
+                    'data': {
                         action: addonifyFloatingCartJSObject.updateShippingInfo,
                         shipping_country: shipping_country,
                         shipping_state: shipping_state,
@@ -528,7 +533,7 @@
                         shipping_postcode: shipping_postcode,
                         nonce: nonce
                     },
-                    'success' : function (response) {
+                    'success': function (response) {
                         if (!response)
                             return;
 
@@ -543,7 +548,7 @@
                             });
                         }
                     },
-                    'failure' : function () {
+                    'failure': function () {
                         console.log('Request failed! Are we offline?')
                     }
                 })
@@ -598,14 +603,14 @@
                 $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
 
                 $.ajax({
-                    'url' : addonifyFloatingCartJSObject.ajax_url,
-                    'method' : 'POST',
-                    'data' : {
+                    'url': addonifyFloatingCartJSObject.ajax_url,
+                    'method': 'POST',
+                    'data': {
                         action: addonifyFloatingCartJSObject.updateShippingMethod,
                         nonce: addonifyFloatingCartJSObject.nonce,
                         shipping_method: shipping_methods,
                     },
-                    'success' : function (response) {
+                    'success': function (response) {
                         if (!response || response.error) {
                             return;
                         }

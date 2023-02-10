@@ -1,48 +1,43 @@
-/*
-===========================================================
+/*===========================================================
 
-# Pugin: Addonify Floating Cart
+## Plugin: Addonify Floating Cart For WooCommerce
+## Author: https://addonify.com/
+## Since: 1 July 2022
 
-# Author: https://addonify.com
+=====================================*/
 
-# Since: 1 July 2022
-
-# File Last updated: 
-
-=====================================
+/**
+*
+* Import abstracts
 */
-
-/* -------------------------------------------------------------------------- 
-	#. Table of Contents.
-   --------------------------------------------------------------------------
-
-    1. Variables
-    2. Mixins
-    3. Components
-        3.1 Alerts
-        3.2 Buttons
-        3.3 Cart
-        3.4 Coupon
-        3.5 Cart Overlay
-
-    4. Utilities
-        4.1 Classes
-        4.2 Keyframes
-    
-    5. Conditional
-        5.1 Notfy
-        5.2 PerfectScrollbar  
-  -------------------------------------------------------------------------- */
 
 @use './abstracts/variables' as *;
 @use './abstracts/mixins' as *;
 
-@import './components/alert';
-@import './components/buttons';
-@import './components/cart';
-@import './components/shipping';
-@import './components/coupon';
-@import './components/overlay';	
+
+/**
+*
+* Import utilities classes
+*/
 
 @import './utilities/classes';		
+
+
+/**
+*
+* Import components
+*/
+
+@import './components/alert';
+@import './components/buttons';
+@import './components/cart'; // Main Cart Model
+@import './components/shipping'; // Shipping Model
+@import './components/coupon'; // Discount Model
+@import './components/overlay';	// Main Overlay
+
+/**
+*
+* Import keyframes
+*/
+
 @import './utilities/keyframe';				

@@ -16,7 +16,7 @@
     font-size: var(--adfy_woofc_base_text_font_size);
     background-color: var(--adfy_woofc_cart_background_color);
     box-sizing: border-box;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.5s ease-in-out;
 
     .adfy_woofc-inner {
 
@@ -613,8 +613,6 @@
 
     top: 0;
     bottom: 0;
-    height: 100%;
-    min-height: 100vh;
     width: var(--adfy_woofc_cart_width);
     @include visibility_visible();
     @include breakpoint (mobile) {
@@ -658,13 +656,13 @@
 
     right: auto;
     left: 0;
-    animation: adfyFloatingCartSlideToRight 0.6s ease;
+    animation: adfyFloatingCartSlideToRight 0.5s ease;
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
 
     left: auto;
     right: 0;
-    animation: adfyFloatingCartSlideToLeft 0.6s ease;
+    animation: adfyFloatingCartSlideToLeft 0.5s ease;
 }
 

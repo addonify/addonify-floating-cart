@@ -100,6 +100,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 = 1.0.7 - ? =
 
 - Fixed: discount and subtotal not showing properly, shipping showing dash when shipping is free.
+- Update: Shipping now shows 0 instead of free when shipping is 0.
 
 = 1.0.6 - 24 January 2022 =
 

@@ -76,13 +76,13 @@ defined( 'ABSPATH' ) || exit;
 							WC()->cart->calculate_shipping();
 							if ( (bool) addonify_floating_cart_get_option( 'display_tax_amount' ) && get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
 								if ( WC()->customer->get_shipping_country() !== 'default' ) {
-									$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : __( 'Free!', 'woocommerce' );
+									$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : wc_price( 0 );
 								} else {
 									$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
 								}
 							} else {
 								if ( WC()->customer->get_shipping_country() !== 'default' ) {
-									$shipping_total = WC()->cart->get_cart_shipping_total();
+									$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? wc_price( 0 ) : WC()->cart->get_cart_shipping_total();
 								} else {
 									$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
 								}

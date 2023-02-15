@@ -103,6 +103,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Update: Shipping now shows 0 instead of free when shipping is 0.
 - Update: Spinner added for cart, hovers the whole cart instead of single product.
 - Update: Different sections for Cart options and labels in admin settings page.
+- Update: Shows '-' instead of 0 when no shipping option is selected.
 
 = 1.0.6 - 24 January 2022 =
 

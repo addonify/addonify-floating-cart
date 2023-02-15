@@ -9,6 +9,17 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$packages = WC()->cart->get_shipping_packages();
+$packages = WC()->shipping()->calculate_shipping( $packages );
+$show_shipping_cost = false;
+foreach ( $packages as $package ) {
+	if ( ! empty( $package['rates'] ) ) {
+		$show_shipping_cost = true;
+		break;
+	}
+}
+
 ?>
 <footer class="adfy__woofc-colophon <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>" >
 	<?php if ( wc_coupons_enabled() ) { ?>
@@ -72,7 +83,7 @@ defined( 'ABSPATH' ) || exit;
 					<span class="addonify_floating_cart-Price-amount shipping-amount">
 						<bdi>
 						<?php
-						if ( (bool) WC()->cart->show_shipping() ) {
+						if ( (bool) WC()->cart->show_shipping() && $show_shipping_cost ) {
 							WC()->cart->calculate_shipping();
 							if ( (bool) addonify_floating_cart_get_option( 'display_tax_amount' ) && get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
 								if ( WC()->customer->get_shipping_country() !== 'default' ) {

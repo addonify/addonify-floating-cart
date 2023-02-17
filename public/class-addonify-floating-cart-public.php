@@ -298,6 +298,10 @@ class Addonify_Floating_Cart_Public {
 		do_action( 'addonify_floating_cart_sidebar_cart_footer', array() );
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
+		ob_start();
+		do_action( 'addonify_floating_cart_sidebar_cart_shipping' );
+		$fragments['#adfy__woofc-shipping-container-inner'] = ob_get_clean();
+
 		$fragments['.adfy__woofc-shipping-text'] = $this->shopping_meter_text_template();
 
 		$fragments['.progress-bar.shipping-bar'] = $this->shopping_meter_bar_template();

@@ -99,7 +99,7 @@ if ( $this_agent_is_latest && isset( $all_installed_agents[ basename( $root_dir 
 
 				$content = '<p>' . sprintf(
 					/* translators: %s: agent name */
-					esc_html__( '%s is asking to allow tracking your non-sensitive WordPress data?', 'AGENT_TEXT_DOMAIN' ),
+					esc_html__( '%s is asking to allow tracking your non-sensitive WordPress data?', 'addonify-floating-cart' ),
 					$agent_name
 				) . '</p><p>';
 
@@ -107,21 +107,21 @@ if ( $this_agent_is_latest && isset( $all_installed_agents[ basename( $root_dir 
 					/* translators: %s: agent allow access link, %s: Allow */
 					'<a href="%1$s" class="button button-primary udp-agent-access_tracking-yes" style="margin-right: 10px" >%2$s</a>',
 					add_query_arg( 'udp-agent-allow-access', 'yes' ),
-					esc_html__( 'Allow', 'AGENT_TEXT_DOMAIN' )
+					esc_html__( 'Allow', 'addonify-floating-cart' )
 				);
 
 				$content .= sprintf(
 					/* translators: %s: agent allow access link, %s: Allow */
 					'<a href="%1$s" class="button button-secondary udp-agent-access_tracking-no" style="margin-right: 10px" >%2$s</a>',
 					add_query_arg( 'udp-agent-allow-access', 'no' ),
-					esc_html__( 'Do not show again', 'AGENT_TEXT_DOMAIN' )
+					esc_html__( 'Do not show again', 'addonify-floating-cart' )
 				);
 
 				$content .= sprintf(
 					/* translators: %s: agent allow access link, %s: Allow */
 					'<a href="%1$s" class="button button-secondary udp-agent-access_tracking-yes" style="margin-right: 10px" >%2$s</a>',
 					add_query_arg( 'udp-agent-allow-access', 'later' ),
-					esc_html__( 'Later', 'AGENT_TEXT_DOMAIN' )
+					esc_html__( 'Later', 'addonify-floating-cart' )
 				);
 
 				$content .= '</p>';

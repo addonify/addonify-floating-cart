@@ -113,7 +113,7 @@ class Udp_Agent {
 		// show ui in settings page.
 		add_settings_field(
 			'udp_agent_allow_tracking',
-			esc_html__( 'Allow Anonymous Tracking', 'AGENT_TEXT_DOMAIN' ),
+			esc_html__( 'Allow Anonymous Tracking', 'addonify-floating-cart' ),
 			array( $this, 'show_settings_ui' ),
 			'general',
 			'default',
@@ -157,8 +157,8 @@ class Udp_Agent {
 			echo ' checked';
 		}
 		echo '/>';
-		echo esc_html__( 'Become a super contributor by sharing your non-sensitive WordPress data. We guarantee no sensitive data is collected.', 'AGENT_TEXT_DOMAIN' );
-		echo wp_kses_data( '<a href="https://creamcode.org/user-data-processing/" target="_blank" > ' . esc_html__( ' What data do we collect?', 'AGENT_TEXT_DOMAIN' ) . '</a>' );
+		echo esc_html__( 'Become a super contributor by sharing your non-sensitive WordPress data. We guarantee no sensitive data is collected.', 'addonify-floating-cart' );
+		echo wp_kses_data( '<a href="https://creamcode.org/user-data-processing/" target="_blank" > ' . esc_html__( ' What data do we collect?', 'addonify-floating-cart' ) . '</a>' );
 		echo ' </p>';
 	}
 

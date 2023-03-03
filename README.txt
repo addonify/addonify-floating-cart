@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.6
 Requires PHP: 7.0.0
 Tested up to: 6.1.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,15 +97,15 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.0.7 - ? =
+= 1.0.7 - 03 March, 2023 =
 
-- Fixed: discount and subtotal not showing properly, shipping showing dash when shipping is free.
+- Fixed: Discount and subtotal not showing properly, shipping showing dash when shipping is free.
+- Fixed: Shipping section not updated on coupon update.
 - Update: Shipping now shows 0 instead of free when shipping is 0.
 - Update: Spinner added for cart, hovers the whole cart instead of single product.
 - Update: Different sections for Cart options and labels in admin settings page.
 - Update: Shows '-' instead of 0 when no shipping option is selected.
-- Fixed: shipping section not updated on coupon update.
-- Update: UDP updated.
+- Update: UDP agent updated to v1.0.1
 
 = 1.0.6 - 24 January 2022 =
 

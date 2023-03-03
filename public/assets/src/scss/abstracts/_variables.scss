@@ -13,15 +13,18 @@
 	--adfy_woofc_base_text_font_size: 15px;
 	--adfy_woofc_border_color: #EEEEEE;
 	--adfy_woofc_cart_background_color: #FFFFFF;
-	--adfy_woofc_cart_overlay_background_color: rgba(0, 0, 0, 0.5);
+	--adfy_woofc_cart_overlay_background_color: rgba(131, 176, 252, 0.5), rgba(251, 194, 235, 0.4);
 	--adfy_woofc_cart_input_border_color: var(--adfy_woofc_border_color);
 	--adfy_woofc_cart_input_placeholder_color: #9E9E9E;
 	--adfy_woofc_cart_input_text_color: #444444;
 	--adfy_woofc_cart_input_background_color: #FFFFFF;
 
 	--adfy_woofc_cart_width: 500px; // New
-	
 
+	// Spinner 
+	--adfy_woofc_spinner_icon_color: #444444;
+	--adfy_woofc_spinner_container_background: rgba( 255, 255, 255, 0.9 );
+	
 	// Toggle button
 	--adfy_woofc_toggle_button_text_color: #555555;
 	--adfy_woofc_toggle_button_text_color_hover: #898989;
@@ -75,7 +78,6 @@
 	--adfy_woofc_toast_button_background_color_hover: rgba(0, 0, 0, 0.4);
 
 	// Cart & cart title
-	
 	--adfy_woofc_cart_title_text_color: var(--adfy_woofc_base_text_color);
 	--adfy_woofc_cart_title_font_size: var(--adfy_woofc_base_text_font_size); // New 
 	--adfy_woofc_cart_title_font_weight: var(--adfy_woofc_base_text_font_weight); // New
@@ -111,6 +113,6 @@
 
 	--adfy_woofc_trigger_button_zindex: 10000000;
 	--adfy_woofc_overlaymask_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 10 );   
-	--adfy_woo_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
-	--adfy_woo_floating_cart_inner_mask_zindex: calc( var(--adfy_woo_floating_cart_zindex) + 10 );
+	--adfy_woofc_floating_cart_zindex: calc( var(--adfy_woofc_trigger_button_zindex) + 30 );
+	--adfy_woofc_floating_cart_inner_mask_zindex: calc( var(--adfy_woofc_floating_cart_zindex) + 10 );
 }

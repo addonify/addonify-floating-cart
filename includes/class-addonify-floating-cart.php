@@ -130,6 +130,8 @@ class Addonify_Floating_Cart {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/udp/init.php';
+
 		$this->loader = new Addonify_Floating_Cart_Loader();
 
 	}

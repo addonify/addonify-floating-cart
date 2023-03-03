@@ -13,6 +13,8 @@
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
+    let countriesToStates = addonifyFloatingCartJSObject.states;
+
     var product_name;
 
     var subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
@@ -32,6 +34,7 @@
             this.handleFloatingCartCoupon();
             this.notifyFloatingCartEventHandler();
             this.handleCartItems();
+            this.shippingSectionHandler();
         },
 
         preventDefaultBehaviour: () => {
@@ -185,12 +188,8 @@
                     product_container = $(curr_el).parents('.adfy__woofc-item');
 
                 // Add loader
-                product_container.block({
-                    message: null,
-                    overlayCSS: {
-                        cursor: 'none'
-                    }
-                });
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -239,15 +238,19 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             }
 
         },
 
         handleFloatingCartCoupon: () => {
 
-            $(document).on('click', '#adfy__woofc-coupon-trigger', function () {
+            $(document).on('click', '#adfy__woofc-coupon-trigger', function (e) {
 
+                e.preventDefault();
                 addonifyFloatingCartCouponContainer.attr('data_display', 'visible');
             })
             $(document).on('click', '#adfy__woofc-hide-coupon-container', function () {
@@ -270,7 +273,6 @@
                     },
                     'success': function (data) {
                         let result = JSON.parse(data);
-                        console.log(result);
                         if (result.couponApplied === true) {
                             couponField.val('');
                             $.each(result.html, function (i, val) {
@@ -380,12 +382,8 @@
                 var $thisbutton = $(this);
 
                 // Add loader
-                product_container.block({
-                    message: null,
-                    overlayCSS: {
-                        cursor: 'none'
-                    }
-                });
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -431,13 +429,18 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             });
 
             //restore item to cart
             $(document).on('click', '#adfy__woofc_restore_item', function (e) {
                 e.preventDefault();
                 let item_key = $(this).attr('data-item_key');
+                // Add loader
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -474,9 +477,162 @@
                             console.log(response.messsage);
                         }
                     }
-                });
+                }).always( function() {
+                    // Remove loader
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                } );
             });
-        }
+        },
+
+        // all shipping related task handler
+        shippingSectionHandler: () => {
+
+            // show coupon container.
+            $(document).on('click', '#adfy__woofc-shipping-trigger', function (e) {
+
+                e.preventDefault();
+                $('#adfy__woofc-shipping-container').attr('data_display', 'visible');
+            });
+
+            // hide coupon container.
+            $(document).on('click', '#adfy__woofc-hide-shipping-container', function () {
+
+                $('#adfy__woofc-shipping-container').attr('data_display', 'hidden');
+            });
+
+            // For showing shipping form for updating shipping address.
+            $(document).on('click', '#adfy__woofc-shipping-form .adfy__woofc-shipping-address-form-toggle-button', function (e) {
+                e.preventDefault();
+
+                if ($('.adfy__woofc-shipping-form-elements').css('display') === 'none') {
+
+                    $('.adfy__woofc-shipping-form-elements').show();
+
+                } else {
+
+                    $('.adfy__woofc-shipping-form-elements').hide();
+                }
+            });
+
+            // on shipping form submit. for updating shipping location.
+            $(document).on('submit', '#adfy__woofc-shipping-form', function (e) {
+                e.preventDefault();
+                let shipping_country = $('#addonify_floating_cart_shipping_country').val();
+                let shipping_state = $('#addonify_floating_cart_shipping_state').val();
+                let shipping_city = $('#addonify_floating_cart_shipping_city').val();
+                let shipping_postcode = $('#addonify_floating_cart_shipping_postcode').val();
+                let nonce = $('#addonify-floating-cart-shipping-nonce').val();
+                $.ajax({
+                    'url': addonifyFloatingCartJSObject.ajax_url,
+                    'method': 'POST',
+                    'data': {
+                        action: addonifyFloatingCartJSObject.updateShippingInfo,
+                        shipping_country: shipping_country,
+                        shipping_state: shipping_state,
+                        shipping_city: shipping_city,
+                        shipping_postcode: shipping_postcode,
+                        nonce: nonce
+                    },
+                    'success': function (response) {
+                        if (!response)
+                            return;
+
+                        // Replace fragments
+                        if (response.fragments) {
+                            $.each(response.fragments, function (key, value) {
+                                if (value !== '') {
+                                    $(key).replaceWith(value);
+                                } else {
+                                    $(key).html(value);
+                                }
+                            });
+                        }
+                    },
+                    'failure': function () {
+                        console.log('Request failed! Are we offline?')
+                    }
+                })
+            });
+
+            // load state or input tag if no available state on selecting a country
+            $(document).on('change', '#addonify_floating_cart_shipping_country', function () {
+                let country = $(this).val();
+                let state_div = $('#addonify_floating_cart_shipping_state');
+                let states = countriesToStates[country];
+                if (typeof states === 'object' && Object.keys(states).length > 0) {
+                    let html = '';
+                    for (let index in states) {
+                        html += '<option value="' + index + '">' + states[index] + '</option>'
+                    }
+                    if (state_div.prop('tagName').toLowerCase() === 'input') {
+                        let this_parent = state_div.parent();
+                        state_div.remove();
+                        let select = $(document.createElement('select'));
+                        select.addClass('state_select').prop('id', 'addonify_floating_cart_shipping_state').prop('name', 'addonify_floating_cart_shipping_state');
+                        select.prop('data-placeholder', 'State / County');
+                        this_parent.append(select);
+                    }
+                    $('#addonify_floating_cart_shipping_state').html(html);
+                } else if (states instanceof Array && states.length === 0) {
+                    let this_parent = state_div.parent();
+                    state_div.remove();
+                    let input = $(document.createElement('input'));
+                    input.addClass('input_text').prop('id', 'addonify_floating_cart_shipping_state').prop('name', 'addonify_floating_cart_shipping_state');
+                    input.prop('type', 'hidden');
+                    this_parent.append(input);
+                } else {
+                    let this_parent = state_div.parent();
+                    state_div.remove();
+                    let input = $(document.createElement('input'));
+                    input.addClass('input_text').prop('id', 'addonify_floating_cart_shipping_state').prop('name', 'addonify_floating_cart_shipping_state');
+                    input.prop('placeholder', 'State / County');
+                    this_parent.append(input);
+                }
+            });
+
+            // on multiple available methods, triggers when selecting another method
+            $(document).on('change', '.shipping_method', function () {
+                let shipping_methods = {};
+
+                // eslint-disable-next-line max-len
+                $('select.shipping_method, :input[name^=shipping_method][type=radio]:checked, :input[name^=shipping_method][type=hidden]').each(function () {
+                    shipping_methods[$(this).data('index')] = $(this).val();
+                });
+
+                // Add loader
+                $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+
+                $.ajax({
+                    'url': addonifyFloatingCartJSObject.ajax_url,
+                    'method': 'POST',
+                    'data': {
+                        action: addonifyFloatingCartJSObject.updateShippingMethod,
+                        nonce: addonifyFloatingCartJSObject.nonce,
+                        shipping_method: shipping_methods,
+                    },
+                    'success': function (response) {
+                        if (!response || response.error) {
+                            return;
+                        }
+
+                        let fragments = response.fragments;
+
+                        // Replace fragments
+                        if (fragments) {
+                            $.each(fragments, function (key, value) {
+                                if (value !== '') {
+                                    $(key).replaceWith(value);
+                                } else {
+                                    $(key).html(value);
+                                }
+                            });
+                        }
+                    }
+                }).always(function () {
+                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                });
+            })
+        },
     }
 
     $(document).ready(function () {

@@ -1,0 +1,43 @@
+/* -------------------------------------------------------------------------- 
+	#. Shipping container Header block
+  -------------------------------------------------------------------------- */
+
+#adfy__woofc-shipping-container {
+
+    .shipping-container-header {
+
+        @include flex();
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--adfy_woofc_border_color);
+        @include breakpoint(medium) {
+
+            justify-content: flex-end;
+        }
+
+        #adfy__woo-hide-shipping-container {
+
+            display: inline-flex;
+            font-size: calc( var(--adfy_woofc_base_text_font_size) - 10% );
+            line-height: 1;
+            font-weight: normal;
+            gap: 10px;
+            align-items: center;
+            fill: var(--adfy_woofc_base_text_color);
+            color: var(--adfy_woofc_base_text_color);
+
+            svg {
+
+                display: inline-flex;
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover {
+
+                fill: var(--adfy_woofc_base_link_color_hover);
+                color: var(--adfy_woofc_base_link_color_hover);
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+#adfy__woofc-coupon-container {
+
+     .coupon-container-header {
+
+        @include flex();
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--adfy_woofc_border_color);
+        @include breakpoint(medium) {
+
+            justify-content: flex-end;
+        }
+    }
+}

@@ -78,7 +78,7 @@ $calculator_text          = '';
 							<label for="addonify_floating_cart_shipping_country" class="screen-reader-text">
 								<?php esc_html_e( 'Country / region:', 'addonify-floating-cart' ); ?>
 							</label>
-							<select name="addonify_floating_cart_shipping_country" id="addonify_floating_cart_shipping_country" class="country_to_state country_select" rel="addonify_floating_cart_shipping_state">
+							<select name="addonify_floating_cart_shipping_country" id="addonify_floating_cart_shipping_country" class="country_to_state" rel="addonify_floating_cart_shipping_state">
 								<option value="default">
 									<?php esc_html_e( 'Select a country / region&hellip;', 'addonify-floating-cart' ); ?>
 								</option>

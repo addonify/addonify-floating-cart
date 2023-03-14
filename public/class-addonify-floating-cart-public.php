@@ -110,7 +110,7 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
+		wp_enqueue_style( 'select2' );
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
@@ -142,6 +142,7 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+		wp_enqueue_script( 'select2' );
 
 		if ( is_cart() || is_checkout() ) {
 			return;
@@ -159,7 +160,7 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',

@@ -551,7 +551,14 @@
                     'failure': function () {
                         console.log('Request failed! Are we offline?')
                     }
-                })
+                }).always( function() {
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
+                } )
             });
 
             // load state or input tag if no available state on selecting a country
@@ -559,6 +566,7 @@
                 let country = $(this).val();
                 let state_div = $('#addonify_floating_cart_shipping_state');
                 let states = countriesToStates[country];
+                state_div.siblings('span.select2').remove();
                 if (typeof states === 'object' && Object.keys(states).length > 0) {
                     let html = '';
                     for (let index in states) {
@@ -573,6 +581,9 @@
                         this_parent.append(select);
                     }
                     $('#addonify_floating_cart_shipping_state').html(html);
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
                 } else if (states instanceof Array && states.length === 0) {
                     let this_parent = state_div.parent();
                     state_div.remove();
@@ -630,6 +641,12 @@
                     }
                 }).always(function () {
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
                 });
             })
         },
@@ -639,6 +656,12 @@
 
         addonifyFloatingCart.init();
         $('.adfy__woofc-alert').hide();
+        $('select#addonify_floating_cart_shipping_country').select2({
+            dropdownParent: $('#adfy__woofc_shipping_country_field')
+        });
+        $('select#addonify_floating_cart_shipping_state').select2({
+            dropdownParent: $('#adfy__woofc_shipping_state_field span')
+        });
     });
 
 })(jQuery);

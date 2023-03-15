@@ -110,7 +110,6 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( 'select2' );
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
@@ -142,7 +141,6 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'select2' );
 
 		if ( is_cart() || is_checkout() ) {
 			return;

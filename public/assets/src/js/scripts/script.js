@@ -107,7 +107,6 @@
         * Notification system event handler.
         * Since: 1.0.0
         */
-
         notifyFloatingCartEventHandler: () => {
 
             var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? addonifyFloatingCartJSObject.toastNotificationButton : "";
@@ -241,6 +240,12 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
                 } );
             }
 
@@ -293,7 +298,14 @@
                     'error': function (e) {
                         alert('Error processing request');
                     }
-                });
+                }).always( function() {
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
+                } );
             });
 
             // remove applied coupon from cart
@@ -328,7 +340,14 @@
                     'error': function (e) {
                         alert('Error processing request');
                     }
-                });
+                }).always( function() {
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
+                } );
             });
 
             //show coupon apply success alert message
@@ -432,6 +451,12 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
                 } );
             });
 
@@ -480,6 +505,12 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    $('select#addonify_floating_cart_shipping_country').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_country_field')
+                    });
+                    $('select#addonify_floating_cart_shipping_state').select2({
+                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
+                    });
                 } );
             });
         },

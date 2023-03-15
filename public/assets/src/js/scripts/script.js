@@ -240,12 +240,6 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
                 } );
             }
 
@@ -298,14 +292,7 @@
                     'error': function (e) {
                         alert('Error processing request');
                     }
-                }).always( function() {
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
-                } );
+                });
             });
 
             // remove applied coupon from cart
@@ -340,14 +327,7 @@
                     'error': function (e) {
                         alert('Error processing request');
                     }
-                }).always( function() {
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
-                } );
+                });
             });
 
             //show coupon apply success alert message
@@ -451,12 +431,6 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
                 } );
             });
 
@@ -505,12 +479,6 @@
                 }).always( function() {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
                 } );
             });
         },
@@ -582,14 +550,7 @@
                     'failure': function () {
                         console.log('Request failed! Are we offline?')
                     }
-                }).always( function() {
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
-                } )
+                })
             });
 
             // load state or input tag if no available state on selecting a country
@@ -612,9 +573,6 @@
                         this_parent.append(select);
                     }
                     $('#addonify_floating_cart_shipping_state').html(html);
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
                 } else if (states instanceof Array && states.length === 0) {
                     let this_parent = state_div.parent();
                     state_div.remove();
@@ -672,12 +630,6 @@
                     }
                 }).always(function () {
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    $('select#addonify_floating_cart_shipping_country').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_country_field')
-                    });
-                    $('select#addonify_floating_cart_shipping_state').select2({
-                        dropdownParent: $('#adfy__woofc_shipping_state_field span')
-                    });
                 });
             })
         },
@@ -687,12 +639,6 @@
 
         addonifyFloatingCart.init();
         $('.adfy__woofc-alert').hide();
-        $('select#addonify_floating_cart_shipping_country').select2({
-            dropdownParent: $('#adfy__woofc_shipping_country_field')
-        });
-        $('select#addonify_floating_cart_shipping_state').select2({
-            dropdownParent: $('#adfy__woofc_shipping_state_field span')
-        });
     });
 
 })(jQuery);

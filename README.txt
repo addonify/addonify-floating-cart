@@ -101,7 +101,6 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Update: Static texts in UDP Agents are now translation ready.
 - Removed: Option for showing/hiding tax at cart footer section.
-- Added: Select2 jquery library used in dropdowns in shipping section.
 
 = 1.0.7 - 03 March, 2023 =
 

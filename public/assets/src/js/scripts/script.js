@@ -107,7 +107,6 @@
         * Notification system event handler.
         * Since: 1.0.0
         */
-
         notifyFloatingCartEventHandler: () => {
 
             var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? addonifyFloatingCartJSObject.toastNotificationButton : "";
@@ -559,6 +558,7 @@
                 let country = $(this).val();
                 let state_div = $('#addonify_floating_cart_shipping_state');
                 let states = countriesToStates[country];
+                state_div.siblings('span.select2').remove();
                 if (typeof states === 'object' && Object.keys(states).length > 0) {
                     let html = '';
                     for (let index in states) {

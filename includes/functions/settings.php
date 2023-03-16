@@ -106,8 +106,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_continue_shopping_button'             => '1',
 			'continue_shopping_button_label'               => __( 'Close', 'addonify-floating-cart' ),
 			'checkout_button_label'                        => __( 'Checkout', 'addonify-floating-cart' ),
-			'display_tax_amount'                           => true,
-			'enable_shipping_calculation'                  => false,
 			'sub_total_label'                              => __( 'Sub Total: ', 'addonify-floating-cart' ),
 			'discount_label'                               => __( 'Discount:', 'addonify-floating-cart' ),
 			'shipping_label'                               => __( 'Shipping:', 'addonify-floating-cart' ),

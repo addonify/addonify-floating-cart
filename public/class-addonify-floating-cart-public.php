@@ -110,7 +110,6 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
@@ -159,7 +158,7 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',
@@ -218,6 +217,9 @@ class Addonify_Floating_Cart_Public {
 			return;
 		}
 
+		WC()->cart->calculate_totals();
+		WC()->cart->maybe_set_cart_cookies();
+
 		do_action( 'addonify_floating_cart_footer_template' );
 	}
 
@@ -229,6 +231,9 @@ class Addonify_Floating_Cart_Public {
 	 * @return array
 	 */
 	public function add_to_cart_ajax( $fragments = array() ) {
+
+		WC()->cart->calculate_totals();
+		WC()->cart->maybe_set_cart_cookies();
 
 		if ( isset( $_POST['product_id'] ) ) { //phpcs:ignore
 			$product              = wc_get_product( absint( $_POST['product_id'] ) ); //phpcs:ignore

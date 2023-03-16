@@ -217,6 +217,9 @@ class Addonify_Floating_Cart_Public {
 			return;
 		}
 
+		WC()->cart->calculate_totals();
+		WC()->cart->maybe_set_cart_cookies();
+
 		do_action( 'addonify_floating_cart_footer_template' );
 	}
 
@@ -228,6 +231,9 @@ class Addonify_Floating_Cart_Public {
 	 * @return array
 	 */
 	public function add_to_cart_ajax( $fragments = array() ) {
+
+		WC()->cart->calculate_totals();
+		WC()->cart->maybe_set_cart_cookies();
 
 		if ( isset( $_POST['product_id'] ) ) { //phpcs:ignore
 			$product              = wc_get_product( absint( $_POST['product_id'] ) ); //phpcs:ignore

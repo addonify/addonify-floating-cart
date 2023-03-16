@@ -69,7 +69,7 @@ foreach ( $packages as $package ) {
 			<?php if ( ( count( WC()->countries->get_allowed_countries() ) > 0 ) ) : ?>
 			<li class="shipping">
 				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'shipping_label' ) ); ?>
-					<?php if ( (bool) addonify_floating_cart_get_option( 'enable_shipping_calculation' ) ) : ?>
+					<?php if ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 						<a id="adfy__woofc-shipping-trigger" class="adfy__woofc-link adfy__woofc-prevent-default has-underline" href='#'>
 							( <?php echo esc_html( addonify_floating_cart_get_option( 'open_shipping_label' ) ); ?> )
 						</a>
@@ -80,7 +80,7 @@ foreach ( $packages as $package ) {
 					<span class="addonify_floating_cart-Price-amount shipping-amount">
 						<bdi>
 						<?php
-						if ( (bool) WC()->cart->show_shipping() && $show_shipping_cost ) {
+						if ( WC()->cart->show_shipping() && $show_shipping_cost ) {
 							WC()->cart->calculate_shipping();
 							if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
 								if ( WC()->customer->get_shipping_country() !== 'default' ) {
@@ -142,7 +142,7 @@ foreach ( $packages as $package ) {
 				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'total_label' ) ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount total-amount">
-						<?php echo wp_kses_post( WC()->cart->get_total() ); ?>
+						<?php wc_cart_totals_order_total_html(); ?>
 					</span>
 				</span>
 			</li>

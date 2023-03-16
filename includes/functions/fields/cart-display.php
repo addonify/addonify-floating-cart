@@ -54,12 +54,6 @@ function addonify_floating_cart_cart_display_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_continue_shopping_button' ),
 		),
-		'enable_shipping_calculation'       => array(
-			'label'     => __( 'Enable Shipping Calculation', 'addonify-floating-cart' ),
-			'type'      => 'switch',
-			'dependent' => array( 'enable_floating_cart' ),
-			'value'     => addonify_floating_cart_get_option( 'enable_shipping_calculation' ),
-		),
 	);
 }
 
@@ -103,7 +97,7 @@ function addonify_floating_cart_display_cart_label_settings() {
 		'open_shipping_label'            => array(
 			'label'     => __( 'Label for Opening Shipping Section', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart', 'enable_shipping_calculation' ),
+			'dependent' => array( 'enable_floating_cart' ),
 			'value'     => addonify_floating_cart_get_option( 'open_shipping_label' ),
 		),
 		'tax_label'                      => array(

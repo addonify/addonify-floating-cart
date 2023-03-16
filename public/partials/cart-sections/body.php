@@ -53,6 +53,7 @@ defined( 'ABSPATH' ) || exit;
 							array(
 								'product'   => $product,
 								'cart_item' => $cart_item,
+								'cart_item_key' => $cart_item_key,
 								'variation' => $variation,
 							)
 						);

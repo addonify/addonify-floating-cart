@@ -17,7 +17,7 @@ $calculator_text          = '';
 
 
 <div id="adfy__woofc-shipping-container-inner">
-	<?php if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || (bool) addonify_floating_cart_get_option( 'enable_shipping_calculation' ) ) : ?>
+	<?php if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || WC()->cart->show_shipping() ) : ?>
 		<?php if ( $available_methods ) : ?>
 			<ul id="adfy__woofc-shipping-methods" class="adfy__woofc-shipping-methods">
 				<?php foreach ( $available_methods as $method ) : ?>

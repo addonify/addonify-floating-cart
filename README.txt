@@ -101,6 +101,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Update: Static texts in UDP Agents are now translation ready.
 - Removed: Option for showing/hiding tax at cart footer section.
+- Removed: option for show/hide shipping calculation in floating cart. Shippping option now works with woocommerce options.
 
 = 1.0.7 - 03 March, 2023 =
 

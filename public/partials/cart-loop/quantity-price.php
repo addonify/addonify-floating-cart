@@ -13,12 +13,12 @@ defined( 'ABSPATH' ) || exit;
 <div class="adfy__woofc-item-price"> 
 	<span class="quantity">
 		<div class="adfy__woofc-item-price-multiplier-quantity">
-			<?php echo esc_html( $quantity ); ?>
+			<?php echo wp_kses_post( $quantity ); ?>
 		</div>
 		× 
 		<span class="woocommerce-Price-amount amount">
 		<bdi>
-			<?php echo esc_html( $price ); ?>
+			<?php echo wp_kses_post( $price ); ?>
 		</bdi>
 		</span>
 	</span>

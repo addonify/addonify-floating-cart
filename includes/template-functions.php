@@ -439,9 +439,9 @@ add_action( 'addonify_floating_cart_product_quantity_field', 'addonify_floating_
  * @param array $args  Arguments passed.
  */
 function addonify_floating_cart_get_product_quantity_price_template( $args = array() ) {
-
+	$_product      = apply_filters( 'woocommerce_cart_item_product', $args['cart_item']['data'], $args['cart_item'], $args['cart_item_key'] );
 	$template_args = array(
-		'price'    => ( ! empty( $args['variation'] ) ) ? get_woocommerce_currency_symbol() . $args['variation']->get_price() : get_woocommerce_currency_symbol() . $args['product']->get_price(),
+		'price'    => apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $args['cart_item'], $args['cart_item_key'] ),
 		'quantity' => $args['cart_item']['quantity'],
 	);
 

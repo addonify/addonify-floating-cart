@@ -52,6 +52,16 @@ function addonify_floating_cart_cart_options_settings() {
 			'dependent'       => array( 'enable_floating_cart', 'enable_shopping_meter' ),
 			'value'           => addonify_floating_cart_get_option( 'customer_shopping_meter_threshold' ),
 		),
+		'compare_meter_threshold_with_subtotal'         => array(
+			'label'     => __( 'Compare Meter Threshold with Subtotal: ', 'addonify-floating-cart' ),
+			'type'      => 'select',
+			'choices'   => array(
+				'before-discount' => __( 'Before Discount', 'addonify-floating-cart' ),
+				'after-discount'  => __( 'After Discount', 'addonify-floating-cart' ),
+			),
+			'dependent' => array( 'enable_floating_cart', 'enable_shopping_meter' ),
+			'value'     => addonify_floating_cart_get_option( 'compare_meter_threshold_with_subtotal' ),
+		),
 		'customer_shopping_meter_pre_threshold_label'   => array(
 			'label'       => __( 'Initial Shopping Meter Notice', 'addonify-floating-cart' ),
 			'description' => __( 'Notice that is displayed before a customer\'s cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount.', 'addonify-floating-cart' ),

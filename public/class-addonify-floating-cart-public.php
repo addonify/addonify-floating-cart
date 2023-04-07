@@ -113,7 +113,6 @@ class Addonify_Floating_Cart_Public {
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
 
@@ -153,8 +152,6 @@ class Addonify_Floating_Cart_Public {
 				$states[ $i ] = WC()->countries->get_states( $i );
 			}
 		}
-
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true );
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 

@@ -237,10 +237,10 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                }).always( function() {
+                }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                } );
+                });
             }
 
         },
@@ -428,10 +428,10 @@
                     error: function (a) {
                         console.log("Error processing request");
                     }
-                }).always( function() {
+                }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                } );
+                });
             });
 
             //restore item to cart
@@ -476,10 +476,10 @@
                             console.log(response.messsage);
                         }
                     }
-                }).always( function() {
+                }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                } );
+                });
             });
         },
 

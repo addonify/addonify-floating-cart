@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
 Requires at least: 5.6
 Requires PHP: 7.0.0
-Tested up to: 6.1.1
-Stable tag: 1.0.8
+Tested up to: 6.2
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.0.9 - ? =
+
+- Removed: Perfect scrollbar library.
+
 
 = 1.0.8 - 16 March, 2023 =
 

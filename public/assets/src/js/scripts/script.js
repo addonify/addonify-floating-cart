@@ -638,6 +638,7 @@
     $(document).ready(function () {
 
         addonifyFloatingCart.init();
+
         $('.adfy__woofc-alert').hide();
     });
 

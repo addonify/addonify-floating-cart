@@ -155,6 +155,8 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 
+		wp_enqueue_script( 'simplebar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/simplebar.min.js', array(), $this->version, true );
+
 		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
 
 		wp_localize_script(

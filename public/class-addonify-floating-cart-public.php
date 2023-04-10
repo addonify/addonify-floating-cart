@@ -116,6 +116,8 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
 
+		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
+
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
 
 		if ( (int) addonify_floating_cart_get_option( 'load_styles_from_plugin' ) === 1 ) {
@@ -155,7 +157,7 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( 'simplebar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/simplebar.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
 
 		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
 

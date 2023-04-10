@@ -11,14 +11,24 @@ const init = {
 
     scrollbar: () => {
 
-        let scrollableEle = document.getElementById('adfy__woofc-scrollbar');
+        const scrollableEle = document.getElementById('adfy__woofc-scrollbar');
+        const psInitiliazed = scrollableEle.classList.contains('ps');
+
+        //console.log(psInitiliazed);
 
         if ((scrollableEle !== null) && (scrollableEle !== undefined)) {
 
-            new SimpleBar(scrollableEle, {
-                autoHide: false,
-                clickOnTrack: true,
-            });
+            if (psInitiliazed === false) {
+
+                new PerfectScrollbar(scrollableEle, {
+
+                    wheelSpeed: 1,
+                    wheelPropagation: true,
+                    minScrollbarLength: 20
+                });
+
+                //console.log('PerfectScrollbar initialized!', new Date());
+            }
         }
     },
 
@@ -37,17 +47,14 @@ const init = {
 
         const callback = (mutationList) => {
 
-            for (const mutation of mutationList) {
+            if (mutationList.length > 0) {
 
-                if (mutation.type === "childList") {
+                /**
+                *
+                * Initialize the scrollbar.
+                */
 
-                    /**
-                    *
-                    * Initialize the scrollbar.
-                    */
-
-                    init.scrollbar();
-                }
+                init.scrollbar();
             }
         };
 
@@ -67,4 +74,4 @@ const init = {
 * @since: 1.0.9
 */
 
-document.addEventListener('DOMContentLoaded', init.observeCart());
+document.addEventListener('DOMContentLoaded', () => init.observeCart());

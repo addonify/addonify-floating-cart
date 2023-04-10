@@ -99,9 +99,8 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.0.9 - ? =
 
-- Added: Simplebar library.
-- Added: Mutation observer on cart & init Simplebar.
-- Removed: Perfect scrollbar library.
+- Added: Mutation observer on cart & init Perfect scrollbar.
+- Fixed: Issue with perfect scrollbar library.
 
 
 = 1.0.8 - 16 March, 2023 =

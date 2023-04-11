@@ -9,7 +9,8 @@
 
 .adfy__woofc-visible {
 
-    overflow: hidden;
+    overflow-y: hidden;
+    max-height: 100vh;
 }
 
 .adfy__woofc-hidden {

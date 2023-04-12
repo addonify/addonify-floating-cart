@@ -51,7 +51,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'open_cart_modal_after_click_on_view_cart'     => '1',
 			'enable_shopping_meter'                        => '1',
 			'customer_shopping_meter_threshold'            => 1000,
-			'compare_meter_threshold_with_subtotal'        => 'before-discount',
+			'include_discount_amount_in_threshold'         => false,
 			'customer_shopping_meter_pre_threshold_label'  => '',
 			'customer_shopping_meter_post_threshold_label' => '',
 			'load_styles_from_plugin'                      => '1',

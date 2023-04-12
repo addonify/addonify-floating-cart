@@ -245,7 +245,7 @@ function addonify_floating_cart_get_sidebar_cart_shipping_bar_template( $args = 
 	);
 
 	if ( WC()->cart->get_cart_contents_count() > 0 ) {
-		if ( 'after-discount' === addonify_floating_cart_get_option( 'compare_meter_threshold_with_subtotal' ) ) {
+		if ( addonify_floating_cart_get_option( 'include_discount_amount_in_threshold' ) ) {
 			$template_args['total'] = WC()->cart->get_cart_contents_total();
 		} else {
 			$template_args['total'] = WC()->cart->get_subtotal();

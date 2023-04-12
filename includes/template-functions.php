@@ -245,7 +245,11 @@ function addonify_floating_cart_get_sidebar_cart_shipping_bar_template( $args = 
 	);
 
 	if ( WC()->cart->get_cart_contents_count() > 0 ) {
-		$template_args['total'] = WC()->cart->get_cart_contents_total();
+		if ( addonify_floating_cart_get_option( 'include_discount_amount_in_threshold' ) ) {
+			$template_args['total'] = WC()->cart->get_cart_contents_total();
+		} else {
+			$template_args['total'] = WC()->cart->get_subtotal();
+		}
 		if ( $template_args['total'] >= $free_shipping_eligibility_amount ) {
 			$template_args['per']  = 100;
 			$template_args['left'] = 0;

@@ -6,8 +6,7 @@
         flex: 1 1 auto;
         @include flex();
         flex-direction: column;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: hidden;
 
         .adfy__woofc-content-entry {
                 
@@ -249,4 +248,18 @@
             }
         }
     }
+}
+
+/** 
+*
+* Fix: Issue in 2023 theme.
+* @since: 1.0.13
+*/
+
+.woocommerce-page #adfy__floating-cart main {
+
+    max-width: 100%;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
 }

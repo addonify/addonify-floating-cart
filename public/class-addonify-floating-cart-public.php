@@ -113,9 +113,10 @@ class Addonify_Floating_Cart_Public {
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
+
+		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
 
@@ -154,9 +155,9 @@ class Addonify_Floating_Cart_Public {
 			}
 		}
 
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', null, $this->version, true );
-
 		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
+
+		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
 
 		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
 
@@ -307,9 +308,9 @@ class Addonify_Floating_Cart_Public {
 		do_action( 'addonify_floating_cart_sidebar_cart_shipping' );
 		$fragments['#adfy__woofc-shipping-container-inner'] = ob_get_clean();
 
-		$fragments['.adfy__woofc-shipping-text'] = $this->shopping_meter_text_template();
-
-		$fragments['.progress-bar.shipping-bar'] = $this->shopping_meter_bar_template();
+		ob_start();
+		do_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', array() );
+		$fragments['.adfy__woofc-shipping-bar'] = ob_get_clean();
 
 		return $fragments;
 
@@ -874,35 +875,6 @@ class Addonify_Floating_Cart_Public {
 		return apply_filters(
 			'addonify_floating_cart_total_template',
 			'<span class="addonify-floating-cart-Price-amount total-amount">' . WC()->cart->get_cart_total() . '</span>'
-		);
-	}
-
-	/**
-	 * Render template for displaying shopping meter text.
-	 *
-	 * @since    1.0.0
-	 */
-	public function shopping_meter_text_template() {
-
-		$shopping_threshold_amount = (int) addonify_floating_cart_get_option( 'customer_shopping_meter_threshold' );
-
-		$cart_total = WC()->cart->get_cart_contents_total();
-
-		$shopping_threshold_text = addonify_floating_cart_get_option( 'customer_shopping_meter_pre_threshold_label' );
-
-		$final_shopping_threshold_text = addonify_floating_cart_get_option( 'customer_shopping_meter_post_threshold_label' );
-
-		if ( $cart_total >= $shopping_threshold_amount ) {
-			$shopping_threshold_text = addonify_floating_cart_get_option( 'customer_shopping_meter_post_threshold_label' );
-		} else {
-			$left_amount = $shopping_threshold_amount - $cart_total;
-
-			$shopping_threshold_text = str_replace( '{amount}', get_woocommerce_currency_symbol() . $left_amount, $shopping_threshold_text );
-		}
-
-		return apply_filters(
-			'addonify_floating_cart_shopping_meter_text',
-			'<span class="adfy__woofc-shipping-text">' . esc_html( $shopping_threshold_text ) . '</span>'
 		);
 	}
 

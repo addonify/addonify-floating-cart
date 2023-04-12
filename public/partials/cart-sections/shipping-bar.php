@@ -11,15 +11,15 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="adfy__woofc-shipping-bar <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>">
-		<span class="adfy__woofc-shipping-text">
+	<span class="adfy__woofc-shipping-text">
 		<?php
 		if ( $per < 100 ) {
-			echo esc_html( str_replace( '{threshold}', $left, $pre_threshold_label ) );
+			echo wp_kses_post( str_replace( '{amount}', wc_price( $left ), $pre_threshold_label ) );
 		} else {
 			echo esc_html( $post_threshold_label );
 		}
 		?>
-		</span>
+	</span>
 	<div class="progress-bars">
 		<div class="total-bar shipping-bar"></div>
 		<div class="progress-bar shipping-bar" data_percentage="<?php echo esc_attr( $per ); ?>" style="width: <?php echo esc_attr( $per ); ?>%"></div>

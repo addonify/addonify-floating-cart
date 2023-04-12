@@ -97,8 +97,9 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.0.9 - ? =
+= 1.0.9 - 12 April, 2023 =
 
+- Added: Option to calculate shipping meter threshold amount include/excluding discount amount.
 - Added: Mutation observer on cart & init Perfect scrollbar.
 - Fixed: Issue with perfect scrollbar library.
 

@@ -97,6 +97,10 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
+= 1.1.0 - ? =
+
+- Fixed: Threshold and subtotal calculation mismatch issue.
+
 = 1.0.9 - 12 April, 2023 =
 
 - Added: Option to calculate shipping meter threshold amount include/excluding discount amount.

@@ -56,9 +56,9 @@ foreach ( $packages as $package ) {
 						<bdi>
 						<?php
 						if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
-							$discount = wc_price( WC()->cart->get_discount_total() );
-						} else {
 							$discount = wc_price( WC()->cart->get_discount_tax() + WC()->cart->get_discount_total() );
+						} else {
+							$discount = wc_price( WC()->cart->get_discount_total() );
 						}
 						?>
 						<?php echo wp_kses_post( $discount ); ?>

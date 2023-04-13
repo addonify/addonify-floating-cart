@@ -2,10 +2,10 @@
 
 Contributors: addonify
 Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
-Requires at least: 5.6
-Requires PHP: 7.0.0
+Requires at least: 5.9 or higher
+Requires PHP: 7.4
 Tested up to: 6.2
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,7 +97,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.0 - ? =
+= 1.1.0 - 13 April, 2023 =
 
 - Fixed: Threshold and subtotal calculation mismatch issue.
 

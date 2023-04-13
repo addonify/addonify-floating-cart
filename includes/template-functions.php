@@ -245,10 +245,18 @@ function addonify_floating_cart_get_sidebar_cart_shipping_bar_template( $args = 
 	);
 
 	if ( WC()->cart->get_cart_contents_count() > 0 ) {
-		if ( addonify_floating_cart_get_option( 'include_discount_amount_in_threshold' ) ) {
-			$template_args['total'] = WC()->cart->get_cart_contents_total();
+		if ( WC()->cart->display_prices_including_tax() ) {
+			$template_args['total'] = WC()->cart->get_subtotal() + WC()->cart->get_subtotal_tax();
 		} else {
 			$template_args['total'] = WC()->cart->get_subtotal();
+		}
+		if ( addonify_floating_cart_get_option( 'include_discount_amount_in_threshold' ) ) {
+			if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
+				$discount = WC()->cart->get_discount_total();
+			} else {
+				$discount = WC()->cart->get_discount_tax() + WC()->cart->get_discount_total();
+			}
+			$template_args['total'] = $template_args['total'] + $discount;
 		}
 		if ( $template_args['total'] >= $free_shipping_eligibility_amount ) {
 			$template_args['per']  = 100;

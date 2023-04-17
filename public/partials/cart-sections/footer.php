@@ -66,7 +66,7 @@ foreach ( $packages as $package ) {
 					</span>
 				</span>
 			</li>
-			<?php if ( ( count( WC()->countries->get_allowed_countries() ) > 0 ) ) : ?>
+			<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 			<li class="shipping">
 				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'shipping_label' ) ); ?>
 					<?php if ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>

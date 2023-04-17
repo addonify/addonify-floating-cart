@@ -56,6 +56,17 @@ function addonify_floating_cart_toggle_cart_button_settings() {
 			'dependent' => array( 'enable_floating_cart', 'display_cart_modal_toggle_button', 'display_cart_items_number_badge' ),
 			'value'     => addonify_floating_cart_get_option( 'cart_items_number_badge_position' ),
 		),
+		'cart_badge_items_total_count'              => array(
+			'label'       => esc_html__( 'Cart Items Count', 'go-cart' ),
+			'description' => esc_html__( 'Display cart items total count either according to the quantity of items in cart or the number of unique items in the cart.', 'go-cart' ),
+			'type'        => 'select',
+			'choices'     => array(
+				'total_products'            => esc_html__( 'Total Products Types', 'go-cart' ),
+				'total_products_quantities' => esc_html__( 'Total Product Quantities', 'go-cart' ),
+			),
+			'dependent'   => array( 'enable_floating_cart', 'display_cart_modal_toggle_button', 'display_cart_items_number_badge' ),
+			'value'       => addonify_floating_cart_get_option( 'cart_badge_items_total_count' ),
+		),
 	);
 }
 

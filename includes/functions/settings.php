@@ -61,6 +61,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_modal_toggle_button_display_position'    => 'bottom-right',
 			'display_cart_items_number_badge'              => '1',
 			'cart_items_number_badge_position'             => 'top-left',
+			'cart_badge_items_total_count'                 => 'total_products',
 			'toggle_button_badge_width'                    => 23,
 			'toggle_button_badge_font_size'                => 13,
 			'toggle_button_badge_background_color'         => '',

@@ -97,6 +97,10 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
+= 1.1.1 - ? = 
+
+- Added: Option for showing product type count or products quantities in floating cart badge.
+
 = 1.1.0 - 13 April, 2023 =
 
 - Fixed: Threshold and subtotal calculation mismatch issue.

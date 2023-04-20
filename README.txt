@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.9 or higher
 Requires PHP: 7.4
 Tested up to: 6.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,7 +97,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.1 - ? = 
+= 1.1.1 - 20 April, 2023 = 
 
 - Added: Option for showing product type count or products quantities in floating cart badge.
 - Update: Refresh cart after page load for fragments cache related issues.

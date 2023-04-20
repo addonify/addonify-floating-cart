@@ -35,6 +35,7 @@
             this.notifyFloatingCartEventHandler();
             this.handleCartItems();
             this.shippingSectionHandler();
+            this.refreshCart();
         },
 
         preventDefaultBehaviour: () => {
@@ -633,6 +634,32 @@
                 });
             })
         },
+
+        refreshCart: () => {
+            $.post(
+                addonifyFloatingCartJSObject.ajax_url,
+                {
+                    action: addonifyFloatingCartJSObject.ajax_refresh_cart_fragments,
+                    nonce: addonifyFloatingCartJSObject.nonce,
+                },
+                function ( response ) {
+                    if (!response || response.error)
+                        return;
+
+                    var fragments = response.fragments;
+
+                    // Replace fragments
+                    if (fragments) {
+                        $.each(fragments, function (key, value) {
+                            $(key).replaceWith(value);
+                        });
+                    }
+
+                    // Update cart
+                    $(document.body).trigger('wc_update_cart');
+                }
+            );
+        }
     }
 
     $(document).ready(function () {

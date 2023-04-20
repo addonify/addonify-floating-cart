@@ -102,6 +102,9 @@ class Addonify_Floating_Cart_Public {
 		add_action( 'wp_ajax_addonify_floating_update_shipping_method', array( $this, 'update_shipping_method' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_update_shipping_method', array( $this, 'update_shipping_method' ) );
 
+		add_action( 'wp_ajax_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
+		add_action( 'wp_ajax_nopriv_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
+
 	}
 
 	/**
@@ -172,6 +175,7 @@ class Addonify_Floating_Cart_Public {
 				'ajax_update_cart_item_action'             => 'addonify_floating_cart_update_cart_item',
 				'ajax_apply_coupon'                        => 'addonify_floating_cart_apply_coupon',
 				'ajax_remove_coupon'                       => 'addonify_floating_cart_remove_coupon',
+				'ajax_refresh_cart_fragments'              => 'addonify_floating_cart_refresh_cart_fragments',
 				'updateShippingInfo'                       => 'addonify_floating_update_shipping_info',
 				'updateShippingMethod'                     => 'addonify_floating_update_shipping_method',
 				'nonce'                                    => wp_create_nonce( 'addonify-floating-cart-ajax-nonce' ),
@@ -276,7 +280,11 @@ class Addonify_Floating_Cart_Public {
 
 		WC()->session->set( 'wc_notices', $prev_notices );
 
-		$cart_items_count = count( WC()->cart->get_cart_contents() );
+		if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
+			$cart_items_count = count( WC()->cart->get_cart_contents() );
+		} else {
+			$cart_items_count = WC()->cart->get_cart_contents_count();
+		}
 		ob_start();
 		?>
 			<span class="adfy__woofc-badge">
@@ -305,8 +313,22 @@ class Addonify_Floating_Cart_Public {
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_shipping' );
-		$fragments['#adfy__woofc-shipping-container-inner'] = ob_get_clean();
+		$shipping_modal_close_label = esc_html__( 'Go Back', 'addonify-floating-cart' );
+		?>
+		<div id="adfy__woofc-shipping-container" data_display="hidden">
+			<div class="shipping-container-header">
+				<button class="adfy__woofc-fake-button" id="adfy__woofc-hide-shipping-container">
+					<svg viewBox="0 0 64 64"><g><path d="M10.7,44.3c-0.5,0-1-0.2-1.3-0.6l-6.9-8.2c-1.7-2-1.7-5,0-7l6.9-8.2c0.6-0.7,1.7-0.8,2.5-0.2c0.7,0.6,0.8,1.7,0.2,2.5l-6.5,7.7H61c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8H5.6l6.5,7.7c0.6,0.7,0.5,1.8-0.2,2.5C11.5,44.2,11.1,44.3,10.7,44.3z"/></g>
+					</svg>
+					<?php esc_html_e( $shipping_modal_close_label, 'addonify-floating-cart' ); //phpcs:ignore ?>
+				</button>
+			</div>
+			<?php
+			do_action( 'addonify_floating_cart_sidebar_cart_shipping', array() );
+			?>
+		</div>
+		<?php
+		$fragments['#adfy__woofc-shipping-container'] = ob_get_clean();
 
 		ob_start();
 		do_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', array() );
@@ -314,6 +336,23 @@ class Addonify_Floating_Cart_Public {
 
 		return $fragments;
 
+	}
+
+	/**
+	 * Return ajax cart fragments.
+	 */
+	public function refresh_cart_fragments() {
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+
+		if (
+			$nonce &&
+			wp_verify_nonce( $nonce, 'addonify-floating-cart-ajax-nonce' )
+		) {
+			// Fragments returned.
+			$return_response['fragments'] = apply_filters( 'woocommerce_add_to_cart_fragments', $this->add_to_cart_ajax() );
+			wp_send_json( $return_response );
+		}
+		wp_die();
 	}
 
 	/**

@@ -19,12 +19,10 @@ defined( 'ABSPATH' ) || exit;
 	</span>
 	<?php if ( 1 === $display_badge ) { ?>
 		<?php
-		$total_product_types    = count( WC()->cart->get_cart_contents() );
-		$total_product_quantity = WC()->cart->get_cart_contents_count();
 		if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
-			$cart_items_count = $total_product_types;
+			$cart_items_count = count( WC()->cart->get_cart_contents() );
 		} else {
-			$cart_items_count = $total_product_quantity;
+			$cart_items_count = WC()->cart->get_cart_contents_count();
 		}
 		?>
 		<span class="badge <?php echo esc_attr( $badge_position ); ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html( $cart_items_count ); ?></span></span>

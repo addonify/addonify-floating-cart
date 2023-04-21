@@ -745,17 +745,17 @@ class Addonify_Floating_Cart_Public {
 				'city'     => '',
 				'postcode' => '',
 			);
-			if ( ! empty( $_POST['shipping_country'] ) ) {
-				$address['country'] = sanitize_text_field( wp_unslash( $_POST['shipping_country'] ) );
+			if ( ! empty( $_POST['calc_shipping_country'] ) ) {
+				$address['country'] = sanitize_text_field( wp_unslash( $_POST['calc_shipping_country'] ) );
 			}
-			if ( ! empty( $_POST['shipping_state'] ) ) {
-				$address['state'] = sanitize_text_field( wp_unslash( $_POST['shipping_state'] ) );
+			if ( ! empty( $_POST['calc_shipping_state'] ) ) {
+				$address['state'] = sanitize_text_field( wp_unslash( $_POST['calc_shipping_state'] ) );
 			}
-			if ( ! empty( $_POST['shipping_city'] ) ) {
-				$address['city'] = sanitize_text_field( wp_unslash( $_POST['shipping_city'] ) );
+			if ( ! empty( $_POST['calc_shipping_city'] ) ) {
+				$address['city'] = sanitize_text_field( wp_unslash( $_POST['calc_shipping_city'] ) );
 			}
-			if ( ! empty( $_POST['shipping_postcode'] ) ) {
-				$address['postcode'] = sanitize_text_field( wp_unslash( $_POST['shipping_postcode'] ) );
+			if ( ! empty( $_POST['calc_shipping_postcode'] ) ) {
+				$address['postcode'] = sanitize_text_field( wp_unslash( $_POST['calc_shipping_postcode'] ) );
 			}
 			try {
 

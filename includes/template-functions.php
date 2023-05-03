@@ -369,7 +369,7 @@ function addonify_floating_cart_footer_close_button_template() {
 			! empty( wc_get_cart_url() )
 		) {
 			?>
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button adfy__hide-woofc secondary">
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button secondary">
 				<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
 			</a>
 			<?php

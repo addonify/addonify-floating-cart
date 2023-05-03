@@ -527,10 +527,10 @@
                     'method': 'POST',
                     'data': {
                         action: addonifyFloatingCartJSObject.updateShippingInfo,
-                        shipping_country: shipping_country,
-                        shipping_state: shipping_state,
-                        shipping_city: shipping_city,
-                        shipping_postcode: shipping_postcode,
+                        calc_shipping_country: shipping_country,
+                        calc_shipping_state: shipping_state,
+                        calc_shipping_city: shipping_city,
+                        calc_shipping_postcode: shipping_postcode,
                         nonce: nonce
                     },
                     'success': function (response) {

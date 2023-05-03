@@ -48,11 +48,20 @@ function addonify_floating_cart_cart_display_settings() {
 			'value'     => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 		),
 		'display_continue_shopping_button'  => array(
-			'label'       => __( 'Display Cart Close Button', 'addonify-floating-cart' ),
-			'description' => __( 'Display cart close button at the footer of the cart.', 'addonify-floating-cart' ),
-			'type'        => 'switch',
-			'dependent'   => array( 'enable_floating_cart' ),
-			'value'       => addonify_floating_cart_get_option( 'display_continue_shopping_button' ),
+			'label'     => __( 'Display Button before Checkout Button', 'addonify-floating-cart' ),
+			'type'      => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'display_continue_shopping_button' ),
+		),
+		'continue_shopping_button_action'   => array(
+			'label'     => __( 'Action of Button before Checkout Button', 'addonify-floating-cart' ),
+			'type'      => 'select',
+			'choices'   => array(
+				'default'        => __( 'Close Cart Modal', 'addonify-floating-cart' ),
+				'open_cart_page' => __( 'Open Cart Page', 'addonify-floating-cart' ),
+			),
+			'dependent' => array( 'enable_floating_cart', 'display_continue_shopping_button' ),
+			'value'     => addonify_floating_cart_get_option( 'continue_shopping_button_action' ),
 		),
 	);
 }
@@ -63,7 +72,7 @@ function addonify_floating_cart_cart_display_settings() {
 function addonify_floating_cart_display_cart_label_settings() {
 	return array(
 		'continue_shopping_button_label' => array(
-			'label'       => __( 'Cart Close Button Label', 'addonify-floating-cart' ),
+			'label'       => __( 'Label of Button before Checkout Button', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'Continue shopping', 'addonify-floating-cart' ),
 			'dependent'   => array( 'enable_floating_cart', 'display_continue_shopping_button' ),
@@ -124,7 +133,11 @@ function addonify_floating_cart_display_cart_label_settings() {
  */
 function addonify_floating_cart_cart_display_settings_add( $setting_fields ) {
 
-	return array_merge( $setting_fields, addonify_floating_cart_cart_display_settings() );
+	$setting_fields = array_merge( $setting_fields, addonify_floating_cart_cart_display_settings() );
+
+	$setting_fields = array_merge( $setting_fields, addonify_floating_cart_display_cart_label_settings() );
+
+	return $setting_fields;
 }
 add_filter( 'addonify_floating_cart_settings_fields', 'addonify_floating_cart_cart_display_settings_add' );
 

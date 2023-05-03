@@ -97,7 +97,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.2 - ?, 2023 = 
+= 1.1.2 - 3 May, 2023 = 
 
 - Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
 - Updated: Renamed settings, `Cart Close Button Label` to `Label of Button before Checkout Button` and `Display Cart Close Button` to `Display Button before Checkout Button`.

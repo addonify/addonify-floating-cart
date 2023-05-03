@@ -53,7 +53,7 @@ function addonify_floating_cart_cart_options_settings() {
 			'value'           => addonify_floating_cart_get_option( 'customer_shopping_meter_threshold' ),
 		),
 		'include_discount_amount_in_threshold'          => array(
-			'label'       => __( 'Calculate threshold amount including discount', 'addonify-floating-cart' ),
+			'label'       => __( 'Calculate Threshold Amount Including Discount', 'addonify-floating-cart' ),
 			'description' => __( 'When enabled, {amount}=(threshold-(subtotal-discount)). Normally, {amount} = (threshold-subtotal)', 'addonify-floating-cart' ),
 			'type'        => 'switch',
 			'dependent'   => array( 'enable_floating_cart', 'enable_shopping_meter' ),

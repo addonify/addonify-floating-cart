@@ -359,13 +359,27 @@ function addonify_floating_cart_footer_close_button_template() {
 
 	if (
 		(int) addonify_floating_cart_get_option( 'display_continue_shopping_button' ) === 1 &&
+		! empty( addonify_floating_cart_get_option( 'continue_shopping_button_action' ) ) &&
 		! empty( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) )
 	) {
-		?>
-		<button class="adfy__woofc-button adfy__hide-woofc close">
-			<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
-		</button>
-		<?php
+		$button_action = addonify_floating_cart_get_option( 'continue_shopping_button_action' );
+
+		if (
+			'open_cart_page' === $button_action &&
+			! empty( wc_get_cart_url() )
+		) {
+			?>
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button adfy__hide-woofc">
+				<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
+			</a>
+			<?php
+		} else {
+			?>
+			<button class="adfy__woofc-button adfy__hide-woofc close">
+				<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
+			</button>
+			<?php
+		}
 	}
 }
 add_action( 'addonify_floating_cart_cart_footer_button', 'addonify_floating_cart_footer_close_button_template' );

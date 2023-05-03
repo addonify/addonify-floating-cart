@@ -101,8 +101,10 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
 - Fixed: Issue of values of fields in `Cart Drawer/Modal Labels` not getting displayed. [GitHub Issue #161](https://github.com/addonify/addonify-floating-cart/issues/161)
-- Updated: Renamed settings, `Cart Close Button Label` to `Label of Button before Checkout Button` and `Display Cart Close Button` to `Display Button before Checkout Button`.
 - Added: New setting, `Action of Button before Checkout Button`, to switch between modal close and cart open on button click action. [GitHub Issue #158](https://github.com/addonify/addonify-floating-cart/issues/158)
+- Updated: Renamed settings, `Cart Close Button Label` to `Label of Button before Checkout Button` and `Display Cart Close Button` to `Display Button before Checkout Button`.
+- Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
+- Tweak: Class of the button before checkout button changed from `close` to `secondary`.
 
 = 1.1.1 - 20 April, 2023 = 
 

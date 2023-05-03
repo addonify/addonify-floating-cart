@@ -6,8 +6,8 @@ const { __ } = wp.i18n;
 
 const props = defineProps({
 	modelValue: {
-		required: false,
-		type: [String, Number],
+		required: true,
+		type: String,
 	},
 	placeholder: {
 		required: false,

@@ -133,7 +133,11 @@ function addonify_floating_cart_display_cart_label_settings() {
  */
 function addonify_floating_cart_cart_display_settings_add( $setting_fields ) {
 
-	return array_merge( $setting_fields, addonify_floating_cart_cart_display_settings() );
+	$setting_fields = array_merge( $setting_fields, addonify_floating_cart_cart_display_settings() );
+
+	$setting_fields = array_merge( $setting_fields, addonify_floating_cart_display_cart_label_settings() );
+
+	return $setting_fields;
 }
 add_filter( 'addonify_floating_cart_settings_fields', 'addonify_floating_cart_cart_display_settings_add' );
 

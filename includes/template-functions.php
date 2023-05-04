@@ -496,23 +496,11 @@ function addonify_floating_cart_get_product_title_template( $args = array() ) {
 		'product_permalink' => $args['product']->get_permalink(),
 	);
 
-	if ( $args['product']->has_attributes() ) {
-		if (
-			isset( $args['cart_item']['variation'] ) &&
-			is_array( $args['cart_item']['variation'] )
-		) {
-			foreach ( $args['cart_item']['variation'] as $index => $value ) {
+	$attributes_values = trim( wc_get_formatted_cart_item_data( $args['cart_item'], true ) );
+	$attributes_values = preg_replace( '/\s+/', ', ', $attributes_values );
+	$attributes_values = str_replace( ':,', ':', $attributes_values );
 
-				if ( strpos( $index, 'attribute_pa_' ) !== false ) {
-					$template_args['attributes'][] = ucfirst( str_replace( 'attribute_pa_', '', $index ) ) . ': ' . ucfirst( $value );
-				} elseif ( strpos( $index, 'attribute_' ) !== false ) {
-					$template_args['attributes'][] = ucfirst( str_replace( 'attribute_', '', $index ) ) . ': ' . ucfirst( $value );
-				}
-			}
-		}
-	}
-
-	$template_args['aattributes'] = implode( ', ', $template_args['attributes'] );
+	$template_args['aattributes'] = $attributes_values;
 
 	addonify_floating_cart_get_template(
 		'cart-loop/title.php',

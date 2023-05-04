@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.9 or higher
 Requires PHP: 7.4
 Tested up to: 6.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
+= 1.1.3 - 4 May, 2023 =
+
+- Fix: Issue with attribute name of variable product.
+
+
 = 1.1.2 - 3 May, 2023 = 
 
 - Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
@@ -106,14 +111,17 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
 - Tweak: Class of the button before checkout button changed from `close` to `secondary`.
 
+
 = 1.1.1 - 20 April, 2023 = 
 
 - Added: Option for showing product type count or products quantities in floating cart badge.
 - Update: Refresh cart after page load for fragments cache related issues.
 
+
 = 1.1.0 - 13 April, 2023 =
 
 - Fixed: Threshold and subtotal calculation mismatch issue.
+
 
 = 1.0.9 - 12 April, 2023 =
 
@@ -129,6 +137,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Removed: Option for show/hide shipping calculation in floating cart. Shippping option now works with woocommerce options.
 - Added: Option for compare Shopping Meter Threshold with Subtotal Before or After Discount.
 
+
 = 1.0.7 - 03 March, 2023 =
 
 - Fixed: Discount and subtotal not showing properly, shipping showing dash when shipping is free.
@@ -137,27 +146,32 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Update: Spinner added for cart, hovers the whole cart instead of single product.
 - Update: Different sections for Cart options and labels in admin settings page.
 - Update: Shows '-' instead of 0 when no shipping option is selected.
-- Update: UDP agent updated to v1.0.1
+- Update: UDP agent updated to v1.0.1.
+
 
 = 1.0.6 - 24 January 2022 =
 
 - Added: Recommended products in floating cart setting page.
 
+
 = 1.0.5 - 18 November 2022 =
 
 - Improvement: Color picker in settings page.
+
 
 = 1.0.4 - 03 November 2022 =
 
 - Fix: Actual name not showing in coupon applied section fixed
 - Fix: Actual message not showing in coupon page fixed
-- Added: Integrated UDP
+- Added: Integrated UDP.
+
 
 = 1.0.3 - 18 September 2022 =
 
 - Tweak: Number of unique items displayed on badges.
 - Tweak: Position of quantity increase and decrease button has changed.
-- Fix: Minor fix. 
+- Fix: Minor fix.
+
 
 = 1.0.2 - 15 September 2022 =
 

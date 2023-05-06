@@ -43,8 +43,9 @@ defined( 'ABSPATH' ) || exit;
 						do_action(
 							'addonify_floating_cart_product_title',
 							array(
-								'product'   => $product,
-								'cart_item' => $cart_item,
+								'product'       => $product,
+								'cart_item_key' => $cart_item_key,
+								'cart_item'     => $cart_item,
 							)
 						);
 

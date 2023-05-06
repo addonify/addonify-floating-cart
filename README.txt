@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.9 or higher
 Requires PHP: 7.4
 Tested up to: 6.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,12 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.1.4 - 6 May, 2023 =
+
+- Update: Variable product name with attributes in cart modal.
+- Update: Product permalink in cart modal.
+
 
 = 1.1.3 - 4 May, 2023 =
 

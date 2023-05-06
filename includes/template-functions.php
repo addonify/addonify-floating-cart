@@ -490,17 +490,59 @@ add_action( 'addonify_floating_cart_product_quantity_price', 'addonify_floating_
  */
 function addonify_floating_cart_get_product_title_template( $args = array() ) {
 
-	$template_args = array(
-		'attributes'        => array(),
-		'product_title'     => $args['product']->get_title(),
-		'product_permalink' => $args['product']->get_permalink(),
+	$cart_item     = $args['cart_item'];
+	$cart_item_key = $args['cart_item_key'];
+
+	$cart_item_product = apply_filters(
+		'woocommerce_cart_item_product',
+		$cart_item['data'],
+		$cart_item,
+		$cart_item_key
 	);
 
-	$attributes_values = trim( wc_get_formatted_cart_item_data( $args['cart_item'], true ) );
-	$attributes_values = preg_replace( '/\s+/', ', ', $attributes_values );
-	$attributes_values = str_replace( ':,', ':', $attributes_values );
+	$product_permalink = apply_filters(
+		'woocommerce_cart_item_permalink',
+		$cart_item_product->is_visible() ? $cart_item_product->get_permalink( $cart_item ) : '',
+		$cart_item,
+		$cart_item_key
+	);
 
-	$template_args['aattributes'] = $attributes_values;
+	$template_args = array(
+		'attributes'        => array(),
+		'product_title'     => $cart_item_product->get_title(),
+		'product_permalink' => $product_permalink,
+	);
+
+	$item_data = array();
+
+	// Variation values are shown only if they are not found in the title as of 3.0.
+	// This is because variation titles display the attributes.
+	if ( $args['product']->get_type() === 'variable' && is_array( $cart_item['variation'] ) ) {
+		foreach ( $cart_item['variation'] as $name => $value ) {
+			$taxonomy = wc_attribute_taxonomy_name( str_replace( 'attribute_pa_', '', urldecode( $name ) ) );
+
+			if ( taxonomy_exists( $taxonomy ) ) {
+				// If this is a term slug, get the term's nice name.
+				$term = get_term_by( 'slug', $value, $taxonomy );
+				if ( ! is_wp_error( $term ) && $term && $term->name ) {
+					$value = $term->name;
+				}
+				$label = wc_attribute_label( $taxonomy );
+			} else {
+				// If this is a custom option slug, get the options name.
+				$value = apply_filters( 'woocommerce_variation_option_name', $value, null, $taxonomy, $cart_item['data'] );
+				$label = wc_attribute_label( str_replace( 'attribute_', '', $name ), $cart_item['data'] );
+			}
+
+			if ( empty( $label ) || empty( $value ) ) {
+				continue;
+			}
+
+			$item_data[] = $label . ': ' . $value;
+		}
+	}
+
+	$template_args['aattributes'] = ( is_array( $item_data ) && ! empty( $item_data ) ) ? implode( ', ', $item_data ) : '';
 
 	addonify_floating_cart_get_template(
 		'cart-loop/title.php',

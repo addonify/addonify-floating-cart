@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 		<a href="<?php echo esc_url( $product_permalink ); ?>" class="adfy__woofc-link">
 			<?php
 			if ( $aattributes ) {
-				echo esc_html( $product_title ) . ' (' . esc_html( $aattributes ) . ')';
+				echo esc_html( $product_title ) . ' - ' . esc_html( $aattributes );
 			} else {
 				echo esc_html( $product_title );
 			}

@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.1.2\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-05-03T07:32:12+00:00\n"
+"POT-Creation-Date: 2023-05-10T07:40:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -848,7 +848,7 @@ msgstr ""
 
 #: public/class-addonify-floating-cart-public.php:411
 #: public/class-addonify-floating-cart-public.php:843
-#: public/partials/cart-sections/body.php:75
+#: public/partials/cart-sections/body.php:76
 msgid "Your cart is currently empty."
 msgstr ""
 
@@ -927,7 +927,7 @@ msgid "If you have a coupon code, please apply it below."
 msgstr ""
 
 #: public/partials/cart-sections/coupon.php:28
-msgid "BLACKFRIDAY"
+msgid "blackfriday"
 msgstr ""
 
 #: public/partials/cart-sections/coupons-applied.php:21

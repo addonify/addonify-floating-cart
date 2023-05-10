@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 			<label for="adfy__woofc-coupon-input-field">
 				<?php echo esc_html( apply_filters( 'addonify_floating_cart_coupon_code_field_label', __( 'If you have a coupon code, please apply it below.', 'addonify-floating-cart' ) ) ); ?>
 			</label>
-			<input type="text" value="" name="adfy__woofc-coupon-input-field" placeholder="<?php echo esc_attr( apply_filters( 'addonify_floating_cart_coupon_code_field_placeholder', __( 'BLACKFRIDAY', 'addonify-floating-cart' ) ) ); ?>">
+			<input type="text" name="adfy__woofc-coupon-input-field" id="adfy__woofc-coupon-input-field" placeholder="<?php echo esc_attr( apply_filters( 'addonify_floating_cart_coupon_code_field_placeholder', __( 'blackfriday', 'addonify-floating-cart' ) ) ); ?>" value="">
 			<button type="submit" class="adfy__woofc-button" id="adfy__woofc-apply-coupon-button">
 				<?php echo esc_html( addonify_floating_cart_get_option( 'cart_apply_coupon_button_label' ) ); ?>
 			</button>

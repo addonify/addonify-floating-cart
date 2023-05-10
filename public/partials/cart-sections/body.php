@@ -52,10 +52,10 @@ defined( 'ABSPATH' ) || exit;
 						do_action(
 							'addonify_floating_cart_product_quantity_price',
 							array(
-								'product'   => $product,
-								'cart_item' => $cart_item,
+								'product'       => $product,
+								'cart_item'     => $cart_item,
 								'cart_item_key' => $cart_item_key,
-								'variation' => $variation,
+								'variation'     => $variation,
 							)
 						);
 

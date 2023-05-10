@@ -290,8 +290,9 @@ class Addonify_Floating_Cart_Public {
 			<span class="adfy__woofc-badge">
 				<?php
 				printf(
-					_nx(' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ), //phpcs:ignore
-					esc_html( number_format_i18n( $cart_items_count ) )
+					/* translators: 1: number of cart items. */
+					esc_html( _nx( ' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ) ),
+					number_format_i18n( $cart_items_count ) // phpcs:ignore
 				);
 				?>
 			</span>
@@ -816,6 +817,7 @@ class Addonify_Floating_Cart_Public {
 	 * Update shipping method
 	 */
 	public function update_shipping_method() {
+
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		if (
@@ -1004,6 +1006,8 @@ class Addonify_Floating_Cart_Public {
 
 			// Toast notification.
 			'--adfy_woofc_toast_text_color'                => addonify_floating_cart_get_option( 'toast_notification_text_color' ),
+			'--adfy_woofc_toast_icon_color'                => addonify_floating_cart_get_option( 'toast_notification_icon_color' ),
+			'--adfy_woofc_toast_icon_background_color'     => addonify_floating_cart_get_option( 'toast_notification_icon_bg_color' ),
 			'--adfy_woofc_toast_background_color'          => addonify_floating_cart_get_option( 'toast_notification_background_color' ),
 			'--adfy_woofc_toast_button_text_color'         => addonify_floating_cart_get_option( 'toast_notification_button_label_color' ),
 			'--adfy_woofc_toast_button_text_color_hover'   => addonify_floating_cart_get_option( 'toast_notification_button_on_hover_label_color' ),

@@ -9,13 +9,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
 $formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
-
-
 <div id="adfy__woofc-shipping-container-inner">
 	<?php if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || WC()->cart->show_shipping() ) : ?>
 		<?php if ( $available_methods ) : ?>
@@ -37,7 +36,7 @@ $calculator_text          = '';
 			<p class="adfy__woofc-shipping-destination">
 				<?php
 				if ( $formatted_destination ) {
-					// Translators: $s shipping destination.
+					// Translators: %s shipping destination.
 					printf( esc_html__( 'Shipping to %s.', 'addonify-floating-cart' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
 					$calculator_text = esc_html__( 'Change address', 'addonify-floating-cart' );
 				} else {
@@ -53,7 +52,7 @@ $calculator_text          = '';
 				echo wp_kses_post( apply_filters( 'addonify_floating_cart_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'addonify-floating-cart' ) ) );
 			}
 		else :
-			// Translators: $s shipping destination.
+			// Translators: %s shipping destination.
 			echo wp_kses_post( apply_filters( 'addonify_floating_cart_cart_no_shipping_available_html', sprintf( esc_html__( 'No shipping options were found for %s.', 'addonify-floating-cart' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
 			$calculator_text = esc_html__( 'Enter a different address', 'addonify-floating-cart' );
 		endif;

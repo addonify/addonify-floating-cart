@@ -100,7 +100,9 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 = 1.1.5 - 10 May, 2023 =
 
 - Fixed: Incorrect use of "for" attribute in label element. Ref: https://wordpress.org/support/topic/incorrect-use-of/
-
+- Added: Color options for icon in toast notification.
+- Added: Option for selecting icon for cart modal toggle button.
+- Update: Other minor changes.
 
 = 1.1.4 - 6 May, 2023 =
 

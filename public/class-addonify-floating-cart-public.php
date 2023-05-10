@@ -1004,6 +1004,8 @@ class Addonify_Floating_Cart_Public {
 
 			// Toast notification.
 			'--adfy_woofc_toast_text_color'                => addonify_floating_cart_get_option( 'toast_notification_text_color' ),
+			'--adfy_woofc_toast_icon_color'                => addonify_floating_cart_get_option( 'toast_notification_icon_color' ),
+			'--adfy_woofc_toast_icon_background_color'     => addonify_floating_cart_get_option( 'toast_notification_icon_bg_color' ),
 			'--adfy_woofc_toast_background_color'          => addonify_floating_cart_get_option( 'toast_notification_background_color' ),
 			'--adfy_woofc_toast_button_text_color'         => addonify_floating_cart_get_option( 'toast_notification_button_label_color' ),
 			'--adfy_woofc_toast_button_text_color_hover'   => addonify_floating_cart_get_option( 'toast_notification_button_on_hover_label_color' ),

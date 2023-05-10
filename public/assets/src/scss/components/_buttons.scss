@@ -138,7 +138,8 @@ a.adfy__woofc-button.secondary,
 					.notyf__icon--error,
 					.notyf__icon--success {
 
-						background: var(--adfy_woofc_toast_text_color);
+                        color: var(--adfy_woofc_toast_icon_color) !important;
+						background: var(--adfy_woofc_toast_icon_background_color);
 					}
 				}
 

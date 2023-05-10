@@ -104,20 +104,35 @@ add_filter( 'addonify_floating_cart_settings_fields', 'addonify_floating_cart_to
 function addonify_floating_cart_toast_notification_designs() {
 
 	return array(
-		'toast_notification_background_color'            => array(
-			'label' => __( 'Background color', 'addonify-floating-cart' ),
-			'type'  => 'color',
-			'value' => addonify_floating_cart_get_option( 'toast_notification_background_color' ),
-		),
 		'toast_notification_text_color'                  => array(
 			'label' => __( 'Text color', 'addonify-floating-cart' ),
 			'type'  => 'color',
 			'value' => addonify_floating_cart_get_option( 'toast_notification_text_color' ),
 		),
+		'toast_notification_background_color'            => array(
+			'label' => __( 'Background color', 'addonify-floating-cart' ),
+			'type'  => 'color',
+			'value' => addonify_floating_cart_get_option( 'toast_notification_background_color' ),
+		),
+		'toast_notification_icon_color'                  => array(
+			'label' => __( 'Icon color', 'addonify-floating-cart' ),
+			'type'  => 'color',
+			'value' => addonify_floating_cart_get_option( 'toast_notification_icon_color' ),
+		),
+		'toast_notification_icon_bg_color'               => array(
+			'label' => __( 'Icon Background color', 'addonify-floating-cart' ),
+			'type'  => 'color',
+			'value' => addonify_floating_cart_get_option( 'toast_notification_icon_bg_color' ),
+		),
 		'toast_notification_button_background_color'     => array(
 			'label' => __( 'Button Background Color', 'addonify-floating-cart' ),
 			'type'  => 'color',
 			'value' => addonify_floating_cart_get_option( 'toast_notification_button_background_color' ),
+		),
+		'toast_notification_button_on_hover_background_color' => array(
+			'label' => __( 'Button Background Color on Hover', 'addonify-floating-cart' ),
+			'type'  => 'color',
+			'value' => addonify_floating_cart_get_option( 'toast_notification_button_on_hover_background_color' ),
 		),
 		'toast_notification_button_label_color'          => array(
 			'label' => __( 'Button Label Color', 'addonify-floating-cart' ),
@@ -125,14 +140,9 @@ function addonify_floating_cart_toast_notification_designs() {
 			'value' => addonify_floating_cart_get_option( 'toast_notification_button_label_color' ),
 		),
 		'toast_notification_button_on_hover_label_color' => array(
-			'label' => __( 'Button Color on Hover', 'addonify-floating-cart' ),
+			'label' => __( 'Button Label Color on Hover', 'addonify-floating-cart' ),
 			'type'  => 'color',
 			'value' => addonify_floating_cart_get_option( 'toast_notification_button_on_hover_label_color' ),
-		),
-		'toast_notification_button_on_hover_background_color' => array(
-			'label' => __( 'Button Background Color on Hover', 'addonify-floating-cart' ),
-			'type'  => 'color',
-			'value' => addonify_floating_cart_get_option( 'toast_notification_button_on_hover_background_color' ),
 		),
 		'toast_notification_horizontal_offset'           => array(
 			'label'           => __( 'Horizontal Offset', 'addonify-floating-cart' ),

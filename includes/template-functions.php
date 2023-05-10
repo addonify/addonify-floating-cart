@@ -85,10 +85,15 @@ function addonify_floating_cart_floating_button_template() {
 
 	if ( (int) addonify_floating_cart_get_option( 'display_cart_modal_toggle_button' ) === 1 ) {
 
+		$button_icon_choices = addonify_floating_cart_get_cart_modal_toggle_button_icons();
+
+		$selected_button_icon = addonify_floating_cart_get_option( 'cart_modal_toggle_button_icon' );
+
 		$template_args = array(
 			'position'       => addonify_floating_cart_get_option( 'cart_modal_toggle_button_display_position' ),
 			'display_badge'  => (int) addonify_floating_cart_get_option( 'display_cart_items_number_badge' ),
 			'badge_position' => addonify_floating_cart_get_option( 'cart_items_number_badge_position' ),
+			'button_icon'    => isset( $button_icon_choices[ $selected_button_icon ] ) ? $button_icon_choices[ $selected_button_icon ] : $button_icon_choices['icon_1'],
 		);
 
 		addonify_floating_cart_get_template( 'floating-button.php', $template_args );
@@ -465,6 +470,7 @@ add_action( 'addonify_floating_cart_product_quantity_field', 'addonify_floating_
  * @param array $args  Arguments passed.
  */
 function addonify_floating_cart_get_product_quantity_price_template( $args = array() ) {
+
 	$_product      = apply_filters( 'woocommerce_cart_item_product', $args['cart_item']['data'], $args['cart_item'], $args['cart_item_key'] );
 	$template_args = array(
 		'price'    => apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $args['cart_item'], $args['cart_item_key'] ),

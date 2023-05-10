@@ -68,14 +68,15 @@ function addonify_floating_cart_toggle_cart_button_settings() {
 			'value'       => addonify_floating_cart_get_option( 'cart_badge_items_total_count' ),
 		),
 		'cart_modal_toggle_button_icon'             => array(
-			'label'     => esc_html__( 'Icon', 'addonify-floating-cart' ),
-			'type'      => 'radio',
-			'design'    => 'radioIcons',
-			'width'     => 'full',
-			'className' => 'radio-input-group',
-			'choices'   => addonify_floating_cart_get_cart_modal_toggle_button_icons(),
-			'dependent' => array( 'enable_floating_cart', 'display_cart_modal_toggle_button' ),
-			'value'     => addonify_floating_cart_get_option( 'cart_modal_toggle_button_icon' ),
+			'label'         => esc_html__( 'Icon', 'addonify-floating-cart' ),
+			'type'          => 'radio',
+			'typeStyle'     => 'radioIcons',
+			'renderChoices' => 'html',
+			'width'         => 'full',
+			'className'     => 'fullwidth radio-input-group hide-label svg-icons-choices',
+			'choices'       => addonify_floating_cart_get_cart_modal_toggle_button_icons(),
+			'dependent'     => array( 'enable_floating_cart', 'display_cart_modal_toggle_button' ),
+			'value'         => addonify_floating_cart_get_option( 'cart_modal_toggle_button_icon' ),
 		),
 	);
 }

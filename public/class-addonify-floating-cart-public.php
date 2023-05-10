@@ -290,9 +290,9 @@ class Addonify_Floating_Cart_Public {
 			<span class="adfy__woofc-badge">
 				<?php
 				printf(
-					/* translators: %s: cart items count */
-					_nx(' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ), //phpcs:ignore
-					esc_html( number_format_i18n( $cart_items_count ) )
+					/* translators: 1: number of cart items. */
+					esc_html( _nx( ' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ) ),
+					number_format_i18n( $cart_items_count ) // phpcs:ignore
 				);
 				?>
 			</span>

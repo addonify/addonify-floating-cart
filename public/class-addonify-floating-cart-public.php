@@ -817,6 +817,7 @@ class Addonify_Floating_Cart_Public {
 	 * Update shipping method
 	 */
 	public function update_shipping_method() {
+
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 
 		if (

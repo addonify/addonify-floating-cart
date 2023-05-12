@@ -97,7 +97,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.6 - ? May, 2023 =
+= 1.1.6 - 12 May, 2023 =
 
 - Fix: Badge position setting not working in cart modal toggle button #190
 - Fix: Shopping meter enabled by default #191

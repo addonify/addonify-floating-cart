@@ -54,7 +54,7 @@
             });
             $(document).on('click', '.added_to_cart.wc-forward', function (e) {
 
-                if (addonifyFloatingCartOpenCartOnClickOnViewCart == true) {
+                if (addonifyFloatingCartOpenCartOnClickOnViewCart === '1') {
                     e.preventDefault();
                     document.body.classList.add('adfy__woofc-visible');
                 }
@@ -62,7 +62,7 @@
 
             $(document.body).on('added_to_cart', function (e, fragments, cart_hash, button) {
 
-                if (addonifyFloatingCartOpenCartOnAdd === true) {
+                if (addonifyFloatingCartOpenCartOnAdd === '1') {
                     document.body.classList.add('adfy__woofc-visible');
                 }
 

@@ -216,9 +216,7 @@ function addonify_floating_cart_get_option( $setting_id ) {
 
 	$defaults = addonify_floating_cart_settings_fields_defaults();
 
-	return ( get_option( ADDONIFY_FLOATING_CART_DB_INITIALS . $setting_id, $defaults[ $setting_id ] ) )
-	? get_option( ADDONIFY_FLOATING_CART_DB_INITIALS . $setting_id, $defaults[ $setting_id ] )
-	: $defaults[ $setting_id ];
+	return get_option( ADDONIFY_FLOATING_CART_DB_INITIALS . $setting_id, $defaults[ $setting_id ] );
 }
 
 /**

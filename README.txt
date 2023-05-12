@@ -25,21 +25,36 @@ For vistors attention, display toast notification when a product is added into t
 
 #### 🔥 MAIN FEATURES
 
-- Add produts in shopping cart.
-- Remove products from shopping cart.
-- Undo product removal in shopping cart.
-- Manage cart quantities in the shopping cart.
+- Fully ajaxed cart. No page reloads when adding, removing, or updating cart items quantities.
+- Adjust floating cart trigger button position.
+- Choose floating cart trigger button icon from the list of 7+ icons.
+- Adjust floating cart product count badge position.
+- Manage product quantities in the shopping cart.
 - Display number of products in the shopping cart.
-- Apply coupons, display applied coupons, remove applied coupons,  and display coupon messages.
+- Undo product removal in shopping cart.
+- Shopping meter with targeted amount and custom text. 
+- Custom labels for cart drawer/modal text elements.
+- Apply coupons, display applied coupons, remove applied coupons, and display coupon messages.
 - Sidebar cart display position.
 - Toast notification when product is added into the cart.
-- Floating cart button display position.
+- Open cart when product is added to the WooCommerce cart.
+- Choose shipping address and calculate shipping cost in the cart.
+- Supports TAX calculation in the cart.
+- Supports all WooCommerce product types.
 - Responsive design.
 - Custom typography and color options.
-- Display cart subtotal amount, discount amount, and total amount.
-- Checkout link in the cart.
+- Display cart subtotal amount, discount amount, and total amount in the cart.
+- Choose between close and cart page redirect action on button click.
 - Custom CSS support.
 - User and developer documentation.
+
+#### 🎨 COLOR & CUSTOMIZATION
+
+- Cart toggle button color & typography options.
+- Toast notification color options.
+- Cart drawer/modal color options.
+- Product in cart color options.
+- Misc elements inside cart color options.
 
 
 #### 🔐 GDPR COMPLIANT

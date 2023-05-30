@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-const { isEqual, cloneDeep } = lodash;
-const { apiFetch } = wp;
 import { ElMessage } from 'element-plus'
 
-const BASE_API_URL = ADDONIFY_WOOFC_LOCOLIZER.rest_namespace;
 let oldOptions = {};
+const { isEqual, cloneDeep } = lodash;
+const { apiFetch } = wp;
+const BASE_API_URL = ADDONIFY_WOOFC_LOCOLIZER.rest_namespace;
 
 export const useOptionsStore = defineStore({
 
@@ -25,6 +25,20 @@ export const useOptionsStore = defineStore({
         checkNeedSave: (state) => {
 
             return !isEqual(state.options, oldOptions) ? true : false;
+        },
+
+        // ⚡️ Check if we have state in memory.
+        haveStateInMemory: (state) => {
+
+            if (typeof state.options === 'array') {
+
+                return state.options.length === 0 ? false : true;
+            }
+
+            if (typeof state.options === 'object') {
+
+                return Object.keys(state.options).length === 0 ? false : true;
+            }
         },
     },
     actions: {
@@ -74,29 +88,43 @@ export const useOptionsStore = defineStore({
                 data: {
                     settings_values: payload
                 }
-            }).then((res) => {
+            })
+                .then((res) => {
 
-                this.isSaving = false; // Saving is compconsted here.
-                this.message = res.message; // Set the message to be displayed to the user.
-                //console.log(res);
+                    this.isSaving = false; // Saving is compconsted here.
+                    this.message = res.message; // Set the message to be displayed to the user.
+                    //console.log(res);
 
-                if (res.success === true) {
-                    ElMessage.success(({
-                        message: this.message,
-                        offset: 50,
-                        duration: 3000,
-                    }));
+                    if (res.success === true) {
+                        ElMessage.success(({
+                            message: this.message,
+                            offset: 50,
+                            duration: 3000,
+                        }));
 
-                } else {
+                    } else {
+                        ElMessage.error(({
+                            message: this.message,
+                            offset: 50,
+                            duration: 5000,
+                        }));
+                    }
+
+                    let tempOptionsState = cloneDeep(this.options);
+                    this.options = {};
+                    this.options = cloneDeep(tempOptionsState);
+                    oldOptions = cloneDeep(this.options);
+                })
+                .catch((err) => {
+
+                    console.log(err);
+
                     ElMessage.error(({
-                        message: this.message,
+                        message: __("Something went wrong while fetching settings.", "addonify-floating-cart"),
                         offset: 50,
-                        duration: 5000,
+                        duration: 10000,
                     }));
-                }
-
-                this.fetchOptions(); // Fetch options again.
-            });
+                })
         },
     },
 });

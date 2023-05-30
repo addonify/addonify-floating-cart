@@ -22,6 +22,29 @@ export const useProductStore = defineStore({
 
     }),
 
+    getters: {
+
+        /**
+        *
+        * Return the state of the addons. 
+        * 
+        * @since: 1.1.7
+        */
+
+        haveAddonStateInMemory: (state) => {
+
+            if (typeof state.installedAddons === 'array') {
+
+                return state.installedAddons.length === 0 ? false : true;
+            }
+
+            if (typeof state.installedAddons === 'object') {
+
+                return Object.keys(state.installedAddons).length === 0 ? false : true;
+            }
+        }
+    },
+
     actions: {
 
         /**

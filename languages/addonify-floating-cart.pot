@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.1.5\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-05-10T08:54:26+00:00\n"
+"POT-Creation-Date: 2023-05-30T08:32:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -35,7 +35,7 @@ msgid "https://addonify.com/"
 msgstr ""
 
 #: admin/class-addonify-floating-cart-admin.php:215
-#: admin/assets/js/main.js:2973
+#: admin/assets/js/main.js:3053
 msgid "Settings"
 msgstr ""
 
@@ -714,7 +714,7 @@ msgid "Shipping:"
 msgstr ""
 
 #: includes/functions/settings.php:119
-#: public/partials/cart-sections/shipping.php:42
+#: public/partials/cart-sections/shipping.php:41
 msgid "Change address"
 msgstr ""
 
@@ -730,56 +730,56 @@ msgstr ""
 msgid "Apply Coupon"
 msgstr ""
 
-#: includes/functions/settings.php:286
-#: includes/functions/settings.php:320
+#: includes/functions/settings.php:284
+#: includes/functions/settings.php:318
 msgid "General"
 msgstr ""
 
-#: includes/functions/settings.php:291
+#: includes/functions/settings.php:289
 msgid "Cart Toggle Button Options"
 msgstr ""
 
-#: includes/functions/settings.php:296
+#: includes/functions/settings.php:294
 msgid "Toast Notification Options"
 msgstr ""
 
-#: includes/functions/settings.php:301
+#: includes/functions/settings.php:299
 msgid "Cart Drawer/Modal Options"
 msgstr ""
 
-#: includes/functions/settings.php:306
+#: includes/functions/settings.php:304
 msgid "Cart Drawer/Modal Labels"
 msgstr ""
 
-#: includes/functions/settings.php:311
+#: includes/functions/settings.php:309
 msgid "Coupon Options"
 msgstr ""
 
-#: includes/functions/settings.php:325
+#: includes/functions/settings.php:323
 msgid "Cart Toggle Button Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:331
+#: includes/functions/settings.php:329
 msgid "Toast Notification Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:337
+#: includes/functions/settings.php:335
 msgid "Cart Panel Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:343
+#: includes/functions/settings.php:341
 msgid "Buttons in Cart Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:349
+#: includes/functions/settings.php:347
 msgid "Miscellaneous Cart Elements Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:355
+#: includes/functions/settings.php:353
 msgid "Products in Cart Design Options"
 msgstr ""
 
-#: includes/functions/settings.php:361
+#: includes/functions/settings.php:359
 msgid "Developer"
 msgstr ""
 
@@ -851,7 +851,7 @@ msgstr[1] ""
 
 #: public/class-addonify-floating-cart-public.php:317
 #: public/partials/sidebar-cart.php:29
-#: admin/assets/js/main.js:3532
+#: admin/assets/js/main.js:3612
 msgid "Go Back"
 msgstr ""
 
@@ -860,7 +860,7 @@ msgid "Invalid product id or cart item key."
 msgstr ""
 
 #: public/class-addonify-floating-cart-public.php:412
-#: public/class-addonify-floating-cart-public.php:844
+#: public/class-addonify-floating-cart-public.php:845
 #: public/partials/cart-sections/body.php:76
 msgid "Your cart is currently empty."
 msgstr ""
@@ -870,7 +870,7 @@ msgstr ""
 #: public/class-addonify-floating-cart-public.php:589
 #: public/class-addonify-floating-cart-public.php:708
 #: public/class-addonify-floating-cart-public.php:809
-#: public/class-addonify-floating-cart-public.php:852
+#: public/class-addonify-floating-cart-public.php:853
 msgid "Invalid security token."
 msgstr ""
 
@@ -923,11 +923,11 @@ msgstr ""
 msgid "Please enter a valid postcode / ZIP."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:878
+#: public/class-addonify-floating-cart-public.php:879
 msgid " has been removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:878
+#: public/class-addonify-floating-cart-public.php:879
 msgid "Undo?"
 msgstr ""
 
@@ -963,179 +963,184 @@ msgid_plural "%1$s Items"
 msgstr[0] ""
 msgstr[1] ""
 
-#. Translators: $s shipping destination.
-#: public/partials/cart-sections/shipping.php:41
+#. Translators: %s shipping destination.
+#: public/partials/cart-sections/shipping.php:40
 msgid "Shipping to %s."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:44
+#: public/partials/cart-sections/shipping.php:43
 msgid "Shipping options will be updated during checkout."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:51
+#: public/partials/cart-sections/shipping.php:50
 msgid "Shipping costs are calculated during checkout."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:53
+#: public/partials/cart-sections/shipping.php:52
 msgid "Enter your address to view shipping options."
 msgstr ""
 
-#. Translators: $s shipping destination.
-#: public/partials/cart-sections/shipping.php:57
+#. Translators: %s shipping destination.
+#: public/partials/cart-sections/shipping.php:56
 msgid "No shipping options were found for %s."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:58
+#: public/partials/cart-sections/shipping.php:57
 msgid "Enter a different address"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:71
+#: public/partials/cart-sections/shipping.php:70
 msgid "Calculate shipping"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:79
+#: public/partials/cart-sections/shipping.php:78
 msgid "Country / region:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:83
+#: public/partials/cart-sections/shipping.php:82
 msgid "Select a country / region&hellip;"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:103
-#: public/partials/cart-sections/shipping.php:109
-#: public/partials/cart-sections/shipping.php:122
+#: public/partials/cart-sections/shipping.php:102
+#: public/partials/cart-sections/shipping.php:108
+#: public/partials/cart-sections/shipping.php:121
 msgid "State / County"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:108
-#: public/partials/cart-sections/shipping.php:121
+#: public/partials/cart-sections/shipping.php:107
+#: public/partials/cart-sections/shipping.php:120
 msgid "State / County:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:110
+#: public/partials/cart-sections/shipping.php:109
 msgid "Select an option&hellip;"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:131
+#: public/partials/cart-sections/shipping.php:130
 msgid "City:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:132
+#: public/partials/cart-sections/shipping.php:131
 msgid "City"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:138
+#: public/partials/cart-sections/shipping.php:137
 msgid "Postcode / ZIP:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:139
+#: public/partials/cart-sections/shipping.php:138
 msgid "Postcode / ZIP"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:145
+#: public/partials/cart-sections/shipping.php:144
 msgid "Update address"
 msgstr ""
 
-#: admin/assets/js/main.js:473
-#: admin/src/stores/product.js:53
+#: admin/assets/js/main.js:393
+#: admin/src/stores/options.js:123
+msgid "Something went wrong while fetching settings."
+msgstr ""
+
+#: admin/assets/js/main.js:511
+#: admin/src/stores/product.js:76
 msgid "Error: couldn't fetch recommended plugins list."
 msgstr ""
 
-#: admin/assets/js/main.js:521
-#: admin/src/stores/product.js:98
+#: admin/assets/js/main.js:559
+#: admin/src/stores/product.js:121
 msgid "Error: couldn't process the recommended plugins list."
 msgstr ""
 
-#: admin/assets/js/main.js:568
-#: admin/src/stores/product.js:135
+#: admin/assets/js/main.js:606
+#: admin/src/stores/product.js:158
 msgid "Error: Couldn't retrive the list of installed plugins."
 msgstr ""
 
-#: admin/assets/js/main.js:654
-#: admin/src/stores/product.js:214
+#: admin/assets/js/main.js:692
+#: admin/src/stores/product.js:237
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:675
-#: admin/src/stores/product.js:228
+#: admin/assets/js/main.js:713
+#: admin/src/stores/product.js:251
 msgid "Error: couldn't install plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:732
-#: admin/src/stores/product.js:267
+#: admin/assets/js/main.js:770
+#: admin/src/stores/product.js:290
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:753
-#: admin/src/stores/product.js:281
+#: admin/assets/js/main.js:791
+#: admin/src/stores/product.js:304
 msgid "Error: Couldn't activate the plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:1568
+#: admin/assets/js/main.js:1617
 msgid "Activate now"
 msgstr ""
 
-#: admin/assets/js/main.js:1570
+#: admin/assets/js/main.js:1619
 msgid "Activating..."
 msgstr ""
 
-#: admin/assets/js/main.js:1572
+#: admin/assets/js/main.js:1621
 msgid "Install now"
 msgstr ""
 
-#: admin/assets/js/main.js:1574
+#: admin/assets/js/main.js:1623
 msgid "Installing..."
 msgstr ""
 
-#: admin/assets/js/main.js:1576
+#: admin/assets/js/main.js:1625
 msgid "Installed"
 msgstr ""
 
-#: admin/assets/js/main.js:2418
+#: admin/assets/js/main.js:2498
 msgid "Input is not supported."
 msgstr ""
 
-#: admin/assets/js/main.js:2420
+#: admin/assets/js/main.js:2500
 msgid "Check docs"
 msgstr ""
 
-#: admin/assets/js/main.js:2583
+#: admin/assets/js/main.js:2663
 msgid "Select"
 msgstr ""
 
-#: admin/assets/js/main.js:2655
-#: admin/assets/js/main.js:2685
+#: admin/assets/js/main.js:2735
+#: admin/assets/js/main.js:2765
 msgid "Enter text here..."
 msgstr ""
 
-#: admin/assets/js/main.js:2739
+#: admin/assets/js/main.js:2819
 msgid "Version"
 msgstr ""
 
-#: admin/assets/js/main.js:2741
+#: admin/assets/js/main.js:2821
 msgid "Rate"
 msgstr ""
 
-#: admin/assets/js/main.js:2857
+#: admin/assets/js/main.js:2937
 msgid "Documentation"
 msgstr ""
 
-#: admin/assets/js/main.js:2867
+#: admin/assets/js/main.js:2947
 msgid "Save Options"
 msgstr ""
 
-#: admin/assets/js/main.js:2984
+#: admin/assets/js/main.js:3064
 msgid "Design"
 msgstr ""
 
-#: admin/assets/js/main.js:2995
+#: admin/assets/js/main.js:3075
 msgid "Products"
 msgstr ""
 
-#: admin/assets/js/main.js:3523
+#: admin/assets/js/main.js:3603
 msgid "404"
 msgstr ""
 
-#: admin/assets/js/main.js:3525
+#: admin/assets/js/main.js:3605
 msgid "Oops, page not found!"
 msgstr ""

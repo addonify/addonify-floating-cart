@@ -112,7 +112,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.7 - ?, 2023 =
+= 1.1.7 - 01 June, 2023 =
 
 - Tweak: How reactive state on plugin setting's page is managed (vue js).
 

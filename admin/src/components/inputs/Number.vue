@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { ElInput, ElInputNumber, ElSlider } from "element-plus";
+
 const props = defineProps({
 	modelValue: [String, Number], // loose strict checking.
 	type: String,

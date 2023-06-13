@@ -30,6 +30,7 @@
             this.preventDefaultBehaviour();
             this.showFloatingCartHandler();
             this.hideFloatingCartHandler();
+            this.checkShoppingMeterProgessbarAnimation();
             this.quantityFormInputHandler();
             this.handleFloatingCartCoupon();
             this.notifyFloatingCartEventHandler();
@@ -86,13 +87,19 @@
                 if (shoppingMeterEle.hasClass('adfy__woofc-hidden')) {
                     shoppingMeterEle.removeClass('adfy__woofc-hidden');
                 }
+
+                // Always check if threshold reached!
+                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
             });
 
             $(document.body).on('wc_cart_emptied', function (event) {
 
                 footerEle.addClass('adfy__woofc-hidden');
                 shoppingMeterEle.addClass('adfy__woofc-hidden');
+                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
             });
+
+            // Calc data_percentage here!
         },
 
         hideFloatingCartHandler: () => {
@@ -101,6 +108,26 @@
 
                 document.body.classList.remove('adfy__woofc-visible');
             });
+        },
+
+        /**
+         * Handle shopping meter.
+         * 
+         * @since: 1.1.8
+         */
+
+        checkShoppingMeterProgessbarAnimation: () => {
+
+            let shoppingMeterProgressBarEle = $('.adfy__woofc-shipping-bar .progress-bars .progress-bar');
+
+            if (shoppingMeterProgressBarEle.attr('data_percentage') === '100') {
+
+                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').addClass("hide-animation");
+
+            } else {
+
+                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').removeClass("hide-animation");
+            }
         },
 
         /**
@@ -241,6 +268,7 @@
                 }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
                 });
             }
 
@@ -432,6 +460,7 @@
                 }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
                 });
             });
 
@@ -480,6 +509,7 @@
                 }).always(function () {
                     // Remove loader
                     $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
                 });
             });
         },
@@ -642,7 +672,7 @@
                     action: addonifyFloatingCartJSObject.ajax_refresh_cart_fragments,
                     nonce: addonifyFloatingCartJSObject.nonce,
                 },
-                function ( response ) {
+                function (response) {
                     if (!response || response.error)
                         return;
 
@@ -657,6 +687,7 @@
 
                     // Update cart
                     $(document.body).trigger('wc_update_cart');
+                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
                 }
             );
         }

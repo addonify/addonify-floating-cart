@@ -114,6 +114,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.1.8 - ?, 2023 =
 
+- Added: Shopping meter progress bar animation. 
 - Tweak: Cart trigger button style.
 
 = 1.1.7 - 01 June, 2023 =

@@ -128,9 +128,6 @@ gulp.task('scriptsTask', function () {
 
 gulp.task('conditionalScriptsTask', function () {
     return gulp.src(conditionalScriptPath.conditionalScriptSource)
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
         .pipe(gulp.dest(conditionalScriptPath.conditionalScriptBuildPath));

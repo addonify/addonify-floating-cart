@@ -188,6 +188,8 @@ a.adfy__woofc-button.secondary,
     position: fixed;
     @include flex();
     align-items: center;
+    padding: 0;
+    margin: 0;
     justify-content: center;
     width: var(--adfy_woofc_toggle_button_size);
     height: var(--adfy_woofc_toggle_button_size);

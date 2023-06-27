@@ -19,8 +19,8 @@ Addonify Floating Cart is packed with lots of features and functionalities. The 
 
 For vistors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
 
-👉 [Demo Site](https://demo.addonify.com/woo/01/floating-cart/)
-👉 [Documentation & Guide](https://docs.addonify.com/kb/floating-cart/)
+🌍 [Live Demo Preview](https://demo.addonify.com/woo/01/floating-cart/)
+📋 [Documentation Guide](https://docs.addonify.com/kb/floating-cart/)
 
 
 #### 🔥 MAIN FEATURES
@@ -33,6 +33,7 @@ For vistors attention, display toast notification when a product is added into t
 - Display number of products in the shopping cart.
 - Undo product removal in shopping cart.
 - Shopping meter with targeted amount and custom text. 
+- Shopping meter progress bar animation.
 - Custom labels for cart drawer/modal text elements.
 - Apply coupons, display applied coupons, remove applied coupons, and display coupon messages.
 - Sidebar cart display position.
@@ -112,7 +113,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.8 - ?, 2023 =
+= 1.1.8 - 27 June, 2023 =
 
 - Added: Shopping meter progress bar animation. 
 - Tweak: Cart trigger button style.

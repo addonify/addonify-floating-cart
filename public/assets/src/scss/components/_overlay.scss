@@ -14,7 +14,7 @@
     height: 100%;
     cursor: pointer;
     @include visibility_hidden();
-    transition: all 0.5s linear;
+    transition: all 0.8s cubic-bezier(.77,0,.18,1) 0s;
     background: linear-gradient(to right, var(--adfy_woofc_cart_overlay_background_color));
     backdrop-filter: blur(10px);
 }

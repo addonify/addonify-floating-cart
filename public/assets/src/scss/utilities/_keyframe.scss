@@ -57,7 +57,6 @@
         right: 0;
         opacity: 1;
     }
-
     to {
         right: -100vw;
         opacity: 0;
@@ -78,4 +77,13 @@
     to {
 		  transform:rotate(360deg); 
     }
+}
+
+/* ----------------------------------------------------------------------------
+  #. Progress bar
+  ------------------------------------------------------------------------------ */
+
+@keyframes adfyProgressbar {
+
+    0% { background-position-x: 1rem }
 }

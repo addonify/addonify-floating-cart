@@ -22,7 +22,10 @@ defined( 'ABSPATH' ) || exit;
 	</span>
 	<div class="progress-bars">
 		<div class="total-bar shipping-bar"></div>
-		<div class="progress-bar shipping-bar" data_percentage="<?php echo esc_attr( $per ); ?>" style="width: <?php echo esc_attr( $per ); ?>%"></div>
+		<div
+			class="live-progress-bar shipping-bar" 
+			data_percentage="<?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>" 
+			style="width: <?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>%"></div>
 	</div>
 </div>
 

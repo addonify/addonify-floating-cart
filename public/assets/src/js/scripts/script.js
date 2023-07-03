@@ -118,15 +118,15 @@
 
         checkShoppingMeterProgessbarAnimation: () => {
 
-            let shoppingMeterProgressBarEle = $('.adfy__woofc-shipping-bar .progress-bars .progress-bar');
+            let shoppingMeterProgressBarEle = $('.adfy__woofc-shipping-bar .progress-bars .live-progress-bar');
 
             if (shoppingMeterProgressBarEle.attr('data_percentage') === '100') {
 
-                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').addClass("hide-animation");
+                $('.adfy__woofc-shipping-bar .progress-bars .live-progress-bar').addClass("hide-animation");
 
             } else {
 
-                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').removeClass("hide-animation");
+                $('.adfy__woofc-shipping-bar .progress-bars .live-progress-bar').removeClass("hide-animation");
             }
         },
 

@@ -91,7 +91,14 @@
                     .value {
 
                         font-weight: bold;
+
+                        span,
+                        strong {
+
+                            font-weight: bold;
+                        }
                     }
+                    
                 }
             }
 

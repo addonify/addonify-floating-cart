@@ -940,7 +940,11 @@ class Addonify_Floating_Cart_Public {
 
 		return apply_filters(
 			'addonify_floating_cart_shopping_meter_bar',
-			'<div class="progress-bar shipping-bar" data_percentage="' . esc_attr( $per ) . '" style="width:' . esc_attr( $per ) . '%"></div>'
+			'<div 
+				class="live-progress-bar shipping-bar" 
+				data_percentage="' . esc_attr( number_format( floatval( $per ) ), 2 ) . '" 
+				style="width:' . esc_attr( number_format( floatval( $per ) ), 2 ) . '%"
+			></div>'
 		);
 	}
 

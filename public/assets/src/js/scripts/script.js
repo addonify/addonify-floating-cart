@@ -118,15 +118,14 @@
 
         checkShoppingMeterProgessbarAnimation: () => {
 
-            let shoppingMeterProgressBarEle = $('.adfy__woofc-shipping-bar .progress-bars .progress-bar');
+            let shoppingMeterProgressBarEle = $('#adfy__floating-cart .adfy__woofc-shipping-bar .progress-bars .live-progress-bar');
 
-            if (shoppingMeterProgressBarEle.attr('data_percentage') === '100') {
+            if (shoppingMeterProgressBarEle) {
 
-                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').addClass("hide-animation");
+                const attrVal = parseInt(shoppingMeterProgressBarEle.attr('data_percentage'));
 
-            } else {
-
-                $('.adfy__woofc-shipping-bar .progress-bars .progress-bar').removeClass("hide-animation");
+                // Simply evaluate the percentage and add/remove the class.
+                attrVal === 100 ? shoppingMeterProgressBarEle.addClass("hide-animation") : shoppingMeterProgressBarEle.removeClass("hide-animation");
             }
         },
 

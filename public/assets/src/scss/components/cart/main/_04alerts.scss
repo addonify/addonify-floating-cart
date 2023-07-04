@@ -2,9 +2,13 @@
 
      #adfy__woofc-cart-errors {
 
-            @include flex();
-            gap: 5px;
+            display: block;
+            color: #387ECD;
+            line-height: 1.5;
             margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #E1EFFF;
 
             &.hidden {
 
@@ -15,6 +19,7 @@
 
                 display: inline-flex;
                 cursor: pointer;
+                margin-left: 5px;
             }
         }
 }

@@ -16,6 +16,7 @@
     let countriesToStates = addonifyFloatingCartJSObject.states;
 
     var product_name;
+    let timeout; // For alert message.
 
     var subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
     var discountEle = $('.adfy__woofc-cart-summary ul li.discount');
@@ -67,7 +68,8 @@
                     document.body.classList.add('adfy__woofc-visible');
                 }
 
-                $('#adfy__woofc-cart-errors').html('').addClass('hidden');
+                // Hide alert messages if any.
+                addonifyFloatingCart.handleAlerts('hide');
 
                 if (footerEle.hasClass('adfy__woofc-hidden')) {
                     footerEle.removeClass('adfy__woofc-hidden');
@@ -113,7 +115,7 @@
         /**
          * Handle shopping meter.
          * 
-         * @since: 1.1.8
+         * @since 1.1.8
          */
 
         checkShoppingMeterProgessbarAnimation: () => {
@@ -132,7 +134,8 @@
         /**
         *
         * Notification system event handler.
-        * Since: 1.0.0
+        *
+        * @since 1.0.0
         */
         notifyFloatingCartEventHandler: () => {
 
@@ -424,7 +427,8 @@
                     success: function (response) {
 
                         if (!response || response.success === false) {
-                            $('#adfy__woofc-cart-errors').html(response.message).removeClass('hidden');
+
+                            addonifyFloatingCart.handleAlerts('show', 'error', response.message);
                             return;
                         }
 
@@ -440,7 +444,8 @@
                             });
                         }
 
-                        $('#adfy__woofc-cart-errors').html(response.undo_product_link).removeClass('hidden');
+                        // Fire the alert message.
+                        addonifyFloatingCart.handleAlerts('show', 'info', response.undo_product_link);
 
                         if (response.cart_items_count === 0) {
 
@@ -454,13 +459,16 @@
                         $(document.body).trigger('wc_update_cart');
                     },
                     error: function (a) {
-                        console.log("Error processing request");
+
+                        console.error("Error processing product removal request.");
                     }
-                }).always(function () {
-                    // Remove loader
-                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
-                });
+                })
+                    .always(function () {
+                        // Remove loader
+                        $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                        // Check if threshold reached!
+                        addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
+                    });
             });
 
             //restore item to cart
@@ -499,18 +507,87 @@
                             shoppingMeterEle.removeClass('adfy__woofc-hidden');
                         }
 
-                        $('#adfy__woofc-cart-errors').html('').addClass('hidden');
+                        // Hide alert messages if any.
+                        addonifyFloatingCart.handleAlerts("hide");
 
                         if (response.error) {
                             console.log(response.messsage);
                         }
+                    },
+                    error: function (a) {
+
+                        console.error("Error processing restore request");
                     }
-                }).always(function () {
-                    // Remove loader
-                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
-                });
+                })
+                    .always(function () {
+                        // Remove loader
+                        $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                        // Check if threshold reached!
+                        addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
+                    });
             });
+        },
+
+        /**
+        *
+        * Display alert message.
+        *
+        * @param {string} action to perform. show | hide.
+        * @param {string} type of alert message. info | error.
+        * @param {string} data, may also contain HTML.
+        * @since: 1.1.9
+        */
+        handleAlerts: function (action = 'hide', type = 'info', data = '') {
+
+            const alertMessageEle = $('#adfy__floating-cart #adfy__woofc-cart-errors');
+
+            if (alertMessageEle) {
+
+                clearTimeout(timeout);
+
+                if (action === 'show') {
+
+                    if (data === '') {
+
+                        console.warn("Alert data is empty, bailing out...");
+                        return;
+                    }
+
+                    if (type === 'error') {
+
+                        alertMessageEle.addClass('error');
+                    }
+
+                    // Clear the previous message & add new message.
+                    alertMessageEle.html(" ").html(data).removeClass('hidden');
+
+                    timeout = setTimeout(() => {
+
+                        hideAlerts();
+                        clearTimeout(timeout);
+
+                    }, 10000); // Static 10 seconds for now.
+                } else {
+
+                    hideAlerts();
+                }
+            } else {
+
+                throw new Error("Alert message element not found in DOM.");
+            }
+
+            // Hide alert messages.
+            function hideAlerts() {
+
+                clearTimeout(timeout);
+
+                if (alertMessageEle.hasClass('error')) {
+
+                    alertMessageEle.removeClass('error');
+                }
+
+                alertMessageEle.html(" ").addClass('hidden');
+            }
         },
 
         // all shipping related task handler
@@ -686,7 +763,8 @@
 
                     // Update cart
                     $(document.body).trigger('wc_update_cart');
-                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
+                    // Check if threshold reached!
+                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
                 }
             );
         }
@@ -695,7 +773,6 @@
     $(document).ready(function () {
 
         addonifyFloatingCart.init();
-
         $('.adfy__woofc-alert').hide();
     });
 

@@ -37,12 +37,6 @@ function addonify_floating_cart_toast_notification_settings() {
 			'dependent' => array( 'display_toast_notification', 'enable_floating_cart' ),
 			'value'     => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
 		),
-		'open_cart_modal_on_notification_button_click' => array(
-			'label'     => __( 'Open Cart on Notification Button Click', 'addonify-floating-cart' ),
-			'type'      => 'switch',
-			'dependent' => array( 'display_toast_notification', 'enable_floating_cart' ),
-			'value'     => addonify_floating_cart_get_option( 'open_cart_modal_on_notification_button_click' ),
-		),
 		'added_to_cart_notification_text'              => array(
 			'label'       => __( 'Added to Cart Text', 'addonify-floating-cart' ),
 			'description' => __( 'Text to be displayed after product is added to cart. Use {product_name} to display product name added to cart.', 'addonify-floating-cart' ),
@@ -67,7 +61,7 @@ function addonify_floating_cart_toast_notification_settings() {
 			'value'     => addonify_floating_cart_get_option( 'display_close_notification_button' ),
 		),
 		'display_show_cart_button'                     => array(
-			'label'     => __( 'Display Button to Toggle Cart', 'addonify-floating-cart' ),
+			'label'     => __( 'Display Button to Toggle Cart in Toast notification', 'addonify-floating-cart' ),
 			'type'      => 'switch',
 			'dependent' => array( 'display_toast_notification', 'enable_floating_cart' ),
 			'value'     => addonify_floating_cart_get_option( 'display_show_cart_button' ),

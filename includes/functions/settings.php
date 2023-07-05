@@ -82,7 +82,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Toast notification options.
 			'display_toast_notification'                   => true,
 			'toast_notification_display_position'          => 'top-right',
-			'open_cart_modal_on_notification_button_click' => false,
 			'added_to_cart_notification_text'              => __( '{product_name} has been added to cart.', 'addonify-floating-cart' ),
 			'close_notification_after_time'                => 5,
 			'display_close_notification_button'            => false,

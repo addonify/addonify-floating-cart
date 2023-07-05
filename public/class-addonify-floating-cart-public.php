@@ -162,7 +162,7 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',

@@ -2,6 +2,8 @@
 
     'use strict';
 
+    const { __ } = wp.i18n; // Import __() from wp.i18n
+
     var addonifyFloatingCartCouponContainer = $('#adfy__woofc-coupon-container');
     var addonifyFloatingCartNotifyShow = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow == 1;
     var addonifyFloatingCartNotifyDuration = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyDuration;
@@ -24,7 +26,13 @@
     var shoppingMeterEle = $('.adfy__woofc-shipping-bar');
     var cartSummaryEle = $('.adfy__woofc-cart-summary');
 
-    var addonifyFloatingCart = {
+    /**
+     * Addonify Floating Cart main Object that includes all the methods.
+     *
+     * @since 1.0.0
+     */
+
+    let addonifyFloatingCart = {
 
         init: function () {
 
@@ -54,9 +62,11 @@
 
                 document.body.classList.add('adfy__woofc-visible');
             });
+
             $(document).on('click', '.added_to_cart.wc-forward', function (e) {
 
                 if (addonifyFloatingCartOpenCartOnClickOnViewCart === '1') {
+
                     e.preventDefault();
                     document.body.classList.add('adfy__woofc-visible');
                 }
@@ -100,8 +110,6 @@
                 shoppingMeterEle.addClass('adfy__woofc-hidden');
                 addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
             });
-
-            // Calc data_percentage here!
         },
 
         hideFloatingCartHandler: () => {
@@ -133,46 +141,32 @@
 
         /**
         *
-        * Notification system event handler.
+        * Dispatch toast notification messages when product is added to cart.
         *
         * @since 1.0.0
         */
         notifyFloatingCartEventHandler: () => {
 
-            var notfyHtmlContent = addonifyFloatingCartNotifyShowHtmlContent ? addonifyFloatingCartJSObject.toastNotificationButton : "";
+            if (addonifyFloatingCartNotifyShow) {
 
-            // Configure Notyf.
-            var notyf = new Notyf({
-                duration: addonifyFloatingCartNotifyDuration,
-                dismissible: addonifyFloatingCartNotifyDismissible,
-                ripple: true,
-                position: {
+                // Listen to WooCommerce product added to cart event.
+                $(document).on('added_to_cart', function (event, data) {
 
-                    x: addonifyFloatingCartNotifyPosition[1], // left | center | right
-                    y: addonifyFloatingCartNotifyPosition[0], // top | center | bottom
-                },
-            });
-
-            // Listen to WooCommerce product added to cart event.
-            $(document).on('added_to_cart', function (event, data) {
-                if (addonifyFloatingCartNotifyShow) {
+                    let toastContent;
                     product_name = data.product.charAt(0).toUpperCase() + data.product.slice(1);
-                    // Invoke the Notyf toast. Append the product name here.
-                    var notification = notyf.success({
 
-                        className: 'adfy__woofc-notfy-success',
-                        //background: '#111111',
-                        message: addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name) + " " + notfyHtmlContent,
-                    });
-                    notification.on('click', function ({ target, event }) {
-                        // target: the notification being clicked
-                        // event: the mouseevent
-                        if (addonifyFloatingCartNotifyShowHtmlContent) {
-                            $('body').addClass('adfy__woofc-visible');
-                        }
-                    });
-                }
-            });
+                    if (addonifyFloatingCartNotifyShowHtmlContent) {
+
+                        toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name) + " " + addonifyFloatingCartJSObject.toastNotificationButton;
+                    } else {
+
+                        toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name);
+                    }
+
+                    // Ready to dispatch toast notification.
+                    addonifyFloatingCart.dispatchToast('success', toastContent);
+                });
+            }
         },
 
         quantityFormInputHandler: () => {
@@ -265,13 +259,19 @@
                         $(document.body).trigger('wc_update_cart');
                     },
                     error: function (a) {
-                        console.log("Error processing request");
+
+                        let mesasge = __('Error processing product quantity update request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
+                        console.error("Error processing product quantity update request.");
                     }
-                }).always(function () {
-                    // Remove loader
-                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                    addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
-                });
+                })
+                    .always(function () {
+                        // Remove loader
+                        $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                        // Check if threshold reached!
+                        addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
+                    });
             }
 
         },
@@ -301,7 +301,7 @@
                         nonce: addonifyFloatingCartJSObject.nonce,
                         form_data: data
                     },
-                    'success': function (data) {
+                    success: function (data) {
                         let result = JSON.parse(data);
                         if (result.couponApplied === true) {
                             couponField.val('');
@@ -320,8 +320,12 @@
                             show_coupon_alert_error(result.status);
                         }
                     },
-                    'error': function (e) {
-                        alert('Error processing request');
+                    error: function (e) {
+
+                        let mesasge = __('Error processing coupon request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
+                        console.error("Error processing coupon request.");
                     }
                 });
             });
@@ -338,7 +342,7 @@
                         nonce: addonifyFloatingCartJSObject.nonce,
                         form_data: coupon
                     },
-                    'success': function (data) {
+                    success: function (data) {
                         let result = JSON.parse(data);
                         if (result.couponRemoved === true) {
                             $.each(result.html, function (i, val) {
@@ -355,8 +359,12 @@
                         }
                         coupon_div.remove();
                     },
-                    'error': function (e) {
-                        alert('Error processing request');
+                    error: function (e) {
+
+                        let mesasge = __('Error processing coupon request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
+                        console.error("Error processing coupon request.");
                     }
                 });
             });
@@ -460,6 +468,9 @@
                     },
                     error: function (a) {
 
+                        let mesasge = __('Error processing product removal request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
                         console.error("Error processing product removal request.");
                     }
                 })
@@ -516,7 +527,10 @@
                     },
                     error: function (a) {
 
-                        console.error("Error processing restore request");
+                        let mesasge = __('Error processing product restore request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
+                        console.error("Error processing product restore request.");
                     }
                 })
                     .always(function () {
@@ -532,8 +546,8 @@
         *
         * Display alert message.
         *
-        * @param {string} action to perform. show | hide.
-        * @param {string} type of alert message. info | error.
+        * @param {string} action to perform. Arg: [show | hide]
+        * @param {string} type of alert message. Arg: [info | error]
         * @param {string} data, may also contain HTML.
         * @since: 1.1.9
         */
@@ -590,7 +604,62 @@
             }
         },
 
-        // all shipping related task handler
+        /**
+        *
+        * Dispatch notification toast messages.
+        *
+        * @param {string} type, Arg: [success | error]
+        * @param {string} data, may also contain HTML.
+        * @since: 1.1.9
+        */
+        dispatchToast: function (type = 'success', data) {
+
+            if (typeof Notyf !== 'undefined') {
+
+                let notyf = new Notyf({
+                    duration: addonifyFloatingCartNotifyDuration,
+                    dismissible: addonifyFloatingCartNotifyDismissible,
+                    ripple: true,
+                    position: {
+                        x: addonifyFloatingCartNotifyPosition[1], // left | center | right
+                        y: addonifyFloatingCartNotifyPosition[0], // top | center | bottom
+                    },
+                });
+
+                if (data === '') {
+
+                    throw new Error("Notification toast data/message is empty, bailing out...");
+                }
+
+                // Check if notification toast is enabled in backend.
+                if (type === 'success') {
+
+                    if (addonifyFloatingCartNotifyShow) {
+
+                        notyf.success({
+                            className: 'adfy__woofc-notfy-success',
+                            message: data,
+                        })
+                    }
+                }
+
+                // Do not disable error notification toast.
+                if (type === 'error') {
+
+                    notyf.error({
+
+                        className: 'adfy__woofc-notfy-error',
+                        message: data,
+                    })
+                }
+            }
+        },
+
+        /**
+         * Handle shipping form operations. 
+         *
+         * @since 1.0.0
+         */
         shippingSectionHandler: () => {
 
             // show coupon container.
@@ -639,7 +708,7 @@
                         calc_shipping_postcode: shipping_postcode,
                         nonce: nonce
                     },
-                    'success': function (response) {
+                    success: function (response) {
                         if (!response)
                             return;
 
@@ -654,8 +723,12 @@
                             });
                         }
                     },
-                    'failure': function () {
-                        console.log('Request failed! Are we offline?')
+                    error: function (e) {
+
+                        let message = __('Error updating shipping address.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', message);
+                        console.error('Error updating shipping address.');
                     }
                 })
             });
@@ -717,7 +790,7 @@
                         nonce: addonifyFloatingCartJSObject.nonce,
                         shipping_method: shipping_methods,
                     },
-                    'success': function (response) {
+                    success: function (response) {
                         if (!response || response.error) {
                             return;
                         }
@@ -734,13 +807,26 @@
                                 }
                             });
                         }
-                    }
-                }).always(function () {
-                    $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
-                });
+                    },
+                    error: function (e) {
+
+                        let mesasge = __('Error processing shipping method update request.', 'addonify-floating-cart');
+
+                        addonifyFloatingCart.dispatchToast('error', mesasge);
+                        console.error("Error processing shipping method update request.");
+                    },
+                })
+                    .always(function () {
+                        $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                    });
             })
         },
 
+        /**
+         * Refresh cart fragments.
+         *
+         * @since 1.0.0
+         */
         refreshCart: () => {
             $.post(
                 addonifyFloatingCartJSObject.ajax_url,
@@ -773,6 +859,7 @@
     $(document).ready(function () {
 
         addonifyFloatingCart.init();
+
         $('.adfy__woofc-alert').hide();
     });
 

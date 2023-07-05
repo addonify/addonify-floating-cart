@@ -15,6 +15,12 @@
                 display: none;
             }
 
+            &.error {
+
+                color: #F56C6C;
+                background-color: #FFE6E6;
+            }
+
             #adfy__woofc_restore_item {
 
                 display: inline-flex;

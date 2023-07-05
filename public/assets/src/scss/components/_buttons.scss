@@ -127,6 +127,7 @@ a.adfy__woofc-button.secondary,
 
     .notyf__toast {
 
+        // Common cases.
 		&[class*="adfy__woofc-notfy"] {
 
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -135,10 +136,8 @@ a.adfy__woofc-button.secondary,
 
 				.notyf__icon {
 
-					.notyf__icon--error,
 					.notyf__icon--success {
 
-                        color: var(--adfy_woofc_toast_icon_color) !important;
 						background: var(--adfy_woofc_toast_icon_background_color);
 					}
 				}
@@ -172,10 +171,14 @@ a.adfy__woofc-button.secondary,
 			}
 		}
 
-		.notyf__ripple {
+        // Only in case of sucess
+        &.adfy__woofc-notfy-success {
 
-			background: var(--adfy_woofc_toast_background_color) !important;
-		}
+            .notyf__ripple {
+
+			    background: var(--adfy_woofc_toast_background_color) !important;
+		    }
+        }
     }
 }
 

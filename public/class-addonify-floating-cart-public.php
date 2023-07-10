@@ -970,7 +970,9 @@ class Addonify_Floating_Cart_Public {
 			'--adfy_woofc_toggle_button_border_color'      => addonify_floating_cart_get_option( 'toggle_button_border_color' ),
 			'--adfy_woofc_toggle_button_border_color_hover' => addonify_floating_cart_get_option( 'toggle_button_on_hover_border_color' ),
 			'--adfy_woofc_toggle_button_badge_text_color'  => addonify_floating_cart_get_option( 'toggle_button_badge_label_color' ),
+			'--adfy_woofc_toggle_button_badge_text_color_hover'  => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
 			'--adfy_woofc_toggle_button_badge_background_color' => addonify_floating_cart_get_option( 'toggle_button_badge_background_color' ),
+			'--adfy_woofc_toggle_button_badge_background_color_hover' => addonify_floating_cart_get_option( 'toggle_button_badge_on_hover_background_color' ),
 			'--adfy_woofc_toggle_button_badge_width'       => addonify_floating_cart_get_option( 'toggle_button_badge_width' ), // New.
 			'--adfy_woofc_toggle_button_badge_font_size'   => addonify_floating_cart_get_option( 'toggle_button_badge_font_size' ) . 'px', // New.
 			'--adfy_woofc_toggle_button_size'              => addonify_floating_cart_get_option( 'cart_modal_toggle_button_width' ) . 'px',

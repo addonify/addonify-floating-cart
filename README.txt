@@ -115,7 +115,9 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.1.9 - ? July, 2023 =
 
-- Removed: Option `open_cart_modal_on_notification_button_click` from plugin settings page.
+- Added: Option, Trigger button badge text color on hover. #218 
+- Added: Option, Trigger button badge background color on hover. #218
+- Removed: Option, `open_cart_modal_on_notification_button_click` from plugin settings page.
 - Refactored: Public facing JavaScript code.
 
 = 1.1.8 - 27 June, 2023 =

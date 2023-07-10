@@ -131,11 +131,23 @@ function addonify_floating_cart_toggle_cart_button_designs() {
 			'dependent' => array( 'display_cart_items_number_badge' ),
 			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_background_color' ),
 		),
+		'toggle_button_badge_on_hover_background_color'       => array(
+			'label'     => __( 'Badge Background Color on Hover', 'addonify-floating-cart' ),
+			'type'      => 'color',
+			'dependent' => array( 'display_cart_items_number_badge' ),
+			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_on_hover_background_color' ),
+		),
 		'toggle_button_badge_label_color'            => array(
 			'label'     => __( 'Badge Label Color', 'addonify-floating-cart' ),
 			'type'      => 'color',
 			'dependent' => array( 'display_cart_items_number_badge' ),
 			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_label_color' ),
+		),
+		'toggle_button_label_on_hover_color'            => array(
+			'label'     => __( 'Badge Label Color on Hover', 'addonify-floating-cart' ),
+			'type'      => 'color',
+			'dependent' => array( 'display_cart_items_number_badge' ),
+			'value'     => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
 		),
 		'toggle_button_label_color'                  => array(
 			'label'     => __( 'Cart Toggle Button Font Color', 'addonify-floating-cart' ),

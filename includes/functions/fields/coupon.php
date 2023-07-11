@@ -32,6 +32,13 @@ function addonify_floating_cart_coupon_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'cart_apply_coupon_button_label' ),
 		),
+		'responsive_control' => array(
+			'label'       => __( 'Example responsive control', 'addonify-floating-cart' ),
+			'type'        => 'responsive',
+			'className'	  => 'fullwidth',
+			'dependent'   => array( 'enable_floating_cart' ),
+			'value'       => addonify_floating_cart_get_option( 'responsive_control' ),
+		),
 	);
 }
 

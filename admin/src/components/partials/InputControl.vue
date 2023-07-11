@@ -8,6 +8,7 @@ import Checkbox from "../inputs/Checkbox.vue";
 import CheckboxButton from "../inputs/CheckboxButton.vue";
 import Radio from "../inputs/Radio.vue";
 import ColorPicker from "../inputs/ColorPicker.vue";
+import Responsive from "../inputs/Responsive.vue";
 import InvalidControl from "../inputs/InvalidControl.vue";
 
 const props = defineProps({
@@ -76,5 +77,6 @@ const props = defineProps({
 		v-model:colorVal="props.reactiveState[props.fieldKey]"
 		:isAlphaPicker="props.field.isAlphaPicker"
 	/>
+	<Responsive v-else-if="props.field.type === 'responsive'" />
 	<InvalidControl v-else />
 </template>

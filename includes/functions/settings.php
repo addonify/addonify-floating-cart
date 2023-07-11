@@ -191,6 +191,9 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_apply_coupon_button_label'               => __( 'Apply Coupon', 'addonify-floating-cart' ),
 
 			'custom_css'                                   => '',
+
+			// Test: responsive control.
+			'resposive_control'                       		=> '',
 		)
 	);
 }

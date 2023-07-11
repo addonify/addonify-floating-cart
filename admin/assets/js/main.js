@@ -1243,17 +1243,23 @@ __webpack_require__.r(__webpack_exports__);
         unit: "px"
       }
     });
-    var units = ["%", "px", "em", "rem"];
-    var visibilityOptions = ["Visible", "Hidden"];
+    var units = {
+      percentage: "%",
+      px: "px",
+      em: "em",
+      rem: "rem"
+    };
+    var visibilityOptions = {
+      visible: "Visible",
+      hidden: "Hidden"
+    };
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.watchEffect)(function () {
-        console.log(position);
-      });
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(position, function (newVal, oldVal) {
-        console.log(newVal);
-      }, {
-        deep: true
-      });
+      //watchEffect(() => {
+      //	console.log(position);
+      //});
+      //watch(position, (newVal, oldVal) => {
+      //	console.log(newVal);
+      //});
     });
     var __returned__ = {
       props: props,
@@ -1336,6 +1342,9 @@ __webpack_require__.r(__webpack_exports__);
         emit("update:modelValue", newValue);
       }
     });
+
+    //console.log(props.choices);
+
     var __returned__ = {
       __: __,
       props: props,
@@ -2843,7 +2852,11 @@ var _hoisted_50 = {
 var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "label"
 }, " Unit ", -1 /* HOISTED */);
-
+var _hoisted_52 = {
+  style: {
+    "margin-top": "60px"
+  }
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ElRadioGroup"], {
     modelValue: $setup.device,
@@ -3175,7 +3188,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modelValue"]), _hoisted_51])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.device === 'M']])])]);
+  }, 8 /* PROPS */, ["modelValue"]), _hoisted_51])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.device === 'M']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.position), 1 /* TEXT */)])])]);
 }
 
 /***/ }),

@@ -19,6 +19,8 @@ const value = computed({
 		emit("update:modelValue", newValue);
 	},
 });
+
+//console.log(props.choices);
 </script>
 <template>
 	<el-select

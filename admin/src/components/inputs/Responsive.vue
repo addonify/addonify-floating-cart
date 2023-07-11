@@ -63,21 +63,25 @@ const position = reactive({
 	},
 });
 
-const units = ["%", "px", "em", "rem"];
-const visibilityOptions = ["Visible", "Hidden"];
+const units = {
+	percentage: "%",
+	px: "px",
+	em: "em",
+	rem: "rem",
+};
+
+const visibilityOptions = {
+	visible: "Visible",
+	hidden: "Hidden",
+};
 
 onMounted(() => {
-	watchEffect(() => {
-		console.log(position);
-	});
-
-	watch(
-		position,
-		(newVal, oldVal) => {
-			console.log(newVal);
-		},
-		{ deep: true }
-	);
+	//watchEffect(() => {
+	//	console.log(position);
+	//});
+	//watch(position, (newVal, oldVal) => {
+	//	console.log(newVal);
+	//});
 });
 </script>
 <template>
@@ -377,6 +381,9 @@ onMounted(() => {
 						<span class="label"> Unit </span>
 					</div>
 				</div>
+			</div>
+			<div style="margin-top: 60px">
+				<pre>{{ position }}</pre>
 			</div>
 		</div>
 	</div>

@@ -77,6 +77,8 @@ const props = defineProps({
 		v-model:colorVal="props.reactiveState[props.fieldKey]"
 		:isAlphaPicker="props.field.isAlphaPicker"
 	/>
-	<Responsive v-else-if="props.field.type === 'responsive'" />
+	<Responsive
+		v-else-if="props.field.type === 'responsive-control-position'"
+	/>
 	<InvalidControl v-else />
 </template>

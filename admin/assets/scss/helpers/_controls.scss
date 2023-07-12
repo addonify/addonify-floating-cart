@@ -149,6 +149,17 @@
 
                         border: 1px solid var(--el-input-border-color);
                         box-shadow: none;
+
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        input[type=number] {
+                            
+                            -moz-appearance: textfield;
+                        }
                     }
                 }
 
@@ -180,11 +191,21 @@
                     
                 }
 
+                &.is-disabled {
+
+                    .label {
+
+                        opacity: 0.3;
+                    }
+                }
+
                 .label {
 
                     @include flex();
                     align-items: center;
                     gap: 10px;
+                    fill: #444444;
+                    color: #444444;
                     padding: 10px 0 0 15px;
                     font-size: 11px;
                     font-weight: normal;
@@ -192,10 +213,13 @@
                     line-height: 1;
                     text-transform: uppercase;
                     border-right: 1px solid #dcdfe6;
+                    transition: all 0.5s ease;
 
-                    .el-icon {
+                    svg {
 
-                        font-size: 14px;
+                        display: inline-flex;
+                        width: 16px;
+                        height: 16px;
                     }
                 }
             }

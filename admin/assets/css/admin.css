@@ -419,6 +419,14 @@
   border: 1px solid var(--el-input-border-color);
   box-shadow: none;
 }
+.responsive-control .res-content .input-fields .input-field .el-input .el-input__wrapper input::-webkit-outer-spin-button,
+.responsive-control .res-content .input-fields .input-field .el-input .el-input__wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.responsive-control .res-content .input-fields .input-field .el-input .el-input__wrapper input[type=number] {
+  -moz-appearance: textfield;
+}
 .responsive-control .res-content .input-fields .input-field .el-select .el-input.is-focus {
   box-shadow: none !important;
 }
@@ -431,12 +439,17 @@
 .responsive-control .res-content .input-fields .input-field .el-select .el-input .el-input__wrapper.is-focus {
   box-shadow: none !important;
 }
+.responsive-control .res-content .input-fields .input-field.is-disabled .label {
+  opacity: 0.3;
+}
 .responsive-control .res-content .input-fields .input-field .label {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+  fill: #444444;
+  color: #444444;
   padding: 10px 0 0 15px;
   font-size: 11px;
   font-weight: normal;
@@ -444,9 +457,12 @@
   line-height: 1;
   text-transform: uppercase;
   border-right: 1px solid #dcdfe6;
+  transition: all 0.5s ease;
 }
-.responsive-control .res-content .input-fields .input-field .label .el-icon {
-  font-size: 14px;
+.responsive-control .res-content .input-fields .input-field .label svg {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
 }
 
 #___adfy-floating-cart-app___ {

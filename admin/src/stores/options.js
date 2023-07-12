@@ -50,6 +50,7 @@ export const useOptionsStore = defineStore({
                 path: BASE_API_URL + '/get_options',
                 method: 'GET',
             }).then((res) => {
+                //console.log(res);
                 const settingsValues = res.settings_values;
                 this.data = res.tabs;
                 this.options = settingsValues;

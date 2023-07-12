@@ -192,9 +192,43 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			'custom_css'                                   => '',
 
-			// Test: responsive control.
-			'resposive_control'                       		=> '',
-		)
+			// Expremental: responsive control.
+			'resposive_control'                       		=> array(
+				'desktop' => array(
+					'id'   		  => 'desktop',	
+					'visibility'  => 'visible',
+					'location'    => array(
+						'top' 	  => '',
+						'right'   => '40',
+						'bottom'  => '40',
+						'left'    => '',
+					),
+					'unit'		  => 'px'
+				),
+				'tablet' => array(
+					'id'   		  => 'tablet',	
+					'visibility'  => 'hidden',
+					'location'    => array(
+						'top' 	  => '',
+						'right'   => '2',
+						'bottom'  => '3',
+						'left'    => '',
+					),
+					'unit'		  => 'em'
+				),
+				'mobile' => array(
+					'id'   		  => 'mobile',	
+					'visibility'  => 'visible',
+					'location'    => array(
+						'top' 	  => '',
+						'right'   => '10',
+						'bottom'  => '10',
+						'left'    => '',
+					),
+					'unit'		  => 'px'
+				),
+			),
+		),
 	);
 }
 

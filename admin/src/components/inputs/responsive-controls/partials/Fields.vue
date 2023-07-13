@@ -129,6 +129,10 @@ const renderIcon = (key) => {
 					:value="key"
 				/>
 			</el-select>
+			<span class="label">
+				<span v-html="renderIcon('eye')"> </span>
+				Visibility
+			</span>
 		</div>
 		<div
 			v-for="(posVal, posKey) in device.location"
@@ -170,5 +174,9 @@ const renderIcon = (key) => {
 			<span class="label"> Unit </span>
 		</div>
 	</div>
-	<Debugger :activeDevice="props.activeDevice" :store="store" />
+	<Debugger
+		mode="console"
+		:activeDevice="props.activeDevice"
+		:store="store"
+	/>
 </template>

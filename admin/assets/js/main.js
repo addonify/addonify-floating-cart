@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".debug-responsive-control .active-device[data-v-34bb7d68] {\n  font-weight: bold;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".debug-responsive-control[data-v-34bb7d68] {\n  display: block;\n  margin: 30px 0;\n}\n.debug-responsive-control .active-device[data-v-34bb7d68] {\n  font-weight: bold;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1645,9 +1645,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+/**
+ *
+ * Define props.
+ *
+ * @since 1.0.0
+ */
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Debugger',
   props: {
+    mode: {
+      type: String,
+      required: false,
+      "default": "console"
+    },
     activeDevice: {
       type: String,
       required: false
@@ -1661,16 +1676,30 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _ref.expose;
     expose();
     var props = __props;
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      /**
+       * For debugging purposes.
+       *
+       * @since 1.1.9
+       */
 
-    /**
-     *
-     * Define props.
-     *
-     * @since 1.0.0
-     */
-
+      var count = 1;
+      if (props.mode === "console") {
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(props.store, function (newV, oldVal) {
+          console.log(count++ + ") =============================================== ↓");
+          console.log("🛎️ The active device is: " + props.activeDevice);
+          console.log(newV[props.activeDevice]);
+          console.log("↑ =============================================== ⛔");
+          console.log("\n");
+        }, {
+          deep: true
+        });
+      }
+    });
     var __returned__ = {
-      props: props
+      props: props,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
+      watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -3243,6 +3272,7 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-34bb7d68"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
+  key: 0,
   "class": "debug-responsive-control"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" The active device is: ");
@@ -3250,7 +3280,7 @@ var _hoisted_3 = {
   "class": "active-device"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.activeDevice), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.store), 1 /* TEXT */)]);
+  return $setup.props.mode === 'verbose' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.activeDevice), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.store), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -3270,8 +3300,13 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "input-field select-input select-visiblity"
 };
-var _hoisted_2 = ["innerHTML"];
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_2 = {
+  "class": "label"
+};
+var _hoisted_3 = ["innerHTML"];
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Visibility ");
+var _hoisted_5 = ["innerHTML"];
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "label"
 }, " Unit ", -1 /* HOISTED */);
 
@@ -3295,7 +3330,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modelValue"])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.device.location, function (posVal, posKey) {
+  }, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    innerHTML: $setup.renderIcon('eye')
+  }, null, 8 /* PROPS */, _hoisted_3), _hoisted_4])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.device.location, function (posVal, posKey) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-field standard-input", $setup.isFieldDisabled(posKey) ? 'is-disabled' : ''])
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ElInput"], {
@@ -3315,7 +3352,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8 /* PROPS */, ["modelValue", "onUpdate:modelValue", "input", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       "class": "label",
       innerHTML: $setup.renderIcon(posKey)
-    }, null, 8 /* PROPS */, _hoisted_2)], 2 /* CLASS */);
+    }, null, 8 /* PROPS */, _hoisted_5)], 2 /* CLASS */);
   }), 256 /* UNKEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-field select-input select-unit", $setup.store[$setup.device.id].visibility === 'hidden' ? 'is-disabled' : ''])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ElSelect"], {
@@ -3336,7 +3373,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modelValue", "disabled"]), _hoisted_3], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Debugger"], {
+  }, 8 /* PROPS */, ["modelValue", "disabled"]), _hoisted_6], 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Debugger"], {
+    mode: "console",
     activeDevice: $setup.props.activeDevice,
     store: $setup.store
   }, null, 8 /* PROPS */, ["activeDevice", "store"])], 64 /* STABLE_FRAGMENT */);

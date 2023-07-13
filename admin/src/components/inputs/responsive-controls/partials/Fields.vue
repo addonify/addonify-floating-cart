@@ -1,6 +1,8 @@
 <script setup>
 import { reactive } from "vue";
 import { ElInput, ElSelect, ElOption } from "element-plus";
+import Debugger from "./Debugger.vue";
+
 /**
  * Define props.
  *
@@ -168,10 +170,5 @@ const renderIcon = (key) => {
 			<span class="label"> Unit </span>
 		</div>
 	</div>
-	<!--<div class="debug">
-		<p>
-			The active device is: <strong>{{ props.activeDevice }}</strong>
-		</p>
-		<pre>{{ store }}</pre>
-	</div>-->
+	<Debugger :activeDevice="props.activeDevice" :store="store" />
 </template>

@@ -117,6 +117,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Added: Option, Trigger button badge text color on hover. #218 
 - Added: Option, Trigger button badge background color on hover. #218
+- Added: Option, Hide trigger button if the cart is empty. #221
 - Removed: Option, `open_cart_modal_on_notification_button_click` from plugin settings page.
 - Refactored: Public facing JavaScript code.
 

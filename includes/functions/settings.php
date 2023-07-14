@@ -58,6 +58,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			// Floating Cart Toggle Button Options.
 			'display_cart_modal_toggle_button'             => '1',
+			'hide_modal_toggle_button_on_empty_cart'       => false,
 			'cart_modal_toggle_button_display_position'    => 'bottom-right',
 			'display_cart_items_number_badge'              => '1',
 			'cart_items_number_badge_position'             => 'top-left',

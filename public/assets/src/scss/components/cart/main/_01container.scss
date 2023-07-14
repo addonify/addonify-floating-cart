@@ -81,8 +81,7 @@
 
 .adfy__woofc-visible #adfy__floating-cart {
 
-    
-    transition: all 0.6s cubic-bezier(.77,0,.18,1);
+    transition: all 0.6s cubic-bezier( 0.77, 0, 0.18, 1 );
 }
 
 .adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="left"] {

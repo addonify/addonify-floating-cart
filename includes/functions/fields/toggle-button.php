@@ -25,6 +25,12 @@ function addonify_floating_cart_toggle_cart_button_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_cart_modal_toggle_button' ),
 		),
+		'hide_modal_toggle_button_on_empty_cart'     => array(
+			'label'       => __( 'Hide Cart Toggle Button if the Cart is Empty', 'addonify-floating-cart' ),
+			'type'        => 'switch',
+			'dependent'   => array( 'enable_floating_cart', 'display_cart_modal_toggle_button' ),
+			'value'       => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
+		),
 		'cart_modal_toggle_button_display_position' => array(
 			'label'     => __( 'Button Position', 'addonify-floating-cart' ),
 			'type'      => 'select',
@@ -131,11 +137,23 @@ function addonify_floating_cart_toggle_cart_button_designs() {
 			'dependent' => array( 'display_cart_items_number_badge' ),
 			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_background_color' ),
 		),
+		'toggle_button_badge_on_hover_background_color'       => array(
+			'label'     => __( 'Badge Background Color on Hover', 'addonify-floating-cart' ),
+			'type'      => 'color',
+			'dependent' => array( 'display_cart_items_number_badge' ),
+			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_on_hover_background_color' ),
+		),
 		'toggle_button_badge_label_color'            => array(
 			'label'     => __( 'Badge Label Color', 'addonify-floating-cart' ),
 			'type'      => 'color',
 			'dependent' => array( 'display_cart_items_number_badge' ),
 			'value'     => addonify_floating_cart_get_option( 'toggle_button_badge_label_color' ),
+		),
+		'toggle_button_label_on_hover_color'            => array(
+			'label'     => __( 'Badge Label Color on Hover', 'addonify-floating-cart' ),
+			'type'      => 'color',
+			'dependent' => array( 'display_cart_items_number_badge' ),
+			'value'     => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
 		),
 		'toggle_button_label_color'                  => array(
 			'label'     => __( 'Cart Toggle Button Font Color', 'addonify-floating-cart' ),

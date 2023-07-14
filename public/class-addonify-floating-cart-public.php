@@ -162,7 +162,7 @@ class Addonify_Floating_Cart_Public {
 
 		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',
@@ -940,7 +940,11 @@ class Addonify_Floating_Cart_Public {
 
 		return apply_filters(
 			'addonify_floating_cart_shopping_meter_bar',
-			'<div class="progress-bar shipping-bar" data_percentage="' . esc_attr( $per ) . '" style="width:' . esc_attr( $per ) . '%"></div>'
+			'<div 
+				class="live-progress-bar shipping-bar" 
+				data_percentage="' . esc_attr( number_format( floatval( $per ) ), 2 ) . '" 
+				style="width:' . esc_attr( number_format( floatval( $per ) ), 2 ) . '%"
+			></div>'
 		);
 	}
 
@@ -966,7 +970,9 @@ class Addonify_Floating_Cart_Public {
 			'--adfy_woofc_toggle_button_border_color'      => addonify_floating_cart_get_option( 'toggle_button_border_color' ),
 			'--adfy_woofc_toggle_button_border_color_hover' => addonify_floating_cart_get_option( 'toggle_button_on_hover_border_color' ),
 			'--adfy_woofc_toggle_button_badge_text_color'  => addonify_floating_cart_get_option( 'toggle_button_badge_label_color' ),
+			'--adfy_woofc_toggle_button_badge_text_color_hover'  => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
 			'--adfy_woofc_toggle_button_badge_background_color' => addonify_floating_cart_get_option( 'toggle_button_badge_background_color' ),
+			'--adfy_woofc_toggle_button_badge_background_color_hover' => addonify_floating_cart_get_option( 'toggle_button_badge_on_hover_background_color' ),
 			'--adfy_woofc_toggle_button_badge_width'       => addonify_floating_cart_get_option( 'toggle_button_badge_width' ), // New.
 			'--adfy_woofc_toggle_button_badge_font_size'   => addonify_floating_cart_get_option( 'toggle_button_badge_font_size' ) . 'px', // New.
 			'--adfy_woofc_toggle_button_size'              => addonify_floating_cart_get_option( 'cart_modal_toggle_button_width' ) . 'px',

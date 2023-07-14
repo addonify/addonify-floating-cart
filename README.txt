@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.9 or higher
 Requires PHP: 7.4
 Tested up to: 6.2.2
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,14 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.1.9 - 14 July, 2023 =
+
+- Added: Option, Trigger button badge text color on hover. #218 
+- Added: Option, Trigger button badge background color on hover. #218
+- Added: Option, Hide trigger button if the cart is empty. #221
+- Removed: Option, `open_cart_modal_on_notification_button_click` from plugin settings page.
+- Refactored: Public facing JavaScript code.
 
 = 1.1.8 - 27 June, 2023 =
 

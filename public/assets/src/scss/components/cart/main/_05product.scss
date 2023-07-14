@@ -17,7 +17,7 @@
             top: 0;
             bottom: 0;
             z-index: 5;
-            padding: 10px 0;
+            padding: 10px 10px 10px 0;
 
             .adfy__woofc-item {
 
@@ -74,7 +74,7 @@
                         color: var(--adfy_woofc_cart_product_remove_button_text_color);
                         border-radius: 100%;
                         text-decoration: none;
-                        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+                        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
                         background-color: var(--adfy_woofc_cart_product_remove_button_background_color);
                         @include breakpoint(mobile) {
 

@@ -58,6 +58,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			// Floating Cart Toggle Button Options.
 			'display_cart_modal_toggle_button'             => '1',
+			'hide_modal_toggle_button_on_empty_cart'       => false,
 			'cart_modal_toggle_button_display_position'    => 'bottom-right',
 			'display_cart_items_number_badge'              => '1',
 			'cart_items_number_badge_position'             => 'top-left',
@@ -66,8 +67,10 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'toggle_button_badge_width'                    => 23,
 			'toggle_button_badge_font_size'                => 13,
 			'toggle_button_badge_background_color'         => '',
+			'toggle_button_badge_on_hover_background_color' => '',
 			'toggle_button_badge_label_color'              => '',
 			'toggle_button_label_color'                    => '',
+			'toggle_button_label_on_hover_color'           => '',
 			'toggle_button_background_color'               => '',
 			'toggle_button_border_color'                   => '',
 			'toggle_button_on_hover_label_color'           => '',
@@ -82,7 +85,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Toast notification options.
 			'display_toast_notification'                   => true,
 			'toast_notification_display_position'          => 'top-right',
-			'open_cart_modal_on_notification_button_click' => false,
 			'added_to_cart_notification_text'              => __( '{product_name} has been added to cart.', 'addonify-floating-cart' ),
 			'close_notification_after_time'                => 5,
 			'display_close_notification_button'            => false,

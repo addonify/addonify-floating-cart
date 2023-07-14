@@ -15,6 +15,9 @@
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
+    // Hide toggle button if cart is empty.
+    let hideTriggerButtonIfCartIsEmpty = addonifyFloatingCartJSObject.hideTriggerButtonIfCartIsEmpty;
+
     let countriesToStates = addonifyFloatingCartJSObject.states;
 
     var product_name;
@@ -100,15 +103,27 @@
                     shoppingMeterEle.removeClass('adfy__woofc-hidden');
                 }
 
+                // Also display the cart trigger button if it was hidden.
+                if (hideTriggerButtonIfCartIsEmpty === '1') {
+                    addonifyFloatingCart.displayHideCartTriggerBtn('show');
+                }
+
                 // Always check if threshold reached!
-                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
+                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
             });
 
             $(document.body).on('wc_cart_emptied', function (event) {
 
                 footerEle.addClass('adfy__woofc-hidden');
                 shoppingMeterEle.addClass('adfy__woofc-hidden');
-                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation(); // Check if threshold reached!
+
+                // Check if threshold reached!
+                addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
+
+                // Also display the cart trigger button if it was hidden.
+                if (hideTriggerButtonIfCartIsEmpty === '1') {
+                    addonifyFloatingCart.displayHideCartTriggerBtn('hide');
+                }
             });
         },
 
@@ -145,7 +160,7 @@
         *
         * @since 1.0.0
         */
-        notifyFloatingCartEventHandler: () => {
+        notifyFloatingCartEventHandler: function () {
 
             if (addonifyFloatingCartNotifyShow) {
 
@@ -273,7 +288,6 @@
                         addonifyFloatingCart.checkShoppingMeterProgessbarAnimation();
                     });
             }
-
         },
 
         handleFloatingCartCoupon: () => {
@@ -518,6 +532,11 @@
                             shoppingMeterEle.removeClass('adfy__woofc-hidden');
                         }
 
+                        // Also display the cart trigger button if it was hidden.
+                        if (hideTriggerButtonIfCartIsEmpty === '1') {
+                            addonifyFloatingCart.displayHideCartTriggerBtn('show');
+                        }
+
                         // Hide alert messages if any.
                         addonifyFloatingCart.handleAlerts("hide");
 
@@ -544,14 +563,37 @@
 
         /**
         *
+        * Display/Hide Cart trigger button.
+        * 
+        * @param {string} action. hide | show.
+        * @since 1.1.10
+        */
+        displayHideCartTriggerBtn: function (action) {
+
+            const buttonEle = document.getElementById("adfy__woofc-trigger");
+
+            if (
+                (action !== '') &&
+                (buttonEle !== null) &&
+                (buttonEle !== undefined) &&
+                (buttonEle.hasAttribute('data_display'))
+            ) {
+                // Perform the action.
+                if (action === 'hide') buttonEle.setAttribute('data_display', 'hidden');
+                if (action === 'show') buttonEle.setAttribute('data_display', 'visible');
+            }
+        },
+
+        /**
+        *
         * Display alert message.
         *
         * @param {string} action to perform. Arg: [show | hide]
-        * @param {string} type of alert message. Arg: [info | error]
+        * @param {string} style of alert message. Arg: [info | error]
         * @param {string} data, may also contain HTML.
         * @since: 1.1.9
         */
-        handleAlerts: function (action = 'hide', type = 'info', data = '') {
+        handleAlerts: function (action = 'hide', style = 'info', data = '') {
 
             const alertMessageEle = $('#adfy__floating-cart #adfy__woofc-cart-errors');
 
@@ -567,7 +609,7 @@
                         return;
                     }
 
-                    if (type === 'error') {
+                    if (style === 'error') {
 
                         alertMessageEle.addClass('error');
                     }
@@ -608,11 +650,11 @@
         *
         * Dispatch notification toast messages.
         *
-        * @param {string} type, Arg: [success | error]
+        * @param {string} style, Arg: [success | error]
         * @param {string} data, may also contain HTML.
         * @since: 1.1.9
         */
-        dispatchToast: function (type = 'success', data) {
+        dispatchToast: function (style = 'success', data) {
 
             if (typeof Notyf !== 'undefined') {
 
@@ -632,7 +674,7 @@
                 }
 
                 // Check if notification toast is enabled in backend.
-                if (type === 'success') {
+                if (style === 'success') {
 
                     if (addonifyFloatingCartNotifyShow) {
 
@@ -644,7 +686,7 @@
                 }
 
                 // Do not disable error notification toast.
-                if (type === 'error') {
+                if (style === 'error') {
 
                     notyf.error({
 

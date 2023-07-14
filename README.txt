@@ -113,7 +113,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.9 - ? July, 2023 =
+= 1.1.9 - 14 July, 2023 =
 
 - Added: Option, Trigger button badge text color on hover. #218 
 - Added: Option, Trigger button badge background color on hover. #218

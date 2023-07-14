@@ -25,6 +25,12 @@ function addonify_floating_cart_toggle_cart_button_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_cart_modal_toggle_button' ),
 		),
+		'hide_modal_toggle_button_on_empty_cart'     => array(
+			'label'       => __( 'Hide Cart Toggle Button if the Cart is Empty', 'addonify-floating-cart' ),
+			'type'        => 'switch',
+			'dependent'   => array( 'enable_floating_cart', 'display_cart_modal_toggle_button' ),
+			'value'       => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
+		),
 		'cart_modal_toggle_button_display_position' => array(
 			'label'     => __( 'Button Position', 'addonify-floating-cart' ),
 			'type'      => 'select',

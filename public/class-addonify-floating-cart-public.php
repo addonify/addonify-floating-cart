@@ -189,6 +189,7 @@ class Addonify_Floating_Cart_Public {
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
 				'toastNotificationButton'                  => $this->toast_notification_button_template(),
+				'hideTriggerButtonIfCartIsEmpty'           => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),	
 				'states'                                   => $states,
 			)
 		);

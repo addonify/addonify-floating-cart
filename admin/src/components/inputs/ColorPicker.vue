@@ -34,6 +34,12 @@ const handleColorChanged = (color) => {
 	<span class="label" v-if="props.label">{{ props.label }}</span>
 </template>
 <style>
+[class*="addonify_page"] .el-color-picker__panel.el-popper {
+	padding: 15px;
+	box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
 .adfy-options .el-color-picker__trigger,
 .adfy-options .el-color-picker__color,
 .adfy-options .el-color-picker__color-inner {
@@ -61,4 +67,3 @@ const handleColorChanged = (color) => {
 	line-height: 1;
 }
 </style>
-

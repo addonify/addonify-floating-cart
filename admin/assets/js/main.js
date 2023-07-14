@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.adfy-options .el-color-picker__trigger,\r\n.adfy-options .el-color-picker__color,\r\n.adfy-options .el-color-picker__color-inner {\r\n\tborder-radius: 100%;\r\n\tborder: none;\n}\n.adfy-options .el-color-picker__trigger {\r\n\theight: 42px;\r\n\twidth: 42px;\r\n\tpadding: 3px;\r\n\tborder: 2px solid white;\r\n\tbox-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);\n}\n.adfy-options .el-color-picker .el-color-picker__icon {\r\n\tfont-size: 16px;\r\n\tcolor: white;\r\n\tline-height: 1;\n}\n.adfy-options .el-color-picker .el-color-picker__empty {\r\n\tfont-size: 20px;\r\n\tcolor: red;\r\n\tline-height: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n[class*=\"addonify_page\"] .el-color-picker__panel.el-popper {\r\n\tpadding: 15px;\r\n\tbox-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);\r\n\tborder-radius: 10px;\n}\n.adfy-options .el-color-picker__trigger,\r\n.adfy-options .el-color-picker__color,\r\n.adfy-options .el-color-picker__color-inner {\r\n\tborder-radius: 100%;\r\n\tborder: none;\n}\n.adfy-options .el-color-picker__trigger {\r\n\theight: 42px;\r\n\twidth: 42px;\r\n\tpadding: 3px;\r\n\tborder: 2px solid white;\r\n\tbox-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);\n}\n.adfy-options .el-color-picker .el-color-picker__icon {\r\n\tfont-size: 16px;\r\n\tcolor: white;\r\n\tline-height: 1;\n}\n.adfy-options .el-color-picker .el-color-picker__empty {\r\n\tfont-size: 20px;\r\n\tcolor: red;\r\n\tline-height: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -228,17 +228,22 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.esm-browser.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./admin/src/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./admin/src/router/index.js");
+/* harmony import */ var vue3_colorpicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue3-colorpicker */ "./node_modules/vue3-colorpicker/index.es.js");
+/* harmony import */ var vue3_colorpicker_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue3-colorpicker/style.css */ "./node_modules/vue3-colorpicker/style.css");
 
 
 
 
-var pinia = (0,pinia__WEBPACK_IMPORTED_MODULE_3__.createPinia)();
+
+
+var pinia = (0,pinia__WEBPACK_IMPORTED_MODULE_5__.createPinia)();
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 app.use(pinia);
 app.use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
+app.use(vue3_colorpicker__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.mount("#___adfy-floating-cart-app___");
 
 /***/ }),
@@ -352,7 +357,7 @@ var useOptionsStore = (0,pinia__WEBPACK_IMPORTED_MODULE_1__.defineStore)({
         path: BASE_API_URL + '/get_options',
         method: 'GET'
       }).then(function (res) {
-        //console.log(res);
+        console.log(res);
         var settingsValues = res.settings_values;
         _this.data = res.tabs;
         _this.options = settingsValues;

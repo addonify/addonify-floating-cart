@@ -30,12 +30,13 @@ function addonify_floating_cart_cart_options_settings() {
 			'label'       => __( 'Expremental: Responsive control for position', 'addonify-floating-cart' ),
 			'type'        => 'responsive-control-position',
 			'className'	  => 'fullwidth',
+			'dependent'   => array( 'enable_floating_cart' ),
 			'choices' => array(
 				'desktop' => array(
 					'id'    => 'desktop',
 					'visibility'  => array(
-						'visible' => 'Visible',
-						'hidden'  => 'Hidden',
+						'visible' => __( 'Visible', 'addonify-floating-cart' ),
+						'hidden'  => __( 'Hidden', 'addonify-floating-cart' ),
 					),
 					'location'  => array(
 						'top' 	  => '',
@@ -53,8 +54,8 @@ function addonify_floating_cart_cart_options_settings() {
 				'tablet' => array(
 					'id'    => 'tablet',
 					'visibility'  => array(
-						'visible' => 'Visible',
-						'hidden'  => 'Hidden',
+						'visible' => __( 'Visible', 'addonify-floating-cart' ),
+						'hidden'  => __( 'Hidden', 'addonify-floating-cart' ),
 					),
 					'location'  => array(
 						'top' 	  => '',
@@ -72,8 +73,8 @@ function addonify_floating_cart_cart_options_settings() {
 				'mobile' => array(
 					'id'    => 'mobile',
 					'visibility'  => array(
-						'visible' => 'Visible',
-						'hidden'  => 'Hidden',
+						'visible' => __( 'Visible', 'addonify-floating-cart' ),
+						'hidden'  => __( 'Hidden', 'addonify-floating-cart' ),
 					),
 					'location'  => array(
 						'top' 	  => '',
@@ -90,41 +91,7 @@ function addonify_floating_cart_cart_options_settings() {
 				),
 			),
 			'dependent'   => array( 'enable_floating_cart' ),
-			'value'       => array(
-				'desktop' => array(
-					'id'   		  => 'desktop',	
-					'visibility'  => 'visible',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '40',
-						'bottom'  => '40',
-						'left'    => '',
-					),
-					'unit'		  => 'px'
-				),
-				'tablet' => array(
-					'id'   		  => 'tablet',	
-					'visibility'  => 'hidden',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '2',
-						'bottom'  => '3',
-						'left'    => '',
-					),
-					'unit'		  => 'em'
-				),
-				'mobile' => array(
-					'id'   		  => 'mobile',	
-					'visibility'  => 'visible',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '10',
-						'bottom'  => '10',
-						'left'    => '',
-					),
-					'unit'		  => 'px'
-				),
-			)
+			'value'		  => addonify_floating_cart_get_option( 'responsive_control' ),
 		),
 		'open_cart_modal_immediately_after_add_to_cart' => array(
 			'label'     => __( 'Open Cart on Add to Cart Button Click', 'addonify-floating-cart' ),

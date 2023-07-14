@@ -194,39 +194,41 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'custom_css'                                   => '',
 
 			// Expremental: responsive control.
-			'resposive_control'                       		=> array(
-				'desktop' => array(
-					'id'   		  => 'desktop',	
-					'visibility'  => 'visible',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '40',
-						'bottom'  => '40',
-						'left'    => '',
+			'resposive_control'                       	   => wp_json_encode( 
+				array(
+					'desktop' => array(
+						'id'   		  => 'desktop',	
+						'visibility'  => 'visible',
+						'location'    => array(
+							'top' 	  => '',
+							'right'   => '40',
+							'bottom'  => '40',
+							'left'    => '',
+						),
+						'unit'		  => 'px'
 					),
-					'unit'		  => 'px'
-				),
-				'tablet' => array(
-					'id'   		  => 'tablet',	
-					'visibility'  => 'hidden',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '2',
-						'bottom'  => '3',
-						'left'    => '',
+					'tablet' => array(
+						'id'   		  => 'tablet',	
+						'visibility'  => 'hidden',
+						'location'    => array(
+							'top' 	  => '',
+							'right'   => '2',
+							'bottom'  => '3',
+							'left'    => '',
+						),
+						'unit'		  => 'em'
 					),
-					'unit'		  => 'em'
-				),
-				'mobile' => array(
-					'id'   		  => 'mobile',	
-					'visibility'  => 'visible',
-					'location'    => array(
-						'top' 	  => '',
-						'right'   => '10',
-						'bottom'  => '10',
-						'left'    => '',
+					'mobile' => array(
+						'id'   		  => 'mobile',	
+						'visibility'  => 'visible',
+						'location'    => array(
+							'top' 	  => '',
+							'right'   => '10',
+							'bottom'  => '10',
+							'left'    => '',
+						),
+						'unit'		  => 'px'
 					),
-					'unit'		  => 'px'
 				),
 			),
 		),

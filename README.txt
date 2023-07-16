@@ -113,7 +113,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.1.10 - 14 July, 2023 =
+= 1.1.10 - 16 July, 2023 =
 
 - Fix: Update Cart trigger button visibility state. Now trigger button also listens the cart event. #221
 

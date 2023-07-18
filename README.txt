@@ -5,7 +5,7 @@ Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, w
 Requires at least: 5.9 or higher
 Requires PHP: 7.4
 Tested up to: 6.2.2
-Stable tag: 1.1.10
+Stable tag: 1.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,10 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.1.11 - 18 July, 2023 =
+
+- Fix: Shopping meter threshold amount & progress bar issue. Parsed remaining threshold amount & progress bar percentage to float value before evaluating the condition. #213
 
 = 1.1.10 - 16 July, 2023 =
 

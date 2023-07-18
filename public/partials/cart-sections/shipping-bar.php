@@ -13,9 +13,16 @@ defined( 'ABSPATH' ) || exit;
 <div class="adfy__woofc-shipping-bar <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>">
 	<span class="adfy__woofc-shipping-text">
 		<?php
-			if ( $per < 100 && $left > 0 ) {
+
+			$percent 	 = number_format( floatval( $per ), 2 );
+			$amount_left = number_format( floatval( $left ), 2 );
+
+			if (( $percent < 100 ) && ( $amount_left > 0 )) {
+
 				echo wp_kses_post( str_replace( '{amount}', wc_price( $left ), $pre_threshold_label ) );
+
 			} else {
+
 				echo esc_html( $post_threshold_label );
 			}
 		?>
@@ -24,8 +31,8 @@ defined( 'ABSPATH' ) || exit;
 		<div class="total-bar shipping-bar"></div>
 		<div
 			class="live-progress-bar shipping-bar" 
-			data_percentage="<?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>" 
-			style="width: <?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>%">
+			data_percentage="<?php echo esc_attr( $percent ); ?>" 
+			style="width: <?php echo esc_attr( $percent ); ?>%">
 		</div>
 	</div>
 </div>

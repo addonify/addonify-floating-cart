@@ -10,4 +10,3 @@ const { __ } = wp.i18n;
 		</router-link>
 	</div>
 </template>
-

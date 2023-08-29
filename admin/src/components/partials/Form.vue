@@ -1,8 +1,13 @@
 <script setup>
-	const props = defineProps({
-		divId: String,
-		className: String,
-	});
+/**
+ * Define props.
+ *
+ * @since 1.0.0
+ */
+const props = defineProps({
+	divId: String,
+	className: String,
+});
 </script>
 <template>
 	<form

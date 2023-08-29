@@ -1,29 +1,30 @@
 /**
 =======================================================
-
-= Project : Addonify Floating Cart
-=
-= Since : -
-=
-= Author: Addonify
-=
-= Author url : https://addonify.com/
-=
-
+*
+* @project : Addonify Floating Cart
+*
+* @author: addonify
+*
+* @author_url: https://addonify.com/
+*
 ======================================================================================
 */
 
 @use 'abstract/variables' as *;
 @use 'abstract/mixins' as *;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 @import 'base/form';
 
 @import 'helpers/class';
+@import 'helpers/notice';
 
-@import 'layouts/entry';
 @import 'layouts/header';
 @import 'layouts/footer';
-@import 'layouts/error-404';
+@import 'layouts/layout';
+@import 'layouts/controls';
+@import 'layouts/error';
 @import 'layouts/recommended-products';
 
 @import 'helpers/keyframes';

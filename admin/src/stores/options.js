@@ -2,8 +2,9 @@ import { defineStore } from 'pinia'
 import { ElMessage } from 'element-plus'
 
 let oldOptions = {};
-const { isEqual, cloneDeep } = lodash;
 const { apiFetch } = wp;
+const { __ } = wp.i18n;
+const { isEqual, cloneDeep } = lodash;
 const BASE_API_URL = ADDONIFY_WOOFC_LOCOLIZER.rest_namespace;
 
 export const useOptionsStore = defineStore({
@@ -22,7 +23,7 @@ export const useOptionsStore = defineStore({
     getters: {
 
         // ⚡️ Check if we need to save the options.
-        checkNeedSave: (state) => {
+        needSaving: (state) => {
 
             return !isEqual(state.options, oldOptions) ? true : false;
         },
@@ -49,14 +50,27 @@ export const useOptionsStore = defineStore({
             apiFetch({
                 path: BASE_API_URL + '/get_options',
                 method: 'GET',
-            }).then((res) => {
-                const settingsValues = res.settings_values;
-                this.data = res.tabs;
-                this.options = settingsValues;
-                oldOptions = cloneDeep(settingsValues);
-                this.isLoading = false;
-                //console.log(res.tabs);
-            });
+            })
+                .then((res) => {
+                    const settingsValues = res.settings_values;
+                    this.data = res.tabs;
+                    this.options = settingsValues;
+                    oldOptions = cloneDeep(settingsValues);
+                })
+                .catch((err) => {
+
+                    console.log(err);
+
+                    ElMessage.error(({
+                        message: __("Something went wrong while fetching settings.", "addonify-floating-cart"),
+                        offset: 50,
+                        duration: 10000,
+                    }));
+                })
+                .finally(() => {
+
+                    this.isLoading = false;
+                })
         },
 
         // ⚡️ Handle update options & map the values to the options object.
@@ -93,7 +107,6 @@ export const useOptionsStore = defineStore({
 
                     this.isSaving = false; // Saving is compconsted here.
                     this.message = res.message; // Set the message to be displayed to the user.
-                    //console.log(res);
 
                     if (res.success === true) {
                         ElMessage.success(({
@@ -101,12 +114,12 @@ export const useOptionsStore = defineStore({
                             offset: 50,
                             duration: 3000,
                         }));
-
                     } else {
+
                         ElMessage.error(({
                             message: this.message,
                             offset: 50,
-                            duration: 5000,
+                            duration: 3000,
                         }));
                     }
 
@@ -120,9 +133,9 @@ export const useOptionsStore = defineStore({
                     console.log(err);
 
                     ElMessage.error(({
-                        message: __("Something went wrong while fetching settings.", "addonify-floating-cart"),
+                        message: __("Something went wrong while updating settings.", "addonify-floating-cart"),
                         offset: 50,
-                        duration: 10000,
+                        duration: 5000,
                     }));
                 })
         },

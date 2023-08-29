@@ -210,7 +210,7 @@ class Addonify_Floating_Cart_Admin {
 	// get contents for settings page screen
 	public function get_settings_screen_contents() {
 		?>
-		<div id="___adfy-floating-cart-app___"></div>
+		<div id="___adfy-floatingcart-app___"></div>
 		<?php
 	}
 

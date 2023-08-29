@@ -100,6 +100,7 @@ const sourceFilesDirsToCompress = {
         '!./sftp-config.json',
         '!./webpack.mix.js',
         '!./babelrc',
+        '!./notice.json',
     ],
 
     pathToSaveProductionZip: "./",

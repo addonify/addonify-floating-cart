@@ -1,6 +1,6 @@
 <script setup>
 	import { computed } from "vue";
-	import { ElCheckbox } from "element-plus";
+	import { ElInputNumber } from "element-plus";
 
 	/**
 	 * Define props.
@@ -8,9 +8,12 @@
 	 * @since 1.0.0
 	 */
 	const props = defineProps({
-		modelValue: [Boolean],
-		label: [String],
+		modelValue: [String, Number], // loose strict checking.
+		min: Number,
+		max: Number,
 	});
+
+	const { min, max } = props;
 
 	/**
 	 * Define emit.
@@ -20,7 +23,7 @@
 	const emit = defineEmits(["update:modelValue"]);
 	const value = computed({
 		get() {
-			return props.modelValue;
+			return parseInt(props.modelValue);
 		},
 		set(newValue) {
 			emit("update:modelValue", newValue);
@@ -28,5 +31,10 @@
 	});
 </script>
 <template>
-	<el-checkbox v-model="value" label="{{props.label}}" size="large" />
+	<el-input-number
+		v-model="value"
+		size="large"
+		:min="min ? min : 0"
+		:max="max ? max : 365"
+	/>
 </template>

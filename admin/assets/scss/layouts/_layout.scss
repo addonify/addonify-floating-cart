@@ -1,0 +1,459 @@
+/* -------------------------------------------------------------------------- 
+	Page setup
+  -------------------------------------------------------------------------- */
+
+[class*="page_addonify_floating_cart"] #wpbody-content {
+
+    padding-bottom: 30px;
+}
+
+[class*="page_addonify_floating_cart"] #wpfooter {
+
+    display: none;
+}
+
+/* -------------------------------------------------------------------------- 
+	Containers
+  -------------------------------------------------------------------------- */
+
+#___adfy-floatingcart-app___ {
+
+    display: block;
+    position: relative;
+    margin: 0 0 0 -20px;
+    padding: 0;
+    font-family: var(--addonify_font_family);
+    letter-spacing: -0.15px;
+    font-weight: normal;
+    box-sizing: border-box;
+    @include better_font_rendering();
+
+    * {
+
+        box-sizing: border-box;
+        @include better_font_rendering();
+    }
+
+    .adfy-container {
+
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1100px;
+        min-height: 100vh;
+    }
+
+    #addonify-layout {
+
+        margin-top: 120px;
+        margin-bottom: 120px;
+    }
+
+    .main-content {
+
+        @include grid();
+        grid-template-columns: 180px auto;
+        column-gap: 60px;
+        align-items: stretch;
+        justify-content: stretch;
+        margin: 0;
+
+        .end {
+
+            padding-left: 60px;
+            border-left: 1px solid var(--addonify_border_color);
+        }
+    }
+
+    .el-button {
+
+        font-weight: normal;
+        padding: 10px 20px 12px 20px;
+        line-height: 1;
+        @include transition_delay();
+    }
+}
+
+/* -------------------------------------------------------------------------- 
+	Navigation
+  -------------------------------------------------------------------------- */
+
+#___adfy-floatingcart-app___ {
+
+    .adfy-navigation {
+
+        .navigation {
+
+            @include flex();
+            flex-direction: column;
+            gap: 10px;
+            margin: 0;
+            list-style: none;
+
+            li {
+
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+
+                a {
+
+                    @include flex();
+                    gap: 10px;
+                    align-items: center;
+                    padding: 12px 15px 10px 15px;
+                    font-family: var(--addonify_font_family);
+                    fill: var(--addonify_base_text_color);
+                    color: var(--addonify_base_text_color);
+                    font-weight: normal;
+                    font-size: 15px;
+                    line-height: 1;
+                    transition: all 0.5s ease;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    background-color: transparent;
+
+                    .icon {
+
+                        svg {
+
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    &:hover {
+
+                        fill: var(--addonify_base_text_color);
+                        color: var(--addonify_base_text_color);
+                        background-color: white;
+                        text-decoration: none;
+                        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.10);
+                    }
+
+                    &:focus {
+
+                        outline: 0;
+                    }
+                }
+
+                .router-link-active {
+
+                    fill: var(--addonify_primary_color);
+                    color: var(--addonify_primary_color);
+                    background-color: white;
+                    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.10);
+                }
+            }
+        }
+    }
+}
+
+
+/* -------------------------------------------------------------------------- 
+	Options section
+  -------------------------------------------------------------------------- */
+
+#___adfy-floatingcart-app___ {
+
+    .site-primary {
+
+        .adfy-form {
+
+            @include flex();
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .addonify-section {
+
+            @include flex();
+            flex-direction: column;
+            gap: 30px;
+            padding: 30px 40px 40px;
+            background-color: white;
+            border-radius: 10px;
+            @include jumbo_box_shadow();
+
+            .section-title-holder {
+
+                padding: 0 0 10px 0;
+                border-bottom: 1px solid #EEEEEE;
+
+                .section-title {
+
+                    display: inline-flex;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    font-family: var(--addonify_font_family);
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                    letter-spacing: -0.15px;
+                    color: #333333;
+                    @include heading_gradient();
+                }
+            }
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- 
+	Options
+  -------------------------------------------------------------------------- */
+
+#___adfy-floatingcart-app___  {
+
+    .addonify-section {
+
+        .adfy-options {
+
+            padding-bottom: 30px;
+            border-bottom: 1px dashed var(--addonify_border_color);
+
+            &:is(:last-child) {
+
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+        }
+    }
+
+    .adfy-options {
+
+        .option-box {
+
+            @include grid();
+            grid-template-columns: auto 300px;
+            column-gap: 40px;
+            align-items: center;
+
+            &.fullwidth {
+
+                grid-template-columns: repeat(1, 1fr);
+                column-gap: 0;
+                @include flex();
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+
+                .adfy-col {
+
+                    &.right {
+
+                        @include flex();
+                        justify-content: flex-start;
+                        padding: 0;
+                        border: none;
+                        width: 100%;
+
+                        .input {
+
+                            @include flex();
+                            position: relative;
+                            justify-content: flex-start;
+                            width: 100%;
+                            padding: 30px;
+                            border: 1px solid var(--addonify_border_color);
+                            border-radius: 10px;
+
+                            &::before {
+
+                                content: "";
+                                display: inline-flex;
+                                background: white;
+                                border-left: 1px solid var(--addonify_border_color);
+                                border-top: 1px solid var(--addonify_border_color);
+                                height: 16px;
+                                left: 40px;
+                                position: absolute;
+                                right: auto;
+                                top: -10px;
+                                transform: rotate(45deg);
+                                width: 16px;
+                                z-index: 5;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .adfy-col {
+
+                &.left {
+
+                    .label {
+
+                        @include flex();
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+
+                &.right {
+
+                    @include flex();
+                    justify-content: flex-end;
+                    padding: 0;
+                    border: none;
+                }
+            }
+
+            .option-label {
+
+                @include flex();
+                align-items: center;
+                gap: 5px;
+                color: #444444;
+                margin: 0;
+                padding: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                font-weight: normal;
+                font-family: var(--addonify_font_family);
+                letter-spacing: -0.15px;
+            }
+
+            .option-description {
+
+                @include grid();
+                grid-template-columns: 15px 1fr;
+                column-gap: 8px;
+                align-items: center;
+                font-family: var(--addonify_font_family);
+                margin: 0;
+                padding: 0;
+                font-size: 13px;
+                line-height: 1.4;
+                font-weight: normal;
+                fill: #503C3C;
+                color: #503C3C;
+
+                svg {
+
+                    display: inline-flex;
+                    width: 14px;
+                    height: 14px;
+                    line-height: 1.4; 
+                    fill: #FF9400;
+                    color: #FF9400;
+                }
+            }
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- 
+	Jumbo box
+  -------------------------------------------------------------------------- */
+
+#___adfy-floatingcart-app___ {
+
+    .jumbo-box  {
+
+        @include flex();
+        flex-direction: column;
+        gap: 30px;
+
+        .jumbo-header {
+
+            @include flex();
+            flex-direction: column;
+            gap: 5px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #E8E8E8;
+
+            .sec-title {
+
+                display: inline-flex;
+                align-items: center;
+                width: max-content;
+                margin: 0;
+                padding: 0;
+                font-family: var(--addonify_font_family);
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 1.5;
+                letter-spacing: -0.15px;
+                color: #333333;
+                @include heading_gradient();
+            }
+
+            .sec-excerpt {
+
+                @include grid();
+                grid-template-columns: 15px 1fr;
+                column-gap: 8px;
+                align-items: center;
+                font-family: var(--addonify_font_family);
+                margin: 0;
+                padding: 0;
+                font-size: 13px;
+                line-height: 1.4;
+                font-weight: normal;
+                fill: #503C3C;
+                color: #503C3C;
+
+                svg {
+
+                    display: inline-flex;
+                    width: 14px;
+                    height: 14px;
+                    line-height: 1.4; 
+                    fill: #FF9400;
+                    color: #FF9400;
+                }
+            }
+        }
+
+        .jumbo-content {
+
+            &.adfy-options {
+
+                position: relative;
+                @include flex();
+                flex-direction: column;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+                border: none;
+                background-color: transparent;
+            }
+
+            .ui-option {
+
+                display: grid;
+                grid-template-columns: 1fr 250px;
+                row-gap: 20px;
+                column-gap: 30px;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 20px;
+                border-bottom: 1px dashed var(--addonify_border_color);
+
+                &:is(:last-child) {
+
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+    
+                .option-label {
+
+                    .label {
+
+                        font-size: 15px;
+                    }
+                }
+
+                .input {
+
+                    @include flex();
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}
+

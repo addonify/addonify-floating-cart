@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { ElButton, ElMessage } from "element-plus";
 import { Loading } from "@element-plus/icons-vue";
 import { useProductStore } from "../../stores/product";

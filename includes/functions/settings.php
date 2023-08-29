@@ -47,6 +47,8 @@ function addonify_floating_cart_settings_fields_defaults() {
 		array(
 			// Main cart settings options.
 			'enable_floating_cart'                         => true,
+			'enable_floating_cart_on_cart_page'            => false,
+			'enable_floating_cart_on_checkout_page'        => false,
 			'open_cart_modal_immediately_after_add_to_cart' => true,
 			'open_cart_modal_after_click_on_view_cart'     => false,
 			'enable_shopping_meter'                        => false,
@@ -102,6 +104,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'toast_notification_vertical_offset'           => '',
 
 			// Cart modal options.
+			'open_cart_modal_on_trigger_button_mouse_hover' => false,
 			'cart_position'                                => 'right',
 			'cart_title'                                   => __( 'Cart', 'addonify-floating-cart' ),
 			'cart_title_font_size'                         => 14,

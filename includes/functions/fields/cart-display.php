@@ -18,6 +18,12 @@
 function addonify_floating_cart_cart_display_settings() {
 
 	return array(
+		'open_cart_modal_on_trigger_button_mouse_hover' => array(
+			'label' => __( 'Open Cart modal on trigger button hover', 'addonify-floating-cart' ),
+			'type'  => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value' => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ),
+		),
 		'cart_position'                     => array(
 			'label'     => __( 'Cart Position', 'addonify-floating-cart' ),
 			'type'      => 'select',

@@ -18,11 +18,23 @@
 function addonify_floating_cart_cart_options_settings() {
 
 	return array(
-		'enable_floating_cart'                          => array(
+		'enable_floating_cart' => array(
 			'label' => __( 'Enable Floating Cart', 'addonify-floating-cart' ),
 			'type'  => 'switch',
 			'badge' => __( 'Required', 'addonify-floating-cart' ),
 			'value' => addonify_floating_cart_get_option( 'enable_floating_cart' ),
+		),
+		'enable_floating_cart_on_cart_page' => array(
+			'label' => __( 'Enable Floating Cart on WooCommerce Cart page', 'addonify-floating-cart' ),
+			'type'  => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value' => addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ),
+		),
+		'enable_floating_cart_on_checkout_page' => array(
+			'label' => __( 'Enable Floating Cart on WooCommerce Checkout page', 'addonify-floating-cart' ),
+			'type'  => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value' => addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ),
 		),
 		'open_cart_modal_immediately_after_add_to_cart' => array(
 			'label'     => __( 'Open Cart on Add to Cart Button Click', 'addonify-floating-cart' ),

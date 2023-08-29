@@ -113,7 +113,24 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		if ( is_cart() || is_checkout() ) {
+
+		/**
+		* Load in WooCommerce Cart page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
+
+			return;
+		}
+
+		/**
+		* Load in WooCommerce Checkout page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
+
 			return;
 		}
 
@@ -146,7 +163,23 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_scripts() {
 
-		if ( is_cart() || is_checkout() ) {
+		/**
+		* Load in WooCommerce Cart page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
+
+			return;
+		}
+
+		/**
+		* Load in WooCommerce Checkout page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
+
 			return;
 		}
 
@@ -185,6 +218,7 @@ class Addonify_Floating_Cart_Public {
 				'displayToastNotificationButton'           => addonify_floating_cart_get_option( 'display_show_cart_button' ),
 				'addonifyFloatingCartNotifyMessage'        => addonify_floating_cart_get_option( 'added_to_cart_notification_text' ),
 				'toast_notification_display_position'      => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
+				'openCartModalOnTriggerButtonHover'		   => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ), 
 				'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option( 'open_cart_modal_after_click_on_view_cart' ),
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
@@ -215,10 +249,22 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function footer_content() {
 
-		if (
-			is_cart() ||
-			is_checkout()
-		) {
+		/**
+		* Load in WooCommerce Cart page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
+
+			return;
+		}
+
+		/**
+		* Load in WooCommerce Checkout page conditionally.
+		*
+		* @since 1.2.0
+		*/
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
 
 			return;
 		}

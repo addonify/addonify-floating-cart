@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { ElButton, ElMessage } from "element-plus";
 import { Loading } from "@element-plus/icons-vue";
 import { useProductStore } from "../../stores/product";
@@ -49,7 +49,7 @@ const activateText = __("Activate now", "addonify-floating-cart");
 const activitingText = __("Activating...", "addonify-floating-cart");
 const installText = __("Install now", "addonify-floating-cart");
 const installingText = __("Installing...", "addonify-floating-cart");
-const installedText = __("Already installed", "addonify-floating-cart");
+const installedText = __("Installed", "addonify-floating-cart");
 
 const activeAddonHandler = (slug) => {
 	isLoading.value = true;

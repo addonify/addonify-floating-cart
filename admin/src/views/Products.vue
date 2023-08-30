@@ -57,6 +57,7 @@ onMounted(() => {
 									:name="addon.name"
 									:description="addon.description"
 									:thumb="addon.thumbnail"
+									:category="addon.category"
 									:status="proStore.allProductSlugStatus[key]"
 								/>
 							</template>

@@ -62,6 +62,8 @@ export const useProductStore = defineStore({
                 const res = await fetch("https://raw.githubusercontent.com/addonify/recommended-products/main/products.json");
                 const data = await res.json();
 
+                //console.log(data);
+
                 if (res.status == 200) {
 
                     console.log("💥 Github repo fetched successfully.");

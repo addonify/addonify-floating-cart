@@ -6,21 +6,22 @@
 
     display: block;
     position: fixed;
-    left: 0;
+	z-index: 0;
+    left: auto;
     right: 0;
     top: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
+	height: 100%;
     cursor: pointer;
-    @include visibility_hidden();
-    transition: all 0.8s cubic-bezier(.77,0,.18,1) 0s;
     background: linear-gradient(to right, var(--adfy_woofc_cart_overlay_background_color));
+	transition: all 0.5s ease;
     backdrop-filter: blur(10px);
+	@include visibility_hidden();
 }
 
 .adfy__woofc-visible #adfy__woofc-overlay {
 
-    @include visibility_visible();
-    z-index: var(--adfy_woofc_overlaymask_zindex);
+	z-index: var(--adfy_woofc_overlaymask_zindex);
+	@include visibility_visible();
 }

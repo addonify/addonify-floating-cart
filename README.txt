@@ -4,7 +4,7 @@ Contributors: addonify
 Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.3.0
+Tested up to: 6.3.1
 Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -118,19 +118,19 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 = 1.2.0 - ?, 2023 =
 
 - New: Brand new plugin setting page design.
-- Added: Option, open cart modal on trigger button hover.
-- Added: Option, enable floating cart on cart page.
-- Added: Option, enable floating cart on checkout page.
+- Added: Option to open cart modal on trigger button hover.
+- Added: Option to enable floating cart on cart page.
+- Added: Option to enable floating cart on checkout page.
 - Added: Plugin setting page notification messages.
 - Fix: Documentation link in plugin setting page header section.
 - Improvement: Plugin setting page vue js code.
 - Improvement: Plugin setting page SCSS.
 - Improvement: Plugin setting page REST API options.
 - Improvement: Number input control (Vue JS).
-- Improvement: Slider contorl (Vue JS).
+- Improvement: Slider control (Vue JS).
 - Updated: element-ui to v2.3.8 (Vue JS).
-- Tested: WordPress version 6.3.0.
-- Tested: WooCommerce version 8.0.2.
+- Tested: WordPress version 6.3.1.
+- Tested: WooCommerce version 8.0.3.
 
 
 = 1.1.11 - 18 July, 2023 =

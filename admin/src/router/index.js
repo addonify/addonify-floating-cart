@@ -5,7 +5,6 @@ import Products from '../views/Products.vue'
 import PageNotFound from '../views/404.vue'
 
 const routes = [
-
     {
         path: "/",
         name: "Settings",

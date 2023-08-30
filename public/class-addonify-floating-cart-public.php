@@ -57,10 +57,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function init() {
 
-		if (
-			! class_exists( 'WooCommerce' ) ||
-			(int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0
-		) {
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0 ) {
 			return;
 		}
 
@@ -77,6 +74,10 @@ class Addonify_Floating_Cart_Public {
 	 * Register ajax actions.
 	 */
 	public function register_ajax_actions() {
+
+		if ( is_cart() || is_checkout() ) {
+			return;
+		}
 
 		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
@@ -114,23 +115,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		* Load in WooCommerce Cart page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
-
-			return;
-		}
-
-		/**
-		* Load in WooCommerce Checkout page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
-
+		if ( is_cart() || is_checkout() ) {
 			return;
 		}
 
@@ -163,23 +148,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		* Load in WooCommerce Cart page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
-
-			return;
-		}
-
-		/**
-		* Load in WooCommerce Checkout page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
-
+		if ( is_cart() || is_checkout() ) {
 			return;
 		}
 
@@ -248,26 +217,6 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function footer_content() {
-
-		/**
-		* Load in WooCommerce Cart page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_cart() ) {
-
-			return;
-		}
-
-		/**
-		* Load in WooCommerce Checkout page conditionally.
-		*
-		* @since 1.2.0
-		*/
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart_on_cart_page' ) === 0 && is_checkout() ) {
-
-			return;
-		}
 
 		WC()->cart->calculate_totals();
 		WC()->cart->maybe_set_cart_cookies();

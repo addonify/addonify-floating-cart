@@ -47,8 +47,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 		array(
 			// Main cart settings options.
 			'enable_floating_cart'                         => true,
-			'enable_floating_cart_on_cart_page'            => false,
-			'enable_floating_cart_on_checkout_page'        => false,
 			'open_cart_modal_immediately_after_add_to_cart' => true,
 			'open_cart_modal_after_click_on_view_cart'     => false,
 			'enable_shopping_meter'                        => false,

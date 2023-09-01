@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-01T06:12:11+00:00\n"
+"POT-Creation-Date: 2023-09-01T09:04:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -210,25 +210,25 @@ msgstr ""
 
 #: includes/functions/fields/cart-display.php:246
 #: includes/functions/fields/cart-display.php:344
-#: includes/functions/fields/cart-display.php:589
+#: includes/functions/fields/cart-display.php:596
 msgid "Normal"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:247
 #: includes/functions/fields/cart-display.php:345
-#: includes/functions/fields/cart-display.php:590
+#: includes/functions/fields/cart-display.php:597
 msgid "Medium"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:248
 #: includes/functions/fields/cart-display.php:346
-#: includes/functions/fields/cart-display.php:591
+#: includes/functions/fields/cart-display.php:598
 msgid "Semi bold"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:249
 #: includes/functions/fields/cart-display.php:347
-#: includes/functions/fields/cart-display.php:592
+#: includes/functions/fields/cart-display.php:599
 msgid "Bold"
 msgstr ""
 
@@ -367,42 +367,46 @@ msgid "Initial shopping meter background color"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:529
-msgid "Final shopping meter background color"
+msgid "Shopping meter live progress bar background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:561
-msgid "Product title color"
+#: includes/functions/fields/cart-display.php:536
+msgid "Shopping meter background color once threashold is reached"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:568
-msgid "Product title color on hover"
+msgid "Product title color"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:575
+msgid "Product title color on hover"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:582
 msgid "Product title font size (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:585
+#: includes/functions/fields/cart-display.php:592
 msgid "Product title font weight"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:597
+#: includes/functions/fields/cart-display.php:604
 msgid "Product quantity & price color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:604
+#: includes/functions/fields/cart-display.php:611
 msgid "Remove product button background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:611
+#: includes/functions/fields/cart-display.php:618
 msgid "Remove product button icon color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:618
+#: includes/functions/fields/cart-display.php:625
 msgid "Remove product button background color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:625
+#: includes/functions/fields/cart-display.php:632
 msgid "Remove product button icon color on hover"
 msgstr ""
 
@@ -751,63 +755,63 @@ msgstr ""
 msgid "Total:"
 msgstr ""
 
-#: includes/functions/settings.php:193
+#: includes/functions/settings.php:194
 msgid "Apply Coupon"
 msgstr ""
 
-#: includes/functions/settings.php:287
+#: includes/functions/settings.php:288
 msgid "General"
 msgstr ""
 
-#: includes/functions/settings.php:292
+#: includes/functions/settings.php:293
 msgid "Cart Toggle Button Options"
 msgstr ""
 
-#: includes/functions/settings.php:297
+#: includes/functions/settings.php:298
 msgid "Toast Notification Options"
 msgstr ""
 
-#: includes/functions/settings.php:302
+#: includes/functions/settings.php:303
 msgid "Cart Drawer/Modal Options"
 msgstr ""
 
-#: includes/functions/settings.php:307
+#: includes/functions/settings.php:308
 msgid "Cart Drawer/Modal Labels"
 msgstr ""
 
-#: includes/functions/settings.php:312
+#: includes/functions/settings.php:313
 msgid "Coupon Options"
 msgstr ""
 
-#: includes/functions/settings.php:321
+#: includes/functions/settings.php:322
 msgid "Interface Design"
 msgstr ""
 
-#: includes/functions/settings.php:326
+#: includes/functions/settings.php:327
 msgid "Cart Toggle Button"
 msgstr ""
 
-#: includes/functions/settings.php:332
+#: includes/functions/settings.php:333
 msgid "Toast Notification"
 msgstr ""
 
-#: includes/functions/settings.php:338
+#: includes/functions/settings.php:339
 msgid "Cart Panel"
 msgstr ""
 
-#: includes/functions/settings.php:344
+#: includes/functions/settings.php:345
 msgid "Buttons in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:350
+#: includes/functions/settings.php:351
 msgid "Miscellaneous Cart Elements"
 msgstr ""
 
-#: includes/functions/settings.php:356
+#: includes/functions/settings.php:357
 msgid "Products in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:362
+#: includes/functions/settings.php:363
 msgid "Developer"
 msgstr ""
 

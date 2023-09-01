@@ -120,6 +120,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - New: Brand new plugin setting page design.
 - Added: Option to open cart modal on trigger button hover.
 - Added: Plugin setting page notification messages.
+- Added: Option to set separate background color for shopping meter once the threshold amount is reached.
 - Fix: Plugin setting page link in plugins listing page is displayed before `Deactivate` link.
 - Fix: Documentation link in plugin setting page header section.
 - Improvement: Used `plugins_loaded` hook to run the plugin.

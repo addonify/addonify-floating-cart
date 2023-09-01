@@ -1005,6 +1005,7 @@ class Addonify_Floating_Cart_Public {
 			// Shopping meter.
 			'--adfy_woofc_shopping_meter_initial_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_initial_background_color' ),
 			'--adfy_woofc_shopping_meter_progress_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_progress_background_color' ),
+			'--adfy_woofc_shopping_meter_threashold_reached_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_threashold_reached_background_color' ),
 
 			// Toast notification.
 			'--adfy_woofc_toast_text_color'                => addonify_floating_cart_get_option( 'toast_notification_text_color' ),

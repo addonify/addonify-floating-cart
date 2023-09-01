@@ -1,38 +1,39 @@
 <script setup>
-import { onMounted, onBeforeMount } from "vue";
+import { onMounted } from "vue";
 import Loading from "../components/layouts/Loading.vue";
 import Navigation from "../components/layouts/Navigation.vue";
 import Recommended from "../components/layouts/Recommended.vue";
+import Notice from "../components/layouts/Notice.vue";
+
 import { useProductStore } from "../stores/product";
+import { useNoticeStore } from "../stores/notice";
 
 const proStore = useProductStore();
+const noticeStore = useNoticeStore();
 
-onBeforeMount(() => {
-	/**
-	 *
-	 * Check product store state in memory before fetching data from server.
-	 *
-	 * @since: 1.1.7
-	 */
-	if (!proStore.haveAddonStateInMemory) {
-		proStore.fetchInstalledAddons();
-	}
-});
+/**
+ * Hook: onMounted.
+ *
+ * @since 1.0.0
+ */
 onMounted(() => {
 	/**
+	 * Get the recommended products list.
+	 * Use cache if available.
 	 *
-	 * Check product store state in memory before fetching data from github repo.
-	 *
-	 * @since: 1.1.7
+	 * @since 1.2.0
 	 */
-	if (!proStore.haveAddonStateInMemory) {
-		proStore.fetchGithubRepo();
+	if (!proStore.hasAddonsStateInMemory) {
+		proStore.getRecommdedProductsList().then((res) => {
+			res.status === 200 ? proStore.fetchInstalledAddons() : null;
+		});
 	}
 });
 </script>
 
 <template>
-	<section class="adfy-container">
+	<section class="adfy-container" id="addonify-layout">
+		<Notice />
 		<main class="adfy-columns main-content">
 			<aside class="adfy-col start aside secondary">
 				<Navigation />
@@ -56,6 +57,7 @@ onMounted(() => {
 									:name="addon.name"
 									:description="addon.description"
 									:thumb="addon.thumbnail"
+									:category="addon.category"
 									:status="proStore.allProductSlugStatus[key]"
 								/>
 							</template>

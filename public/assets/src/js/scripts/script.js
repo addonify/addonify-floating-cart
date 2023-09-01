@@ -15,6 +15,9 @@
     var addonifyFloatingCartOpenCartOnAdd = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart;
     var addonifyFloatingCartOpenCartOnClickOnViewCart = addonifyFloatingCartJSObject.open_cart_modal_after_click_on_view_cart;
 
+    // Display cart modal on trigger button hover.
+    var openCartModalOnTriggerButtonHover = addonifyFloatingCartJSObject.openCartModalOnTriggerButtonHover === '1' ? true : false; // since 1.2.0
+
     // Hide toggle button if cart is empty.
     let hideTriggerButtonIfCartIsEmpty = addonifyFloatingCartJSObject.hideTriggerButtonIfCartIsEmpty;
 
@@ -65,6 +68,19 @@
 
                 document.body.classList.add('adfy__woofc-visible');
             });
+
+            /**
+            * Listen to mouseover event on cart trigger button.
+            *
+            * @since 1.2.0
+            */
+            if (openCartModalOnTriggerButtonHover) {
+
+                $(document).on('mouseover', '.adfy__show-woofc', function () {
+
+                    document.body.classList.add('adfy__woofc-visible');
+                });
+            }
 
             $(document).on('click', '.added_to_cart.wc-forward', function (e) {
 

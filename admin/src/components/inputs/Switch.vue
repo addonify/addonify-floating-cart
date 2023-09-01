@@ -3,31 +3,42 @@ import { computed } from "vue";
 import { ElSwitch } from "element-plus";
 import { Check, Close } from "@element-plus/icons-vue";
 
+/**
+ * Define props
+ *
+ * @since 1.0.0
+ */
 const props = defineProps({
 	modelValue: {
-		type: [Boolean, String],
+		type: [Boolean, Number, String],
 		required: true,
 	},
 });
 
-// Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
+/**
+ * Define emit.
+ * Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
+ *
+ * @since 1.0.0
+ */
 const emit = defineEmits(["update:modelValue"]);
 const value = computed({
 	get() {
-		let vals = props.modelValue;
-		if (typeof vals === "boolean") {
-			return vals;
-		}
-		if (typeof vals === "string") {
-			return vals === "1" ? true : false;
+		switch (typeof props.modelValue) {
+			case "boolean":
+				return props.modelValue;
+			case "number":
+				return props.modelValue > 0;
+			case "string":
+				return props.modelValue === "true";
+			default:
+				return false;
 		}
 	},
 	set(newValue) {
 		emit("update:modelValue", newValue);
 	},
 });
-
-//console.log(typeof props.modelValue);
 </script>
 <template>
 	<el-switch

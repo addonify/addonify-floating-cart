@@ -1,15 +1,35 @@
 <script setup>
 import { computed } from "vue";
 import { ElSelect, ElOption } from "element-plus";
-const { __ } = wp.i18n;
 
+/**
+ * Define props.
+ *
+ * @since 1.2.8
+ */
 const props = defineProps({
-	modelValue: [Number, String, Array],
-	choices: [Object, Array],
-	placeholder: String,
+	modelValue: {
+		type: String,
+		required: true,
+	},
+	choices: {
+		type: [Object, Array],
+		required: true,
+	},
+	placeholder: {
+		type: String,
+		required: false,
+		default: "",
+	},
 });
 
-// Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
+/**
+ * Define emit.
+ *
+ * @param {String} value
+ * @returns {String} updated value
+ * @since 1.2.8
+ */
 const emit = defineEmits(["update:modelValue"]);
 const value = computed({
 	get() {
@@ -19,6 +39,12 @@ const value = computed({
 		emit("update:modelValue", newValue);
 	},
 });
+
+/**
+ * Import __ from wp.i18n.
+ *
+ */
+const { __ } = wp.i18n;
 </script>
 <template>
 	<el-select
@@ -37,8 +63,3 @@ const value = computed({
 		/>
 	</el-select>
 </template>
-<style lang="css">
-.wp-admin .el-select-dropdown__item.selected {
-	font-weight: normal;
-}
-</style>

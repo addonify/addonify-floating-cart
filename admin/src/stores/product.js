@@ -25,24 +25,27 @@ export const useProductStore = defineStore({
     getters: {
 
         /**
+        * Getter: return the state of all addons.
         *
-        * Return the state of the addons. 
-        * 
-        * @since: 1.1.7
+        * @param {Object} state
+        * @return {Object} allAddons
+        * @since 1.2.9
         */
+        hasAddonsStateInMemory: (state) => {
 
-        haveAddonStateInMemory: (state) => {
+            if (typeof state.allAddons === 'object') {
 
-            if (typeof state.installedAddons === 'array') {
-
-                return state.installedAddons.length === 0 ? false : true;
+                return Object.keys(state.allAddons).length > 0 ? true : false;
             }
 
-            if (typeof state.installedAddons === 'object') {
+            if (typeof state.allAddons === 'array') {
 
-                return Object.keys(state.installedAddons).length === 0 ? false : true;
+                return state.allAddons.length > 0 ? true : false;
             }
-        }
+
+            // Not an object or array.
+            return false;
+        },
     },
 
     actions: {
@@ -52,8 +55,7 @@ export const useProductStore = defineStore({
          * Get addons slug from github repo.
          * @param slug
          */
-
-        async fetchGithubRepo() {
+        async getRecommdedProductsList() {
 
             try {
 
@@ -79,20 +81,23 @@ export const useProductStore = defineStore({
                     }));
                 }
 
+                return res;
+
             } catch (err) {
 
                 console.error(err);
                 this.isFetching = false;
+
+                return err;
             }
         },
 
         /**
         * Action: Process the recommended plugins list.
         * Create three arrays [hot, general & all]
-        * Called on fetchGithubRepo() action.
+        * Called on getRecommdedProductsList() action.
         * @param {object} list
         */
-
         processRecommendedPluginsList(list) {
 
             console.log("=> Processing the list that was retrived....");

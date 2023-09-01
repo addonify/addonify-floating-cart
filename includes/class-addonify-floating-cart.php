@@ -164,7 +164,13 @@ class Addonify_Floating_Cart {
 
 		$plugin_admin = new Addonify_Floating_Cart_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'admin_init' );
+		$this->loader->add_filter( 'plugin_action_links_' . ADDONIFY_FLOATING_CART_BASENAME, $plugin_admin, 'custom_plugin_link_callback' );
+
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_callback', 20 );
+
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 	}
 
 	/**
@@ -178,7 +184,7 @@ class Addonify_Floating_Cart {
 
 		$plugin_public = new Addonify_Floating_Cart_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_public, 'init' );
+		$this->loader->add_action( 'init', $plugin_public, 'init' );
 	}
 
 	/**
@@ -235,5 +241,4 @@ class Addonify_Floating_Cart {
 
 		$plugin_rest = new Addonify_Floating_Cart_Rest_Api();
 	}
-
 }

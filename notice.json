@@ -1,0 +1,14 @@
+{
+    "version": "1.0.0",
+    "alerts": {
+        "2023-09-01": {
+            "live": true,
+            "type": "warning",
+            "size": "small",
+            "data": {
+                "locale": "en_US",
+                "content": "<strong>V1.2.0</strong> is a major release. Please review new features & improvements. Check <a href='https://wordpress.org/plugins/addonify-floating-cart/#developers' target='_blank'>Changelog</a>"
+            }
+        }
+    }
+}

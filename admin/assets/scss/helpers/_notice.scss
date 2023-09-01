@@ -1,0 +1,119 @@
+/* -------------------------------------------------------------------------- 
+	Dashboard notices.
+  -------------------------------------------------------------------------- */
+
+.addonify-notice {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px auto;
+    max-width: max-content;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: #FFF7EB;
+    border: 2px solid #F3DCBA;
+    box-shadow: 0 5px 10px rgba(255, 217, 77, 0.1);
+
+    .content {
+
+        @include grid();
+        grid-template-columns: 25px 1fr;
+        align-items: center;
+        column-gap: 5px;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+
+        .icon {
+
+            display: inline-flex;
+            height: 20px;
+            width: 20px;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            align-items: center;
+            fill: #FF9400;
+            color: #FF9400;
+            overflow: hidden;
+            animation: adfyNoticePulse 1.5s ease-out infinite;
+            border-radius: 100%;
+            background-color: #FFF7EB;
+
+            svg {
+
+                display: inline-flex;
+                line-height: 1;
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        a {
+
+            display: inline-flex;
+            position: relative;
+            color: #325FFF;
+            text-decoration: none;
+            font-weight: normal;
+            line-height: 1.4;
+            transition: all 0.5s ease-in-out;
+
+            &::after,
+            &::before {
+
+                content: "";
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: currentColor;
+            }
+                
+            &::before {
+
+                content: "";
+                z-index: 1;
+                background-color: currentColor;
+                transform-origin: right center;
+                transform: scaleX(0);
+                will-change: scale;
+                transition: transform 0.26s cubic-bezier(.25,.8,.25,1);
+                -webkit-backface-visibility: hidden;
+            }
+
+            &::after {
+
+                content: "";
+                position: absolute;
+                width: 100%;
+                opacity: 0.3;
+                background-color: currentColor;
+            }
+
+            &:is(:hover, :focus) {
+
+                color: var(--addonify_seconary_color);
+                text-decoration: none;
+
+                &:before {
+
+                    content: "";
+                    transform: scale(1);
+                    transform-origin: left center;
+                    opacity: 1;
+                }
+            }
+
+            &:is(:focus) {
+
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

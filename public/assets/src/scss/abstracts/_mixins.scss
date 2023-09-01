@@ -67,12 +67,14 @@
 
     opacity: 0;
     visibility: hidden;
+    backface-visibility: hidden;
 }
 
 @mixin visibility_visible () {
 
     opacity: 1;
     visibility: visible;
+    backface-visibility: visible;
 }
 
 

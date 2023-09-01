@@ -2,10 +2,10 @@
 
 Contributors: addonify
 Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
-Requires at least: 5.9 or higher
+Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.2.2
-Stable tag: 1.1.11
+Tested up to: 6.3.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,8 @@ For vistors attention, display toast notification when a product is added into t
 - Sidebar cart display position.
 - Toast notification when product is added into the cart.
 - Open cart when product is added to the WooCommerce cart.
+- Open cart when trigger button is hovered.
+- Conditionally disable floating cart on cart and checkout pages.
 - Choose shipping address and calculate shipping cost in the cart.
 - Supports TAX calculation in the cart.
 - Supports all WooCommerce product types.
@@ -112,6 +114,25 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.2.0 - 01 September, 2023 =
+
+- New: Brand new plugin setting page design.
+- Added: Option to open cart modal on trigger button hover.
+- Added: Plugin setting page notification messages.
+- Added: Option to set separate background color for shopping meter once the threshold amount is reached.
+- Fix: Plugin setting page link in plugins listing page is displayed before `Deactivate` link.
+- Fix: Documentation link in plugin setting page header section.
+- Improvement: Used `plugins_loaded` hook to run the plugin.
+- Improvement: Plugin setting page vue js code
+- Improvement: Plugin setting page SCSS.
+- Improvement: Plugin setting page REST API options.
+- Improvement: Number input control (Vue JS).
+- Improvement: Slider control (Vue JS).
+- Updated: element-ui to v2.3.8 (Vue JS).
+- Tested: WordPress version 6.3.1.
+- Tested: WooCommerce version 8.0.3.
+
 
 = 1.1.11 - 18 July, 2023 =
 

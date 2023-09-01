@@ -57,10 +57,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function init() {
 
-		if (
-			! class_exists( 'WooCommerce' ) ||
-			(int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0
-		) {
+		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0 ) {
 			return;
 		}
 
@@ -77,6 +74,10 @@ class Addonify_Floating_Cart_Public {
 	 * Register ajax actions.
 	 */
 	public function register_ajax_actions() {
+
+		if ( is_cart() || is_checkout() ) {
+			return;
+		}
 
 		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
@@ -113,6 +114,7 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
+
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
@@ -185,6 +187,7 @@ class Addonify_Floating_Cart_Public {
 				'displayToastNotificationButton'           => addonify_floating_cart_get_option( 'display_show_cart_button' ),
 				'addonifyFloatingCartNotifyMessage'        => addonify_floating_cart_get_option( 'added_to_cart_notification_text' ),
 				'toast_notification_display_position'      => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
+				'openCartModalOnTriggerButtonHover'		   => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ), 
 				'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option( 'open_cart_modal_after_click_on_view_cart' ),
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
@@ -214,14 +217,6 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function footer_content() {
-
-		if (
-			is_cart() ||
-			is_checkout()
-		) {
-
-			return;
-		}
 
 		WC()->cart->calculate_totals();
 		WC()->cart->maybe_set_cart_cookies();
@@ -1010,6 +1005,7 @@ class Addonify_Floating_Cart_Public {
 			// Shopping meter.
 			'--adfy_woofc_shopping_meter_initial_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_initial_background_color' ),
 			'--adfy_woofc_shopping_meter_progress_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_progress_background_color' ),
+			'--adfy_woofc_shopping_meter_threashold_reached_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_threashold_reached_background_color' ),
 
 			// Toast notification.
 			'--adfy_woofc_toast_text_color'                => addonify_floating_cart_get_option( 'toast_notification_text_color' ),

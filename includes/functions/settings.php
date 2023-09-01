@@ -169,6 +169,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_modal_input_field_background_color'      => '',
 			'cart_shopping_meter_initial_background_color' => '',
 			'cart_shopping_meter_progress_background_color' => '',
+			'cart_shopping_meter_threashold_reached_background_color' => '',
 
 			'cart_modal_buttons_font_size'                 => 14,
 			'cart_modal_buttons_font_weight'               => '400',

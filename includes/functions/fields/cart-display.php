@@ -526,11 +526,18 @@ function addonify_floating_cart_cart_misc_display_designs() {
 			'value' 		=> addonify_floating_cart_get_option( 'cart_shopping_meter_initial_background_color' ),
 		),
 		'cart_shopping_meter_progress_background_color' => array(
-			'label' 		=> __( 'Final shopping meter background color', 'addonify-floating-cart' ),
+			'label' 		=> __( 'Shopping meter live progress bar background color', 'addonify-floating-cart' ),
 			'type'  		=> 'color',
 			'isAlpha' 		=> true,
 			'dependent'     => array( 'load_styles_from_plugin' ),
 			'value' 		=> addonify_floating_cart_get_option( 'cart_shopping_meter_progress_background_color' ),
+		),
+		'cart_shopping_meter_threashold_reached_background_color' => array(
+			'label' 		=> __( 'Shopping meter background color once threashold is reached', 'addonify-floating-cart' ),
+			'type'  		=> 'color',
+			'isAlpha' 		=> true,
+			'dependent'     => array( 'load_styles_from_plugin' ),
+			'value' 		=> addonify_floating_cart_get_option( 'cart_shopping_meter_threashold_reached_background_color' ),
 		),
 	);
 }

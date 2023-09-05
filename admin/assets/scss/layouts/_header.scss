@@ -46,12 +46,18 @@
         align-items: center;
         justify-content: flex-end;
 
-        .buttons {
+        .action-buttons {
 
             @include flex();
             align-items: center;
-            justify-content: flex-end;
-            gap: 30px;
+            gap: 60px;
+
+            .links {
+
+                @include flex();
+                align-items: center;
+                gap: 30px;
+            }
         }
     }
 }

@@ -56,6 +56,7 @@
 
     display: inline-flex;
     flex-direction: row;
+    gap: 7px;
     align-items: center;
     font-family: var(--addonify_font_family);
     font-size: var(--addonify_button_font_size);
@@ -71,11 +72,22 @@
     border-radius: var(--addonify_buttons_border_radius);
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
 
     .icon {
 
         margin-right: 5px;
+    }
+
+    svg {
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        width: 18px;
+        height: 18px;
+        color: currentColor;
     }
 
     &:hover {
@@ -84,6 +96,12 @@
         color: var(--addonify_button_hover_text_color);
         border-color: var(--addonify_button_hover_border_color);
         background-color: var(--addonify_button_hover_background_color);
+        text-decoration: none;
+    }
+
+    &:focus {
+
+        outline: none;
         text-decoration: none;
     }
 }
@@ -143,8 +161,9 @@
 
     &:focus {
 
-        text-decoration: none;
         outline: none;
+        box-shadow: none;
+        text-decoration: none;
         background-color: transparent;
     }
 }
@@ -159,10 +178,11 @@
 
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
+    border-radius: 10px;
     background-color: currentColor;
 }
 
@@ -174,19 +194,17 @@
     transform-origin: right center;
     transform: scaleX(0);
     will-change: scale;
-    transition: transform 0.26s cubic-bezier(.25,.8,.25,1);
-    -webkit-backface-visibility: hidden;
+    transition: transform 0.5s cubic-bezier( 0.25, 0.8, 0.25, 1 );
+    @include visibility_hidden();
 }
 
 .adfy-button.fake-button.has-underline::after {
 
     content: "";
     position: absolute;
-    bottom: -10px;
     left: 0;
     width: 100%;
-    height: 3px;
-    opacity: 0.5;
+    opacity: 0.1;
     background-color: currentColor;
 }
 
@@ -201,4 +219,5 @@
     transform: scale(1);
     transform-origin: left center;
     background-color: var(--addonify_primary_color);
+    @include visibility_visible();
 }

@@ -18,26 +18,39 @@ const store = useOptionsStore();
 				</div>
 			</div>
 			<div class="adfy-col end">
-				<div class="buttons">
-					<a
-						href="https://docs.addonify.com/kb/floating-cart/"
-						class="adfy-button fake-button has-underline"
-						target="_blank"
-					>
-						{{ __("Documentation", "addonify-floating-cart") }}
-					</a>
-					<button
-						type="submit"
-						@click="store.handleUpdateOptions()"
-						class="adfy-button"
-						:disabled="!store.needSaving"
-						:loading="store.isSaving"
-					>
-						<span class="loading-icon">
-							<Icon icon="spinner" />
-						</span>
-						{{ __("Save Options", "addonify-floating-cart") }}
-					</button>
+				<div class="action-buttons">
+					<div class="links">
+						<a
+							href="https://docs.addonify.com/kb/floating-cart/"
+							class="adfy-button fake-button has-underline"
+							target="_blank"
+						>
+							<Icon icon="paper" />
+							{{ __("AFC docs", "addonify-floating-cart") }}
+						</a>
+						<a
+							href="https://wordpress.org/support/plugin/addonify-floating-cart/reviews/?filter=5"
+							class="adfy-button fake-button has-underline"
+							target="_blank"
+						>
+							<Icon icon="sparkling-stars" />
+							{{ __("Rate AFC", "addonify-floating-cart") }}
+						</a>
+					</div>
+					<div class="buttons">
+						<button
+							type="submit"
+							@click="store.handleUpdateOptions()"
+							class="adfy-button"
+							:disabled="!store.needSaving"
+							:loading="store.isSaving"
+						>
+							<span class="loading-icon">
+								<Icon icon="spinner" />
+							</span>
+							{{ __("Save Options", "addonify-floating-cart") }}
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

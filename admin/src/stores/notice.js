@@ -1,4 +1,9 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+
+/**
+ * @var {string} noticeURL.
+ */
+const noticeURL = "https://raw.githubusercontent.com/addonify/addonify-floating-cart/stable/notice.json";
 
 export const useNoticeStore = defineStore({
 
@@ -12,7 +17,6 @@ export const useNoticeStore = defineStore({
     }),
 
     getters: {
-
         /**
         * Return if we have alerts in memo.
         *
@@ -37,16 +41,16 @@ export const useNoticeStore = defineStore({
     },
 
     actions: {
-
         /**
-        * 
-        * Check for notice. 
+        * Check for notices. 
         *
+        * @param {null} null.
+        * @return {void} void.
         * @since 1.2.9
         */
         async checkNotices() {
             try {
-                const res = await fetch("https://raw.githubusercontent.com/addonify/addonify-floating-cart/stable/notice.json");
+                const res = await fetch(noticeURL);
 
                 const data = await res.json();
 
@@ -54,12 +58,8 @@ export const useNoticeStore = defineStore({
 
                     this.alerts = data;
                     this.status.isFetching = false;
-                } else {
-
-                    console.log("Addonify Floating Cart: Couldn't fetch notice!");
-                    this.status.isFetching = false;
                 }
-            } catch (error) {
+            } catch (err) {
                 return;
             }
         },

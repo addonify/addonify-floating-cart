@@ -9,10 +9,8 @@ import OptionSection from "../components/partials/OptionSection.vue";
 import Notice from "../components/layouts/Notice.vue";
 
 import { useOptionsStore } from "../stores/options";
-import { useNoticeStore } from "../stores/notice";
 
 const store = useOptionsStore();
-const noticeStore = useNoticeStore();
 
 onMounted(() => {
 	/**
@@ -22,7 +20,7 @@ onMounted(() => {
 	 * @since: 1.2.0
 	 */
 	if (!store.haveStateInMemory) {
-		store.fetchOptions();
+		store.renderOptions();
 	}
 });
 </script>

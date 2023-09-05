@@ -1,11 +1,32 @@
 import { defineStore } from 'pinia'
 import { ElMessage } from 'element-plus'
 
+/**
+* @var {string} BASE_API_URL.
+*/
+const BASE_API_URL = ADDONIFY_WOOFC_LOCOLIZER.rest_namespace;
+
+/**
+* @var {object} oldOptions. 
+*/
 let oldOptions = {};
+
+/**
+* Destructuring wp.
+*
+* @import apiFetch.
+* @import __.
+*/
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
+
+/**
+* Destructuring lodash.
+*
+* @import isEqual.
+* @import cloneDeep.
+*/
 const { isEqual, cloneDeep } = lodash;
-const BASE_API_URL = ADDONIFY_WOOFC_LOCOLIZER.rest_namespace;
 
 export const useOptionsStore = defineStore({
 
@@ -21,14 +42,25 @@ export const useOptionsStore = defineStore({
         errors: "",
     }),
     getters: {
-
-        // ⚡️ Check if we need to save the options.
+        /**
+         * Check if we need to save the options.
+         *
+         * @param {object} state.
+         * @return {boolean} true/false.
+         * @since 1.0.0
+         */
         needSaving: (state) => {
 
             return !isEqual(state.options, oldOptions) ? true : false;
         },
 
-        // ⚡️ Check if we have state in memory.
+        /**
+         * Check if the options are available in the memory.
+         *
+         * @param {object} state.
+         * @return {boolean} true/false.
+         * @since 1.0.0
+         */
         haveStateInMemory: (state) => {
 
             if (typeof state.options === 'array') {
@@ -43,101 +75,115 @@ export const useOptionsStore = defineStore({
         },
     },
     actions: {
+        /**
+         * Render the options from the api.
+         *
+         * @param {null} null.
+         * @return {void} void.
+         * @since 1.0.0
+         */
+        async renderOptions() {
+            try {
+                this.isLoading = true;
 
-        // ⚡️ Action to get options from the server.
-        fetchOptions() {
+                const { settings_values, tabs } = await apiFetch({
+                    path: BASE_API_URL + '/get_options',
+                    method: 'GET',
+                    cache: 'no-cache',
+                });
 
-            apiFetch({
-                path: BASE_API_URL + '/get_options',
-                method: 'GET',
-            })
-                .then((res) => {
-                    const settingsValues = res.settings_values;
-                    this.data = res.tabs;
-                    this.options = settingsValues;
-                    oldOptions = cloneDeep(settingsValues);
-                })
-                .catch((err) => {
+                const settingsValues = settings_values;
+                this.data = tabs;
+                this.options = settingsValues;
+                oldOptions = cloneDeep(settingsValues);
+                this.isLoading = false;
 
-                    console.log(err);
+            } catch (err) {
 
-                    ElMessage.error(({
-                        message: __("Something went wrong while fetching settings.", "addonify-floating-cart"),
-                        offset: 50,
-                        duration: 10000,
-                    }));
-                })
-                .finally(() => {
-
-                    this.isLoading = false;
-                })
+                console.log(err);
+                this.isLoading = false;
+                return ElMessage.error(({
+                    message: __("Something went wrong while fetching settings.", "addonify-floating-cart"),
+                    offset: 50,
+                    duration: 10000,
+                }));
+            }
         },
 
-        // ⚡️ Handle update options & map the values to the options object.
+        /**
+         * Identify the option that were changed.
+         * Prepare the payload for api call.
+         *
+         * @param {null} null. 
+         * @return {void} void.
+         * @since 1.0.0
+         */
         handleUpdateOptions() {
 
-            const payload = {};
-            const changedOptions = this.options;
+            const payload = new Object();
 
-            Object.keys(changedOptions).map(key => {
+            Object.keys(this.options).map(key => {
 
-                if (!isEqual(changedOptions[key], oldOptions[key])) {
-                    payload[key] = changedOptions[key];
+                if (!isEqual(this.options[key], oldOptions[key])) {
+
+                    payload[key] = this.options[key];
                 }
             });
 
+            // Pass the payload to update the options.
             this.updateOptions(payload);
-            //console.log(payload);
         },
 
-        // ⚡️ Action to update options.
-        // @param payload: object
-        updateOptions(payload) {
+        /**
+         * Push the option changes to api.
+         *
+         * @param {null} null.
+         * @return {void} void.
+         * @since 1.0.0
+         */
+        async updateOptions(payload) {
+            try {
+                this.isSaving = true;
+                const res = await apiFetch({
+                    path: BASE_API_URL + '/update_options',
+                    method: 'POST',
+                    data: {
+                        settings_values: payload
+                    },
+                    cache: 'no-cache',
+                });
 
-            this.isSaving = true; // Set saving to true.
-
-            apiFetch({
-                path: BASE_API_URL + '/update_options',
-                method: 'POST',
-                data: {
-                    settings_values: payload
-                }
-            })
-                .then((res) => {
-
-                    this.isSaving = false; // Saving is compconsted here.
-                    this.message = res.message; // Set the message to be displayed to the user.
-
-                    if (res.success === true) {
-                        ElMessage.success(({
-                            message: this.message,
-                            offset: 50,
-                            duration: 3000,
-                        }));
-                    } else {
-
-                        ElMessage.error(({
-                            message: this.message,
-                            offset: 50,
-                            duration: 3000,
-                        }));
-                    }
-
-                    let tempOptionsState = cloneDeep(this.options);
-                    this.options = {};
-                    this.options = cloneDeep(tempOptionsState);
-                    oldOptions = cloneDeep(this.options);
-                })
-                .catch((err) => {
-
-                    console.log(err);
-
-                    ElMessage.error(({
-                        message: __("Something went wrong while updating settings.", "addonify-floating-cart"),
+                if (!res.success) {
+                    return ElMessage.error(({
+                        message: __("Error saving changes! Please try again.", "addonify-floating-cart"),
                         offset: 50,
-                        duration: 5000,
+                        duration: 15000,
                     }));
-                })
+                }
+
+                let tempOptionsState = cloneDeep(this.options);
+                this.options = {};
+                this.options = cloneDeep(tempOptionsState);
+                oldOptions = cloneDeep(this.options);
+                this.isSaving = false;
+
+                return ElMessage.success(({
+                    message: res.message,
+                    offset: 50,
+                    duration: 3000,
+                }));
+
+            } catch (err) {
+
+                console.log(err);
+                this.isSaving = false;
+
+                return ElMessage.error(({
+                    message: __("Error saving changes! Please try again.", "addonify-floating-cart"),
+                    offset: 50,
+                    duration: 15000,
+                }));
+            }
         },
     },
 });

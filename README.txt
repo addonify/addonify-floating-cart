@@ -117,6 +117,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.2.1 - ? September, 2023 =
 
+- Update: Checked whether the cart fragments is undefined and is object in `added_to_cart` JS event.
 - Improvement: Code refactoring.
 - Tweak: Plugin setting page header design.
 

@@ -182,20 +182,27 @@
 
                 // Listen to WooCommerce product added to cart event.
                 $(document).on('added_to_cart', function (event, data) {
+                    
+                    if ( data !== undefined && typeof data === 'object' ) {
 
-                    let toastContent;
-                    product_name = data.product.charAt(0).toUpperCase() + data.product.slice(1);
+                        let toastContent;
+                        if ( data.hasOwnProperty('product') ) {
+                            product_name = data.product.charAt(0).toUpperCase() + data.product.slice(1);
+                        } else {
+                            product_name = 'Product';
+                        }
 
-                    if (addonifyFloatingCartNotifyShowHtmlContent) {
+                        if (addonifyFloatingCartNotifyShowHtmlContent) {
 
-                        toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name) + " " + addonifyFloatingCartJSObject.toastNotificationButton;
-                    } else {
+                            toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name) + " " + addonifyFloatingCartJSObject.toastNotificationButton;
+                        } else {
 
-                        toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name);
+                            toastContent = addonifyFloatingCartNotifyMessage.replace('{product_name}', product_name);
+                        }
+
+                        // Ready to dispatch toast notification.
+                        addonifyFloatingCart.dispatchToast('success', toastContent);
                     }
-
-                    // Ready to dispatch toast notification.
-                    addonifyFloatingCart.dispatchToast('success', toastContent);
                 });
             }
         },

@@ -189,7 +189,7 @@
                         if ( data.hasOwnProperty('product') ) {
                             product_name = data.product.charAt(0).toUpperCase() + data.product.slice(1);
                         } else {
-                            product_name = 'Product';
+                            product_name = __('Product', 'addonify-floating-cart');
                         }
 
                         if (addonifyFloatingCartNotifyShowHtmlContent) {

@@ -218,6 +218,10 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function footer_content() {
 
+		if ( is_cart() || is_checkout() ) {
+			return;
+		}
+
 		WC()->cart->calculate_totals();
 		WC()->cart->maybe_set_cart_cookies();
 

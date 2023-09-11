@@ -60,7 +60,7 @@ export function alertVisibilityHandler(action = "hide", style = "info", data = "
 /**
 * Display/Hide coupon alert messages.
 *
-* @param {string} action. (hide | show)
+* @param {string} action. - (hide | show)
 * @param {object} data. - (style, message).
 * @return {void} void.
 * @since: 1.1.9

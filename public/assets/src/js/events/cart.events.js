@@ -1,7 +1,7 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
 import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty } from "src/js/global/localize.data";
 import { handleProgressbarAnimation } from "src/js/components/shopping-meter";
-import { triggerButtonVisibilityHandler } from "src/js/components/trigger";
+import { setTriggerButtonVisibility } from "src/js/components/trigger";
 
 const { $ } = AFC;
 
@@ -72,7 +72,12 @@ export function listenCartEvents() {
     */
     document.addEventListener("addonifyFloatingCartUpdated", () => {
 
-        // Handle shopping meter animation.
+        /**
+        * Always check shopping meter animation once "addonifyFloatingCartUpdated"
+        * event is triggered.
+        *
+        * @since 1.2.1
+        */
         handleProgressbarAnimation();
     });
 
@@ -88,7 +93,7 @@ export function listenCartEvents() {
         // Display trigger button if it was hidden initially.
         if (hideTriggerButtonIfCartIsEmpty) {
 
-            triggerButtonVisibilityHandler('show');
+            setTriggerButtonVisibility('show');
         }
     });
 }

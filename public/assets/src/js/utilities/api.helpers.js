@@ -15,9 +15,9 @@ export function registerCustomEventsDispatchers() {
         */
         cartOpened: (event) => {
 
-            $(document).trigger("addonifyFloatingCartOpened", event);
+            $(document).trigger("addonifyFloatingCartOpened");
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartOpened", { detail: event }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartOpened"));
         },
 
         /**
@@ -29,9 +29,9 @@ export function registerCustomEventsDispatchers() {
         */
         cartClosed: (event) => {
 
-            $(document).trigger("addonifyFloatingCartClosed", event);
+            $(document).trigger("addonifyFloatingCartClosed");
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartClosed", { detail: event }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartClosed"));
         },
 
         /**
@@ -46,7 +46,9 @@ export function registerCustomEventsDispatchers() {
 
             $(document).trigger("addonifyFloatingCartUpdated", event);
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartUpdated", { detail: event }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartUpdated", {
+                detail: event
+            }));
         },
 
         /**
@@ -78,7 +80,9 @@ export function registerCustomEventsDispatchers() {
 
             $(document).trigger("addonifyFloatingCartProductRemoved", event);
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartProductRemoved", { detail: event }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartProductRemoved", {
+                detail: event
+            }));
 
             // Also, triggers event cart updated.
             AFC.api.event.cartUpdated(data);
@@ -95,22 +99,38 @@ export function registerCustomEventsDispatchers() {
 
             $(document).trigger("addonifyFloatingCartProductRestored", event);
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartProductRestored", { detail: event }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartProductRestored", {
+                detail: event
+            }));
 
             // Also, triggers event cart updated.
             AFC.api.event.cartUpdated(data);
         },
 
         /**
-        * Coupon container opened.
+        * Coupon modal opened.
         *
-        * @param {object} event.
         * @return {void} void.
         * @since 1.0.0
         */
-        couponContainerOpened: (event) => {
+        couponModalOpened: () => {
 
-            // [.... code block]
+            $(document).trigger("addonifyFloatingCartCouponModalOpened");
+
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponModalOpened"));
+        },
+
+        /**
+        * Coupon modal closed.
+        *
+        * @return {void} void.
+        * @since 1.0.0
+        */
+        couponModalClosed: () => {
+
+            $(document).trigger("addonifyFloatingCartCouponModalClosed");
+
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponModalClosed"));
         },
 
         /**
@@ -124,7 +144,9 @@ export function registerCustomEventsDispatchers() {
 
             $(document).trigger("addonifyFloatingCartCouponApplied", data);
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponApplied", { detail: data }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponApplied", {
+                detail: data
+            }));
 
             // Also trigger cart updated event.
             AFC.api.event.cartUpdated(data);
@@ -141,7 +163,9 @@ export function registerCustomEventsDispatchers() {
 
             $(document).trigger("addonifyFloatingCartCouponRemoved", data);
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponRemoved", { detail: data }));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartCouponRemoved", {
+                detail: data
+            }));
 
             // Also trigger cart updated event.
             AFC.api.event.cartUpdated(data);

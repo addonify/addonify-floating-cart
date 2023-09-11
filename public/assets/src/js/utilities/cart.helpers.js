@@ -1,5 +1,7 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
 import { ajaxUrl, refreshCartFragmentsAction, nonce } from "src/js/global/localize.data";
+import { setSpinnerVisibility } from "src/js/components/spinner";
+
 
 const { $, action, api } = AFC;
 
@@ -39,29 +41,19 @@ export function registerCartActionEvents() {
 
             // Dispatch custom event.
             api.event.cartClosed(e);
+        },
+
+        /**
+        * Handle cart refresh.
+        *
+        * @return {void} void.
+        * @since 1.0.0
+        */
+        refresh: () => {
+
+            refreshCart();
         }
     };
-
-    action.trigger = function (action) {
-
-        const buttonEle = document.getElementById("adfy__toggle-woofc");
-
-        if (
-            (action !== '') &&
-            (buttonEle) &&
-            (buttonEle.hasAttribute('data_display'))
-        ) {
-            if (action === 'hide') {
-
-                buttonEle.setAttribute('data_display', 'hidden');
-            }
-
-            if (action === 'show') {
-
-                buttonEle.setAttribute('data_display', 'visible');
-            }
-        }
-    }
 }
 
 /**
@@ -73,6 +65,7 @@ export function registerCartActionEvents() {
 */
 export const refreshCart = async () => {
     try {
+        setSpinnerVisibility('show');
         const { fragments } = await $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -101,5 +94,7 @@ export const refreshCart = async () => {
 
     } catch (err) {
         throw new Error(err);
+    } finally {
+        setSpinnerVisibility('hide');
     }
 }

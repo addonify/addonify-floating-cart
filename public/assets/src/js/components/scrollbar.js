@@ -1,3 +1,9 @@
+/**
+ * Scrollbar observer.
+ *
+ * @return {void} void.
+ * @since 1.0.0
+ */
 export const initCustomScrollbar = () => {
 
     const targetEle = document.getElementById("adfy__floating-cart");
@@ -20,20 +26,23 @@ export const initCustomScrollbar = () => {
     observer.observe(targetEle, config);
 }
 
+/**
+ * Initialize scrollbar.
+ *
+ * @return {void} void.
+ * @since 1.0.0
+ */
 const scrollbar = () => {
 
     const scrollableEle = document.getElementById("adfy__woofc-scrollbar");
     const psInitiliazed = scrollableEle.classList.contains("ps");
 
-    if (scrollableEle) {
+    if (scrollableEle && !psInitiliazed) {
 
-        if (!psInitiliazed) {
-
-            new PerfectScrollbar(scrollableEle, {
-                wheelSpeed: 1,
-                wheelPropagation: true,
-                minScrollbarLength: 20
-            });
-        }
+        new PerfectScrollbar(scrollableEle, {
+            wheelSpeed: 1,
+            wheelPropagation: true,
+            minScrollbarLength: 20
+        });
     }
 };

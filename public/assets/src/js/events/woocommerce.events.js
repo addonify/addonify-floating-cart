@@ -1,5 +1,6 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
-import { openCartOnAddedToCart } from "src/js/global/localize.data";
+import { openCartOnAddedToCart, hideTriggerButtonIfCartIsEmpty } from "src/js/global/localize.data";
+import { setTriggerButtonVisibility } from "src/js/components/trigger";
 
 const { $ } = AFC;
 
@@ -20,8 +21,12 @@ export function listenWooCommerceEvents() {
         }
     });
 
-    $(document.body).on('wc_cart_emptied', function (event) {
+    $(document).on('wc_cart_emptied', function (e) {
 
+        // Hide the trigger button if cart is empty.
+        if (hideTriggerButtonIfCartIsEmpty) {
 
+            setTriggerButtonVisibility("hide");
+        }
     });
 }

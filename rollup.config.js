@@ -60,7 +60,7 @@ export default [
         plugins: [
             resolve(),
             commonjs(),
-            //terser(),
+            terser(),
             scss({
                 outputStyle: 'compressed',
                 output: assets['scss']['dist'],

@@ -8,6 +8,7 @@ import {
 
 } from "src/js/global/localize.data";
 import { alertVisibilityHandler } from "src/js/utilities/alert.helpers";
+import { setSpinnerVisibility } from "src/js/components/spinner";
 
 const { $ } = AFC;
 const { __ } = wp.i18n;
@@ -73,6 +74,8 @@ export function listenProductRemoveEvents() {
         const cartItemKey = $(this).attr("data-cart_item_key");
         const thisButton = $(this);
 
+        setSpinnerVisibility('show');
+
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -134,7 +137,7 @@ export function listenProductRemoveEvents() {
             always: function () {
 
                 // Remove spinner.
-                $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                setSpinnerVisibility('hide');
             }
         });
     });
@@ -155,7 +158,7 @@ export function listenProductRestoreEvents() {
         const itemKey = $(this).attr('data-item_key');
 
         // Add spinner.
-        $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+        setSpinnerVisibility('show');
 
         $.ajax({
             type: 'POST',
@@ -203,7 +206,7 @@ export function listenProductRestoreEvents() {
             },
             always: function () {
                 // Hide spinner.
-                $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+                setSpinnerVisibility('hide');
             }
         });
     });
@@ -248,7 +251,7 @@ async function updateProductQtyViaAjax(currentEle, action, quantity = 1) {
     let productContainer = $(currentEle).parents('.adfy__woofc-item');
 
     // Add loader
-    $('#adfy__woofc-spinner-container').addClass('visible').removeClass('hidden');
+    setSpinnerVisibility('show');
 
     try {
         const res = await $.ajax({
@@ -314,6 +317,6 @@ async function updateProductQtyViaAjax(currentEle, action, quantity = 1) {
     } finally {
 
         // Remove loader
-        $('#adfy__woofc-spinner-container').addClass('hidden').removeClass('visible');
+        setSpinnerVisibility('hide');
     }
 }

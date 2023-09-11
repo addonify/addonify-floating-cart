@@ -17,7 +17,7 @@ addonifyFloatingCart = {
     * Action object.
     * Collection of methods that can be used to perform actions.
     */
-    action: { trigger: null, toast: null, cart: null },
+    action: { toast: null, cart: null },
 
     /**
     * API object.

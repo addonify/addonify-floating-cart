@@ -24,6 +24,9 @@ export function listenCouponContainerEvents() {
         e.preventDefault();
 
         couponContainer.attr('data_display', 'visible');
+
+        // Dispatch 'couponModalOpened' event.
+        AFC.api.event.couponModalOpened();
     });
 
     $(document).on('click', '#adfy__woofc-hide-coupon-container', function (e) {
@@ -31,6 +34,9 @@ export function listenCouponContainerEvents() {
         e.preventDefault();
 
         couponContainer.attr('data_display', 'hidden');
+
+        // Dispatch 'couponModalClosed' event.
+        AFC.api.event.couponModalClosed();
     });
 }
 

@@ -41,7 +41,6 @@ export const hideTriggerButtonIfCartIsEmpty = addonifyFloatingCartJSObject.hideT
 
 /**
 * Localization: Notfy settings.
-* Notification toast settings.
 * 
 * @since: 1.1.9
 */
@@ -69,3 +68,4 @@ export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remo
 * 
 * @since: 1.1.9
 */
+export const countriesToStates = addonifyFloatingCartJSObject.states;

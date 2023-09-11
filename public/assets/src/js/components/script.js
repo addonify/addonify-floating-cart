@@ -44,16 +44,17 @@
 
             //this.preventDefaultBehaviour();
             this.showFloatingCartHandler();
-            this.hideFloatingCartHandler();
-            this.checkShoppingMeterProgessbarAnimation();
-            this.quantityFormInputHandler();
+            // this.hideFloatingCartHandler();
+            // this.checkShoppingMeterProgessbarAnimation();
+            // this.quantityFormInputHandler();
             this.handleFloatingCartCoupon();
             this.notifyFloatingCartEventHandler();
             this.handleCartItems();
             this.shippingSectionHandler();
-            this.refreshCart();
+            // this.refreshCart();
         },
 
+        // done.
         preventDefaultBehaviour: () => {
 
             $(document).on('click', '.adfy__woofc-prevent-default', function (e) {
@@ -143,6 +144,7 @@
             });
         },
 
+        // done.
         hideFloatingCartHandler: () => {
 
             $(document).on('click', '.adfy__hide-woofc', function () {
@@ -156,7 +158,7 @@
          * 
          * @since 1.1.8
          */
-
+        // done.
         checkShoppingMeterProgessbarAnimation: () => {
 
             let shoppingMeterProgressBarEle = $('#adfy__floating-cart .adfy__woofc-shipping-bar .progress-bars .live-progress-bar');

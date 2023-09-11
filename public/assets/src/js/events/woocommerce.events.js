@@ -1,5 +1,7 @@
+import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
 import { openCartOnAddedToCart } from "src/js/global/localize.data";
-import { Helpers } from "src/js/utilities/common.helpers";
+
+const { $ } = AFC;
 
 export function listenWooCommerceEvents() {
 
@@ -14,7 +16,7 @@ export function listenWooCommerceEvents() {
 
         if (openCartOnAddedToCart) {
 
-            Helpers.openCartHandler(e);
+            AFC.action.cart.open(e);
         }
     });
 

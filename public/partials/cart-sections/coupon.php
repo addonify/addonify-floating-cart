@@ -19,8 +19,8 @@ defined( 'ABSPATH' ) || exit;
 		</button>
 	</div>
 	<form id="adfy__woofc-coupon-form">
-		<div class="adfy__woofc-alert success"></div>
-		<div class="adfy__woofc-alert error"></div>
+		<div class="adfy__woofc-alert success" style="display: none"></div>
+		<div class="adfy__woofc-alert error" style="display: none"></div>
 		<div class="adfy__woofc-coupon-inputs">
 			<label for="adfy__woofc-coupon-input-field">
 				<?php echo esc_html( apply_filters( 'addonify_floating_cart_coupon_code_field_label', __( 'If you have a coupon code, please apply it below.', 'addonify-floating-cart' ) ) ); ?>

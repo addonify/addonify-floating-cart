@@ -1,5 +1,9 @@
-import { Helpers } from "src/js/utilities/common.helpers";
-import { openCartOnViewCartClicked, openCartOnTriggerHover } from "src/js/global/localize.data";
+import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
+import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty } from "src/js/global/localize.data";
+import { handleProgressbarAnimation } from "src/js/components/shopping-meter";
+import { triggerButtonVisibilityHandler } from "src/js/components/trigger";
+
+const { $ } = AFC;
 
 export function listenCartEvents() {
 
@@ -24,14 +28,14 @@ export function listenCartEvents() {
     */
     $(document).on("click", ".adfy__show-woofc", function (e) {
 
-        Helpers.openCartHandler(e)
+        AFC.action.cart.open(e);
     });
 
     if (openCartOnTriggerHover) {
 
         $(document).on('mouseover', '.adfy__show-woofc', function (e) {
 
-            Helpers.openCartHandler(e);
+            AFC.action.cart.open(e);
         });
     }
 
@@ -39,7 +43,7 @@ export function listenCartEvents() {
 
         $(document).on('click', '.added_to_cart.wc-forward', function (e) {
 
-            Helpers.openCartHandler(e);
+            AFC.action.cart.open(e);
         });
     }
 
@@ -54,6 +58,37 @@ export function listenCartEvents() {
 
         e.preventDefault();
 
-        Helpers.closeCartHandler(e);
+        AFC.action.cart.close(e);
+    });
+
+
+    /**
+    * Listen to cart updated event.
+    * Trigger by internal API.
+    *
+    * @param {object} event.
+    * @return {void} void.
+    * @since 1.0.0
+    */
+    document.addEventListener("addonifyFloatingCartUpdated", () => {
+
+        // Handle shopping meter animation.
+        handleProgressbarAnimation();
+    });
+
+    /**
+    * Listen to cart item restored event.
+    * Trigger by internal API.
+    *
+    * @return {void} void.
+    * @since 1.0.0
+    */
+    document.addEventListener("addonifyFloatingCartItemRestored", () => {
+
+        // Display trigger button if it was hidden initially.
+        if (hideTriggerButtonIfCartIsEmpty) {
+
+            triggerButtonVisibilityHandler('show');
+        }
     });
 }

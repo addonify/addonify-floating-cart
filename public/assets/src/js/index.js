@@ -1,43 +1,55 @@
 "use strict";
 
-import { listenCartEvents } from 'src/js/events/cart.events.js';
-import { listenWooCommerceEvents } from 'src/js/events/woocommerce.events.js';
-import { loadCartScrollbar } from 'src/js/components/scrollbar';
+import { registerCartActionEvents, refreshCart } from 'src/js/utilities/cart.helpers';
+import { registerCustomEventsDispatchers } from 'src/js/utilities/api.helpers';
+import { registerToastEvent } from 'src/js/utilities/toast.helpers';
+
+import { listenCartEvents } from 'src/js/events/cart.events';
+import { listenWooCommerceEvents } from 'src/js/events/woocommerce.events';
+import { initCustomScrollbar } from 'src/js/components/scrollbar';
+import { listenProductQtyFormEvents, listenProductRemoveEvents, listenProductRestoreEvents } from 'src/js/components/product';
+import { listenCouponContainerEvents, applyCouponHandler, removeCouponHandler } from 'src/js/components/coupon';
 
 /**
-* Main object.
-* Includes all the functions that's required to run the plugin.
+* DOMContentLoaded event listener.
 *
 * @since 1.0.0
 */
-const addonifyFloatingCart = {
-    initJqueryScripts: function () {
-        listenCartEvents();
-        listenWooCommerceEvents();
-    },
-    initVanillaScripts: function () {
-        loadCartScrollbar();
-    }
-};
+document.addEventListener("DOMContentLoaded", function () {
 
-/**
-* "DOMContentLoaded" event listener.
-* Vanilla JS.
-*
-* @since 1.0.0
-*/
-document.addEventListener('DOMContentLoaded', function () {
-    addonifyFloatingCart.initVanillaScripts();
+    initCustomScrollbar();
 });
 
 /**
-* Document ready function.
-* jQuery.
+* jQuery self executing function.
 *
-* @since 1.0.0
+* @since 1.2.1
 */
 (function ($) {
+
+    registerCartActionEvents();
+    registerCustomEventsDispatchers();
+    registerToastEvent();
+
     $(document).ready(function () {
-        addonifyFloatingCart.initJqueryScripts();
+        refreshCart();
+
+        // Cart related events.
+        listenCartEvents();
+
+        // WooCommerce related events.
+        listenWooCommerceEvents();
+
+        // Product related events.
+        listenProductQtyFormEvents();
+        listenProductRemoveEvents();
+        listenProductRestoreEvents();
+
+        // Coupon related events.
+        listenCouponContainerEvents();
+        applyCouponHandler();
+        removeCouponHandler();
     });
-})(jQuery)
+
+})(jQuery);
+

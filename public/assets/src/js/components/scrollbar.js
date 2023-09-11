@@ -1,4 +1,4 @@
-export const loadCartScrollbar = () => {
+export const initCustomScrollbar = () => {
 
     const targetEle = document.getElementById("adfy__floating-cart");
 

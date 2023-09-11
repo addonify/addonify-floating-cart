@@ -5,53 +5,62 @@ import {
     notfyPosition
 } from 'src/js/global/localize.data.js';
 
-/**
-*
-* Dispatch notification toast messages.
-*
-* @param {string} style. Arg: [success | error]
-* @param {string} data. may also contain HTML.
-* @since: 1.1.9
-*/
-export function dispatchToast(style = 'success', data) {
+import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
 
-    if (typeof Notyf !== 'undefined') {
+const { action } = AFC;
 
-        let notyf = new Notyf({
-            duration: notyfDuration,
-            dismissible: notfyIsDismissible,
-            ripple: true,
-            position: {
-                x: notfyPosition[1], // left | center | right
-                y: notfyPosition[0], // top | center | bottom
-            },
-        });
+export function registerToastEvent() {
 
-        if (!data) {
+    action.toast = {
 
-            throw new Error("Notification toast data/message is empty, bailing out...");
-        }
+        /**
+        * Dispatch notification toast messages.
+        *
+        * @param {string} style. [success | error]
+        * @param {string} data. may also contain HTML.
+        * @since: 1.1.9
+        */
+        dispatch: (style = 'success', data) => {
 
-        // Check if notification toast is enabled in backend.
-        if (style === 'success') {
+            if (typeof Notyf !== 'undefined') {
 
-            if (showNotfy) {
+                let notyf = new Notyf({
+                    duration: notyfDuration,
+                    dismissible: notfyIsDismissible,
+                    ripple: true,
+                    position: {
+                        x: notfyPosition[1], // left | center | right
+                        y: notfyPosition[0], // top | center | bottom
+                    },
+                });
 
-                notyf.success({
-                    className: 'adfy__woofc-notfy-success',
-                    message: data,
-                })
+                if (!data) {
+
+                    throw new Error("Notification toast data/message is empty, bailing out...");
+                }
+
+                // Check if notification toast is enabled in backend.
+                if (style === 'success') {
+
+                    if (showNotfy) {
+
+                        notyf.success({
+                            className: 'adfy__woofc-notfy-success',
+                            message: data,
+                        })
+                    }
+                }
+
+                // Do not disable error notification toast.
+                if (style === 'error') {
+
+                    notyf.error({
+
+                        className: 'adfy__woofc-notfy-error',
+                        message: data,
+                    })
+                }
             }
-        }
-
-        // Do not disable error notification toast.
-        if (style === 'error') {
-
-            notyf.error({
-
-                className: 'adfy__woofc-notfy-error',
-                message: data,
-            })
         }
     }
 }

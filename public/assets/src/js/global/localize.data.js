@@ -14,6 +14,12 @@ export const nonce = addonifyFloatingCartJSObject.nonce;
 */
 export const refreshCartFragmentsAction = addonifyFloatingCartJSObject.ajax_refresh_cart_fragments;
 
+export const ajaxUpdateCartAction = addonifyFloatingCartJSObject.ajax_update_cart_item_action;
+
+export const ajaxRemoveFromCartAction = addonifyFloatingCartJSObject.ajax_remove_from_cart_action;
+
+export const ajaxRestoreCartItemAction = addonifyFloatingCartJSObject.ajax_restore_in_cart_action;
+
 /**
 * Localization: Add to cart button settings.
 * 
@@ -49,10 +55,17 @@ export const notfyPosition = addonifyFloatingCartJSObject.toast_notification_dis
 
 export const notfyShowHTMLMessages = addonifyFloatingCartJSObject.displayToastNotificationButton === '1' ? true : false;
 
+/**
+ * Localization: Coupon settings.
+ *
+ * @since 1.1.9
+ */
+export const ajaxApplyCouponCodeAction = addonifyFloatingCartJSObject.ajax_apply_coupon;
+
+export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remove_coupon;
 
 /**
 * Localization: Shipping calculator settings.
 * 
 * @since: 1.1.9
 */
-export const countriesToStates = addonifyFloatingCartJSObject.states;

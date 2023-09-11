@@ -7,8 +7,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import scss from 'rollup-plugin-scss'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import postcssRTLCSS from 'postcss-rtlcss';
-import { Mode, Source, Autorename } from 'postcss-rtlcss/options';
+//import postcssRTLCSS from 'postcss-rtlcss';
+//import { Mode, Source, Autorename } from 'postcss-rtlcss/options';
 
 /**
  * Define extensions to be resolved via alias.
@@ -54,12 +54,13 @@ export default [
         input: assets['mainJs']['source'],
         output: {
             file: assets['mainJs']['dist'],
-            format: 'cjs', // "iife", "umd", "esm", "cjs"
+            format: 'umd', // "iife", "umd", "esm", "cjs"
+            name: 'mainJs',
         },
         plugins: [
             resolve(),
             commonjs(),
-            terser(),
+            //terser(),
             scss({
                 outputStyle: 'compressed',
                 output: assets['scss']['dist'],

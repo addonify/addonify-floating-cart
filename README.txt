@@ -115,7 +115,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.1 - ? September, 2023 =
+= 1.2.1 - 11 September, 2023 =
 
 - Fix: Issue caused by rendering of cart sidebar modal template in cart and checkout page.
 - Update: Checked whether the cart fragments is undefined and is object in `added_to_cart` JS event.

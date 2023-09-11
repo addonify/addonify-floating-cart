@@ -6,10 +6,8 @@ import Recommended from "../components/layouts/Recommended.vue";
 import Notice from "../components/layouts/Notice.vue";
 
 import { useProductStore } from "../stores/product";
-import { useNoticeStore } from "../stores/notice";
 
 const proStore = useProductStore();
-const noticeStore = useNoticeStore();
 
 /**
  * Hook: onMounted.

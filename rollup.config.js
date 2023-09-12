@@ -67,11 +67,11 @@ export default [
                 fileName: assets['scss']['distName'],
                 exclude: assets['scss']['exclude'],
                 sourceMap: true,
-                processor: () => postcss(
-                    [
-                        autoprefixer(),
-                    ]
-                ),
+                processor: () => {
+                    postcss([
+                        autoprefixer()
+                    ])
+                }
             }),
             alias({
                 entries: [{
@@ -82,16 +82,4 @@ export default [
             })
         ]
     }
-    //{
-    //    input: assets['conditionalJs']['source'],
-    //    output: {
-    //        file: assets['conditionalJs']['dist'],
-    //        ...jsCommonOptions
-    //    },
-    //    plugins: [
-    //        resolve(),
-    //        commonjs(),
-    //        terser(),
-    //    ]
-    //}
 ];

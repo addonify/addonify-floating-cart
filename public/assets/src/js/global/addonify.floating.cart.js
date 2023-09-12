@@ -8,7 +8,7 @@ export let addonifyFloatingCart = new Object();
 addonifyFloatingCart = {
 
     /**
-    * jQuery Object.
+    * jQuery.
     *
     */
     $: jQuery,

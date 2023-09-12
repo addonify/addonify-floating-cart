@@ -2,7 +2,6 @@ import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.car
 import { ajaxUrl, refreshCartFragmentsAction, nonce } from "src/js/global/localize.data";
 import { setSpinnerVisibility } from "src/js/components/spinner";
 
-
 const { $, action, api } = AFC;
 
 export function registerCartActionEvents() {
@@ -14,7 +13,7 @@ export function registerCartActionEvents() {
         *
         * @param {*} e 
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         open: (e) => {
 
@@ -47,7 +46,7 @@ export function registerCartActionEvents() {
         * Handle cart refresh.
         *
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         refresh: () => {
 
@@ -59,7 +58,6 @@ export function registerCartActionEvents() {
 /**
 * Refresh cart fragments.
 *
-* @param {null} null.
 * @return {void} void.
 * @since 1.0.0
 */

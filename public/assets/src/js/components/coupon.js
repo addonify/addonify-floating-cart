@@ -13,7 +13,7 @@ const { $ } = AFC;
  * Open close coupon container.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function listenCouponContainerEvents() {
 
@@ -44,7 +44,7 @@ export function listenCouponContainerEvents() {
  * Handle coupon apply event via AJAX.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function applyCouponHandler() {
 
@@ -146,7 +146,7 @@ export function applyCouponHandler() {
  * Handle coupon remove event via AJAX.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function removeCouponHandler() {
 

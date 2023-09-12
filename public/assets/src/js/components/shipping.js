@@ -14,7 +14,7 @@ const { $ } = AFC;
  * Listen common shipping container events.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function listenShippingContainerEvents() {
 
@@ -54,7 +54,7 @@ export function listenShippingContainerEvents() {
  * Handle the shipping address change event via AJAX.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function handleShippingAddressChange() {
 
@@ -113,7 +113,7 @@ export function handleShippingAddressChange() {
  * Handle the shipping method change event via AJAX.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 export function handleShippingMethodChange() {
 
@@ -181,7 +181,7 @@ export function handleShippingMethodChange() {
  * Populate states once country is changed.
  * 
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.0.0
  */
 function populateStatesOnceCountryIsChanged() {
 

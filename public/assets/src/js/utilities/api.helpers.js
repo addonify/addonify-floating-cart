@@ -11,7 +11,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} event.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         cartOpened: (event) => {
 
@@ -25,7 +25,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} event.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         cartClosed: (event) => {
 
@@ -40,7 +40,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} event.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         cartUpdated: (event) => {
 
@@ -55,9 +55,8 @@ export function registerCustomEventsDispatchers() {
         * Cart emptied.
         * Main event triggered when cart is emptied.
         *
-        * @param {null} null.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         cartEmptied: () => {
 
@@ -74,7 +73,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} event.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         productRemoved: (event) => {
 
@@ -93,7 +92,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} data.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         productRestored: (data) => {
 
@@ -111,7 +110,7 @@ export function registerCustomEventsDispatchers() {
         * Coupon modal opened.
         *
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         couponModalOpened: () => {
 
@@ -124,7 +123,7 @@ export function registerCustomEventsDispatchers() {
         * Coupon modal closed.
         *
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         couponModalClosed: () => {
 
@@ -138,7 +137,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} data.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         couponApplied: (data) => {
 
@@ -157,7 +156,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} data.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         couponRemoved: (data) => {
 
@@ -176,7 +175,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {object} event.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         shippingAddressUpdated: (event) => {
 
@@ -189,7 +188,7 @@ export function registerCustomEventsDispatchers() {
         *
         * @param {null} null.
         * @return {void} void.
-        * @since 1.0.0
+        * @since 1.2.1
         */
         shoppingMeterThresholdReached: () => {
 

@@ -10,7 +10,6 @@ export function listenCartEvents() {
     /**
     * Prevent default event.
     *
-    * @param {object} event.
     * @return {void} void.
     * @since 1.0.0
     */
@@ -22,7 +21,6 @@ export function listenCartEvents() {
     /**
     * Listen for cart open events.
     *
-    * @param {object} event.
     * @return {void} void.
     * @since 1.0.0
     */
@@ -31,26 +29,39 @@ export function listenCartEvents() {
         AFC.action.cart.open(e);
     });
 
-    if (openCartOnTriggerHover) {
+    /**
+    * Listen for mouse over event on trigger button.
+    *
+    * @return {void} void.
+    * @since 1.0.0
+    */
+    $(document).on('mouseover', '.adfy__show-woofc', function (e) {
 
-        $(document).on('mouseover', '.adfy__show-woofc', function (e) {
-
-            AFC.action.cart.open(e);
-        });
-    }
-
-    if (openCartOnViewCartClicked) {
-
-        $(document).on('click', '.added_to_cart.wc-forward', function (e) {
+        if (openCartOnTriggerHover) {
 
             AFC.action.cart.open(e);
-        });
-    }
+        }
+    });
+
+    /**
+    * Listen for "view cart button" click event.
+    *
+    * @return {void} void.
+    * @since 1.0.0
+    */
+    $(document).on('click', '.added_to_cart.wc-forward', function (e) {
+
+        if (openCartOnViewCartClicked) {
+
+            e.preventDefault();
+
+            AFC.action.cart.open(e);
+        }
+    });
 
     /**
     * Listen for cart close event.
     *
-    * @param {object} event.
     * @return {void} void.
     * @since 1.0.0
     */
@@ -61,14 +72,12 @@ export function listenCartEvents() {
         AFC.action.cart.close(e);
     });
 
-
     /**
     * Listen to cart updated event.
     * Trigger by internal API.
     *
-    * @param {object} event.
     * @return {void} void.
-    * @since 1.0.0
+    * @since 1.2.1
     */
     document.addEventListener("addonifyFloatingCartUpdated", () => {
 
@@ -83,10 +92,9 @@ export function listenCartEvents() {
 
     /**
     * Listen to cart item restored event.
-    * Trigger by internal API.
     *
     * @return {void} void.
-    * @since 1.0.0
+    * @since 1.2.1
     */
     document.addEventListener("addonifyFloatingCartItemRestored", () => {
 

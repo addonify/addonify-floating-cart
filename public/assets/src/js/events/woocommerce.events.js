@@ -7,8 +7,7 @@ import { handleCustomToastContent } from "src/js/utilities/toast.helpers";
 import {
     showNotfy,
     openCartOnAddedToCart,
-    hideTriggerButtonIfCartIsEmpty,
-    openCartOnViewCartClicked
+    hideTriggerButtonIfCartIsEmpty
 } from "src/js/global/localize.data";
 
 const { $ } = AFC;
@@ -16,9 +15,8 @@ const { $ } = AFC;
 export function listenWooCommerceEvents() {
 
     /**
-    * Listen to WooCommerce events.
+    * Listen to WooCommerce "added to cart" events.
     *
-    * @param {object} event.
     * @return {void} void.
     * @since 1.0.0
     */
@@ -50,16 +48,12 @@ export function listenWooCommerceEvents() {
         AFC.api.event.cartUpdated(data);
     });
 
-    $(document).on('click', '.added_to_cart.wc-forward', function (e) {
-
-        if (openCartOnViewCartClicked) {
-
-            e.preventDefault();
-
-            AFC.action.cart.open(e);
-        }
-    });
-
+    /**
+    * Listen to WooCommerce "cart empty" event.
+    *
+    * @return {void} void.
+    * @since 1.0.0
+    */
     $(document).on('wc_cart_emptied', function (e) {
 
         // Hide the trigger button if cart is empty.

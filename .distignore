@@ -14,9 +14,10 @@
 .babelrc
 .editorconfig
 rollup.config.js
-dev.tools.js
+build.config.cjs
 webpack.config.js
 webpack.mix.js
+webpack.mix.cjs
 package.json
 package-lock.json
 sftp-config.json

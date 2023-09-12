@@ -91,16 +91,16 @@ export function registerCustomEventsDispatchers() {
         /**
         * Product restored to cart.
         *
-        * @param {object} event.
+        * @param {object} data.
         * @return {void} void.
         * @since 1.0.0
         */
-        productRestored: (event) => {
+        productRestored: (data) => {
 
-            $(document).trigger("addonifyFloatingCartProductRestored", event);
+            $(document).trigger("addonifyFloatingCartProductRestored", data);
 
             document.dispatchEvent(new CustomEvent("addonifyFloatingCartProductRestored", {
-                detail: event
+                detail: data
             }));
 
             // Also, triggers event cart updated.

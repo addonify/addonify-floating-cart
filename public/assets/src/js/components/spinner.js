@@ -9,14 +9,14 @@ export function setSpinnerVisibility(action) {
 
     if (!action) {
 
-        throw new Error('Spinner action state is required!');
+        throw new Error('Spinner action is required!');
     }
 
     const spinnerEle = document.getElementById("adfy__woofc-spinner-container");
 
     if (spinnerEle) {
 
-        if (action === 'show') {
+        if (action === "show") {
 
             spinnerEle.classList.add('visible');
             spinnerEle.classList.remove('hidden');

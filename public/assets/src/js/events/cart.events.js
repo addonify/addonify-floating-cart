@@ -74,7 +74,7 @@ export function listenCartEvents() {
 
         /**
         * Always check shopping meter animation once "addonifyFloatingCartUpdated"
-        * event is triggered.
+        * event is detected.
         *
         * @since 1.2.1
         */

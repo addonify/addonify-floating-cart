@@ -106,11 +106,14 @@
                 }
 
                 if (cartSummaryEle.hasClass('discount')) {
+
                     var subtotalEle = $('.adfy__woofc-cart-summary li.sub-total');
                     var discountEle = $('.adfy__woofc-cart-summary li.discount');
+
                     if (subtotalEle.hasClass('adfy__woofc-hidden')) {
                         subtotalEle.removeClass('adfy__woofc-hidden');
                     }
+                    
                     if (discountEle.hasClass('adfy__woofc-hidden')) {
                         discountEle.removeClass('adfy__woofc-hidden');
                     }

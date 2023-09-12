@@ -9,6 +9,11 @@ import { listenWooCommerceEvents } from 'src/js/events/woocommerce.events';
 import { initCustomScrollbar } from 'src/js/components/scrollbar';
 import { listenProductQtyFormEvents, listenProductRemoveEvents, listenProductRestoreEvents } from 'src/js/components/product';
 import { listenCouponContainerEvents, applyCouponHandler, removeCouponHandler } from 'src/js/components/coupon';
+import {
+    listenShippingContainerEvents,
+    handleShippingAddressChange,
+    handleShippingMethodChange
+} from 'src/js/components/shipping';
 
 /**
 * DOMContentLoaded event listener.
@@ -49,6 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
         listenCouponContainerEvents();
         applyCouponHandler();
         removeCouponHandler();
+
+        // Shipping related events.
+        listenShippingContainerEvents();
+        handleShippingAddressChange();
+        handleShippingMethodChange();
     });
 
 })(jQuery);

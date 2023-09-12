@@ -52,7 +52,11 @@ export const notfyIsDismissible = addonifyFloatingCartJSObject.addonifyFloatingC
 
 export const notfyPosition = addonifyFloatingCartJSObject.toast_notification_display_position.split("-");
 
-export const notfyShowHTMLMessages = addonifyFloatingCartJSObject.displayToastNotificationButton === '1' ? true : false;
+export const notfyShowHTMLContent = addonifyFloatingCartJSObject.displayToastNotificationButton === '1' ? true : false;
+
+export const notfyMessage = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyMessage;
+
+export const notfyButton = addonifyFloatingCartJSObject.toastNotificationButton;
 
 /**
  * Localization: Coupon settings.
@@ -68,4 +72,6 @@ export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remo
 * 
 * @since: 1.1.9
 */
+export const ajaxUpdateShippingAddressAction = addonifyFloatingCartJSObject.updateShippingInfo;
+
 export const countriesToStates = addonifyFloatingCartJSObject.states;

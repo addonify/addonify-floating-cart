@@ -74,7 +74,8 @@ export function listenProductRemoveEvents() {
         const cartItemKey = $(this).attr("data-cart_item_key");
         const thisButton = $(this);
 
-        setSpinnerVisibility('show');
+        // Display spinner.
+        setSpinnerVisibility("show");
 
         $.ajax({
             type: 'POST',
@@ -134,12 +135,12 @@ export function listenProductRemoveEvents() {
                 // Dispatch toast notification.
                 AFC.action.toast.dispatch('error', message);
             },
-            always: function () {
+            complete: function () {
 
                 // Remove spinner.
-                setSpinnerVisibility('hide');
+                setSpinnerVisibility("hide");
             }
-        });
+        })
     });
 }
 
@@ -204,7 +205,7 @@ export function listenProductRestoreEvents() {
                 // Dispatch toast notification.
                 AFC.action.toast.dispatch('error', message);
             },
-            always: function () {
+            complete: function () {
                 // Hide spinner.
                 setSpinnerVisibility('hide');
             }
@@ -221,7 +222,7 @@ export function listenProductRestoreEvents() {
 * @return {void} void.
 * @since 1.0.0
 */
-async function updateProductQtyViaAjax(currentEle, action, quantity = 1) {
+function updateProductQtyViaAjax(currentEle, action, quantity = 1) {
 
     if (!currentEle) {
 
@@ -253,70 +254,70 @@ async function updateProductQtyViaAjax(currentEle, action, quantity = 1) {
     // Add loader
     setSpinnerVisibility('show');
 
-    try {
-        const res = await $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: ajaxUrl,
-            data: {
-                action: ajaxUpdateCartAction,
-                product_id: productId,
-                cart_item_key: cartItemKey,
-                nonce: nonce,
-                type: action,
-                quantity: quantity
-            },
-        });
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: ajaxUrl,
+        data: {
+            action: ajaxUpdateCartAction,
+            product_id: productId,
+            cart_item_key: cartItemKey,
+            nonce: nonce,
+            type: action,
+            quantity: quantity
+        },
+        success: function (res) {
 
-        if (!res || res.error) {
+            if (!res || res.error) {
 
-            throw new Error("Error updating cart via AJAX!");
-        }
-
-        let fragments = res.fragments;
-
-        // Replace the cart fragments.
-        if (fragments) {
-            $.each(fragments, function (key, value) {
-                $(key).replaceWith(value);
-            });
-        }
-
-        let nQuantity = res.nQuantity;
-
-        if (nQuantity === 'OoS') {
-            alert('Out of stock range');
-            productQuantity.val(nQuantity);
-        } else if (nQuantity !== 'nil') {
-            if (action === 'add') {
-                productQuantity.val(nQuantity);
-            } else if (action === 'sub') {
-                productQuantity.val(nQuantity);
-            } else {
-                productQuantity.val(nQuantity);
+                throw new Error("Error updating cart via AJAX!");
             }
+
+            let fragments = res.fragments;
+
+            // Replace the cart fragments.
+            if (fragments) {
+                $.each(fragments, function (key, value) {
+                    $(key).replaceWith(value);
+                });
+            }
+
+            let nQuantity = res.nQuantity;
+
+            if (nQuantity === 'OoS') {
+                alert('Out of stock range');
+                productQuantity.val(nQuantity);
+            } else if (nQuantity !== 'nil') {
+                if (action === 'add') {
+                    productQuantity.val(nQuantity);
+                } else if (action === 'sub') {
+                    productQuantity.val(nQuantity);
+                } else {
+                    productQuantity.val(nQuantity);
+                }
+            }
+
+            productContainer.find($('.adfy__woofc-item-price-multiplier-quantity')).html(nQuantity);
+
+            productContainer.unblock();
+
+            // Update cart
+            $(document.body).trigger('wc_update_cart');
+
+            // Dispatch event cart updated.
+            AFC.api.event.cartUpdated(res);
+        },
+        error: function (err) {
+
+            const { __ } = wp.i18n;
+            const message = __('Error processing cart update request!', 'addonify-floating-cart');
+            // Dispatch toast notification.
+            AFC.action.toast.dispatch('error', message);
+            throw new Error(err);
+        },
+        complete: function () {
+            // Remove loader
+            setSpinnerVisibility('hide');
         }
-
-        productContainer.find($('.adfy__woofc-item-price-multiplier-quantity')).html(nQuantity);
-
-        productContainer.unblock();
-
-        // Update cart
-        $(document.body).trigger('wc_update_cart');
-
-        // Dispatch event cart updated.
-        AFC.api.event.cartUpdated(res);
-
-    } catch (err) {
-        const message = __('Error processing product quantity update request!', 'addonify-floating-cart');
-
-        // Dispatch toast notification.
-        AFC.action.toast.dispatch('error', message);
-        throw new Error(err);
-
-    } finally {
-
-        // Remove loader
-        setSpinnerVisibility('hide');
-    }
+    });
 }

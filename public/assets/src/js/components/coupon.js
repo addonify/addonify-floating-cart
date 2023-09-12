@@ -74,7 +74,13 @@ export function applyCouponHandler() {
                 if (!result) {
 
                     message = __('Error processing coupon request.', 'addonify-floating-cart');
-                    AFC.action.toast.dispatch('error', message);
+
+                    // Display coupon alert messages.
+                    couponAlertVisibilityHandler('show', {
+                        style: 'error',
+                        message: message
+                    });
+
                     return;
                 }
 
@@ -165,8 +171,6 @@ export function removeCouponHandler() {
             success: function (res) {
 
                 let result = JSON.parse(res);
-
-                console.log(result);
 
                 if (!result) {
 

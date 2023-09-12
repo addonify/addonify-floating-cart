@@ -27,6 +27,12 @@ export function listenWooCommerceEvents() {
             AFC.action.cart.open(event);
         }
 
+        // Display the trigger button if it was hidden when cart was empty.
+        if (hideTriggerButtonIfCartIsEmpty) {
+
+            setTriggerButtonVisibility("show");
+        }
+
         // Dispatch toast notification with custom content payload.
         if (showNotfy) {
             handleCustomToastContent(data);

@@ -77,7 +77,7 @@ export function listenCartEvents() {
     * Trigger by internal API.
     *
     * @return {void} void.
-    * @since 1.2.1
+    * @since 1.2.2
     */
     document.addEventListener("addonifyFloatingCartUpdated", () => {
 
@@ -85,7 +85,7 @@ export function listenCartEvents() {
         * Always check shopping meter animation once "addonifyFloatingCartUpdated"
         * event is detected.
         *
-        * @since 1.2.1
+        * @since 1.2.2
         */
         handleProgressbarAnimation();
     });
@@ -94,7 +94,7 @@ export function listenCartEvents() {
     * Listen to cart item restored event.
     *
     * @return {void} void.
-    * @since 1.2.1
+    * @since 1.2.2
     */
     document.addEventListener("addonifyFloatingCartItemRestored", () => {
 

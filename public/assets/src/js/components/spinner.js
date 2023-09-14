@@ -3,7 +3,7 @@
  *
  * @param {string} action - show/hide.
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.2.2
  */
 export function setSpinnerVisibility(action) {
 

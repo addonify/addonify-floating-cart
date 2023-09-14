@@ -1,7 +1,7 @@
 /**
 * Addonify Floating Cart Object.
 *
-* @since 1.2.1
+* @since 1.2.2
 */
 export let addonifyFloatingCart = new Object();
 

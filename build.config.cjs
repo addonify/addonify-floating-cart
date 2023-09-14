@@ -85,25 +85,26 @@ const makeZipFile = async () => {
         archive.pipe(output);
         archive.finalize();
     });
+
+
+    /**
+     * Changes bytes to KB or MB depending on the size.
+     *
+     * @param {number} bytes.
+     * @return {string} size.
+     * @since 1.2.1
+     */
+    const convertBytes = (bytes) => {
+        switch (true) {
+            case (bytes < 1000000):
+                return (bytes / 1000).toFixed(2) + ' KB';
+            case (bytes < 1000000000):
+                return (bytes / 1000000).toFixed(2) + ' MB';
+            default:
+                return bytes + ' Bytes';
+        }
+    }
 }
 
 // 🦄 Let's invoke the function & wait....
 makeZipFile().catch((err) => { throw err });
-
-/**
- * Changes bytes to KB or MB depending on the size.
- *
- * @param {number} bytes.
- * @return {string} size.
- * @since 1.2.1
- */
-const convertBytes = (bytes) => {
-    switch (true) {
-        case (bytes < 1000000):
-            return (bytes / 1000).toFixed(2) + ' KB';
-        case (bytes < 1000000000):
-            return (bytes / 1000000).toFixed(2) + ' MB';
-        default:
-            return bytes + ' Bytes';
-    }
-}

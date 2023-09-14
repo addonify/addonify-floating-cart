@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /**
 * jQuery self executing function.
 *
-* @since 1.2.1
+* @since 1.2.2
 */
 (function ($) {
 

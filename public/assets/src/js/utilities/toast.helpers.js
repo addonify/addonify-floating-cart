@@ -16,7 +16,7 @@ const { action } = AFC;
  * Register toast event.
  *
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.2.2
  */
 export function registerToastEvent() {
 
@@ -80,7 +80,7 @@ export function registerToastEvent() {
  *
  * @param {object} data.
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.2.2
  */
 export function handleCustomToastContent(data) {
 

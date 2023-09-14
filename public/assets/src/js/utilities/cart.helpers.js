@@ -13,7 +13,7 @@ export function registerCartActionEvents() {
         *
         * @param {*} e 
         * @return {void} void.
-        * @since 1.2.1
+        * @since 1.2.2
         */
         open: (e) => {
 
@@ -46,7 +46,7 @@ export function registerCartActionEvents() {
         * Handle cart refresh.
         *
         * @return {void} void.
-        * @since 1.2.1
+        * @since 1.2.2
         */
         refresh: () => {
 
@@ -87,7 +87,7 @@ export const refreshCart = async () => {
         // Update cart.
         $(document).trigger('wc_update_cart');
 
-        // Dispatch event cart updated. Since 1.2.1
+        // Dispatch event cart updated. Since 1.2.2
         AFC.api.event.cartUpdated(fragments);
 
     } catch (err) {

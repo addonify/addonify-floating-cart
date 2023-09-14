@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.1\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-05T09:33:23+00:00\n"
+"POT-Creation-Date: 2023-09-14T11:12:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -39,7 +39,7 @@ msgid "Addonify Floating Cart requires WooCommerce in order to work."
 msgstr ""
 
 #: admin/class-addonify-floating-cart-admin.php:192
-#: admin/assets/js/main.js:3698
+#: admin/assets/js/main.js:738
 msgid "Settings"
 msgstr ""
 
@@ -861,105 +861,105 @@ msgstr ""
 msgid "Later"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:249
+#: public/class-addonify-floating-cart-public.php:253
 msgid "Please remove it from cart."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:252
+#: public/class-addonify-floating-cart-public.php:256
 msgid "Product has been removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:254
+#: public/class-addonify-floating-cart-public.php:258
 msgid " is no more available in stock. "
 msgstr ""
 
 #. translators: 1: number of cart items.
-#: public/class-addonify-floating-cart-public.php:290
+#: public/class-addonify-floating-cart-public.php:294
 msgctxt "number of cart items"
 msgid " %1$s Item"
 msgid_plural "%1$s Items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/class-addonify-floating-cart-public.php:313
+#: public/class-addonify-floating-cart-public.php:317
 #: public/partials/sidebar-cart.php:29
-#: admin/assets/js/main.js:4213
+#: admin/assets/js/main.js:1253
 msgid "Go Back"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:396
+#: public/class-addonify-floating-cart-public.php:400
 msgid "Invalid product id or cart item key."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:408
-#: public/class-addonify-floating-cart-public.php:841
+#: public/class-addonify-floating-cart-public.php:412
+#: public/class-addonify-floating-cart-public.php:845
 #: public/partials/cart-sections/body.php:76
 msgid "Your cart is currently empty."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:418
-#: public/class-addonify-floating-cart-public.php:485
-#: public/class-addonify-floating-cart-public.php:585
-#: public/class-addonify-floating-cart-public.php:704
-#: public/class-addonify-floating-cart-public.php:805
-#: public/class-addonify-floating-cart-public.php:849
+#: public/class-addonify-floating-cart-public.php:422
+#: public/class-addonify-floating-cart-public.php:489
+#: public/class-addonify-floating-cart-public.php:589
+#: public/class-addonify-floating-cart-public.php:708
+#: public/class-addonify-floating-cart-public.php:809
+#: public/class-addonify-floating-cart-public.php:853
 msgid "Invalid security token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:456
+#: public/class-addonify-floating-cart-public.php:460
 msgid "Restored successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:459
+#: public/class-addonify-floating-cart-public.php:463
 msgid "Could not be restored."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:463
+#: public/class-addonify-floating-cart-public.php:467
 msgid "Already exists in cart"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:467
+#: public/class-addonify-floating-cart-public.php:471
 msgid "Key Missing"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:542
+#: public/class-addonify-floating-cart-public.php:546
 msgid "Quantity must be more than zero."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:554
+#: public/class-addonify-floating-cart-public.php:558
 msgid "Not available in the stock."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:577
+#: public/class-addonify-floating-cart-public.php:581
 msgid "Quantity updated successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:647
-#: public/class-addonify-floating-cart-public.php:701
+#: public/class-addonify-floating-cart-public.php:651
+#: public/class-addonify-floating-cart-public.php:705
 msgid "Please enter a coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:650
+#: public/class-addonify-floating-cart-public.php:654
 msgid "Invalid secutrity token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:698
+#: public/class-addonify-floating-cart-public.php:702
 msgid "Coupon code removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:698
+#: public/class-addonify-floating-cart-public.php:702
 msgid "Error removing coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:764
+#: public/class-addonify-floating-cart-public.php:768
 msgid "Please enter a valid postcode / ZIP."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:875
+#: public/class-addonify-floating-cart-public.php:879
 msgid " has been removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:875
+#: public/class-addonify-floating-cart-public.php:879
 msgid "Undo?"
 msgstr ""
 
@@ -979,12 +979,8 @@ msgstr ""
 msgid "Applied coupon :"
 msgstr ""
 
-#: public/partials/cart-sections/footer.php:32
+#: public/partials/cart-sections/footer.php:36
 msgid "Have a coupon?"
-msgstr ""
-
-#: public/partials/cart-sections/footer.php:34
-msgid "Click here to apply"
 msgstr ""
 
 #. translators: 1: number of cart items.
@@ -1068,128 +1064,134 @@ msgstr ""
 msgid "Update address"
 msgstr ""
 
-#: admin/assets/js/main.js:400
+#: admin/assets/js/main.js:283
+msgid "Check docs"
+msgstr ""
+
+#: admin/assets/js/main.js:455
+msgid "Select"
+msgstr ""
+
+#: admin/assets/js/main.js:518
+#: admin/assets/js/main.js:546
+msgid "Enter text here..."
+msgstr ""
+
+#: admin/assets/js/main.js:594
+msgid "Version"
+msgstr ""
+
+#: admin/assets/js/main.js:594
+msgid "Rate"
+msgstr ""
+
+#: admin/assets/js/main.js:661
+msgid "AFC docs"
+msgstr ""
+
+#: admin/assets/js/main.js:663
+msgid "Rate AFC"
+msgstr ""
+
+#: admin/assets/js/main.js:673
+msgid "Save Options"
+msgstr ""
+
+#: admin/assets/js/main.js:748
+msgid "Design"
+msgstr ""
+
+#: admin/assets/js/main.js:758
+msgid "Products"
+msgstr ""
+
+#: admin/assets/js/main.js:1248
+msgid "404"
+msgstr ""
+
+#: admin/assets/js/main.js:1248
+msgid "Oops, page not found!"
+msgstr ""
+
+#: admin/assets/js/main.js:2870
+msgid "Activate now"
+msgstr ""
+
+#: admin/assets/js/main.js:2871
+msgid "Activating..."
+msgstr ""
+
+#: admin/assets/js/main.js:2872
+msgid "Install now"
+msgstr ""
+
+#: admin/assets/js/main.js:2873
+msgid "Installing..."
+msgstr ""
+
+#: admin/assets/js/main.js:2874
+msgid "Installed"
+msgstr ""
+
+#: admin/assets/js/main.js:5796
 #: admin/src/stores/options.js:106
 msgid "Something went wrong while fetching settings."
 msgstr ""
 
-#: admin/assets/js/main.js:463
-#: admin/assets/js/main.js:484
+#: admin/assets/js/main.js:5859
+#: admin/assets/js/main.js:5880
 #: admin/src/stores/options.js:158
 #: admin/src/stores/options.js:182
 msgid "Error saving changes! Please try again."
 msgstr ""
 
-#: admin/assets/js/main.js:756
+#: admin/assets/js/main.js:6152
 #: admin/src/stores/product.js:216
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:777
+#: admin/assets/js/main.js:6173
 #: admin/src/stores/product.js:231
 msgid "Error: couldn't install plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:827
+#: admin/assets/js/main.js:6223
 #: admin/src/stores/product.js:266
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:846
+#: admin/assets/js/main.js:6242
 #: admin/src/stores/product.js:279
 msgid "Error: Couldn't activate the plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:2128
-msgid "Activate now"
-msgstr ""
-
-#: admin/assets/js/main.js:2129
-msgid "Activating..."
-msgstr ""
-
-#: admin/assets/js/main.js:2130
-msgid "Install now"
-msgstr ""
-
-#: admin/assets/js/main.js:2131
-msgid "Installing..."
-msgstr ""
-
-#: admin/assets/js/main.js:2132
-msgid "Installed"
-msgstr ""
-
-#: admin/assets/js/main.js:3243
-msgid "Check docs"
-msgstr ""
-
-#: admin/assets/js/main.js:3415
-msgid "Select"
-msgstr ""
-
-#: admin/assets/js/main.js:3478
-#: admin/assets/js/main.js:3506
-msgid "Enter text here..."
-msgstr ""
-
-#: admin/assets/js/main.js:3554
-msgid "Version"
-msgstr ""
-
-#: admin/assets/js/main.js:3554
-msgid "Rate"
-msgstr ""
-
-#: admin/assets/js/main.js:3621
-msgid "AFC docs"
-msgstr ""
-
-#: admin/assets/js/main.js:3623
-msgid "Rate AFC"
-msgstr ""
-
-#: admin/assets/js/main.js:3633
-msgid "Save Options"
-msgstr ""
-
-#: admin/assets/js/main.js:3708
-msgid "Design"
-msgstr ""
-
-#: admin/assets/js/main.js:3718
-msgid "Products"
-msgstr ""
-
-#: admin/assets/js/main.js:4208
-msgid "404"
-msgstr ""
-
-#: admin/assets/js/main.js:4208
-msgid "Oops, page not found!"
-msgstr ""
-
-#: public/assets/src/js/scripts/script.js:294
-msgid "Error processing product quantity update request."
-msgstr ""
-
-#: public/assets/src/js/scripts/script.js:355
-#: public/assets/src/js/scripts/script.js:394
+#: public/assets/src/js/components/coupon.js:76
+#: public/assets/src/js/components/coupon.js:130
+#: public/assets/src/js/components/coupon.js:177
+#: public/assets/src/js/components/coupon.js:221
 msgid "Error processing coupon request."
 msgstr ""
 
-#: public/assets/src/js/scripts/script.js:501
-msgid "Error processing product removal request."
+#: public/assets/src/js/components/product.js:134
+msgid "Error processing product removal request!"
 msgstr ""
 
-#: public/assets/src/js/scripts/script.js:565
-msgid "Error processing product restore request."
+#: public/assets/src/js/components/product.js:204
+msgid "Error processing product restore request!"
 msgstr ""
 
-#: public/assets/src/js/scripts/script.js:786
-msgid "Error updating shipping address."
+#: public/assets/src/js/components/product.js:313
+msgid "Error processing cart update request!"
 msgstr ""
 
-#: public/assets/src/js/scripts/script.js:871
+#: public/assets/src/js/components/shipping.js:73
+msgid "Error updating shipping address!."
+msgstr ""
+
+#: public/assets/src/js/components/shipping.js:124
 msgid "Error processing shipping method update request."
+msgstr ""
+
+#: public/assets/src/js/utilities/toast.helpers.js:103
+msgid "Product"
 msgstr ""

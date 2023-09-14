@@ -5,7 +5,7 @@ Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side 
 Requires at least: 6.0.0
 Requires PHP: 7.4
 Tested up to: 6.3.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,12 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.2.2 - ? September, 2023 =
+
+- Added: JavaScript API.
+- Improvement: Code refactoring (Public JS).
+- Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.
 
 = 1.2.1 - 11 September, 2023 =
 

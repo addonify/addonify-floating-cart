@@ -4,7 +4,7 @@
  * @param {boolean} colophonVisibility. - (true/hide)
  * @param {object} blocks. [discountBlock, subTotalBlock]
  * @return {void} void.
- * @since 1.2.1
+ * @since 1.2.2
  */
 export function setCartColophonBlocksVisibility(colophonVisibility = "hide", blocks = null) {
 

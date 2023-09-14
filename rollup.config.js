@@ -4,16 +4,17 @@ import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
 import terser from '@rollup/plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
-import scss from 'rollup-plugin-scss'
+import scss from 'rollup-plugin-scss';
 import postcss from 'postcss'
+import cssnano from 'cssnano'
 import autoprefixer from 'autoprefixer'
-//import postcssRTLCSS from 'postcss-rtlcss';
-//import { Mode, Source, Autorename } from 'postcss-rtlcss/options';
+import postcssRTLCSS from 'postcss-rtlcss';
+import { Mode, Source } from 'postcss-rtlcss/options';
 
 /**
  * Define extensions to be resolved via alias.
  *
- * @since 1.0.0 
+ * @since 1.2.2
  */
 const customResolver = resolve({
     extensions: ['.mjs', '.js', '.jsx', '.json', '.sass', '.scss']
@@ -27,26 +28,17 @@ const rootDir = path.resolve(__dirname);
  * Prepare global options.
  * Holds path & name of source and destination assets.
  *
- * @since 1.0.0 
+ * @since 1.2.2 
  */
 const assets = {
     "mainJs": {
         "source": "./public/assets/src/app.public.js",
         "dist": "./public/assets/build/public.min.js",
     },
-    "conditionalJs": {
-        "source": "",
-        "dist": "",
-    },
     "scss": {
         "dist": "./public/assets/build/public.min.css",
         "distName": "public.min.css",
-        "exclude": [],
     },
-    "rtlcss": {
-        "source": "./public/assets/build/public.min.css",
-        "dist": "./public/assets/build/public.rtl.min.css",
-    }
 }
 
 export default [
@@ -62,16 +54,17 @@ export default [
             commonjs(),
             terser(),
             scss({
-                outputStyle: 'compressed',
                 output: assets['scss']['dist'],
                 fileName: assets['scss']['distName'],
-                exclude: assets['scss']['exclude'],
                 sourceMap: true,
-                processor: () => {
-                    postcss([
-                        autoprefixer()
-                    ])
-                }
+                processor: async () => postcss([
+                    autoprefixer(),
+                    postcssRTLCSS({
+                        mode: Mode.override,
+                        source: Source.ltr,
+                    }),
+                    cssnano()
+                ])
             }),
             alias({
                 entries: [{

@@ -22,6 +22,8 @@ export function listenWooCommerceEvents() {
     */
     $(document).on("added_to_cart", function (event, data) {
 
+        event.preventDefault();
+
         if (openCartOnAddedToCart) {
 
             AFC.action.cart.open(event);
@@ -68,10 +70,10 @@ export function listenWooCommerceEvents() {
             setTriggerButtonVisibility("hide");
         }
 
-        // Display shopping meter.
+        // Hide shopping meter.
         setShoppingMeterVisibility("hide");
 
-        // Show cart colophon.
+        // Hide cart colophon.
         setCartColophonBlocksVisibility("hide");
 
         // Dispatch event.

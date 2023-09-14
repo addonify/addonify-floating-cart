@@ -117,6 +117,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.2.2 - ? September, 2023 =
 
+- Added: RTL CSS.
 - Added: JavaScript API.
 - Improvement: Code refactoring (Public JS).
 - Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.

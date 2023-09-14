@@ -4,7 +4,7 @@ const fs = require('fs');
 /**
  * Tweak variables as required.
  *
- * @since 1.2.1
+ * @since 1.2.2
  */
 const outputZipName = 'addonify-floating-cart.zip';
 
@@ -49,7 +49,7 @@ const excludeFiles = [
  * Do not change unless required.
  *
  * @return {Promise} promise.
- * @since 1.2.1
+ * @since 1.2.2
  */
 const makeZipFile = async () => {
     new Promise((resolve, reject) => {

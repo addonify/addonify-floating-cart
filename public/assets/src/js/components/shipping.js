@@ -23,6 +23,9 @@ export function listenShippingContainerEvents() {
         e.preventDefault();
 
         $('#adfy__woofc-shipping-container').attr('data_display', 'visible');
+
+        // Dispatch event.
+        AFC.api.event.shippingModalOpened();
     });
 
     $(document).on('click', '#adfy__woofc-hide-shipping-container', function (e) {
@@ -30,6 +33,9 @@ export function listenShippingContainerEvents() {
         e.preventDefault();
 
         $('#adfy__woofc-shipping-container').attr('data_display', 'hidden');
+
+        // Dispatch event.
+        AFC.api.event.shippingModalClosed();
     });
 
     $(document).on('click', '#adfy__woofc-shipping-form .adfy__woofc-shipping-address-form-toggle-button', function (e) {
@@ -98,6 +104,9 @@ export function handleShippingAddressChange() {
 
                         value !== '' ? $(key).replaceWith(value) : $(key).html(value);
                     });
+
+                    // Dispatch event.
+                    AFC.api.event.shippingAddressUpdated(res.fragments);
                 }
             },
             error: function (err) {

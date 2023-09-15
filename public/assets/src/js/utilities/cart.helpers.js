@@ -62,8 +62,10 @@ export function registerCartActionEvents() {
 * @since 1.0.0
 */
 export const refreshCart = async () => {
+
+    setSpinnerVisibility('show');
+
     try {
-        setSpinnerVisibility('show');
         const { fragments } = await $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -81,6 +83,7 @@ export const refreshCart = async () => {
 
         // Replace fragments.
         $.each(fragments, function (key, value) {
+
             $(key).replaceWith(value);
         });
 
@@ -90,9 +93,15 @@ export const refreshCart = async () => {
         // Dispatch event cart updated. Since 1.2.2
         AFC.api.event.cartUpdated(fragments);
 
+        return fragments;
+
     } catch (err) {
-        throw new Error(err);
+
+        console.error(err);
+        return err;
+
     } finally {
+
         setSpinnerVisibility('hide');
     }
 }

@@ -2,6 +2,8 @@ import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.car
 
 const { $ } = AFC;
 
+let timeoutId;
+
 /**
 * Display/Hide alert messages.
 *
@@ -12,48 +14,50 @@ const { $ } = AFC;
 */
 export function alertVisibilityHandler(action = "hide", style = "info", data = "") {
 
-    let timeout;
     const alertEle = $("#adfy__floating-cart #adfy__woofc-cart-errors");
 
     const hideAlert = () => {
 
-        clearTimeout(timeout);
+        if (timeoutId) {
+
+            clearTimeout(timeoutId);
+        }
 
         if (alertEle.hasClass('error')) {
+
             alertEle.removeClass('error');
         }
 
         alertEle.html(" ").addClass('hidden');
     }
 
-    switch (action) {
-        case "show":
-            if (!data) {
-                throw new Error("Alert message is required!");
-            }
+    const showAlert = () => {
 
-            // Check if alert message is error.
-            style === "error" ? alertEle.addClass("error") : alertEle.removeClass("error");
+        if (timeoutId) {
 
-            // Clear the previous message & add new message.
-            alertEle.html(" ").html(data).removeClass('hidden');
+            clearTimeout(timeoutId);
+        }
 
-            // Set timeout to hide the alert message.
-            // Static 10 seconds.
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                hideAlert();
-                clearTimeout(timeout);
-            }, 10000);
-            break;
+        if (style === "error") {
 
-        case "hide":
-            hideAlert();
-            break;
+            alertEle.addClass("error")
+        }
 
-        default:
-            hideAlert();
-            break;
+        alertEle.html(" ").html(data).removeClass('hidden');
+
+        timeoutId = setTimeout(() => hideAlert(), 10000);
+    }
+
+    if (action === "hide") {
+
+        hideAlert();
+
+    } else {
+
+        if (data.length > 0) {
+
+            showAlert();
+        }
     }
 }
 

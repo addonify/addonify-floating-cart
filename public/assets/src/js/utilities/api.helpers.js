@@ -171,22 +171,53 @@ export function registerCustomEventsDispatchers() {
         },
 
         /**
-        * Shipping address updated.
+        * Shipping container opened.
         *
-        * @param {object} event.
         * @return {void} void.
         * @since 1.2.2
         */
-        shippingAddressUpdated: (event) => {
+        shippingModalOpened: () => {
 
-            // [.... code block]
+            $(document).trigger("addonifyFloatingCartShippingContainerOpened");
+
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingContainerOpened"));
         },
 
+        /**
+        * Shipping container closed.
+        *
+        * @return {void} void.
+        * @since 1.2.2
+        */
+        shippingModalClosed: () => {
+
+            $(document).trigger("addonifyFloatingCartShippingContainerClosed");
+
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingContainerClosed"));
+        },
+
+        /**
+        * Shipping address updated.
+        *
+        * @param {object} data.
+        * @return {void} void.
+        * @since 1.2.2
+        */
+        shippingAddressUpdated: (data) => {
+
+            $(document).trigger("addonifyFloatingCartShippingAddressUpdated", data);
+
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingAddressUpdated", {
+                detail: data
+            }));
+
+            // Also trigger cart updated event.
+            AFC.api.event.cartUpdated(data);
+        },
 
         /**
         * Shopping meter threshold reached.
         *
-        * @param {null} null.
         * @return {void} void.
         * @since 1.2.2
         */

@@ -178,9 +178,9 @@ export function registerCustomEventsDispatchers() {
         */
         shippingModalOpened: () => {
 
-            $(document).trigger("addonifyFloatingCartShippingContainerOpened");
+            $(document).trigger("addonifyFloatingCartShippingModalOpened");
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingContainerOpened"));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingModalOpened"));
         },
 
         /**
@@ -191,9 +191,9 @@ export function registerCustomEventsDispatchers() {
         */
         shippingModalClosed: () => {
 
-            $(document).trigger("addonifyFloatingCartShippingContainerClosed");
+            $(document).trigger("addonifyFloatingCartShippingModalClosed");
 
-            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingContainerClosed"));
+            document.dispatchEvent(new CustomEvent("addonifyFloatingCartShippingModalClosed"));
         },
 
         /**

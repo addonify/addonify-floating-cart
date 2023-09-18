@@ -6,14 +6,11 @@ import { registerToastEvent } from 'src/js/utilities/toast.helpers';
 
 import { listenCartEvents } from 'src/js/events/cart.events';
 import { listenWooCommerceEvents } from 'src/js/events/woocommerce.events';
+
 import { initCustomScrollbar } from 'src/js/components/scrollbar';
 import { listenProductQtyFormEvents, listenProductRemoveEvents, listenProductRestoreEvents } from 'src/js/components/product';
 import { listenCouponContainerEvents, applyCouponHandler, removeCouponHandler } from 'src/js/components/coupon';
-import {
-    listenShippingContainerEvents,
-    handleShippingAddressChange,
-    handleShippingMethodChange
-} from 'src/js/components/shipping';
+import { listenShippingContainerEvents, handleShippingAddressChange, handleShippingMethodChange } from 'src/js/components/shipping';
 
 /**
 * DOMContentLoaded event listener.
@@ -37,12 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
     registerToastEvent();
 
     $(document).ready(function () {
+
+        // Refresh cart.
         refreshCart();
 
         // Cart related events.
         listenCartEvents();
-
-        // WooCommerce related events.
         listenWooCommerceEvents();
 
         // Product related events.

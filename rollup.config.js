@@ -46,8 +46,8 @@ export default [
         input: assets['mainJs']['source'],
         output: {
             file: assets['mainJs']['dist'],
-            format: 'umd', // "iife", "umd", "esm", "cjs"
             name: 'mainJs',
+            format: 'umd', // "iife", "umd", "esm", "cjs"
         },
         plugins: [
             resolve(),

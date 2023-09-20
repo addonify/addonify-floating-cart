@@ -6,6 +6,13 @@
  */
 export const initCustomScrollbar = () => {
 
+    if (typeof PerfectScrollbar !== 'function') {
+
+        console.warn("Info: Addonify Floating Cart, PerfectScrollbar is not defined. Perfect scroll bar won't be initialized.");
+
+        return;
+    }
+
     const targetEle = document.getElementById("adfy__floating-cart");
 
     const config = { attributes: false, childList: true, subtree: true };

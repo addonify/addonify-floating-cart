@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.3.1
-Stable tag: 1.2.1
+Tested up to: 6.4.0
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Addonify Floating Cart is a free WooCommerce addon that adds an interactive stic
 
 Addonify Floating Cart is packed with lots of features and functionalities. The necessary cart actions such as adding product into the cart, removing product from the cart with undo functionality, updating cart quantities, applying coupon discounts etc. The sidebar shopping cart can be toggled on floating cart button click, or Add to Cart button click, or toast notification button click, or View Cart button click.
 
-For vistors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
+For visitors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
 
 🌍 [Live Demo Preview](https://demo.addonify.com/woo/01/floating-cart/)
 📋 [Documentation Guide](https://docs.addonify.com/kb/floating-cart/)
@@ -75,7 +75,7 @@ We are open to any kind of discussions  that can help improve this plugin. Share
 
 ####  🌐 TRANSLATIONS
 
-If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [*transalte.wordpress.org*](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
+If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
 
 
 == Frequently Asked Questions ==
@@ -109,11 +109,21 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 1. Addonify Floating Cart setting page on admin dashboard.
 2. Addonify Floating Cart design setting page on admin dashboard.
-3. Floating Cart drawer on frontend.
-4. Floating Cart discount section on frontend.
+3. Floating Cart drawer on the Front-End.
+4. Floating Cart discount section on the Front-End.
+4. Floating Cart shipping section on the Front-End.
 
 
 == Changelog ==
+
+= 1.2.2 - 31 October, 2023 =
+
+- Added: RTL CSS.
+- Added: JavaScript API.
+- Improvement: Code refactoring (Public JS).
+- Tested: WordPress v6.4
+- Tested: WooCommerce 8.2.1
+- Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.
 
 = 1.2.1 - 11 September, 2023 =
 
@@ -221,7 +231,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Update: Static texts in UDP Agents are now translation ready.
 - Removed: Option for showing/hiding tax at cart footer section.
-- Removed: Option for show/hide shipping calculation in floating cart. Shippping option now works with woocommerce options.
+- Removed: Option for show/hide shipping calculation in floating cart. Shipping option now works with WooCommerce options.
 - Added: Option for compare Shopping Meter Threshold with Subtotal Before or After Discount.
 
 

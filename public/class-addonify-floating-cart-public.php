@@ -119,11 +119,11 @@ class Addonify_Floating_Cart_Public {
 			return;
 		}
 
-		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.css', array(), $this->version, 'all' );
 
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.css', array(), $this->version, 'all' );
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/public.min.css', array(), $this->version, 'all' );
 
 		if ( (int) addonify_floating_cart_get_option( 'load_styles_from_plugin' ) === 1 ) {
 
@@ -160,11 +160,11 @@ class Addonify_Floating_Cart_Public {
 			}
 		}
 
-		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',
@@ -193,6 +193,7 @@ class Addonify_Floating_Cart_Public {
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
 				'toastNotificationButton'                  => $this->toast_notification_button_template(),
 				'hideTriggerButtonIfCartIsEmpty'           => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
+				'hideCartOnOverlayClicked'				   => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 			)
 		);

@@ -1,16 +1,14 @@
-/*===========================================================
-
-## Plugin: Addonify Floating Cart For WooCommerce
-## Author: https://addonify.com/
-## Since: 1 July 2022
-
-=====================================*/
+/**
+*
+* @project: Addonify Floating Cart For WooCommerce
+* @author: https://addonify.com/
+* @since: 1 July 2022
+*/
 
 /**
 *
-* Import abstracts
+* Use variables and mixins
 */
-
 @use './abstracts/variables' as *;
 @use './abstracts/mixins' as *;
 
@@ -19,7 +17,6 @@
 *
 * Import utilities classes
 */
-
 @import './utilities/classes';			
 
 
@@ -27,7 +24,6 @@
 *
 * Import components
 */
-
 @import './components/alert';
 @import './components/buttons';
 @import './components/cart'; // Main Cart Model
@@ -40,5 +36,4 @@
 *
 * Import keyframes
 */
-
 @import './utilities/keyframe';				

@@ -75,3 +75,10 @@ export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remo
 export const ajaxUpdateShippingAddressAction = addonifyFloatingCartJSObject.updateShippingInfo;
 
 export const countriesToStates = addonifyFloatingCartJSObject.states;
+
+/**
+* Localization: Shipping calculator settings.
+*
+* @since: 1.2.2
+*/
+export const hideCartOnOverlayClick = addonifyFloatingCartJSObject.hideCartOnOverlayClicked === '1' ? true : false;

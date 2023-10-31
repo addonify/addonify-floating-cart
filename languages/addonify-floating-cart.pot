@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-14T11:12:30+00:00\n"
+"POT-Creation-Date: 2023-10-31T06:34:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: addonify-floating-cart\n"
@@ -861,105 +861,105 @@ msgstr ""
 msgid "Later"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:253
+#: public/class-addonify-floating-cart-public.php:254
 msgid "Please remove it from cart."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:256
+#: public/class-addonify-floating-cart-public.php:257
 msgid "Product has been removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:258
+#: public/class-addonify-floating-cart-public.php:259
 msgid " is no more available in stock. "
 msgstr ""
 
 #. translators: 1: number of cart items.
-#: public/class-addonify-floating-cart-public.php:294
+#: public/class-addonify-floating-cart-public.php:295
 msgctxt "number of cart items"
 msgid " %1$s Item"
 msgid_plural "%1$s Items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/class-addonify-floating-cart-public.php:317
+#: public/class-addonify-floating-cart-public.php:318
 #: public/partials/sidebar-cart.php:29
 #: admin/assets/js/main.js:1253
 msgid "Go Back"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:400
+#: public/class-addonify-floating-cart-public.php:401
 msgid "Invalid product id or cart item key."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:412
-#: public/class-addonify-floating-cart-public.php:845
+#: public/class-addonify-floating-cart-public.php:413
+#: public/class-addonify-floating-cart-public.php:846
 #: public/partials/cart-sections/body.php:76
 msgid "Your cart is currently empty."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:422
-#: public/class-addonify-floating-cart-public.php:489
-#: public/class-addonify-floating-cart-public.php:589
-#: public/class-addonify-floating-cart-public.php:708
-#: public/class-addonify-floating-cart-public.php:809
-#: public/class-addonify-floating-cart-public.php:853
+#: public/class-addonify-floating-cart-public.php:423
+#: public/class-addonify-floating-cart-public.php:490
+#: public/class-addonify-floating-cart-public.php:590
+#: public/class-addonify-floating-cart-public.php:709
+#: public/class-addonify-floating-cart-public.php:810
+#: public/class-addonify-floating-cart-public.php:854
 msgid "Invalid security token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:460
+#: public/class-addonify-floating-cart-public.php:461
 msgid "Restored successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:463
+#: public/class-addonify-floating-cart-public.php:464
 msgid "Could not be restored."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:467
+#: public/class-addonify-floating-cart-public.php:468
 msgid "Already exists in cart"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:471
+#: public/class-addonify-floating-cart-public.php:472
 msgid "Key Missing"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:546
+#: public/class-addonify-floating-cart-public.php:547
 msgid "Quantity must be more than zero."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:558
+#: public/class-addonify-floating-cart-public.php:559
 msgid "Not available in the stock."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:581
+#: public/class-addonify-floating-cart-public.php:582
 msgid "Quantity updated successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:651
-#: public/class-addonify-floating-cart-public.php:705
+#: public/class-addonify-floating-cart-public.php:652
+#: public/class-addonify-floating-cart-public.php:706
 msgid "Please enter a coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:654
+#: public/class-addonify-floating-cart-public.php:655
 msgid "Invalid secutrity token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:702
+#: public/class-addonify-floating-cart-public.php:703
 msgid "Coupon code removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:702
+#: public/class-addonify-floating-cart-public.php:703
 msgid "Error removing coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:768
+#: public/class-addonify-floating-cart-public.php:769
 msgid "Please enter a valid postcode / ZIP."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:879
+#: public/class-addonify-floating-cart-public.php:880
 msgid " has been removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:879
+#: public/class-addonify-floating-cart-public.php:880
 msgid "Undo?"
 msgstr ""
 
@@ -1172,23 +1172,23 @@ msgstr ""
 msgid "Error processing coupon request."
 msgstr ""
 
-#: public/assets/src/js/components/product.js:134
+#: public/assets/src/js/components/product.js:133
 msgid "Error processing product removal request!"
 msgstr ""
 
-#: public/assets/src/js/components/product.js:204
+#: public/assets/src/js/components/product.js:203
 msgid "Error processing product restore request!"
 msgstr ""
 
-#: public/assets/src/js/components/product.js:313
+#: public/assets/src/js/components/product.js:312
 msgid "Error processing cart update request!"
 msgstr ""
 
-#: public/assets/src/js/components/shipping.js:73
+#: public/assets/src/js/components/shipping.js:78
 msgid "Error updating shipping address!."
 msgstr ""
 
-#: public/assets/src/js/components/shipping.js:124
+#: public/assets/src/js/components/shipping.js:132
 msgid "Error processing shipping method update request."
 msgstr ""
 

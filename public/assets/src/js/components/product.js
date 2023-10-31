@@ -4,8 +4,7 @@ import {
     ajaxUrl,
     ajaxUpdateCartAction,
     ajaxRemoveFromCartAction,
-    ajaxRestoreCartItemAction,
-
+    ajaxRestoreCartItemAction
 } from "src/js/global/localize.data";
 import { alertVisibilityHandler } from "src/js/utilities/alert.helpers";
 import { setSpinnerVisibility } from "src/js/components/spinner";

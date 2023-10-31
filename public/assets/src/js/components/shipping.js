@@ -5,7 +5,6 @@ import {
     countriesToStates,
     ajaxUpdateShippingAddressAction
 } from "src/js/global/localize.data";
-
 import { setSpinnerVisibility } from "src/js/components/spinner";
 
 const { $ } = AFC;

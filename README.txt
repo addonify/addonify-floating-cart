@@ -4,7 +4,7 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.3.1
+Tested up to: 6.4.0
 Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -116,12 +116,13 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.2 - ? September, 2023 =
+= 1.2.2 - 31 October, 2023 =
 
 - Added: RTL CSS.
 - Added: JavaScript API.
-- Tested: WooCommerce v8.1.1.
 - Improvement: Code refactoring (Public JS).
+- Tested: WordPress v6.4
+- Tested: WooCommerce 8.2.1
 - Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.
 
 = 1.2.1 - 11 September, 2023 =

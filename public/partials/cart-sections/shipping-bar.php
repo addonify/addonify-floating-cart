@@ -9,39 +9,14 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-/**
-* @var float $percent - The percentage of the cart amount.
-* @since 1.0.0
-*/
-$percent = number_format( floatval( $per ), 2 );
-
-/**
- * @var float $amount_left - The amount left formatted with two decimal places.
- * @since 1.0.0
- */
-$amount_left = number_format( floatval( $left ), 2 );
-
-/**
-* @var boolean $threashold_reached
-* @since 1.2.0
-*/
-$threashold_reached = $percent >= 100 && $amount_left <= 0;
 ?>
-<div 
-	class="adfy__woofc-shipping-bar 
-	<?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>"
-	data-threashold_reached="<?php echo esc_attr( $threashold_reached ? 'true' : 'false' ); ?>" 
->
+<div class="adfy__woofc-shipping-bar <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>">
 	<span class="adfy__woofc-shipping-text">
 		<?php
-			if ( $threashold_reached ) {
-
-				echo esc_html( $post_threshold_label );
-
-			} else {
-
+			if ( $per < 100 && $left > 0 ) {
 				echo wp_kses_post( str_replace( '{amount}', wc_price( $left ), $pre_threshold_label ) );
+			} else {
+				echo esc_html( $post_threshold_label );
 			}
 		?>
 	</span>
@@ -49,8 +24,8 @@ $threashold_reached = $percent >= 100 && $amount_left <= 0;
 		<div class="total-bar shipping-bar"></div>
 		<div
 			class="live-progress-bar shipping-bar" 
-			data_percentage="<?php echo esc_attr( $percent ); ?>" 
-			style="width: <?php echo esc_attr( $percent ); ?>%">
+			data_percentage="<?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>" 
+			style="width: <?php echo esc_attr( number_format( floatval( $per ) ), 2 ); ?>%">
 		</div>
 	</div>
 </div>

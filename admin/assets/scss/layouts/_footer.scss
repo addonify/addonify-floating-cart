@@ -54,7 +54,7 @@
                     font-size: 14px;
                     font-weight: normal;
                     line-height: 1;
-                    @include transition_delay();
+                    @include transation_delay();
 
                     &:hover {
 

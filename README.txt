@@ -1,11 +1,11 @@
 === Addonify Floating Cart For WooCommerce ===
 
 Contributors: addonify
-Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
-Requires at least: 6.0.0
+Tags: cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, ajax cart
+Requires at least: 5.9 or higher
 Requires PHP: 7.4
-Tested up to: 6.4.0
-Stable tag: 1.2.2
+Tested up to: 6.2.2
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Addonify Floating Cart is a free WooCommerce addon that adds an interactive stic
 
 Addonify Floating Cart is packed with lots of features and functionalities. The necessary cart actions such as adding product into the cart, removing product from the cart with undo functionality, updating cart quantities, applying coupon discounts etc. The sidebar shopping cart can be toggled on floating cart button click, or Add to Cart button click, or toast notification button click, or View Cart button click.
 
-For visitors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
+For vistors attention, display toast notification when a product is added into the cart and display shopping cart when clicked on it. Also to provide information on the schemes that you have created to engage visitors, display shopping meter with targeted amount and interactive custom text.
 
 🌍 [Live Demo Preview](https://demo.addonify.com/woo/01/floating-cart/)
 📋 [Documentation Guide](https://docs.addonify.com/kb/floating-cart/)
@@ -39,8 +39,6 @@ For visitors attention, display toast notification when a product is added into 
 - Sidebar cart display position.
 - Toast notification when product is added into the cart.
 - Open cart when product is added to the WooCommerce cart.
-- Open cart when trigger button is hovered.
-- Conditionally disable floating cart on cart and checkout pages.
 - Choose shipping address and calculate shipping cost in the cart.
 - Supports TAX calculation in the cart.
 - Supports all WooCommerce product types.
@@ -75,7 +73,7 @@ We are open to any kind of discussions  that can help improve this plugin. Share
 
 ####  🌐 TRANSLATIONS
 
-If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
+If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [*transalte.wordpress.org*](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
 
 
 == Frequently Asked Questions ==
@@ -109,57 +107,13 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 1. Addonify Floating Cart setting page on admin dashboard.
 2. Addonify Floating Cart design setting page on admin dashboard.
-3. Floating Cart drawer on the Front-End.
-4. Floating Cart discount section on the Front-End.
-4. Floating Cart shipping section on the Front-End.
+3. Floating Cart drawer on frontend.
+4. Floating Cart discount section on frontend.
 
 
 == Changelog ==
 
-= 1.2.2 - 31 October, 2023 =
-
-- Added: RTL CSS.
-- Added: JavaScript API.
-- Improvement: Code refactoring (Public JS).
-- Tested: WordPress v6.4
-- Tested: WooCommerce 8.2.1
-- Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.
-
-= 1.2.1 - 11 September, 2023 =
-
-- Fix: Issue caused by rendering of cart sidebar modal template in cart and checkout page.
-- Update: Checked whether the cart fragments is undefined and is object in `added_to_cart` JS event.
-- Improvement: Code refactoring.
-- Tweak: Plugin setting page header design.
-
-= 1.2.0 - 01 September, 2023 =
-
-- New: Brand new plugin setting page design.
-- Added: Option to open cart modal on trigger button hover.
-- Added: Plugin setting page notification messages.
-- Added: Option to set separate background color for shopping meter once the threshold amount is reached.
-- Fix: Plugin setting page link in plugins listing page is displayed before `Deactivate` link.
-- Fix: Documentation link in plugin setting page header section.
-- Improvement: Used `plugins_loaded` hook to run the plugin.
-- Improvement: Plugin setting page vue js code
-- Improvement: Plugin setting page SCSS.
-- Improvement: Plugin setting page REST API options.
-- Improvement: Number input control (Vue JS).
-- Improvement: Slider control (Vue JS).
-- Updated: element-ui to v2.3.8 (Vue JS).
-- Tested: WordPress version 6.3.1.
-- Tested: WooCommerce version 8.0.3.
-
-
-= 1.1.11 - 18 July, 2023 =
-
-- Fix: Shopping meter threshold amount & progress bar issue. Parsed remaining threshold amount & progress bar percentage to float value before evaluating the condition. #213
-
-= 1.1.10 - 16 July, 2023 =
-
-- Fix: Update Cart trigger button visibility state. Now trigger button also listens the cart event. #221
-
-= 1.1.9 - 14 July, 2023 =
+= 1.1.9 - ? July, 2023 =
 
 - Added: Option, Trigger button badge text color on hover. #218 
 - Added: Option, Trigger button badge background color on hover. #218
@@ -231,7 +185,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Update: Static texts in UDP Agents are now translation ready.
 - Removed: Option for showing/hiding tax at cart footer section.
-- Removed: Option for show/hide shipping calculation in floating cart. Shipping option now works with WooCommerce options.
+- Removed: Option for show/hide shipping calculation in floating cart. Shippping option now works with woocommerce options.
 - Added: Option for compare Shopping Meter Threshold with Subtotal Before or After Discount.
 
 

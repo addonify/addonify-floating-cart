@@ -6,22 +6,18 @@
 /.github
 /node_modules
 /admin/src/
-/admin/assets/scss/
+/admin/assets/scss/           
 /public/assets/src/
 
 .distignore
 .gitignore
 .babelrc
 .editorconfig
-rollup.config.js
-rollup.config.cjs
-build.config.cjs
+gulpfile.js
 webpack.config.js
 webpack.mix.js
-webpack.mix.cjs
 package.json
 package-lock.json
 sftp-config.json
 composer.json
 composer.lock
-notice.json

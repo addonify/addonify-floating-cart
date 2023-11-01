@@ -57,7 +57,10 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function init() {
 
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0 ) {
+		if (
+			! class_exists( 'WooCommerce' ) ||
+			(int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0
+		) {
 			return;
 		}
 
@@ -74,10 +77,6 @@ class Addonify_Floating_Cart_Public {
 	 * Register ajax actions.
 	 */
 	public function register_ajax_actions() {
-
-		if ( is_cart() || is_checkout() ) {
-			return;
-		}
 
 		add_action( 'wp_ajax_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_add_to_cart', array( $this, 'add_to_cart' ) );
@@ -114,16 +113,15 @@ class Addonify_Floating_Cart_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
 		if ( is_cart() || is_checkout() ) {
 			return;
 		}
 
-		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/notfy.css', array(), $this->version, 'all' );
 
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/css/conditional/perfect-scrollbar.css', array(), $this->version, 'all' );
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/public.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/css/public.css', array(), $this->version, 'all' );
 
 		if ( (int) addonify_floating_cart_get_option( 'load_styles_from_plugin' ) === 1 ) {
 
@@ -160,11 +158,11 @@ class Addonify_Floating_Cart_Public {
 			}
 		}
 
-		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/notfy.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/build/js/conditional/perfect-scrollbar.min.js', array(), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/js/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
 
 		wp_localize_script(
 			$this->plugin_name . '-public',
@@ -187,13 +185,10 @@ class Addonify_Floating_Cart_Public {
 				'displayToastNotificationButton'           => addonify_floating_cart_get_option( 'display_show_cart_button' ),
 				'addonifyFloatingCartNotifyMessage'        => addonify_floating_cart_get_option( 'added_to_cart_notification_text' ),
 				'toast_notification_display_position'      => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
-				'openCartModalOnTriggerButtonHover'        => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ),
 				'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option( 'open_cart_modal_after_click_on_view_cart' ),
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
 				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
 				'toastNotificationButton'                  => $this->toast_notification_button_template(),
-				'hideTriggerButtonIfCartIsEmpty'           => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
-				'hideCartOnOverlayClicked'				   => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 			)
 		);
@@ -219,7 +214,11 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function footer_content() {
 
-		if ( is_cart() || is_checkout() ) {
+		if (
+			is_cart() ||
+			is_checkout()
+		) {
+
 			return;
 		}
 
@@ -943,8 +942,8 @@ class Addonify_Floating_Cart_Public {
 			'addonify_floating_cart_shopping_meter_bar',
 			'<div 
 				class="live-progress-bar shipping-bar" 
-				data_percentage="' . esc_attr( number_format( floatval( $per ), 2 ) ) . '" 
-				style="width:' . esc_attr( number_format( floatval( $per ), 2 ) ) . '%"
+				data_percentage="' . esc_attr( number_format( floatval( $per ) ), 2 ) . '" 
+				style="width:' . esc_attr( number_format( floatval( $per ) ), 2 ) . '%"
 			></div>'
 		);
 	}
@@ -971,7 +970,7 @@ class Addonify_Floating_Cart_Public {
 			'--adfy_woofc_toggle_button_border_color'      => addonify_floating_cart_get_option( 'toggle_button_border_color' ),
 			'--adfy_woofc_toggle_button_border_color_hover' => addonify_floating_cart_get_option( 'toggle_button_on_hover_border_color' ),
 			'--adfy_woofc_toggle_button_badge_text_color'  => addonify_floating_cart_get_option( 'toggle_button_badge_label_color' ),
-			'--adfy_woofc_toggle_button_badge_text_color_hover' => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
+			'--adfy_woofc_toggle_button_badge_text_color_hover'  => addonify_floating_cart_get_option( 'toggle_button_label_on_hover_color' ),
 			'--adfy_woofc_toggle_button_badge_background_color' => addonify_floating_cart_get_option( 'toggle_button_badge_background_color' ),
 			'--adfy_woofc_toggle_button_badge_background_color_hover' => addonify_floating_cart_get_option( 'toggle_button_badge_on_hover_background_color' ),
 			'--adfy_woofc_toggle_button_badge_width'       => addonify_floating_cart_get_option( 'toggle_button_badge_width' ), // New.
@@ -1010,7 +1009,6 @@ class Addonify_Floating_Cart_Public {
 			// Shopping meter.
 			'--adfy_woofc_shopping_meter_initial_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_initial_background_color' ),
 			'--adfy_woofc_shopping_meter_progress_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_progress_background_color' ),
-			'--adfy_woofc_shopping_meter_threashold_reached_background_color' => addonify_floating_cart_get_option( 'cart_shopping_meter_threashold_reached_background_color' ),
 
 			// Toast notification.
 			'--adfy_woofc_toast_text_color'                => addonify_floating_cart_get_option( 'toast_notification_text_color' ),

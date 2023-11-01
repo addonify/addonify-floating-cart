@@ -10,10 +10,9 @@
     left: 160px;
     right: 0;
     top: 30px;
+    padding: 10px 30px 10px 30px;
+    border-bottom: 1px solid #e5e5e5;
     background-color: white;
-    padding: 10px 30px;
-    border-bottom: 1px solid #EEEEEE;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
 
     .adfy-row {
 
@@ -47,18 +46,12 @@
         align-items: center;
         justify-content: flex-end;
 
-        .action-buttons {
+        .buttons {
 
             @include flex();
             align-items: center;
-            gap: 60px;
-
-            .links {
-
-                @include flex();
-                align-items: center;
-                gap: 30px;
-            }
+            justify-content: flex-end;
+            gap: 30px;
         }
     }
 }

@@ -1,23 +1,12 @@
 <script setup>
 	import { computed } from "vue";
 	import { ElCheckboxGroup, ElCheckboxButton } from "element-plus";
-
-	/**
-	 * Define props.
-	 *
-	 * @since 1.0.0
-	 */
 	const props = defineProps({
 		modelValue: [Array],
 		choices: Object,
 	});
 
-	/**
-	 * Define emit.
-	 *
-	 * @since 1.0.0
-	 */
-	const emit = defineEmits(["update:modelValue"]);
+	const emit = defineEmits(["update:modelValue"]); // Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
 	const value = computed({
 		get() {
 			return props.modelValue;

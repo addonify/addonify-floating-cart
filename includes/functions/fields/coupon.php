@@ -19,14 +19,14 @@ function addonify_floating_cart_coupon_settings() {
 
 	return array(
 		'display_applied_coupons'        => array(
-			'label'       => __( 'Display applied coupons', 'addonify-floating-cart' ),
+			'label'       => __( 'Display Applied Coupons', 'addonify-floating-cart' ),
 			'description' => __( 'Enable this option to display all applied coupons.', 'addonify-floating-cart' ),
 			'type'        => 'switch',
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_applied_coupons' ),
 		),
 		'cart_apply_coupon_button_label' => array(
-			'label'       => __( 'Coupon apply button label', 'addonify-floating-cart' ),
+			'label'       => __( 'Coupon Apply Button Label', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'Apply coupon', 'addonify-floating-cart' ),
 			'dependent'   => array( 'enable_floating_cart' ),

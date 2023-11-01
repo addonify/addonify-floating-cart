@@ -1,7 +1,7 @@
 /*!
-  * vue-router v4.2.4
-  * (c) 2023 Eduardo San Martin Morote
+  * vue-router v4.1.3
+  * (c) 2022 Eduardo San Martin Morote
   * @license MIT
   */
 
-/*! Element Plus Icons Vue v2.1.0 */
+/*! Element Plus Icons Vue v2.0.9 */

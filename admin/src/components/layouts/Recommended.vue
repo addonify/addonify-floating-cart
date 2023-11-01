@@ -4,41 +4,17 @@ import { ElButton, ElMessage } from "element-plus";
 import { Loading } from "@element-plus/icons-vue";
 import { useProductStore } from "../../stores/product";
 
-/**
- * Define props.
- *
- * @since 1.0.0
- */
 const props = defineProps({
-	slug: {
-		type: String,
-		required: false,
-	},
-	name: {
-		type: String,
-		required: false,
-	},
-	description: {
-		type: String,
-		required: false,
-	},
-	thumb: {
-		type: String,
-		required: false,
-	},
-	category: {
-		type: String,
-		required: false,
-	},
-	status: {
-		type: String,
-		required: false,
-	},
+	slug: String,
+	name: String,
+	description: String,
+	thumb: String,
+	status: String,
 });
 
 const { __ } = wp.i18n;
 const proStore = useProductStore();
-const { slug, name, thumb, description, category } = props;
+const { slug, name, thumb, description } = props;
 
 const isLoading = ref(false);
 const isDisabled = ref(false);
@@ -92,7 +68,6 @@ const installAddonHandler = async (slug) => {
 
 <template>
 	<div class="adfy-product-card">
-		<span class="adfy-category">{{ category }}</span>
 		<div class="adfy-product-box">
 			<figure class="adfy-product-thumb">
 				<img :src="thumb" :alt="slug" />

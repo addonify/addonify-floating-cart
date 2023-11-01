@@ -1,27 +1,13 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
-import router from './router/index.js'
+import router from './router'
+import Vue3ColorPicker from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
 
-/**
-*  Instantiate pinia.
-*
-* @since 1.0.0
-*/
 const pinia = createPinia()
 const app = createApp(App);
-
-/**
-* App use.
-*
-* @since 1.0.0
-*/
 app.use(pinia)
 app.use(router)
-
-/**
-* Mount the app.
-*
-* @since 1.0.0
-*/
-app.mount("#___adfy-floatingcart-app___");
+app.use(Vue3ColorPicker)
+app.mount("#___adfy-floating-cart-app___");

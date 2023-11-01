@@ -8,6 +8,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
+@function make_rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
 /* -------------------------------------------------------------------------- 
 	Mixin: Flex
   -------------------------------------------------------------------------- */
@@ -42,9 +46,14 @@
 	Mixin: Transitions
   -------------------------------------------------------------------------- */
 
-@mixin transition_delay() {
+@mixin transation_delay() {
 
     transition: all 0.5s ease;
+}
+
+@mixin transation_delay_dymanic($value) {
+
+    transition: all $value ease;
 }
 
 /* -------------------------------------------------------------------------- 
@@ -55,14 +64,12 @@
 
     opacity: 0;
     visibility: hidden;
-    backface-visibility: hidden;
 }
 
 @mixin visibility_visible () {
 
     opacity: 1;
     visibility: visible;
-	backface-visibility: visible;
 }
 
 /* -------------------------------------------------------------------------- 
@@ -74,34 +81,70 @@
     transform: scale($value);
 }
 
-
 /* -------------------------------------------------------------------------- 
-	Mixin: Gradient
+	Mixin: WooCommerce product columns.
   -------------------------------------------------------------------------- */
 
-@mixin background-clip() {
+@mixin grid_columns($columns) {
 
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	-webkit-text-fill-color: transparent; 
-	-moz-text-fill-color: transparent;
+  @if $columns == 1 {
+      grid-template-columns: repeat(1, 1fr);
+  }
+  @else if $columns == 2 {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  @else if $columns == 3 {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  @else if $columns == 4 {
+      grid-template-columns: repeat(4, 1fr);
+  }
+  @else if $columns == 5 {
+      grid-template-columns: repeat(5, 1fr);
+  }
+  @else if $columns == 6 {
+      grid-template-columns: repeat(6, 1fr);
+  }
+  @else {
+      grid-template-columns: repeat(1, 1fr);
+  }
 }
 
-@mixin heading_gradient( $color: 'purple') {
 
-	@if $color == 'purple' {
+/* -------------------------------------------------------------------------- 
+	Mixin: Screen reader text
+  -------------------------------------------------------------------------- */
 
-		background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); 
+@mixin screen_reader_text() {
+
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/* -------------------------------------------------------------------------- 
+	Mixin: Clearfix
+  -------------------------------------------------------------------------- */
+
+@mixin clearfix() {
+
+  &::before,
+	&::after {
+
+		content: "";
+		display: table;
 	}
 
-	@include background-clip();
-}
+	&::after {
 
-/* -------------------------------------------------------------------------- 
-	Mixin: Jumbo Box Shadow
-  -------------------------------------------------------------------------- */
-  
-@mixin jumbo_box_shadow() {
-
-    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.1);
+		clear: both;
+	}
 }

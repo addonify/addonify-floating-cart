@@ -2,22 +2,21 @@
 import { computed } from "vue";
 import { ElInput } from "element-plus";
 
-/**
- * Define props
- *
- * @since 1.0.0
- */
+const { __ } = wp.i18n;
+
 const props = defineProps({
-	modelValue: String,
-	placeholder: String,
+	modelValue: {
+		required: true,
+		type: String,
+	},
+	placeholder: {
+		required: false,
+		type: String,
+	},
 });
 
-/**
- * Define emit.
- * Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
- *
- * @since 1.0.0
- */
+// Ref: https://vuejs.org/guide/components/events.html#usage-with-v-model
+
 const emit = defineEmits(["update:modelValue"]);
 const value = computed({
 	get() {
@@ -28,7 +27,7 @@ const value = computed({
 	},
 });
 
-const { __ } = wp.i18n;
+//console.log(props.modelValue);
 </script>
 <template>
 	<el-input

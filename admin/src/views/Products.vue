@@ -1,37 +1,38 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onBeforeMount } from "vue";
 import Loading from "../components/layouts/Loading.vue";
 import Navigation from "../components/layouts/Navigation.vue";
 import Recommended from "../components/layouts/Recommended.vue";
-import Notice from "../components/layouts/Notice.vue";
-
 import { useProductStore } from "../stores/product";
 
 const proStore = useProductStore();
 
-/**
- * Hook: onMounted.
- *
- * @since 1.0.0
- */
+onBeforeMount(() => {
+	/**
+	 *
+	 * Check product store state in memory before fetching data from server.
+	 *
+	 * @since: 1.1.7
+	 */
+	if (!proStore.haveAddonStateInMemory) {
+		proStore.fetchInstalledAddons();
+	}
+});
 onMounted(() => {
 	/**
-	 * Get the recommended products list.
-	 * Use cache if available.
 	 *
-	 * @since 1.2.0
+	 * Check product store state in memory before fetching data from github repo.
+	 *
+	 * @since: 1.1.7
 	 */
-	if (!proStore.hasAddonsStateInMemory) {
-		proStore.getRecommdedProductsList().then((res) => {
-			res.status === 200 ? proStore.fetchInstalledAddons() : null;
-		});
+	if (!proStore.haveAddonStateInMemory) {
+		proStore.fetchGithubRepo();
 	}
 });
 </script>
 
 <template>
-	<section class="adfy-container" id="addonify-layout">
-		<Notice />
+	<section class="adfy-container">
 		<main class="adfy-columns main-content">
 			<aside class="adfy-col start aside secondary">
 				<Navigation />
@@ -55,7 +56,6 @@ onMounted(() => {
 									:name="addon.name"
 									:description="addon.description"
 									:thumb="addon.thumbnail"
-									:category="addon.category"
 									:status="proStore.allProductSlugStatus[key]"
 								/>
 							</template>

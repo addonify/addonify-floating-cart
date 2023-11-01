@@ -1,47 +1,51 @@
 <script setup>
+import { useOptionsStore } from "../../stores/options";
 import OptionBox from "./OptionBox.vue";
-import JumboBox from "./design/JumboBox.vue";
 import SectionTitle from "./SectionTitle.vue";
-
-/**
- * Define props.
- *
- * @since 1.0.0
- */
+import Accordion from "./design/Accordion.vue";
 const props = defineProps({
-	section: {
-		type: Object,
-		required: true,
-	},
-	sectionKey: {
-		type: String,
-		required: true,
-	},
-	reactiveState: {
-		type: Object,
-		required: true,
-	},
-	currentPage: {
-		type: String,
-		required: true,
-	},
+	section: Object,
+	//sectionKey: String,
+	reactiveState: Object,
+	currentPage: String,
 });
+
+const store = useOptionsStore();
+
+const checkSection = (key) => {
+	return key.includes("general") || key.includes("custom_css");
+};
+
+const enablePluginStyles = () => {
+	return store.options.load_styles_from_plugin;
+};
+
+//console.log(props.section);
 </script>
 <template>
-	<template v-if="section.type === 'render-jumbo-box'">
-		<JumboBox
-			:section="props.section"
-			:reactiveState="props.reactiveState"
-		/>
-	</template>
-	<template v-else>
+	<div
+		v-for="(section, sectionKey) in props.section.sections"
+		class="adfy-ui-options"
+	>
 		<OptionBox
-			:section="props.section"
-			:sectionKey="props.sectionKey"
+			v-if="checkSection(sectionKey)"
+			:section="section"
+			:sectionKey="sectionKey"
 			:reactiveState="props.reactiveState"
 			:currentPage="props.currentPage"
 		>
-			<SectionTitle :section="props.section" />
+			<SectionTitle
+				:section="section"
+				:sectionkey="sectionKey"
+				:currentPage="props.currentPage"
+			/>
 		</OptionBox>
-	</template>
+		<Accordion
+			v-else
+			v-show="enablePluginStyles()"
+			:section="section"
+			:sectionKey="sectionKey"
+			:reactiveState="props.reactiveState"
+		/>
+	</div>
 </template>

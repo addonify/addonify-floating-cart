@@ -1,25 +1,15 @@
 import { defineStore } from 'pinia'
 import { ElMessage } from 'element-plus'
 
-/**
-* Destructuring wp.
-*
-* @import apiFetch.
-* @import __.
-*/
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
-
-/**
-* @var {string} recommendedList.
-*/
-const recommendedList = "https://raw.githubusercontent.com/addonify/recommended-products/main/products.json";
 
 export const useProductStore = defineStore({
 
     id: 'Product',
 
     state: () => ({
+
         allAddons: {}, // Storing all addons slugs.
         allProductSlugStatus: {}, // Storing all addons slug & status.
         hotAddons: {},
@@ -33,80 +23,91 @@ export const useProductStore = defineStore({
     }),
 
     getters: {
+
         /**
-        * Return the state of addons in memory.
         *
-        * @param {object} state.
-        * @return {boolean} true/false.
-        * @since 1.2.9
+        * Return the state of the addons. 
+        * 
+        * @since: 1.1.7
         */
-        hasAddonsStateInMemory: (state) => {
 
-            if (typeof state.allAddons === 'object') {
+        haveAddonStateInMemory: (state) => {
 
-                return Object.keys(state.allAddons).length > 0 ? true : false;
+            if (typeof state.installedAddons === 'array') {
+
+                return state.installedAddons.length === 0 ? false : true;
             }
 
-            if (typeof state.allAddons === 'array') {
+            if (typeof state.installedAddons === 'object') {
 
-                return state.allAddons.length > 0 ? true : false;
+                return Object.keys(state.installedAddons).length === 0 ? false : true;
             }
-
-            return false;
-        },
+        }
     },
 
     actions: {
-        /**
-         * Fetch github repo data to get the list of recommended plugins.
-         *
-         * @param {null} null.
-         * @return {object} response.
-         * @since 1.2.9
-         */
-        async getRecommdedProductsList() {
-            try {
-                this.isFetching = true;
 
-                const res = await fetch(recommendedList);
+        /**
+         * Action: Fetch github repo data.
+         * Get addons slug from github repo.
+         * @param slug
+         */
+
+        async fetchGithubRepo() {
+
+            try {
+
+                const res = await fetch("https://raw.githubusercontent.com/addonify/recommended-products/main/products.json");
                 const data = await res.json();
 
-                if (res.status !== 200) {
-                    console.log(data);
-                    return;
+                //console.log(data);
+
+                if (res.status == 200) {
+
+                    console.log("💥 Github repo fetched successfully.");
+                    this.processRecommendedPluginsList(data);
+                    this.isFetching = false;
+
+                } else {
+
+                    console.error("Couldn't fetch Github repo " + res);
+
+                    ElMessage.error(({
+                        message: __('Error: couldn\'t fetch recommended plugins list.', 'addonify-floating-cart'),
+                        offset: 50,
+                        duration: 20000,
+                    }));
                 }
 
-                this.processRecommendedPluginsList(data);
-                this.isFetching = false;
-                return res;
-
             } catch (err) {
+
                 console.error(err);
                 this.isFetching = false;
-                return err;
             }
         },
 
         /**
-        * Process the recommended plugins list once it's retrived from github.
+        * Action: Process the recommended plugins list.
         * Create three arrays [hot, general & all]
-        *
-        * @param {object} list.
-        * @return {void} void.
-        * @since 1.2.9
+        * Called on fetchGithubRepo() action.
+        * @param {object} list
         */
+
         processRecommendedPluginsList(list) {
 
-            console.log("[Info] Processing the list that was retrived....");
+            console.log("=> Processing the list that was retrived....");
 
             this.hotAddons = list.data.hot;
             this.generalAddons = list.data.general;
             this.allAddons = { ...this.hotAddons, ...this.generalAddons };
 
+            //console.log(this.generalAddons);
+
             if (typeof this.allAddons === 'object') {
 
                 Object.keys(this.allAddons).forEach((key) => {
 
+                    //console.log(key);
                     // Let's add the slug to object with status null for now.
                     // i.e: { 'addonify-floating-cart': 'status' }
                     this.allProductSlugStatus[key] = 'null';
@@ -114,59 +115,73 @@ export const useProductStore = defineStore({
 
             } else {
 
-                return console.log("[Error] Couldn't process the list plugins list!");
+                console.error("💥 Couldn't process the list plugins list.");
+
+                ElMessage.error(({
+                    message: __('Error: couldn\'t process the recommended plugins list.', 'addonify-floating-cart'),
+                    offset: 50,
+                    duration: 10000,
+                }));
             }
         },
 
         /**
-         * Check plugin status.
-         * Checks if the plugin is installed or not.
-         *
-         * @param {null} null.
-         * @return {void} void.
-         * @since 1.2.9    
+         * Action: Check plugin status.
+         * Call backend api to check plugin status.
+         * @param {Object} addons
          */
+
         async fetchInstalledAddons() {
 
-            console.log("[Info] Getting the list of all plugins installed on the site....");
+            console.log("=> Getting the list of all plugins installed on the site....");
 
             try {
+
                 const res = await apiFetch({
-                    path: `/wp/v2/plugins`,
+
                     method: "GET",
-                    cache: "no-cache",
+                    path: `/wp/v2/plugins`,
                 });
 
-                console.log("[Info] Received the list of all installed plugins....");
+                //console.log(res);
+                console.log("=> Received the list of all installed plugins....");
 
                 this.installedAddons = res;
                 this.setAddonStatusFlag(Object.keys(this.allProductSlugStatus)); // Just send the slug array.
                 this.isFetchingAllInstalledAddons = false;
 
             } catch (err) {
-                console.log(err);
+
+                console.error(err);
+
+                ElMessage.error(({
+                    message: __('Error: Couldn\'t retrive the list of installed plugins.', 'addonify-floating-cart'),
+                    offset: 50,
+                    duration: 20000,
+                }));
+
                 this.isFetchingAllInstalledAddons = false;
-                return;
             }
         },
 
         /**
-        * Get plugin installed/active status via slug.
+        * Action: Get plugin installed/active status via slug.
         * Returns 'active' or 'inactive' or 'not-installed'.
         * 
-        * @param {object} slugs.
-        * @return {void} void.
-        * @since 1.2.9
+        * @param {Object} slug
         */
+
         setAddonStatusFlag(slugs) {
 
-            if (typeof this.installedAddons === 'object' && this.installedAddons.length > 0) {
+            if (typeof this.installedAddons == 'object' && this.installedAddons.length > 0) {
 
                 console.log("=> Setting the status of the addon.");
+                //console.log(slugs);
 
                 slugs.forEach((slug) => {
 
-                    const tryFind = this.installedAddons.find((plugin) => plugin.textdomain === slug);
+                    // Find the status in installed addons. 
+                    let tryFind = this.installedAddons.find((plugin) => plugin.textdomain == slug);
 
                     if (tryFind) {
 
@@ -180,37 +195,43 @@ export const useProductStore = defineStore({
 
             } else {
 
-                console.log("[Warning] Bailing!!! The installed addons list is empty.");
+                console.log("=> Bailing!!! The installed addons list is empty.");
             }
 
-            console.log("[Info] Done setting the status of the addon.");
-            this.isSettingAddonStatus = false;
+            console.log("💥 Done setting the status of the addon.");
+            this.isSettingAddonStatus = false; // Done setting the status till here. Let's set the flag to false.
         },
 
-        /**
-        * Handle plugin installation.
+        /*
         *
-        * @param {string} slug.
-        * @return {object} response/error.
-        * @since 1.2.9
+        * Action: Handle plugin activation.
+        * Call REST API to activate plugin.
+        * Wait for the signal from the backend.
+        * @param slug
         */
+
         async handleAddonInstallation(slug) {
+
             try {
-                console.log(`[Info] Trying to install plugin ${slug}...`);
+
+                console.log(`=> Trying to install plugin ${slug}...`);
 
                 const res = await apiFetch({
+
                     method: "POST",
                     path: "/wp/v2/plugins",
+
                     data: {
                         slug: slug,
                         status: "active",
                     },
-                    cache: "no-cache"
                 });
+
+                console.log(res);
 
                 if (res.status === 'active') {
 
-                    console.log(`[Info] Plugin ${slug} installed successfully.`);
+                    console.log(`=> Plugin ${slug} installed successfully.`);
 
                     ElMessage.success(({
                         message: __('Plugin installed successfully.', 'addonify-floating-cart'),
@@ -218,15 +239,14 @@ export const useProductStore = defineStore({
                         duration: 5000,
                     }));
 
-                    // Update the status of the plugin.
-                    this.allProductSlugStatus[slug] = 'active';
-
-                    // Return the response.
+                    this.allProductSlugStatus[slug] = 'active'; // Update the status of the plugin.
                     return await res;
                 }
 
             } catch (err) {
+
                 console.error(err);
+
                 ElMessage.error(({
                     message: __('Error: couldn\'t install plugin.', 'addonify-floating-cart'),
                     offset: 50,
@@ -240,27 +260,31 @@ export const useProductStore = defineStore({
 
         /**
          * Update plugin status. (active/inactive)
-         *
-         * @param {string} slug.
-         * @return {object} response/error.
-         * @since 1.2.9
+         * @param {String} slug
+         * @args {slug, status} status
          */
+
         async updateAddonStatus(slug) {
+
             try {
-                console.log(`[Info] Trying to set the status of plugin ${slug}...`);
+
+                console.log(`=> Trying to set the status of plugin ${slug}...`);
 
                 const res = await apiFetch({
+
                     method: "POST",
                     path: `/wp/v2/plugins/${slug}`,
                     data: {
                         status: "active",
                         plugin: `${slug}/${slug}`,
                     },
-                    cache: "no-cache"
                 });
 
+                console.log(res);
+
                 if (res.status == 'active') {
-                    console.log(`[Info] Plugin ${slug} activated successfully.`);
+
+                    console.log(`=> Plugin ${slug} activated successfully.`);
 
                     ElMessage.success(({
                         message: __('Plugin activated successfully.', 'addonify-floating-cart'),
@@ -268,13 +292,14 @@ export const useProductStore = defineStore({
                         duration: 5000,
                     }));
 
-                    // Update the status of the plugin.
-                    this.allProductSlugStatus[slug] = 'active';
+                    this.allProductSlugStatus[slug] = 'active'; // Update the status of the plugin.
                     return await res;
                 }
 
             } catch (err) {
+
                 console.log(err);
+
                 ElMessage.error(({
                     message: __('Error: Couldn\'t activate the plugin.', 'addonify-floating-cart'),
                     offset: 50,

@@ -18,12 +18,13 @@
 function addonify_floating_cart_custom_css_settings_fields() {
 
 	return array(
-		'custom_css' 		 => array(
+		'custom_css' => array(
 			'label'          => __( 'Custom CSS', 'addonify-floating-cart' ),
 			'description'    => __( 'If required, add your custom CSS code here.', 'addonify-floating-cart' ),
 			'type'           => 'textarea',
-			'className'      => 'fullwidth custom-css-box',
-			'placeholder'    => '#cart { color: blue; }',
+			'className'      => 'custom-css-box fullwidth',
+			'inputClassName' => 'custom-css-textarea',
+			'placeholder'    => '#app { color: blue; }',
 			'dependent'      => array( 'load_styles_from_plugin' ),
 			'value'          => addonify_floating_cart_get_option( 'custom_css' ),
 		),

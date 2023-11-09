@@ -116,9 +116,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.2 - ?, 2023 =
+= 1.2.3 - 09 November, 2023 =
 
 - Fix: Shipping methods list checkbox & label spacing.
+- Tested: WordPress v6.4.0
+- Tested: WooCommerce v8.2.2
 
 = 1.2.2 - 31 October, 2023 =
 

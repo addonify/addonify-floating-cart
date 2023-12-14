@@ -25,12 +25,40 @@ function addonify_floating_cart_coupon_settings() {
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'display_applied_coupons' ),
 		),
+		// @since 1.2.4
+		'coupon_form_toggler_text'       => array(
+			'label'     => __( 'Coupon form toggle link label', 'addonify-floating-cart' ),
+			'type'      => 'text',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'coupon_form_toggler_text' ),
+		),
+		// @since 1.2.4
+		'coupon_from_description'        => array(
+			'label'     => __( 'Coupon form description', 'addonify-floating-cart' ),
+			'type'      => 'text',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'coupon_from_description' ),
+		),
+		// @since 1.2.4
+		'coupon_field_placeholder'       => array(
+			'label'     => __( 'Coupon field placeholder', 'addonify-floating-cart' ),
+			'type'      => 'text',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'coupon_field_placeholder' ),
+		),
 		'cart_apply_coupon_button_label' => array(
 			'label'       => __( 'Coupon apply button label', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'Apply coupon', 'addonify-floating-cart' ),
 			'dependent'   => array( 'enable_floating_cart' ),
 			'value'       => addonify_floating_cart_get_option( 'cart_apply_coupon_button_label' ),
+		),
+		// @since 1.2.4
+		'applied_coupons_list_title'     => array(
+			'label'     => __( 'Applied coupons list title', 'addonify-floating-cart' ),
+			'type'      => 'text',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'applied_coupons_list_title' ),
 		),
 	);
 }

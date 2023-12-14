@@ -11,38 +11,44 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
-* @var float $percent - The percentage of the cart amount.
-* @since 1.0.0
-*/
+ * Bar percentage.
+ *
+ * @var float $percent - The percentage of the cart amount.
+ * @since 1.0.0
+ */
 $percent = number_format( floatval( $per ), 2 );
 
 /**
+ * Amount left.
+ *
  * @var float $amount_left - The amount left formatted with two decimal places.
  * @since 1.0.0
  */
 $amount_left = number_format( floatval( $left ), 2 );
 
 /**
-* @var boolean $threashold_reached
-* @since 1.2.0
-*/
-$threashold_reached = $percent >= 100 && $amount_left <= 0;
+ * Threshold reached.
+ *
+ * @var boolean $threshold_reached
+ * @since 1.2.0
+ */
+$threshold_reached = $percent >= 100 && $amount_left <= 0;
 ?>
 <div 
 	class="adfy__woofc-shipping-bar 
 	<?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>"
-	data-threashold_reached="<?php echo esc_attr( $threashold_reached ? 'true' : 'false' ); ?>" 
+	data-threashold_reached="<?php echo esc_attr( $threshold_reached ? 'true' : 'false' ); ?>" 
 >
 	<span class="adfy__woofc-shipping-text">
 		<?php
-			if ( $threashold_reached ) {
+		if ( $threshold_reached ) {
 
-				echo esc_html( $post_threshold_label );
+			echo esc_html( $post_threshold_label );
 
-			} else {
+		} else {
 
-				echo wp_kses_post( str_replace( '{amount}', wc_price( $left ), $pre_threshold_label ) );
-			}
+			echo wp_kses_post( str_replace( '{amount}', wc_price( $left ), $pre_threshold_label ) );
+		}
 		?>
 	</span>
 	<div class="progress-bars">

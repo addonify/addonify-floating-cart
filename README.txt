@@ -116,6 +116,15 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
+= 1.2.4 - ?, 2023 =
+
+- Added: Option to display shipping cost in the cart subtotal.
+- Added: Option to display taxes in the cart subtotal.
+- Added: Options to modify product removal and undo texts.
+- Added: Options to modify labels and texts in cart form.
+- Added: Options to modify prefix text of cart count.
+- Added: Option to modify text for link to exit coupon and shipping form modals.
+
 = 1.2.3 - 09 November, 2023 =
 
 - Fix: Shipping methods list checkbox & label spacing.

@@ -16,10 +16,14 @@ $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
 <div id="adfy__woofc-shipping-container-inner">
-	<?php if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || WC()->cart->show_shipping() ) : ?>
-		<?php if ( $available_methods ) : ?>
+	<?php
+	if ( ! ( count( WC()->countries->get_allowed_countries() ) > 0 ) || WC()->cart->show_shipping() ) {
+		if ( $available_methods ) {
+			?>
 			<ul id="adfy__woofc-shipping-methods" class="adfy__woofc-shipping-methods">
-				<?php foreach ( $available_methods as $method ) : ?>
+				<?php
+				foreach ( $available_methods as $method ) {
+					?>
 					<li>
 						<?php
 						if ( 1 < count( $available_methods ) ) {
@@ -31,7 +35,9 @@ $calculator_text          = '';
 						do_action( 'woocommerce_after_shipping_rate', $method, $index );
 						?>
 					</li>
-				<?php endforeach; ?>
+					<?php
+				}
+				?>
 			</ul>
 			<p class="adfy__woofc-shipping-destination">
 				<?php
@@ -45,25 +51,26 @@ $calculator_text          = '';
 				?>
 			</p>
 			<?php
-		elseif ( ! $has_calculated_shipping || ! $formatted_destination ) :
+		} elseif ( ! $has_calculated_shipping || ! $formatted_destination ) {
 			if ( 'no' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
 				echo wp_kses_post( apply_filters( 'addonify_floating_cart_shipping_not_enabled_on_cart_html', __( 'Shipping costs are calculated during checkout.', 'addonify-floating-cart' ) ) );
 			} else {
 				echo wp_kses_post( apply_filters( 'addonify_floating_cart_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'addonify-floating-cart' ) ) );
 			}
-		else :
+		} else {
 			// Translators: %s shipping destination.
 			echo wp_kses_post( apply_filters( 'addonify_floating_cart_cart_no_shipping_available_html', sprintf( esc_html__( 'No shipping options were found for %s.', 'addonify-floating-cart' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
 			$calculator_text = esc_html__( 'Enter a different address', 'addonify-floating-cart' );
-		endif;
-		?>
+		}
 
-		<?php if ( $show_package_details ) : ?>
+		if ( $show_package_details ) {
+			?>
 			<?php echo '<p class="addonify-floating-cart-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
-		<?php endif; ?>
+			<?php
+		}
 
-		<?php if ( $show_shipping_calculator ) : ?>
-
+		if ( $show_shipping_calculator ) {
+			?>
 			<form id="adfy__woofc-shipping-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
 				<div class="adfy__woofc-shipping-address-form-toggle-button-block">
@@ -146,10 +153,10 @@ $calculator_text          = '';
 					</div>
 
 					<?php wp_nonce_field( 'addonify-floating-cart-shipping', 'addonify-floating-cart-shipping-nonce' ); ?>
-
 				</section>
 			</form>
-
-		<?php endif; ?>
-	<?php endif ?>
+			<?php
+		}
+	}
+	?>
 </div>

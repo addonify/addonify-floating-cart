@@ -38,7 +38,10 @@ function addonify_floating_cart_cart_display_settings() {
 		'cart_title'                                    => array(
 			'label'     => __( 'Cart title', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array(
+				'enable_floating_cart',
+				'enable_cart_labels_from_plugin',
+			),
 			'value'     => addonify_floating_cart_get_option( 'cart_title' ),
 		),
 		'display_cart_items_number'                     => array(
@@ -94,96 +97,107 @@ function addonify_floating_cart_cart_display_settings() {
 function addonify_floating_cart_display_cart_label_settings() {
 
 	return array(
+		// @since 1.2.4
+		'enable_cart_labels_from_plugin'        => array(
+			'label'     => __( 'Display labels from plugin', 'addonify-floating-cart' ),
+			'type'      => 'switch',
+			'dependent' => array( 'enable_floating_cart' ),
+			'value'     => addonify_floating_cart_get_option( 'enable_cart_labels_from_plugin' ),
+		),
 		'continue_shopping_button_label'        => array(
 			'label'       => __( 'Label of button before checkout button', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'i.e Close', 'addonify-floating-cart' ),
-			'dependent'   => array( 'enable_floating_cart', 'display_continue_shopping_button' ),
+			'dependent'   => array(
+				'enable_floating_cart',
+				'enable_cart_labels_from_plugin',
+				'display_continue_shopping_button',
+			),
 			'value'       => addonify_floating_cart_get_option( 'continue_shopping_button_label' ),
 		),
 		'checkout_button_label'                 => array(
 			'label'       => __( 'Checkout button label', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'Checkout', 'addonify-floating-cart' ),
-			'dependent'   => array( 'enable_floating_cart' ),
+			'dependent'   => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'       => addonify_floating_cart_get_option( 'checkout_button_label' ),
 		),
 		'sub_total_label'                       => array(
 			'label'     => __( 'Sub total label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'sub_total_label' ),
 		),
 		'discount_label'                        => array(
 			'label'     => __( 'Discount label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'discount_label' ),
 		),
 		'shipping_label'                        => array(
 			'label'     => __( 'Shipping label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'shipping_label' ),
 		),
 		'open_shipping_label'                   => array(
 			'label'     => __( 'Label for opening shipping section', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'open_shipping_label' ),
 		),
 		'tax_label'                             => array(
 			'label'     => __( 'Tax label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'tax_label' ),
 		),
 		'total_label'                           => array(
 			'label'     => __( 'Total label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'total_label' ),
 		),
 		// @since 1.2.4
 		'coupon_shipping_form_modal_exit_label' => array(
 			'label'     => __( 'Coupon and shipping form modal exit label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'coupon_shipping_form_modal_exit_label' ),
 		),
 		// @since 1.2.4
 		'empty_cart_text'                       => array(
 			'label'     => __( 'Empty cart text', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'empty_cart_text' ),
 		),
 		// @since 1.2.4
 		'product_removal_text'                  => array(
 			'label'     => __( 'Product removal notice text', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'product_removal_text' ),
 		),
 		// @since 1.2.4
 		'product_removal_undo_text'             => array(
 			'label'     => __( 'Product removal undo link label', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'product_removal_undo_text' ),
 		),
 		// @since 1.2.4
 		'item_counter_singular_text'            => array(
 			'label'     => __( 'Cart items count prefix text - singular', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'item_counter_singular_text' ),
 		),
 		// @since 1.2.4
 		'item_counter_plural_text'              => array(
 			'label'     => __( 'Cart items count prefix text - plural', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'enable_floating_cart' ),
+			'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 			'value'     => addonify_floating_cart_get_option( 'item_counter_plural_text' ),
 		),
 	);

@@ -123,6 +123,11 @@ class Addonify_Floating_Cart {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-addonify-floating-cart-admin.php';
 
 		/**
+		 * Load miscellaneous functions.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/misc-functions.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -133,7 +138,6 @@ class Addonify_Floating_Cart {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/udp/init.php';
 
 		$this->loader = new Addonify_Floating_Cart_Loader();
-
 	}
 
 	/**
@@ -149,8 +153,7 @@ class Addonify_Floating_Cart {
 
 		$plugin_i18n = new Addonify_Floating_Cart_I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**

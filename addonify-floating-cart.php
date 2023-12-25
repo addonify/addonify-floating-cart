@@ -94,4 +94,4 @@ function run_addonify_floating_cart() {
 	}
 
 }
-add_action( 'plugins_loaded', 'run_addonify_floating_cart', 50 );
+add_action( 'plugins_loaded', 'run_addonify_floating_cart' );

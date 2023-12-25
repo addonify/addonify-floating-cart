@@ -105,12 +105,15 @@ add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_fl
  * Display sidebar cart.
  *
  * @since 1.0.0
+ *
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_add_template() {
+function addonify_floating_cart_add_template( $cart_strings ) {
 
 	$template_args = array(
 		'position'      => addonify_floating_cart_get_option( 'cart_position' ),
 		'overlay_class' => ( (int) addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ) === 1 ) ? 'adfy__hide-woofc' : '',
+		'cart_strings'  => $cart_strings,
 	);
 
 	addonify_floating_cart_get_template( 'sidebar-cart.php', $template_args );
@@ -124,14 +127,16 @@ add_action( 'addonify_floating_cart_footer_template', 'addonify_floating_cart_ad
  * Display sidebar cart content.
  *
  * @since 1.0.0
+ *
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_sidebar_cart() {
+function addonify_floating_cart_sidebar_cart( $cart_strings ) {
 
-	do_action( 'addonify_floating_cart_sidebar_cart_header', array() );
-	do_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', array() );
-	do_action( 'addonify_floating_cart_sidebar_cart_notice' );
-	do_action( 'addonify_floating_cart_sidebar_cart_body', array() );
-	do_action( 'addonify_floating_cart_sidebar_cart_footer', array() );
+	do_action( 'addonify_floating_cart_sidebar_cart_header', $cart_strings );
+	do_action( 'addonify_floating_cart_sidebar_cart_shipping_bar', $cart_strings );
+	do_action( 'addonify_floating_cart_sidebar_cart_notice', $cart_strings );
+	do_action( 'addonify_floating_cart_sidebar_cart_body', $cart_strings );
+	do_action( 'addonify_floating_cart_sidebar_cart_footer', $cart_strings );
 }
 add_action( 'addonify_floating_cart_sidebar_cart', 'addonify_floating_cart_sidebar_cart' );
 
@@ -148,15 +153,17 @@ add_action( 'addonify_floating_cart_sidebar_cart', 'addonify_floating_cart_sideb
  * Display sidebar cart footer section.
  *
  * @since 1.0.0
- * @param array $args  Arguments passed.
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_get_sidebar_cart_header_template( $args = array() ) {
+function addonify_floating_cart_get_sidebar_cart_header_template( $cart_strings ) {
 
 	addonify_floating_cart_get_template(
 		'cart-sections/header.php',
 		apply_filters(
 			'addonify_floating_cart_sidebar_cart_header_template_args',
-			$args
+			array(
+				'cart_strings' => $cart_strings,
+			)
 		)
 	);
 }
@@ -166,15 +173,17 @@ add_action( 'addonify_floating_cart_sidebar_cart_header', 'addonify_floating_car
  * Display sidebar cart body section.
  *
  * @since 1.0.0
- * @param array $args  Arguments passed.
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_get_sidebar_cart_body_template( $args = array() ) {
+function addonify_floating_cart_get_sidebar_cart_body_template( $cart_strings ) {
 
 	addonify_floating_cart_get_template(
 		'cart-sections/body.php',
 		apply_filters(
 			'addonify_floating_cart_sidebar_cart_body_template_args',
-			$args
+			array(
+				'cart_strings' => $cart_strings,
+			)
 		)
 	);
 }
@@ -184,15 +193,17 @@ add_action( 'addonify_floating_cart_sidebar_cart_body', 'addonify_floating_cart_
  * Display sidebar cart coupon section.
  *
  * @since 1.0.0
- * @param array $args  Arguments passed.
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_get_sidebar_cart_coupon_template( $args = array() ) {
+function addonify_floating_cart_get_sidebar_cart_coupon_template( $cart_strings ) {
 
 	addonify_floating_cart_get_template(
 		'cart-sections/coupon.php',
 		apply_filters(
 			'addonify_floating_cart_sidebar_cart_coupon_template_args',
-			$args
+			array(
+				'cart_strings' => $cart_strings,
+			)
 		)
 	);
 }
@@ -202,9 +213,9 @@ add_action( 'addonify_floating_cart_sidebar_cart_coupon', 'addonify_floating_car
  * Display sidebar cart applied coupons section.
  *
  * @since 1.0.0
- * @param array $args  Arguments passed.
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_get_sidebar_cart_applied_coupons_template( $args = array() ) {
+function addonify_floating_cart_get_sidebar_cart_applied_coupons_template( $cart_strings ) {
 
 	if ( (int) addonify_floating_cart_get_option( 'display_applied_coupons' ) === 1 ) {
 
@@ -212,7 +223,9 @@ function addonify_floating_cart_get_sidebar_cart_applied_coupons_template( $args
 			'cart-sections/coupons-applied.php',
 			apply_filters(
 				'addonify_floating_cart_sidebar_cart_applied_coupons_template_args',
-				$args
+				array(
+					'cart_strings' => $cart_strings,
+				)
 			)
 		);
 	}
@@ -340,27 +353,32 @@ add_action( 'addonify_floating_cart_sidebar_cart_shipping', 'addonify_floating_c
  * Display sidebar cart footer section.
  *
  * @since 1.0.0
- * @param array $args  Arguments passed.
+ *
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_get_sidebar_cart_footer_template( $args = array() ) {
+function addonify_floating_cart_get_sidebar_cart_footer_template( $cart_strings ) {
 
 	addonify_floating_cart_get_template(
 		'cart-sections/footer.php',
 		apply_filters(
 			'addonify_floating_cart_sidebar_cart_footer_template_args',
-			$args
+			array(
+				'cart_strings' => $cart_strings,
+			)
 		)
 	);
 }
-add_action( 'addonify_floating_cart_sidebar_cart_footer', 'addonify_floating_cart_get_sidebar_cart_footer_template', 10, 1 );
+add_action( 'addonify_floating_cart_sidebar_cart_footer', 'addonify_floating_cart_get_sidebar_cart_footer_template' );
 
 
 /**
  * Display cart close button in the cart footer.
  *
  * @since 1.0.0
+ *
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_footer_close_button_template() {
+function addonify_floating_cart_footer_close_button_template( $cart_strings ) {
 
 	if (
 		(int) addonify_floating_cart_get_option( 'display_continue_shopping_button' ) === 1 &&
@@ -375,13 +393,13 @@ function addonify_floating_cart_footer_close_button_template() {
 		) {
 			?>
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button secondary">
-				<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
+				<?php echo esc_html( $cart_strings['continue_shopping_button_label'] ); ?>
 			</a>
 			<?php
 		} else {
 			?>
 			<button class="adfy__woofc-button adfy__hide-woofc secondary">
-				<?php echo esc_html( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ); ?>
+				<?php echo esc_html( $cart_strings['continue_shopping_button_label'] ); ?>
 			</button>
 			<?php
 		}
@@ -394,16 +412,15 @@ add_action( 'addonify_floating_cart_cart_footer_button', 'addonify_floating_cart
  * Display checkout link in the cart footer.
  *
  * @since 1.0.0
+ *
+ * @param array $cart_strings Cart strings.
  */
-function addonify_floating_cart_footer_checkout_button_template() {
-
-	if ( ! empty( addonify_floating_cart_get_option( 'checkout_button_label' ) ) ) {
-		?>
-		<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="adfy__woofc-button proceed-to-checkout">
-			<?php echo esc_html( addonify_floating_cart_get_option( 'checkout_button_label' ) ); ?>
-		</a>
-		<?php
-	}
+function addonify_floating_cart_footer_checkout_button_template( $cart_strings ) {
+	?>
+	<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="adfy__woofc-button proceed-to-checkout">
+		<?php echo esc_html( $cart_strings['checkout_button_label'] ); ?>
+	</a>
+	<?php
 }
 add_action( 'addonify_floating_cart_cart_footer_button', 'addonify_floating_cart_footer_checkout_button_template' );
 
@@ -573,4 +590,30 @@ if ( ! function_exists( 'addonify_floating_cart_sidebar_cart_notice_template' ) 
 	}
 
 	add_action( 'addonify_floating_cart_sidebar_cart_notice', 'addonify_floating_cart_sidebar_cart_notice_template' );
+}
+
+
+
+if ( ! function_exists( 'addonify_floating_cart_display_items_count' ) ) {
+	/**
+	 * Renders cart quantity count.
+	 *
+	 * @since 1.2.4
+	 *
+	 * @param int   $cart_items_count Cart items count.
+	 * @param array $cart_strings Cart strings.
+	 */
+	function addonify_floating_cart_display_items_count( $cart_items_count, $cart_strings ) {
+		?>
+		<span class="adfy__woofc-badge">
+			<?php
+			if ( 1 === $cart_items_count ) {
+				echo esc_html( number_format_i18n( $cart_items_count ) . ' ' . $cart_strings['item_counter_singular_text'] );
+			} else {
+				echo esc_html( number_format_i18n( $cart_items_count ) . ' ' . $cart_strings['item_counter_plural_text'] );
+			}
+			?>
+		</span>
+		<?php
+	}
 }

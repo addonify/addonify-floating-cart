@@ -43,7 +43,11 @@ function addonify_floating_cart_toast_notification_settings() {
 			'description' => __( 'Text to be displayed after product is added to cart. Use {product_name} to display product name added to cart.', 'addonify-floating-cart' ),
 			'type'        => 'text',
 			'placeholder' => __( 'Product added to cart', 'addonify-floating-cart' ),
-			'dependent'   => array( 'display_toast_notification', 'enable_floating_cart' ),
+			'dependent'   => array(
+				'display_toast_notification',
+				'enable_floating_cart',
+				'enable_cart_labels_from_plugin',
+			),
 			'value'       => addonify_floating_cart_get_option( 'added_to_cart_notification_text' ),
 		),
 		'close_notification_after_time'       => array(
@@ -71,7 +75,12 @@ function addonify_floating_cart_toast_notification_settings() {
 		'show_cart_button_label'              => array(
 			'label'     => __( 'Label for button to toggle cart', 'addonify-floating-cart' ),
 			'type'      => 'text',
-			'dependent' => array( 'display_toast_notification', 'enable_floating_cart', 'display_show_cart_button' ),
+			'dependent' => array(
+				'display_toast_notification',
+				'enable_floating_cart',
+				'display_show_cart_button',
+				'enable_cart_labels_from_plugin',
+			),
 			'value'     => addonify_floating_cart_get_option( 'show_cart_button_label' ),
 		),
 	);

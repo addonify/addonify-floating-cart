@@ -23,16 +23,7 @@ defined( 'ABSPATH' ) || exit;
 					href="#" 
 					id="adfy__woofc-coupon-trigger" 
 					class="adfy__woofc-link has-underline"
-				>
-					<?php
-					$coupon_form_toggler_text = addonify_floating_cart_get_option( 'coupon_form_toggler_text' );
-
-					if ( ! $coupon_form_toggler_text ) {
-						$coupon_form_toggler_text = esc_html__( 'Have a coupon?', 'addonify-floating-cart' );
-					}
-					echo esc_html( $coupon_form_toggler_text );
-					?>
-				</a>
+				><?php echo esc_html( $cart_strings['coupon_form_toggler_text'] ); ?></a>
 			</p>
 		</div>
 		<?php
@@ -41,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="adfy__woofc-cart-summary <?php echo ( WC()->cart->get_applied_coupons() ) ? 'discount' : ''; ?>">
 		<ul>
 			<li class="sub-total <?php echo ( ( WC()->cart->get_subtotal() !== WC()->cart->get_total() ) && WC()->cart->get_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
-				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'sub_total_label' ) ); ?></span>
+				<span class="label"><?php echo esc_html( $cart_strings['sub_total_label'] ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount subtotal-amount">
 						<?php
@@ -52,18 +43,19 @@ defined( 'ABSPATH' ) || exit;
 				</span>
 			</li>
 			<li class="discount <?php echo ( WC()->cart->get_discount_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
-				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'discount_label' ) ); ?></span>
+				<span class="label"><?php echo esc_html( $cart_strings['discount_label'] ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount discount-amount">
 						<bdi>
-						<?php
-						if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
-							$discount = wc_price( WC()->cart->get_discount_tax() + WC()->cart->get_discount_total() );
-						} else {
-							$discount = wc_price( WC()->cart->get_discount_total() );
-						}
-						?>
-						<?php echo wp_kses_post( $discount ); ?>
+							<?php
+							if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
+								$discount = wc_price( WC()->cart->get_discount_tax() + WC()->cart->get_discount_total() );
+							} else {
+								$discount = wc_price( WC()->cart->get_discount_total() );
+							}
+
+							echo wp_kses_post( $discount );
+							?>
 						</bdi>
 					</span>
 				</span>
@@ -87,12 +79,12 @@ defined( 'ABSPATH' ) || exit;
 				?>
 				<li class="shipping">
 					<span class="label">
-						<?php echo esc_html( addonify_floating_cart_get_option( 'shipping_label' ) ); ?>
+						<?php echo esc_html( $cart_strings['shipping_label'] ); ?>
 						<?php
 						if ( 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
 							?>
 							<a id="adfy__woofc-shipping-trigger" class="adfy__woofc-link adfy__woofc-prevent-default has-underline" href='#'>
-								( <?php echo esc_html( addonify_floating_cart_get_option( 'open_shipping_label' ) ); ?> )
+								( <?php echo esc_html( $cart_strings['open_shipping_label'] ); ?> )
 							</a>
 							<?php
 						}
@@ -102,27 +94,28 @@ defined( 'ABSPATH' ) || exit;
 					<span class="value">
 						<span class="addonify_floating_cart-Price-amount shipping-amount">
 							<bdi>
-							<?php
-							if ( $show_shipping_cost ) {
-								WC()->cart->calculate_shipping();
-								if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
-									if ( WC()->customer->get_shipping_country() !== 'default' ) {
-										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : wc_price( 0 );
+								<?php
+								if ( $show_shipping_cost ) {
+									WC()->cart->calculate_shipping();
+									if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
+										if ( WC()->customer->get_shipping_country() !== 'default' ) {
+											$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : wc_price( 0 );
+										} else {
+											$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
+										}
 									} else {
-										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
+										if ( WC()->customer->get_shipping_country() !== 'default' ) {
+											$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? wc_price( 0 ) : WC()->cart->get_cart_shipping_total();
+										} else {
+											$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
+										}
 									}
 								} else {
-									if ( WC()->customer->get_shipping_country() !== 'default' ) {
-										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? wc_price( 0 ) : WC()->cart->get_cart_shipping_total();
-									} else {
-										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
-									}
+									$shipping_total = '-';
 								}
-							} else {
-								$shipping_total = '-';
-							}
-							?>
-							<?php echo wp_kses_post( $shipping_total ); ?>
+
+								echo wp_kses_post( $shipping_total );
+								?>
 							</bdi>
 						</span>
 					</span>
@@ -142,9 +135,7 @@ defined( 'ABSPATH' ) || exit;
 							<span class="label"><?php echo $tax_obj->label; //phpcs:disable ?></span>
 							<span class="value">
 								<span class="addonify-floating-cart-Price-amount tax-amount">
-									<bdi>
-									<?php echo wp_kses_post( $tax_obj->formatted_amount ); ?>
-									</bdi>
+									<bdi><?php echo wp_kses_post( $tax_obj->formatted_amount ); ?></bdi>
 								</span>
 							</span>
 						</li>
@@ -153,7 +144,7 @@ defined( 'ABSPATH' ) || exit;
 				} else {
 					?>
 					<li class="tax <?php echo ( WC()->cart->get_taxes_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
-						<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'tax_label' ) ); ?></span>
+						<span class="label"><?php echo esc_html( $cart_strings['tax_label'] ); ?></span>
 						<span class="value">
 							<span class="addonify-floating-cart-Price-amount tax-amount">
 								<bdi>
@@ -169,7 +160,7 @@ defined( 'ABSPATH' ) || exit;
 			}
 			?>
 			<li class="total">
-				<span class="label"><?php echo esc_html( addonify_floating_cart_get_option( 'total_label' ) ); ?></span>
+				<span class="label"><?php echo esc_html( $cart_strings['total_label'] ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount total-amount">
 						<?php wc_cart_totals_order_total_html(); ?>
@@ -179,6 +170,6 @@ defined( 'ABSPATH' ) || exit;
 		</ul>
 	</div>
 	<div class="adfy__woofc-actions <?php echo ( (int) addonify_floating_cart_get_option( 'display_continue_shopping_button' ) === 0 || empty( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ) ) ? 'adfy__woofc-fullwidth' : ''; ?>">
-		<?php do_action( 'addonify_floating_cart_cart_footer_button', array() ); ?>
+		<?php do_action( 'addonify_floating_cart_cart_footer_button', $cart_strings ); ?>
 	</div>
 </footer>

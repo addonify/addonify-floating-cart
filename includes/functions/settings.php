@@ -42,6 +42,8 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/custom-c
  */
 function addonify_floating_cart_settings_fields_defaults() {
 
+	$cart_strings = addonify_floating_cart_default_strings();
+
 	return apply_filters(
 		'addonify_floating_cart_settings_fields_defaults',
 		array(
@@ -87,11 +89,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Toast notification options.
 			'display_toast_notification'                   => true,
 			'toast_notification_display_position'          => 'top-right',
-			'added_to_cart_notification_text'              => esc_html__( '{product_name} has been added to cart.', 'addonify-floating-cart' ),
+			'added_to_cart_notification_text'              => $cart_strings['added_to_cart_notification_text'],
 			'close_notification_after_time'                => 5,
 			'display_close_notification_button'            => false,
 			'display_show_cart_button'                     => false,
-			'show_cart_button_label'                       => esc_html__( 'Show Cart', 'addonify-floating-cart' ),
+			'show_cart_button_label'                       => $cart_strings['show_cart_button_label'],
 			'toast_notification_background_color'          => '',
 			'toast_notification_text_color'                => '',
 			'toast_notification_icon_color'                => '',
@@ -106,7 +108,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Cart modal options.
 			'open_cart_modal_on_trigger_button_mouse_hover' => false,
 			'cart_position'                                => 'right',
-			'cart_title'                                   => esc_html__( 'Cart', 'addonify-floating-cart' ),
+			'cart_title'                                   => $cart_strings['cart_title'],
 			'cart_title_font_size'                         => 14,
 			'cart_title_font_weight'                       => '400',
 			'cart_title_letter_spacing'                    => 0.25,
@@ -116,20 +118,21 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_button_before_checkout_button'        => true,
 			'display_continue_shopping_button'             => true,
 			'continue_shopping_button_action'              => 'default',
-			'continue_shopping_button_label'               => esc_html__( 'Close', 'addonify-floating-cart' ),
-			'checkout_button_label'                        => esc_html__( 'Checkout', 'addonify-floating-cart' ),
-			'sub_total_label'                              => esc_html__( 'Sub Total: ', 'addonify-floating-cart' ),
-			'discount_label'                               => esc_html__( 'Discount:', 'addonify-floating-cart' ),
-			'shipping_label'                               => esc_html__( 'Shipping:', 'addonify-floating-cart' ),
-			'open_shipping_label'                          => esc_html__( 'Change address', 'addonify-floating-cart' ),
-			'tax_label'                                    => esc_html__( 'Tax:', 'addonify-floating-cart' ),
-			'total_label'                                  => esc_html__( 'Total:', 'addonify-floating-cart' ),
-			'coupon_shipping_form_modal_exit_label'        => esc_html__( 'Go Back', 'addonify-floating-cart' ), // @since 1.2.4
-			'empty_cart_text'                              => esc_html__( 'Your cart is currently empty.', 'addonify-floating-cart' ), // @since 1.2.4
-			'product_removal_text'                         => esc_html__( '{product_name} has been removed.', 'addonify-floating-cart' ), // @since 1.2.4
-			'product_removal_undo_text'                    => esc_html__( 'Undo?', 'addonify-floating-cart' ), // @since 1.2.4
-			'item_counter_singular_text'                   => esc_html__( 'Item', 'addonify-floating-cart' ), // @since 1.2.4
-			'item_counter_plural_text'                     => esc_html__( 'Items', 'addonify-floating-cart' ), // @since 1.2.4
+			'enable_cart_labels_from_plugin'               => false, // @since 1.2.4
+			'continue_shopping_button_label'               => $cart_strings['continue_shopping_button_label'],
+			'checkout_button_label'                        => $cart_strings['checkout_button_label'],
+			'sub_total_label'                              => $cart_strings['sub_total_label'],
+			'discount_label'                               => $cart_strings['discount_label'],
+			'shipping_label'                               => $cart_strings['shipping_label'],
+			'open_shipping_label'                          => $cart_strings['open_shipping_label'],
+			'tax_label'                                    => $cart_strings['tax_label'],
+			'total_label'                                  => $cart_strings['total_label'],
+			'coupon_shipping_form_modal_exit_label'        => $cart_strings['coupon_shipping_form_modal_exit_label'], // @since 1.2.4
+			'empty_cart_text'                              => $cart_strings['empty_cart_text'], // @since 1.2.4
+			'product_removal_text'                         => $cart_strings['product_removal_text'], // @since 1.2.4
+			'product_removal_undo_text'                    => $cart_strings['product_removal_undo_text'], // @since 1.2.4
+			'item_counter_singular_text'                   => $cart_strings['item_counter_singular_text'], // @since 1.2.4
+			'item_counter_plural_text'                     => $cart_strings['item_counter_plural_text'], // @since 1.2.4
 
 			'cart_modal_width'                             => 500,
 			'cart_modal_base_font_size'                    => 15,
@@ -199,11 +202,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			// cart coupon options.
 			'display_applied_coupons'                      => true,
-			'coupon_form_toggler_text'                     => esc_html__( 'Have a coupon', 'addonify-floating-cart' ), // @since 1.2.4
-			'coupon_from_description'                      => esc_html__( 'If you have a coupon code, please apply it below.', 'addonify-floating-cart' ), // @since 1.2.4
-			'coupon_field_placeholder'                     => esc_html__( 'Coupon code', 'addonify-floating-cart' ), // @since 1.2.4
-			'cart_apply_coupon_button_label'               => esc_html__( 'Apply Coupon', 'addonify-floating-cart' ),
-			'applied_coupons_list_title'                   => esc_html__( 'Applied coupon:', 'addonify-floating-cart' ), // @since 1.2.4
+			'coupon_form_toggler_text'                     => $cart_strings['coupon_form_toggler_text'], // @since 1.2.4
+			'coupon_from_description'                      => $cart_strings['coupon_from_description'], // @since 1.2.4
+			'coupon_field_placeholder'                     => $cart_strings['coupon_field_placeholder'], // @since 1.2.4
+			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
+			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
 
 			'custom_css'                                   => '',
 		)

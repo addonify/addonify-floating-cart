@@ -12,30 +12,21 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <header class="adfy__woofc-header">
 	<h3 class="adfy__woofc-title">
-		<?php echo esc_html( addonify_floating_cart_get_option( 'cart_title' ) ); ?>
-		<?php if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) { ?>
-		<span class="adfy__woofc-badge">
-			<?php
-			$cart_items_count = count( WC()->cart->get_cart_contents() );
+		<?php echo esc_html( $cart_strings['cart_title'] ); ?>
+		<?php
+		if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) {
 
-			$count_prefix_text_singular = addonify_floating_cart_get_option( 'item_counter_singular_text' );
-			if ( ! $count_prefix_text_singular ) {
-				$count_prefix_text_singular = esc_html__( 'Item', 'addonify-floating-cart' );
-			}
+			$cart_items_count = 0;
 
-			$count_prefix_text_plural = addonify_floating_cart_get_option( 'item_counter_plural_text' );
-			if ( ! $count_prefix_text_plural ) {
-				$count_prefix_text_plural = esc_html__( 'Items', 'addonify-floating-cart' );
-			}
-
-			if ( 1 === $cart_items_count ) {
-				echo esc_html( number_format_i18n( $cart_items_count ) . ' ' . $count_prefix_text_singular );
+			if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
+				$cart_items_count = count( WC()->cart->get_cart_contents() );
 			} else {
-				echo esc_html( number_format_i18n( $cart_items_count ) . ' ' . $count_prefix_text_plural );
+				$cart_items_count = WC()->cart->get_cart_contents_count();
 			}
-			?>
-		</span>
-		<?php } ?>
+
+			addonify_floating_cart_display_items_count( $cart_items_count, $cart_strings );
+		}
+		?>
 	</h3>
 	<div class="adfy__close-button">
 		<button class="adfy__woofc-fake-button adfy__hide-woofc">

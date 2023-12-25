@@ -118,6 +118,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.2.4 - ?, 2023 =
 
+- Added: Option to enable cart strings from the plugin settings.
 - Added: Option to display shipping cost in the cart subtotal.
 - Added: Option to display taxes in the cart subtotal.
 - Added: Options to modify product removal and undo texts.

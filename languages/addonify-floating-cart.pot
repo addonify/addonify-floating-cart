@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.3\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-12-26T05:24:45+00:00\n"
+"POT-Creation-Date: 2023-12-26T13:58:33+05:45\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: addonify-floating-cart\n"
 
 #. Plugin Name of the plugin
@@ -39,7 +39,6 @@ msgid "Addonify Floating Cart requires WooCommerce in order to work."
 msgstr ""
 
 #: admin/class-addonify-floating-cart-admin.php:192
-#: admin/assets/js/main.js:732
 msgid "Settings"
 msgstr ""
 
@@ -144,7 +143,7 @@ msgid "Checkout button label"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:121
-#: includes/misc-functions.php:27
+#: includes/misc-functions.php:25
 msgid "Checkout"
 msgstr ""
 
@@ -510,32 +509,32 @@ msgstr ""
 msgid "Once enabled, below selected option will overwrite the default plugin stylesheet. "
 msgstr ""
 
-#: includes/functions/fields/coupon.php:22
-msgid "Display applied coupons"
-msgstr ""
-
 #: includes/functions/fields/coupon.php:23
-msgid "Enable this option to display all applied coupons."
-msgstr ""
-
-#: includes/functions/fields/coupon.php:30
 msgid "Coupon form toggle link label"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:37
+#: includes/functions/fields/coupon.php:30
 msgid "Coupon form description"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:44
+#: includes/functions/fields/coupon.php:37
 msgid "Coupon field placeholder"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:50
+#: includes/functions/fields/coupon.php:43
 msgid "Coupon apply button label"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:52
+#: includes/functions/fields/coupon.php:45
 msgid "Apply coupon"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:50
+msgid "Display applied coupons"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:51
+msgid "Enable this option to display all applied coupons."
 msgstr ""
 
 #: includes/functions/fields/coupon.php:58
@@ -822,91 +821,93 @@ msgstr ""
 msgid "Developer"
 msgstr ""
 
-#: includes/misc-functions.php:23
+#: includes/misc-functions.php:21
 msgid "{product_name} has been added to cart."
 msgstr ""
 
-#: includes/misc-functions.php:24
+#: includes/misc-functions.php:22
 msgid "Show Cart"
 msgstr ""
 
-#: includes/misc-functions.php:25
+#: includes/misc-functions.php:23
+#: includes/template-functions.php:401
 msgid "Cart"
 msgstr ""
 
-#: includes/misc-functions.php:26
+#: includes/misc-functions.php:24
+#: includes/template-functions.php:412
 msgid "Close"
 msgstr ""
 
-#: includes/misc-functions.php:28
+#: includes/misc-functions.php:26
 msgid "Sub Total: "
 msgstr ""
 
-#: includes/misc-functions.php:29
+#: includes/misc-functions.php:27
 msgid "Discount:"
 msgstr ""
 
-#: includes/misc-functions.php:30
+#: includes/misc-functions.php:28
 msgid "Shipping:"
 msgstr ""
 
-#: includes/misc-functions.php:31
+#. Translators: %s shipping destination.
+#: includes/misc-functions.php:29
 #: public/partials/cart-sections/shipping.php:47
 msgid "Change address"
 msgstr ""
 
-#: includes/misc-functions.php:32
+#: includes/misc-functions.php:30
 msgid "Tax:"
 msgstr ""
 
-#: includes/misc-functions.php:33
+#: includes/misc-functions.php:31
 msgid "Total:"
 msgstr ""
 
-#: includes/misc-functions.php:34
-#: admin/assets/js/main.js:1240
+#: includes/misc-functions.php:32
 msgid "Go Back"
 msgstr ""
 
-#: includes/misc-functions.php:35
+#: includes/misc-functions.php:33
 #: public/class-addonify-floating-cart-public.php:461
 #: public/class-addonify-floating-cart-public.php:897
 msgid "Your cart is currently empty."
 msgstr ""
 
-#: includes/misc-functions.php:36
+#: includes/misc-functions.php:34
 msgid "{product_name} has been removed."
 msgstr ""
 
-#: includes/misc-functions.php:37
+#: includes/misc-functions.php:35
 msgid "Undo?"
 msgstr ""
 
-#: includes/misc-functions.php:38
+#: includes/misc-functions.php:36
 msgid "Item"
 msgstr ""
 
-#: includes/misc-functions.php:39
+#: includes/misc-functions.php:37
 msgid "Items"
 msgstr ""
 
-#: includes/misc-functions.php:40
+#: includes/misc-functions.php:38
 msgid "Have a coupon?"
 msgstr ""
 
-#: includes/misc-functions.php:41
+#: includes/misc-functions.php:39
 msgid "If you have a coupon code, please apply it below."
 msgstr ""
 
-#: includes/misc-functions.php:42
+#: includes/misc-functions.php:40
 msgid "Coupon code"
 msgstr ""
 
-#: includes/misc-functions.php:43
+#: includes/misc-functions.php:41
 msgid "Applied coupon:"
 msgstr ""
 
-#: includes/misc-functions.php:44
+#: includes/misc-functions.php:42
 msgid "Apply Coupon"
 msgstr ""
 
@@ -1050,6 +1051,7 @@ msgstr ""
 msgid "No shipping options were found for %s."
 msgstr ""
 
+#. Translators: %s shipping destination.
 #: public/partials/cart-sections/shipping.php:63
 msgid "Enter a different address"
 msgstr ""
@@ -1101,103 +1103,27 @@ msgstr ""
 msgid "Update address"
 msgstr ""
 
-#: admin/assets/js/main.js:281
-msgid "Check docs"
-msgstr ""
-
-#: admin/assets/js/main.js:450
-msgid "Select"
-msgstr ""
-
-#: admin/assets/js/main.js:512
-#: admin/assets/js/main.js:540
-msgid "Enter text here..."
-msgstr ""
-
-#: admin/assets/js/main.js:588
-msgid "Version"
-msgstr ""
-
-#: admin/assets/js/main.js:588
-msgid "Rate"
-msgstr ""
-
-#: admin/assets/js/main.js:655
-msgid "AFC docs"
-msgstr ""
-
-#: admin/assets/js/main.js:657
-msgid "Rate AFC"
-msgstr ""
-
-#: admin/assets/js/main.js:667
-msgid "Save Options"
-msgstr ""
-
-#: admin/assets/js/main.js:741
-msgid "Design"
-msgstr ""
-
-#: admin/assets/js/main.js:750
-msgid "Products"
-msgstr ""
-
-#: admin/assets/js/main.js:1235
-msgid "404"
-msgstr ""
-
-#: admin/assets/js/main.js:1235
-msgid "Oops, page not found!"
-msgstr ""
-
-#: admin/assets/js/main.js:2851
-msgid "Activate now"
-msgstr ""
-
-#: admin/assets/js/main.js:2852
-msgid "Activating..."
-msgstr ""
-
-#: admin/assets/js/main.js:2853
-msgid "Install now"
-msgstr ""
-
-#: admin/assets/js/main.js:2854
-msgid "Installing..."
-msgstr ""
-
-#: admin/assets/js/main.js:2855
-msgid "Installed"
-msgstr ""
-
-#: admin/assets/js/main.js:5778
 #: admin/src/stores/options.js:106
 msgid "Something went wrong while fetching settings."
 msgstr ""
 
-#: admin/assets/js/main.js:5841
-#: admin/assets/js/main.js:5862
 #: admin/src/stores/options.js:158
 #: admin/src/stores/options.js:182
 msgid "Error saving changes! Please try again."
 msgstr ""
 
-#: admin/assets/js/main.js:6133
 #: admin/src/stores/product.js:216
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:6154
 #: admin/src/stores/product.js:231
 msgid "Error: couldn't install plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:6204
 #: admin/src/stores/product.js:266
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:6223
 #: admin/src/stores/product.js:279
 msgid "Error: Couldn't activate the plugin."
 msgstr ""

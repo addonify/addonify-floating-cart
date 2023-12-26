@@ -708,7 +708,7 @@ class Addonify_Floating_Cart_Public {
 		$this->check_coupons();
 
 		ob_start();
-			do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons' );
+			do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', $this->cart_strings );
 		$coupons = ob_get_clean();
 
 		echo wp_json_encode(
@@ -763,7 +763,7 @@ class Addonify_Floating_Cart_Public {
 		$this->check_coupons();
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons' );
+		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', $this->cart_strings );
 		$coupons = ob_get_clean();
 
 		echo wp_json_encode(

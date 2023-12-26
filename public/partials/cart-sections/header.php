@@ -12,19 +12,21 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <header class="adfy__woofc-header">
 	<h3 class="adfy__woofc-title">
-		<?php echo esc_html( addonify_floating_cart_get_option( 'cart_title' ) ); ?>
-		<?php if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) { ?>
-		<span class="adfy__woofc-badge">
-			<?php
-			$cart_items_count = count( WC()->cart->get_cart_contents() );
-			printf(
-				/* translators: 1: number of cart items. */
-				esc_html( _nx( '%1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ) ),
-				number_format_i18n( $cart_items_count ) // phpcs:ignore
-			);
-			?>
-		</span>
-		<?php } ?>
+		<?php echo esc_html( $cart_strings['cart_title'] ); ?>
+		<?php
+		if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) {
+
+			$cart_items_count = 0;
+
+			if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
+				$cart_items_count = count( WC()->cart->get_cart_contents() );
+			} else {
+				$cart_items_count = WC()->cart->get_cart_contents_count();
+			}
+
+			addonify_floating_cart_display_items_count( $cart_items_count, $cart_strings );
+		}
+		?>
 	</h3>
 	<div class="adfy__close-button">
 		<button class="adfy__woofc-fake-button adfy__hide-woofc">

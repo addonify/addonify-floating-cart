@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.2\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-31T06:34:39+00:00\n"
+"POT-Creation-Date: 2023-12-26T09:20:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: addonify-floating-cart\n"
 
 #. Plugin Name of the plugin
@@ -39,7 +39,7 @@ msgid "Addonify Floating Cart requires WooCommerce in order to work."
 msgstr ""
 
 #: admin/class-addonify-floating-cart-admin.php:192
-#: admin/assets/js/main.js:738
+#: admin/assets/js/main.js:732
 msgid "Settings"
 msgstr ""
 
@@ -86,327 +86,363 @@ msgstr ""
 msgid "Cart title"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:45
+#: includes/functions/fields/cart-display.php:48
 #: includes/functions/fields/toggle-button.php:48
 msgid "Display badge"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:46
+#: includes/functions/fields/cart-display.php:49
 msgid "Display badge for number of items in the cart beside cart title."
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:52
+#: includes/functions/fields/cart-display.php:55
 msgid "Close cart on overlay click"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:58
+#: includes/functions/fields/cart-display.php:61
 msgid "Display button before checkout button"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:64
+#: includes/functions/fields/cart-display.php:67
 msgid "Action of button before checkout button"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:66
+#: includes/functions/fields/cart-display.php:69
 msgid "Select action"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:68
+#: includes/functions/fields/cart-display.php:71
 msgid "Close Cart Modal"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:69
+#: includes/functions/fields/cart-display.php:72
 msgid "Open Cart Page"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:83
+#: includes/functions/fields/cart-display.php:79
+msgid "Display shipping cost"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:86
+msgid "Display taxes"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:102
+msgid "Display labels from plugin"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:108
 msgid "Label of button before checkout button"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:85
+#: includes/functions/fields/cart-display.php:110
 msgid "i.e Close"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:90
+#: includes/functions/fields/cart-display.php:119
 msgid "Checkout button label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:92
-#: includes/functions/settings.php:118
+#: includes/functions/fields/cart-display.php:121
+#: includes/misc-functions.php:25
 msgid "Checkout"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:97
+#: includes/functions/fields/cart-display.php:126
 msgid "Sub total label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:103
+#: includes/functions/fields/cart-display.php:132
 msgid "Discount label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:109
+#: includes/functions/fields/cart-display.php:138
 msgid "Shipping label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:115
+#: includes/functions/fields/cart-display.php:144
 msgid "Label for opening shipping section"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:121
+#: includes/functions/fields/cart-display.php:150
 msgid "Tax label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:127
+#: includes/functions/fields/cart-display.php:156
 msgid "Total label"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:162
+#: includes/functions/fields/cart-display.php:163
+msgid "Coupon and shipping form modal exit label"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:170
+msgid "Empty cart text"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:177
+msgid "Product removal notice text"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:184
+msgid "Product removal undo link label"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:191
+msgid "Cart items count prefix text - singular"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:198
+msgid "Cart items count prefix text - plural"
+msgstr ""
+
+#: includes/functions/fields/cart-display.php:233
 msgid "Cart width (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:172
+#: includes/functions/fields/cart-display.php:243
 msgid "General cart text font size (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:182
+#: includes/functions/fields/cart-display.php:253
 msgid "Cart background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:183
+#: includes/functions/fields/cart-display.php:254
 msgid "Main cart container background color."
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:190
+#: includes/functions/fields/cart-display.php:261
 msgid "Cart overlay background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:197
+#: includes/functions/fields/cart-display.php:268
 msgid "General border color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:204
+#: includes/functions/fields/cart-display.php:275
 msgid "General text color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:211
+#: includes/functions/fields/cart-display.php:282
 msgid "General link color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:218
+#: includes/functions/fields/cart-display.php:289
 msgid "General link color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:225
+#: includes/functions/fields/cart-display.php:296
 msgid "Cart title color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:232
+#: includes/functions/fields/cart-display.php:303
 msgid "Cart title font size (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:242
+#: includes/functions/fields/cart-display.php:313
 msgid "Cart title font weight"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:246
-#: includes/functions/fields/cart-display.php:344
-#: includes/functions/fields/cart-display.php:596
+#: includes/functions/fields/cart-display.php:317
+#: includes/functions/fields/cart-display.php:415
+#: includes/functions/fields/cart-display.php:667
 msgid "Normal"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:247
-#: includes/functions/fields/cart-display.php:345
-#: includes/functions/fields/cart-display.php:597
+#: includes/functions/fields/cart-display.php:318
+#: includes/functions/fields/cart-display.php:416
+#: includes/functions/fields/cart-display.php:668
 msgid "Medium"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:248
-#: includes/functions/fields/cart-display.php:346
-#: includes/functions/fields/cart-display.php:598
+#: includes/functions/fields/cart-display.php:319
+#: includes/functions/fields/cart-display.php:417
+#: includes/functions/fields/cart-display.php:669
 msgid "Semi bold"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:249
-#: includes/functions/fields/cart-display.php:347
-#: includes/functions/fields/cart-display.php:599
+#: includes/functions/fields/cart-display.php:320
+#: includes/functions/fields/cart-display.php:418
+#: includes/functions/fields/cart-display.php:670
 msgid "Bold"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:254
+#: includes/functions/fields/cart-display.php:325
 msgid "Cart title letter spacing (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:265
+#: includes/functions/fields/cart-display.php:336
 msgid "Cart title text transform"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:269
-#: includes/functions/fields/cart-display.php:377
+#: includes/functions/fields/cart-display.php:340
+#: includes/functions/fields/cart-display.php:448
 msgid "None"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:270
-#: includes/functions/fields/cart-display.php:378
+#: includes/functions/fields/cart-display.php:341
+#: includes/functions/fields/cart-display.php:449
 msgid "Capatilize"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:271
-#: includes/functions/fields/cart-display.php:379
+#: includes/functions/fields/cart-display.php:342
+#: includes/functions/fields/cart-display.php:450
 msgid "Uppercase"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:272
-#: includes/functions/fields/cart-display.php:380
+#: includes/functions/fields/cart-display.php:343
+#: includes/functions/fields/cart-display.php:451
 msgid "Lowercase"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:277
+#: includes/functions/fields/cart-display.php:348
 #: includes/functions/fields/toggle-button.php:147
 msgid "Badge label color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:284
+#: includes/functions/fields/cart-display.php:355
 #: includes/functions/fields/toggle-button.php:133
 msgid "Badge background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:291
+#: includes/functions/fields/cart-display.php:362
 msgid "Cart close icon color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:298
+#: includes/functions/fields/cart-display.php:369
 msgid "Cart close icon color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:330
+#: includes/functions/fields/cart-display.php:401
 msgid "Buttons font size (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:340
+#: includes/functions/fields/cart-display.php:411
 msgid "Buttons font weight"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:352
+#: includes/functions/fields/cart-display.php:423
 msgid "Buttons letter spacing (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:363
+#: includes/functions/fields/cart-display.php:434
 msgid "Buttons border radius (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:373
+#: includes/functions/fields/cart-display.php:444
 msgid "Buttons text transform"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:385
+#: includes/functions/fields/cart-display.php:456
 msgid "Primary button background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:392
+#: includes/functions/fields/cart-display.php:463
 msgid "Primary button label color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:399
+#: includes/functions/fields/cart-display.php:470
 msgid "Primary button border color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:406
+#: includes/functions/fields/cart-display.php:477
 msgid "Primary button background color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:413
+#: includes/functions/fields/cart-display.php:484
 msgid "Primary button label color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:420
+#: includes/functions/fields/cart-display.php:491
 msgid "Primary button border color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:427
+#: includes/functions/fields/cart-display.php:498
 msgid "Secondary button background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:434
+#: includes/functions/fields/cart-display.php:505
 msgid "Secondary button label color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:441
+#: includes/functions/fields/cart-display.php:512
 msgid "Secondary button border color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:448
+#: includes/functions/fields/cart-display.php:519
 msgid "Secondary button background color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:455
+#: includes/functions/fields/cart-display.php:526
 msgid "Secondary button label color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:462
+#: includes/functions/fields/cart-display.php:533
 msgid "Secondary button border color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:494
+#: includes/functions/fields/cart-display.php:565
 msgid "Input field placeholder color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:501
+#: includes/functions/fields/cart-display.php:572
 msgid "Input field text color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:508
+#: includes/functions/fields/cart-display.php:579
 msgid "Input field border color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:515
+#: includes/functions/fields/cart-display.php:586
 msgid "Input field background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:522
+#: includes/functions/fields/cart-display.php:593
 msgid "Initial shopping meter background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:529
+#: includes/functions/fields/cart-display.php:600
 msgid "Shopping meter live progress bar background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:536
+#: includes/functions/fields/cart-display.php:607
 msgid "Shopping meter background color once threashold is reached"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:568
+#: includes/functions/fields/cart-display.php:639
 msgid "Product title color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:575
+#: includes/functions/fields/cart-display.php:646
 msgid "Product title color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:582
+#: includes/functions/fields/cart-display.php:653
 msgid "Product title font size (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:592
+#: includes/functions/fields/cart-display.php:663
 msgid "Product title font weight"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:604
+#: includes/functions/fields/cart-display.php:675
 msgid "Product quantity & price color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:611
+#: includes/functions/fields/cart-display.php:682
 msgid "Remove product button background color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:618
+#: includes/functions/fields/cart-display.php:689
 msgid "Remove product button icon color"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:625
+#: includes/functions/fields/cart-display.php:696
 msgid "Remove product button background color on hover"
 msgstr ""
 
-#: includes/functions/fields/cart-display.php:632
+#: includes/functions/fields/cart-display.php:703
 msgid "Remove product button icon color on hover"
 msgstr ""
 
@@ -474,20 +510,36 @@ msgstr ""
 msgid "Once enabled, below selected option will overwrite the default plugin stylesheet. "
 msgstr ""
 
-#: includes/functions/fields/coupon.php:22
-msgid "Display applied coupons"
-msgstr ""
-
 #: includes/functions/fields/coupon.php:23
-msgid "Enable this option to display all applied coupons."
+msgid "Coupon form toggle link label"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:29
+#: includes/functions/fields/coupon.php:30
+msgid "Coupon form description"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:37
+msgid "Coupon field placeholder"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:43
 msgid "Coupon apply button label"
 msgstr ""
 
-#: includes/functions/fields/coupon.php:31
+#: includes/functions/fields/coupon.php:45
 msgid "Apply coupon"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:50
+msgid "Display applied coupons"
+msgstr ""
+
+#: includes/functions/fields/coupon.php:51
+msgid "Enable this option to display all applied coupons."
+msgstr ""
+
+#: includes/functions/fields/coupon.php:58
+msgid "Applied coupons list title"
 msgstr ""
 
 #: includes/functions/fields/custom-css.php:22
@@ -546,59 +598,59 @@ msgstr ""
 msgid "Product added to cart"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:50
+#: includes/functions/fields/toast-notification.php:54
 msgid "Time to auto close notification (in seconds)"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:60
+#: includes/functions/fields/toast-notification.php:64
 msgid "Display notification close button"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:66
+#: includes/functions/fields/toast-notification.php:70
 msgid "Display button to toggle cart in toast notification"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:72
+#: includes/functions/fields/toast-notification.php:76
 msgid "Label for button to toggle cart"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:104
+#: includes/functions/fields/toast-notification.php:113
 msgid "Text color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:111
+#: includes/functions/fields/toast-notification.php:120
 msgid "Background color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:118
+#: includes/functions/fields/toast-notification.php:127
 msgid "Icon color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:125
+#: includes/functions/fields/toast-notification.php:134
 msgid "Icon background color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:132
+#: includes/functions/fields/toast-notification.php:141
 msgid "Button background color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:139
+#: includes/functions/fields/toast-notification.php:148
 msgid "Button background color on hover"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:146
+#: includes/functions/fields/toast-notification.php:155
 msgid "Button label color"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:153
+#: includes/functions/fields/toast-notification.php:162
 msgid "Button label color on hover"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:160
+#: includes/functions/fields/toast-notification.php:169
 msgid "Horizontal offset from left or right of the screen (unit: px)"
 msgstr ""
 
-#: includes/functions/fields/toast-notification.php:170
+#: includes/functions/fields/toast-notification.php:179
 msgid "Vertical offset from top or bottom of the screen (unit: px)"
 msgstr ""
 
@@ -714,105 +766,150 @@ msgstr ""
 msgid "Vertical offset from top or bottom of the screen."
 msgstr ""
 
-#: includes/functions/settings.php:88
-msgid "{product_name} has been added to cart."
-msgstr ""
-
-#: includes/functions/settings.php:92
-msgid "Show Cart"
-msgstr ""
-
-#: includes/functions/settings.php:107
-msgid "Cart"
-msgstr ""
-
-#: includes/functions/settings.php:117
-msgid "Close"
-msgstr ""
-
-#: includes/functions/settings.php:119
-msgid "Sub Total: "
-msgstr ""
-
-#: includes/functions/settings.php:120
-msgid "Discount:"
-msgstr ""
-
-#: includes/functions/settings.php:121
-msgid "Shipping:"
-msgstr ""
-
-#: includes/functions/settings.php:122
-#: public/partials/cart-sections/shipping.php:41
-msgid "Change address"
-msgstr ""
-
-#: includes/functions/settings.php:123
-msgid "Tax:"
-msgstr ""
-
-#: includes/functions/settings.php:124
-msgid "Total:"
-msgstr ""
-
-#: includes/functions/settings.php:194
-msgid "Apply Coupon"
-msgstr ""
-
-#: includes/functions/settings.php:288
+#: includes/functions/settings.php:303
 msgid "General"
 msgstr ""
 
-#: includes/functions/settings.php:293
+#: includes/functions/settings.php:308
 msgid "Cart Toggle Button Options"
 msgstr ""
 
-#: includes/functions/settings.php:298
+#: includes/functions/settings.php:313
 msgid "Toast Notification Options"
 msgstr ""
 
-#: includes/functions/settings.php:303
+#: includes/functions/settings.php:318
 msgid "Cart Drawer/Modal Options"
 msgstr ""
 
-#: includes/functions/settings.php:308
+#: includes/functions/settings.php:323
 msgid "Cart Drawer/Modal Labels"
 msgstr ""
 
-#: includes/functions/settings.php:313
+#: includes/functions/settings.php:328
 msgid "Coupon Options"
 msgstr ""
 
-#: includes/functions/settings.php:322
+#: includes/functions/settings.php:337
 msgid "Interface Design"
 msgstr ""
 
-#: includes/functions/settings.php:327
+#: includes/functions/settings.php:342
 msgid "Cart Toggle Button"
 msgstr ""
 
-#: includes/functions/settings.php:333
+#: includes/functions/settings.php:348
 msgid "Toast Notification"
 msgstr ""
 
-#: includes/functions/settings.php:339
+#: includes/functions/settings.php:354
 msgid "Cart Panel"
 msgstr ""
 
-#: includes/functions/settings.php:345
+#: includes/functions/settings.php:360
 msgid "Buttons in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:351
+#: includes/functions/settings.php:366
 msgid "Miscellaneous Cart Elements"
 msgstr ""
 
-#: includes/functions/settings.php:357
+#: includes/functions/settings.php:372
 msgid "Products in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:363
+#: includes/functions/settings.php:378
 msgid "Developer"
+msgstr ""
+
+#: includes/misc-functions.php:21
+msgid "{product_name} has been added to cart."
+msgstr ""
+
+#: includes/misc-functions.php:22
+msgid "Show Cart"
+msgstr ""
+
+#: includes/misc-functions.php:23
+#: includes/template-functions.php:401
+msgid "Cart"
+msgstr ""
+
+#: includes/misc-functions.php:24
+#: includes/template-functions.php:412
+msgid "Close"
+msgstr ""
+
+#: includes/misc-functions.php:26
+msgid "Sub Total: "
+msgstr ""
+
+#: includes/misc-functions.php:27
+msgid "Discount:"
+msgstr ""
+
+#: includes/misc-functions.php:28
+msgid "Shipping:"
+msgstr ""
+
+#: includes/misc-functions.php:29
+#: public/partials/cart-sections/shipping.php:47
+msgid "Change address"
+msgstr ""
+
+#: includes/misc-functions.php:30
+msgid "Tax:"
+msgstr ""
+
+#: includes/misc-functions.php:31
+msgid "Total:"
+msgstr ""
+
+#: includes/misc-functions.php:32
+#: admin/assets/js/main.js:1240
+msgid "Go Back"
+msgstr ""
+
+#: includes/misc-functions.php:33
+#: public/class-addonify-floating-cart-public.php:461
+#: public/class-addonify-floating-cart-public.php:897
+msgid "Your cart is currently empty."
+msgstr ""
+
+#: includes/misc-functions.php:34
+msgid "{product_name} has been removed."
+msgstr ""
+
+#: includes/misc-functions.php:35
+msgid "Undo?"
+msgstr ""
+
+#: includes/misc-functions.php:36
+msgid "Item"
+msgstr ""
+
+#: includes/misc-functions.php:37
+msgid "Items"
+msgstr ""
+
+#: includes/misc-functions.php:38
+msgid "Have a coupon?"
+msgstr ""
+
+#: includes/misc-functions.php:39
+msgid "If you have a coupon code, please apply it below."
+msgstr ""
+
+#: includes/misc-functions.php:40
+msgid "Coupon code"
+msgstr ""
+
+#: includes/misc-functions.php:41
+msgid "Applied coupon:"
+msgstr ""
+
+#: includes/misc-functions.php:42
+msgid "Apply Coupon"
 msgstr ""
 
 #. translators: %s template
@@ -821,13 +918,13 @@ msgid "%s does not exist."
 msgstr ""
 
 #. translators: %d: shipping package number
-#: includes/template-functions.php:319
+#: includes/template-functions.php:332
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
 #. translators: %d: shipping package number
-#: includes/template-functions.php:319
+#: includes/template-functions.php:332
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""
@@ -861,306 +958,248 @@ msgstr ""
 msgid "Later"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:254
-msgid "Please remove it from cart."
+#. translators: 1: product name.
+#: public/class-addonify-floating-cart-public.php:306
+msgid "%1$s is no more available in stock. %1$s has been removed from cart."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:257
-msgid "Product has been removed."
+#. translators: 1: product name.
+#: public/class-addonify-floating-cart-public.php:312
+msgid "%1$s is no more available in stock. Please remove it from cart."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:259
-msgid " is no more available in stock. "
-msgstr ""
-
-#. translators: 1: number of cart items.
-#: public/class-addonify-floating-cart-public.php:295
-msgctxt "number of cart items"
-msgid " %1$s Item"
-msgid_plural "%1$s Items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: public/class-addonify-floating-cart-public.php:318
-#: public/partials/sidebar-cart.php:29
-#: admin/assets/js/main.js:1253
-msgid "Go Back"
-msgstr ""
-
-#: public/class-addonify-floating-cart-public.php:401
+#: public/class-addonify-floating-cart-public.php:446
 msgid "Invalid product id or cart item key."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:413
-#: public/class-addonify-floating-cart-public.php:846
-#: public/partials/cart-sections/body.php:76
-msgid "Your cart is currently empty."
-msgstr ""
-
-#: public/class-addonify-floating-cart-public.php:423
-#: public/class-addonify-floating-cart-public.php:490
-#: public/class-addonify-floating-cart-public.php:590
-#: public/class-addonify-floating-cart-public.php:709
-#: public/class-addonify-floating-cart-public.php:810
-#: public/class-addonify-floating-cart-public.php:854
+#: public/class-addonify-floating-cart-public.php:474
+#: public/class-addonify-floating-cart-public.php:541
+#: public/class-addonify-floating-cart-public.php:641
+#: public/class-addonify-floating-cart-public.php:760
+#: public/class-addonify-floating-cart-public.php:861
+#: public/class-addonify-floating-cart-public.php:905
 msgid "Invalid security token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:461
+#: public/class-addonify-floating-cart-public.php:512
 msgid "Restored successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:464
+#: public/class-addonify-floating-cart-public.php:515
 msgid "Could not be restored."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:468
+#: public/class-addonify-floating-cart-public.php:519
 msgid "Already exists in cart"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:472
+#: public/class-addonify-floating-cart-public.php:523
 msgid "Key Missing"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:547
+#: public/class-addonify-floating-cart-public.php:598
 msgid "Quantity must be more than zero."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:559
+#: public/class-addonify-floating-cart-public.php:610
 msgid "Not available in the stock."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:582
+#: public/class-addonify-floating-cart-public.php:633
 msgid "Quantity updated successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:652
-#: public/class-addonify-floating-cart-public.php:706
+#: public/class-addonify-floating-cart-public.php:703
+#: public/class-addonify-floating-cart-public.php:757
 msgid "Please enter a coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:655
+#: public/class-addonify-floating-cart-public.php:706
 msgid "Invalid secutrity token."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:703
+#: public/class-addonify-floating-cart-public.php:754
 msgid "Coupon code removed."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:703
+#: public/class-addonify-floating-cart-public.php:754
 msgid "Error removing coupon code."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:769
+#: public/class-addonify-floating-cart-public.php:820
 msgid "Please enter a valid postcode / ZIP."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:880
-msgid " has been removed."
-msgstr ""
-
-#: public/class-addonify-floating-cart-public.php:880
-msgid "Undo?"
-msgstr ""
-
-#: public/partials/cart-sections/coupon.php:18
-msgid "Go back"
-msgstr ""
-
-#: public/partials/cart-sections/coupon.php:26
-msgid "If you have a coupon code, please apply it below."
-msgstr ""
-
-#: public/partials/cart-sections/coupon.php:28
-msgid "blackfriday"
-msgstr ""
-
-#: public/partials/cart-sections/coupons-applied.php:21
-msgid "Applied coupon :"
-msgstr ""
-
-#: public/partials/cart-sections/footer.php:36
-msgid "Have a coupon?"
-msgstr ""
-
-#. translators: 1: number of cart items.
-#: public/partials/cart-sections/header.php:22
-msgctxt "number of cart items"
-msgid "%1$s Item"
-msgid_plural "%1$s Items"
-msgstr[0] ""
-msgstr[1] ""
-
 #. Translators: %s shipping destination.
-#: public/partials/cart-sections/shipping.php:40
+#: public/partials/cart-sections/shipping.php:46
 msgid "Shipping to %s."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:43
+#: public/partials/cart-sections/shipping.php:49
 msgid "Shipping options will be updated during checkout."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:50
+#: public/partials/cart-sections/shipping.php:56
 msgid "Shipping costs are calculated during checkout."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:52
+#: public/partials/cart-sections/shipping.php:58
 msgid "Enter your address to view shipping options."
 msgstr ""
 
 #. Translators: %s shipping destination.
-#: public/partials/cart-sections/shipping.php:56
+#: public/partials/cart-sections/shipping.php:62
 msgid "No shipping options were found for %s."
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:57
+#: public/partials/cart-sections/shipping.php:63
 msgid "Enter a different address"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:70
+#: public/partials/cart-sections/shipping.php:77
 msgid "Calculate shipping"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:78
+#: public/partials/cart-sections/shipping.php:85
 msgid "Country / region:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:82
+#: public/partials/cart-sections/shipping.php:89
 msgid "Select a country / region&hellip;"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:102
-#: public/partials/cart-sections/shipping.php:108
-#: public/partials/cart-sections/shipping.php:121
+#: public/partials/cart-sections/shipping.php:109
+#: public/partials/cart-sections/shipping.php:115
+#: public/partials/cart-sections/shipping.php:128
 msgid "State / County"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:107
-#: public/partials/cart-sections/shipping.php:120
+#: public/partials/cart-sections/shipping.php:114
+#: public/partials/cart-sections/shipping.php:127
 msgid "State / County:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:109
+#: public/partials/cart-sections/shipping.php:116
 msgid "Select an option&hellip;"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:130
+#: public/partials/cart-sections/shipping.php:137
 msgid "City:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:131
+#: public/partials/cart-sections/shipping.php:138
 msgid "City"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:137
+#: public/partials/cart-sections/shipping.php:144
 msgid "Postcode / ZIP:"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:138
+#: public/partials/cart-sections/shipping.php:145
 msgid "Postcode / ZIP"
 msgstr ""
 
-#: public/partials/cart-sections/shipping.php:144
+#: public/partials/cart-sections/shipping.php:151
 msgid "Update address"
 msgstr ""
 
-#: admin/assets/js/main.js:283
+#: admin/assets/js/main.js:281
 msgid "Check docs"
 msgstr ""
 
-#: admin/assets/js/main.js:455
+#: admin/assets/js/main.js:450
 msgid "Select"
 msgstr ""
 
-#: admin/assets/js/main.js:518
-#: admin/assets/js/main.js:546
+#: admin/assets/js/main.js:512
+#: admin/assets/js/main.js:540
 msgid "Enter text here..."
 msgstr ""
 
-#: admin/assets/js/main.js:594
+#: admin/assets/js/main.js:588
 msgid "Version"
 msgstr ""
 
-#: admin/assets/js/main.js:594
+#: admin/assets/js/main.js:588
 msgid "Rate"
 msgstr ""
 
-#: admin/assets/js/main.js:661
+#: admin/assets/js/main.js:655
 msgid "AFC docs"
 msgstr ""
 
-#: admin/assets/js/main.js:663
+#: admin/assets/js/main.js:657
 msgid "Rate AFC"
 msgstr ""
 
-#: admin/assets/js/main.js:673
+#: admin/assets/js/main.js:667
 msgid "Save Options"
 msgstr ""
 
-#: admin/assets/js/main.js:748
+#: admin/assets/js/main.js:741
 msgid "Design"
 msgstr ""
 
-#: admin/assets/js/main.js:758
+#: admin/assets/js/main.js:750
 msgid "Products"
 msgstr ""
 
-#: admin/assets/js/main.js:1248
+#: admin/assets/js/main.js:1235
 msgid "404"
 msgstr ""
 
-#: admin/assets/js/main.js:1248
+#: admin/assets/js/main.js:1235
 msgid "Oops, page not found!"
 msgstr ""
 
-#: admin/assets/js/main.js:2870
+#: admin/assets/js/main.js:2851
 msgid "Activate now"
 msgstr ""
 
-#: admin/assets/js/main.js:2871
+#: admin/assets/js/main.js:2852
 msgid "Activating..."
 msgstr ""
 
-#: admin/assets/js/main.js:2872
+#: admin/assets/js/main.js:2853
 msgid "Install now"
 msgstr ""
 
-#: admin/assets/js/main.js:2873
+#: admin/assets/js/main.js:2854
 msgid "Installing..."
 msgstr ""
 
-#: admin/assets/js/main.js:2874
+#: admin/assets/js/main.js:2855
 msgid "Installed"
 msgstr ""
 
-#: admin/assets/js/main.js:5796
+#: admin/assets/js/main.js:5778
 #: admin/src/stores/options.js:106
 msgid "Something went wrong while fetching settings."
 msgstr ""
 
-#: admin/assets/js/main.js:5859
-#: admin/assets/js/main.js:5880
+#: admin/assets/js/main.js:5841
+#: admin/assets/js/main.js:5862
 #: admin/src/stores/options.js:158
 #: admin/src/stores/options.js:182
 msgid "Error saving changes! Please try again."
 msgstr ""
 
-#: admin/assets/js/main.js:6152
+#: admin/assets/js/main.js:6133
 #: admin/src/stores/product.js:216
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:6173
+#: admin/assets/js/main.js:6154
 #: admin/src/stores/product.js:231
 msgid "Error: couldn't install plugin."
 msgstr ""
 
-#: admin/assets/js/main.js:6223
+#: admin/assets/js/main.js:6204
 #: admin/src/stores/product.js:266
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: admin/assets/js/main.js:6242
+#: admin/assets/js/main.js:6223
 #: admin/src/stores/product.js:279
 msgid "Error: Couldn't activate the plugin."
 msgstr ""

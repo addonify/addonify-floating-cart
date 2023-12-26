@@ -42,6 +42,8 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/custom-c
  */
 function addonify_floating_cart_settings_fields_defaults() {
 
+	$cart_strings = addonify_floating_cart_default_strings();
+
 	return apply_filters(
 		'addonify_floating_cart_settings_fields_defaults',
 		array(
@@ -54,6 +56,8 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'include_discount_amount_in_threshold'         => false,
 			'customer_shopping_meter_pre_threshold_label'  => '',
 			'customer_shopping_meter_post_threshold_label' => '',
+			'display_shipping_cost_in_cart_subtotal'       => true, // @since 1.2.4
+			'display_taxes_in_cart_subtotal'               => true, // @since 1.2.4
 			'load_styles_from_plugin'                      => true,
 
 			// Floating Cart Toggle Button Options.
@@ -85,11 +89,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Toast notification options.
 			'display_toast_notification'                   => true,
 			'toast_notification_display_position'          => 'top-right',
-			'added_to_cart_notification_text'              => __( '{product_name} has been added to cart.', 'addonify-floating-cart' ),
+			'added_to_cart_notification_text'              => $cart_strings['added_to_cart_notification_text'],
 			'close_notification_after_time'                => 5,
 			'display_close_notification_button'            => false,
 			'display_show_cart_button'                     => false,
-			'show_cart_button_label'                       => __( 'Show Cart', 'addonify-floating-cart' ),
+			'show_cart_button_label'                       => $cart_strings['show_cart_button_label'],
 			'toast_notification_background_color'          => '',
 			'toast_notification_text_color'                => '',
 			'toast_notification_icon_color'                => '',
@@ -104,7 +108,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Cart modal options.
 			'open_cart_modal_on_trigger_button_mouse_hover' => false,
 			'cart_position'                                => 'right',
-			'cart_title'                                   => __( 'Cart', 'addonify-floating-cart' ),
+			'cart_title'                                   => $cart_strings['cart_title'],
 			'cart_title_font_size'                         => 14,
 			'cart_title_font_weight'                       => '400',
 			'cart_title_letter_spacing'                    => 0.25,
@@ -114,14 +118,21 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'display_button_before_checkout_button'        => true,
 			'display_continue_shopping_button'             => true,
 			'continue_shopping_button_action'              => 'default',
-			'continue_shopping_button_label'               => __( 'Close', 'addonify-floating-cart' ),
-			'checkout_button_label'                        => __( 'Checkout', 'addonify-floating-cart' ),
-			'sub_total_label'                              => __( 'Sub Total: ', 'addonify-floating-cart' ),
-			'discount_label'                               => __( 'Discount:', 'addonify-floating-cart' ),
-			'shipping_label'                               => __( 'Shipping:', 'addonify-floating-cart' ),
-			'open_shipping_label'                          => __( 'Change address', 'addonify-floating-cart' ),
-			'tax_label'                                    => __( 'Tax:', 'addonify-floating-cart' ),
-			'total_label'                                  => __( 'Total:', 'addonify-floating-cart' ),
+			'enable_cart_labels_from_plugin'               => false, // @since 1.2.4
+			'continue_shopping_button_label'               => $cart_strings['continue_shopping_button_label'],
+			'checkout_button_label'                        => $cart_strings['checkout_button_label'],
+			'sub_total_label'                              => $cart_strings['sub_total_label'],
+			'discount_label'                               => $cart_strings['discount_label'],
+			'shipping_label'                               => $cart_strings['shipping_label'],
+			'open_shipping_label'                          => $cart_strings['open_shipping_label'],
+			'tax_label'                                    => $cart_strings['tax_label'],
+			'total_label'                                  => $cart_strings['total_label'],
+			'coupon_shipping_form_modal_exit_label'        => $cart_strings['coupon_shipping_form_modal_exit_label'], // @since 1.2.4
+			'empty_cart_text'                              => $cart_strings['empty_cart_text'], // @since 1.2.4
+			'product_removal_text'                         => $cart_strings['product_removal_text'], // @since 1.2.4
+			'product_removal_undo_text'                    => $cart_strings['product_removal_undo_text'], // @since 1.2.4
+			'item_counter_singular_text'                   => $cart_strings['item_counter_singular_text'], // @since 1.2.4
+			'item_counter_plural_text'                     => $cart_strings['item_counter_plural_text'], // @since 1.2.4
 
 			'cart_modal_width'                             => 500,
 			'cart_modal_base_font_size'                    => 15,
@@ -191,7 +202,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 
 			// cart coupon options.
 			'display_applied_coupons'                      => true,
-			'cart_apply_coupon_button_label'               => __( 'Apply Coupon', 'addonify-floating-cart' ),
+			'coupon_form_toggler_text'                     => $cart_strings['coupon_form_toggler_text'], // @since 1.2.4
+			'coupon_from_description'                      => $cart_strings['coupon_from_description'], // @since 1.2.4
+			'coupon_field_placeholder'                     => $cart_strings['coupon_field_placeholder'], // @since 1.2.4
+			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
+			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
 
 			'custom_css'                                   => '',
 		)

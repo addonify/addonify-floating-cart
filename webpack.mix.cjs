@@ -3,43 +3,15 @@ const mix = require('laravel-mix');
 /**
 * Notification 
 */
-
 mix.disableNotifications();
-
-/**
- * Modules
-*/
-
-//module.exports = {
-//    plugins: [
-//        require('postcss-preset-env')
-//    ]
-//}
-
-/**
-* Alias
-*/
-
-//mix.alias({
-//    '@': path.join(__dirname, 'admin/src/')
-//});
-
-/**
-* Browser sync
-*/
-
-//mix.browserSync({
-//    proxy: 'http://xenial.local/wp-admin/admin.php?page=addonify_floating_cart#/',
-//});
 
 /**
  * Setup public path to generate assets
  */
-
 mix.setPublicPath('admin/assets/');
 
 /**
- * Autoload jQuery
+ * Auto load jQuery
  */
 mix.autoload({
     jquery: ['$', 'window.jQuery', 'jQuery']
@@ -55,14 +27,12 @@ mix.sass('admin/assets/scss/index.scss', 'admin/assets/css/admin.css');
 * Extract Vendor
 * Note: https://laravel-mix.com/docs/6.0/extract
 */
-
 mix.extract();
 
 /**
 *
 * Extend Mix
 */
-
 mix.webpackConfig(webpack => {
     return {
         plugins: [

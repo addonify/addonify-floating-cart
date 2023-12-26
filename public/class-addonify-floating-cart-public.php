@@ -40,6 +40,15 @@ class Addonify_Floating_Cart_Public {
 	private $version;
 
 	/**
+	 * Cart strings.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @var    array  $cart_strings Cart strings.
+	 */
+	public $cart_strings;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -50,6 +59,8 @@ class Addonify_Floating_Cart_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
+
+		$this->cart_strings = addonify_floating_cart_get_cart_strings();
 	}
 
 	/**
@@ -119,11 +130,29 @@ class Addonify_Floating_Cart_Public {
 			return;
 		}
 
-		wp_enqueue_style( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style(
+			'notyf',
+			plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.css',
+			array(),
+			3,
+			'all'
+		);
 
-		wp_enqueue_style( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style(
+			'perfect-scrollbar',
+			plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.css',
+			array(),
+			'1.5.3',
+			'all'
+		);
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/build/public.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style(
+			$this->plugin_name,
+			plugin_dir_url( __FILE__ ) . 'assets/build/public.min.css',
+			array(),
+			$this->version,
+			'all'
+		);
 
 		if ( (int) addonify_floating_cart_get_option( 'load_styles_from_plugin' ) === 1 ) {
 
@@ -160,11 +189,29 @@ class Addonify_Floating_Cart_Public {
 			}
 		}
 
-		wp_enqueue_script( 'notyf', plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.js', array(), $this->version, true );
+		wp_enqueue_script(
+			'notyf',
+			plugin_dir_url( __FILE__ ) . 'assets/libs/notfy/notfy.min.js',
+			array(),
+			'3',
+			true
+		);
 
-		wp_enqueue_script( 'perfect-scrollbar', plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.js', array(), $this->version, true );
+		wp_enqueue_script(
+			'perfect-scrollbar',
+			plugin_dir_url( __FILE__ ) . 'assets/libs/perfect-scrollbar/perfect-scrollbar.min.js',
+			array(),
+			'1.5.3',
+			true
+		);
 
-		wp_enqueue_script( $this->plugin_name . '-public', plugin_dir_url( __FILE__ ) . 'assets/build/public.min.js', array( 'jquery', 'select2', 'wp-i18n' ), $this->version, true );
+		wp_enqueue_script(
+			$this->plugin_name . '-public',
+			plugin_dir_url( __FILE__ ) . 'assets/build/public.min.js',
+			array( 'jquery', 'wp-i18n' ),
+			$this->version,
+			true
+		);
 
 		wp_localize_script(
 			$this->plugin_name . '-public',
@@ -185,15 +232,15 @@ class Addonify_Floating_Cart_Public {
 				'addonifyFloatingCartNotifyDuration'       => (int) addonify_floating_cart_get_option( 'close_notification_after_time' ) * 1000,
 				'addonifyFloatingCartNotifyDismissible'    => addonify_floating_cart_get_option( 'display_close_notification_button' ),
 				'displayToastNotificationButton'           => addonify_floating_cart_get_option( 'display_show_cart_button' ),
-				'addonifyFloatingCartNotifyMessage'        => addonify_floating_cart_get_option( 'added_to_cart_notification_text' ),
+				'addonifyFloatingCartNotifyMessage'        => $this->cart_strings['added_to_cart_notification_text'],
 				'toast_notification_display_position'      => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
 				'openCartModalOnTriggerButtonHover'        => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ),
 				'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option( 'open_cart_modal_after_click_on_view_cart' ),
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
-				'show_cart_button_label'                   => addonify_floating_cart_get_option( 'show_cart_button_label' ),
+				'show_cart_button_label'                   => $this->cart_strings['show_cart_button_label'],
 				'toastNotificationButton'                  => $this->toast_notification_button_template(),
 				'hideTriggerButtonIfCartIsEmpty'           => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
-				'hideCartOnOverlayClicked'				   => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
+				'hideCartOnOverlayClicked'                 => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 			)
 		);
@@ -208,7 +255,7 @@ class Addonify_Floating_Cart_Public {
 
 		return apply_filters(
 			'addonify_floating_cart_toast_notification_button',
-			"<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>" . esc_html( addonify_floating_cart_get_option( 'show_cart_button_label' ) ) . '</button>'
+			"<button class='adfy__show-woofc adfy__woofc-fake-button adfy__woofc-notfy-button'>" . esc_html( $this->cart_strings['show_cart_button_label'] ) . '</button>'
 		);
 	}
 
@@ -226,7 +273,7 @@ class Addonify_Floating_Cart_Public {
 		WC()->cart->calculate_totals();
 		WC()->cart->maybe_set_cart_cookies();
 
-		do_action( 'addonify_floating_cart_footer_template' );
+		do_action( 'addonify_floating_cart_footer_template', $this->cart_strings );
 	}
 
 	/**
@@ -251,12 +298,21 @@ class Addonify_Floating_Cart_Public {
 
 			// Check stock based on stock-status.
 			if ( ! $product->is_in_stock() ) {
-				$removed = __( 'Please remove it from cart.', 'addonify-floating-cart' );
 
 				if ( WC()->cart->remove_cart_item( $key ) ) {
-					$removed = __( 'Product has been removed.', 'addonify-floating-cart' );
+
+					$fragments['cart_error'] = sprintf(
+						/* translators: 1: product name. */
+						__( '%1$s is no more available in stock. %1$s has been removed from cart.', 'addonify-floating-cart' ),
+						esc_html( $product->get_name() )
+					);
+				} else {
+					$fragments['cart_error'] = sprintf(
+						/* translators: 1: product name. */
+						__( '%1$s is no more available in stock. Please remove it from cart.', 'addonify-floating-cart' ),
+						esc_html( $product->get_name() )
+					);
 				}
-				$fragments['cart_error'] = ucfirst( $product->get_name() ) . __( ' is no more available in stock. ', 'addonify-floating-cart' ) . $removed . '&nbsp;';
 			}
 		}
 
@@ -287,42 +343,31 @@ class Addonify_Floating_Cart_Public {
 			$cart_items_count = WC()->cart->get_cart_contents_count();
 		}
 		ob_start();
-		?>
-			<span class="adfy__woofc-badge">
-				<?php
-				printf(
-					/* translators: 1: number of cart items. */
-					esc_html( _nx( ' %1$s Item', '%1$s Items', $cart_items_count, 'number of cart items', 'addonify-floating-cart' ) ),
-					number_format_i18n( $cart_items_count ) // phpcs:ignore
-				);
-				?>
-			</span>
-		<?php
+		addonify_floating_cart_display_items_count( $cart_items_count, $this->cart_strings );
 		$fragments['.adfy__woofc-badge'] = ob_get_clean();
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_body', array() );
+		do_action( 'addonify_floating_cart_sidebar_cart_body', $this->cart_strings );
 		$fragments['.adfy__woofc-content'] = ob_get_clean();
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', array() );
+		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', $this->cart_strings );
 		$fragments['.adfy__woofc-coupons'] = ob_get_clean();
 
 		$fragments['.adfy_woofc-badge-count'] = '<span class="adfy_woofc-badge-count">' . esc_html( $cart_items_count ) . '</span>';
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_footer', array() );
+		do_action( 'addonify_floating_cart_sidebar_cart_footer', $this->cart_strings );
 		$fragments['.adfy__woofc-colophon'] = ob_get_clean();
 
 		ob_start();
-		$shipping_modal_close_label = esc_html__( 'Go Back', 'addonify-floating-cart' );
 		?>
 		<div id="adfy__woofc-shipping-container" data_display="hidden">
 			<div class="shipping-container-header">
 				<button class="adfy__woofc-fake-button" id="adfy__woofc-hide-shipping-container">
 					<svg viewBox="0 0 64 64"><g><path d="M10.7,44.3c-0.5,0-1-0.2-1.3-0.6l-6.9-8.2c-1.7-2-1.7-5,0-7l6.9-8.2c0.6-0.7,1.7-0.8,2.5-0.2c0.7,0.6,0.8,1.7,0.2,2.5l-6.5,7.7H61c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8H5.6l6.5,7.7c0.6,0.7,0.5,1.8-0.2,2.5C11.5,44.2,11.1,44.3,10.7,44.3z"/></g>
 					</svg>
-					<?php esc_html_e( $shipping_modal_close_label, 'addonify-floating-cart' ); //phpcs:ignore ?>
+					<?php echo esc_html( $this->cart_strings['coupon_shipping_form_modal_exit_label'] ); ?>
 				</button>
 			</div>
 			<?php
@@ -389,7 +434,7 @@ class Addonify_Floating_Cart_Public {
 					if ( WC()->cart->remove_cart_item( $cart_item_key ) === true ) {
 						$return_response['success']           = true;
 						$return_response['cart_hash']         = WC()->cart->get_cart_hash();
-						$return_response['message']           = __( "{$product_name} is removed successfully the cart.", 'addonify-floating-cart' ); //phpcs:ignore
+						$return_response['message']           = $this->cart_strings['product_removal_text'];
 						$return_response['undo_product_link'] = $this->cart_undo_template( $product_name, $cart_item_key );
 					} else {
 						$return_response['success'] = false;
@@ -410,7 +455,13 @@ class Addonify_Floating_Cart_Public {
 			$return_response['cart_items_count'] = WC()->cart->get_cart_contents_count();
 
 			if ( WC()->cart->get_cart_contents_count() === 0 ) {
-				$return_response['empty_cart_message'] = apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'addonify-floating-cart' ) );
+
+				$empty_cart_text = addonify_floating_cart_get_option( 'empty_cart_text' );
+				if ( ! $empty_cart_text ) {
+					$empty_cart_text = esc_html__( 'Your cart is currently empty.', 'addonify-floating-cart' );
+				}
+
+				$return_response['empty_cart_message'] = $empty_cart_text;
 			}
 
 			wp_send_json( $return_response );
@@ -657,7 +708,7 @@ class Addonify_Floating_Cart_Public {
 		$this->check_coupons();
 
 		ob_start();
-			do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons' );
+			do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', $this->cart_strings );
 		$coupons = ob_get_clean();
 
 		echo wp_json_encode(
@@ -712,7 +763,7 @@ class Addonify_Floating_Cart_Public {
 		$this->check_coupons();
 
 		ob_start();
-		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons' );
+		do_action( 'addonify_floating_cart_sidebar_cart_applied_coupons', $this->cart_strings );
 		$coupons = ob_get_clean();
 
 		echo wp_json_encode(
@@ -877,7 +928,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function cart_undo_template( $product_name, $cart_item_key ) {
 
-		return $product_name . __( ' has been removed.', 'addonify-floating-cart' ) . '<a href="#" class="adfy__woofc-restore-item adfy__woofc-link has-underline adfy__woofc-prevent-default" id="adfy__woofc_restore_item" data-item_key="' . esc_attr( $cart_item_key ) . '" class="restore-item">' . __( 'Undo?', 'addonify-floating-cart' ) . '</a>';
+		return esc_html( str_replace( '{product_name}', $product_name, $this->cart_strings['product_removal_text'] ) ) . ' <a href="#" class="adfy__woofc-restore-item adfy__woofc-link has-underline adfy__woofc-prevent-default" id="adfy__woofc_restore_item" data-item_key="' . esc_attr( $cart_item_key ) . '" class="restore-item">' . esc_html( $this->cart_strings['product_removal_undo_text'] ) . '</a>';
 	}
 
 	/**

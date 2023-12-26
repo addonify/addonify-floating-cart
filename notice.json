@@ -7,7 +7,7 @@
             "size": "small",
             "data": {
                 "locale": "en_US",
-                "content": "<strong>V1.2.2</strong> is a major release. Please flush WordPress cache. Check <a href='https://wordpress.org/plugins/addonify-floating-cart/#developers' target='_blank'>Changelog</a>"
+                "content": "<strong>V1.2.4</strong> added custom labels feature. Check <strong>Cart Drawer/Modal Labels</strong> section."
             }
         }
     }

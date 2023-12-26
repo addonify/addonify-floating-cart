@@ -21,6 +21,7 @@ webpack.mix.js
 webpack.mix.cjs
 package.json
 package-lock.json
+pnpm-lock.yaml
 sftp-config.json
 composer.json
 composer.lock

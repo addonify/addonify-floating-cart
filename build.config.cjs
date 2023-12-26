@@ -30,6 +30,7 @@ const excludeFiles = [
     'rollup.config.js',
     'package.json',
     'package-lock.json',
+    'pnpm-lock.yaml',
     'build.config.cjs',
     'tsconfig.json',
     'ts-node.config.json',

@@ -116,7 +116,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.4 - ?, 2023 =
+= 1.2.4 - 26 December, 2023 =
 
 - Fixed:  Translation problem. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)  
 - Added:  Option to enable cart strings from the plugin settings.

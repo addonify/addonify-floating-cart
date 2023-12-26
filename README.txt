@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.4.0
-Stable tag: 1.2.3
+Tested up to: 6.4.2
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,13 +118,16 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.2.4 - ?, 2023 =
 
-- Added: Option to enable cart strings from the plugin settings.
-- Added: Option to display shipping cost in the cart subtotal.
-- Added: Option to display taxes in the cart subtotal.
-- Added: Options to modify product removal and undo texts.
-- Added: Options to modify labels and texts in cart form.
-- Added: Options to modify prefix text of cart count.
-- Added: Option to modify text for link to exit coupon and shipping form modals.
+- Fixed:  Translation problem. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)  
+- Added:  Option to enable cart strings from the plugin settings.
+- Added:  Option to display shipping cost in the cart subtotal. [GitHub Issue #273](https://github.com/addonify/addonify-floating-cart/issues/273)
+- Added:  Option to display taxes in the cart subtotal.
+- Added:  Options to modify product removal and undo texts. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
+- Added:  Options to modify labels and texts in cart form. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
+- Added:  Options to modify prefix text of cart count. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
+- Added:  Option to modify text for link to exit coupon and shipping form modals. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
+- Tested: WordPress version 6.4.2.
+- Tested: WooCommerce version 8.4.0.
 
 = 1.2.3 - 09 November, 2023 =
 

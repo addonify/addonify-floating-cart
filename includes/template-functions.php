@@ -380,26 +380,40 @@ add_action( 'addonify_floating_cart_sidebar_cart_footer', 'addonify_floating_car
  */
 function addonify_floating_cart_footer_close_button_template( $cart_strings ) {
 
+	$button_action = addonify_floating_cart_get_option( 'continue_shopping_button_action' );
+
 	if (
 		(int) addonify_floating_cart_get_option( 'display_continue_shopping_button' ) === 1 &&
-		! empty( addonify_floating_cart_get_option( 'continue_shopping_button_action' ) ) &&
-		! empty( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) )
+		$button_action
 	) {
-		$button_action = addonify_floating_cart_get_option( 'continue_shopping_button_action' );
+
+		$button_label = '';
+
+		$btn_label = addonify_floating_cart_get_option( 'continue_shopping_button_label' );
 
 		if (
 			'open_cart_page' === $button_action &&
 			! empty( wc_get_cart_url() )
 		) {
+			if ( addonify_floating_cart_get_option( 'enable_cart_labels_from_plugin' ) === '1' && $btn_label ) {
+				$button_label = $btn_label;
+			} else {
+				$button_label = esc_html__( 'Cart', 'addonify-floating-cart' );
+			}
 			?>
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button secondary">
-				<?php echo esc_html( $cart_strings['continue_shopping_button_label'] ); ?>
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="adfy__woofc-button">
+				<?php echo esc_html( $button_label ); ?>
 			</a>
 			<?php
 		} else {
+			if ( addonify_floating_cart_get_option( 'enable_cart_labels_from_plugin' ) === '1' && $btn_label ) {
+				$button_label = $btn_label;
+			} else {
+				$button_label = esc_html__( 'Close', 'addonify-floating-cart' );
+			}
 			?>
 			<button class="adfy__woofc-button adfy__hide-woofc secondary">
-				<?php echo esc_html( $cart_strings['continue_shopping_button_label'] ); ?>
+				<?php echo esc_html( $button_label ); ?>
 			</button>
 			<?php
 		}

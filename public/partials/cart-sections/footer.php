@@ -9,6 +9,53 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+
+$sub_total_label          = esc_html__( 'Sub Total: ', 'addonify-floating-cart' );
+$discount_label           = esc_html__( 'Discount:', 'addonify-floating-cart' );
+$shipping_label           = esc_html__( 'Shipping:', 'addonify-floating-cart' );
+$open_shipping_label      = esc_html__( 'Change address', 'addonify-floating-cart' );
+$tax_label                = esc_html__( 'Tax:', 'addonify-floating-cart' );
+$total_label              = esc_html__( 'Total:', 'addonify-floating-cart' );
+$coupon_form_toggler_text = esc_html__( 'Have a coupon?', 'addonify-floating-cart' );
+
+if ( '1' === $strings_from_setting ) {
+
+	$saved_sub_total_label = addonify_floating_cart_get_option( 'sub_total_label' );
+	if ( $saved_sub_total_label ) {
+		$sub_total_label = $saved_sub_total_label;
+	}
+
+	$saved_discount_label = addonify_floating_cart_get_option( 'discount_label' );
+	if ( $saved_discount_label ) {
+		$discount_label = $saved_discount_label;
+	}
+
+	$saved_shipping_label = addonify_floating_cart_get_option( 'shipping_label' );
+	if ( $saved_shipping_label ) {
+		$shipping_label = $saved_shipping_label;
+	}
+
+	$saved_open_shipping_label = addonify_floating_cart_get_option( 'open_shipping_label' );
+	if ( $saved_open_shipping_label ) {
+		$open_shipping_label = $saved_open_shipping_label;
+	}
+
+	$saved_tax_label = addonify_floating_cart_get_option( 'tax_label' );
+	if ( $saved_tax_label ) {
+		$tax_label = $saved_tax_label;
+	}
+
+	$saved_total_label = addonify_floating_cart_get_option( 'total_label' );
+	if ( $saved_total_label ) {
+		$total_label = $saved_total_label;
+	}
+
+	$saved_coupon_form_toggler_text = addonify_floating_cart_get_option( 'coupon_form_toggler_text' );
+	if ( $saved_coupon_form_toggler_text ) {
+		$coupon_form_toggler_text = $saved_coupon_form_toggler_text;
+	}
+}
 ?>
 <footer class="adfy__woofc-colophon <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>" >
 	<?php
@@ -23,7 +70,7 @@ defined( 'ABSPATH' ) || exit;
 					href="#" 
 					id="adfy__woofc-coupon-trigger" 
 					class="adfy__woofc-link has-underline"
-				><?php echo esc_html( $cart_strings['coupon_form_toggler_text'] ); ?></a>
+				><?php echo esc_html( $coupon_form_toggler_text ); ?></a>
 			</p>
 		</div>
 		<?php
@@ -32,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="adfy__woofc-cart-summary <?php echo ( WC()->cart->get_applied_coupons() ) ? 'discount' : ''; ?>">
 		<ul>
 			<li class="sub-total <?php echo ( ( WC()->cart->get_subtotal() !== WC()->cart->get_total() ) && WC()->cart->get_subtotal() ) ? '' : 'adfy__woofc-hidden'; ?>">
-				<span class="label"><?php echo esc_html( $cart_strings['sub_total_label'] ); ?></span>
+				<span class="label"><?php echo esc_html( $sub_total_label ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount subtotal-amount">
 						<?php
@@ -43,7 +90,7 @@ defined( 'ABSPATH' ) || exit;
 				</span>
 			</li>
 			<li class="discount <?php echo ( WC()->cart->get_discount_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
-				<span class="label"><?php echo esc_html( $cart_strings['discount_label'] ); ?></span>
+				<span class="label"><?php echo esc_html( $discount_label ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount discount-amount">
 						<bdi>
@@ -79,12 +126,12 @@ defined( 'ABSPATH' ) || exit;
 				?>
 				<li class="shipping">
 					<span class="label">
-						<?php echo esc_html( $cart_strings['shipping_label'] ); ?>
+						<?php echo esc_html( $shipping_label ); ?>
 						<?php
 						if ( 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
 							?>
 							<a id="adfy__woofc-shipping-trigger" class="adfy__woofc-link adfy__woofc-prevent-default has-underline" href='#'>
-								( <?php echo esc_html( $cart_strings['open_shipping_label'] ); ?> )
+								( <?php echo esc_html( $open_shipping_label ); ?> )
 							</a>
 							<?php
 						}
@@ -144,7 +191,7 @@ defined( 'ABSPATH' ) || exit;
 				} else {
 					?>
 					<li class="tax <?php echo ( WC()->cart->get_taxes_total() ) ? '' : 'adfy__woofc-hidden'; ?>">
-						<span class="label"><?php echo esc_html( $cart_strings['tax_label'] ); ?></span>
+						<span class="label"><?php echo esc_html( $tax_label ); ?></span>
 						<span class="value">
 							<span class="addonify-floating-cart-Price-amount tax-amount">
 								<bdi>
@@ -160,7 +207,7 @@ defined( 'ABSPATH' ) || exit;
 			}
 			?>
 			<li class="total">
-				<span class="label"><?php echo esc_html( $cart_strings['total_label'] ); ?></span>
+				<span class="label"><?php echo esc_html( $total_label ); ?></span>
 				<span class="value">
 					<span class="addonify-floating-cart-Price-amount total-amount">
 						<?php wc_cart_totals_order_total_html(); ?>
@@ -170,6 +217,6 @@ defined( 'ABSPATH' ) || exit;
 		</ul>
 	</div>
 	<div class="adfy__woofc-actions <?php echo ( (int) addonify_floating_cart_get_option( 'display_continue_shopping_button' ) === 0 || empty( addonify_floating_cart_get_option( 'continue_shopping_button_label' ) ) ) ? 'adfy__woofc-fullwidth' : ''; ?>">
-		<?php do_action( 'addonify_floating_cart_cart_footer_button', $cart_strings ); ?>
+		<?php do_action( 'addonify_floating_cart_cart_footer_button', $strings_from_setting ); ?>
 	</div>
 </footer>

@@ -468,7 +468,7 @@ class Addonify_Floating_Cart_Public {
 					if ( WC()->cart->remove_cart_item( $cart_item_key ) === true ) {
 
 						$product_removal_text = esc_html__( '{product_name} has been removed.', 'addonify-floating-cart' );
-						if ( '1' === $strings_from_setting ) {
+						if ( '1' === $this->strings_from_setting ) {
 							$saved_product_removal_text = addonify_floating_cart_get_option( 'product_removal_text' );
 							if ( $saved_product_removal_text ) {
 								$product_removal_text = $saved_product_removal_text;
@@ -978,7 +978,7 @@ class Addonify_Floating_Cart_Public {
 		$product_removal_text = esc_html__( '{product_name} has been removed.', 'addonify-floating-cart' );
 		$undo_text            = esc_html__( 'Undo?', 'addonify-floating-cart' );
 
-		if ( '1' === $strings_from_setting ) {
+		if ( '1' === $this->strings_from_setting ) {
 			$saved_product_removal_text = addonify_floating_cart_get_option( 'product_removal_text' );
 			if ( $saved_product_removal_text ) {
 				$product_removal_text = $saved_product_removal_text;

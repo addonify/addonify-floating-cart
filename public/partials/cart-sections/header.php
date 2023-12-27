@@ -9,10 +9,18 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$cart_title = esc_html__( 'Cart', 'addonify-floating-cart' );
+if ( '1' === $strings_from_setting ) {
+	$saved_cart_title = addonify_floating_cart_get_option( 'cart_title' );
+	if ( $saved_cart_title ) {
+		$cart_title = $saved_cart_title;
+	}
+}
 ?>
 <header class="adfy__woofc-header">
 	<h3 class="adfy__woofc-title">
-		<?php echo esc_html( $cart_strings['cart_title'] ); ?>
+		<?php echo esc_html( $cart_title ); ?>
 		<?php
 		if ( addonify_floating_cart_get_option( 'display_cart_items_number' ) ) {
 
@@ -24,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 				$cart_items_count = WC()->cart->get_cart_contents_count();
 			}
 
-			addonify_floating_cart_display_items_count( $cart_items_count, $cart_strings );
+			addonify_floating_cart_display_items_count( $cart_items_count, $strings_from_setting );
 		}
 		?>
 	</h3>

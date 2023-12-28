@@ -474,7 +474,7 @@ if ( ! function_exists( 'addonify_floating_cart_footer_checkout_button_template'
 
 		$checkout_button_label = esc_html__( 'Checkout', 'addonify-floating-cart' );
 		if ( '1' === $strings_from_setting ) {
-			$saved_checkout_button_label = addonify_floating_cart_get_optoin( 'checkout_button_label' );
+			$saved_checkout_button_label = addonify_floating_cart_get_option( 'checkout_button_label' );
 			if ( $saved_checkout_button_label ) {
 				$checkout_button_label = $saved_checkout_button_label;
 			}
@@ -688,12 +688,12 @@ if ( ! function_exists( 'addonify_floating_cart_display_items_count' ) ) {
 
 		if ( '1' === $strings_from_setting ) {
 
-			$saved_item_counter_singular_text = addonify_floating_cart_get_optoin( 'item_counter_singular_text' );
+			$saved_item_counter_singular_text = addonify_floating_cart_get_option( 'item_counter_singular_text' );
 			if ( $saved_item_counter_singular_text ) {
 				$item_counter_singular_text = $saved_item_counter_singular_text;
 			}
 
-			$saved_item_counter_plural_text = addonify_floating_cart_get_optoin( 'item_counter_plural_text' );
+			$saved_item_counter_plural_text = addonify_floating_cart_get_option( 'item_counter_plural_text' );
 			if ( $saved_item_counter_plural_text ) {
 				$item_counter_plural_text = $saved_item_counter_plural_text;
 			}

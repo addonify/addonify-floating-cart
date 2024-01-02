@@ -36,7 +36,7 @@
         "resolve-url-loader": "^5.0.0",
         "rollup": "^3.29.0",
         "rollup-plugin-scss": "^4.0.0",
-        "sass": "^1.69.5",
+        "sass": "^1.69.6",
         "sass-loader": "^13.3.3",
         "unplugin-element-plus": "^0.8.0",
         "vue-loader": "^16.8.3",

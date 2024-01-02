@@ -57,6 +57,7 @@ export default [
                 output: assets['scss']['dist'],
                 fileName: assets['scss']['distName'],
                 sourceMap: true,
+                watch: 'public/assets/src/scss',
                 processor: async () => postcss([
                     autoprefixer(),
                     postcssRTLCSS({

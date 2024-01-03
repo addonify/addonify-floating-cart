@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 		do_action( 'addonify_floating_cart_sidebar_cart_coupon', $strings_from_setting );
 	}
 	?>
-	<div id="adfy__woofc-shipping-container" data_display="hidden">
+	<div id="adfy__woofc-shipping-container" class="adfy__woofc-container-canvas" data_display="hidden">
 		<div class="shipping-container-header">
 			<?php do_action( 'addonify_floating_cart_coupon_shipping_modal_close_button', $strings_from_setting ); ?>
 		</div>

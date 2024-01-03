@@ -1,13 +1,6 @@
 /* -------------------------------------------------------------------------- 
 	#. Floating Cart
   -------------------------------------------------------------------------- */
-
-#adfy__floating-cart * {
-
-    box-sizing: border-box;
-    @include better_font_rendering();
-}
-
 #adfy__floating-cart {
 
     display: block;
@@ -19,6 +12,7 @@
     transition: all 0.8s cubic-bezier(.77,0,.18,1) 0s;
     z-index: var(--adfy_woofc_floating_cart_zindex);
     box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.2);
+    @include better_font_rendering();
 
     .adfy_woofc-inner {
 
@@ -34,7 +28,6 @@
             padding: 20px;
         }
     }
-
 }
 
 
@@ -63,35 +56,47 @@
     z-index: var(--adfy_woofc_floating_cart_zindex);
 }
 
-#adfy__floating-cart[data_type="drawer"][data_position="left"] {
+#adfy__floating-cart {
 
-    right: auto;
-    left: -100vw;
-}
+    &[data_type="drawer"]{
 
-#adfy__floating-cart[data_type="drawer"][data_position="right"] {
+        &[data_position="left"] {
 
-    left: auto;
-    right: -100vw;
+            right: auto;
+            left: -100vw;
+        }
+
+        &[data_position="right"] {
+
+            left: auto;
+            right: -100vw;
+        }
+    }
 }
 
 /* -------------------------------------------------------------------------- 
-	#. Visiblity
+	#. Visibility
   -------------------------------------------------------------------------- */
 
-.adfy__woofc-visible #adfy__floating-cart {
+.adfy__woofc-visible {
 
-    transition: all 0.6s cubic-bezier( 0.77, 0, 0.18, 1 );
-}
+    #adfy__floating-cart {
 
-.adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="left"] {
+        transition: all 0.6s cubic-bezier( 0.77, 0, 0.18, 1 );
 
-    right: auto;
-    left: 0;
-}
+        &[data_type="drawer"] {
 
-.adfy__woofc-visible #adfy__floating-cart[data_type="drawer"][data_position="right"] {
+            &[data_position="left"] {
 
-    left: auto;
-    right: 0;
+                right: auto;
+                left: 0;
+            }
+
+            &[data_position="right"] {
+
+                left: auto;
+                right: 0;
+            }
+        }
+    }
 }

@@ -1,12 +1,10 @@
 /**
-*
 * @project: Addonify Floating Cart For WooCommerce
 * @author: https://addonify.com/
 * @since: 1 July 2022
 */
 
 /**
-*
 * Use variables and mixins
 */
 @use './abstracts/variables' as *;
@@ -14,14 +12,12 @@
 
 
 /**
-*
 * Import utilities classes
 */
 @import './utilities/classes';			
 
 
 /**
-*
 * Import components
 */
 @import './components/alert';
@@ -33,7 +29,6 @@
 @import './components/overlay';	// Main Overlay
 
 /**
-*
 * Import keyframes
 */
 @import './utilities/keyframe';				

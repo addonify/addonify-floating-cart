@@ -160,7 +160,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'product_removal_undo_text'                    => $cart_strings['product_removal_undo_text'], // @since 1.2.4
 			'item_counter_singular_text'                   => $cart_strings['item_counter_singular_text'], // @since 1.2.4
 			'item_counter_plural_text'                     => $cart_strings['item_counter_plural_text'], // @since 1.2.4
-
 			'invalid_security_token_message'               => $cart_strings['invalid_security_token_message'], // @since 1.2.6
 
 			// Shipping modal options.

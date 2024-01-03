@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "alerts": {
         "2023-09-01": {
-            "live": true,
+            "live": false,
             "type": "warning",
             "size": "small",
             "data": {

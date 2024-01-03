@@ -30,7 +30,6 @@ if ( ! function_exists( 'addonify_floating_cart_coupon_modal_general_settings' )
 			'coupon_field_label'             => array(
 				'label'     => esc_html__( 'Coupon field label', 'addonify-floating-cart' ),
 				'type'      => 'text',
-				'className' => 'fullwidth',
 				'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 				'value'     => addonify_floating_cart_get_option( 'coupon_field_label' ),
 			),

@@ -10,6 +10,7 @@ import Radio from "../inputs/Radio.vue";
 import RadioIcon from "../inputs/RadioIcon.vue";
 import ColorPicker from "../inputs/ColorPicker.vue";
 import InvalidControl from "../inputs/InvalidControl.vue";
+//import { consoleLog } from "../../utils/debug.helper.js";
 
 /**
  * Define props.
@@ -34,42 +35,47 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+//if (props.field.type == "switch") {
+//	consoleLog(props.field.label + ": " + props.reactiveState[props.fieldKey]);
+//}
 </script>
 <template>
 	<Switch
-		v-if="props.field.type == 'switch'"
+		v-if="props.field.type === 'switch'"
 		v-model="props.reactiveState[props.fieldKey]"
 	/>
 	<Select
-		v-else-if="props.field.type == 'select'"
+		v-else-if="props.field.type === 'select'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:choices="props.field.choices"
 		:placeholder="props.field.placeholder"
 	/>
 	<Text
-		v-else-if="props.field.type == 'text'"
+		v-else-if="props.field.type === 'text'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:placeholder="props.field.placeholder"
 	/>
 	<Textarea
-		v-else-if="props.field.type == 'textarea'"
+		v-else-if="props.field.type === 'textarea'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:placeholder="props.field.placeholder"
 	/>
 	<CheckboxButton
 		v-else-if="
-			props.field.type == 'checkbox' && props.field.typeStyle == 'buttons'
+			props.field.type === 'checkbox' &&
+			props.field.typeStyle === 'buttons'
 		"
 		v-model="props.reactiveState[props.fieldKey]"
 		:choices="props.field.choices"
 	/>
 	<Checkbox
-		v-else-if="props.field.type == 'checkbox'"
+		v-else-if="props.field.type === 'checkbox'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:choices="props.field.choices"
 	/>
 	<Number
-		v-else-if="props.field.type == 'number'"
+		v-else-if="props.field.type === 'number'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:placeholder="props.field.placeholder"
 		:style="props.field.style"
@@ -80,18 +86,18 @@ const props = defineProps({
 		:unit="props.field.unit"
 	/>
 	<Radio
-		v-else-if="props.field.type == 'radio'"
+		v-else-if="props.field.type === 'radio'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:choices="props.field.choices"
 		:style="props.field.style"
 	/>
 	<RadioIcon
-		v-else-if="props.field.type == 'radio-icons'"
+		v-else-if="props.field.type === 'radio-icons'"
 		v-model="props.reactiveState[props.fieldKey]"
 		:choices="props.field.choices"
 	/>
 	<ColorPicker
-		v-else-if="props.field.type == 'color'"
+		v-else-if="props.field.type === 'color'"
 		v-model:colorVal="props.reactiveState[props.fieldKey]"
 		:isAlpha="props.field.isAlpha"
 		:label="props.field.label"

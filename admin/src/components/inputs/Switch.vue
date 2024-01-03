@@ -10,7 +10,7 @@ import { Check, Close } from "@element-plus/icons-vue";
  */
 const props = defineProps({
 	modelValue: {
-		type: [Boolean, Number, String],
+		type: [String, Boolean, Number],
 		required: true,
 	},
 });
@@ -30,7 +30,7 @@ const value = computed({
 			case "number":
 				return props.modelValue > 0;
 			case "string":
-				return props.modelValue === "true";
+				return props.modelValue === "1" ? true : false;
 			default:
 				return false;
 		}

@@ -31,12 +31,12 @@ const excludeFiles = [
     'package.json',
     'package-lock.json',
     'pnpm-lock.yaml',
-    'build.config.cjs',
     'tsconfig.json',
     'ts-node.config.json',
     'addonify-floating-cart.zip',
 
     'node_modules/**',
+    'bin/**',
     '.git/**/*',
     '.github/**',
     '.wordpress-org/**',

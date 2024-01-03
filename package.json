@@ -9,9 +9,9 @@
     "scripts": {
         "dev": "mix",
         "watch": "mix watch",
-        "production": "mix --production",
         "public": "rollup -c -w",
-        "zip": "node build.config.cjs"
+        "production": "mix --production",
+        "zip": "node ./bin/build.cjs"
     },
     "dependencies": {
         "element-plus": "^2.4.4",

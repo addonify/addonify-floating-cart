@@ -498,7 +498,7 @@ if ( ! function_exists( 'addonify_floating_cart_cart_products_display_designs' )
 				'value'     => addonify_floating_cart_get_option( 'cart_modal_product_title_font_weight' ),
 			),
 			'cart_modal_product_quantity_price_color'     => array(
-				'label'     => esc_html__( 'Product quantity & price color', 'addonify-floating-cart' ),
+				'label'     => esc_html__( 'Product quantity and price color', 'addonify-floating-cart' ),
 				'type'      => 'color',
 				'isAlpha'   => true,
 				'dependent' => array( 'load_styles_from_plugin' ),

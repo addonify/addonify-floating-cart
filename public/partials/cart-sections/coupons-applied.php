@@ -33,13 +33,16 @@ defined( 'ABSPATH' ) || exit;
 				<?php
 				foreach ( $applied_coupons as $coupon ) {
 					$applied_coupon = new WC_Coupon( $coupon );
-					$coupon_post    = get_post( (int) $applied_coupon->get_id() );
+					$coupon_id      = (int) $applied_coupon->get_id();
+					$coupon_post    = get_post( $coupon_id );
 					if ( $coupon_post ) {
 						?>
 						<li>
 							<input
 								type="text"
 								value="<?php echo esc_attr( $coupon_post->post_title ); ?>"
+								id="afc-coupon-<?php echo esc_attr( $coupon_id ); ?>"
+								name="afc-coupon-<?php echo esc_attr( $coupon_id ); ?>"
 								readonly
 							>
 							<button

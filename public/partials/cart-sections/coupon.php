@@ -11,13 +11,19 @@
 defined( 'ABSPATH' ) || exit;
 
 $modal_close_label         = esc_html__( 'Go Back', 'addonify-floating-cart' );
-$coupon_field_placeholder  = esc_html__( 'Coupon code', 'addonify-floating-cart' );
+$coupon_field_label        = esc_html__( 'Coupon code', 'addonify-floating-cart' );
+$coupon_field_placeholder  = '';
 $apply_coupon_button_label = esc_html__( 'Apply Coupon', 'addonify-floating-cart' );
 
 if ( '1' === $strings_from_setting ) {
 	$saved_modal_close_label = addonify_floating_cart_get_option( 'coupon_shipping_form_modal_exit_label' );
 	if ( $saved_modal_close_label ) {
 		$modal_close_label = $saved_modal_close_label;
+	}
+
+	$saved_coupon_field_label = addonify_floating_cart_get_option( 'coupon_field_label' );
+	if ( $saved_coupon_field_label ) {
+		$coupon_field_label = $saved_coupon_field_label;
 	}
 
 	$saved_coupon_field_placeholder = addonify_floating_cart_get_option( 'coupon_field_placeholder' );
@@ -40,19 +46,11 @@ if ( '1' === $strings_from_setting ) {
 		</button>
 	</div>
 	<form id="adfy__woofc-coupon-form">
-		<div class="adfy__woofc-alert success" style="display: none"></div>
-		<div class="adfy__woofc-alert error" style="display: none"></div>
+		<div id="adfy__woofc-coupon-alerts"></div>
 		<div class="adfy__woofc-coupon-inputs">
-			<?php
-			$coupon_form_description = addonify_floating_cart_get_option( 'coupon_from_description' );
-			if ( $coupon_form_description ) {
-				?>
-				<label for="adfy__woofc-coupon-input-field">
-					<?php echo esc_html( $coupon_form_description ); ?>
-				</label>
-				<?php
-			}
-			?>
+			<label for="adfy__woofc-coupon-input-field">
+				<?php echo esc_html( $coupon_field_label ); ?>
+			</label>
 			<input
 				type="text"
 				name="adfy__woofc-coupon-input-field"

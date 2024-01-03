@@ -116,6 +116,22 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
+= 1.2.6 - Jan, 2023 =
+
+- Removed: Option, Coupon form description.
+- Added:   Option, `Remove Product from cart if not in stock`, to remove products from the cart that are not in stock.
+- Added:   Option, `Display empty cart icon`, to display cart icon in the cart empty notice.
+- Added:   Option, `Coupon field label`, to display label before coupon field in the coupon form.
+- Added:   Option, `Coupon removal message`, to set coupon removed message.
+- Added:   Option, `Invalid security token message`, to set invalid security token error message.
+- Added:   Select2 JS for country and state fields of shipping address update form.
+- Updated: Coupon messages.
+- Updated: Shipping row and shipping address update form are now synced with the WooCommerce options, `Enable the shipping calculator on the cart page` and `Hide shipping costs until an address is entered`.
+- Updated: Minus sign, '-', added before total discount amount.
+- Updated: Settings placement in the setting page.
+- Updated: Suffixing of CSS and JS enqueue handles.
+
+
 = 1.2.5 - 26 December, 2023 =
 
 - Fixed: Translation issue. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)

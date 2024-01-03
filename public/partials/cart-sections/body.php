@@ -73,14 +73,7 @@ defined( 'ABSPATH' ) || exit;
 				<?php
 			}
 		} else {
-			$empty_cart_text = esc_html__( 'Your cart is currently empty.', 'addonify-floating-cart' );
-			if ( '1' === $strings_from_setting ) {
-				$saved_empty_cart_text = addonify_floating_cart_get_option( 'empty_cart_text' );
-				if ( $saved_empty_cart_text ) {
-					$empty_cart_text = $saved_empty_cart_text;
-				}
-			}
-			echo esc_html( $empty_cart_text );
+			do_action( 'addonify_floating_cart_render_empty_cart', $strings_from_setting );
 		}
 		?>
 	</div>

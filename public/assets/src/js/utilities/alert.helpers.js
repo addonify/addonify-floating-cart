@@ -148,3 +148,21 @@ export function couponAlertVisibilityHandler(action, data = null) {
         }
     }
 }
+
+
+export function audoHideCouponAlerts() {
+    clearTimeout(timeoutId);
+    let couponAlertsContainer = document.getElementById('adfy__woofc-coupon-alerts');
+
+    if (couponAlertsContainer) {
+
+        if (couponAlertsContainer.hasChildNodes()) {
+            timeoutId = setTimeout(
+                function () {
+                    $('#adfy__woofc-coupon-alerts').html('');
+                },
+                10 * 1000
+            );
+        }
+    }
+}

@@ -123,6 +123,10 @@
             }
         }
 
+        .select2.select2-container {
+            width: 100%;
+        }
+
         .addonify_floating_cart-button {
 
             width: 100%;
@@ -131,4 +135,8 @@
             margin-top: 15px;
         }
     }
+}
+
+.afc-selectWoo-dropdown {
+    z-index: 99999999;
 }

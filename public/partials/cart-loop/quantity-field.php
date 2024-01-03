@@ -20,7 +20,9 @@ defined( 'ABSPATH' ) || exit;
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
 		</button>
-		<input 
+		<input
+			id="quantity_<?php echo esc_attr( $cart_item_key ); ?>"
+			name="cart[<?php echo esc_attr( $cart_item_key ); ?>][qty]"
 			type="number" 
 			value="<?php echo esc_attr( $item_quantity ); ?>"
 			step="<?php echo esc_attr( $step ); ?>"

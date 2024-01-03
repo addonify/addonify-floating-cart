@@ -117,7 +117,7 @@ if ( ! function_exists( 'addonify_floating_cart_add_template' ) ) {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_add_template( $strings_from_setting ) {
 
@@ -140,7 +140,7 @@ if ( ! function_exists( 'addonify_floating_cart_sidebar_cart' ) ) {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_sidebar_cart( $strings_from_setting ) {
 
@@ -165,7 +165,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_header_template
 	 * Display sidebar cart footer section.
 	 *
 	 * @since 1.0.0
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_get_sidebar_cart_header_template( $strings_from_setting ) {
 
@@ -189,7 +189,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_body_template' 
 	 * Display sidebar cart body section.
 	 *
 	 * @since 1.0.0
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_get_sidebar_cart_body_template( $strings_from_setting ) {
 
@@ -213,7 +213,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_coupon_template
 	 * Display sidebar cart coupon section.
 	 *
 	 * @since 1.0.0
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_get_sidebar_cart_coupon_template( $strings_from_setting ) {
 
@@ -237,7 +237,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_applied_coupons
 	 * Display sidebar cart applied coupons section.
 	 *
 	 * @since 1.0.0
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_get_sidebar_cart_applied_coupons_template( $strings_from_setting ) {
 
@@ -334,9 +334,9 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_shipping_templa
 	 * Display sidebar cart shipping section.
 	 *
 	 * @since 1.0.0
-	 * @param mixed $args Shipping template arguments.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
-	function addonify_floating_cart_get_sidebar_cart_shipping_template( $args = array() ) {
+	function addonify_floating_cart_get_sidebar_cart_shipping_template( $strings_from_setting ) {
 
 		$packages = WC()->cart->get_shipping_packages();
 		$packages = WC()->shipping()->calculate_shipping( $packages );
@@ -365,6 +365,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_shipping_templa
 				'chosen_method'            => $chosen_method,
 				'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 				'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
+				'strings_from_setting'     => $strings_from_setting,
 			);
 
 			addonify_floating_cart_get_template(
@@ -389,7 +390,7 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_footer_template
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_get_sidebar_cart_footer_template( $strings_from_setting ) {
 
@@ -414,7 +415,7 @@ if ( ! function_exists( 'addonify_floating_cart_footer_close_button_template' ) 
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_footer_close_button_template( $strings_from_setting ) {
 
@@ -468,7 +469,7 @@ if ( ! function_exists( 'addonify_floating_cart_footer_checkout_button_template'
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_footer_checkout_button_template( $strings_from_setting ) {
 
@@ -678,8 +679,8 @@ if ( ! function_exists( 'addonify_floating_cart_display_items_count' ) ) {
 	 *
 	 * @since 1.2.4
 	 *
-	 * @param int   $cart_items_count Cart items count.
-	 * @param array $strings_from_setting Strings enabled from setting.
+	 * @param int    $cart_items_count Cart items count.
+	 * @param string $strings_from_setting Strings enabled from setting.
 	 */
 	function addonify_floating_cart_display_items_count( $cart_items_count, $strings_from_setting ) {
 
@@ -710,4 +711,75 @@ if ( ! function_exists( 'addonify_floating_cart_display_items_count' ) ) {
 		</span>
 		<?php
 	}
+}
+
+
+if ( ! function_exists( 'addonify_floating_cart_empty_template' ) ) {
+	/**
+	 * Renders empty cart template.
+	 *
+	 * @since 1.2.6
+	 *
+	 * @param string $strings_from_setting Strings enabled from setting.
+	 */
+	function addonify_floating_cart_empty_template( $strings_from_setting ) {
+
+		$empty_cart_text = esc_html__( 'Your cart is currently empty.', 'addonify-floating-cart' );
+		if ( '1' === $strings_from_setting ) {
+			$saved_empty_cart_text = addonify_floating_cart_get_option( 'empty_cart_text' );
+			if ( $saved_empty_cart_text ) {
+				$empty_cart_text = $saved_empty_cart_text;
+			}
+		}
+		?>
+		<div id="adfy__woofc_empty_cart_section">
+			<?php
+			if ( addonify_floating_cart_get_option( 'display_empty_cart_icon' ) === '1' ) {
+				?>
+				<div id="adfy__woofc_empty_cart_icon">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+					</svg>
+				</div>
+				<?php
+			}
+			?>
+			<p id="adfy__woofc_empty_cart_text"><?php echo esc_html( $empty_cart_text ); ?></p>
+		</div>
+		<?php
+	}
+
+	add_action( 'addonify_floating_cart_render_empty_cart', 'addonify_floating_cart_empty_template' );
+}
+
+
+if ( ! function_exists( 'addonify_floating_cart_coupon_shipping_modal_close_button_template' ) ) {
+	/**
+	 * Renders coupon and shipping modal close button.
+	 *
+	 * @since 1.2.6
+	 *
+	 * @param string $strings_from_setting Strings enabled from setting.
+	 */
+	function addonify_floating_cart_coupon_shipping_modal_close_button_template( $strings_from_setting ) {
+		$modal_close_label = esc_html__( 'Go Back', 'addonify-floating-cart' );
+		if ( '1' === $strings_from_setting ) {
+			$saved_modal_close_label = addonify_floating_cart_get_option( 'coupon_shipping_form_modal_exit_label' );
+			if ( $saved_modal_close_label ) {
+				$modal_close_label = $saved_modal_close_label;
+			}
+		}
+		?>
+		<button class="adfy__woofc-fake-button" id="adfy__woofc-hide-shipping-container">
+			<svg viewBox="0 0 64 64"><g><path d="M10.7,44.3c-0.5,0-1-0.2-1.3-0.6l-6.9-8.2c-1.7-2-1.7-5,0-7l6.9-8.2c0.6-0.7,1.7-0.8,2.5-0.2c0.7,0.6,0.8,1.7,0.2,2.5l-6.5,7.7H61c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8H5.6l6.5,7.7c0.6,0.7,0.5,1.8-0.2,2.5C11.5,44.2,11.1,44.3,10.7,44.3z"/></g>
+			</svg>
+			<?php esc_html( $modal_close_label ); ?>
+		</button>
+		<?php
+	}
+
+	add_action(
+		'addonify_floating_cart_coupon_shipping_modal_close_button',
+		'addonify_floating_cart_coupon_shipping_modal_close_button_template'
+	);
 }

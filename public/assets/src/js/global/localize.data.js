@@ -74,6 +74,10 @@ export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remo
 */
 export const ajaxUpdateShippingAddressAction = addonifyFloatingCartJSObject.updateShippingInfo;
 
+export const ajaxUpdateShippingMethodAction = addonifyFloatingCartJSObject.updateShippingMethod;
+
+export const isShippingAddressUpdatable = addonifyFloatingCartJSObject.shippingAddressUpdatable;
+
 export const countriesToStates = addonifyFloatingCartJSObject.states;
 
 /**

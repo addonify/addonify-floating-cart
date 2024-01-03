@@ -4,6 +4,7 @@
 /.wordpress-org
 /.git
 /.github
+/bin
 /node_modules
 /admin/src/
 /admin/assets/scss/

@@ -16,6 +16,8 @@
 
     &[data_display="visible"] {
 
+        transition: all 0.3s ease;
+
         #adfy__woofc-coupon-form {
 
             animation: adfyFloatingCartFadeDown 0.5s ease-in;

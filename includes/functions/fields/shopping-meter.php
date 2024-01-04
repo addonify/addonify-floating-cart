@@ -46,7 +46,7 @@ if ( ! function_exists( 'addonify_floating_cart_shopping_meter_general_settings'
 				),
 				'customer_shopping_meter_pre_threshold_label' => array(
 					'label'       => esc_html__( 'Initial shopping meter notice', 'addonify-floating-cart' ),
-					'description' => esc_html__( 'Notice that is displayed before a customer\'s cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount.', 'addonify-floating-cart' ),
+					'description' => esc_html__( 'Notice that is displayed before cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount.', 'addonify-floating-cart' ),
 					'type'        => 'text',
 					'className'   => 'fullwidth',
 					'dependent'   => array( 'enable_floating_cart', 'enable_shopping_meter' ),
@@ -54,7 +54,7 @@ if ( ! function_exists( 'addonify_floating_cart_shopping_meter_general_settings'
 				),
 				'customer_shopping_meter_post_threshold_label' => array(
 					'label'       => esc_html__( 'Final shopping meter notice', 'addonify-floating-cart' ),
-					'description' => esc_html__( 'Notice that is displayed after a customer\'s cart amount meets the threshold amount.', 'addonify-floating-cart' ),
+					'description' => esc_html__( 'Notice that is displayed after cart amount meets the threshold amount.', 'addonify-floating-cart' ),
 					'type'        => 'text',
 					'className'   => 'fullwidth',
 					'dependent'   => array( 'enable_floating_cart', 'enable_shopping_meter' ),

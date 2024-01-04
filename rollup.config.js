@@ -36,6 +36,7 @@ const assets = {
         "dist": "./public/assets/build/public.min.js",
     },
     "scss": {
+        "src": "./public/assets/src/scss",
         "dist": "./public/assets/build/public.min.css",
         "distName": "public.min.css",
     },
@@ -57,7 +58,7 @@ export default [
                 output: assets['scss']['dist'],
                 fileName: assets['scss']['distName'],
                 sourceMap: true,
-                watch: 'public/assets/src/scss',
+                watch: assets['scss']['src'],
                 processor: async () => postcss([
                     autoprefixer(),
                     postcssRTLCSS({

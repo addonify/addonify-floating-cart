@@ -327,6 +327,7 @@ class Addonify_Floating_Cart_Public {
 				'displayToastNotificationButton'           => addonify_floating_cart_get_option( 'display_show_cart_button' ),
 				'addonifyFloatingCartNotifyMessage'        => $added_to_cart_notification_text,
 				'toast_notification_display_position'      => addonify_floating_cart_get_option( 'toast_notification_display_position' ),
+				'toastIconColor'                           => addonify_floating_cart_get_option( 'toast_notification_icon_color' ),
 				'openCartModalOnTriggerButtonHover'        => addonify_floating_cart_get_option( 'open_cart_modal_on_trigger_button_mouse_hover' ),
 				'open_cart_modal_after_click_on_view_cart' => addonify_floating_cart_get_option( 'open_cart_modal_after_click_on_view_cart' ),
 				'open_cart_modal_immediately_after_add_to_cart' => addonify_floating_cart_get_option( 'open_cart_modal_immediately_after_add_to_cart' ),
@@ -1172,7 +1173,7 @@ class Addonify_Floating_Cart_Public {
 
 			// Miscellaneous.
 			'--adfy_woofc_cart_input_placeholder_color'    => addonify_floating_cart_get_option( 'cart_modal_input_field_placeholder_color' ),
-			'adfy_woofc_cart_input_border_color'           => addonify_floating_cart_get_option( 'cart_modal_input_field_text_color' ),
+			'--adfy_woofc_cart_input_text_color'           => addonify_floating_cart_get_option( 'cart_modal_input_field_text_color' ),
 			'--adfy_woofc_cart_input_border_color'         => addonify_floating_cart_get_option( 'cart_modal_input_field_border_color' ),
 			'--adfy_woofc_cart_input_background_color'     => addonify_floating_cart_get_option( 'cart_modal_input_field_background_color' ),
 			// Shopping meter.

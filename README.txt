@@ -116,7 +116,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.6 - 03 Jan, 2023 =
+= 1.2.6 - 04 Jan, 2023 =
 
 - Added: Option, `Remove Product from cart if not in stock`, to remove products from the cart that are not in stock.
 - Added: Option, `Display empty cart icon`, to display cart icon in the cart empty notice.
@@ -125,16 +125,19 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Added: Option, `Invalid security token message`, to set invalid security token error message.
 - Added: Select2 JS for country and state fields of shipping address update form.
 - Updated: Coupon messages.
-- Updated: Shipping row and shipping address update form are now synced with the WooCommerce options, `Enable the shipping calculator on the cart page` and `Hide shipping costs until an address is entered`.
+- Updated: Shipping row and shipping address update form are now synced with the WooCommerce options, `Enable the shipping calculator on the cart page` and `Hide shipping costs until an address is entered`. [GitHub Issue #263](https://github.com/addonify/addonify-floating-cart/issues/263)
 - Updated: Minus sign, '-', added before total discount amount.
 - Updated: Settings placement in the setting page.
 - Updated: Suffixing of CSS and JS enqueue handles.
+- Fixed:   Dynamic color of toast icon and icon displayed before title of applied coupons.
+- Fixed:   Loader displayed when submitting shipping address update form and coupon form. [GitHub Issue #264](https://github.com/addonify/addonify-floating-cart/issues/264)
 - Removed: Option, Coupon form description.
 
 
 = 1.2.5 - 26 December, 2023 =
 
 - Fixed: Translation issue. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)
+
 
 = 1.2.4 - 26 December, 2023 =
 
@@ -149,11 +152,13 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Tested: WordPress version 6.4.2.
 - Tested: WooCommerce version 8.4.0.
 
+
 = 1.2.3 - 09 November, 2023 =
 
 - Fix: Shipping methods list checkbox & label spacing.
 - Tested: WordPress v6.4.0
 - Tested: WooCommerce v8.2.2
+
 
 = 1.2.2 - 31 October, 2023 =
 
@@ -164,12 +169,14 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Tested: WooCommerce 8.2.1
 - Dev: Replaced Gulp with Rollup for bundling JS & SCSS files.
 
+
 = 1.2.1 - 11 September, 2023 =
 
 - Fix: Issue caused by rendering of cart sidebar modal template in cart and checkout page.
 - Update: Checked whether the cart fragments is undefined and is object in `added_to_cart` JS event.
 - Improvement: Code refactoring.
 - Tweak: Plugin setting page header design.
+
 
 = 1.2.0 - 01 September, 2023 =
 
@@ -194,9 +201,11 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 - Fix: Shopping meter threshold amount & progress bar issue. Parsed remaining threshold amount & progress bar percentage to float value before evaluating the condition. #213
 
+
 = 1.1.10 - 16 July, 2023 =
 
 - Fix: Update Cart trigger button visibility state. Now trigger button also listens the cart event. #221
+
 
 = 1.1.9 - 14 July, 2023 =
 
@@ -206,14 +215,17 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Removed: Option, `open_cart_modal_on_notification_button_click` from plugin settings page.
 - Refactored: Public facing JavaScript code.
 
+
 = 1.1.8 - 27 June, 2023 =
 
 - Added: Shopping meter progress bar animation. 
 - Tweak: Cart trigger button style.
 
+
 = 1.1.7 - 01 June, 2023 =
 
 - Tweak: How reactive state on plugin setting's page is managed (vue js).
+
 
 = 1.1.6 - 12 May, 2023 =
 
@@ -221,11 +233,13 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Fix: Shopping meter enabled by default #191
 - Fix: Error in saving settings.
 
+
 = 1.1.5 - 10 May, 2023 =
 
 - Added: Color options for icon in toast notification.
 - Added: Option for selecting icon for cart modal toggle button.
 - Fix: Incorrect use of "for" attribute in label element. Ref: https://wordpress.org/support/topic/incorrect-use-of/
+
 
 = 1.1.4 - 6 May, 2023 =
 

@@ -14,9 +14,33 @@
  */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php';
 /**
- * Load setting fields for coupons.
+ * Load general setting fields for cart header.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/coupon.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-header.php';
+/**
+ * Load general setting fields for cart items/products.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-items.php';
+/**
+ * Load general setting fields for cart subtotals.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-subtotals.php';
+/**
+ * Load general setting fields for cart buttons.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-buttons.php';
+/**
+ * Load setting fields for coupon modal.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/coupon-modal.php';
+/**
+ * Load setting fields for shipping modal.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/shipping.php';
+/**
+ * Load general setting fields for cart miscellaneous.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/miscellaneous.php';
 /**
  * Load setting fields for floating cart toggle button.
  */
@@ -29,6 +53,10 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toast-no
  * Load setting fields for cart content.
  */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-display.php';
+/**
+ * Load setting fields for shopping meter.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/shopping-meter.php';
 /**
  * Load setting fields for adding Custom CSS.
  */
@@ -51,12 +79,12 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'enable_floating_cart'                         => true,
 			'open_cart_modal_immediately_after_add_to_cart' => true,
 			'open_cart_modal_after_click_on_view_cart'     => false,
+			'remove_product_from_cart_if_not_in_stock'     => false,
 			'enable_shopping_meter'                        => false,
 			'customer_shopping_meter_threshold'            => 1000,
 			'include_discount_amount_in_threshold'         => false,
 			'customer_shopping_meter_pre_threshold_label'  => '',
 			'customer_shopping_meter_post_threshold_label' => '',
-			'display_shipping_cost_in_cart_subtotal'       => true, // @since 1.2.4
 			'display_taxes_in_cart_subtotal'               => true, // @since 1.2.4
 			'load_styles_from_plugin'                      => true,
 
@@ -123,16 +151,26 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'checkout_button_label'                        => $cart_strings['checkout_button_label'],
 			'sub_total_label'                              => $cart_strings['sub_total_label'],
 			'discount_label'                               => $cart_strings['discount_label'],
-			'shipping_label'                               => $cart_strings['shipping_label'],
-			'open_shipping_label'                          => $cart_strings['open_shipping_label'],
 			'tax_label'                                    => $cart_strings['tax_label'],
 			'total_label'                                  => $cart_strings['total_label'],
 			'coupon_shipping_form_modal_exit_label'        => $cart_strings['coupon_shipping_form_modal_exit_label'], // @since 1.2.4
+			'display_empty_cart_icon'                      => false, // @since 1.2.6
 			'empty_cart_text'                              => $cart_strings['empty_cart_text'], // @since 1.2.4
 			'product_removal_text'                         => $cart_strings['product_removal_text'], // @since 1.2.4
 			'product_removal_undo_text'                    => $cart_strings['product_removal_undo_text'], // @since 1.2.4
 			'item_counter_singular_text'                   => $cart_strings['item_counter_singular_text'], // @since 1.2.4
 			'item_counter_plural_text'                     => $cart_strings['item_counter_plural_text'], // @since 1.2.4
+			'invalid_security_token_message'               => $cart_strings['invalid_security_token_message'], // @since 1.2.6
+
+			// Shipping modal options.
+			'display_shipping_cost_in_cart_subtotal'       => true, // @since 1.2.4
+			'shipping_label'                               => $cart_strings['shipping_label'],
+			'open_shipping_label'                          => $cart_strings['open_shipping_label'],
+			'shipping_address_form_country_field_label'    => $cart_strings['shipping_address_form_country_field_label'],
+			'shipping_address_form_state_field_label'      => $cart_strings['shipping_address_form_state_field_label'],
+			'shipping_address_form_city_field_label'       => $cart_strings['shipping_address_form_city_field_label'],
+			'shipping_address_form_zip_code_field_label'   => $cart_strings['shipping_address_form_zip_code_field_label'],
+			'shipping_address_form_submit_button_label'    => $cart_strings['shipping_address_form_submit_button_label'],
 
 			'cart_modal_width'                             => 500,
 			'cart_modal_base_font_size'                    => 15,
@@ -203,10 +241,11 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// cart coupon options.
 			'display_applied_coupons'                      => true,
 			'coupon_form_toggler_text'                     => $cart_strings['coupon_form_toggler_text'], // @since 1.2.4
-			'coupon_from_description'                      => $cart_strings['coupon_from_description'], // @since 1.2.4
+			'coupon_field_label'                           => $cart_strings['coupon_field_label'], // @since 1.2.6
 			'coupon_field_placeholder'                     => $cart_strings['coupon_field_placeholder'], // @since 1.2.4
 			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
 			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
+			'coupon_removed_message'                       => $cart_strings['coupon_removed_message'], // @since 1.2.6
 
 			'custom_css'                                   => '',
 		)
@@ -300,82 +339,112 @@ function addonify_floating_cart_get_setting_fields() {
 			'settings' => array(
 				'sections' => array(
 					'general'            => array(
-						'title'       => __( 'General', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'General Options', 'addonify-floating-cart' ),
 						'description' => '',
 						'fields'      => addonify_floating_cart_cart_options_settings(),
 					),
 					'button'             => array(
-						'title'       => __( 'Cart Toggle Button Options', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Cart Toggle Button Options', 'addonify-floating-cart' ),
 						'description' => '',
 						'fields'      => addonify_floating_cart_toggle_cart_button_settings(),
 					),
-					'toast-notification' => array(
-						'title'       => __( 'Toast Notification Options', 'addonify-floating-cart' ),
-						'description' => '',
-						'fields'      => addonify_floating_cart_toast_notification_settings(),
-					),
 					'cart'               => array(
-						'title'       => __( 'Cart Drawer/Modal Options', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Cart Modal Options', 'addonify-floating-cart' ),
 						'description' => '',
 						'fields'      => addonify_floating_cart_cart_display_settings(),
 					),
-					'cart-label'         => array(
-						'title'       => __( 'Cart Drawer/Modal Labels', 'addonify-floating-cart' ),
+					'cart_header'        => array(
+						'title'       => esc_html__( 'Cart Header Options', 'addonify-floating-cart' ),
 						'description' => '',
-						'fields'      => addonify_floating_cart_display_cart_label_settings(),
+						'fields'      => addonify_floating_cart_header_general_settings(),
 					),
-					'coupon'             => array(
-						'title'       => __( 'Coupon Options', 'addonify-floating-cart' ),
+					'cart_items'         => array(
+						'title'       => esc_html__( 'Cart Products Options', 'addonify-floating-cart' ),
 						'description' => '',
-						'fields'      => addonify_floating_cart_coupon_settings(),
+						'fields'      => addonify_floating_cart_items_general_settings(),
+					),
+					'cart_subtotals'     => array(
+						'title'       => esc_html__( 'Cart Subtotals Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_subtotals_general_settings(),
+					),
+					'cart_buttons'       => array(
+						'title'       => esc_html__( 'Cart Buttons Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_buttons_general_settings(),
+					),
+					'cart_misc'          => array(
+						'title'       => esc_html__( 'Cart Miscellaneous Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_misc_settings(),
+					),
+					'coupon_modal'       => array(
+						'title'       => esc_html__( 'Coupon Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_coupon_modal_general_settings(),
+					),
+					'shipping'           => array(
+						'title'       => esc_html__( 'Shipping Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_shipping_general_settings(),
+					),
+					'shopping_meter'     => array(
+						'title'       => esc_html__( 'Shopping Meter Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_shopping_meter_general_settings(),
+					),
+					'toast-notification' => array(
+						'title'       => esc_html__( 'Toast Notification Options', 'addonify-floating-cart' ),
+						'description' => '',
+						'fields'      => addonify_floating_cart_toast_notification_settings(),
 					),
 				),
 			),
 			'styles'   => array(
 				'sections' => array(
 					'general'            => array(
-						'title'       => __( 'Interface Design', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Interface Design', 'addonify-floating-cart' ),
 						'description' => '',
 						'fields'      => addonify_floating_cart_cart_styles_settings_fields(),
 					),
 					'button'             => array(
-						'title'       => __( 'Cart Toggle Button', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Cart Toggle Button', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_toggle_cart_button_designs(),
 					),
 					'toast-notification' => array(
-						'title'       => __( 'Toast Notification', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Toast Notification', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_toast_notification_designs(),
 					),
 					'cart'               => array(
-						'title'       => __( 'Cart Panel', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Cart Panel', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_cart_display_designs(),
 					),
 					'cart-buttons'       => array(
-						'title'       => __( 'Buttons in Cart', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Buttons in Cart', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_cart_buttons_display_designs(),
 					),
 					'cart-misc'          => array(
-						'title'       => __( 'Miscellaneous Cart Elements', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Miscellaneous Cart Elements', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_cart_misc_display_designs(),
 					),
 					'cart-products'      => array(
-						'title'       => __( 'Products in Cart', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Products in Cart', 'addonify-floating-cart' ),
 						'description' => '',
 						'type'        => 'render-jumbo-box',
 						'fields'      => addonify_floating_cart_cart_products_display_designs(),
 					),
 					'custom_css'         => array(
-						'title'       => __( 'Developer', 'addonify-floating-cart' ),
+						'title'       => esc_html__( 'Developer', 'addonify-floating-cart' ),
 						'description' => '',
 						'fields'      => addonify_floating_cart_custom_css_settings_fields(),
 					),
@@ -482,28 +551,4 @@ function addonify_floating_cart_sanitize_multi_choices( $args ) {
 	}
 
 	return array();
-}
-
-/**
- * Get the icons for the cart modal toggle button.
- *
- * @since 1.1.5
- *
- * @return array Array of icons.
- */
-function addonify_floating_cart_get_cart_modal_toggle_button_icons() {
-
-	return apply_filters(
-		'addonify_floating_cart_cart_modal_toggle_button_icons',
-		array(
-			'icon_1' => '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M2.75 12.5c-0.965 0-1.75 0.785-1.75 1.75s0.785 1.75 1.75 1.75 1.75-0.785 1.75-1.75-0.785-1.75-1.75-1.75zM2.75 15c-0.413 0-0.75-0.337-0.75-0.75s0.337-0.75 0.75-0.75 0.75 0.337 0.75 0.75-0.337 0.75-0.75 0.75zM11.25 12.5c-0.965 0-1.75 0.785-1.75 1.75s0.785 1.75 1.75 1.75 1.75-0.785 1.75-1.75-0.785-1.75-1.75-1.75zM11.25 15c-0.413 0-0.75-0.337-0.75-0.75s0.337-0.75 0.75-0.75 0.75 0.337 0.75 0.75-0.337 0.75-0.75 0.75zM13.37 2l-0.301 2h-13.143l1.117 8.036h11.914l1.043-7.5 0.231-1.536h2.769v-1h-3.63zM12.086 11.036h-10.172l-0.84-6.036h11.852l-0.84 6.036zM11 10h-8v-3.969h1v2.969h6v-2.97h1v3.97zM4 2.969h-1v-1.969h8v1.906h-1v-0.906h-6v0.969z" /></svg>',
-			'icon_2' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/></svg>',
-			'icon_3' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></svg>',
-			'icon_4' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/></svg>',
-			'icon_5' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/></svg>',
-			'icon_6' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>',
-			'icon_7' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>',
-			'icon_8' => '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>',
-		)
-	);
 }

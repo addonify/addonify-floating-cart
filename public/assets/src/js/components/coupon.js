@@ -5,7 +5,8 @@ import {
     ajaxApplyCouponCodeAction,
     ajaxRemoveCouponCodeAction
 } from "src/js/global/localize.data";
-import { couponAlertVisibilityHandler } from "src/js/utilities/alert.helpers";
+import { couponAlertVisibilityHandler, audoHideCouponAlerts } from "src/js/utilities/alert.helpers";
+import { setSpinnerVisibility } from "src/js/components/spinner";
 
 const { $ } = AFC;
 
@@ -56,6 +57,9 @@ export function applyCouponHandler() {
 
         e.preventDefault();
 
+        // Display spinner.
+        setSpinnerVisibility("show");
+
         let couponField = $(this).find('input[name=adfy__woofc-coupon-input-field]');
         let data = couponField.val();
 
@@ -69,9 +73,7 @@ export function applyCouponHandler() {
             },
             success: function (res) {
 
-                let result = JSON.parse(res);
-
-                if (!result) {
+                if (!res) {
 
                     message = __('Error processing coupon request.', 'addonify-floating-cart');
 
@@ -84,45 +86,22 @@ export function applyCouponHandler() {
                     return;
                 }
 
-                const { appliedCoupons, couponApplied, html, status } = result;
-                const subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
-                const discountEle = $('.adfy__woofc-cart-summary ul li.discount');
-
-                if (!couponApplied) {
-
-                    // Display coupon alert messages.
-                    couponAlertVisibilityHandler('show', {
-                        style: 'error',
-                        message: status
-                    });
-
-                    return;
-                }
+                const { couponApplied, html } = res;
 
                 if (couponApplied) {
 
                     couponField.val('');
 
-                    $.each(html, function (i, val) {
-
-                        $(i).replaceWith(val);
-                    });
-
-                    // Display coupon alert messages.
-                    couponAlertVisibilityHandler('show', {
-                        style: 'success',
-                        message: status
-                    });
-
                     // Dispatch 'couponApplied' event.
-                    AFC.api.event.couponApplied(result);
-
-                    if (appliedCoupons > 0) {
-
-                        subtotalEle.removeClass('adfy__woofc-hidden');
-                        discountEle.removeClass('adfy__woofc-hidden')
-                    }
+                    AFC.api.event.couponApplied(res);
                 }
+
+                $.each(html, function (i, val) {
+
+                    $(i).replaceWith(val);
+                });
+
+                audoHideCouponAlerts();
             },
             error: function (err) {
 
@@ -137,6 +116,11 @@ export function applyCouponHandler() {
                     style: 'error',
                     message: message
                 });
+            },
+            complete: function () {
+
+                // Hide spinner.
+                setSpinnerVisibility("hide");
             }
         });
     });
@@ -157,6 +141,9 @@ export function removeCouponHandler() {
 
         e.preventDefault();
 
+        // Display spinner.
+        setSpinnerVisibility("show");
+
         let couponEle = $(this).closest('li');
         let coupon = $(this).attr('data-coupon');
 
@@ -170,9 +157,7 @@ export function removeCouponHandler() {
             },
             success: function (res) {
 
-                let result = JSON.parse(res);
-
-                if (!result) {
+                if (!res) {
 
                     message = __('Error processing coupon request.', 'addonify-floating-cart');
 
@@ -184,35 +169,23 @@ export function removeCouponHandler() {
                     return;
                 }
 
-                const { appliedCoupons, couponRemoved, html, status } = result;
+                const { couponRemoved, html } = res;
 
                 if (couponRemoved) {
-
-                    const subtotalEle = $('.adfy__woofc-cart-summary ul li.sub-total');
-                    const discountEle = $('.adfy__woofc-cart-summary ul li.discount');
-
-                    $.each(html, function (i, val) {
-
-                        $(i).replaceWith(val);
-                    });
-
-                    couponAlertVisibilityHandler('show', {
-                        style: 'success',
-                        message: status
-                    });
 
                     // Remove coupon element.
                     couponEle.remove();
 
                     // Dispatch 'couponRemoved' event.
-                    AFC.api.event.couponRemoved(result);
-
-                    if (appliedCoupons > 0) {
-
-                        subtotalEle.removeClass('adfy__woofc-hidden');
-                        discountEle.removeClass('adfy__woofc-hidden')
-                    }
+                    AFC.api.event.couponRemoved(res);
                 }
+
+                $.each(html, function (i, val) {
+
+                    $(i).replaceWith(val);
+                });
+
+                audoHideCouponAlerts();
             },
             error: function (err) {
 
@@ -224,6 +197,11 @@ export function removeCouponHandler() {
                     style: 'error',
                     message: message
                 });
+            },
+            complete: function () {
+
+                // Hide spinner.
+                setSpinnerVisibility("hide");
             }
         });
     });

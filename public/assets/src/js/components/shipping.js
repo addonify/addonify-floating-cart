@@ -3,7 +3,9 @@ import {
     nonce,
     ajaxUrl,
     countriesToStates,
-    ajaxUpdateShippingAddressAction
+    ajaxUpdateShippingAddressAction,
+    ajaxUpdateShippingMethodAction,
+    isShippingAddressUpdatable
 } from "src/js/global/localize.data";
 import { setSpinnerVisibility } from "src/js/components/spinner";
 
@@ -25,6 +27,23 @@ export function listenShippingContainerEvents() {
 
         // Dispatch event.
         AFC.api.event.shippingModalOpened();
+
+        if ( isShippingAddressUpdatable === '1' ) {
+            if ($('#addonify_floating_cart_shipping_country').length) {
+                $('#addonify_floating_cart_shipping_country').selectWoo({
+                    dropdownAutoWidth: false,
+                    dropdownCssClass: 'afc-selectWoo-dropdown'
+                });
+            }
+
+            if ($('select#addonify_floating_cart_shipping_state')){
+                $('select#addonify_floating_cart_shipping_state').selectWoo({
+                    dropdownAutoWidth: false,
+                    dropdownCssClass: 'afc-selectWoo-dropdown'
+                });
+            }
+        }
+        
     });
 
     $(document).on('click', '#adfy__woofc-hide-shipping-container', function (e) {
@@ -35,20 +54,6 @@ export function listenShippingContainerEvents() {
 
         // Dispatch event.
         AFC.api.event.shippingModalClosed();
-    });
-
-    $(document).on('click', '#adfy__woofc-shipping-form .adfy__woofc-shipping-address-form-toggle-button', function (e) {
-
-        e.preventDefault();
-
-        if ($('.adfy__woofc-shipping-form-elements').css('display') === 'none') {
-
-            $('.adfy__woofc-shipping-form-elements').show();
-
-        } else {
-
-            $('.adfy__woofc-shipping-form-elements').hide();
-        }
     });
 
     // Listen country changed event.
@@ -66,6 +71,9 @@ export function handleShippingAddressChange() {
     $(document).on('submit', '#adfy__woofc-shipping-form', function (e) {
 
         e.preventDefault();
+
+        // Display spinner.
+        setSpinnerVisibility("show");
 
         let shippingCountry = $('#addonify_floating_cart_shipping_country').val();
         let shippingState = $('#addonify_floating_cart_shipping_state').val();
@@ -107,11 +115,34 @@ export function handleShippingAddressChange() {
                     // Dispatch event.
                     AFC.api.event.shippingAddressUpdated(res.fragments);
                 }
+
+                $('#adfy__woofc-shipping-container').attr('data_display', 'visible');
+
+                if (isShippingAddressUpdatable === '1') {
+                    if ($('#addonify_floating_cart_shipping_country').length) {
+                        $('#addonify_floating_cart_shipping_country').selectWoo({
+                            dropdownAutoWidth: false,
+                            dropdownCssClass: 'afc-selectWoo-dropdown'
+                        });
+                    }
+
+                    if ($('select#addonify_floating_cart_shipping_state')) {
+                        $('select#addonify_floating_cart_shipping_state').selectWoo({
+                            dropdownAutoWidth: false,
+                            dropdownCssClass: 'afc-selectWoo-dropdown'
+                        });
+                    }
+                }
             },
             error: function (err) {
 
                 console.log(err);
                 AFC.action.toast.dispatchToast('error', message);
+            },
+            complete: function () {
+
+                // Hide spinner.
+                setSpinnerVisibility("hide");
             }
         });
     });
@@ -138,13 +169,13 @@ export function handleShippingMethodChange() {
         });
 
         // Display spinner.
-        setSpinnerVisibility("hide");
+        setSpinnerVisibility("show");
 
         $.ajax({
             'url': ajaxUrl,
             'method': 'POST',
             'data': {
-                action: ajaxUpdateShippingAddressAction,
+                action: ajaxUpdateShippingMethodAction,
                 nonce: nonce,
                 shipping_method: shippingMethod,
             },
@@ -167,6 +198,24 @@ export function handleShippingMethodChange() {
 
                         value !== '' ? $(key).replaceWith(value) : $(key).html(value);
                     });
+                }
+
+                $('#adfy__woofc-shipping-container').attr('data_display', 'visible');
+                
+                if (isShippingAddressUpdatable === '1') {
+                    if ($('#addonify_floating_cart_shipping_country').length) {
+                        $('#addonify_floating_cart_shipping_country').selectWoo({
+                            dropdownAutoWidth: false,
+                            dropdownCssClass: 'afc-selectWoo-dropdown'
+                        });
+                    }
+
+                    if ($('select#addonify_floating_cart_shipping_state')) {
+                        $('select#addonify_floating_cart_shipping_state').selectWoo({
+                            dropdownAutoWidth: false,
+                            dropdownCssClass: 'afc-selectWoo-dropdown'
+                        });
+                    }
                 }
             },
             error: function (err) {
@@ -217,6 +266,19 @@ function populateStatesOnceCountryIsChanged() {
                 select.addClass('state_select').prop('id', 'addonify_floating_cart_shipping_state').prop('name', 'addonify_floating_cart_shipping_state');
                 select.prop('data-placeholder', 'State / County');
                 thisParent.append(select);
+                $(document).on('change', '#addonify_floating_cart_shipping_country', function (e) {
+                    e.preventDefault();
+
+                    if (isShippingAddressUpdatable === '1') {
+
+                        if ($('select#addonify_floating_cart_shipping_state')) {
+                            $('select#addonify_floating_cart_shipping_state').selectWoo({
+                                dropdownAutoWidth: false,
+                                dropdownCssClass: 'afc-selectWoo-dropdown'
+                            });
+                        }
+                    }
+                });
             }
 
             $('#addonify_floating_cart_shipping_state').html(html);

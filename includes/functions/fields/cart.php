@@ -49,6 +49,7 @@ if ( ! function_exists( 'addonify_floating_cart_cart_options_settings' ) ) {
 			'enable_cart_labels_from_plugin'           => array(
 				'label'     => esc_html__( 'Display labels from plugin', 'addonify-floating-cart' ),
 				'type'      => 'switch',
+				'description' => esc_html__( 'Enable this option to create personalized labels. Once enabled, the user-defined labels will replace the default text strings.' ),
 				'dependent' => array( 'enable_floating_cart' ),
 				'value'     => addonify_floating_cart_get_option( 'enable_cart_labels_from_plugin' ),
 			),

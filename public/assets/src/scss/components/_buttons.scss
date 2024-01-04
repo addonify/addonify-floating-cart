@@ -137,7 +137,7 @@ a.adfy__woofc-button.secondary,
 				.notyf__icon {
 
 					.notyf__icon--success {
-
+                        color: var(--adfy_woofc_toast_icon_color) !important;
 						background: var(--adfy_woofc_toast_icon_background_color);
 					}
 				}

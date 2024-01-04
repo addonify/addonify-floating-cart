@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-03T10:52:37+00:00\n"
+"POT-Creation-Date: 2024-01-04T06:02:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: addonify-floating-cart\n"
@@ -353,7 +353,7 @@ msgid "Product title font weight"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:501
-msgid "Product quantity & price color"
+msgid "Product quantity and price color"
 msgstr ""
 
 #: includes/functions/fields/cart-display.php:508
@@ -461,11 +461,11 @@ msgstr ""
 msgid "Display labels from plugin"
 msgstr ""
 
-#: includes/functions/fields/cart.php:78
+#: includes/functions/fields/cart.php:79
 msgid "Enable dymanic styles"
 msgstr ""
 
-#: includes/functions/fields/cart.php:80
+#: includes/functions/fields/cart.php:81
 msgid "Once enabled, below selected option will overwrite the default plugin stylesheet. "
 msgstr ""
 
@@ -594,7 +594,7 @@ msgid "Initial shopping meter notice"
 msgstr ""
 
 #: includes/functions/fields/shopping-meter.php:49
-msgid "Notice that is displayed before a customer's cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount."
+msgid "Notice that is displayed before cart amount meets the threshold amount. Use {amount} placeholder to display the shopping meter threshold amount."
 msgstr ""
 
 #: includes/functions/fields/shopping-meter.php:56
@@ -602,7 +602,7 @@ msgid "Final shopping meter notice"
 msgstr ""
 
 #: includes/functions/fields/shopping-meter.php:57
-msgid "Notice that is displayed after a customer's cart amount meets the threshold amount."
+msgid "Notice that is displayed after cart amount meets the threshold amount."
 msgstr ""
 
 #: includes/functions/fields/toast-notification.php:23
@@ -929,7 +929,7 @@ msgid "Total:"
 msgstr ""
 
 #: includes/misc-functions.php:59
-#: includes/template-functions.php:763
+#: includes/template-functions.php:764
 #: public/partials/cart-sections/coupon.php:13
 #: admin/assets/js/main.js:1240
 msgid "Go Back"

@@ -17,7 +17,7 @@ import { Mode, Source } from 'postcss-rtlcss/options';
  * @since 1.2.2
  */
 const customResolver = resolve({
-    extensions: ['.mjs', '.js', '.jsx', '.json', '.sass', '.scss']
+	extensions: ['.mjs', '.js', '.jsx', '.json', '.sass', '.scss']
 });
 
 const __filename = fileURLToPath(import.meta.url);
@@ -28,53 +28,53 @@ const rootDir = path.resolve(__dirname);
  * Prepare global options.
  * Holds path & name of source and destination assets.
  *
- * @since 1.2.2 
+ * @since 1.2.2
  */
 const assets = {
-    "mainJs": {
-        "source": "./public/assets/src/app.public.js",
-        "dist": "./public/assets/build/public.min.js",
-    },
-    "scss": {
-        "src": "./public/assets/src/scss",
-        "dist": "./public/assets/build/public.min.css",
-        "distName": "public.min.css",
-    },
+	"mainJs": {
+		"source": "./public/assets/src/app.public.js",
+		"dist": "./public/assets/build/public.min.js",
+	},
+	"scss": {
+		"src": "./public/assets/src/scss",
+		"dist": "./public/assets/build/public.min.css",
+		"distName": "public.min.css",
+	},
 }
 
 export default [
-    {
-        input: assets['mainJs']['source'],
-        output: {
-            file: assets['mainJs']['dist'],
-            name: 'mainJs',
-            format: 'umd', // "iife", "umd", "esm", "cjs"
-        },
-        plugins: [
-            resolve(),
-            commonjs(),
-            terser(),
-            scss({
-                output: assets['scss']['dist'],
-                fileName: assets['scss']['distName'],
-                sourceMap: true,
-                watch: assets['scss']['src'],
-                processor: async () => postcss([
-                    autoprefixer(),
-                    postcssRTLCSS({
-                        mode: Mode.override,
-                        source: Source.ltr,
-                    }),
-                    cssnano()
-                ])
-            }),
-            alias({
-                entries: [{
-                    find: 'src',
-                    replacement: path.resolve(rootDir, './public/assets/src/')
-                }],
-                customResolver
-            })
-        ]
-    }
+	{
+		input: assets['mainJs']['source'],
+		output: {
+			file: assets['mainJs']['dist'],
+			name: 'mainJs',
+			format: 'umd', // "iife", "umd", "esm", "cjs"
+		},
+		plugins: [
+			resolve(),
+			commonjs(),
+			terser(),
+			scss({
+				output: assets['scss']['dist'],
+				fileName: assets['scss']['distName'],
+				sourceMap: true,
+				watch: assets['scss']['src'],
+				processor: async () => postcss([
+					autoprefixer(),
+					postcssRTLCSS({
+						mode: Mode.override,
+						source: Source.ltr,
+					}),
+					cssnano()
+				])
+			}),
+			alias({
+				entries: [{
+					find: 'src',
+					replacement: path.resolve(rootDir, './public/assets/src/')
+				}],
+				customResolver
+			})
+		]
+	}
 ];

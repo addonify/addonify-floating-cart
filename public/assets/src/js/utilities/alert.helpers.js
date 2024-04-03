@@ -14,51 +14,51 @@ let timeoutId;
 */
 export function alertVisibilityHandler(action = "hide", style = "info", data = "") {
 
-    const alertEle = $("#adfy__floating-cart #adfy__woofc-cart-errors");
+	const alertEle = $("#adfy__floating-cart #adfy__woofc-cart-errors");
 
-    const hideAlert = () => {
+	const hideAlert = () => {
 
-        if (timeoutId) {
+		if (timeoutId) {
 
-            clearTimeout(timeoutId);
-        }
+			clearTimeout(timeoutId);
+		}
 
-        if (alertEle.hasClass('error')) {
+		if (alertEle.hasClass('error')) {
 
-            alertEle.removeClass('error');
-        }
+			alertEle.removeClass('error');
+		}
 
-        alertEle.html(" ").addClass('hidden');
-    }
+		alertEle.html(" ").addClass('hidden');
+	}
 
-    const showAlert = () => {
+	const showAlert = () => {
 
-        if (timeoutId) {
+		if (timeoutId) {
 
-            clearTimeout(timeoutId);
-        }
+			clearTimeout(timeoutId);
+		}
 
-        if (style === "error") {
+		if (style === "error") {
 
-            alertEle.addClass("error")
-        }
+			alertEle.addClass("error")
+		}
 
-        alertEle.html(" ").html(data).removeClass('hidden');
+		alertEle.html(" ").html(data).removeClass('hidden');
 
-        timeoutId = setTimeout(() => hideAlert(), 10000);
-    }
+		timeoutId = setTimeout(() => hideAlert(), 10000);
+	}
 
-    if (action === "hide") {
+	if (action === "hide") {
 
-        hideAlert();
+		hideAlert();
 
-    } else {
+	} else {
 
-        if (data.length > 0) {
+		if (data.length > 0) {
 
-            showAlert();
-        }
-    }
+			showAlert();
+		}
+	}
 }
 
 /**
@@ -71,98 +71,98 @@ export function alertVisibilityHandler(action = "hide", style = "info", data = "
 */
 export function couponAlertVisibilityHandler(action, data = null) {
 
-    if (!action) {
+	if (!action) {
 
-        throw new Error("Coupon alert action is required!");
-    }
+		throw new Error("Coupon alert action is required!");
+	}
 
-    let alertsEle = $('#adfy__floating-cart .adfy__woofc-alert');
+	let alertsEle = $('#adfy__floating-cart .adfy__woofc-alert');
 
-    const hideAlert = () => {
+	const hideAlert = () => {
 
-        let timeout;
+		let timeout;
 
-        clearTimeout(timeout);
+		clearTimeout(timeout);
 
-        timeout = setTimeout(() => {
+		timeout = setTimeout(() => {
 
-            $(alertsEle).fadeOut();
+			$(alertsEle).fadeOut();
 
-            clearTimeout(timeout);
+			clearTimeout(timeout);
 
-        }, 10000);
-    }
+		}, 10000);
+	}
 
-    if (action === "hide") {
+	if (action === "hide") {
 
-        hideAlert();
-        return;
+		hideAlert();
+		return;
 
-    } else {
+	} else {
 
-        if (alertsEle.length > 0) {
+		if (alertsEle.length > 0) {
 
-            const icons = {
-                "success": '<svg fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>',
-                "error": '<svg fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>'
-            };
+			const icons = {
+				"success": '<svg fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>',
+				"error": '<svg fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>'
+			};
 
-            if (!data) {
+			if (!data) {
 
-                throw new Error("Coupon alert data is required!");
-            }
+				throw new Error("Coupon alert data is required!");
+			}
 
-            const { style, message } = data;
+			const { style, message } = data;
 
-            if (!style || !message) {
+			if (!style || !message) {
 
-                throw new Error("Coupon alert style & message is required!");
-            }
+				throw new Error("Coupon alert style & message is required!");
+			}
 
-            let content;
+			let content;
 
-            switch (style) {
-                case "success":
-                    content = `<p class="adfy__woofc-alert-text">
+			switch (style) {
+				case "success":
+					content = `<p class="adfy__woofc-alert-text">
                         ${icons['success']}
                         ${message}
                     </p>`;
 
-                    $('.adfy__woofc-alert.success').html(" ").html(content).fadeIn();
-                    hideAlert();
-                    break;
+					$('.adfy__woofc-alert.success').html(" ").html(content).fadeIn();
+					hideAlert();
+					break;
 
-                case "error":
-                    content = `<p class="adfy__woofc-alert-text">
+				case "error":
+					content = `<p class="adfy__woofc-alert-text">
                         ${icons['error']}
                         ${message}
                     </p>`;
 
-                    $('.adfy__woofc-alert.error').html(" ").html(content).fadeIn();
-                    hideAlert();
-                    break;
+					$('.adfy__woofc-alert.error').html(" ").html(content).fadeIn();
+					hideAlert();
+					break;
 
-                default:
-                    break;
-            }
-        }
-    }
+				default:
+					break;
+			}
+		}
+	}
 }
 
 
-export function audoHideCouponAlerts() {
-    clearTimeout(timeoutId);
-    let couponAlertsContainer = document.getElementById('adfy__woofc-coupon-alerts');
+export function autoHideCouponAlerts() {
+	clearTimeout(timeoutId);
+	let couponAlertsContainer = document.getElementById('adfy__woofc-coupon-alerts');
 
-    if (couponAlertsContainer) {
+	if (couponAlertsContainer) {
 
-        if (couponAlertsContainer.hasChildNodes()) {
-            timeoutId = setTimeout(
-                function () {
-                    $('#adfy__woofc-coupon-alerts').html('');
-                },
-                10 * 1000
-            );
-        }
-    }
+		if (couponAlertsContainer.hasChildNodes()) {
+			timeoutId = setTimeout(
+				function () {
+					$('#adfy__woofc-coupon-alerts').html('');
+				},
+				10 * 1000
+			);
+		}
+	}
 }

@@ -1,11 +1,11 @@
 import {
-    showNotfy,
-    notyfDuration,
-    notfyIsDismissible,
-    notfyPosition,
-    notfyShowHTMLContent,
-    notfyMessage,
-    notfyButton
+	showNotfy,
+	notyfDuration,
+	notfyIsDismissible,
+	notfyPosition,
+	notfyShowHTMLContent,
+	notfyMessage,
+	notfyButton
 } from 'src/js/global/localize.data.js';
 
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
@@ -20,58 +20,58 @@ const { action } = AFC;
  */
 export function registerToastEvent() {
 
-    action.toast = {
+	action.toast = {
 
-        /**
-        * Dispatch notification toast messages.
-        *
-        * @param {string} style. [success | error]
-        * @param {string} data. may also contain HTML.
-        * @since: 1.1.9
-        */
-        dispatch: (style = 'success', data) => {
+		/**
+		* Dispatch notification toast messages.
+		*
+		* @param {string} style. [success | error]
+		* @param {string} data. may also contain HTML.
+		* @since: 1.1.9
+		*/
+		dispatch: (style = 'success', data) => {
 
-            if (typeof Notyf !== 'undefined') {
+			if (typeof Notyf !== 'undefined') {
 
-                let notyf = new Notyf({
-                    duration: notyfDuration,
-                    dismissible: notfyIsDismissible,
-                    ripple: true,
-                    position: {
-                        x: notfyPosition[1], // left | center | right
-                        y: notfyPosition[0], // top | center | bottom
-                    },
-                });
+				let notyf = new Notyf({
+					duration: notyfDuration,
+					dismissible: notfyIsDismissible,
+					ripple: true,
+					position: {
+						x: notfyPosition[1], // left | center | right
+						y: notfyPosition[0], // top | center | bottom
+					},
+				});
 
-                if (!data) {
+				if (!data) {
 
-                    throw new Error("Notification toast data/message is empty, bailing out...");
-                }
+					throw new Error("Notification toast data/message is empty, bailing out...");
+				}
 
-                // Do not disable error notification toast.
-                if (style === 'error') {
+				// Do not disable error notification toast.
+				if (style === 'error') {
 
-                    notyf.error({
+					notyf.error({
 
-                        className: 'adfy__woofc-notfy-error',
-                        message: data,
-                    })
-                }
+						className: 'adfy__woofc-notfy-error',
+						message: data,
+					})
+				}
 
-                // Check if notification toast is enabled in backend.
-                if (showNotfy) {
+				// Check if notification toast is enabled in backend.
+				if (showNotfy) {
 
-                    if (style === 'success') {
+					if (style === 'success') {
 
-                        notyf.success({
-                            className: 'adfy__woofc-notfy-success',
-                            message: data,
-                        })
-                    }
-                }
-            }
-        }
-    }
+						notyf.success({
+							className: 'adfy__woofc-notfy-success',
+							message: data,
+						})
+					}
+				}
+			}
+		}
+	}
 }
 
 /**
@@ -84,36 +84,36 @@ export function registerToastEvent() {
  */
 export function handleCustomToastContent(data) {
 
-    if (!data || typeof data !== 'object') {
+	if (!data || typeof data !== 'object') {
 
-        throw new Error('Toast message data invalid!');
-    }
+		throw new Error('Toast message data invalid!');
+	}
 
-    if (data && typeof data === 'object') {
+	if (data && typeof data === 'object') {
 
-        let toastContent;
-        let productName;
+		let toastContent;
+		let productName;
 
-        if (Object.hasOwn(data, "product")) {
+		if (Object.hasOwn(data, "product")) {
 
-            productName = data.product.charAt(0).toUpperCase() + data.product.slice(1);
+			productName = data.product.charAt(0).toUpperCase() + data.product.slice(1);
 
-        } else {
+		} else {
 
-            productName = __('Product', 'addonify-floating-cart');
-        }
+			productName = __('Product', 'addonify-floating-cart');
+		}
 
-        if (notfyShowHTMLContent) {
+		if (notfyShowHTMLContent) {
 
-            // Add button to toast content.
-            toastContent = notfyMessage.replace('{product_name}', productName) + " " + notfyButton;
+			// Add button to toast content.
+			toastContent = notfyMessage.replace('{product_name}', productName) + " " + notfyButton;
 
-        } else {
+		} else {
 
-            toastContent = notfyMessage.replace('{product_name}', productName);
-        }
+			toastContent = notfyMessage.replace('{product_name}', productName);
+		}
 
-        // Done with the content manipulation, now dispatch toast.
-        AFC.action.toast.dispatch('success', toastContent);
-    }
+		// Done with the content manipulation, now dispatch toast.
+		AFC.action.toast.dispatch('success', toastContent);
+	}
 }

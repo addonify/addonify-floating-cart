@@ -19,7 +19,7 @@ import { listenShippingContainerEvents, handleShippingAddressChange, handleShipp
 */
 document.addEventListener("DOMContentLoaded", function () {
 
-    initCustomScrollbar();
+	initCustomScrollbar();
 });
 
 /**
@@ -29,34 +29,34 @@ document.addEventListener("DOMContentLoaded", function () {
 */
 (function ($) {
 
-    registerCartActionEvents();
-    registerCustomEventsDispatchers();
-    registerToastEvent();
+	registerCartActionEvents();
+	registerCustomEventsDispatchers();
+	registerToastEvent();
 
-    $(document).ready(function () {
+	$(document).ready(function () {
 
-        // Refresh cart.
-        refreshCart();
+		// Refresh cart.
+		refreshCart();
 
-        // Cart related events.
-        listenCartEvents();
-        listenWooCommerceEvents();
+		// Cart related events.
+		listenCartEvents();
+		listenWooCommerceEvents();
 
-        // Product related events.
-        listenProductQtyFormEvents();
-        listenProductRemoveEvents();
-        listenProductRestoreEvents();
+		// Product related events.
+		listenProductQtyFormEvents();
+		listenProductRemoveEvents();
+		listenProductRestoreEvents();
 
-        // Coupon related events.
-        listenCouponContainerEvents();
-        applyCouponHandler();
-        removeCouponHandler();
+		// Coupon related events.
+		listenCouponContainerEvents();
+		applyCouponHandler();
+		removeCouponHandler();
 
-        // Shipping related events.
-        listenShippingContainerEvents();
-        handleShippingAddressChange();
-        handleShippingMethodChange();
-    });
+		// Shipping related events.
+		listenShippingContainerEvents();
+		handleShippingAddressChange();
+		handleShippingMethodChange();
+	});
 
 })(jQuery);
 

@@ -7,25 +7,25 @@ export let addonifyFloatingCart = new Object();
 
 addonifyFloatingCart = {
 
-    /**
-    * jQuery.
-    *
-    */
-    $: jQuery,
+	/**
+	* jQuery.
+	*
+	*/
+	$: jQuery,
 
-    /**
-    * Action object.
-    * Collection of methods that can be used to perform actions.
-    *
-    */
-    action: { toast: null, cart: null },
+	/**
+	* Action object.
+	* Collection of methods that can be used to perform actions.
+	*
+	*/
+	action: { toast: null, cart: null },
 
-    /**
-    * API object.
-    * Collection of event dispatchers.
-    *
-    */
-    api: { event: null },
+	/**
+	* API object.
+	* Collection of event dispatchers.
+	*
+	*/
+	api: { event: null },
 }
 
 window.addonifyFloatingCart = addonifyFloatingCart;

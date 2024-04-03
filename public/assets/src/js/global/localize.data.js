@@ -39,6 +39,8 @@ export const openCartOnTriggerHover = addonifyFloatingCartJSObject.openCartModal
 
 export const hideTriggerButtonIfCartIsEmpty = addonifyFloatingCartJSObject.hideTriggerButtonIfCartIsEmpty === '1' ? true : false;
 
+export const customToggleBtnClass = addonifyFloatingCartJSObject.customToggleBtnClass;
+
 /**
 * Localization: Notfy settings.
 * 

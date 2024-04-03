@@ -89,6 +89,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'load_styles_from_plugin'                      => true,
 
 			// Floating Cart Toggle Button Options.
+			'custom_class_to_toggle_button'                => '', // @since 1.2.7
 			'display_cart_modal_toggle_button'             => '1',
 			'hide_modal_toggle_button_on_empty_cart'       => false,
 			'cart_modal_toggle_button_display_position'    => 'bottom-right',

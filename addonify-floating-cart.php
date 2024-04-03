@@ -10,15 +10,17 @@
  * Plugin Name:       Addonify Floating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
  * Description:       Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
- * Version:           1.2.6
+ * Version:           1.2.7
  * Requires at least: 6.0.0
  * Requires PHP:      7.4
+ * Tested up to:      6.5
  * Author:            Addonify
  * Author URI:        https://addonify.com/
  * License:           GPLv2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       addonify-floating-cart
  * Domain Path:       /languages
+ * Requires Plugins:  woocommerce
  */
 
 // If this file is called directly, abort.
@@ -31,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.6' );
+define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.7' );
 define( 'ADDONIFY_FLOATING_CART_BASENAME', plugin_basename( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
@@ -81,17 +83,18 @@ function run_addonify_floating_cart() {
 		$plugin = new Addonify_Floating_Cart();
 		$plugin->run();
 	} else {
-		add_action(
-			'admin_notices',
-			function() {
-				?>
-				<div class="notice notice-error is-dismissible">
-					<p><?php echo esc_html__( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
-				</div>
-				<?php
-			}
-		);
+		if ( absint( get_bloginfo( 'version' ) ) < 6.5 ) {
+			add_action(
+				'admin_notices',
+				function() {
+					?>
+					<div class="notice notice-error is-dismissible">
+						<p><?php echo esc_html__( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
+					</div>
+					<?php
+				}
+			);
+		}
 	}
-
 }
 add_action( 'plugins_loaded', 'run_addonify_floating_cart' );

@@ -22,7 +22,7 @@ if ( ! function_exists( 'addonify_floating_cart_toggle_cart_button_settings' ) )
 			// @since 1.2.7
 			'custom_class_to_toggle_button'             => array(
 				'label'       => esc_html__( 'Custom toggle button CSS class', 'addonify-floating-cart' ),
-				'description' => esc_html__( 'Add a CSS class of an element that toggles the cart.', 'addonify-floating-cart' ),
+				'description' => esc_html__( 'Separate CSS class names with comma i.e .myClass, .appClass.', 'addonify-floating-cart' ),
 				'type'        => 'text',
 				'dependent'   => array( 'enable_floating_cart' ),
 				'value'       => addonify_floating_cart_get_option( 'custom_class_to_toggle_button' ),

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-03T09:22:10+00:00\n"
+"POT-Creation-Date: 2024-04-03T11:36:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: addonify-floating-cart\n"
@@ -714,7 +714,7 @@ msgid "Custom toggle button CSS class"
 msgstr ""
 
 #: includes/functions/fields/toggle-button.php:25
-msgid "Add a CSS class of an element that toggles the cart."
+msgid "Separate CSS class names with comma i.e .myClass, .appClass."
 msgstr ""
 
 #: includes/functions/fields/toggle-button.php:31

@@ -83,7 +83,7 @@ function run_addonify_floating_cart() {
 		$plugin = new Addonify_Floating_Cart();
 		$plugin->run();
 	} else {
-		if ( absint( get_bloginfo( 'version' ) ) < 6.5 ) {
+		if ( version_compare( get_bloginfo( 'version' ), '6.5', '<' ) ) {
 			add_action(
 				'admin_notices',
 				function() {

@@ -335,6 +335,7 @@ class Addonify_Floating_Cart_Public {
 				'hideTriggerButtonIfCartIsEmpty'           => addonify_floating_cart_get_option( 'hide_modal_toggle_button_on_empty_cart' ),
 				'hideCartOnOverlayClicked'                 => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
+				'customToggleBtnClass'                     => addonify_floating_cart_get_option( 'custom_class_to_toggle_button' ),
 			)
 		);
 	}

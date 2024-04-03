@@ -1,5 +1,5 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
-import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty } from "src/js/global/localize.data";
+import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty, customToggleBtnClass } from "src/js/global/localize.data";
 import { handleProgressbarAnimation } from "src/js/components/shopping-meter";
 import { setTriggerButtonVisibility } from "src/js/components/trigger";
 
@@ -24,7 +24,7 @@ export function listenCartEvents() {
     * @return {void} void.
     * @since 1.0.0
     */
-    $(document).on("click", ".adfy__show-woofc", function (e) {
+    $(document).on("click", ".adfy__show-woofc, ." + customToggleBtnClass, function (e) {
 
         AFC.action.cart.open(e);
     });

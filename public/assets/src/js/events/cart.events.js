@@ -1,107 +1,118 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
-import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty } from "src/js/global/localize.data";
+import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty, customToggleBtnClass } from "src/js/global/localize.data";
 import { handleProgressbarAnimation } from "src/js/components/shopping-meter";
 import { setTriggerButtonVisibility } from "src/js/components/trigger";
+import { convertClassNamesToSelector } from "src/js/utilities/string.helpers";
 
 const { $ } = AFC;
 
 export function listenCartEvents() {
 
-    /**
-    * Prevent default event.
-    *
-    * @return {void} void.
-    * @since 1.0.0
-    */
-    $(document).on('click', '.adfy__woofc-prevent-default', function (e) {
+	/**
+	* Prevent default event.
+	*
+	* @return {void} void.
+	* @since 1.0.0
+	*/
+	$(document).on('click', '.adfy__woofc-prevent-default', function (e) {
 
-        e.preventDefault();
-    });
+		e.preventDefault();
+	});
 
-    /**
-    * Listen for cart open events.
-    *
-    * @return {void} void.
-    * @since 1.0.0
-    */
-    $(document).on("click", ".adfy__show-woofc", function (e) {
+	/**
+	* Listen for cart open events.
+	*
+	* @return {void} void.
+	* @since 1.0.0
+	*/
+	let triggerButtonClasses = ".adfy__show-woofc";
 
-        AFC.action.cart.open(e);
-    });
+	// Add custom class to trigger button.
+	if (customToggleBtnClass && customToggleBtnClass.length > 0) {
 
-    /**
-    * Listen for mouse over event on trigger button.
-    *
-    * @return {void} void.
-    * @since 1.0.0
-    */
-    $(document).on('mouseover', '.adfy__show-woofc', function (e) {
+		triggerButtonClasses += ", " + customToggleBtnClass;
+	}
 
-        if (openCartOnTriggerHover) {
+	// Convert class names to selector.
+	const triggerButtonSelectors = convertClassNamesToSelector(triggerButtonClasses)
 
-            AFC.action.cart.open(e);
-        }
-    });
+	$(document).on("click", triggerButtonSelectors, function (e) {
+		AFC.action.cart.open(e);
+	});
 
-    /**
-    * Listen for "view cart button" click event.
-    *
-    * @return {void} void.
-    * @since 1.0.0
-    */
-    $(document).on('click', '.added_to_cart.wc-forward', function (e) {
+	/**
+	* Listen for mouse over event on trigger button.
+	*
+	* @return {void} void.
+	* @since 1.0.0
+	*/
+	$(document).on('mouseover', '.adfy__show-woofc', function (e) {
 
-        if (openCartOnViewCartClicked) {
+		if (openCartOnTriggerHover) {
 
-            e.preventDefault();
+			AFC.action.cart.open(e);
+		}
+	});
 
-            AFC.action.cart.open(e);
-        }
-    });
+	/**
+	* Listen for "view cart button" click event.
+	*
+	* @return {void} void.
+	* @since 1.0.0
+	*/
+	$(document).on('click', '.added_to_cart.wc-forward', function (e) {
 
-    /**
-    * Listen for cart close event.
-    *
-    * @return {void} void.
-    * @since 1.0.0
-    */
-    $(document).on("click", ".adfy__hide-woofc", function (e) {
+		if (openCartOnViewCartClicked) {
 
-        e.preventDefault();
+			e.preventDefault();
 
-        AFC.action.cart.close(e);
-    });
+			AFC.action.cart.open(e);
+		}
+	});
 
-    /**
-    * Listen to cart updated event.
-    * Trigger by internal API.
-    *
-    * @return {void} void.
-    * @since 1.2.2
-    */
-    document.addEventListener("addonifyFloatingCartUpdated", () => {
+	/**
+	* Listen for cart close event.
+	*
+	* @return {void} void.
+	* @since 1.0.0
+	*/
+	$(document).on("click", ".adfy__hide-woofc", function (e) {
 
-        /**
-        * Always check shopping meter animation once "addonifyFloatingCartUpdated"
-        * event is detected.
-        *
-        * @since 1.2.2
-        */
-        handleProgressbarAnimation();
-    });
+		e.preventDefault();
 
-    /**
-    * Listen to cart item restored event.
-    *
-    * @return {void} void.
-    * @since 1.2.2
-    */
-    document.addEventListener("addonifyFloatingCartItemRestored", () => {
+		AFC.action.cart.close(e);
+	});
 
-        // Display trigger button if it was hidden initially.
-        if (hideTriggerButtonIfCartIsEmpty) {
+	/**
+	* Listen to cart updated event.
+	* Trigger by internal API.
+	*
+	* @return {void} void.
+	* @since 1.2.2
+	*/
+	document.addEventListener("addonifyFloatingCartUpdated", () => {
 
-            setTriggerButtonVisibility('show');
-        }
-    });
+		/**
+		* Always check shopping meter animation once "addonifyFloatingCartUpdated"
+		* event is detected.
+		*
+		* @since 1.2.2
+		*/
+		handleProgressbarAnimation();
+	});
+
+	/**
+	* Listen to cart item restored event.
+	*
+	* @return {void} void.
+	* @since 1.2.2
+	*/
+	document.addEventListener("addonifyFloatingCartItemRestored", () => {
+
+		// Display trigger button if it was hidden initially.
+		if (hideTriggerButtonIfCartIsEmpty) {
+
+			setTriggerButtonVisibility('show');
+		}
+	});
 }

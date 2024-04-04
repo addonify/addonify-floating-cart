@@ -1,6 +1,6 @@
 /**
 * Localization: Ajax & nonce.
-* 
+*
 * @since: 1.1.9
 */
 export const ajaxUrl = addonifyFloatingCartJSObject.ajax_url;
@@ -9,7 +9,7 @@ export const nonce = addonifyFloatingCartJSObject.nonce;
 
 /**
 * Localization: Refresh cart fragments action.
-* 
+*
 * @since: 1.1.9
 */
 export const refreshCartFragmentsAction = addonifyFloatingCartJSObject.ajax_refresh_cart_fragments;
@@ -22,7 +22,7 @@ export const ajaxRestoreCartItemAction = addonifyFloatingCartJSObject.ajax_resto
 
 /**
 * Localization: Add to cart button settings.
-* 
+*
 * @since: 1.1.9
 */
 export const openCartOnAddedToCart = addonifyFloatingCartJSObject.open_cart_modal_immediately_after_add_to_cart === '1' ? true : false;
@@ -32,16 +32,18 @@ export const openCartOnViewCartClicked = addonifyFloatingCartJSObject.open_cart_
 
 /**
 * Localization: Trigger button settings.
-* 
+*
 * @since: 1.1.9
 */
 export const openCartOnTriggerHover = addonifyFloatingCartJSObject.openCartModalOnTriggerButtonHover === '1' ? true : false;
 
 export const hideTriggerButtonIfCartIsEmpty = addonifyFloatingCartJSObject.hideTriggerButtonIfCartIsEmpty === '1' ? true : false;
 
+export const customToggleBtnClass = addonifyFloatingCartJSObject.customToggleBtnClass;
+
 /**
 * Localization: Notfy settings.
-* 
+*
 * @since: 1.1.9
 */
 export const showNotfy = addonifyFloatingCartJSObject.addonifyFloatingCartNotifyShow === '1' ? true : false;
@@ -69,7 +71,7 @@ export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remo
 
 /**
 * Localization: Shipping calculator settings.
-* 
+*
 * @since: 1.1.9
 */
 export const ajaxUpdateShippingAddressAction = addonifyFloatingCartJSObject.updateShippingInfo;

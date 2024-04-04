@@ -7,24 +7,24 @@
  */
 export function setSpinnerVisibility(action) {
 
-    if (!action) {
+	if (!action) {
 
-        throw new Error('Spinner action is required!');
-    }
+		throw new Error('Spinner action is required!');
+	}
 
-    const spinnerEle = document.getElementById("adfy__woofc-spinner-container");
+	const spinnerEle = document.getElementById("adfy__woofc-spinner-container");
 
-    if (spinnerEle) {
+	if (spinnerEle) {
 
-        if (action === "show") {
+		if (action === "show") {
 
-            spinnerEle.classList.add('visible');
-            spinnerEle.classList.remove('hidden');
+			spinnerEle.classList.add('visible');
+			spinnerEle.classList.remove('hidden');
 
-        } else {
+		} else {
 
-            spinnerEle.classList.add('hidden');
-            spinnerEle.classList.remove('visible');
-        }
-    }
+			spinnerEle.classList.add('hidden');
+			spinnerEle.classList.remove('visible');
+		}
+	}
 }

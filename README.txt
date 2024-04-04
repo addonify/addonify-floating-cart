@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.4.2
-Stable tag: 1.2.6
+Tested up to: 6.5
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,7 +116,15 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 == Changelog ==
 
-= 1.2.6 - 04 Jan, 2023 =
+= 1.2.7 - 03 Apr, 2024 ==
+
+- Added: `Requires Plugins` plugin header.
+- Added: `Custom toggle button CSS class` option to toggle cart.
+- Tested: WordPress version 6.5.
+- Tested: WooCommerce version 8.7.0.
+
+
+= 1.2.6 - 04 Jan, 2024 =
 
 - Added: Option, `Remove Product from cart if not in stock`, to remove products from the cart that are not in stock.
 - Added: Option, `Display empty cart icon`, to display cart icon in the cart empty notice.

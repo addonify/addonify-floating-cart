@@ -1,7 +1,6 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
 import { ajaxUrl, refreshCartFragmentsAction, nonce } from "src/js/global/localize.data";
 import { setSpinnerVisibility } from "src/js/components/spinner";
-import { registerToastEvent } from "src/js/utilities/toast.helpers";
 
 const { $, action, api } = AFC;
 

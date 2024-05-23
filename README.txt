@@ -118,7 +118,6 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.2.8 - 23 May, 2024 ==
 
-- Fixed: Page being scrolled to top of the page when cart is opened.
 - Tested: WordPress version 6.5.3.
 - Tested: WooCommerce version 8.9.1.
 

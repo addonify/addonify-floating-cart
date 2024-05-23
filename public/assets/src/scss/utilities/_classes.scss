@@ -7,6 +7,12 @@
     cursor: pointer;
 }
 
+.adfy__woofc-visible {
+
+		max-height: 100vh;
+    overflow-y: hidden;
+}
+
 .adfy__woofc-hidden {
 
     display: none;

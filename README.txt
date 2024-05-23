@@ -4,16 +4,16 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.5
+Tested up to: 6.5.3
 Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items. 
+Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
 
 == Description ==
 
-Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items. 
+Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
 
 Addonify Floating Cart is packed with lots of features and functionalities. The necessary cart actions such as adding product into the cart, removing product from the cart with undo functionality, updating cart quantities, applying coupon discounts etc. The sidebar shopping cart can be toggled on floating cart button click, or Add to Cart button click, or toast notification button click, or View Cart button click.
 
@@ -32,7 +32,7 @@ For visitors attention, display toast notification when a product is added into 
 - Manage product quantities in the shopping cart.
 - Display number of products in the shopping cart.
 - Undo product removal in shopping cart.
-- Shopping meter with targeted amount and custom text. 
+- Shopping meter with targeted amount and custom text.
 - Shopping meter progress bar animation.
 - Custom labels for cart drawer/modal text elements.
 - Apply coupons, display applied coupons, remove applied coupons, and display coupon messages.
@@ -96,7 +96,7 @@ Yes, Addonify Floating Cart should work with all WordPress themes. If it does no
 
 Floating cart button and sidebar shopping cart will not be visible on cart and checkout pages.
 
- 
+
 == Installation ==
 
 1. Download the plugin.
@@ -115,6 +115,12 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.2.8 - 23 May, 2024 ==
+
+- Fixed: Page being scrolled to top of the page when cart is opened.
+- Tested: WordPress version 6.5.3.
+- Tested: WooCommerce version 8.9.1.
 
 = 1.2.7 - 03 Apr, 2024 ==
 
@@ -156,7 +162,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Added: Options to modify labels and texts in cart form. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
 - Added: Options to modify prefix text of cart count. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
 - Added: Option to modify text for link to exit coupon and shipping form modals. [GitHub Issue #272](https://github.com/addonify/addonify-floating-cart/issues/272)
-- Fixed: Translation problem. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)  
+- Fixed: Translation problem. [Support Topic](https://wordpress.org/support/topic/translate-problem-30/)
 - Tested: WordPress version 6.4.2.
 - Tested: WooCommerce version 8.4.0.
 
@@ -217,7 +223,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.1.9 - 14 July, 2023 =
 
-- Added: Option, Trigger button badge text color on hover. #218 
+- Added: Option, Trigger button badge text color on hover. #218
 - Added: Option, Trigger button badge background color on hover. #218
 - Added: Option, Hide trigger button if the cart is empty. #221
 - Removed: Option, `open_cart_modal_on_notification_button_click` from plugin settings page.
@@ -226,7 +232,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 = 1.1.8 - 27 June, 2023 =
 
-- Added: Shopping meter progress bar animation. 
+- Added: Shopping meter progress bar animation.
 - Tweak: Cart trigger button style.
 
 
@@ -260,7 +266,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Fix: Issue with attribute name of variable product.
 
 
-= 1.1.2 - 3 May, 2023 = 
+= 1.1.2 - 3 May, 2023 =
 
 - Tweak: Load admin CSS using wp_enqueue_style only on the floating cart setting page.
 - Fixed: Issue of values of fields in `Cart Drawer/Modal Labels` not getting displayed. [GitHub Issue #161](https://github.com/addonify/addonify-floating-cart/issues/161)
@@ -270,7 +276,7 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 - Tweak: Class of the button before checkout button changed from `close` to `secondary`.
 
 
-= 1.1.1 - 20 April, 2023 = 
+= 1.1.1 - 20 April, 2023 =
 
 - Added: Option for showing product type count or products quantities in floating cart badge.
 - Update: Refresh cart after page load for fragments cache related issues.

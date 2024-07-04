@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.5.3
-Stable tag: 1.2.7
+Tested up to: 6.5
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,11 +88,15 @@ Yes, we do have documentation guide. Please visit our [documentation site.](http
 
 No, this plugin will not work without WooCommerce.
 
+= Why don't side cart open when product is added into the cart from the product page? =
+
+Because by default, when product is added into the cart from the product page, the product page is re-loaded.
+
 = Does this plugin work with my theme? =
 
-Yes, Addonify Floating Cart should work with all WordPress themes. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
+If your theme is not a block theme, then yes, Addonify Floating Cart should work with all WordPress themes. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
 
-= On which page floating cart will not be visible? =
+= On which page floating cart will not be visible? =l
 
 Floating cart button and sidebar shopping cart will not be visible on cart and checkout pages.
 
@@ -115,6 +119,12 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.2.9 - 04 July, 2024 =
+
+- Added: ShortCode for displaying cart toggle button.
+- Tested: Up to WordPress version 6.5
+- Tested: Up to WooCommerce version 9.0.2.
 
 = 1.2.8 - 23 May, 2024 ==
 

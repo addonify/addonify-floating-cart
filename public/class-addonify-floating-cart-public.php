@@ -169,6 +169,8 @@ class Addonify_Floating_Cart_Public {
 
 		add_action( 'wp_ajax_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
+
+		add_shortcode( 'afc_cart_toggle_button', array( $this, 'cart_toggle_button' ) );
 	}
 
 
@@ -340,6 +342,109 @@ class Addonify_Floating_Cart_Public {
 		);
 	}
 
+
+	/**
+	 * Callback function for `add_shortcode( 'afc_cart_toggle_button' )`.
+	 *
+	 * @since 1.2.7
+	 *
+	 * @param array $attrs Shortcode attributes.
+	 */
+	public function cart_toggle_button( $attrs ) {
+
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			return;
+		}
+
+		$default_attrs = array(
+			'icon'           => 'icon-1',
+			'icon_position'  => 'left',
+			'class'          => '',
+			'display_badge'  => 'true',
+			'badge_position' => 'top-right',
+			'label'          => '',
+			'id'             => '',
+		);
+
+		$shortcode_attrs = wp_parse_args( $attrs, $default_attrs );
+
+		$button_attributes = array(
+			'class' => 'adfy_fc__woo-trigger-shortcode-button adfy__show-woofc',
+		);
+
+		if ( isset( $shortcode_attrs['id'] ) && $shortcode_attrs['id'] ) {
+			$button_attributes['id'] = esc_attr( $shortcode_attrs['id'] );
+		}
+
+		if ( isset( $shortcode_attrs['class'] ) && $shortcode_attrs['class'] ) {
+			$button_attributes['class'] .= ' ' . esc_attr( $shortcode_attrs['class'] );
+		}
+
+		if (
+			( isset( $shortcode_attrs['icon'] ) && 'none' !== $shortcode_attrs['icon'] ) &&
+			( isset( $shortcode_attrs['icon_position'] ) && 'right' === $shortcode_attrs['icon_position'] )
+		) {
+			$button_attributes['class'] .= ' icon-pos-right';
+		} else {
+			$button_attributes['class'] .= ' icon-pos-left';
+		}
+
+		$button_svg_icons = afc_get_cart_toggle_button_icons();
+
+		ob_start();
+		?>
+		<button <?php echo wc_implode_html_attributes( $button_attributes ); // phpcs:ignore ?>>
+			<?php
+			if (
+				isset( $shortcode_attrs['icon'] ) &&
+				'none' !== $shortcode_attrs['icon'] &&
+				array_key_exists( $shortcode_attrs['icon'], $button_svg_icons )
+			) {
+				?>
+				<span class="icon">
+					<?php echo afc_escape_svg( $button_svg_icons[ $shortcode_attrs['icon'] ] ); //phpcs:ignore ?>
+				</span>
+				<?php
+			}
+
+			if ( isset( $shortcode_attrs['label'] ) && $shortcode_attrs['label'] ) {
+				?>
+				<span class="label">
+					<?php echo esc_html( $shortcode_attrs['label'] ); ?>
+				</span>
+				<?php
+			}
+			?>
+
+			<?php
+			if ( isset( $shortcode_attrs['display_badge'] ) && 'true' === $shortcode_attrs['display_badge'] ) {
+
+				$cart_count = 0;
+				if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
+					$cart_count = count( WC()->cart->get_cart_contents() );
+				} else {
+					$cart_count = WC()->cart->get_cart_contents_count();
+				}
+
+				$badge_positions = array(
+					'top-right',
+					'top-left',
+				);
+
+				$badge_position = (
+					isset( $shortcode_attrs['badge_position'] ) &&
+					$shortcode_attrs['badge_position'] &&
+					in_array( $shortcode_attrs['badge_position'], $badge_positions, true )
+				) ?
+				$shortcode_attrs['badge_position'] :
+				'top-right';
+				?>
+				<span class="badge <?php echo esc_attr( $badge_position ); ?>"><span class="gocart__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
+			<?php } ?>
+		</button>
+		<?php
+		return ob_get_clean();
+	}
 
 	/**
 	 * Template for displaying sidebar cart toggle button.

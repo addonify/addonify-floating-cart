@@ -170,7 +170,7 @@ class Addonify_Floating_Cart_Public {
 		add_action( 'wp_ajax_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
 
-		add_shortcode( 'afc_cart_toggle_button', array( $this, 'cart_toggle_button' ) );
+		add_shortcode( 'afc_cart_icon', array( $this, 'cart_toggle_button' ) );
 	}
 
 
@@ -358,11 +358,9 @@ class Addonify_Floating_Cart_Public {
 
 		$default_attrs = array(
 			'icon'           => 'icon-1',
-			'icon_position'  => 'left',
 			'class'          => '',
-			'display_badge'  => 'true',
-			'badge_position' => 'top-right',
-			'label'          => '',
+			'display_count'  => 'true',
+			'count_position' => 'top-right',
 			'id'             => '',
 		);
 
@@ -380,20 +378,11 @@ class Addonify_Floating_Cart_Public {
 			$button_attributes['class'] .= ' ' . esc_attr( $shortcode_attrs['class'] );
 		}
 
-		if (
-			( isset( $shortcode_attrs['icon'] ) && 'none' !== $shortcode_attrs['icon'] ) &&
-			( isset( $shortcode_attrs['icon_position'] ) && 'right' === $shortcode_attrs['icon_position'] )
-		) {
-			$button_attributes['class'] .= ' icon-pos-right';
-		} else {
-			$button_attributes['class'] .= ' icon-pos-left';
-		}
-
 		$button_svg_icons = afc_get_cart_toggle_button_icons();
 
 		ob_start();
 		?>
-		<button <?php echo wc_implode_html_attributes( $button_attributes ); // phpcs:ignore ?>>
+		<a href="#" <?php echo wc_implode_html_attributes( $button_attributes ); // phpcs:ignore ?>>
 			<?php
 			if (
 				isset( $shortcode_attrs['icon'] ) &&
@@ -406,18 +395,10 @@ class Addonify_Floating_Cart_Public {
 				</span>
 				<?php
 			}
-
-			if ( isset( $shortcode_attrs['label'] ) && $shortcode_attrs['label'] ) {
-				?>
-				<span class="label">
-					<?php echo esc_html( $shortcode_attrs['label'] ); ?>
-				</span>
-				<?php
-			}
 			?>
 
 			<?php
-			if ( isset( $shortcode_attrs['display_badge'] ) && 'true' === $shortcode_attrs['display_badge'] ) {
+			if ( isset( $shortcode_attrs['display_count'] ) && 'true' === $shortcode_attrs['display_count'] ) {
 
 				$cart_count = 0;
 				if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
@@ -426,22 +407,22 @@ class Addonify_Floating_Cart_Public {
 					$cart_count = WC()->cart->get_cart_contents_count();
 				}
 
-				$badge_positions = array(
+				$count_positions = array(
 					'top-right',
 					'top-left',
 				);
 
-				$badge_position = (
-					isset( $shortcode_attrs['badge_position'] ) &&
-					$shortcode_attrs['badge_position'] &&
-					in_array( $shortcode_attrs['badge_position'], $badge_positions, true )
+				$count_position = (
+					isset( $shortcode_attrs['count_position'] ) &&
+					$shortcode_attrs['count_position'] &&
+					in_array( $shortcode_attrs['count_position'], $count_positions, true )
 				) ?
-				$shortcode_attrs['badge_position'] :
+				$shortcode_attrs['count_position'] :
 				'top-right';
 				?>
-				<span class="badge <?php echo esc_attr( $badge_position ); ?>"><span class="gocart__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
+				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="gocart__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
 			<?php } ?>
-		</button>
+		</a>
 		<?php
 		return ob_get_clean();
 	}

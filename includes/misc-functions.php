@@ -34,6 +34,42 @@ if ( ! function_exists( 'addonify_floating_cart_get_cart_modal_toggle_button_ico
 }
 
 
+/**
+ * Sanitizes SVG when rendering in the frontend.
+ *
+ * @since 1.0.0
+ * @param string $svg SVG code.
+ * @return string $svg Sanitized SVG code.
+ */
+function addonify_floating_cart_escape_svg( $svg ) {
+
+	$allowed_html = array(
+		'svg'   => array(
+			'class'           => true,
+			'aria-hidden'     => true,
+			'aria-labelledby' => true,
+			'role'            => true,
+			'xmlns'           => true,
+			'width'           => true,
+			'height'          => true,
+			'viewbox'         => true,
+		),
+		'g'     => array(
+			'fill' => true,
+		),
+		'title' => array(
+			'title' => true,
+		),
+		'path'  => array(
+			'd'    => true,
+			'fill' => true,
+		),
+	);
+
+	return wp_kses( $svg, $allowed_html );
+}
+
+
 if ( ! function_exists( 'addonify_floating_cart_default_strings' ) ) {
 	/**
 	 * Translation ready strings displayed at the front-end.

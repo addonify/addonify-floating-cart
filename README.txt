@@ -1,11 +1,11 @@
 === Addonify Floating Cart For WooCommerce ===
 
 Contributors: addonify
-Tags: cart, ajax, ajax cart, woocommerce, woocommerce cart, floating cart, side cart, woo cart, woocommerce floating cart, woocommerce side cart, fly cart
+Tags: cart, floating cart, side cart, mini cart, woocommerce cart,
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.5.3
-Stable tag: 1.2.7
+Tested up to: 6.5.5
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,14 +88,30 @@ Yes, we do have documentation guide. Please visit our [documentation site.](http
 
 No, this plugin will not work without WooCommerce.
 
+= Why does not side cart open when product is added into the cart from the product page? =
+
+Because by default, when product is added into the cart from the product page, the product page is re-loaded.
+
 = Does this plugin work with my theme? =
 
-Yes, Addonify Floating Cart should work with all WordPress themes. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
+If your theme is not a block theme, then yes, Addonify Floating Cart should work with your theme. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
 
-= On which page floating cart will not be visible? =
+= Does this plugin work with WooCommerce blocks? = 
+
+If you are using WooCommerce blocks to display products, then this plugin might not work as expected. This plugin works well with classic WooCommerce product templates.
+
+= On which pages floating cart will not be visible? =
 
 Floating cart button and sidebar shopping cart will not be visible on cart and checkout pages.
 
+= Is there any shortcode to display a cart icon anywhere? =
+
+Addonify Floating Cart has a shortcode that can be used to display a cart icon. The shortcode is as below:
+
+```
+[afc_cart_icon id="my-id" class="css-classes" icon="icon-1" display_count="true" count_position="top-right"]
+```
+For more information on shorcode, follow the [documentation](https://docs.addonify.com/kb/floating-cart/)
 
 == Installation ==
 
@@ -115,6 +131,13 @@ Floating cart button and sidebar shopping cart will not be visible on cart and c
 
 
 == Changelog ==
+
+= 1.2.9 - 15 July, 2024 =
+
+- Added:   ShortCode for displaying cart icon.
+- Updated: Plugin tags.
+- Tested:  Up to WordPress version 6.5.5.
+- Tested:  Up to WooCommerce version 9.0.2.
 
 = 1.2.8 - 23 May, 2024 ==
 

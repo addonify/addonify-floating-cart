@@ -10,10 +10,10 @@
  * Plugin Name:       Addonify Floating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
  * Description:       Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
- * Version:           1.2.8
+ * Version:           1.2.9
  * Requires at least: 6.0.0
  * Requires PHP:      7.4
- * Tested up to:      6.5.3
+ * Tested up to:      6.5.5
  * Author:            Addonify
  * Author URI:        https://addonify.com/
  * License:           GPLv2 or later
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.8' );
+define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.9' );
 define( 'ADDONIFY_FLOATING_CART_BASENAME', plugin_basename( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
@@ -82,19 +82,17 @@ function run_addonify_floating_cart() {
 
 		$plugin = new Addonify_Floating_Cart();
 		$plugin->run();
-	} else {
-		if ( version_compare( get_bloginfo( 'version' ), '6.5', '<' ) ) {
-			add_action(
-				'admin_notices',
-				function() {
-					?>
-					<div class="notice notice-error is-dismissible">
-						<p><?php echo esc_html__( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
-					</div>
-					<?php
-				}
-			);
-		}
+	} elseif ( version_compare( get_bloginfo( 'version' ), '6.5', '<' ) ) {
+		add_action(
+			'admin_notices',
+			function () {
+				?>
+				<div class="notice notice-error is-dismissible">
+					<p><?php echo esc_html__( 'Addonify Floating Cart requires WooCommerce in order to work.', 'addonify-floating-cart' ); ?></p>
+				</div>
+				<?php
+			}
+		);
 	}
 }
 add_action( 'plugins_loaded', 'run_addonify_floating_cart' );

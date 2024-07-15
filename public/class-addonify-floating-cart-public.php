@@ -169,6 +169,8 @@ class Addonify_Floating_Cart_Public {
 
 		add_action( 'wp_ajax_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
 		add_action( 'wp_ajax_nopriv_addonify_floating_cart_refresh_cart_fragments', array( $this, 'refresh_cart_fragments' ) );
+
+		add_shortcode( 'afc_cart_icon', array( $this, 'cart_toggle_button' ) );
 	}
 
 
@@ -340,6 +342,90 @@ class Addonify_Floating_Cart_Public {
 		);
 	}
 
+
+	/**
+	 * Callback function for `add_shortcode( 'afc_cart_toggle_button' )`.
+	 *
+	 * @since 1.2.7
+	 *
+	 * @param array $attrs Shortcode attributes.
+	 */
+	public function cart_toggle_button( $attrs ) {
+
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			return;
+		}
+
+		$default_attrs = array(
+			'icon'                 => 'icon_6',
+			'class'                => '',
+			'display_items_count'  => 'true',
+			'items_count_position' => 'top-right',
+			'id'                   => '',
+		);
+
+		$shortcode_attrs = wp_parse_args( $attrs, $default_attrs );
+
+		$button_attributes = array(
+			'class' => 'adfy_fc__woo-trigger-shortcode-button adfy__show-woofc',
+		);
+
+		if ( isset( $shortcode_attrs['id'] ) && $shortcode_attrs['id'] ) {
+			$button_attributes['id'] = esc_attr( $shortcode_attrs['id'] );
+		}
+
+		if ( isset( $shortcode_attrs['class'] ) && $shortcode_attrs['class'] ) {
+			$button_attributes['class'] .= ' ' . esc_attr( $shortcode_attrs['class'] );
+		}
+
+		$button_svg_icons = addonify_floating_cart_get_cart_modal_toggle_button_icons();
+
+		ob_start();
+		?>
+		<a href="#" <?php echo wc_implode_html_attributes( $button_attributes ); // phpcs:ignore ?>>
+			<?php
+			if (
+				isset( $shortcode_attrs['icon'] ) &&
+				'none' !== $shortcode_attrs['icon'] &&
+				array_key_exists( $shortcode_attrs['icon'], $button_svg_icons )
+			) {
+				?>
+				<span class="icon">
+					<?php echo addonify_floating_cart_escape_svg( $button_svg_icons[ $shortcode_attrs['icon'] ] ); //phpcs:ignore ?>
+				</span>
+				<?php
+			}
+			?>
+
+			<?php
+			if ( isset( $shortcode_attrs['display_items_count'] ) && 'true' === $shortcode_attrs['display_items_count'] ) {
+
+				$cart_count = 0;
+				if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
+					$cart_count = count( WC()->cart->get_cart_contents() );
+				} else {
+					$cart_count = WC()->cart->get_cart_contents_count();
+				}
+
+				$count_positions = array(
+					'top-right',
+					'top-left',
+				);
+
+				$count_position = (
+					isset( $shortcode_attrs['items_count_position'] ) &&
+					$shortcode_attrs['items_count_position'] &&
+					in_array( $shortcode_attrs['items_count_position'], $count_positions, true )
+				) ?
+				$shortcode_attrs['items_count_position'] :
+				'top-right';
+				?>
+				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
+			<?php } ?>
+		</a>
+		<?php
+		return ob_get_clean();
+	}
 
 	/**
 	 * Template for displaying sidebar cart toggle button.

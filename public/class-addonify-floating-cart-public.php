@@ -357,11 +357,11 @@ class Addonify_Floating_Cart_Public {
 		}
 
 		$default_attrs = array(
-			'icon'           => 'icon-1',
-			'class'          => '',
-			'display_count'  => 'true',
-			'count_position' => 'top-right',
-			'id'             => '',
+			'icon'                 => 'icon_6',
+			'class'                => '',
+			'display_items_count'  => 'true',
+			'items_count_position' => 'top-right',
+			'id'                   => '',
 		);
 
 		$shortcode_attrs = wp_parse_args( $attrs, $default_attrs );
@@ -378,7 +378,7 @@ class Addonify_Floating_Cart_Public {
 			$button_attributes['class'] .= ' ' . esc_attr( $shortcode_attrs['class'] );
 		}
 
-		$button_svg_icons = afc_get_cart_toggle_button_icons();
+		$button_svg_icons = addonify_floating_cart_get_cart_modal_toggle_button_icons();
 
 		ob_start();
 		?>
@@ -391,14 +391,14 @@ class Addonify_Floating_Cart_Public {
 			) {
 				?>
 				<span class="icon">
-					<?php echo afc_escape_svg( $button_svg_icons[ $shortcode_attrs['icon'] ] ); //phpcs:ignore ?>
+					<?php echo addonify_floating_cart_escape_svg( $button_svg_icons[ $shortcode_attrs['icon'] ] ); //phpcs:ignore ?>
 				</span>
 				<?php
 			}
 			?>
 
 			<?php
-			if ( isset( $shortcode_attrs['display_count'] ) && 'true' === $shortcode_attrs['display_count'] ) {
+			if ( isset( $shortcode_attrs['display_items_count'] ) && 'true' === $shortcode_attrs['display_items_count'] ) {
 
 				$cart_count = 0;
 				if ( addonify_floating_cart_get_option( 'cart_badge_items_total_count' ) === 'total_products' ) {
@@ -413,14 +413,14 @@ class Addonify_Floating_Cart_Public {
 				);
 
 				$count_position = (
-					isset( $shortcode_attrs['count_position'] ) &&
-					$shortcode_attrs['count_position'] &&
-					in_array( $shortcode_attrs['count_position'], $count_positions, true )
+					isset( $shortcode_attrs['items_count_position'] ) &&
+					$shortcode_attrs['items_count_position'] &&
+					in_array( $shortcode_attrs['items_count_position'], $count_positions, true )
 				) ?
-				$shortcode_attrs['count_position'] :
+				$shortcode_attrs['items_count_position'] :
 				'top-right';
 				?>
-				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="gocart__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
+				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="afc__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
 			<?php } ?>
 		</a>
 		<?php

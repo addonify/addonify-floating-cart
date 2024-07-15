@@ -134,9 +134,10 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 = 1.2.9 - 15 July, 2024 =
 
-- Added:  ShortCode for displaying cart toggle button.
-- Tested: Up to WordPress version 6.5
-- Tested: Up to WooCommerce version 9.0.2.
+- Added:   ShortCode for displaying cart icon.
+- Updated: Plugin tags.
+- Tested:  Up to WordPress version 6.5.5.
+- Tested:  Up to WooCommerce version 9.0.2.
 
 = 1.2.8 - 23 May, 2024 ==
 

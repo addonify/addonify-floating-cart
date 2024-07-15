@@ -420,7 +420,7 @@ class Addonify_Floating_Cart_Public {
 				$shortcode_attrs['items_count_position'] :
 				'top-right';
 				?>
-				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="afc__woo-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
+				<span class="badge <?php echo esc_attr( $count_position ); ?>"><span class="adfy_woofc-badge-count"><?php echo esc_html( $cart_count ); ?></span></span>
 			<?php } ?>
 		</a>
 		<?php

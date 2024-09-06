@@ -344,7 +344,7 @@ class Addonify_Floating_Cart_Public {
 				'hideCartOnOverlayClicked'                 => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 				'customToggleBtnClass'                     => addonify_floating_cart_get_option( 'custom_class_to_toggle_button' ),
-				'hideScreenWhenCouponIsApplied'             => addonify_floating_cart_get_option( 'hide_screen_when_coupon_is_applied' ),
+				'hideScreenWhenCouponIsApplied'             => addonify_floating_cart_get_option( 'hide_screen_when_coupon_applied' ),
 			)
 		);
 	}

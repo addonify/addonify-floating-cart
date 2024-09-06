@@ -4,6 +4,7 @@ import {
 	ajaxUrl,
 	ajaxApplyCouponCodeAction,
 	ajaxRemoveCouponCodeAction,
+	hideScreenWhenCouponIsApplied
 } from "src/js/global/localize.data";
 import {
 	couponAlertVisibilityHandler,
@@ -38,6 +39,18 @@ export function listenCouponContainerEvents() {
 
 		// Dispatch 'couponModalClosed' event.
 		AFC.api.event.couponModalClosed();
+	});
+
+	/**
+	* Listen to coupon applied event.
+	*
+	* @return {void} void.
+	* @since 1.2.2
+	*/
+	document.addEventListener("addonifyFloatingCartCouponApplied", () => {
+		if (hideScreenWhenCouponIsApplied) {
+			couponContainer.attr("data_display", "hidden");
+		}
 	});
 }
 

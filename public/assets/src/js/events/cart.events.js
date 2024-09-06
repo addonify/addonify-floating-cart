@@ -1,5 +1,10 @@
 import { addonifyFloatingCart as AFC } from "src/js/global/addonify.floating.cart";
-import { openCartOnTriggerHover, openCartOnViewCartClicked, hideTriggerButtonIfCartIsEmpty, customToggleBtnClass } from "src/js/global/localize.data";
+import {
+	openCartOnTriggerHover,
+	openCartOnViewCartClicked,
+	hideTriggerButtonIfCartIsEmpty,
+	customToggleBtnClass
+} from "src/js/global/localize.data";
 import { handleProgressbarAnimation } from "src/js/components/shopping-meter";
 import { setTriggerButtonVisibility } from "src/js/components/trigger";
 import { convertClassNamesToSelector } from "src/js/utilities/string.helpers";
@@ -7,63 +12,57 @@ import { convertClassNamesToSelector } from "src/js/utilities/string.helpers";
 const { $ } = AFC;
 
 export function listenCartEvents() {
-
 	/**
-	* Prevent default event.
-	*
-	* @return {void} void.
-	* @since 1.0.0
-	*/
-	$(document).on('click', '.adfy__woofc-prevent-default', function (e) {
-
+	 * Prevent default event.
+	 *
+	 * @return {void} void.
+	 * @since 1.0.0
+	 */
+	$(document).on("click", ".adfy__woofc-prevent-default", function (e) {
 		e.preventDefault();
 	});
 
 	/**
-	* Listen for cart open events.
-	*
-	* @return {void} void.
-	* @since 1.0.0
-	*/
+	 * Listen for cart open events.
+	 *
+	 * @return {void} void.
+	 * @since 1.0.0
+	 */
 	let triggerButtonClasses = ".adfy__show-woofc";
 
 	// Add custom class to trigger button.
 	if (customToggleBtnClass && customToggleBtnClass.length > 0) {
-
 		triggerButtonClasses += ", " + customToggleBtnClass;
 	}
 
 	// Convert class names to selector.
-	const triggerButtonSelectors = convertClassNamesToSelector(triggerButtonClasses)
+	const triggerButtonSelectors =
+		convertClassNamesToSelector(triggerButtonClasses);
 
 	$(document).on("click", triggerButtonSelectors, function (e) {
 		AFC.action.cart.open(e);
 	});
 
 	/**
-	* Listen for mouse over event on trigger button.
-	*
-	* @return {void} void.
-	* @since 1.0.0
-	*/
-	$(document).on('mouseover', '.adfy__show-woofc', function (e) {
-
+	 * Listen for mouse over event on trigger button.
+	 *
+	 * @return {void} void.
+	 * @since 1.0.0
+	 */
+	$(document).on("mouseover", ".adfy__show-woofc", function (e) {
 		if (openCartOnTriggerHover) {
-
 			AFC.action.cart.open(e);
 		}
 	});
 
 	/**
-	* Listen for "view cart button" click event.
-	*
-	* @return {void} void.
-	* @since 1.0.0
-	*/
-	$(document).on('click', '.added_to_cart.wc-forward', function (e) {
-
+	 * Listen for "view cart button" click event.
+	 *
+	 * @return {void} void.
+	 * @since 1.0.0
+	 */
+	$(document).on("click", ".added_to_cart.wc-forward", function (e) {
 		if (openCartOnViewCartClicked) {
-
 			e.preventDefault();
 
 			AFC.action.cart.open(e);
@@ -71,48 +70,44 @@ export function listenCartEvents() {
 	});
 
 	/**
-	* Listen for cart close event.
-	*
-	* @return {void} void.
-	* @since 1.0.0
-	*/
+	 * Listen for cart close event.
+	 *
+	 * @return {void} void.
+	 * @since 1.0.0
+	 */
 	$(document).on("click", ".adfy__hide-woofc", function (e) {
-
 		e.preventDefault();
 
 		AFC.action.cart.close(e);
 	});
 
 	/**
-	* Listen to cart updated event.
-	* Trigger by internal API.
-	*
-	* @return {void} void.
-	* @since 1.2.2
-	*/
+	 * Listen to cart updated event.
+	 * Trigger by internal API.
+	 *
+	 * @return {void} void.
+	 * @since 1.2.2
+	 */
 	document.addEventListener("addonifyFloatingCartUpdated", () => {
-
 		/**
-		* Always check shopping meter animation once "addonifyFloatingCartUpdated"
-		* event is detected.
-		*
-		* @since 1.2.2
-		*/
+		 * Always check shopping meter animation once "addonifyFloatingCartUpdated"
+		 * event is detected.
+		 *
+		 * @since 1.2.2
+		 */
 		handleProgressbarAnimation();
 	});
 
 	/**
-	* Listen to cart item restored event.
-	*
-	* @return {void} void.
-	* @since 1.2.2
-	*/
+	 * Listen to cart item restored event.
+	 *
+	 * @return {void} void.
+	 * @since 1.2.2
+	 */
 	document.addEventListener("addonifyFloatingCartItemRestored", () => {
-
 		// Display trigger button if it was hidden initially.
 		if (hideTriggerButtonIfCartIsEmpty) {
-
-			setTriggerButtonVisibility('show');
+			setTriggerButtonVisibility("show");
 		}
 	});
 }

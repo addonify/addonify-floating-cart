@@ -69,6 +69,8 @@ export const ajaxApplyCouponCodeAction = addonifyFloatingCartJSObject.ajax_apply
 
 export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remove_coupon;
 
+export const hideScreenWhenCouponIsApplied = addonifyFloatingCartJSObject.hideScreenWhenCouponIsApplied === '1' ? true : false;
+
 /**
 * Localization: Shipping calculator settings.
 *

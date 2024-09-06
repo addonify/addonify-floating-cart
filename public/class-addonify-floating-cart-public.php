@@ -344,6 +344,7 @@ class Addonify_Floating_Cart_Public {
 				'hideCartOnOverlayClicked'                 => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 				'customToggleBtnClass'                     => addonify_floating_cart_get_option( 'custom_class_to_toggle_button' ),
+				'hideScreenWhenCouponIsApplied'             => addonify_floating_cart_get_option( 'hide_screen_when_coupon_is_applied' ),
 			)
 		);
 	}
@@ -1201,9 +1202,9 @@ class Addonify_Floating_Cart_Public {
 
 		return apply_filters(
 			'addonify_floating_cart_shopping_meter_bar',
-			'<div 
-				class="live-progress-bar shipping-bar" 
-				data_percentage="' . esc_attr( number_format( floatval( $per ), 2 ) ) . '" 
+			'<div
+				class="live-progress-bar shipping-bar"
+				data_percentage="' . esc_attr( number_format( floatval( $per ), 2 ) ) . '"
 				style="width:' . esc_attr( number_format( floatval( $per ), 2 ) ) . '%"
 			></div>'
 		);

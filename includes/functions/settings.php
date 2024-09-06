@@ -247,6 +247,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
 			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
 			'coupon_removed_message'                       => $cart_strings['coupon_removed_message'], // @since 1.2.6
+			'hide_screen_when_coupon_applied'		 					 => false, // @since 1.2.9
 
 			'custom_css'                                   => '',
 		)

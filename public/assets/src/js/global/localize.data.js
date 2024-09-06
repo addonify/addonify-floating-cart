@@ -84,6 +84,8 @@ export const isShippingAddressUpdatable = addonifyFloatingCartJSObject.shippingA
 
 export const countriesToStates = addonifyFloatingCartJSObject.states;
 
+export const hideScreenWhenShippingAddressUpdated = addonifyFloatingCartJSObject.hideScreenWhenShippingAddressUpdated === '1' ? true : false;
+
 /**
 * Localization: Shipping calculator settings.
 *

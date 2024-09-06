@@ -49,7 +49,9 @@ export function listenCouponContainerEvents() {
 	*/
 	document.addEventListener("addonifyFloatingCartCouponApplied", () => {
 		if (hideScreenWhenCouponIsApplied) {
-			couponContainer.attr("data_display", "hidden");
+			setTimeout(() => {
+				couponContainer.attr("data_display", "hidden");
+			}, 1000);
 		}
 	});
 }

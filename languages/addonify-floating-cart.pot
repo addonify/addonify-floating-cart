@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.7\n"
+"Project-Id-Version: Addonify Floating Cart For WooCommerce 1.2.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/addonify-floating-cart\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-03T11:36:18+00:00\n"
+"POT-Creation-Date: 2024-09-06T07:07:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: addonify-floating-cart\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "https://addonify.com/"
 msgstr ""
 
-#: addonify-floating-cart.php:92
+#: addonify-floating-cart.php:91
 msgid "Addonify Floating Cart requires WooCommerce in order to work."
 msgstr ""
 
@@ -64,7 +64,7 @@ msgid "Checkout button label"
 msgstr ""
 
 #: includes/functions/fields/cart-buttons.php:27
-#: includes/misc-functions.php:52
+#: includes/misc-functions.php:88
 #: includes/template-functions.php:476
 msgid "Checkout"
 msgstr ""
@@ -90,7 +90,7 @@ msgid "Label of button before checkout button"
 msgstr ""
 
 #: includes/functions/fields/cart-buttons.php:53
-#: includes/misc-functions.php:51
+#: includes/misc-functions.php:87
 #: includes/template-functions.php:451
 msgid "Close"
 msgstr ""
@@ -505,6 +505,10 @@ msgstr ""
 msgid "Coupon removal message"
 msgstr ""
 
+#: includes/functions/fields/coupon-modal.php:73
+msgid "Automatically hide screen when coupon is applied"
+msgstr ""
+
 #: includes/functions/fields/custom-css.php:23
 msgid "Custom CSS"
 msgstr ""
@@ -567,6 +571,10 @@ msgstr ""
 
 #: includes/functions/fields/shipping.php:92
 msgid "Shipping form submit button label"
+msgstr ""
+
+#: includes/functions/fields/shipping.php:103
+msgid "Hide screen when shipping address is updated"
 msgstr ""
 
 #: includes/functions/fields/shopping-meter.php:25
@@ -813,214 +821,214 @@ msgstr ""
 msgid "Vertical offset from top or bottom of the screen."
 msgstr ""
 
-#: includes/functions/settings.php:343
+#: includes/functions/settings.php:345
 msgid "General Options"
 msgstr ""
 
-#: includes/functions/settings.php:348
+#: includes/functions/settings.php:350
 msgid "Cart Toggle Button Options"
 msgstr ""
 
-#: includes/functions/settings.php:353
+#: includes/functions/settings.php:355
 msgid "Cart Modal Options"
 msgstr ""
 
-#: includes/functions/settings.php:358
+#: includes/functions/settings.php:360
 msgid "Cart Header Options"
 msgstr ""
 
-#: includes/functions/settings.php:363
+#: includes/functions/settings.php:365
 msgid "Cart Products Options"
 msgstr ""
 
-#: includes/functions/settings.php:368
+#: includes/functions/settings.php:370
 msgid "Cart Subtotals Options"
 msgstr ""
 
-#: includes/functions/settings.php:373
+#: includes/functions/settings.php:375
 msgid "Cart Buttons Options"
 msgstr ""
 
-#: includes/functions/settings.php:378
+#: includes/functions/settings.php:380
 msgid "Cart Miscellaneous Options"
 msgstr ""
 
-#: includes/functions/settings.php:383
+#: includes/functions/settings.php:385
 msgid "Coupon Options"
 msgstr ""
 
-#: includes/functions/settings.php:388
+#: includes/functions/settings.php:390
 msgid "Shipping Options"
 msgstr ""
 
-#: includes/functions/settings.php:393
+#: includes/functions/settings.php:395
 msgid "Shopping Meter Options"
 msgstr ""
 
-#: includes/functions/settings.php:398
+#: includes/functions/settings.php:400
 msgid "Toast Notification Options"
 msgstr ""
 
-#: includes/functions/settings.php:407
+#: includes/functions/settings.php:409
 msgid "Interface Design"
 msgstr ""
 
-#: includes/functions/settings.php:412
+#: includes/functions/settings.php:414
 msgid "Cart Toggle Button"
 msgstr ""
 
-#: includes/functions/settings.php:418
+#: includes/functions/settings.php:420
 msgid "Toast Notification"
 msgstr ""
 
-#: includes/functions/settings.php:424
+#: includes/functions/settings.php:426
 msgid "Cart Panel"
 msgstr ""
 
-#: includes/functions/settings.php:430
+#: includes/functions/settings.php:432
 msgid "Buttons in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:436
+#: includes/functions/settings.php:438
 msgid "Miscellaneous Cart Elements"
 msgstr ""
 
-#: includes/functions/settings.php:442
+#: includes/functions/settings.php:444
 msgid "Products in Cart"
 msgstr ""
 
-#: includes/functions/settings.php:448
+#: includes/functions/settings.php:450
 msgid "Developer"
 msgstr ""
 
-#: includes/misc-functions.php:48
-#: public/class-addonify-floating-cart-public.php:292
+#: includes/misc-functions.php:84
+#: public/class-addonify-floating-cart-public.php:300
 msgid "{product_name} has been added to cart."
 msgstr ""
 
-#: includes/misc-functions.php:49
-#: public/class-addonify-floating-cart-public.php:293
-#: public/class-addonify-floating-cart-public.php:351
+#: includes/misc-functions.php:85
+#: public/class-addonify-floating-cart-public.php:301
+#: public/class-addonify-floating-cart-public.php:445
 msgid "Show Cart"
 msgstr ""
 
-#: includes/misc-functions.php:50
+#: includes/misc-functions.php:86
 #: includes/template-functions.php:440
 #: public/partials/cart-sections/header.php:13
 msgid "Cart"
 msgstr ""
 
-#: includes/misc-functions.php:53
+#: includes/misc-functions.php:89
 msgid "Sub Total: "
 msgstr ""
 
-#: includes/misc-functions.php:54
+#: includes/misc-functions.php:90
 msgid "Discount:"
 msgstr ""
 
-#: includes/misc-functions.php:55
+#: includes/misc-functions.php:91
 msgid "Shipping:"
 msgstr ""
 
-#: includes/misc-functions.php:56
+#: includes/misc-functions.php:92
 #: public/partials/cart-sections/footer.php:109
 #: public/partials/cart-sections/shipping.php:73
 msgid "Change address"
 msgstr ""
 
-#: includes/misc-functions.php:57
+#: includes/misc-functions.php:93
 msgid "Tax:"
 msgstr ""
 
-#: includes/misc-functions.php:58
+#: includes/misc-functions.php:94
 msgid "Total:"
 msgstr ""
 
-#: includes/misc-functions.php:59
+#: includes/misc-functions.php:95
 #: includes/template-functions.php:764
 #: public/partials/cart-sections/coupon.php:13
 #: admin/assets/js/main.js:1240
 msgid "Go Back"
 msgstr ""
 
-#: includes/misc-functions.php:60
+#: includes/misc-functions.php:96
 #: includes/template-functions.php:727
 msgid "Your cart is currently empty."
 msgstr ""
 
-#: includes/misc-functions.php:61
-#: public/class-addonify-floating-cart-public.php:503
-#: public/class-addonify-floating-cart-public.php:1027
+#: includes/misc-functions.php:97
+#: public/class-addonify-floating-cart-public.php:597
+#: public/class-addonify-floating-cart-public.php:1121
 msgid "{product_name} has been removed."
 msgstr ""
 
-#: includes/misc-functions.php:62
-#: public/class-addonify-floating-cart-public.php:1028
+#: includes/misc-functions.php:98
+#: public/class-addonify-floating-cart-public.php:1122
 msgid "Undo?"
 msgstr ""
 
-#: includes/misc-functions.php:63
+#: includes/misc-functions.php:99
 #: includes/template-functions.php:687
 msgid "Item"
 msgstr ""
 
-#: includes/misc-functions.php:64
+#: includes/misc-functions.php:100
 #: includes/template-functions.php:688
 msgid "Items"
 msgstr ""
 
-#: includes/misc-functions.php:66
+#: includes/misc-functions.php:102
 #: public/partials/cart-sections/footer.php:17
 msgid "Have a coupon?"
 msgstr ""
 
-#: includes/misc-functions.php:67
+#: includes/misc-functions.php:103
 #: public/partials/cart-sections/coupon.php:14
 msgid "Coupon code"
 msgstr ""
 
-#: includes/misc-functions.php:69
+#: includes/misc-functions.php:105
 #: public/partials/cart-sections/coupons-applied.php:19
 msgid "Applied coupon:"
 msgstr ""
 
-#: includes/misc-functions.php:70
+#: includes/misc-functions.php:106
 #: public/partials/cart-sections/coupon.php:16
 msgid "Apply Coupon"
 msgstr ""
 
-#: includes/misc-functions.php:71
-#: public/class-addonify-floating-cart-public.php:97
+#: includes/misc-functions.php:107
+#: public/class-addonify-floating-cart-public.php:119
 msgid "Coupon has been removed."
 msgstr ""
 
-#: includes/misc-functions.php:73
+#: includes/misc-functions.php:109
 #: public/partials/cart-sections/shipping.php:124
 msgid "Country / Region"
 msgstr ""
 
-#: includes/misc-functions.php:74
+#: includes/misc-functions.php:110
 #: public/partials/cart-sections/shipping.php:125
 msgid "State"
 msgstr ""
 
-#: includes/misc-functions.php:75
+#: includes/misc-functions.php:111
 #: public/partials/cart-sections/shipping.php:126
 msgid "City"
 msgstr ""
 
-#: includes/misc-functions.php:76
+#: includes/misc-functions.php:112
 #: public/partials/cart-sections/shipping.php:127
 msgid "ZIP code"
 msgstr ""
 
-#: includes/misc-functions.php:77
+#: includes/misc-functions.php:113
 #: public/partials/cart-sections/shipping.php:128
 msgid "Update address"
 msgstr ""
 
-#: includes/misc-functions.php:79
-#: public/class-addonify-floating-cart-public.php:96
+#: includes/misc-functions.php:115
+#: public/class-addonify-floating-cart-public.php:118
 msgid "Invalid security token."
 msgstr ""
 
@@ -1070,39 +1078,39 @@ msgstr ""
 msgid "Later"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:522
+#: public/class-addonify-floating-cart-public.php:616
 msgid "Invalid product id or cart item key."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:582
+#: public/class-addonify-floating-cart-public.php:676
 msgid "Restored successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:585
+#: public/class-addonify-floating-cart-public.php:679
 msgid "Could not be restored."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:589
+#: public/class-addonify-floating-cart-public.php:683
 msgid "Already exists in cart"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:593
+#: public/class-addonify-floating-cart-public.php:687
 msgid "Key Missing"
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:666
+#: public/class-addonify-floating-cart-public.php:760
 msgid "Quantity must be more than zero."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:678
+#: public/class-addonify-floating-cart-public.php:772
 msgid "Not available in the stock."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:701
+#: public/class-addonify-floating-cart-public.php:795
 msgid "Quantity updated successfully."
 msgstr ""
 
-#: public/class-addonify-floating-cart-public.php:914
+#: public/class-addonify-floating-cart-public.php:1008
 msgid "Please enter a valid postcode / ZIP."
 msgstr ""
 
@@ -1257,10 +1265,10 @@ msgstr ""
 msgid "Error: Couldn't activate the plugin."
 msgstr ""
 
-#: public/assets/src/js/components/coupon.js:78
-#: public/assets/src/js/components/coupon.js:109
-#: public/assets/src/js/components/coupon.js:162
-#: public/assets/src/js/components/coupon.js:194
+#: public/assets/src/js/components/coupon.js:93
+#: public/assets/src/js/components/coupon.js:125
+#: public/assets/src/js/components/coupon.js:181
+#: public/assets/src/js/components/coupon.js:213
 msgid "Error processing coupon request."
 msgstr ""
 
@@ -1276,11 +1284,11 @@ msgstr ""
 msgid "Error processing cart update request!"
 msgstr ""
 
-#: public/assets/src/js/components/shipping.js:86
+#: public/assets/src/js/components/shipping.js:95
 msgid "Error updating shipping address!."
 msgstr ""
 
-#: public/assets/src/js/components/shipping.js:163
+#: public/assets/src/js/components/shipping.js:167
 msgid "Error processing shipping method update request."
 msgstr ""
 

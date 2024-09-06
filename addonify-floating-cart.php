@@ -13,7 +13,7 @@
  * Version:           1.2.10
  * Requires at least: 6.0.0
  * Requires PHP:      7.4
- * Tested up to:      6.6
+ * Tested up to:      6.6.1
  * Author:            Addonify
  * Author URI:        https://addonify.com/
  * License:           GPLv2 or later

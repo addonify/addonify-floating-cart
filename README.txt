@@ -4,7 +4,7 @@ Contributors: addonify
 Tags: cart, floating cart, side cart, mini cart, woocommerce cart,
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.6
+Tested up to: 6.6.1
 Stable tag: 1.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -96,7 +96,7 @@ Because by default, when product is added into the cart from the product page, t
 
 If your theme is not a block theme, then yes, Addonify Floating Cart should work with your theme. If it does not work with your theme, let us know by [*creating an issue*](https://github.com/addonify/addonify-floating-cart/issues)
 
-= Does this plugin work with WooCommerce blocks? = 
+= Does this plugin work with WooCommerce blocks? =
 
 If you are using WooCommerce blocks to display products, then this plugin might not work as expected. This plugin works well with classic WooCommerce product templates.
 
@@ -132,11 +132,13 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 == Changelog ==
 
-= 1.2.10 - ? August, 2024 =
+= 1.2.10 - 06 August, 2024 =
 
+- Added: Option to automatically hide screen when coupon is applied.
+- Added: Option to automatically hide screen when shipping address is updated.
 - Fixed:  Nonce validation error.
-- Tested: Up to tto WordPress version 6.6.
-- Tested: Up to WooCommerce version 9.1.4.
+- Tested: Up to tto WordPress version 6.6.1
+- Tested: Up to WooCommerce version 9.2.3.
 
 = 1.2.9 - 15 July, 2024 =
 

@@ -98,6 +98,16 @@ if ( ! function_exists( 'addonify_floating_cart_shipping_general_settings' ) ) {
 					),
 					'value'     => addonify_floating_cart_get_option( 'shipping_address_form_submit_button_label' ),
 				),
+				// @since 1.2.10
+				'hide_screen_when_shipping_address_updated' => array(
+					'label'     => esc_html__( 'Hide screen when shipping address is updated', 'addonify-floating-cart' ),
+					'type'      => 'switch',
+					'dependent' => array(
+						'enable_floating_cart',
+						'display_shipping_cost_in_cart_subtotal',
+					),
+					'value'     => addonify_floating_cart_get_option( 'hide_screen_when_shipping_address_updated' ),
+				),
 			)
 		);
 	}

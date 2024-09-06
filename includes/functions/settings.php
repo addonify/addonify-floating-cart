@@ -172,6 +172,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'shipping_address_form_city_field_label'       => $cart_strings['shipping_address_form_city_field_label'],
 			'shipping_address_form_zip_code_field_label'   => $cart_strings['shipping_address_form_zip_code_field_label'],
 			'shipping_address_form_submit_button_label'    => $cart_strings['shipping_address_form_submit_button_label'],
+			'hide_screen_when_shipping_address_updated'    => false, // @since 1.2.10
 
 			'cart_modal_width'                             => 500,
 			'cart_modal_base_font_size'                    => 15,
@@ -247,7 +248,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
 			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
 			'coupon_removed_message'                       => $cart_strings['coupon_removed_message'], // @since 1.2.6
-			'hide_screen_when_coupon_applied'		 					 => false, // @since 1.2.9
+			'hide_screen_when_coupon_applied'		 					 => false, // @since 1.2.10
 
 			'custom_css'                                   => '',
 		)

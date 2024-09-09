@@ -33,6 +33,18 @@ if ( '1' === $strings_from_setting ) {
 		$coupon_form_toggler_text = $saved_coupon_form_toggler_text;
 	}
 }
+
+$packages = WC()->cart->get_shipping_packages();
+$packages = WC()->shipping()->calculate_shipping( $packages );
+
+$show_shipping_cost = false;
+
+foreach ( $packages as $package ) {
+	if ( ! empty( $package['rates'] ) ) {
+		$show_shipping_cost = true;
+		break;
+	}
+}
 ?>
 <footer class="adfy__woofc-colophon <?php echo ( WC()->cart->get_cart_contents_count() > 0 ) ? '' : 'adfy__woofc-hidden'; ?>" >
 	<?php
@@ -131,12 +143,26 @@ if ( '1' === $strings_from_setting ) {
 					<span class="value">
 						<span class="addonify_floating_cart-Price-amount shipping-amount">
 							<?php
-							$shipping_total = wc_price( WC()->cart->get_shipping_total() );
-							if ( 'incl' === $tax_display_cart ) {
-								$shipping_total = wc_price( WC()->cart->get_shipping_total() + WC()->cart->get_shipping_tax() ) . ' <small>' . WC()->countries->inc_tax_or_vat() . '</small>';
+							if ( (bool) WC()->cart->show_shipping() && $show_shipping_cost ) {
+								WC()->cart->calculate_shipping();
+								if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
+									if ( WC()->customer->get_shipping_country() !== 'default' ) {
+										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : wc_price( 0 );
+									} else {
+										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
+									}
+								} else { // phpcs:ignore
+									if ( WC()->customer->get_shipping_country() !== 'default' ) {
+										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? wc_price( 0 ) : WC()->cart->get_cart_shipping_total();
+									} else {
+										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
+									}
+								}
+							} else {
+								$shipping_total = '-';
 							}
 
-							echo $shipping_total; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo wp_kses_post( $shipping_total ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							?>
 						</span>
 					</span>

@@ -1,7 +1,7 @@
 === Addonify Floating Cart For WooCommerce ===
 
 Contributors: addonify
-Tags: cart, floating cart, side cart, mini cart, woocommerce cart,
+Tags: cart, floating cart, side cart, mini cart, woocommerce cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
 Tested up to: 6.6.1
@@ -132,11 +132,12 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 == Changelog ==
 
-= 1.2.10 - 06 August, 2024 =
+= 1.2.10 - 10 September, 2024 =
 
 - Added: Option to automatically hide screen when coupon is applied.
 - Added: Option to automatically hide screen when shipping address is updated.
-- Fixed:  Nonce validation error.
+- Fixed: Nonce validation error.
+- Fixed: Shipping cost when shipping method is not selected.
 - Tested: Up to tto WordPress version 6.6.1
 - Tested: Up to WooCommerce version 9.2.3.
 

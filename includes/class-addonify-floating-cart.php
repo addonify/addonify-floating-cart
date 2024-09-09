@@ -82,7 +82,6 @@ class Addonify_Floating_Cart {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->rest_api();
-
 	}
 
 	/**
@@ -107,35 +106,35 @@ class Addonify_Floating_Cart {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-addonify-floating-cart-loader.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-addonify-floating-cart-loader.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-addonify-floating-cart-rest-api.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-addonify-floating-cart-rest-api.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-addonify-floating-cart-i18n.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-addonify-floating-cart-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-addonify-floating-cart-admin.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-addonify-floating-cart-admin.php';
 
 		/**
 		 * Load miscellaneous functions.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/misc-functions.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/misc-functions.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-addonify-floating-cart-public.php';
+		require_once plugin_dir_path( __DIR__ ) . 'public/class-addonify-floating-cart-public.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/functions/settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/functions/settings.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/udp/init.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/udp/init.php';
 
 		$this->loader = new Addonify_Floating_Cart_Loader();
 	}

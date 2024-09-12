@@ -93,23 +93,18 @@ export function handleCustomToastContent(data) {
 
 		let toastContent;
 		let productName;
+		const { __ } = wp.i18n;
 
 		if (Object.hasOwn(data, "product")) {
-
 			productName = data.product.charAt(0).toUpperCase() + data.product.slice(1);
-
 		} else {
-
 			productName = __('Product', 'addonify-floating-cart');
 		}
 
 		if (notfyShowHTMLContent) {
-
 			// Add button to toast content.
 			toastContent = notfyMessage.replace('{product_name}', productName) + " " + notfyButton;
-
 		} else {
-
 			toastContent = notfyMessage.replace('{product_name}', productName);
 		}
 

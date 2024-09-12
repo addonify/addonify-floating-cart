@@ -68,6 +68,13 @@ if ( ! function_exists( 'addonify_floating_cart_coupon_modal_general_settings' )
 				'dependent' => array( 'enable_floating_cart', 'enable_cart_labels_from_plugin' ),
 				'value'     => addonify_floating_cart_get_option( 'coupon_removed_message' ),
 			),
+			// @since 1.2.10
+			'hide_screen_when_coupon_applied'         => array(
+				'label'     => esc_html__( 'Automatically hide screen when coupon is applied', 'addonify-floating-cart' ),
+				'type'      => 'switch',
+				'dependent' => array( 'enable_floating_cart' ),
+				'value'     => addonify_floating_cart_get_option( 'hide_screen_when_coupon_applied' ),
+			),
 		);
 	}
 

@@ -40,6 +40,15 @@ class Addonify_Floating_Cart_Public {
 	private $version;
 
 	/**
+	 * Floating cart enabled.
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @var    boolean $cart_enabled Floating cart enabled.
+	 */
+	private $cart_enabled;
+
+	/**
 	 * Strings from settings.
 	 *
 	 * @since 1.2.5
@@ -90,6 +99,19 @@ class Addonify_Floating_Cart_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
+	}
+
+
+	/**
+	 * Public Init Function
+	 */
+	public function init() {
+
+		$this->cart_enabled = ( addonify_floating_cart_get_option( 'enable_floating_cart' ) === '1' );
+
+		if ( ! $this->cart_enabled ) {
+			return;
+		}
 
 		$this->strings_from_setting = addonify_floating_cart_get_option( 'enable_cart_labels_from_plugin' );
 
@@ -107,32 +129,16 @@ class Addonify_Floating_Cart_Public {
 				$this->coupon_code_removal_message = $saved_coupon_code_removal_message;
 			}
 		}
-	}
-
-
-	/**
-	 * Public Init Function
-	 */
-	public function init() {
-
-		if ( (int) addonify_floating_cart_get_option( 'enable_floating_cart' ) === 0 ) {
-			return;
-		}
 
 		$this->shipping_address_updatable = (
 			addonify_floating_cart_get_option( 'display_shipping_cost_in_cart_subtotal' ) === '1' &&
 			'yes' === get_option( 'woocommerce_enable_shipping_calc' )
 		) ? true : false;
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'wp_footer', array( $this, 'footer_content' ) );
-
 		$this->register_ajax_actions();
 
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_ajax' ) );
 	}
-
 
 	/**
 	 * Register ajax actions.
@@ -181,7 +187,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_styles() {
 
-		if ( is_cart() || is_checkout() ) {
+		if ( is_cart() || is_checkout() || ! $this->cart_enabled ) {
 			return;
 		}
 
@@ -244,7 +250,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function enqueue_scripts() {
 
-		if ( is_cart() || is_checkout() ) {
+		if ( is_cart() || is_checkout() || ! $this->cart_enabled ) {
 			return;
 		}
 
@@ -338,6 +344,8 @@ class Addonify_Floating_Cart_Public {
 				'hideCartOnOverlayClicked'                 => addonify_floating_cart_get_option( 'close_cart_modal_on_overlay_click' ),
 				'states'                                   => $states,
 				'customToggleBtnClass'                     => addonify_floating_cart_get_option( 'custom_class_to_toggle_button' ),
+				'hideScreenWhenCouponIsApplied'            => addonify_floating_cart_get_option( 'hide_screen_when_coupon_applied' ),
+				'hideScreenWhenShippingAddressUpdated'     => addonify_floating_cart_get_option( 'hide_screen_when_shipping_address_updated' ),
 			)
 		);
 	}
@@ -457,7 +465,7 @@ class Addonify_Floating_Cart_Public {
 	 */
 	public function footer_content() {
 
-		if ( is_cart() || is_checkout() ) {
+		if ( is_cart() || is_checkout() || ! $this->cart_enabled ) {
 			return;
 		}
 
@@ -1195,9 +1203,9 @@ class Addonify_Floating_Cart_Public {
 
 		return apply_filters(
 			'addonify_floating_cart_shopping_meter_bar',
-			'<div 
-				class="live-progress-bar shipping-bar" 
-				data_percentage="' . esc_attr( number_format( floatval( $per ), 2 ) ) . '" 
+			'<div
+				class="live-progress-bar shipping-bar"
+				data_percentage="' . esc_attr( number_format( floatval( $per ), 2 ) ) . '"
 				style="width:' . esc_attr( number_format( floatval( $per ), 2 ) ) . '%"
 			></div>'
 		);

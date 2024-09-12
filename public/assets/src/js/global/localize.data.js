@@ -69,6 +69,8 @@ export const ajaxApplyCouponCodeAction = addonifyFloatingCartJSObject.ajax_apply
 
 export const ajaxRemoveCouponCodeAction = addonifyFloatingCartJSObject.ajax_remove_coupon;
 
+export const hideScreenWhenCouponIsApplied = addonifyFloatingCartJSObject.hideScreenWhenCouponIsApplied === '1' ? true : false;
+
 /**
 * Localization: Shipping calculator settings.
 *
@@ -81,6 +83,8 @@ export const ajaxUpdateShippingMethodAction = addonifyFloatingCartJSObject.updat
 export const isShippingAddressUpdatable = addonifyFloatingCartJSObject.shippingAddressUpdatable;
 
 export const countriesToStates = addonifyFloatingCartJSObject.states;
+
+export const hideScreenWhenShippingAddressUpdated = addonifyFloatingCartJSObject.hideScreenWhenShippingAddressUpdated === '1' ? true : false;
 
 /**
 * Localization: Shipping calculator settings.

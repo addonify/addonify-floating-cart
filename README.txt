@@ -132,7 +132,7 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 == Changelog ==
 
-= 1.2.10 - 10 September, 2024 =
+= 1.2.10 - 12 September, 2024 =
 
 - Added: Option to automatically hide screen when coupon is applied.
 - Added: Option to automatically hide screen when shipping address is updated.

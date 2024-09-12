@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-06T07:07:48+00:00\n"
+"POT-Creation-Date: 2024-09-12T05:12:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: addonify-floating-cart\n"
@@ -931,7 +931,7 @@ msgid "Shipping:"
 msgstr ""
 
 #: includes/misc-functions.php:92
-#: public/partials/cart-sections/footer.php:109
+#: public/partials/cart-sections/footer.php:121
 #: public/partials/cart-sections/shipping.php:73
 msgid "Change address"
 msgstr ""
@@ -1122,15 +1122,15 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: public/partials/cart-sections/footer.php:71
+#: public/partials/cart-sections/footer.php:83
 msgid "Discount"
 msgstr ""
 
-#: public/partials/cart-sections/footer.php:108
+#: public/partials/cart-sections/footer.php:120
 msgid "Shipping"
 msgstr ""
 
-#: public/partials/cart-sections/footer.php:152
+#: public/partials/cart-sections/footer.php:178
 msgid "Tax"
 msgstr ""
 
@@ -1292,6 +1292,6 @@ msgstr ""
 msgid "Error processing shipping method update request."
 msgstr ""
 
-#: public/assets/src/js/utilities/toast.helpers.js:103
+#: public/assets/src/js/utilities/toast.helpers.js:101
 msgid "Product"
 msgstr ""

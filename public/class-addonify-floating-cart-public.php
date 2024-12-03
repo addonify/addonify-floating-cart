@@ -1349,5 +1349,3 @@ class Addonify_Floating_Cart_Public {
 		return trim( $css );
 	}
 }
-
-

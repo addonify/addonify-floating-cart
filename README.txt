@@ -4,12 +4,12 @@ Contributors: addonify
 Tags: cart, floating cart, side cart, mini cart, woocommerce cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.6.1
-Stable tag: 1.2.10
+Tested up to: 6.7.1
+Stable tag: 1.2.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
+Addonify Floating Cart is a free WooCommerce addon that adds a sticky, interactive cart, letting visitors manage items without visiting the cart page.
 
 == Description ==
 
@@ -132,13 +132,21 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 == Changelog ==
 
-= 1.2.10 - 12 September, 2024 =
+= 1.2.11 - 4 December, 2024 =
+
+- Removed: Unwanted files and codes.
+- Fixed:   Issue of shopping cost not displaying tax when `Including tax` is selected for `Display prices during cart and checkout` option.
+- Updated: Shipping method and address update modal is closed after shipping method is updated.
+- Updated: Plugin's short description. [315](https://github.com/addonify/addonify-floating-cart/issues/315)
+- Tested:  Up to WordPress version 6.7.1 and WooCommerce version 9.4.2.
+
+= 1.2.10 - 10 September, 2024 =
 
 - Added: Option to automatically hide screen when coupon is applied.
 - Added: Option to automatically hide screen when shipping address is updated.
 - Fixed: Nonce validation error.
 - Fixed: Shipping cost when shipping method is not selected.
-- Tested: Up to tto WordPress version 6.6.1
+- Tested: Up to WordPress version 6.6.1
 - Tested: Up to WooCommerce version 9.2.3.
 
 = 1.2.9 - 15 July, 2024 =

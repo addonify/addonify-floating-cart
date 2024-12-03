@@ -50,7 +50,12 @@ $has_shipping_calculator_enabled = ( get_option( 'woocommerce_enable_shipping_ca
 							esc_attr( $method->id )
 						);
 
-						echo wc_cart_totals_shipping_method_label( $method ); // phpcs:ignore
+						printf(
+							'<label for="shipping_method_%1$s_%2$s">%3$s</label>',
+							esc_attr( $index ),
+							esc_attr( sanitize_title( $method->id ) ),
+							wc_cart_totals_shipping_method_label( $method ) // phpcs:ignore
+						);
 					}
 
 					do_action( 'woocommerce_after_shipping_rate', $method, $index );

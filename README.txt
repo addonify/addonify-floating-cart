@@ -135,7 +135,7 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 = 1.2.11 - 4 December, 2024 =
 
 - Removed: Unwanted files and codes.
-- Fixed:   Issue of shopping cost not displaying tax when `Including tax` is selected for `Display prices during cart and checkout` option.
+- Fixed:   Issue of shipping cost not displaying tax when `Including tax` is selected for `Display prices during cart and checkout` option.
 - Updated: Shipping method and address update modal is closed after shipping method is updated.
 - Updated: Plugin's short description. [315](https://github.com/addonify/addonify-floating-cart/issues/315)
 - Tested:  Up to WordPress version 6.7.1 and WooCommerce version 9.4.2.

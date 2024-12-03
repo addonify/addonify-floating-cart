@@ -56,7 +56,7 @@ if ( ! function_exists( 'addonify_floating_cart_items_general_settings' ) ) {
 
 	add_filter(
 		'addonify_floating_cart_settings_fields',
-		function( $settings ) {
+		function ( $settings ) {
 			return array_merge( $settings, addonify_floating_cart_items_general_settings() );
 		}
 	);

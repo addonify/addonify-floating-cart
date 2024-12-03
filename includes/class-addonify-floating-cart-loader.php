@@ -49,7 +49,6 @@ class Addonify_Floating_Cart_Loader {
 
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**
@@ -107,7 +106,6 @@ class Addonify_Floating_Cart_Loader {
 		);
 
 		return $hooks;
-
 	}
 
 	/**
@@ -126,7 +124,5 @@ class Addonify_Floating_Cart_Loader {
 
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
-
 }

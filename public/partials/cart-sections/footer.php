@@ -144,25 +144,30 @@ foreach ( $packages as $package ) {
 						<span class="addonify_floating_cart-Price-amount shipping-amount">
 							<?php
 							if ( (bool) WC()->cart->show_shipping() && $show_shipping_cost ) {
-								WC()->cart->calculate_shipping();
-								if ( get_option( 'woocommerce_tax_display_cart' ) === 'incl' ) {
-									if ( WC()->customer->get_shipping_country() !== 'default' ) {
-										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : wc_price( 0 );
+
+								$total = esc_html__( 'Free!', 'addonify-floating-cart' );
+
+								if ( 0 < WC()->cart->get_shipping_total() ) {
+
+									if ( WC()->cart->display_prices_including_tax() ) {
+										$total = wc_price( WC()->cart->shipping_total + WC()->cart->shipping_tax_total );
+
+										if ( WC()->cart->shipping_tax_total > 0 && ! wc_prices_include_tax() ) {
+											$total .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
+										}
 									} else {
-										$shipping_total = ( absint( WC()->cart->get_shipping_total() ) > 0 ) ? ( wc_price( WC()->cart->get_shipping_total() ) ) : '-';
-									}
-								} else { // phpcs:ignore
-									if ( WC()->customer->get_shipping_country() !== 'default' ) {
-										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? wc_price( 0 ) : WC()->cart->get_cart_shipping_total();
-									} else {
-										$shipping_total = ( WC()->cart->get_cart_shipping_total() === __( 'Free!', 'woocommerce' ) ) ? '-' : WC()->cart->get_cart_shipping_total();
+										$total = wc_price( WC()->cart->shipping_total );
+
+										if ( WC()->cart->shipping_tax_total > 0 && wc_prices_include_tax() ) {
+											$total .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
+										}
 									}
 								}
 							} else {
-								$shipping_total = '-';
+								$total = '-';
 							}
 
-							echo wp_kses_post( $shipping_total ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo wp_kses_post( $total ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							?>
 						</span>
 					</span>

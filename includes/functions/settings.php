@@ -12,55 +12,55 @@
 /**
  * Load general setting fields for floating cart.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart.php';
 /**
  * Load general setting fields for cart header.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-header.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart-header.php';
 /**
  * Load general setting fields for cart items/products.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-items.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart-items.php';
 /**
  * Load general setting fields for cart subtotals.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-subtotals.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart-subtotals.php';
 /**
  * Load general setting fields for cart buttons.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-buttons.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart-buttons.php';
 /**
  * Load setting fields for coupon modal.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/coupon-modal.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/coupon-modal.php';
 /**
  * Load setting fields for shipping modal.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/shipping.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/shipping.php';
 /**
  * Load general setting fields for cart miscellaneous.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/miscellaneous.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/miscellaneous.php';
 /**
  * Load setting fields for floating cart toggle button.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toggle-button.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/toggle-button.php';
 /**
  * Load setting fields for toast notification.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/toast-notification.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/toast-notification.php';
 /**
  * Load setting fields for cart content.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/cart-display.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/cart-display.php';
 /**
  * Load setting fields for shopping meter.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/shopping-meter.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/shopping-meter.php';
 /**
  * Load setting fields for adding Custom CSS.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/fields/custom-css.php';
+require_once plugin_dir_path( __DIR__ ) . 'functions/fields/custom-css.php';
 
 /**
  * Define default values for the settings fields.
@@ -200,6 +200,9 @@ function addonify_floating_cart_settings_fields_defaults() {
 			// Buttons style.
 			'cart_modal_buttons_font_size'                 => 14,
 			'cart_modal_buttons_font_weight'               => '400',
+			'cart_modal_buttons_letter_spacing'            => 0.25,
+			'cart_modal_buttons_text_transform'            => 'none',
+			'cart_modal_buttons_border_radius'             => 3,
 			'cart_modal_primary_button_background_color'   => '',
 			'cart_modal_primary_button_label_color'        => '',
 			'cart_modal_primary_button_border_color'       => '',
@@ -222,24 +225,6 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_shopping_meter_progress_background_color' => '',
 			'cart_shopping_meter_threashold_reached_background_color' => '',
 
-			'cart_modal_buttons_font_size'                 => 14,
-			'cart_modal_buttons_font_weight'               => '400',
-			'cart_modal_buttons_letter_spacing'            => 0.25,
-			'cart_modal_buttons_text_transform'            => 'none',
-			'cart_modal_buttons_border_radius'             => 3,
-			'cart_modal_primary_button_label_color'        => '',
-			'cart_modal_primary_button_background_color'   => '',
-			'cart_modal_primary_button_border_color'       => '',
-			'cart_modal_primary_button_on_hover_label_color' => '',
-			'cart_modal_primary_button_on_hover_background_color' => '',
-			'cart_modal_primary_button_on_hover_border_color' => '',
-			'cart_modal_secondary_button_label_color'      => '',
-			'cart_modal_secondary_button_background_color' => '',
-			'cart_modal_secondary_button_border_color'     => '',
-			'cart_modal_secondary_button_on_hover_label_color' => '',
-			'cart_modal_secondary_button_on_hover_background_color' => '',
-			'cart_modal_secondary_button_on_hover_border_color' => '',
-
 			// cart coupon options.
 			'display_applied_coupons'                      => true,
 			'coupon_form_toggler_text'                     => $cart_strings['coupon_form_toggler_text'], // @since 1.2.4
@@ -248,7 +233,7 @@ function addonify_floating_cart_settings_fields_defaults() {
 			'cart_apply_coupon_button_label'               => $cart_strings['cart_apply_coupon_button_label'],
 			'applied_coupons_list_title'                   => $cart_strings['applied_coupons_list_title'], // @since 1.2.4
 			'coupon_removed_message'                       => $cart_strings['coupon_removed_message'], // @since 1.2.6
-			'hide_screen_when_coupon_applied'		 					 => false, // @since 1.2.10
+			'hide_screen_when_coupon_applied'              => false, // @since 1.2.10
 
 			'custom_css'                                   => '',
 		)

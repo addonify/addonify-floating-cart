@@ -138,6 +138,7 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 - Removed: Unwanted files and codes.
 - Updated: Shipping method and address update modal is closed after shipping method is updated.
 - Updated: Plugin's short description. [315](https://github.com/addonify/addonify-floating-cart/issues/315)
+- Updated: UDP agent to v1.0.2.
 - Tested:  Up to WordPress version 6.7.1 and WooCommerce version 9.4.2.
 
 = 1.2.10 - 10 September, 2024 =

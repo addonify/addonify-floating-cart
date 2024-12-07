@@ -16,8 +16,8 @@ global $this_agent_ver, $engine_url, $root_dir, $udp_admin_notice_displayed;
 // Config
 // -------------------------------------------
 
-$engine_url     = 'https://udp.creamcode.org/';
-$this_agent_ver = '1.0.1';
+$engine_url     = 'https://udp.creamcode.org/v1/sync';
+$this_agent_ver = '1.0.2';
 
 // -------------------------------------------
 // Which agent to load ?

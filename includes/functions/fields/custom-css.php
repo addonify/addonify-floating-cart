@@ -33,7 +33,7 @@ if ( ! function_exists( 'addonify_floating_cart_custom_css_settings_fields' ) ) 
 
 	add_filter(
 		'addonify_floating_cart_settings_fields',
-		function( $settings ) {
+		function ( $settings ) {
 			return array_merge( $settings, addonify_floating_cart_custom_css_settings_fields() );
 		}
 	);

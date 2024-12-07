@@ -221,6 +221,11 @@ export function handleShippingMethodChange() {
 						});
 					}
 				}
+
+				// Close shipping method and address update modal.
+				$("#adfy__woofc-shipping-container").attr("data_display", "hidden");
+				// Dispatch event.
+				AFC.api.event.shippingModalClosed();
 			},
 			error: function (err) {
 				console.log(err);

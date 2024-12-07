@@ -9,11 +9,11 @@
  * @wordpress-plugin
  * Plugin Name:       Addonify Floating Cart For WooCommerce
  * Plugin URI:        https://addonify.com/addonify-floating-cart
- * Description:       Addonify Floating Cart is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
- * Version:           1.2.10
+ * Description:       Addonify Floating Cart is a free WooCommerce addon that adds a sticky, interactive cart, letting visitors manage items without visiting the cart page.
+ * Version:           1.2.11
  * Requires at least: 6.0.0
  * Requires PHP:      7.4
- * Tested up to:      6.6.1
+ * Tested up to:      6.7.1
  * Author:            Addonify
  * Author URI:        https://addonify.com/
  * License:           GPLv2 or later
@@ -33,31 +33,10 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.10' );
+define( 'ADDONIFY_FLOATING_CART_VERSION', '1.2.11' );
 define( 'ADDONIFY_FLOATING_CART_BASENAME', plugin_basename( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ADDONIFY_FLOATING_CART_DB_INITIALS', 'addonify_fc_' );
-
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-addonify-floating-cart-activator.php
- */
-function activate_addonify_floating_cart() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-addonify-floating-cart-activator.php';
-	Addonify_Floating_Cart_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-addonify-floating-cart-deactivator.php
- */
-function deactivate_addonify_floating_cart() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-addonify-floating-cart-deactivator.php';
-	Addonify_Floating_Cart_Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'activate_addonify_floating_cart' );
-register_deactivation_hook( __FILE__, 'deactivate_addonify_floating_cart' );
 
 /**
  * The core plugin class that is used to define internationalization,

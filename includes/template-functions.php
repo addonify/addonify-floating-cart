@@ -33,7 +33,7 @@ if ( ! function_exists( 'addonify_floating_cart_locate_template' ) ) {
 
 		// Set default plugin templates path.
 		if ( ! $default_path ) {
-			$default_path = plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/'; // Path to the template folder.
+			$default_path = plugin_dir_path( __DIR__ ) . 'public/partials/'; // Path to the template folder.
 		}
 
 		// Search template file in theme folder.
@@ -263,9 +263,8 @@ if ( ! function_exists( 'addonify_floating_cart_get_sidebar_cart_shipping_bar_te
 	 * Display sidebar cart shopping meter section.
 	 *
 	 * @since 1.0.0
-	 * @param array $args  Arguments passed.
 	 */
-	function addonify_floating_cart_get_sidebar_cart_shipping_bar_template( $args = array() ) {
+	function addonify_floating_cart_get_sidebar_cart_shipping_bar_template() {
 
 		$shopping_meter                   = (bool) addonify_floating_cart_get_option( 'enable_shopping_meter' );
 		$free_shipping_eligibility_amount = (int) addonify_floating_cart_get_option( 'customer_shopping_meter_threshold' );

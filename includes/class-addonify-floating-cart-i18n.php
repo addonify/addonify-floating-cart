@@ -38,6 +38,5 @@ class Addonify_Floating_Cart_I18n {
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
 }

@@ -189,7 +189,6 @@ class Udp_Agent {
 		// Redirect back to dashboard.
 		wp_safe_redirect( admin_url() );
 		exit;
-
 	}
 
 	// ----------------------------------------------
@@ -225,7 +224,7 @@ class Udp_Agent {
 		$data['data']            = WP_Debug_Data::debug_data();
 		$data['site_url']        = $site_scheme . $site_host . $site_port;
 		$data['site_user_email'] = get_bloginfo( 'admin_email' );
-		$plugin_directory        = untrailingslashit( dirname( __FILE__, 3 ) );
+		$plugin_directory        = untrailingslashit( dirname( __FILE__, 3 ) ); // phpcs:ignore
 		$dir_names               = explode( '/', $plugin_directory );
 		if ( strpos( $dir_names[ count( $dir_names ) - 1 ], '\\' ) ) {
 			$dir_names = explode( '\\', $dir_names[ count( $dir_names ) - 1 ] );
@@ -261,7 +260,7 @@ class Udp_Agent {
 		}
 
 		$data['agent_data'] = serialize( $this->get_data() ); //phpcs:ignore
-		$url                = untrailingslashit( $this->engine_url ) . '/wp-json/udp-engine/v1/handshake';
+		$url                = untrailingslashit( $this->engine_url );
 
 		$this->do_curl( $url, $data );
 
@@ -307,7 +306,7 @@ class Udp_Agent {
 		}
 
 		$data_to_send['agent_data'] = serialize( $this->get_data() ); //phpcs:ignore
-		$url                        = untrailingslashit( $this->engine_url ) . '/wp-json/udp-engine/v1/process-data';
+		$url                        = untrailingslashit( $this->engine_url );
 		$this->do_curl( $url, $data_to_send );
 		exit;
 	}

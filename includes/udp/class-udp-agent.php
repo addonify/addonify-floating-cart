@@ -260,7 +260,7 @@ class Udp_Agent {
 		}
 
 		$data['agent_data'] = serialize( $this->get_data() ); //phpcs:ignore
-		$url                = untrailingslashit( $this->engine_url ) . '/wp-json/udp-engine/v1/handshake';
+		$url                = untrailingslashit( $this->engine_url );
 
 		$this->do_curl( $url, $data );
 
@@ -306,7 +306,7 @@ class Udp_Agent {
 		}
 
 		$data_to_send['agent_data'] = serialize( $this->get_data() ); //phpcs:ignore
-		$url                        = untrailingslashit( $this->engine_url ) . '/wp-json/udp-engine/v1/process-data';
+		$url                        = untrailingslashit( $this->engine_url );
 		$this->do_curl( $url, $data_to_send );
 		exit;
 	}

@@ -13,7 +13,7 @@ Addonify Floating Cart is a free WooCommerce addon that adds a sticky, interacti
 
 == Description ==
 
-(Addonify Floating Cart)[https://addonify.com/product/addonify-floating-cart-for-woocommerce/] is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
+[Addonify Floating Cart](https://addonify.com/product/addonify-floating-cart-for-woocommerce/) is a free WooCommerce addon that adds an interactive sticky shopping cart on your website allowing your visitors no need to go to cart page to manage their cart items.
 
 Addonify Floating Cart is packed with lots of features and functionalities. The necessary cart actions such as adding product into the cart, removing product from the cart with undo functionality, updating cart quantities, applying coupon discounts etc. The sidebar shopping cart can be toggled on floating cart button click, or Add to Cart button click, or toast notification button click, or View Cart button click.
 

@@ -5,7 +5,7 @@ Tags: cart, floating cart, side cart, mini cart, woocommerce cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
 Tested up to: 6.7.1
-Stable tag: 1.2.11
+Stable tag: 1.2.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,7 +77,6 @@ We are open to any kind of discussions  that can help improve this plugin. Share
 
 If you wish Addonify Floating Cart to be translated in your language, feel free to contribute translating at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/addonify-floating-cart) directly.
 
-
 == Frequently Asked Questions ==
 
 = Do you have documentation guide? =
@@ -111,7 +110,7 @@ Addonify Floating Cart has a shortcode that can be used to display a cart icon. 
 ```
 [afc_cart_icon id="my-id" class="css-classes" icon="icon-1" display_count="true" count_position="top-right"]
 ```
-For more information on shorcode, follow the [documentation](https://docs.addonify.com/kb/floating-cart/)
+For more information on shortcode, follow the [documentation](https://docs.addonify.com/kb/floating-cart/)
 
 == Installation ==
 
@@ -131,6 +130,10 @@ For more information on shorcode, follow the [documentation](https://docs.addoni
 
 
 == Changelog ==
+
+= 1.2.12 - 26 December, 2024 =
+
+- Updated: readme.txt file.
 
 = 1.2.11 - 07 December, 2024 =
 

@@ -29,6 +29,19 @@ const { __ } = wp.i18n;
 					{{ __("Products", "addonify-floating-cart") }}
 				</router-link>
 			</li>
+			<li class="donation">
+				<a
+					href="https://donation.creamcode.org"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="donation-link"
+				>
+					<span class="icon">
+						<Icon icon="heart" />
+					</span>
+					{{ __("Donate (Coffee)", "addonify-floating-cart") }}
+				</a>
+			</li>
 		</ul>
 	</nav>
 </template>

@@ -1,7 +1,7 @@
 {
 	"name": "addonify-floating-cart",
-	"version": "1.0.0",
 	"description": "Addonify Floating Cart",
+	"version": "1.0.0",
 	"license": "GPLv3",
 	"private": true,
 	"author": "Addonify",

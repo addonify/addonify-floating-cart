@@ -9,7 +9,7 @@
         overflow: hidden;
 
         .adfy__woofc-content-entry {
-                
+
             display: block;
             position: absolute;
             left: 0;
@@ -47,10 +47,11 @@
                         display: block;
 
                         > img {
-
                             position: relative;
                             display: block;
                             max-width: 100%;
+														height: auto;
+														aspect-ratio: auto;
                             border-radius: 5px;
                             border: 1px solid var(--adfy_woofc_border_color);
                             background-color: var(--adfy_woofc_border_color);
@@ -172,7 +173,7 @@
 
                             // Firefox
                             input[type=number] {
-                                
+
                                 -moz-appearance: textfield;
                             }
 
@@ -250,7 +251,7 @@
     }
 }
 
-/** 
+/**
 *
 * Fix: Issue in 2023 theme.
 * @since: 1.0.13

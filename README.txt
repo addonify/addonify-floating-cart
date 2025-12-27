@@ -5,7 +5,7 @@ Tags: cart, floating cart, side cart, mini cart, woocommerce cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 1.2.15
+Stable tag: 1.2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +130,11 @@ For more information on shortcode, follow the [documentation](https://docs.addon
 
 
 == Changelog ==
+
+= 1.2.16 - 27 December, 2025 =
+
+- Fixed: Unauthenticated attacker can update option value for "udp_agent_allow_tracking" via "init" hook.
+- Tested: Up to WordPress version 6.9
 
 = 1.2.15 - 20 April, 2025 =
 

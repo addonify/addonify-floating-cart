@@ -4,8 +4,8 @@ Contributors: addonify
 Tags: cart, floating cart, side cart, mini cart, woocommerce cart
 Requires at least: 6.0.0
 Requires PHP: 7.4
-Tested up to: 6.8
-Stable tag: 1.2.16
+Tested up to: 6.9
+Stable tag: 1.2.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +130,10 @@ For more information on shortcode, follow the [documentation](https://docs.addon
 
 
 == Changelog ==
+
+= 1.2.17 - 27 December, 2025 =
+
+- Bumped: Version bumped to 1.2.17 to fix the release issue.
 
 = 1.2.16 - 27 December, 2025 =
 
